@@ -1,0 +1,172 @@
+%==============================================================
+%  lecons/analyse/wallis.tex — Intégrales de Wallis
+%==============================================================
+
+\lecontitle{Intégrales de Wallis}{Analyse réelle — Intégration et équivalents asymptotiques}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Wn}{W_n}
+\newcommand{\intz}{\int_0^{\pi/2}}
+
+%=============================================================
+%  § 1 — DÉFINITION ET ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{intégrales de Wallis}
+  Pour tout entier $n \geq 0$, on définit l'intégrale de Wallis d'ordre $n$ par
+  \[
+    \Wn \;=\; \intz \sin^n(t)\,\mathrm{d}t \;=\; \intz \cos^n(t)\,\mathrm{d}t.
+  \]
+
+  \medskip
+  \textbf{Théorème (formules closes et équivalent).}
+  \begin{itemize}
+    \item \textit{Valeurs explicites :}
+    \[
+      W_{2p} = \frac{(2p-1)!!}{(2p)!!}\cdot\frac{\pi}{2}, \qquad
+      W_{2p+1} = \frac{(2p)!!}{(2p+1)!!}.
+    \]
+    \item \textit{Relation de récurrence :}
+    \[
+      \Wn = \frac{n-1}{n}\,W_{n-2}, \quad W_0 = \frac{\pi}{2},\quad W_1 = 1.
+    \]
+    \item \textit{Équivalent asymptotique :}
+    \[
+      \Wn \;\sim\; \sqrt{\frac{\pi}{2n}} \quad (n \to +\infty).
+    \]
+    \item \textit{Produit de Wallis :}
+    \[
+      \prod_{k=1}^{+\infty} \frac{(2k)^2}{(2k-1)(2k+1)} \;=\; \frac{\pi}{2}.
+    \]
+  \end{itemize}
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Les intégrales de Wallis mesurent la « hauteur moyenne » de $\sin^n$ sur
+$[0,\pi/2]$. Plus $n$ est grand, plus $\sin^n$ s'écrase vers zéro sauf au
+voisinage de $\pi/2$ : $W_n$ tend vers $0$, mais lentement. L'équivalent
+$W_n \sim \sqrt{\pi/(2n)}$ quantifie précisément cette décroissance en
+$1/\sqrt{n}$, qui est à la racine de la formule de Stirling\index{formule de Stirling}.
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée de la preuve}
+La récurrence s'obtient par intégration par parties. L'équivalent découle
+de l'encadrement $W_{n+1} \leq W_n$ et du produit $W_{2p}\cdot W_{2p+1}$
+calculé via les formules closes.
+
+\vspace{10pt}
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Égalité sin/cos et monotonie.}
+  Le changement $t \mapsto \pi/2-t$ montre l'égalité des deux intégrales.
+  Comme $0\leq\sin t\leq 1$ sur $[0,\pi/2]$, la suite $(W_n)$ est décroissante.
+
+  \medskip
+  \textit{Étape 2 — Récurrence.}
+  On intègre par parties : $u = \sin^{n-1}t$, $v' = \sin t$ :
+  \[
+    \Wn = (n-1)\intz\cos^2 t\,\sin^{n-2}t\,\mathrm{d}t
+         = (n-1)(W_{n-2}-\Wn),
+  \]
+  d'où $n\,\Wn = (n-1)\,W_{n-2}$, soit $\Wn = \dfrac{n-1}{n}W_{n-2}$.
+
+  \medskip
+  \textit{Étape 3 — Formules closes.}
+  En déroulant depuis $W_0 = \pi/2$ (resp. $W_1 = 1$) :
+  \[
+    W_{2p} = \frac{(2p-1)!!}{(2p)!!}\cdot\frac{\pi}{2}, \qquad
+    W_{2p+1} = \frac{(2p)!!}{(2p+1)!!}.
+  \]
+
+  \medskip
+  \textit{Étape 4 — Équivalent.}
+  De $W_{n+1}\leq W_n\leq W_{n-1}$ et $W_{n+1}/W_{n-1}=n/(n+1)\to 1$,
+  on tire $W_n/W_{n-1}\to 1$. Les formules closes donnent :
+  \[
+    W_{2p}\cdot W_{2p+1} = \frac{\pi}{2(2p+1)}.
+  \]
+  Comme $W_{2p+1}\sim W_{2p}$, on obtient $W_{2p}^2\sim\pi/(4p)$, soit
+  $W_{2p}\sim\sqrt{\pi/(4p)}$. Par symétrie des indices :
+  \[
+    \Wn\;\sim\;\sqrt{\frac{\pi}{2n}}. \hfill\blacksquare
+  \]
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Premières valeurs.}
+  \[
+    W_0=\tfrac{\pi}{2},\quad W_1=1,\quad W_2=\tfrac{\pi}{4},\quad
+    W_3=\tfrac{2}{3},\quad W_4=\tfrac{3\pi}{16},\quad W_5=\tfrac{8}{15}.
+  \]
+
+  \smallskip\noindent
+  \textbf{2. Lien avec Stirling.}
+  Les formules closes donnent $W_{2p}^2\sim\pi/(4p)$, ce qui implique,
+  après développement de $(2p)!$ en termes de $(p!)^2$, la formule de
+  Stirling $n!\sim\sqrt{2\pi n}\,(n/e)^n$.
+
+  \smallskip\noindent
+  \textbf{3. Calcul direct.}
+  $\displaystyle\int_0^{\pi/2}\sin^6 t\,\mathrm{d}t = W_6 = \tfrac{5}{6}\cdot\tfrac{3}{4}\cdot\tfrac{1}{2}\cdot\tfrac{\pi}{2} = \tfrac{5\pi}{32}$.
+
+  \smallskip\noindent
+  \textbf{4. Fonction Bêta.}
+  $W_n = \tfrac{1}{2}B\!\left(\tfrac{1}{2},\tfrac{n+1}{2}\right)$, extension aux $n > -1$ réels.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Décroissance lente.}\enspace
+  $n\,W_n^2\to\pi/2\neq 0$ : la convergence vers $0$ est en $1/\sqrt{n}$,
+  bien plus lente qu'une décroissance géométrique.
+
+  \smallskip\noindent
+  \textbf{Non-multiplicativité.}\enspace
+  $\Wn\neq W_{n-1}\cdot W_1$ : la relation de récurrence n'est pas un
+  simple produit.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Calculer $\displaystyle\int_0^\pi\sin^7(t)\,\mathrm{d}t$ et
+          $\displaystyle\int_0^{\pi/4}\cos^4(t)\,\mathrm{d}t$.
+
+    \item Montrer que $\displaystyle\sum_{n=0}^{+\infty}(-1)^n W_{2n+1}=\frac{\pi}{4}$.
+
+    \item En utilisant $W_n\sim\sqrt{\pi/(2n)}$, retrouver la formule
+          de Stirling (exprimer $W_{2n}$ en termes de $(2n)!$ et $(n!)^2$).
+
+    \item Montrer que $\displaystyle\int_0^{+\infty}e^{-t^2}t^{2n}\,\mathrm{d}t
+          = \dfrac{(2n-1)!!}{2^{n+1}}\sqrt{\pi}$.
+
+    \item (Généralisation) Pour $\alpha>-1$, poser
+          $I_n(\alpha)=\int_0^{\pi/2}\sin^\alpha(t)\cos^n(t)\,\mathrm{d}t$.
+          Établir une récurrence et exprimer $I_n(\alpha)$ via la fonction
+          Bêta d'Euler.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{J.\ Wallis, \textit{Arithmetica Infinitorum} (1656)}

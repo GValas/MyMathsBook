@@ -1,0 +1,157 @@
+%==============================================================
+%  lecons/analyse/tvi.tex — Théorème des valeurs intermédiaires
+%==============================================================
+
+\lecontitle{Théorème des valeurs intermédiaires}{Analyse réelle — Fonctions continues sur un intervalle}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé et signification}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (TVI).}\enspace\index{théorème des valeurs intermédiaires}
+  \textit{Soit $f : [a,b] \to \mathbb{R}$ continue. Pour tout réel $\gamma$
+  compris entre $f(a)$ et $f(b)$, il existe $c \in [a,b]$ tel que $f(c) = \gamma$.}
+
+  \medskip
+  Autrement dit : $f([a,b])$ est un intervalle contenant à la fois $f(a)$ et
+  $f(b)$, donc contenant $[\min(f(a),f(b)),\,\max(f(a),f(b))]$.
+
+  \medskip
+  \textbf{Corollaire (existence de racines).}\enspace
+  Si $f : [a,b] \to \mathbb{R}$ est continue et si $f(a)\cdot f(b) < 0$,
+  alors il existe $c \in\; ]a,b[$ tel que $f(c) = 0$.
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Une fonction continue ne peut pas « sauter » : son graphe est un trait
+continu. Si $f(a) < \gamma < f(b)$, la courbe part de $(a, f(a))$ en dessous
+de la droite $y = \gamma$ et termine en $(b, f(b))$ au-dessus : elle doit
+nécessairement la traverser en un point $c$. Ce résultat traduit en analyse la
+\emph{connexité par arcs}\index{connexité par arcs} des intervalles de
+$\mathbb{R}$.
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée de la preuve}
+On raisonne par dichotomie : on cherche $c$ tel que $f(c) = 0$ (quitte à
+remplacer $f$ par $f - \gamma$). On divise $[a,b]$ en deux, on garde le
+demi-intervalle où $f$ change de signe, et on répète. Les extrémités des
+intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
+
+\vspace{10pt}
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Réduction.} Sans perte de généralité (quitte à considérer $f - \gamma$),
+  on suppose $f(a) \leq 0 \leq f(b)$ et on cherche $c$ tel que $f(c) = 0$.
+
+  \medskip
+  \textit{Construction par dichotomie.} Posons $a_0 = a$, $b_0 = b$.
+  À l'étape $k$, soit $m_k = (a_k + b_k)/2$ le milieu.
+  \begin{itemize}
+    \item Si $f(m_k) \leq 0$ : on pose $a_{k+1} = m_k$, $b_{k+1} = b_k$.
+    \item Si $f(m_k) > 0$ : on pose $a_{k+1} = a_k$, $b_{k+1} = m_k$.
+  \end{itemize}
+  Par construction : $f(a_k) \leq 0 \leq f(b_k)$ pour tout $k$, et
+  $b_k - a_k = (b-a)/2^k \to 0$.
+
+  \medskip
+  \textit{Convergence.} Les suites $(a_k)$ croissante majorée et $(b_k)$
+  décroissante minorée convergent vers la même limite $c$ (car $b_k - a_k \to 0$).
+
+  \medskip
+  \textit{Conclusion.} Par continuité de $f$ :
+  \[
+    f(c) = \lim_{k\to\infty} f(a_k) \leq 0
+    \quad\text{et}\quad
+    f(c) = \lim_{k\to\infty} f(b_k) \geq 0,
+  \]
+  donc $f(c) = 0$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Preuve alternative — image d'un connexe}
+
+\begin{mdframed}[style=proofbar]
+  $[a,b]$ est connexe par arcs\index{connexité par arcs} ; l'image continue
+  d'un connexe est connexe ; les connexes de $\mathbb{R}$ sont exactement les
+  intervalles. Donc $f([a,b])$ est un intervalle, ce qui conclut. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Existence d'une racine de $x^3 - x - 1$.}\enspace
+  $f(1) = -1 < 0$ et $f(2) = 5 > 0$ : le TVI garantit l'existence de
+  $c \in ]1,2[$ tel que $c^3 - c - 1 = 0$.
+
+  \smallskip\noindent
+  \textbf{2. Point fixe.}\enspace
+  Si $g : [0,1] \to [0,1]$ est continue, alors $g$ admet un point fixe :
+  appliquer le TVI à $f(x) = g(x) - x$, qui vérifie $f(0) \geq 0 \geq f(1)$.
+
+  \smallskip\noindent
+  \textbf{3. Dichotomie numérique.}\enspace
+  La preuve par dichotomie est à la base des algorithmes de recherche de zéro
+  (méthode de la bissection), convergence en $O((b-a)/2^n)$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{La continuité est indispensable.}\enspace
+  $f : [0,2] \to \mathbb{R}$ définie par $f(x) = \mathbf{1}_{[1,2]}(x)$
+  vérifie $f(0) = 0$ et $f(2) = 1$, mais $f(x) \notin ]0,1[$ pour tout $x$.
+
+  \smallskip\noindent
+  \textbf{L'intervalle est indispensable.}\enspace
+  $f : \{0\} \cup \{1\} \to \mathbb{R}$ définie par $f(0) = 0$, $f(1) = 1$
+  est continue (sur un ensemble discret) mais ne prend pas la valeur $1/2$.
+
+  \smallskip\noindent
+  \textbf{La réciproque est fausse.}\enspace
+  Une fonction vérifiant la propriété des valeurs intermédiaires n'est pas
+  forcément continue : $f(x) = \sin(1/x)$ pour $x \neq 0$, $f(0) = 0$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que tout polynôme de degré impair à coefficients réels
+          admet au moins une racine réelle.
+
+    \item Soit $f : [0,1] \to [0,1]$ continue. Montrer que $f$ admet un
+          point fixe. Généraliser au disque fermé de $\mathbb{R}^2$
+          (théorème de Brouwer en dimension 2, admis).
+
+    \item On pose $f(x) = x + e^x$. Montrer que $f$ est une bijection
+          de $\mathbb{R}$ dans $\mathbb{R}$, et que son inverse $f^{-1}$
+          est continu.
+
+    \item Soit $f : [a,b] \to \mathbb{R}$ continue et injective. Montrer
+          que $f$ est strictement monotone, et que $f^{-1}$ est continu
+          sur $f([a,b])$.
+
+    \item (Théorème de Darboux) Soit $f$ dérivable sur $[a,b]$. Montrer
+          que $f'$ satisfait la propriété des valeurs intermédiaires,
+          même si $f'$ n'est pas continue.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{Bolzano (1817) \& Cauchy (1821)}

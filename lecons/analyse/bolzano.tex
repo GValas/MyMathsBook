@@ -1,0 +1,156 @@
+%==============================================================
+%  lecons/analyse/bolzano.tex — Théorème de Bolzano-Weierstrass
+%==============================================================
+
+\lecontitle{Théorème de Bolzano--Weierstrass}{Analyse réelle — Suites et compacité}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé et signification}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace\index{Bolzano-Weierstrass (théorème de)}
+  \textit{Toute suite bornée\index{suite bornée} de réels admet au moins une
+  sous-suite\index{sous-suite} convergente.}
+
+  \medskip
+  Précisément : si $\exists\, M>0$ tel que $|u_n| \leq M$ pour tout $n$,
+  alors il existe $\varphi : \mathbb{N} \hookrightarrow \mathbb{N}$
+  strictement croissante et $\ell \in [-M,M]$ avec
+  \[
+    u_{\varphi(n)} \;\longrightarrow\; \ell \quad (n \to +\infty).
+  \]
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Une suite bornée vit dans un espace fini : elle revient infiniment souvent au
+voisinage d'au moins un point — sa \emph{valeur d'adhérence}\index{valeur d'adhérence}.
+On peut toujours en extraire un fil convergent. Ce résultat fonde la
+\textbf{compacité séquentielle}\index{compacité séquentielle} des intervalles
+fermés bornés de $\mathbb{R}$ et est indispensable pour les théorèmes
+d'existence en analyse.
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée de la preuve}
+On coupe $[-M,M]$ en deux ; la moitié contenant infiniment de termes est
+gardée, et on y sélectionne un terme. En répétant, les intervalles emboîtés
+se resserrent vers un point $\ell$, limite de la sous-suite construite.
+
+\vspace{10pt}
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Initialisation.} Posons $I_0 = [-M,M]$. Tous les termes de
+  $(u_n)$ appartiennent à $I_0$.
+
+  \medskip
+  \textit{Induction.} Supposons construits, pour $j \leq k$ :
+  \begin{itemize}
+    \item un intervalle fermé $I_j \subset I_{j-1}$ de longueur $2M/2^j$
+          contenant une infinité de termes de $(u_n)$ ;
+    \item un indice $\varphi(j) > \varphi(j-1)$ tel que
+          $u_{\varphi(j)} \in I_j$.
+  \end{itemize}
+  On divise $I_k = [a_k, b_k]$ en ses deux moitiés et on choisit $I_{k+1}$
+  parmi celles qui contiennent une infinité de termes. On extrait
+  $\varphi(k+1) > \varphi(k)$ tel que $u_{\varphi(k+1)} \in I_{k+1}$.
+
+  \medskip
+  \textit{Convergence.} Les suites $(a_k)$ et $(b_k)$ sont adjacentes,
+  $b_k - a_k = 2M/2^k \to 0$, donc elles convergent vers le même $\ell$.
+  Par encadrement :
+  \[
+    a_k \;\leq\; u_{\varphi(k)} \;\leq\; b_k
+    \quad\Longrightarrow\quad
+    u_{\varphi(k)} \;\xrightarrow{k \to \infty}\; \ell.
+    \hfill\blacksquare
+  \]
+\end{mdframed}
+
+\rubriq{Reformulation : l'ensemble des valeurs d'adhérence}
+
+\begin{mdframed}[style=proofbar]
+  L'ensemble $E$ des valeurs d'adhérence d'une suite bornée est non vide
+  (par Bolzano--Weierstrass), fermé (limite de valeurs d'adhérence) et borné.
+  On définit :
+  \[
+    \limsup_{n\to\infty} u_n = \max E, \qquad
+    \liminf_{n\to\infty} u_n = \min E.
+  \]
+  La suite converge si et seulement si $\limsup u_n = \liminf u_n$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1.}\enspace
+  $u_n = \sin(n)$ est bornée par $1$ ; tout point de $[-1,1]$ en est une
+  valeur d'adhérence.
+
+  \smallskip\noindent
+  \textbf{2.}\enspace
+  $u_n = (-1)^n\!\left(1 - \tfrac{1}{n+1}\right)$ admet $1$ et $-1$ comme
+  valeurs d'adhérence (sous-suites paire et impaire).
+
+  \smallskip\noindent
+  \textbf{3.}\enspace
+  $v_n = \{n\sqrt{2}\}$ est bornée dans $[0,1)$ et dense dans $[0,1]$ :
+  chaque point de $[0,1]$ est limite d'une sous-suite.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Borne nécessaire.}\enspace
+  $u_n = n$ est non bornée et n'admet aucune sous-suite convergente dans
+  $\mathbb{R}$.
+
+  \smallskip\noindent
+  \textbf{Dimension infinie.}\enspace
+  Dans $\ell^2(\mathbb{N})$, les vecteurs de base $(e_n)$ vérifient
+  $\|e_n\| = 1$ et $\|e_n - e_m\| = \sqrt{2}$ pour $n \neq m$ : aucune
+  sous-suite n'est de Cauchy. La compacité séquentielle est spécifique à
+  la dimension finie.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $u_n = \cos(n\pi/6)$ est bornée et déterminer toutes
+          ses valeurs d'adhérence.
+
+    \item Soit $(u_n)$ bornée. Montrer que l'ensemble $E$ de ses valeurs
+          d'adhérence est non vide, fermé, borné, et définir
+          $\limsup u_n$ et $\liminf u_n$.
+
+    \item Si $(u_n)$ est bornée et que toutes ses sous-suites convergentes
+          tendent vers $\ell$, montrer que $(u_n) \to \ell$.
+
+    \item Énoncer et démontrer Bolzano--Weierstrass dans $\mathbb{R}^d$
+          par extraction successive sur chaque coordonnée.
+
+    \item (Théorème de Heine) Montrer qu'une fonction continue sur un
+          segment $[a,b]$ y est uniformément continue, en raisonnant
+          par l'absurde à l'aide de Bolzano--Weierstrass.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Bolzano (1817) \& K.\ Weierstrass (1874)}

@@ -1,0 +1,52 @@
+%==============================================================
+%  frontmatter/pagedeGarde.tex — Page de garde
+%==============================================================
+
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay]
+  % Filet gauche vertical or
+  \draw[goldaccent, line width=4pt]
+    ([xshift=1.6cm]current page.north west)
+    -- ([xshift=1.6cm]current page.south west);
+  % Filet bas horizontal bleu
+  \draw[navyblue, line width=2pt]
+    ([yshift=2.8cm]current page.south west)
+    -- ([yshift=2.8cm]current page.south east);
+\end{tikzpicture}
+
+\vspace*{3cm}
+
+\begin{flushright}
+  {\fontsize{11}{14}\selectfont\color{goldaccent}\bfseries
+    MATHÉMATIQUES SUPÉRIEURES \& SPÉCIALES}\\[0.5cm]
+  \noindent\textcolor{navyblue!25}{\rule{12cm}{0.5pt}}\\[1.2cm]
+
+  {\fontsize{38}{44}\selectfont\bfseries\color{navyblue}
+    Leçons de\\[4pt] Mathématiques}\\[1.4cm]
+
+  {\fontsize{13}{18}\selectfont\itshape\color{navyblue!60}
+    Théorèmes fondamentaux, démonstrations\\
+    et exercices pour les classes préparatoires}\\[3cm]
+
+  \noindent\textcolor{navyblue!25}{\rule{12cm}{0.5pt}}\\[0.8cm]
+
+  {\large\color{navyblue!70}
+    Analyse \textcolor{goldaccent}{·}
+    Algèbre linéaire \textcolor{goldaccent}{·}
+    Topologie}\\[2.5cm]
+
+  {\normalsize\color{navyblue!50} \today}
+\end{flushright}
+
+\vfill
+
+\begin{flushleft}
+  \hspace{2.2cm}
+  {\small\color{navyblue!40}\itshape
+    « Les mathématiques sont la langue dans laquelle\\
+    \hspace{0.4cm}Dieu a écrit l'univers. »\\[4pt]
+    \hspace{0.4cm}— Galilée}
+\end{flushleft}
+\end{titlepage}
+\clearpage

@@ -1,0 +1,126 @@
+%==============================================================
+%  main.tex — Point d'entrée du livre
+%  Compiler avec : pdflatex > makeindex > makeglossaries > bibtex > pdflatex x2
+%  Ou utiliser la recette VS Code définie dans .vscode/settings.json
+%==============================================================
+\documentclass[a4paper,11pt]{book}
+
+%=== CHARGEMENT DU STYLE COMMUN ==============================
+\usepackage{style/mathsup}
+% (ou \usepackage{style/mathsup} si compilé depuis la racine)
+
+%=== INDEX & GLOSSAIRE =======================================
+\makeindex[columns=2, title=Index, intoc]
+\makeglossaries
+
+%=== PAGE HEADERS ============================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{navyblue!70}\leftmark}
+\fancyhead[RO]{\small\color{navyblue!70}\rightmark}
+\fancyfoot[C]{\small\color{navyblue!50}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\color{goldaccent}\hrule width\headwidth height\headrulewidth}
+
+%=== CHAPITRES STYLISÉS ======================================
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{navyblue}}
+  {\textcolor{goldaccent}{\chaptertitlename\ \thechapter}}
+  {10pt}
+  {\Huge}
+  [\vspace{4pt}\textcolor{goldaccent!40}{\titlerule[1pt]}]
+
+\titleformat{\section}[block]
+  {\normalfont\large\bfseries\color{navyblue}}
+  {}
+  {0pt}
+  {}
+
+%=============================================================
+\begin{document}
+
+%=== FRONTMATTER =============================================
+\frontmatter
+
+\input{frontmatter/pagedeGarde}
+\input{frontmatter/preface}
+\input{backmatter/glossaire}   % Définitions des entrées de glossaire
+
+\tableofcontents
+\clearpage
+
+%=============================================================
+%  PARTIE I — ANALYSE RÉELLE
+%=============================================================
+\mainmatter
+
+\part{Analyse réelle}
+
+\chapter{Suites numériques}
+
+\input{lecons/analyse/bolzano}
+\clearpage
+
+\chapter{Fonctions continues}
+
+\input{lecons/analyse/tvi}
+\clearpage
+
+\chapter{Intégration}
+
+\input{lecons/analyse/wallis}
+\clearpage
+
+\chapter{Fonctions élémentaires}
+
+\input{lecons/analyse/logarithme}
+\clearpage
+
+%=============================================================
+%  PARTIE II — TOPOLOGIE
+%=============================================================
+\part{Topologie}
+
+\chapter{Espaces métriques complets}
+
+\input{lecons/topologie/baire}
+\clearpage
+
+%=============================================================
+%  PARTIE III — ALGÈBRE LINÉAIRE
+%=============================================================
+\part{Algèbre linéaire}
+
+\chapter{Endomorphismes et polynômes}
+
+\input{lecons/algebre/cayley}
+\clearpage
+
+\chapter{Endomorphismes autoadjoints}
+
+\input{lecons/algebre/spectral}
+\clearpage
+
+%=============================================================
+%  BACKMATTER
+%=============================================================
+\backmatter
+
+%=== GLOSSAIRE ===============================================
+\clearpage
+\printglossary[type=main, title=Glossaire, toctitle=Glossaire]
+
+%=== BIBLIOGRAPHIE ===========================================
+\clearpage
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{backmatter/references}
+\addcontentsline{toc}{chapter}{Références bibliographiques}
+
+%=== INDEX ===================================================
+\clearpage
+\printindex
+
+\end{document}

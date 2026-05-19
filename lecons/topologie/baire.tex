@@ -1,0 +1,187 @@
+%==============================================================
+%  lecons/topologie/baire.tex — Théorème de Baire
+%==============================================================
+
+\lecontitle{Théorème de Baire}{Topologie — Espaces métriques complets}
+
+%=============================================================
+%  § 1 — DÉFINITIONS ET ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Espaces complets et théorème de Baire}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Rappels.}\enspace\index{espace métrique complet}
+  Un espace métrique $(E,d)$ est \emph{complet} si toute suite de
+  Cauchy\index{suite de Cauchy} y converge.
+  Une partie $A \subset E$ est \emph{nulle part dense}\index{nulle part dense}
+  si son adhérence $\overline{A}$ est d'intérieur vide :
+  $\mathring{\overline{A}} = \emptyset$.
+  On dit que $A$ est \emph{maigre}\index{ensemble maigre} (ou de première
+  catégorie de Baire) si c'est une réunion dénombrable de fermés nulle part
+  denses.
+
+  \medskip
+  \textbf{Théorème de Baire.}\enspace\index{Baire (théorème de)}
+  Soit $(E,d)$ un espace métrique complet non vide. Alors :
+  \begin{itemize}
+    \item Toute intersection dénombrable d'ouverts denses de $E$ est dense
+          dans $E$.
+    \item $E$ ne peut pas s'écrire comme réunion dénombrable de fermés
+          d'intérieur vide (autrement dit, $E$ n'est pas maigre dans lui-même).
+  \end{itemize}
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Un espace complet est « topologiquement gros » : il est impossible de le
+recouvrir par une infinité dénombrable d'ensembles « minces ». Les deux
+formulations sont contrapositives l'une de l'autre par passage au complémentaire.
+Ce résultat distingue radicalement $\mathbb{R}$ (complet, non maigre) de
+$\mathbb{Q}$ (incomplet, maigre dans lui-même).
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée de la preuve}
+On construit récursivement des boules fermées emboîtées, de rayons tendant
+vers $0$, en tirant parti de la densité de chaque ouvert. La complétude
+garantit que les centres forment une suite de Cauchy qui converge vers un point
+appartenant à toutes les boules, et donc à toutes les intersections.
+
+\vspace{10pt}
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  Soient $(U_n)_{n \geq 1}$ des ouverts denses de $E$. Soit $V$ un ouvert
+  non vide quelconque de $E$ ; on veut montrer que $V \cap \bigcap_{n \geq 1} U_n
+  \neq \emptyset$.
+
+  \medskip
+  On construit par récurrence des boules fermées $B_n = \overline{B}(x_n, r_n)$
+  satisfaisant :
+  \[
+    B_n \;\subset\; U_n \cap \mathring{B}_{n-1}, \qquad 0 < r_n \leq \tfrac{1}{n},
+  \]
+  en posant $B_0 = \overline{B}(x_0, r_0) \subset V$ pour un $x_0 \in V$
+  quelconque.
+
+  \medskip
+  \textit{Construction.} Supposons $B_n$ construite. Comme $U_{n+1}$ est dense,
+  $U_{n+1} \cap \mathring{B}_n$ est un ouvert non vide. On y choisit
+  $x_{n+1}$ et $r_{n+1} \leq \min(1/(n+1),\, r_n - d(x_n, x_{n+1}))$
+  de sorte que $B_{n+1} \subset U_{n+1} \cap \mathring{B}_n$.
+
+  \medskip
+  \textit{Suite de Cauchy.} Pour $p, q \geq n$, les centres $x_p$ et $x_q$
+  appartiennent à $B_n$, donc
+  \[
+    d(x_p, x_q) \;\leq\; 2r_n \;\leq\; \frac{2}{n} \;\xrightarrow{n\to\infty}\; 0.
+  \]
+  La suite $(x_n)$ est de Cauchy. Par complétude de $E$, elle converge vers
+  un $\ell \in E$.
+
+  \medskip
+  \textit{Conclusion.} Pour tout $n \geq 1$ et tout $k \geq n$, on a
+  $x_k \in B_n$ (fermée), donc $\ell \in B_n \subset U_n$.
+  De plus $\ell \in B_0 \subset V$. Ainsi
+  \[
+    \ell \;\in\; V \;\cap\; \bigcap_{n \geq 1} U_n \;\neq\; \emptyset.
+  \]
+  $V$ étant arbitraire, $\bigcap_{n \geq 1} U_n$ est dense dans $E$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Équivalence des deux formulations}
+
+\begin{mdframed}[style=proofbar]
+  Supposons $E = \bigcup_{n \geq 1} F_n$ avec chaque $F_n$ fermé d'intérieur
+  vide. Les $U_n = E \setminus F_n$ sont alors des ouverts denses, et
+  \[
+    \bigcap_{n \geq 1} U_n = E \setminus \bigcup_{n \geq 1} F_n = \emptyset,
+  \]
+  ce qui contredit la densité (car $E \neq \emptyset$).
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Applications, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. $\mathbb{R}$ est indénombrable.}
+  Si $\mathbb{R} = \{x_n \mid n \geq 1\}$, alors $\mathbb{R}$ serait réunion
+  dénombrable des singletons $\{x_n\}$, qui sont des fermés d'intérieur vide.
+  Cela contredirait Baire (car $\mathbb{R}$ est complet). Donc $\mathbb{R}$
+  est indénombrable.
+
+  \smallskip\noindent
+  \textbf{2. Fonctions continues nulle part dérivables.}
+  Dans $(\mathcal{C}([0,1]), \|\cdot\|_\infty)$, complet, l'ensemble
+  \[
+    D_n = \Bigl\{f : \exists\, x,\; \bigl|f(x+h)-f(x)\bigr| \leq n|h|
+    \;\text{ pour tout } h\Bigr\}
+  \]
+  est un fermé d'intérieur vide. Par Baire, $\bigcup D_n \neq \mathcal{C}([0,1])$ :
+  il existe des fonctions continues nulle part dérivables.
+
+  \smallskip\noindent
+  \textbf{3. Principe de Banach-Steinhaus.}\index{Banach-Steinhaus (théorème de)}
+  Soient $E$ de Banach et $(T_n)$ des opérateurs linéaires continus $E\to F$
+  tels que $\sup_n \|T_n x\| < +\infty$ pour tout $x$. Baire, appliqué aux
+  fermés $F_k = \{x : \sup_n \|T_n x\| \leq k\}$, donne l'existence d'une
+  boule sur laquelle ils sont uniformément bornés, d'où $\sup_n \|T_n\| < +\infty$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Complétude indispensable.}\enspace
+  $\mathbb{Q}$, muni de la distance usuelle, est non complet et vérifie
+  $\mathbb{Q} = \bigcup_{q \in \mathbb{Q}} \{q\}$ : réunion dénombrable de
+  singletons fermés d'intérieur vide. Baire est en défaut.
+
+  \smallskip\noindent
+  \textbf{Dense $\neq$ grand au sens de la mesure.}\enspace
+  Pour tout $\varepsilon > 0$, l'ensemble
+  $G = \bigcup_{n \geq 1} \bigl]q_n - \varepsilon/2^n,\, q_n + \varepsilon/2^n\bigr[$
+  (où $(q_n)$ est une énumération de $\mathbb{Q}$) est un ouvert dense
+  de mesure de Lebesgue $\leq 2\varepsilon$ : dense au sens de Baire mais
+  de mesure arbitrairement petite.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $\mathbb{R}\setminus\mathbb{Q}$ est non maigre dans
+          $\mathbb{R}$ (utiliser Baire et le fait que $\mathbb{Q}$ est maigre).
+
+    \item Soit $f : \mathbb{R}\to\mathbb{R}$ telle que pour tout $x$,
+          $f$ est continue en $x$ ou dérivable en $x$. Montrer que l'ensemble
+          de continuité est un $G_\delta$ dense.
+
+    \item Montrer que tout espace de Banach de dimension infinie ne peut avoir
+          de base algébrique dénombrable (appliquer Baire aux sous-espaces
+          vectoriels fermés engendrés par les $n$ premiers vecteurs).
+
+    \item Soit $(f_n)$ une suite de fonctions continues $[0,1]\to\mathbb{R}$
+          convergeant simplement vers $f$. Montrer que $f$ est continue sur
+          un ensemble dense (théorème d'Osgood\index{Osgood (théorème d')}).
+
+    \item Montrer que $\mathbb{R}$ ne peut s'écrire comme réunion dénombrable
+          d'ensembles fermés deux à deux disjoints, sauf si l'un d'eux a un
+          intérieur non vide.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{R.~Baire, \textit{Sur les fonctions de variables réelles}, Ann. di Mat.\ (1899)}

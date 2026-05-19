@@ -1,0 +1,178 @@
+%==============================================================
+%  lecons/algebre/cayley.tex — Théorème de Cayley-Hamilton
+%==============================================================
+
+\lecontitle{Théorème de Cayley--Hamilton}{Algèbre linéaire — Polynômes d'endomorphismes}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé et signification}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (Cayley--Hamilton).}\enspace
+  \index{Cayley-Hamilton (théorème de)}\index{polynôme caractéristique}
+  \textit{Soit $E$ un espace vectoriel de dimension finie $n$ et
+  $f \in \mathcal{L}(E)$. Notons $\chi_f = \det(X\,\mathrm{Id} - f)$ le
+  polynôme caractéristique\index{polynôme caractéristique} de $f$.
+  Alors $f$ est annulé par son propre polynôme caractéristique :}
+  \[
+    \chi_f(f) = 0_{\mathcal{L}(E)}.
+  \]
+  En termes matriciels : pour toute matrice $A \in \mathcal{M}_n(\mathbb{R})$,
+  \[
+    \chi_A(A) = 0_n, \qquad \text{où } \chi_A = \det(XI_n - A).
+  \]
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Tout endomorphisme satisfait une relation polynomiale de degré $n$ à
+coefficients dans le corps de base — son propre polynôme caractéristique.
+Autrement dit, $f^n$ se réécrit comme combinaison linéaire de
+$\mathrm{Id}, f, \ldots, f^{n-1}$ : l'algèbre $\mathbb{R}[f]$ est
+de dimension finie sur $\mathbb{R}$, au plus $n$. Ce théorème est la
+pierre angulaire de la théorie des \emph{polynômes minimaux}\index{polynôme minimal}
+et de la décomposition de Dunford.
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée de la preuve}
+L'idée est d'utiliser la comatrice (matrice adjointe) : $\chi_f(X) = \det(X\,\mathrm{Id}-f)$,
+et $(X\,\mathrm{Id}-f)\cdot\mathrm{com}(X\,\mathrm{Id}-f)^T = \chi_f(X)\cdot\mathrm{Id}$.
+En substituant $X = f$ dans cette identité matricielle de façon algébrique
+(en identifiant les coefficients en puissances de $X$), on obtient $\chi_f(f) = 0$.
+La subtilité est que la substitution $X \leftarrow f$ doit se faire
+\emph{avant} d'évaluer, et non après.
+
+\vspace{10pt}
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Mise en place.} Soit $B(X) = \mathrm{com}(X\,\mathrm{Id}-A)^T$
+  la comatrice transposée (ou matrice adjointe) de $X\,\mathrm{Id}-A$.
+  Chaque entrée de $B(X)$ est un mineur d'ordre $n-1$ de $X\,\mathrm{Id}-A$,
+  donc un polynôme en $X$ de degré au plus $n-1$. On écrit :
+  \[
+    B(X) = B_0 + B_1 X + \cdots + B_{n-1} X^{n-1}, \quad B_k \in \mathcal{M}_n(\mathbb{R}).
+  \]
+
+  \textit{Identité matricielle polynomiale.} Par définition de la comatrice :
+  \[
+    (X\,I_n - A)\,B(X) = \det(X\,I_n - A)\cdot I_n = \chi_A(X)\cdot I_n.
+  \]
+  Posons $\chi_A(X) = c_0 + c_1 X + \cdots + c_{n-1}X^{n-1} + X^n$.
+  En développant le membre gauche et en identifiant les coefficients de $X^k$ :
+
+  \begin{alignat*}{2}
+    X^0 &: \quad -A B_0 = c_0 I_n, \\
+    X^k &: \quad B_{k-1} - A B_k = c_k I_n \quad (1\leq k \leq n-1), \\
+    X^n &: \quad B_{n-1} = I_n.
+  \end{alignat*}
+
+  \textit{Substitution $X \leftarrow A$.}
+  On multiplie à gauche chaque équation par $A^k$ :
+  \begin{alignat*}{2}
+    A^0 &: \quad -A B_0 = c_0 I_n, \\
+    A^k\cdot(\cdot) &: \quad A^k B_{k-1} - A^{k+1} B_k = c_k A^k, \\
+    A^n &: \quad A^n B_{n-1} = A^n.
+  \end{alignat*}
+  En sommant toutes ces égalités, les termes $A^k B_{k-1}$ et $-A^k B_{k-1}$
+  se télescopent, et il reste :
+  \[
+    0 = c_0 I_n + c_1 A + \cdots + c_{n-1}A^{n-1} + A^n = \chi_A(A).
+    \hfill\blacksquare
+  \]
+\end{mdframed}
+
+\rubriq{Preuve alternative — cas diagonalisable (puis densité)}
+
+\begin{mdframed}[style=proofbar]
+  Si $A$ est diagonalisable : $A = P\,\mathrm{diag}(\lambda_1,\ldots,\lambda_n)\,P^{-1}$.
+  Alors $\chi_A(A) = P\,\mathrm{diag}(\chi_A(\lambda_1),\ldots,\chi_A(\lambda_n))\,P^{-1} = 0$
+  car chaque $\lambda_i$ est racine de $\chi_A$.
+
+  Pour le cas général, on invoque la densité des matrices diagonalisables dans
+  $\mathcal{M}_n(\mathbb{R})$ (ou $\mathcal{M}_n(\mathbb{C})$) et la continuité
+  de $A\mapsto\chi_A(A)$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Applications, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications et exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Inversibilité.}\enspace
+  Si $\chi_A(0) = \det(-A) \neq 0$ (i.e.\ $A$ inversible), alors
+  $\chi_A(X) = c_0 + \cdots + X^n$ avec $c_0\neq 0$, et Cayley--Hamilton
+  donne :
+  \[
+    A^{-1} = -\frac{1}{c_0}(A^{n-1}+c_{n-1}A^{n-2}+\cdots+c_1 I_n).
+  \]
+  L'inverse s'exprime comme polynôme en $A$.
+
+  \smallskip\noindent
+  \textbf{2. Réduction de la dimension de $\mathbb{R}[A]$.}\enspace
+  $\chi_A(A)=0$ implique que $A^n$ est combinaison linéaire de
+  $I_n,A,\ldots,A^{n-1}$ : $\dim\mathbb{R}[A]\leq n$.
+
+  \smallskip\noindent
+  \textbf{3. Exemple $2\times 2$.}
+  $A = \begin{pmatrix}a&b\\c&d\end{pmatrix}$,
+  $\chi_A = X^2-(a+d)X+(ad-bc)$ et Cayley--Hamilton donne
+  $A^2 = (a+d)A-(ad-bc)I_2$, qu'on vérifie directement.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges et contre-exemples.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Substitution naïve interdite.}\enspace
+  $\chi_A(X) = \det(XI-A)$ : substituer $X=A$ dans le déterminant
+  donne $\det(AI-A)=\det(0)=0$, ce qui est trivial et ne prouve rien.
+  La preuve correcte passe par l'identification des coefficients.
+
+  \smallskip\noindent
+  \textbf{Le polynôme caractéristique n'est pas minimal.}\enspace
+  $A = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ : $\chi_A = (X-1)^2$,
+  mais le polynôme minimal est $X-1$, de degré $1$. Cayley--Hamilton
+  garantit que $\chi_A$ annule $A$, pas qu'il est minimal.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Calculer $A^{10}$ pour $A = \begin{pmatrix}1&1\\0&1\end{pmatrix}$
+          en utilisant Cayley--Hamilton pour réduire les puissances.
+
+    \item Montrer que le polynôme minimal $\mu_A$\index{polynôme minimal}
+          divise $\chi_A$. En déduire que $\mu_A$ et $\chi_A$ ont les mêmes
+          racines (avec multiplicités éventuellement différentes).
+
+    \item Soit $A\in\mathcal{M}_n(\mathbb{R})$ nilpotente ($A^k=0$ pour
+          un certain $k$). Montrer à l'aide de Cayley--Hamilton que $A^n=0$.
+
+    \item Montrer que si $P$ est un polynôme annulateur de $A$ et si
+          $\lambda$ est valeur propre de $A$, alors $P(\lambda)=0$.
+          En déduire une nouvelle preuve que $\chi_A(\lambda)=0$ pour
+          toute valeur propre $\lambda$.
+
+    \item (Décomposition de Dunford) En utilisant la décomposition de
+          $\chi_A$ en facteurs premiers, montrer que $E$ se décompose
+          en somme directe de sous-espaces caractéristiques
+          $E = \bigoplus_i \ker(f-\lambda_i\,\mathrm{Id})^{n_i}$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{A.\ Cayley (1858) \& W.\ R.\ Hamilton (1853)}

@@ -1,0 +1,199 @@
+%==============================================================
+%  lecons/analyse/logarithme.tex — Construction du logarithme népérien
+%==============================================================
+
+\lecontitle{Construction du logarithme népérien}{Analyse réelle — Fonctions et intégration}
+
+%=============================================================
+%  § 1 — DÉFINITION ET PROPRIÉTÉS FONDAMENTALES
+%=============================================================
+\secnum{navyblue}{1}{Définition et propriétés fondamentales}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition (par intégrale).}\enspace\index{logarithme népérien}
+  On définit le \emph{logarithme népérien} comme la fonction
+  \[
+    \ln : (0,+\infty) \longrightarrow \mathbb{R}, \qquad
+    x \longmapsto \int_1^x \frac{\mathrm{d}t}{t}.
+  \]
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}
+  \begin{itemize}
+    \item $\ln$ est de classe $\mathcal{C}^{\infty}$ sur $(0,+\infty)$ et
+          $\ln'(x) = \dfrac{1}{x}$.
+    \item $\ln(1) = 0$\enspace;\enspace $\ln$ est strictement croissante et
+          concave.
+    \item \textit{Équation fonctionnelle :} pour tous $a, b > 0$,
+    \[
+      \ln(ab) = \ln(a) + \ln(b).
+    \]
+    \item $\ln$ est une bijection de $(0,+\infty)$ sur $\mathbb{R}$.
+    \item $\displaystyle\lim_{x\to+\infty}\ln(x) = +\infty$,\qquad
+          $\displaystyle\lim_{x\to 0^+}\ln(x) = -\infty$.
+  \end{itemize}
+\end{tcolorbox}
+
+\rubriq{Le nombre $e$}
+On définit le nombre de Néper\index{nombre $e$} comme l'unique réel $e > 0$
+vérifiant $\ln(e) = 1$. Son existence et son unicité découlent de la
+bijectivité de $\ln$ et du théorème des valeurs intermédiaires. On a
+$e \approx 2{,}718$. Pour tout $r \in \mathbb{Q}$, l'équation fonctionnelle
+donne $\ln(e^r) = r$, ce qui justifie rétrospectivement la notation.
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée de la preuve}
+La dérivabilité est donnée par le théorème fondamental du calcul intégral.
+L'équation fonctionnelle résulte d'un argument de dérivation montrant que
+$x\mapsto\ln(ax)-\ln(x)$ est constante. La bijectivité découle des limites
+obtenues par comparaison à des sommes de Riemann.
+
+\vspace{10pt}
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Dérivabilité.}
+  La fonction $t\mapsto 1/t$ est continue sur $(0,+\infty)$. Par le théorème
+  fondamental du calcul intégral\index{théorème fondamental du calcul intégral},
+  $\ln$ est dérivable et $\ln'(x) = 1/x > 0$. En particulier $\ln$ est
+  strictement croissante. Comme $\ln' = 1/(\cdot)$ est elle-même dérivable,
+  $\ln$ est $\mathcal{C}^\infty$, avec $\ln''(x) = -1/x^2 < 0$ (concavité).
+
+  \medskip
+  \textit{Étape 2 — Équation fonctionnelle.}
+  Fixons $a > 0$ et posons $\varphi(x) = \ln(ax) - \ln(a) - \ln(x)$ sur
+  $(0,+\infty)$. Alors
+  \[
+    \varphi'(x) = \frac{a}{ax} - \frac{1}{x} = 0,
+  \]
+  donc $\varphi$ est constante. En $x = 1$ : $\varphi(1) = \ln(a) - \ln(a) - 0 = 0$.
+  Ainsi $\ln(ax) = \ln(a) + \ln(x)$ pour tout $x > 0$, ce qui donne bien
+  $\ln(ab) = \ln(a) + \ln(b)$. \hfill
+
+  \medskip
+  \textit{Étape 3 — Limites.}
+  De l'équation fonctionnelle : $\ln(2^n) = n\ln(2)$. Comme $\ln(2) > 0$
+  (car $\int_1^2 dt/t > 0$), on a $\ln(2^n)\to+\infty$. Puisque $\ln$ est
+  croissante, $\lim_{x\to+\infty}\ln(x)=+\infty$.
+  Puis $\ln(x) = -\ln(1/x)\to-\infty$ quand $x\to 0^+$.
+
+  \medskip
+  \textit{Étape 4 — Bijectivité.}
+  $\ln$ est continue sur $(0,+\infty)$, strictement croissante, avec
+  $\ln(x)\to-\infty$ en $0^+$ et $\ln(x)\to+\infty$ en $+\infty$.
+  Par le théorème des valeurs intermédiaires\index{théorème des valeurs intermédiaires},
+  $\ln$ est surjective sur $\mathbb{R}$. L'injectivité est assurée par la
+  stricte croissance. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Propriétés algébriques déduites}
+
+\begin{mdframed}[style=proofbar]
+  Pour tous $a, b > 0$, $n \in \mathbb{Z}$, $r \in \mathbb{Q}$ :
+  \[
+    \ln\!\left(\frac{a}{b}\right) = \ln(a)-\ln(b), \qquad
+    \ln(a^n) = n\ln(a), \qquad
+    \ln(a^r) = r\ln(a).
+  \]
+  La concavité de $\ln$ implique l'inégalité fondamentale :
+  \[
+    \forall\, x > 0,\quad \ln(x) \leq x - 1,
+  \]
+  avec égalité si et seulement si $x = 1$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Croissances comparées.}
+  Pour tout $\alpha > 0$ :
+  \[
+    \lim_{x\to+\infty}\frac{\ln x}{x^\alpha} = 0, \qquad
+    \lim_{x\to 0^+} x^\alpha \ln x = 0.
+  \]
+  Le logarithme est dominé par toute puissance positive de $x$.
+
+  \smallskip\noindent
+  \textbf{2. Développement limité en $1$.}
+  \[
+    \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots
+    + (-1)^{n-1}\frac{x^n}{n} + o(x^n) \quad (x\to 0).
+  \]
+
+  \smallskip\noindent
+  \textbf{3. Calcul d'intégrale.}
+  Par intégration par parties :
+  \[
+    \int_1^e \ln(t)\,\mathrm{d}t = \bigl[t\ln(t)-t\bigr]_1^e = 1.
+  \]
+
+  \smallskip\noindent
+  \textbf{4. Inégalité arithmético-géométrique.}
+  De $\ln(x)\leq x-1$, en remplaçant $x$ par $a_i/\mu$ et en sommant
+  sur $i = 1,\dots,n$, on retrouve
+  $\dfrac{a_1+\cdots+a_n}{n}\geq (a_1\cdots a_n)^{1/n}$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$\ln$ n'est pas défini en $0$.}\enspace
+  $\ln(0)$ n'existe pas : l'intégrale $\int_0^1 dt/t$ diverge (le pôle en
+  $0$ est non intégrable).
+
+  \smallskip\noindent
+  \textbf{$\ln(a+b)\neq\ln(a)+\ln(b)$.}\enspace
+  L'équation fonctionnelle concerne le \emph{produit}.
+  Ainsi $\ln(2+3)=\ln(5)\neq\ln(2)+\ln(3)=\ln(6)$.
+
+  \smallskip\noindent
+  \textbf{Divergence lente.}\enspace
+  La série harmonique $\sum 1/n$ diverge, mais $H_n\sim\ln(n)$ :
+  c'est la divergence la plus lente qui soit.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer, à partir de la définition intégrale, que
+          $\dfrac{1}{2} < \ln(2) < 1$.
+
+    \item Établir $\ln(1+x) = \displaystyle\int_0^x\!\frac{\mathrm{d}t}{1+t}$
+          et en déduire le développement limité à tout ordre en $0$.
+
+    \item Montrer que $H_n = \displaystyle\sum_{k=1}^n \frac{1}{k}$
+          vérifie $H_n - \ln(n) \to \gamma$ pour une constante
+          $\gamma \in (0,1)$ (constante d'Euler\index{constante d'Euler}).
+
+    \item Soit $f : (0,+\infty)\to\mathbb{R}$ continue, dérivable en $1$,
+          vérifiant $f(xy)=f(x)+f(y)$ pour tous $x,y>0$.
+          Montrer que $f = f'(1)\cdot\ln$.
+
+    \item Montrer l'inégalité de Young\index{inégalité de Young} :
+          pour $a, b \geq 0$ et $p, q > 1$ avec $\tfrac{1}{p}+\tfrac{1}{q}=1$,
+          \[
+            ab \leq \frac{a^p}{p} + \frac{b^q}{q},
+          \]
+          en appliquant la concavité de $\ln$ à une combinaison convexe
+          de $\ln(a^p)$ et $\ln(b^q)$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{Définition par intégrale — approche de N.~Bourbaki, \textit{Fonctions d'une variable réelle} (1949)}

@@ -1,0 +1,180 @@
+%==============================================================
+%  lecons/algebre/spectral.tex — Théorème spectral
+%==============================================================
+
+\lecontitle{Théorème spectral}{Algèbre linéaire — Endomorphismes autoadjoints}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé et signification}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème spectral (cas réel).}\enspace
+  \index{théorème spectral}\index{autoadjoint (opérateur)}
+  \textit{Soit $E$ un espace euclidien de dimension finie $n$ et
+  $f \in \mathcal{L}(E)$ un endomorphisme autoadjoint, i.e.\ vérifiant
+  \[
+    \forall x,y \in E,\quad \langle f(x),\,y\rangle = \langle x,\,f(y)\rangle.
+  \]
+  Alors $f$ est diagonalisable dans une base orthonormale. Plus précisément,
+  il existe une base orthonormale $(e_1,\ldots,e_n)$ de $E$ et des réels
+  $\lambda_1,\ldots,\lambda_n$ tels que $f(e_i) = \lambda_i e_i$ pour tout $i$.}
+
+  \medskip
+  \textbf{Version matricielle.}
+  Toute matrice symétrique réelle $A \in \mathcal{M}_n(\mathbb{R})$
+  (i.e.\ $A^T = A$) est orthogonalement diagonalisable : il existe
+  $P \in O_n(\mathbb{R})$ telle que $P^T A P = \mathrm{diag}(\lambda_1,\ldots,\lambda_n)$
+  avec $\lambda_i \in \mathbb{R}$.
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Un endomorphisme autoadjoint est le pendant abstrait d'une matrice symétrique.
+Le théorème spectral affirme que de tels opérateurs sont « géométriquement
+simples » : l'espace se décompose en directions propres orthogonales, et
+$f$ agit sur chacune par une simple homothétie. C'est le fondement des
+méthodes spectrales en physique, probabilités (matrices de covariance)
+et traitement du signal (ACP).
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée de la preuve}
+On montre d'abord que toutes les valeurs propres sont réelles, puis que
+les sous-espaces propres associés à des valeurs propres distinctes sont
+orthogonaux. On conclut par récurrence sur la dimension : $f$ admet une
+valeur propre réelle (son polynôme caractéristique est scindé sur $\mathbb{R}$
+par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
+
+\vspace{10pt}
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Lemme 1 — Valeurs propres réelles.}
+  Soit $\lambda \in \mathbb{C}$ valeur propre (dans $\mathbb{C}$) et
+  $v\neq 0$ vecteur propre associé. Alors :
+  \[
+    \lambda\|v\|^2 = \langle f(v),v\rangle = \langle v,f(v)\rangle
+    = \overline{\langle f(v),v\rangle} = \bar\lambda\|v\|^2,
+  \]
+  donc $\lambda = \bar\lambda \in \mathbb{R}$.\hfill$\square$
+
+  \medskip
+  \textit{Lemme 2 — Orthogonalité des sous-espaces propres.}
+  Si $f(u) = \lambda u$ et $f(v) = \mu v$ avec $\lambda\neq\mu$, alors :
+  \[
+    \lambda\langle u,v\rangle = \langle f(u),v\rangle = \langle u,f(v)\rangle
+    = \mu\langle u,v\rangle,
+  \]
+  donc $(\lambda-\mu)\langle u,v\rangle = 0$, d'où $\langle u,v\rangle = 0$.\hfill$\square$
+
+  \medskip
+  \textit{Lemme 3 — $f$ admet une valeur propre réelle.}
+  Le polynôme caractéristique $\chi_f \in \mathbb{R}[X]$ est de degré $n$.
+  Par le Lemme 1, toutes ses racines complexes sont réelles, donc $\chi_f$
+  est scindé sur $\mathbb{R}$ et admet au moins une racine réelle $\lambda$,
+  valeur propre de $f$.\hfill$\square$
+
+  \medskip
+  \textit{Récurrence sur $\dim E = n$.}
+
+  \textit{Initialisation} : $n=1$, tout endomorphisme est diagonalisable.
+
+  \textit{Hérédité} : soit $\lambda$ une valeur propre réelle de $f$ (Lemme 3),
+  $V = \ker(f-\lambda\,\mathrm{Id})$ son sous-espace propre. On vérifie que
+  $V^\perp$ est stable par $f$ : pour $y\in V^\perp$ et $v\in V$,
+  \[
+    \langle f(y),v\rangle = \langle y,f(v)\rangle = \lambda\langle y,v\rangle = 0.
+  \]
+  La restriction $f|_{V^\perp}$ est autoadjointe sur $V^\perp$, de dimension
+  $n - \dim V < n$. Par hypothèse de récurrence, $V^\perp$ admet une base
+  orthonormale de vecteurs propres. En la combinant avec une base orthonormale
+  de $V$, on obtient une base orthonormale de $E$ diagonalisant $f$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Diagonalisation d'une symétrique $2\times 2$.}
+  \[
+    A = \begin{pmatrix}3 & 1\\1 & 3\end{pmatrix},\quad
+    \chi_A = (X-2)(X-4),\quad
+    P = \frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\-1&1\end{pmatrix},\quad
+    P^TAP = \begin{pmatrix}2&0\\0&4\end{pmatrix}.
+  \]
+
+  \smallskip\noindent
+  \textbf{2. Analyse en composantes principales (ACP).}
+  La matrice de covariance d'un nuage de points est symétrique positive :
+  ses vecteurs propres orthonormaux donnent les axes principaux de variance.
+
+  \smallskip\noindent
+  \textbf{3. Opérateurs différentiels.}
+  L'opérateur $-d^2/dx^2$ sur $L^2([0,\pi])$ avec conditions de Dirichlet
+  est autoadjoint ; ses vecteurs propres sont les fonctions $\sin(nx)$,
+  base de Fourier en sinus.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{La symétrie est indispensable.}\enspace
+  $A = \begin{pmatrix}0&1\\0&0\end{pmatrix}$ n'est pas symétrique :
+  $\chi_A = X^2$, la seule valeur propre est $0$ mais $A\neq 0$, donc $A$
+  n'est pas diagonalisable.
+
+  \smallskip\noindent
+  \textbf{Sur $\mathbb{C}$ : le cas hermitien.}\enspace
+  Le théorème spectral s'étend aux matrices hermitiennes ($A^* = A$) sur
+  $\mathbb{C}$. En revanche, une matrice unitaire est normale mais pas
+  nécessairement hermitienne, et ses valeurs propres sont sur le cercle unité.
+
+  \smallskip\noindent
+  \textbf{Dimension infinie.}\enspace
+  En dimension infinie, un opérateur autoadjoint (borné) n'est plus
+  nécessairement diagonalisable au sens classique : il faut le calcul
+  fonctionnel et la théorie spectrale de von Neumann.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Diagonaliser orthogonalement
+          $A = \begin{pmatrix}5&2&2\\2&2&-1\\2&-1&2\end{pmatrix}$
+          et vérifier que $P^TAP$ est diagonale.
+
+    \item Montrer que si $A$ est symétrique et définie positive (i.e.\
+          $x^T A x > 0$ pour tout $x\neq 0$), alors toutes ses valeurs
+          propres sont strictement positives. Réciproque ?
+
+    \item Soit $f$ autoadjoint sur un espace euclidien. Montrer que
+          $\|f\| = \max\{|\lambda|,\;\lambda\text{ v.p. de }f\}$.
+
+    \item (Décomposition polaire) Montrer que toute matrice $M\in\mathcal{M}_n(\mathbb{R})$
+          inversible s'écrit $M = QS$ avec $Q$ orthogonale et $S$ symétrique
+          définie positive (unicité de $S$, unicité de $Q$ si $M$ inversible).
+
+    \item Montrer que si $A$ est symétrique réelle, alors $e^A$ est
+          symétrique définie positive, et que la correspondance
+          $A\mapsto e^A$ est une bijection sur l'ensemble des symétriques
+          définies positives.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{D.\ Hilbert (1904) — Théorie spectrale}
