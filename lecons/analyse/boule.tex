@@ -1,0 +1,260 @@
+%==============================================================
+%  lecons/analyse/boule.tex — Volume de la boule en dimension n
+%==============================================================
+
+\lecontitle{Volume de la boule en dimension $n$}{Analyse — Wallis, Fubini et géométrie en grande dimension}
+
+%=============================================================
+%  § 1 — DÉFINITION ET PREMIERS EXEMPLES
+%=============================================================
+\secnum{navyblue}{1}{La boule euclidienne — définition et homogénéité}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{boule euclidienne}
+  Pour $n \geq 1$ et $R > 0$, la \emph{boule euclidienne} de dimension $n$ est
+  \[
+    B_n(R) = \bigl\{(x_1,\ldots,x_n)\in\mathbb{R}^n \;\big|\; x_1^2+\cdots+x_n^2 \leq R^2\bigr\}.
+  \]
+  Son volume\index{volume de la boule} est noté $V_n(R) = \mathrm{vol}\bigl(B_n(R)\bigr)$.
+
+  \medskip
+  \textbf{Théorème (formule générale).}\enspace
+  \textit{Il existe une constante $\mu_n > 0$ telle que}
+  \[
+    V_n(R) = \mu_n R^n.
+  \]
+  \textit{De plus :}
+  \[
+    \mu_{2m} = \frac{\pi^m}{m!}, \qquad
+    \mu_{2m+1} = \frac{2^{2m+1}\,m!\,\pi^m}{(2m+1)!}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Premiers exemples}
+\[
+  \mu_1 = 2 \;\;(V_1(R)=2R),\quad
+  \mu_2 = \pi \;\;(V_2(R)=\pi R^2),\quad
+  \mu_3 = \tfrac{4\pi}{3} \;\;(V_3(R)=\tfrac{4}{3}\pi R^3).
+\]
+
+\rubriq{Homogénéité}
+L'identité $V_n(R) = \mu_n R^n$ s'obtient par le changement de variables
+$x_i = R u_i$ (jacobien $R^n$) qui transforme $B_n(R)$ en $B_n(1)$.
+Il suffit donc de calculer $\mu_n = V_n(1)$.
+
+\decsep
+
+%=============================================================
+%  § 2 — RÉCURRENCE DIMENSIONNELLE PAR TRANCHES
+%=============================================================
+\secnum{navyblue}{2}{Récurrence sur la dimension — méthode des tranches}
+
+\rubriq{Décomposition de la boule}
+On écrit $B_n(R)$ comme une pile de boules $(n{-}1)$-dimensionnelles :
+\[
+  B_n(R) = \bigl\{(u, x_n)\in\mathbb{R}^{n-1}\times\mathbb{R} \;\big|\;
+  u \in B_{n-1}\!\bigl(\sqrt{R^2-x_n^2}\bigr),\; -R \leq x_n \leq R\bigr\}.
+\]
+Par le théorème de Fubini\index{Fubini (théorème de)} :
+\[
+  V_n(R) = \int_{-R}^{R} V_{n-1}\!\bigl(\sqrt{R^2-x^2}\bigr)\,dx
+          = \mu_{n-1}\int_{-R}^{R}(R^2-x^2)^{(n-1)/2}\,dx.
+\]
+
+\rubriq{Changement de variable et intégrales de Wallis}
+On pose $x = R\cos\theta$, $dx = -R\sin\theta\,d\theta$
+(avec $\theta : \pi \to 0$ quand $x : -R \to R$) :
+\[
+  (R^2-x^2)^{(n-1)/2} = R^{n-1}\sin^{n-1}\theta,
+\]
+d'où
+\[
+  V_n(R) = \mu_{n-1}\,R^{n-1}\int_{\pi}^{0}(-R\sin\theta)\,\sin^{n-1}\theta\,d\theta
+  = \mu_{n-1}\,R^n\int_0^{\pi}\sin^n\theta\,d\theta
+  = 2\mu_{n-1}\,R^n\,W_n,
+\]
+en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d\theta = 2W_n$
+(symétrie de $\sin$ autour de $\pi/2$), où $W_n$ désigne les intégrales de Wallis\index{intégrales de Wallis}
+(voir leçon dédiée).
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Récurrence.}\enspace
+  \textit{Pour tout $n \geq 1$, avec $\mu_0 = 1$ (volume d'une boule de dimension $0$) :}
+  \[
+    \mu_n = 2\,\mu_{n-1}\,W_n.
+  \]
+  \textit{En itérant deux fois et en utilisant $W_n\,W_{n-1} = \dfrac{\pi}{2n}$ (cf. Wallis) :}
+  \[
+    \mu_n = 4\,\mu_{n-2}\,W_n W_{n-1} = \frac{2\pi}{n}\,\mu_{n-2}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Identité clé : $W_n W_{n-1} = \pi/(2n)$}
+
+\begin{mdframed}[style=proofbar]
+  Des formules closes des intégrales de Wallis on tire, pour $p \geq 1$ :
+  \[
+    W_{2p}\cdot W_{2p-1} = \frac{(2p-1)!!}{(2p)!!}\cdot\frac{\pi}{2}\cdot\frac{(2p-2)!!}{(2p-1)!!}
+    = \frac{\pi}{2\cdot 2p} = \frac{\pi}{2n} \text{ avec } n = 2p,
+  \]
+  et de même $W_{2p+1}\cdot W_{2p} = \frac{\pi}{2(2p+1)}$.
+  En résumé : $\;n\,W_n W_{n-1} = \dfrac{\pi}{2}$ pour tout $n \geq 1$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — FORMULE EXPLICITE ET COMPORTEMENT ASYMPTOTIQUE
+%=============================================================
+\secnum{navyblue}{3}{Formule explicite et comportement en grande dimension}
+
+\rubriq{Preuve de la formule pour $\mu_n$}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Cas pair $n = 2m$.}\enspace En appliquant $m$ fois $\mu_n = \frac{\pi}{m}\mu_{n-2}$
+  depuis $\mu_0 = 1$ :
+  \[
+    \mu_{2m} = \frac{\pi}{m}\cdot\frac{\pi}{m-1}\cdots\frac{\pi}{1}\cdot\mu_0
+    = \frac{\pi^m}{m!}.
+  \]
+
+  \textit{Cas impair $n = 2m+1$.}\enspace En partant de $\mu_1 = 2$ :
+  \[
+    \mu_{2m+1}
+    = \frac{2\pi}{2m+1}\cdot\frac{2\pi}{2m-1}\cdots\frac{2\pi}{3}\cdot\mu_1
+    = \frac{2^m\pi^m}{(2m+1)(2m-1)\cdots 3}\cdot 2
+    = \frac{2^{2m+1}\,m!\,\pi^m}{(2m+1)!},
+  \]
+  en multipliant numérateur et dénominateur par $(2m)!! = 2^m m!$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Tableau des premières valeurs de $\mu_n = V_n(1)$}
+
+\begin{mdframed}[style=exbar]
+\[
+\renewcommand{\arraystretch}{1.4}
+\begin{array}{c|c|c|c}
+  n & \mu_n \text{ (exact)} & \mu_n \text{ (approx.)} & \text{formule} \\
+  \hline
+  1 & 2                          & 2{,}00 & \mu_1 = 2 \\
+  2 & \pi                        & 3{,}14 & \mu_2 = \pi \\
+  3 & \tfrac{4\pi}{3}            & 4{,}19 & \mu_3 = \tfrac{4\pi}{3} \\
+  4 & \tfrac{\pi^2}{2}           & 4{,}93 & \mu_4 = \tfrac{\pi^2}{2} \\
+  5 & \tfrac{8\pi^2}{15}         & 5{,}26 & \text{max} \\
+  6 & \tfrac{\pi^3}{6}           & 5{,}17 & \mu_6 = \tfrac{\pi^3}{6} \\
+  7 & \tfrac{16\pi^3}{105}       & 4{,}72 & \\
+  8 & \tfrac{\pi^4}{24}          & 4{,}06 & \mu_8 = \tfrac{\pi^4}{24}
+\end{array}
+\]
+\end{mdframed}
+
+\rubriq{$\mu_n \to 0$ : la boule se vide en grande dimension}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace\index{boule euclidienne!comportement asymptotique}
+  \textit{$\mu_n \xrightarrow[n\to+\infty]{} 0$. Plus précisément, par la formule de Stirling :}
+  \[
+    \mu_n \;\sim\; \sqrt{2\pi n}\left(\frac{2\pi e}{n}\right)^{n/2} \xrightarrow[n\to\infty]{} 0.
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  De la récurrence $\mu_n = \frac{2\pi}{n}\mu_{n-2}$, on tire
+  \[
+    \ln\mu_n - \ln\mu_{n-2} = \ln\frac{2\pi}{n} \xrightarrow[n\to\infty]{} -\infty.
+  \]
+  En particulier ce terme est négatif dès $n > 2\pi \approx 6{,}28$, i.e.\ pour $n \geq 7$
+  (conformément au tableau : le maximum est atteint en $n = 5$).
+
+  La suite $(\ln\mu_{2k})_k$ est une série télescopique :
+  \[
+    \ln\mu_{2m} = \ln\mu_0 + \sum_{k=1}^{m}\ln\frac{\pi}{k} = m\ln\pi - \ln(m!)
+    \;\sim\; m\ln\pi - m\ln m + m \to -\infty. \hfill\blacksquare
+  \]
+\end{mdframed}
+
+\rubriq{Interprétation géométrique}
+En grande dimension, presque tout le volume de $[-1,1]^n$ (qui vaut $2^n$) est concentré
+dans les coins, loin du centre. La boule unité $B_n(1)$ ne capte qu'une fraction
+$\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\index{concentration de la mesure}.
+
+\decsep
+
+%=============================================================
+%  § 4 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Applications, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Aire de la sphère.}\enspace
+  \index{sphère!aire}
+  En dérivant $V_n(R) = \mu_n R^n$ par rapport à $R$ :
+  \[
+    \mathrm{Aire}(S^{n-1}(R)) = V_n'(R) = n\,\mu_n\,R^{n-1}.
+  \]
+  Pour $n=3$ : $\mathrm{Aire}(S^2(R)) = 4\pi R^2 = 3\mu_3 R^2$. ✓
+
+  \smallskip\noindent
+  \textbf{2. Volume de la boule en dehors d'une bande centrale.}\enspace
+  La fraction du volume de $B_n(1)$ à distance $\geq \varepsilon$ de l'équateur
+  $\{x_1=0\}$ est $1 - V_{n-1}(\sqrt{1-\varepsilon^2})/V_{n-1}(1) \approx 1 - (1-\varepsilon^2)^{(n-1)/2} \to 1$ :
+  presque tout le volume se concentre près de l'équateur.
+
+  \smallskip\noindent
+  \textbf{3. Probabilité de tomber dans la boule.}\enspace
+  Un vecteur gaussien $X \sim \mathcal{N}(0,I_n)$ satisfait $\|X\|^2 \sim \chi^2(n)$,
+  de moyenne $n$ et écart-type $\sqrt{2n}$. La norme typique est $\sqrt{n}$,
+  bien au-delà de $1$ : $P(X \in B_n(1)) \to 0$ très vite.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges et contre-exemples.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Le maximum de $\mu_n$ n'est pas en $n=3$.}\enspace
+  $\mu_5 \approx 5{,}26 > \mu_3 \approx 4{,}19 > \mu_2 = \pi$.
+  La suite $(\mu_n)$ est d'abord croissante, puis décroissante à partir de $n=6$.
+
+  \smallskip\noindent
+  \textbf{$\mu_n \to 0$ ne contredit pas le fait que $\mu_3 > \mu_2$.}\enspace
+  Les volumes ne sont pas directement comparables (dimensions différentes) ;
+  c'est uniquement le comportement en $n \to \infty$ qui est universel.
+
+  \smallskip\noindent
+  \textbf{$V_{n+1}(R) \neq V_n(R) \cdot 2R$.}\enspace
+  Couper par des tranches donne $V_{n+1}(R) = 2\mu_n W_{n+1} R^{n+1}$,
+  avec $W_{n+1} < 1$ : le facteur n'est pas $2R$ car les tranches ne sont pas
+  toutes de rayon $R$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Vérifier la formule $\mu_n = \frac{2\pi}{n}\mu_{n-2}$ pour $n = 4, 5, 6$
+          en utilisant le tableau des valeurs exactes.
+
+    \item Montrer que le volume de la sphère creuse
+          $\{R_1 \leq \|x\| \leq R_2\}$ vaut $\mu_n(R_2^n - R_1^n)$ et
+          calculer la fraction du volume de $B_n(1)$ contenue dans la couronne
+          $\{1-\varepsilon \leq \|x\| \leq 1\}$. Que se passe-t-il quand $n\to\infty$ ?
+
+    \item (Volume et intégrale gaussienne) Calculer $\int_{\mathbb{R}^n} e^{-\|x\|^2}\,dx$
+          de deux façons : par produit tensoriel d'intégrales gaussiennes, puis en
+          coordonnées sphériques. En déduire la valeur de $\mu_n$, et retrouver ainsi
+          que $\mu_{2m} = \pi^m/m!$.
+
+    \item Montrer que $n \geq 5$ est le dernier entier tel que $\mu_n > \mu_{n-2}$,
+          en utilisant la condition $\frac{2\pi}{n} > 1$.
+
+    \item Soit $E_n = \mathbb{E}[\|X\|]$ pour $X \sim \mathcal{N}(0,I_n)$.
+          Montrer que $E_n \sim \sqrt{n}$ quand $n\to\infty$.
+          En déduire que pour tout $\varepsilon > 0$, $P\bigl(\|X\| \in [(1-\varepsilon)\sqrt{n}, (1+\varepsilon)\sqrt{n}]\bigr) \to 1$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{P.-S.\ Laplace (1812), E.\ Borel (1906) — concentration de la mesure}

@@ -16,6 +16,7 @@ $pdf_mode = 1;
 $pdflatex = 'pdflatex -synctex=1 -interaction=nonstopmode -file-line-error %O %S';
 $out_dir = 'build';
 $makeindex = 'makeindex %O -o %D %S';
+$success_cmd = 'perl -MFile::Copy -e "copy(q{build/main.pdf}, q{main.pdf})"';
 
 add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
 add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');

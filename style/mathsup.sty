@@ -43,9 +43,10 @@
   {\titlerule*[5pt]{.}\contentspage}
   [\addvspace{1pt}]
 
-\titlecontents{section}[5em]
+\titlecontents{section}[4.5em]
   {\small\color{black!70}}
-  {\contentslabel{2.2em}}{}
+  {\contentslabel{2.2em}}
+  {\hspace{0pt}}
   {\titlerule*[5pt]{.}\contentspage}
   []
 
@@ -160,6 +161,7 @@
 
 % En-tête de leçon (titre, sous-titre, filet or)
 \newcommand{\lecontitle}[2]{%
+  \addcontentsline{toc}{section}{#1}%
   \thispagestyle{empty}
   \vspace*{4pt}
   \begin{center}
