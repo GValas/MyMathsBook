@@ -11,17 +11,19 @@
 
 %=== INDEX & GLOSSAIRE =======================================
 \makeindex[columns=2, title=Index, intoc]
-\makeglossaries
+\makeglossaries{}
 
 %=== PAGE HEADERS ============================================
 \usepackage{fancyhdr}
+\setlength{\headheight}{13.07002pt}
+\addtolength{\topmargin}{-0.77002pt}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE]{\small\color{navyblue!70}\leftmark}
 \fancyhead[RO]{\small\color{navyblue!70}\rightmark}
 \fancyfoot[C]{\small\color{navyblue!50}\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
-\renewcommand{\headrule}{\color{goldaccent}\hrule width\headwidth height\headrulewidth}
+\renewcommand{\headrule}{\color{goldaccent}\hrule width\headwidth height\headrulewidth} % chktex 1
 
 %=== CHAPITRES STYLISÉS ======================================
 \usepackage{titlesec}
@@ -54,7 +56,7 @@
 %=============================================================
 %  PARTIE I — ANALYSE RÉELLE
 %=============================================================
-\mainmatter
+\mainmatter{}
 
 \part{Analyse réelle}
 
@@ -157,6 +159,11 @@
 \input{lecons/algebre/exponentielle_matrice}
 \clearpage
 
+\chapter{Produit scalaire}
+
+\input{lecons/algebre/produit_scalaire}
+\clearpage
+
 \chapter{Matrices orthogonales}
 
 \input{lecons/algebre/matrices_orthogonales}
@@ -175,7 +182,7 @@
   \protect\noindent\protect\textcolor{goldaccent!60}{\protect\rule{\protect\linewidth}{0.4pt}}%
   \protect\par\protect\addvspace{4pt}%
 }
-\backmatter
+\backmatter{}
 
 %=== GLOSSAIRE ===============================================
 \clearpage

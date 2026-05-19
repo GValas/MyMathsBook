@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/algebre/spectral.tex — Théorème spectral
 %==============================================================
 
@@ -10,7 +10,7 @@
 \secnum{navyblue}{1}{Énoncé et signification}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème spectral (cas réel).}\enspace
+  \textbf{Théorème spectral (cas réel).}\enspace%
   \index{théorème spectral}\index{autoadjoint (opérateur)}
   \textit{Soit $E$ un espace euclidien de dimension finie $n$ et
   $f \in \mathcal{L}(E)$ un endomorphisme autoadjoint, i.e.\ vérifiant
@@ -37,7 +37,7 @@ $f$ agit sur chacune par une simple homothétie. C'est le fondement des
 méthodes spectrales en physique, probabilités (matrices de covariance)
 et traitement du signal (ACP).
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — DÉMONSTRATION
@@ -98,7 +98,7 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
@@ -132,19 +132,19 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
 \noindent{\bfseries\color{counterred} Contre-exemples.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{La symétrie est indispensable.}\enspace
+  \textbf{La symétrie est indispensable.}\enspace%
   $A = \begin{pmatrix}0&1\\0&0\end{pmatrix}$ n'est pas symétrique :
   $\chi_A = X^2$, la seule valeur propre est $0$ mais $A\neq 0$, donc $A$
   n'est pas diagonalisable.
 
   \smallskip\noindent
-  \textbf{Sur $\mathbb{C}$ : le cas hermitien.}\enspace
+  \textbf{Sur $\mathbb{C}$ : le cas hermitien.}\enspace%
   Le théorème spectral s'étend aux matrices hermitiennes ($A^* = A$) sur
   $\mathbb{C}$. En revanche, une matrice unitaire est normale mais pas
   nécessairement hermitienne, et ses valeurs propres sont sur le cercle unité.
 
   \smallskip\noindent
-  \textbf{Dimension infinie.}\enspace
+  \textbf{Dimension infinie.}\enspace%
   En dimension infinie, un opérateur autoadjoint (borné) n'est plus
   nécessairement diagonalisable au sens classique : il faut le calcul
   fonctionnel et la théorie spectrale de von Neumann.

@@ -3,7 +3,7 @@
 %  Palette bleu & or · Barres latérales · Boîte théorème
 %==============================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mathsup}[2024/01/01 Style Maths Sup/Spe]
+\ProvidesPackage{style/mathsup}[2024/01/01 Style Maths Sup/Spe]
 
 %=== PACKAGES FONDAMENTAUX ===================================
 \usepackage[T1]{fontenc}
@@ -14,6 +14,8 @@
 \usepackage{setspace}
 \setstretch{1.3}
 \usepackage{amsmath, amssymb, amsthm}
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[most]{tcolorbox}
 \usepackage[framemethod=tikz]{mdframed}
@@ -27,15 +29,17 @@
 
 %=== MISE EN PAGE ============================================
 \usepackage[top=3cm, bottom=3.2cm, left=2.8cm, right=2.8cm]{geometry}
+\raggedbottom
+\emergencystretch=2em
 
 %=== TABLE DES MATIÈRES ======================================
 \titlecontents{part}[0em]
   {\addvspace{14pt}%
-   \noindent\textcolor{goldaccent!60}{\rule{\textwidth}{0.4pt}}\\[-2pt]%
+   \noindent\rlap{\textcolor{goldaccent!60}{\rule{\linewidth}{0.4pt}}}\\[-2pt]%
    \normalsize\bfseries\color{navyblue}}
   {Partie \thecontentslabel\quad}{}
   {\hfill\contentspage}
-  [\noindent\textcolor{goldaccent!60}{\rule{\textwidth}{0.4pt}}\addvspace{4pt}]
+  [\noindent\rlap{\textcolor{goldaccent!60}{\rule{\linewidth}{0.4pt}}}\addvspace{4pt}]
 
 \titlecontents{chapter}[2.2em]
   {\addvspace{3pt}\bfseries\color{navyblue!80}}
@@ -161,7 +165,7 @@
 
 % En-tête de leçon (titre, sous-titre, filet or)
 \newcommand{\lecontitle}[2]{%
-  \addcontentsline{toc}{section}{#1}%
+  \phantomsection\addcontentsline{toc}{section}{#1}%
   \thispagestyle{empty}
   \vspace*{4pt}
   \begin{center}

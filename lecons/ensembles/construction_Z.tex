@@ -1,0 +1,158 @@
+%==============================================================
+%  lecons/ensembles/construction_Z.tex — Construction de Z
+%==============================================================
+
+\lecontitle{Construction de $\mathbb{Z}$}{Théorie des ensembles — Extension par différences}
+
+%=============================================================
+%  § 1 — MOTIVATION
+%=============================================================
+\secnum{navyblue}{1}{Motivation — inverser l'addition}
+
+\rubriq{Pourquoi étendre $\mathbb{N}$ ?}
+Dans $\mathbb{N}$, l'équation $n + x = m$ n'a pas toujours de solution
+(elle n'en a que si $n \leq m$). On veut construire le plus petit anneau
+contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
+\emph{groupe abélien}.
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Idée.}\enspace%
+  \index{entiers relatifs!construction}
+  Un entier relatif est la «\,différence $m - n$\,» de deux entiers naturels.
+  On modélise cela par une paire $(m, n) \in \mathbb{N}^2$ représentant $m - n$,
+  avec la relation d'équivalence
+  \[
+    (m,n) \sim (m', n') \;\iff\; m + n' = m' + n.
+  \]
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — CONSTRUCTION FORMELLE
+%=============================================================
+\secnum{navyblue}{2}{Construction formelle}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  On pose $\mathbb{Z} = (\mathbb{N} \times \mathbb{N})/{\sim}$.
+  On note $[m,n]$ la classe de $(m,n)$.
+  Les lois sont définies par :
+  \begin{align*}
+    [m,n] + [p,q] &= [m+p,\; n+q], \\
+    [m,n] \times [p,q] &= [mp+nq,\; mq+np].
+  \end{align*}
+  L'élément neutre de $+$ est $[0,0]$, l'opposé de $[m,n]$ est $[n,m]$.
+  L'injection $\iota : \mathbb{N} \to \mathbb{Z},\; n \mapsto [n,0]$,
+  est un homomorphisme d'anneaux.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Bien-fondé de $+$.} Si $(m,n)\sim(m',n')$ et $(p,q)\sim(p',q')$,
+  alors $m+n'=m'+n$ et $p+q'=p'+q$. En additionnant :
+  $(m+p)+(n'+q') = (m'+p')+(n+q)$, donc $[m+p,n+q] = [m'+p',n'+q']$. $\checkmark$
+
+  \textit{Bien-fondé de $\times$.} Analogue, en utilisant $m+n'=m'+n$ et les propriétés
+  de $\mathbb{N}$.
+
+  \textit{Groupe abélien.} Associativité et commutativité héritées de $\mathbb{N}$.
+  Neutre $[0,0]$, opposé $[n,m]$ : $[m,n]+[n,m]=[m+n,n+m]=[0,0]$ (car $m+n=n+m$).
+
+  \textit{Anneau.} La distributivité se vérifie par calcul direct.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — STRUCTURE ET PROPRIÉTÉS
+%=============================================================
+\secnum{navyblue}{3}{Structure de $\mathbb{Z}$}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Propriétés de $\mathbb{Z}$.}\enspace%
+  \index{entiers relatifs!propriétés}
+  \begin{enumerate}
+    \item $(\mathbb{Z}, +, \times)$ est un \emph{anneau commutatif intègre}.
+    \item $\mathbb{Z}$ est un \emph{anneau principal} : tout idéal de $\mathbb{Z}$
+          est de la forme $n\mathbb{Z}$.
+    \item L'ordre de $\mathbb{N}$ s'étend : $[m,n] \leq [p,q]
+          \Leftrightarrow m+q \leq p+n$ dans $\mathbb{N}$.
+          $(\mathbb{Z}, \leq)$ est un ordre total compatible avec $+$.
+    \item $\mathrm{Frac}(\mathbb{Z}) = \mathbb{Q}$ (corps des fractions).
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Propriété universelle}
+
+\begin{mdframed}[style=proofbar]
+  Soit $A$ un anneau et $\varphi : \mathbb{N} \to A$ un homomorphisme d'anneaux.
+  Il existe un unique homomorphisme d'anneaux $\tilde\varphi : \mathbb{Z} \to A$
+  prolongeant $\varphi$, donné par $\tilde\varphi([m,n]) = \varphi(m) - \varphi(n)$.
+  Ainsi $\mathbb{Z}$ est \emph{l'anneau initial} : il existe un unique homomorphisme
+  $\mathbb{Z} \to A$ pour tout anneau $A$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Représentation standard.}\enspace%
+  Tout $[m,n]$ est représenté soit par $[k,0]$ (entier $k = m-n \geq 0$)
+  soit par $[0,k]$ (entier $-k < 0$). On retrouve la présentation habituelle.
+
+  \smallskip\noindent
+  \textbf{2. Arithmétique.}\enspace%
+  $\mathbb{Z}$ est euclidien (division euclidienne), donc principal, donc
+  factoriel (décomposition en premiers unique à ordre et signe près).
+
+  \smallskip\noindent
+  \textbf{3. Caractéristique.}\enspace%
+  $\mathbb{Z}$ est de caractéristique $0$ : $n \cdot 1 = [n,0] \neq [0,0]$
+  pour tout $n \geq 1$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$\mathbb{Z}$ n'est pas un corps.}\enspace%
+  $2 = [2,0]$ n'est pas inversible dans $\mathbb{Z}$ : $[2,0]\cdot[p,q]=[1,0]$
+  impliquerait $2p+q = 1+2q$, i.e.\ $2(p-q)=1$ dans $\mathbb{N}$, impossible.
+
+  \smallskip\noindent
+  \textbf{Divisibilité dans $\mathbb{Z}$ vs $\mathbb{N}$.}\enspace%
+  Dans $\mathbb{Z}$, les unités sont $\pm 1$. Les irréductibles (ou premiers)
+  se présentent par paires $\{p, -p\}$. Dans $\mathbb{N}$, seuls les $p > 0$
+  sont considérés.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que la relation $\sim$ sur $\mathbb{N}^2$ est bien une relation
+          d'équivalence.
+
+    \item Montrer que $\mathbb{Z}$ est intègre : si $[m,n]\cdot[p,q]=[0,0]$
+          et $[m,n]\neq[0,0]$, alors $[p,q]=[0,0]$.
+
+    \item Montrer que tout idéal de $\mathbb{Z}$ est principal.
+          (On utilisera la bonne fondation de $\mathbb{N}$.)
+
+    \item Montrer que $\mathbb{Z}/n\mathbb{Z}$ est un corps si et seulement si
+          $n$ est premier.
+
+    \item Soit $\sigma : \mathbb{Z} \to \mathbb{Z}$ un automorphisme d'anneau.
+          Montrer que $\sigma = \mathrm{id}$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{Construction attribuée à H.\ Grassmann (1861) — formalisée dans ZFC au \textsc{xx}\textsuperscript{e} siècle}

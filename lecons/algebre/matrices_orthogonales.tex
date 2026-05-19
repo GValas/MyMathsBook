@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/algebre/matrices_orthogonales.tex
 %  Matrices orthogonales
 %==============================================================
@@ -11,7 +11,7 @@
 \secnum{navyblue}{1}{Définition et premières propriétés}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Définition.}\enspace
+  \textbf{Définition.}\enspace%
   \index{matrice orthogonale}\index{groupe orthogonal}
   Une matrice $Q \in \mathcal{M}_n(\mathbb{R})$ est dite \emph{orthogonale} si
   \[
@@ -38,7 +38,7 @@
   \Rightarrow \det(Q)=\pm 1$. \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — CARACTÉRISATIONS
@@ -46,7 +46,7 @@
 \secnum{navyblue}{2}{Caractérisations équivalentes}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   Pour $Q \in \mathcal{M}_n(\mathbb{R})$, les assertions suivantes sont équivalentes :
   \begin{enumerate}
     \item $Q \in \mathrm{O}(n)$ (i.e.\ $Q^TQ = I_n$) ;
@@ -78,7 +78,7 @@
   Donc $(Q^TQ-I_n)$ est une forme bilinéaire nulle, soit $Q^TQ=I_n$. \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — STRUCTURE EN PETITES DIMENSIONS
@@ -88,7 +88,7 @@
 \rubriq{En dimension 2}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   \index{rotation!en dimension 2}\index{réflexion}
   Toute matrice de $\mathrm{O}(2)$ est soit une \emph{rotation} soit
   une \emph{réflexion} :
@@ -113,7 +113,7 @@
 \rubriq{En dimension 3 — forme réduite}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   \index{rotation!en dimension 3}
   Toute matrice $Q \in \mathrm{SO}(3)$ est une rotation d'angle $\theta \in [0,\pi]$
   autour d'un axe $\Delta$. Sa forme réduite dans une base adaptée est
@@ -124,7 +124,7 @@
   rotation et d'une réflexion par rapport à un plan.}
 \end{tcolorbox}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 4 — VALEURS PROPRES ET DIAGONALISATION
@@ -132,7 +132,7 @@
 \secnum{navyblue}{4}{Valeurs propres et réduction}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   \index{matrice orthogonale!valeurs propres}
   Soit $Q \in \mathrm{O}(n)$.
   \begin{enumerate}
@@ -164,7 +164,7 @@ et des $1$ sur la diagonale :
 \]
 En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 5 — APPLICATIONS, PIÈGES, EXERCICES
@@ -174,7 +174,7 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
 \noindent{\bfseries\color{navyblue} Applications.}
 
 \begin{mdframed}[style=exbar]
-  \textbf{1. Décomposition QR.}\enspace
+  \textbf{1. Décomposition QR.}\enspace%
   \index{décomposition QR}
   Toute matrice $A \in \mathcal{M}_n(\mathbb{R})$ inversible s'écrit $A = QR$
   avec $Q \in \mathrm{O}(n)$ et $R$ triangulaire supérieure à diagonale strictement
@@ -182,13 +182,13 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
   de Gram-Schmidt\index{Gram-Schmidt} sur les colonnes.
 
   \smallskip\noindent
-  \textbf{2. Isométries de $\mathbb{R}^n$.}\enspace
+  \textbf{2. Isométries de $\mathbb{R}^n$.}\enspace%
   Toute isométrie affine $f(x) = Qx + b$ avec $Q\in\mathrm{O}(n)$.
   En dimension 2, cela donne les rotations, réflexions, translations et leurs
   composées (isométries du plan euclidien).
 
   \smallskip\noindent
-  \textbf{3. Exponentielle et $\mathrm{SO}(n)$.}\enspace
+  \textbf{3. Exponentielle et $\mathrm{SO}(n)$.}\enspace%
   Une matrice $A$ est \emph{antisymétrique} ($A^T=-A$) si et seulement si
   $e^{tA} \in \mathrm{SO}(n)$ pour tout $t \in \mathbb{R}$.
   L'algèbre de Lie\index{algèbre de Lie} de $\mathrm{SO}(n)$ est
@@ -199,19 +199,19 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
 \noindent{\bfseries\color{counterred} Pièges.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{$Q^TQ = I_n$ n'implique pas $QQ^T = I_n$ en dimension infinie.}\enspace
+  \textbf{$Q^TQ = I_n$ n'implique pas $QQ^T = I_n$ en dimension infinie.}\enspace%
   En dimension finie, les deux sont équivalents (car $Q$ est carrée), mais le
   shift $T : (x_1,x_2,\ldots)\mapsto(0,x_1,x_2,\ldots)$ vérifie $T^*T=I$
   sans $TT^*=I$.
 
   \smallskip\noindent
-  \textbf{$\mathrm{O}(n)$ n'est pas connexe.}\enspace
+  \textbf{$\mathrm{O}(n)$ n'est pas connexe.}\enspace%
   $\mathrm{O}(n)$ a deux composantes connexes : $\mathrm{SO}(n)$ (det $=1$)
   et $\{Q : \det Q=-1\}$. On ne peut pas déformer continûment une rotation
   en une réflexion dans $\mathrm{O}(n)$.
 
   \smallskip\noindent
-  \textbf{Symétrique $\neq$ orthogonale.}\enspace
+  \textbf{Symétrique $\neq$ orthogonale.}\enspace%
   $A$ symétrique ($A^T=A$) et $A$ orthogonale ($A^T=A^{-1}$) simultanément
   impose $A^2=I$, donc les valeurs propres sont $\pm 1$.
   Ces matrices sont les \emph{involutions symétriques} (réflexions orthogonales).

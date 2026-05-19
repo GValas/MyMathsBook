@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/analyse/rolle.tex — Théorème de Rolle
 %==============================================================
 
@@ -10,7 +10,7 @@
 \secnum{navyblue}{1}{Énoncé et signification}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème (Rolle, 1691).}\enspace
+  \textbf{Théorème (Rolle, 1691).}\enspace%
   \index{Rolle (théorème de)}
   \textit{Soit $f : [a,b] \to \mathbb{R}$ une fonction vérifiant :}
   \begin{enumerate}
@@ -29,7 +29,7 @@ C'est une propriété de \emph{valeur intermédiaire pour la dérivée}.
 \rubriq{Nécessité des trois hypothèses}
 Les trois conditions sont indépendantes et toutes nécessaires (voir §3).
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — DÉMONSTRATION
@@ -43,11 +43,11 @@ L'hypothèse $f(a)=f(b)$ force au moins un extremum à être intérieur dès que
 n'est pas constante.
 
 \begin{mdframed}[style=proofbar]
-  \textit{Cas 1 : $f$ est constante.}\enspace
+  \textit{Cas 1 : $f$ est constante.}\enspace%
   Alors $f' \equiv 0$ sur $]a,b[$, et tout point de $]a,b[$ convient.
 
   \medskip
-  \textit{Cas 2 : $f$ n'est pas constante.}\enspace
+  \textit{Cas 2 : $f$ n'est pas constante.}\enspace%
   $f$ est continue sur le compact $[a,b]$, donc par le théorème des bornes
   atteintes\index{bornes atteintes (théorème des)}, elle y atteint son maximum $M$
   et son minimum $m$. Puisque $f$ n'est pas constante, $m < M$.
@@ -68,7 +68,7 @@ n'est pas constante.
   En passant à la limite, $f'(c)\leq 0$ et $f'(c)\geq 0$, donc $f'(c)=0$. \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
@@ -78,18 +78,18 @@ n'est pas constante.
 \noindent{\bfseries\color{navyblue} Applications.}
 
 \begin{mdframed}[style=exbar]
-  \textbf{1. Unicité des racines.}\enspace
+  \textbf{1. Unicité des racines.}\enspace%
   Si $f'$ ne s'annule pas sur $]a,b[$, alors $f$ admet \emph{au plus} une racine dans
   $]a,b[$. (Par l'absurde : deux racines $\alpha < \beta$ donneraient via Rolle
   un $c \in\,]\alpha,\beta[$ avec $f'(c)=0$.)
 
   \smallskip\noindent
-  \textbf{2. Séparation des racines.}\enspace
+  \textbf{2. Séparation des racines.}\enspace%
   Entre deux racines consécutives de $f'$, $f$ change de monotonie.
   Entre deux racines consécutives de $f$, $f'$ s'annule au moins une fois.
 
   \smallskip\noindent
-  \textbf{3. Version généralisée (Rolle itéré).}\enspace
+  \textbf{3. Version généralisée (Rolle itéré).}\enspace%
   Si $f$ est $n$ fois dérivable et admet $n+1$ racines distinctes sur $[a,b]$,
   alors $f^{(n)}$ admet au moins une racine sur $]a,b[$.
   (Par récurrence, en appliquant Rolle $n$ fois.)
@@ -99,19 +99,19 @@ n'est pas constante.
 \noindent{\bfseries\color{counterred} Contre-exemples — nécessité des hypothèses.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{Continuité indispensable.}\enspace
+  \textbf{Continuité indispensable.}\enspace%
   $f(x) = \begin{cases}x & x\in[0,1[\\ 0 & x=1\end{cases}$
   vérifie $f(0)=f(1)=0$ et $f'(x)=1\neq 0$ sur $]0,1[$. La discontinuité en $1$
   invalide le théorème.
 
   \smallskip\noindent
-  \textbf{Dérivabilité indispensable.}\enspace
+  \textbf{Dérivabilité indispensable.}\enspace%
   $f(x) = |x|$ sur $[-1,1]$ : $f(-1)=f(1)=1$, $f$ continue, mais
   $f'(x) = \mathrm{sgn}(x) \neq 0$ sur $]-1,1[\,\setminus\{0\}$
   et $f$ n'est pas dérivable en $0$.
 
   \smallskip\noindent
-  \textbf{$f(a)=f(b)$ indispensable.}\enspace
+  \textbf{$f(a)=f(b)$ indispensable.}\enspace%
   $f(x) = x$ sur $[0,1]$ : $f'(x)=1\neq 0$ partout, car $f(0)\neq f(1)$.
 \end{mdframed}
 

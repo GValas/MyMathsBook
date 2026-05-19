@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/algebre/cayley.tex — Théorème de Cayley-Hamilton
 %==============================================================
 
@@ -10,7 +10,7 @@
 \secnum{navyblue}{1}{Énoncé et signification}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème (Cayley--Hamilton).}\enspace
+  \textbf{Théorème (Cayley--Hamilton).}\enspace%
   \index{Cayley-Hamilton (théorème de)}\index{polynôme caractéristique}
   \textit{Soit $E$ un espace vectoriel de dimension finie $n$ et
   $f \in \mathcal{L}(E)$. Notons $\chi_f = \det(X\,\mathrm{Id} - f)$ le
@@ -34,7 +34,7 @@ de dimension finie sur $\mathbb{R}$, au plus $n$. Ce théorème est la
 pierre angulaire de la théorie des \emph{polynômes minimaux}\index{polynôme minimal}
 et de la décomposition de Dunford.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — DÉMONSTRATION
@@ -93,7 +93,8 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 
 \begin{mdframed}[style=proofbar]
   Si $A$ est diagonalisable : $A = P\,\mathrm{diag}(\lambda_1,\ldots,\lambda_n)\,P^{-1}$.
-  Alors $\chi_A(A) = P\,\mathrm{diag}(\chi_A(\lambda_1),\ldots,\chi_A(\lambda_n))\,P^{-1} = 0$
+  Alors
+  \[\chi_A(A) = P\,\mathrm{diag}(\chi_A(\lambda_1),\ldots,\chi_A(\lambda_n))\,P^{-1} = 0\]
   car chaque $\lambda_i$ est racine de $\chi_A$.
 
   Pour le cas général, on invoque la densité des matrices diagonalisables dans
@@ -101,7 +102,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
   de $A\mapsto\chi_A(A)$. \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
@@ -111,7 +112,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 \noindent{\bfseries\color{navyblue} Applications et exemples.}
 
 \begin{mdframed}[style=exbar]
-  \textbf{1. Inversibilité.}\enspace
+  \textbf{1. Inversibilité.}\enspace%
   Si $\chi_A(0) = \det(-A) \neq 0$ (i.e.\ $A$ inversible), alors
   $\chi_A(X) = c_0 + \cdots + X^n$ avec $c_0\neq 0$, et Cayley--Hamilton
   donne :
@@ -121,7 +122,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
   L'inverse s'exprime comme polynôme en $A$.
 
   \smallskip\noindent
-  \textbf{2. Réduction de la dimension de $\mathbb{R}[A]$.}\enspace
+  \textbf{2. Réduction de la dimension de $\mathbb{R}[A]$.}\enspace%
   $\chi_A(A)=0$ implique que $A^n$ est combinaison linéaire de
   $I_n,A,\ldots,A^{n-1}$ : $\dim\mathbb{R}[A]\leq n$.
 
@@ -136,13 +137,13 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 \noindent{\bfseries\color{counterred} Pièges et contre-exemples.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{Substitution naïve interdite.}\enspace
+  \textbf{Substitution naïve interdite.}\enspace%
   $\chi_A(X) = \det(XI-A)$ : substituer $X=A$ dans le déterminant
   donne $\det(AI-A)=\det(0)=0$, ce qui est trivial et ne prouve rien.
   La preuve correcte passe par l'identification des coefficients.
 
   \smallskip\noindent
-  \textbf{Le polynôme caractéristique n'est pas minimal.}\enspace
+  \textbf{Le polynôme caractéristique n'est pas minimal.}\enspace%
   $A = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ : $\chi_A = (X-1)^2$,
   mais le polynôme minimal est $X-1$, de degré $1$. Cayley--Hamilton
   garantit que $\chi_A$ annule $A$, pas qu'il est minimal.

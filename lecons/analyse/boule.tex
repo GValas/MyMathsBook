@@ -1,8 +1,8 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/analyse/boule.tex — Volume de la boule en dimension n
 %==============================================================
 
-\lecontitle{Volume de la boule en dimension $n$}{Analyse — Wallis, Fubini et géométrie en grande dimension}
+\lecontitle{Volume de la boule en dimension \texorpdfstring{$n$}{n}}{Analyse — Wallis, Fubini et géométrie en grande dimension}
 
 %=============================================================
 %  § 1 — DÉFINITION ET PREMIERS EXEMPLES
@@ -18,7 +18,7 @@
   Son volume\index{volume de la boule} est noté $V_n(R) = \mathrm{vol}\bigl(B_n(R)\bigr)$.
 
   \medskip
-  \textbf{Théorème (formule générale).}\enspace
+  \textbf{Théorème (formule générale).}\enspace%
   \textit{Il existe une constante $\mu_n > 0$ telle que}
   \[
     V_n(R) = \mu_n R^n.
@@ -42,7 +42,7 @@ L'identité $V_n(R) = \mu_n R^n$ s'obtient par le changement de variables
 $x_i = R u_i$ (jacobien $R^n$) qui transforme $B_n(R)$ en $B_n(1)$.
 Il suffit donc de calculer $\mu_n = V_n(1)$.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — RÉCURRENCE DIMENSIONNELLE PAR TRANCHES
@@ -50,7 +50,7 @@ Il suffit donc de calculer $\mu_n = V_n(1)$.
 \secnum{navyblue}{2}{Récurrence sur la dimension — méthode des tranches}
 
 \rubriq{Décomposition de la boule}
-On écrit $B_n(R)$ comme une pile de boules $(n{-}1)$-dimensionnelles :
+On écrit $B_n(R)$ comme une pile de boules $(n{-}1)$-di\-men\-sion\-nelles :
 \[
   B_n(R) = \bigl\{(u, x_n)\in\mathbb{R}^{n-1}\times\mathbb{R} \;\big|\;
   u \in B_{n-1}\!\bigl(\sqrt{R^2-x_n^2}\bigr),\; -R \leq x_n \leq R\bigr\}.
@@ -78,7 +78,7 @@ en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d
 (voir leçon dédiée).
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Récurrence.}\enspace
+  \textbf{Récurrence.}\enspace%
   \textit{Pour tout $n \geq 1$, avec $\mu_0 = 1$ (volume d'une boule de dimension $0$) :}
   \[
     \mu_n = 2\,\mu_{n-1}\,W_n.
@@ -102,7 +102,7 @@ en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d
   \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — FORMULE EXPLICITE ET COMPORTEMENT ASYMPTOTIQUE
@@ -112,14 +112,14 @@ en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d
 \rubriq{Preuve de la formule pour $\mu_n$}
 
 \begin{mdframed}[style=proofbar]
-  \textit{Cas pair $n = 2m$.}\enspace En appliquant $m$ fois $\mu_n = \frac{\pi}{m}\mu_{n-2}$
+  \textit{Cas pair $n = 2m$.}\enspace{}En appliquant $m$ fois $\mu_n = \frac{\pi}{m}\mu_{n-2}$
   depuis $\mu_0 = 1$ :
   \[
     \mu_{2m} = \frac{\pi}{m}\cdot\frac{\pi}{m-1}\cdots\frac{\pi}{1}\cdot\mu_0
     = \frac{\pi^m}{m!}.
   \]
 
-  \textit{Cas impair $n = 2m+1$.}\enspace En partant de $\mu_1 = 2$ :
+  \textit{Cas impair $n = 2m+1$.}\enspace{}En partant de $\mu_1 = 2$ :
   \[
     \mu_{2m+1}
     = \frac{2\pi}{2m+1}\cdot\frac{2\pi}{2m-1}\cdots\frac{2\pi}{3}\cdot\mu_1
@@ -179,7 +179,7 @@ En grande dimension, presque tout le volume de $[-1,1]^n$ (qui vaut $2^n$) est c
 dans les coins, loin du centre. La boule unité $B_n(1)$ ne capte qu'une fraction
 $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\index{concentration de la mesure}.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 4 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
@@ -189,22 +189,22 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
 \noindent{\bfseries\color{navyblue} Applications.}
 
 \begin{mdframed}[style=exbar]
-  \textbf{1. Aire de la sphère.}\enspace
+  \textbf{1. Aire de la sphère.}\enspace%
   \index{sphère!aire}
   En dérivant $V_n(R) = \mu_n R^n$ par rapport à $R$ :
   \[
     \mathrm{Aire}(S^{n-1}(R)) = V_n'(R) = n\,\mu_n\,R^{n-1}.
   \]
-  Pour $n=3$ : $\mathrm{Aire}(S^2(R)) = 4\pi R^2 = 3\mu_3 R^2$. ✓
+  Pour $n=3$ : $\mathrm{Aire}(S^2(R)) = 4\pi R^2 = 3\mu_3 R^2$. $\checkmark$
 
   \smallskip\noindent
-  \textbf{2. Volume de la boule en dehors d'une bande centrale.}\enspace
+  \textbf{2. Volume de la boule en dehors d'une bande centrale.}\enspace%
   La fraction du volume de $B_n(1)$ à distance $\geq \varepsilon$ de l'équateur
   $\{x_1=0\}$ est $1 - V_{n-1}(\sqrt{1-\varepsilon^2})/V_{n-1}(1) \approx 1 - (1-\varepsilon^2)^{(n-1)/2} \to 1$ :
   presque tout le volume se concentre près de l'équateur.
 
   \smallskip\noindent
-  \textbf{3. Probabilité de tomber dans la boule.}\enspace
+  \textbf{3. Probabilité de tomber dans la boule.}\enspace%
   Un vecteur gaussien $X \sim \mathcal{N}(0,I_n)$ satisfait $\|X\|^2 \sim \chi^2(n)$,
   de moyenne $n$ et écart-type $\sqrt{2n}$. La norme typique est $\sqrt{n}$,
   bien au-delà de $1$ : $P(X \in B_n(1)) \to 0$ très vite.
@@ -214,17 +214,17 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
 \noindent{\bfseries\color{counterred} Pièges et contre-exemples.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{Le maximum de $\mu_n$ n'est pas en $n=3$.}\enspace
+  \textbf{Le maximum de $\mu_n$ n'est pas en $n=3$.}\enspace%
   $\mu_5 \approx 5{,}26 > \mu_3 \approx 4{,}19 > \mu_2 = \pi$.
   La suite $(\mu_n)$ est d'abord croissante, puis décroissante à partir de $n=6$.
 
   \smallskip\noindent
-  \textbf{$\mu_n \to 0$ ne contredit pas le fait que $\mu_3 > \mu_2$.}\enspace
+  \textbf{$\mu_n \to 0$ ne contredit pas le fait que $\mu_3 > \mu_2$.}\enspace%
   Les volumes ne sont pas directement comparables (dimensions différentes) ;
   c'est uniquement le comportement en $n \to \infty$ qui est universel.
 
   \smallskip\noindent
-  \textbf{$V_{n+1}(R) \neq V_n(R) \cdot 2R$.}\enspace
+  \textbf{$V_{n+1}(R) \neq V_n(R) \cdot 2R$.}\enspace%
   Couper par des tranches donne $V_{n+1}(R) = 2\mu_n W_{n+1} R^{n+1}$,
   avec $W_{n+1} < 1$ : le facteur n'est pas $2R$ car les tranches ne sont pas
   toutes de rayon $R$.

@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/algebre/exponentielle_matrice.tex
 %  Exponentielle de matrice
 %==============================================================
@@ -11,7 +11,7 @@
 \secnum{navyblue}{1}{Définition et convergence}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Définition.}\enspace
+  \textbf{Définition.}\enspace%
   \index{exponentielle de matrice}
   Pour $A \in \mathcal{M}_n(\mathbb{K})$, on définit
   \[
@@ -19,7 +19,7 @@
     = I_n + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots
   \]
 
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   \textit{Cette série converge absolument pour toute matrice $A$,
   uniformément sur tout borné de $\mathcal{M}_n(\mathbb{K})$.}
 \end{tcolorbox}
@@ -44,7 +44,7 @@
   e^{\mathrm{diag}(\lambda_1,\ldots,\lambda_n)} = \mathrm{diag}(e^{\lambda_1},\ldots,e^{\lambda_n}).
 \]
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — PROPRIÉTÉS FONDAMENTALES
@@ -54,16 +54,16 @@
 \begin{tcolorbox}[thmbox]
   Soient $A, B \in \mathcal{M}_n(\mathbb{K})$.
   \begin{enumerate}
-    \item \textbf{Commutativité.}\enspace Si $AB = BA$, alors $e^{A+B} = e^A e^B$.
-    \item \textbf{Inversibilité.}\enspace $e^A$ est toujours inversible et
+    \item \textbf{Commutativité.}\enspace{}Si $AB = BA$, alors $e^{A+B} = e^A e^B$.
+    \item \textbf{Inversibilité.}\enspace{}$e^A$ est toujours inversible et
           $(e^A)^{-1} = e^{-A}$.
-    \item \textbf{Conjugaison.}\enspace Si $P$ est inversible,
+    \item \textbf{Conjugaison.}\enspace{}Si $P$ est inversible,
           $e^{PAP^{-1}} = P\,e^A\,P^{-1}$.
-    \item \textbf{Transposée.}\enspace $e^{A^T} = (e^A)^T$.
-    \item \textbf{Déterminant (formule de Jacobi).}\enspace
+    \item \textbf{Transposée.}\enspace{}$e^{A^T} = (e^A)^T$.
+    \item \textbf{Déterminant (formule de Jacobi).}\enspace%
     \index{formule de Jacobi}
           $\det(e^A) = e^{\mathrm{tr}(A)}$.
-    \item \textbf{Dérivation.}\enspace $\dfrac{d}{dt}e^{tA} = A\,e^{tA} = e^{tA}A$.
+    \item \textbf{Dérivation.}\enspace{}$\dfrac{d}{dt}e^{tA} = A\,e^{tA} = e^{tA}A$.
   \end{enumerate}
 \end{tcolorbox}
 
@@ -94,7 +94,7 @@
   \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — CALCUL EFFECTIF
@@ -123,7 +123,7 @@ et $DN = ND$. Comme $D$ et $N$ commutent :
 où $e^D$ se calcule via la diagonalisation et $e^N$ par la série finie.
 
 \begin{mdframed}[style=exbar]
-  \textbf{Exemple — matrice $2\times 2$.}\enspace
+  \textbf{Exemple — matrice $2\times 2$.}\enspace%
   Calculer $e^A$ pour $A = \begin{pmatrix}1&1\\0&1\end{pmatrix} = I + N$,
   $N = \begin{pmatrix}0&1\\0&0\end{pmatrix}$ (nilpotente, $N^2=0$).
 
@@ -131,7 +131,7 @@ où $e^D$ se calcule via la diagonalisation et $e^N$ par la série finie.
   = e\begin{pmatrix}1&1\\0&1\end{pmatrix}$.
 
   \medskip
-  \textbf{Exemple — rotation.}\enspace
+  \textbf{Exemple — rotation.}\enspace%
   $A = \theta\begin{pmatrix}0&-1\\1&0\end{pmatrix}$.
   Valeurs propres complexes $\pm i\theta$. En développant directement :
   \[
@@ -139,7 +139,7 @@ où $e^D$ se calcule via la diagonalisation et $e^N$ par la série finie.
   \]
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 4 — APPLICATION : SYSTÈMES DIFFÉRENTIELS LINÉAIRES
@@ -147,7 +147,7 @@ où $e^D$ se calcule via la diagonalisation et $e^N$ par la série finie.
 \secnum{navyblue}{4}{Application aux systèmes différentiels}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   \index{système différentiel linéaire}
   \textit{Soit $A \in \mathcal{M}_n(\mathbb{R})$. L'unique solution du
   problème de Cauchy}
@@ -182,7 +182,7 @@ et vecteurs propres $v_1,\ldots,v_n$, la solution générale est
 Les parties réelles $\mathrm{Re}(\lambda_i)$ gouvernent la stabilité :
 $X(t)\to 0$ si et seulement si tous les $\mathrm{Re}(\lambda_i) < 0$.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 5 — CONTRE-EXEMPLES, PIÈGES, EXERCICES
@@ -192,19 +192,19 @@ $X(t)\to 0$ si et seulement si tous les $\mathrm{Re}(\lambda_i) < 0$.
 \noindent{\bfseries\color{counterred} Pièges.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{$e^{A+B} \neq e^A e^B$ sans commutativité.}\enspace
+  \textbf{$e^{A+B} \neq e^A e^B$ sans commutativité.}\enspace%
   Pour $A=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ et $B=\begin{pmatrix}0&0\\1&0\end{pmatrix}$,
   $AB\neq BA$ et $e^{A+B}\neq e^Ae^B$.
   C'est la formule de Baker–Campbell–Hausdorff\index{Baker-Campbell-Hausdorff}
   qui corrige cela : $e^Ae^B = e^{A+B+\frac{1}{2}[A,B]+\cdots}$.
 
   \smallskip\noindent
-  \textbf{$e^A = I$ n'implique pas $A = 0$.}\enspace
+  \textbf{$e^A = I$ n'implique pas $A = 0$.}\enspace%
   Pour $A = 2\pi i \begin{pmatrix}1&0\\0&-1\end{pmatrix}$,
   $e^A = I_2$ mais $A\neq 0$.
 
   \smallskip\noindent
-  \textbf{$\log(e^A e^B) \neq A + B$ en général.}\enspace
+  \textbf{$\log(e^A e^B) \neq A + B$ en général.}\enspace%
   Le logarithme matriciel (inverse local de l'exponentielle) n'est pas
   un homomorphisme, contrairement au cas scalaire.
 \end{mdframed}

@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/analyse/taf.tex — Théorème des accroissements finis
 %==============================================================
 
@@ -10,7 +10,7 @@
 \secnum{navyblue}{1}{Énoncé}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème (TAF — Lagrange).}\enspace
+  \textbf{Théorème (TAF — Lagrange).}\enspace%
   \index{accroissements finis (théorème des)}\index{Lagrange (TAF)}
   \textit{Soit $f : [a,b] \to \mathbb{R}$ continue sur $[a,b]$ et dérivable sur $]a,b[$.
   Alors il existe $c \in\, ]a,b[$ tel que}
@@ -33,7 +33,7 @@ Il existe $c \in\, ]a,b[$ tel que
 \]
 En particulier, si $g'$ ne s'annule pas : $\dfrac{f(b)-f(a)}{g(b)-g(a)} = \dfrac{f'(c)}{g'(c)}$.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — DÉMONSTRATION
@@ -60,7 +60,7 @@ puis on applique Rolle.
   \]
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — COROLLAIRES FONDAMENTAUX
@@ -109,7 +109,7 @@ alors par le TAF de Cauchy appliqué sur $[a, a+h]$ :
   \frac{f(a+h)}{g(a+h)} = \frac{f(a+h)-f(a)}{g(a+h)-g(a)} = \frac{f'(c_h)}{g'(c_h)} \xrightarrow[h\to 0]{} \ell.
 \]
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 4 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
@@ -119,17 +119,17 @@ alors par le TAF de Cauchy appliqué sur $[a, a+h]$ :
 \noindent{\bfseries\color{navyblue} Applications.}
 
 \begin{mdframed}[style=exbar]
-  \textbf{1. Étude de $\ln(1+x)$.}\enspace
+  \textbf{1. Étude de $\ln(1+x)$.}\enspace%
   $f(x)=\ln(1+x)$, $f'(x)=1/(1+x)$. Le TAF sur $[0,x]$ ($x>0$) donne
   $\ln(1+x) = x/(1+c)$ avec $c \in\,]0,x[$, d'où $\frac{x}{1+x} < \ln(1+x) < x$.
 
   \smallskip\noindent
-  \textbf{2. Inégalité $|\sin x - \sin y| \leq |x-y|$.}\enspace
+  \textbf{2. Inégalité $|\sin x - \sin y| \leq |x-y|$.}\enspace%
   $f(x) = \sin x$ vérifie $|f'| \leq 1$, donc $|\sin x - \sin y| \leq |x-y|$
   par le corollaire Lipschitz.
 
   \smallskip\noindent
-  \textbf{3. Suite récurrente $u_{n+1} = f(u_n)$.}\enspace
+  \textbf{3. Suite récurrente $u_{n+1} = f(u_n)$.}\enspace%
   Si $|f'| \leq k < 1$ sur un intervalle stable, alors $f$ est une
   contraction\index{contraction}, et la suite converge vers l'unique point fixe
   (théorème du point fixe de Banach\index{Banach (point fixe)}).
@@ -139,18 +139,18 @@ alors par le TAF de Cauchy appliqué sur $[a, a+h]$ :
 \noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{Le TAF ne vaut pas pour les fonctions à valeurs vectorielles.}\enspace
+  \textbf{Le TAF ne vaut pas pour les fonctions à valeurs vectorielles.}\enspace%
   $f : t \mapsto (\cos t, \sin t)$ sur $[0, 2\pi]$ : $f(0)=f(2\pi)$,
   mais $\|f'(c)\| = 1 \neq 0$ pour tout $c$, donc $f(2\pi)-f(0) = \mathbf{0} \neq f'(c)\cdot 2\pi$.
   La version vectorielle correcte est l'inégalité : $\|f(b)-f(a)\| \leq \sup|f'|\cdot(b-a)$.
 
   \smallskip\noindent
-  \textbf{Le point $c$ n'est pas unique en général.}\enspace
+  \textbf{Le point $c$ n'est pas unique en général.}\enspace%
   $f(x) = \sin(2\pi x)$ sur $[0,1]$ : $f(0)=f(1)=0$, et $f'(c)=0$ admet
   deux solutions dans $]0,1[$. Le TAF garantit l'existence, pas l'unicité.
 
   \smallskip\noindent
-  \textbf{Continuité sur le fermé est nécessaire.}\enspace
+  \textbf{Continuité sur le fermé est nécessaire.}\enspace%
   $f(x) = 1/x$ sur $[{-1},1]\setminus\{0\}$ : $f(-1)=f(1)=-1$, mais
   $f'(x)=-1/x^2<0$ ne peut pas donner $(f(1)-f(-1))/(1-(-1))=0$.
   La discontinuité en $0$ brise la conclusion.

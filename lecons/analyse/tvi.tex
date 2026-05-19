@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/analyse/tvi.tex — Théorème des valeurs intermédiaires
 %==============================================================
 
@@ -19,7 +19,7 @@
   $f(b)$, donc contenant $[\min(f(a),f(b)),\,\max(f(a),f(b))]$.
 
   \medskip
-  \textbf{Corollaire (existence de racines).}\enspace
+  \textbf{Corollaire (existence de racines).}\enspace%
   Si $f : [a,b] \to \mathbb{R}$ est continue et si $f(a)\cdot f(b) < 0$,
   alors il existe $c \in\; ]a,b[$ tel que $f(c) = 0$.
 \end{tcolorbox}
@@ -32,7 +32,7 @@ nécessairement la traverser en un point $c$. Ce résultat traduit en analyse la
 \emph{connexité par arcs}\index{connexité par arcs} des intervalles de
 $\mathbb{R}$.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — DÉMONSTRATION
@@ -63,8 +63,8 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
   $b_k - a_k = (b-a)/2^k \to 0$.
 
   \medskip
-  \textit{Convergence.} Les suites $(a_k)$ croissante majorée et $(b_k)$
-  décroissante minorée convergent vers la même limite $c$ (car $b_k - a_k \to 0$).
+  \textit{Convergence.} Puisque $b_k - a_k = (b-a)/2^k \to 0$, les suites
+  $(a_k)$ croissante majorée et $(b_k)$ décroissante minorée ont la même limite $c$.
 
   \medskip
   \textit{Conclusion.} Par continuité de $f$ :
@@ -84,7 +84,7 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
   intervalles. Donc $f([a,b])$ est un intervalle, ce qui conclut. \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
@@ -94,17 +94,17 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
 \noindent{\bfseries\color{navyblue} Exemples.}
 
 \begin{mdframed}[style=exbar]
-  \textbf{1. Existence d'une racine de $x^3 - x - 1$.}\enspace
+  \textbf{1. Existence d'une racine de $x^3 - x - 1$.}\enspace%
   $f(1) = -1 < 0$ et $f(2) = 5 > 0$ : le TVI garantit l'existence de
   $c \in ]1,2[$ tel que $c^3 - c - 1 = 0$.
 
   \smallskip\noindent
-  \textbf{2. Point fixe.}\enspace
+  \textbf{2. Point fixe.}\enspace%
   Si $g : [0,1] \to [0,1]$ est continue, alors $g$ admet un point fixe :
   appliquer le TVI à $f(x) = g(x) - x$, qui vérifie $f(0) \geq 0 \geq f(1)$.
 
   \smallskip\noindent
-  \textbf{3. Dichotomie numérique.}\enspace
+  \textbf{3. Dichotomie numérique.}\enspace%
   La preuve par dichotomie est à la base des algorithmes de recherche de zéro
   (méthode de la bissection), convergence en $O((b-a)/2^n)$.
 \end{mdframed}
@@ -113,17 +113,17 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
 \noindent{\bfseries\color{counterred} Contre-exemples.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{La continuité est indispensable.}\enspace
+  \textbf{La continuité est indispensable.}\enspace%
   $f : [0,2] \to \mathbb{R}$ définie par $f(x) = \mathbf{1}_{[1,2]}(x)$
   vérifie $f(0) = 0$ et $f(2) = 1$, mais $f(x) \notin ]0,1[$ pour tout $x$.
 
   \smallskip\noindent
-  \textbf{L'intervalle est indispensable.}\enspace
+  \textbf{L'intervalle est indispensable.}\enspace%
   $f : \{0\} \cup \{1\} \to \mathbb{R}$ définie par $f(0) = 0$, $f(1) = 1$
   est continue (sur un ensemble discret) mais ne prend pas la valeur $1/2$.
 
   \smallskip\noindent
-  \textbf{La réciproque est fausse.}\enspace
+  \textbf{La réciproque est fausse.}\enspace%
   Une fonction vérifiant la propriété des valeurs intermédiaires n'est pas
   forcément continue : $f(x) = \sin(1/x)$ pour $x \neq 0$, $f(0) = 0$.
 \end{mdframed}

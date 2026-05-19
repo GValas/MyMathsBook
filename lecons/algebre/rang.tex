@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/algebre/rang.tex — Théorème du rang
 %==============================================================
 
@@ -10,7 +10,7 @@
 \secnum{navyblue}{1}{Énoncé}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème du rang (théorème fondamental de l'algèbre linéaire).}\enspace
+  \textbf{Théorème du rang (théorème fondamental de l'algèbre linéaire).}\enspace%
   \index{théorème du rang}\index{noyau}\index{image}
   \textit{Soit $f : E \to F$ une application linéaire, avec $E$ de dimension
   finie $n$. Alors $\mathrm{Im}(f)$ est de dimension finie et}
@@ -28,7 +28,7 @@ $\dim(\ker f)$ est la \emph{nullité}\index{nullité} de $f$ ;
 $\dim(\mathrm{Im}\, f) = \mathrm{rg}(f)$ est le \emph{rang}\index{rang} de $f$.
 Le théorème affirme que nullité + rang = dimension de l'espace de départ.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — DÉMONSTRATION
@@ -57,8 +57,8 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
 
   \smallskip
   \textit{Famille libre.}
-  Supposons $\sum_{j=p+1}^n \mu_j f(e_j) = 0$, i.e.\ $f\!\left(\sum_{j=p+1}^n \mu_j e_j\right) = 0$.
-  Alors $\sum_{j=p+1}^n \mu_j e_j \in \ker f = \mathrm{Vect}(e_1,\ldots,e_p)$, donc
+  Supposons $\sum_{j=p+1}^n \mu_j f(e_j) = 0$.
+  Alors $\sum_{j=p+1}^n \mu_j e_j \in \ker f$, donc
   \[
     \sum_{j=p+1}^n \mu_j e_j = \sum_{i=1}^p \lambda_i e_i
     \quad\Longrightarrow\quad
@@ -72,7 +72,7 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
   $\dim(\mathrm{Im}\,f) = n - p$, et $p + (n-p) = n$. \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — COROLLAIRES FONDAMENTAUX
@@ -109,7 +109,7 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
   \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 4 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
@@ -118,21 +118,21 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
 
 \noindent{\bfseries\color{navyblue} Applications.}
 
-\begin{mdframed}[style=exbar]
-  \textbf{1. Calcul du rang d'une matrice.}\enspace
+\begin{mdframed}[style=exbar, nobreak=true]
+  \textbf{1. Calcul du rang d'une matrice.}\enspace%
   Pour $A = \begin{pmatrix}1&2&3\\2&4&6\\1&1&1\end{pmatrix}$ :
   $L_2 \leftarrow L_2-2L_1$ et $L_3\leftarrow L_3-L_1$ donnent
   $\begin{pmatrix}1&2&3\\0&0&0\\0&-1&-2\end{pmatrix}$, donc $\mathrm{rg}(A)=2$
   et $\dim\ker A = 3 - 2 = 1$.
 
   \smallskip\noindent
-  \textbf{2. Nombre de solutions d'un système.}\enspace
+  \textbf{2. Nombre de solutions d'un système.}\enspace%
   Un système de $m$ équations à $n$ inconnues avec $\mathrm{rg}(A)=r$ :
   si compatible, l'espace des solutions est de dimension $n-r$
   (infiniment de solutions si $r < n$, unique si $r = n$).
 
   \smallskip\noindent
-  \textbf{3. Projecteurs.}\enspace
+  \textbf{3. Projecteurs.}\enspace%
   Si $p : E \to E$ est un projecteur ($p^2 = p$), alors $E = \ker p \oplus \mathrm{Im}\,p$
   et le théorème du rang donne $\dim E = \dim\ker p + \dim\mathrm{Im}\,p$.
 \end{mdframed}
@@ -141,18 +141,18 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
 \noindent{\bfseries\color{counterred} Pièges.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{Le théorème porte sur $\dim E$, pas $\dim F$.}\enspace
+  \textbf{Le théorème porte sur $\dim E$, pas $\dim F$.}\enspace%
   Pour $f : \mathbb{R}^3 \to \mathbb{R}^5$, le rang est au plus $3$ (pas $5$),
   et $f$ ne peut pas être surjective.
 
   \smallskip\noindent
-  \textbf{En dimension infinie, le théorème est faux.}\enspace
+  \textbf{En dimension infinie, le théorème est faux.}\enspace%
   Soit $f : \ell^2 \to \ell^2$, $(x_1,x_2,\ldots) \mapsto (0,x_1,x_2,\ldots)$
   (shift). $f$ est injective ($\ker f = \{0\}$) mais pas surjective
   ($(1,0,0,\ldots)\notin\mathrm{Im}\,f$). Nullité $+$ rang $= 0 + \infty \neq \infty$.
 
   \smallskip\noindent
-  \textbf{$\mathrm{rg}(A) = \mathrm{rg}(A^T)$, mais $\ker A \neq \ker A^T$.}\enspace
+  \textbf{$\mathrm{rg}(A) = \mathrm{rg}(A^T)$, mais $\ker A \neq \ker A^T$.}\enspace%
   Le rang-ligne et le rang-colonne coïncident, mais les noyaux de $A$ et $A^T$
   vivent dans des espaces différents ($\mathbb{K}^n$ et $\mathbb{K}^m$).
 \end{mdframed}

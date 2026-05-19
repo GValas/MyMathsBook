@@ -1,0 +1,303 @@
+﻿%==============================================================
+%  lecons/algebre/produit_scalaire.tex
+%  Produit scalaire — espaces euclidiens
+%==============================================================
+
+\lecontitle{Produit scalaire}{Algèbre linéaire — Espaces euclidiens}
+
+%=============================================================
+%  § 1 — DÉFINITION ET EXEMPLES
+%=============================================================
+\secnum{navyblue}{1}{Définition et exemples}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{produit scalaire}\index{espace euclidien}
+  Soit $E$ un $\mathbb{R}$-espace vectoriel. Un \emph{produit scalaire} sur $E$
+  est une application $\langle\cdot,\cdot\rangle : E \times E \to \mathbb{R}$
+  qui est :
+  \begin{enumerate}
+    \item \textbf{Bilinéaire :} linéaire en chaque variable ;
+    \item \textbf{Symétrique :} $\langle x,y\rangle = \langle y,x\rangle$ ;
+    \item \textbf{Définie positive :} $\langle x,x\rangle \geq 0$ et
+          $\langle x,x\rangle = 0 \Rightarrow x = 0$.
+  \end{enumerate}
+  Un $\mathbb{R}$-espace vectoriel de dimension finie muni d'un produit
+  scalaire est appelé \emph{espace euclidien}.
+\end{tcolorbox}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Produit scalaire canonique sur $\mathbb{R}^n$.}\enspace%
+  \index{produit scalaire!canonique}
+  $\langle x,y\rangle = \displaystyle\sum_{i=1}^n x_i y_i = x^T y$.
+  C'est le produit scalaire usuel de la géométrie.
+
+  \smallskip\noindent
+  \textbf{2. Produit scalaire $L^2$ sur $\mathcal{C}([a,b])$.}\enspace%
+  \index{produit scalaire!intégral}
+  $\langle f,g\rangle = \displaystyle\int_a^b f(t)\,g(t)\,\mathrm{d}t$.
+  La définition positive résulte du fait qu'une fonction continue positive
+  d'intégrale nulle est identiquement nulle.
+
+  \smallskip\noindent
+  \textbf{3. Produit scalaire sur $\mathcal{M}_n(\mathbb{R})$.}\enspace%
+  $\langle A,B\rangle = \mathrm{tr}(A^T B)$.
+  La bilinéarité et la symétrie sont immédiates ; la définition positive
+  vient de $\mathrm{tr}(A^T A) = \sum_{i,j} a_{ij}^2$.
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — INÉGALITÉ DE CAUCHY-SCHWARZ
+%=============================================================
+\secnum{navyblue}{2}{Inégalité de Cauchy-Schwarz}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (Cauchy-Schwarz).}\enspace%
+  \index{inégalité de Cauchy-Schwarz}
+  Pour tous $x, y \in E$ :
+  \[
+    \langle x, y\rangle^2 \leq \langle x,x\rangle\,\langle y,y\rangle.
+  \]
+  L'égalité a lieu si et seulement si $x$ et $y$ sont colinéaires.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Si $x = 0$, les deux membres sont nuls. Supposons $x \neq 0$.
+  Pour tout $\lambda \in \mathbb{R}$, la définition positive donne :
+  \[
+    0 \leq \langle x - \lambda y,\, x - \lambda y\rangle
+    = \langle x,x\rangle - 2\lambda\langle x,y\rangle + \lambda^2\langle y,y\rangle.
+  \]
+  C'est un trinôme en $\lambda$ positif ou nul, donc son discriminant est $\leq 0$ :
+  \[
+    4\langle x,y\rangle^2 - 4\langle x,x\rangle\langle y,y\rangle \leq 0.
+  \]
+  L'égalité a lieu si et seulement si le trinôme a une racine, i.e.\ si
+  $\langle x - \lambda_0 y, x - \lambda_0 y\rangle = 0$ pour un $\lambda_0$,
+  soit $x = \lambda_0 y$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Conséquences directes}
+\begin{mdframed}[style=exbar]
+  \textbf{Sur $\mathbb{R}^n$ :}\enspace%
+  $\left(\sum x_i y_i\right)^2 \leq \left(\sum x_i^2\right)\left(\sum y_i^2\right)$.
+
+  \smallskip\noindent
+  \textbf{Sur $\mathcal{C}([a,b])$ :}\enspace%
+  $\left(\int_a^b fg\right)^2 \leq \left(\int_a^b f^2\right)\left(\int_a^b g^2\right)$.
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — NORME EUCLIDIENNE
+%=============================================================
+\secnum{navyblue}{3}{Norme euclidienne et identités}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace%
+  L'application $\|\cdot\| : E \to \mathbb{R}_+$,\enspace%
+  $\|x\| = \sqrt{\langle x,x\rangle}$, est une \emph{norme}\index{norme euclidienne}
+  sur $E$, appelée \emph{norme euclidienne}. En particulier :
+  \[
+    \|x + y\| \leq \|x\| + \|y\| \quad\textit{(inégalité triangulaire)}.
+  \]
+
+  \medskip
+  \textbf{Identités remarquables.}
+  \begin{enumerate}
+    \item \textit{Parallélogramme :}
+    $\|x+y\|^2 + \|x-y\|^2 = 2(\|x\|^2 + \|y\|^2)$.
+    \item \textit{Polarisation :}
+    $\langle x,y\rangle = \dfrac{1}{4}\bigl(\|x+y\|^2 - \|x-y\|^2\bigr)$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Inégalité triangulaire.}
+  \begin{align*}
+    \|x+y\|^2 &= \langle x+y,x+y\rangle = \|x\|^2 + 2\langle x,y\rangle + \|y\|^2 \\
+              &\leq \|x\|^2 + 2\|x\|\,\|y\| + \|y\|^2 = (\|x\|+\|y\|)^2,
+  \end{align*}
+  où on a utilisé Cauchy-Schwarz : $|\langle x,y\rangle| \leq \|x\|\,\|y\|$.
+
+  \textit{Identité du parallélogramme.}
+  $\|x+y\|^2 + \|x-y\|^2 = 2\|x\|^2 + 2\|y\|^2$ par développement direct.
+
+  \textit{Polarisation.} Découle immédiatement de l'identité du parallélogramme.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Réciproque — caractérisation des normes euclidiennes}
+Une norme vérifie l'identité du parallélogramme si et seulement si elle provient
+d'un produit scalaire (via la formule de polarisation). La norme $\|\cdot\|_1$
+sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
+
+\decsep{}
+
+%=============================================================
+%  § 4 — ORTHOGONALITÉ
+%=============================================================
+\secnum{navyblue}{4}{Orthogonalité et supplémentaire orthogonal}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{orthogonalité}\index{complement orthogonal@complément orthogonal}
+  On dit que $x$ et $y$ sont \emph{orthogonaux}, noté $x \perp y$, si
+  $\langle x,y\rangle = 0$.
+  Le \emph{complément orthogonal} d'une partie $A \subset E$ est
+  \[
+    A^\perp = \bigl\{x \in E \mid \forall\,a \in A,\;\langle x,a\rangle = 0\bigr\}.
+  \]
+  C'est toujours un sous-espace vectoriel de $E$.
+
+  \medskip
+  \textbf{Théorème.}\enspace%
+  Si $F$ est un sous-espace de l'espace euclidien $E$, alors
+  \[
+    E = F \oplus F^\perp, \qquad \dim F^\perp = \dim E - \dim F.
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Soit $(e_1,\ldots,e_p)$ une base orthonormale de $F$ (obtenue par Gram-Schmidt,
+  voir § 5). Pour $x \in E$, posons $p_F(x) = \sum_{i=1}^p \langle x, e_i\rangle\, e_i$.
+  Alors $p_F(x) \in F$ et $x - p_F(x) \in F^\perp$ (vérification : pour tout $j$,
+  $\langle x - p_F(x), e_j\rangle = \langle x,e_j\rangle - \langle x,e_j\rangle = 0$).
+  Donc $x = p_F(x) + (x-p_F(x)) \in F + F^\perp$.
+  Si $y \in F \cap F^\perp$, alors $\langle y,y\rangle = 0$ d'où $y = 0$.
+  La somme est donc directe. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Projection orthogonale}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition/Théorème.}\enspace%
+  \index{projection orthogonale}
+  L'endomorphisme $p_F : E \to E$ défini par la décomposition
+  $x = p_F(x) + (x - p_F(x)) \in F \oplus F^\perp$
+  est appelé \emph{projection orthogonale} sur $F$.
+  C'est le point de $F$ le plus proche de $x$ :
+  \[
+    \|x - p_F(x)\| = \min_{y \in F} \|x - y\|.
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Pour $y \in F$ : $\|x-y\|^2 = \|x - p_F(x) + p_F(x) - y\|^2$.
+  Or $x - p_F(x) \in F^\perp$ et $p_F(x) - y \in F$, donc ils sont orthogonaux :
+  \[
+    \|x-y\|^2 = \|x-p_F(x)\|^2 + \|p_F(x)-y\|^2 \geq \|x-p_F(x)\|^2,
+  \]
+  avec égalité si et seulement si $y = p_F(x)$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 5 — GRAM-SCHMIDT ET BASES ORTHONORMÉES
+%=============================================================
+\secnum{navyblue}{5}{Orthonormalisation de Gram-Schmidt}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (Gram-Schmidt).}\enspace%
+  \index{Gram-Schmidt}\index{base orthonormale}
+  Soit $(x_1, \ldots, x_n)$ une base d'un espace euclidien $E$.
+  On construit par récurrence une base orthonormale $(e_1,\ldots,e_n)$ telle que
+  $\mathrm{Vect}(e_1,\ldots,e_k) = \mathrm{Vect}(x_1,\ldots,x_k)$ pour tout $k$ :
+  \[
+    e_1 = \frac{x_1}{\|x_1\|}, \qquad
+    \tilde{e}_k = x_k - \sum_{i=1}^{k-1}\langle x_k, e_i\rangle\,e_i, \qquad
+    e_k = \frac{\tilde{e}_k}{\|\tilde{e}_k\|}.
+  \]
+  Tout espace euclidien admet une base orthonormale.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Par récurrence. Au rang $k$, $\tilde{e}_k$ est $x_k$ privé de sa projection
+  sur $\mathrm{Vect}(e_1,\ldots,e_{k-1})$. Donc $\tilde{e}_k \perp e_i$ pour
+  $i < k$ (par construction), et $\tilde{e}_k \neq 0$ car $x_k \notin
+  \mathrm{Vect}(x_1,\ldots,x_{k-1})$ (famille libre). En normalisant, $e_k$
+  complète la famille orthonormale. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Identité de Parseval}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (Parseval).}\enspace%
+  \index{identité de Parseval}
+  Soit $(e_1,\ldots,e_n)$ une base orthonormale de $E$. Pour tous $x, y \in E$ :
+  \[
+    \langle x,y\rangle = \sum_{i=1}^n \langle x,e_i\rangle\,\langle y,e_i\rangle,
+    \qquad
+    \|x\|^2 = \sum_{i=1}^n \langle x, e_i\rangle^2.
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  On écrit $x = \sum_i \langle x,e_i\rangle\,e_i$ et
+  $y = \sum_j \langle y,e_j\rangle\,e_j$ dans la base orthonormale.
+  La bilinéarité et $\langle e_i,e_j\rangle = \delta_{ij}$ donnent le résultat.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 6 — PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{6}{Pièges et exercices}
+
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Norme sans produit scalaire.}\enspace%
+  Toute norme euclidienne vérifie l'identité du parallélogramme, mais
+  $\|\cdot\|_1$ et $\|\cdot\|_\infty$ sur $\mathbb{R}^2$ ne la vérifient pas :
+  elles ne proviennent d'aucun produit scalaire.
+
+  \smallskip\noindent
+  \textbf{$F^\perp$ dépend du produit scalaire.}\enspace%
+  Si on change de produit scalaire sur $E$, le complément orthogonal d'un
+  sous-espace $F$ change. L'orthogonalité n'est pas une notion purement vectorielle.
+
+  \smallskip\noindent
+  \textbf{$E = F \oplus F^\perp$ en dimension infinie.}\enspace%
+  Ce résultat est faux en général dans un espace de dimension infinie non complet.
+  Il tient dans les espaces de Hilbert (complets) mais pas dans tous les
+  espaces préhilbertiens.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $\langle f,g\rangle = \int_0^1 f(t)\,g(t)\,\mathrm{d}t$
+          est un produit scalaire sur $\mathcal{C}([0,1],\mathbb{R})$.
+          Appliquer Cauchy-Schwarz pour montrer
+          $\left(\int_0^1 f\right)^2 \leq \int_0^1 f^2$.
+
+    \item Orthonormaliser la famille $(1, X, X^2)$ dans $\mathbb{R}[X]_{\leq 2}$
+          muni de $\langle P,Q\rangle = \int_{-1}^1 PQ$. Reconnaître les
+          polynômes obtenus (polynômes de Legendre\index{polynômes de Legendre}).
+
+    \item Soit $p$ la projection orthogonale sur $F = \mathrm{Vect}(e_1, e_2)$
+          dans $\mathbb{R}^4$ muni du produit scalaire canonique, avec
+          $e_1 = \frac{1}{2}(1,1,1,1)$, $e_2 = \frac{1}{2}(1,1,-1,-1)$.
+          Calculer $p(1,0,0,0)$ et $\mathrm{dist}((1,0,0,0), F)$.
+
+    \item Montrer que si $A$ est symétrique définie positive (i.e.\
+          $A^T = A$ et $x^TAx > 0$ pour $x\neq 0$), alors
+          $\langle x,y\rangle_A = x^T A y$ est un produit scalaire sur $\mathbb{R}^n$.
+
+    \item (Inégalité de Bessel) Soit $(e_1,\ldots,e_p)$ une famille
+          orthonormale dans $E$ (pas nécessairement une base).
+          Montrer que $\sum_{i=1}^p \langle x,e_i\rangle^2 \leq \|x\|^2$,
+          avec égalité si et seulement si $x \in \mathrm{Vect}(e_1,\ldots,e_p)$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{A.-L.\ Cauchy (1821) — H.\ A.\ Schwarz (1885) — J.\ P.\ Gram, E.\ Schmidt (1907)}

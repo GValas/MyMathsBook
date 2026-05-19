@@ -1,4 +1,4 @@
-%==============================================================
+﻿%==============================================================
 %  lecons/analyse/exponentielle_reelle.tex
 %  Exponentielle réelle — définition par série entière
 %==============================================================
@@ -11,7 +11,7 @@
 \secnum{navyblue}{1}{Définition par série entière}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Définition.}\enspace
+  \textbf{Définition.}\enspace%
   \index{exponentielle réelle}
   On appelle \emph{exponentielle réelle} la fonction
   \[
@@ -21,7 +21,7 @@
   \]
 
   \medskip
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   \textit{Cette série converge absolument pour tout $x \in \mathbb{R}$,
   uniformément sur tout segment. La fonction $\exp$ est de classe
   $\mathcal{C}^\infty$ sur $\mathbb{R}$.}
@@ -46,7 +46,7 @@
 \]
 Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transcendant.
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 2 — PROPRIÉTÉS FONDAMENTALES
@@ -54,7 +54,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 \secnum{navyblue}{2}{Propriétés fondamentales}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   \begin{enumerate}
     \item \textbf{Équation différentielle :} $\exp' = \exp$ et $\exp(0) = 1$.
     \item \textbf{Équation fonctionnelle :} pour tous $a, b \in \mathbb{R}$,
@@ -109,7 +109,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 \rubriq{Unicité}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème (caractérisation).}\enspace
+  \textbf{Théorème (caractérisation).}\enspace%
   $\exp$ est l'unique fonction $f : \mathbb{R} \to \mathbb{R}$ de classe $\mathcal{C}^1$
   vérifiant $f' = f$ et $f(0) = 1$.
 \end{tcolorbox}
@@ -121,7 +121,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
   Ainsi $f(x) = \exp(x)$ pour tout $x$. \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 3 — INÉGALITÉS ET DÉVELOPPEMENTS
@@ -129,7 +129,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 \secnum{navyblue}{3}{Inégalités fondamentales et développements limités}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   Pour tout $x \in \mathbb{R}$ et tout $n \geq 0$ :
   \begin{enumerate}
     \item \textbf{Inégalité de convexité :} $\exp(x) \geq 1 + x$.
@@ -154,11 +154,11 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
   (les dérivées $\exp^{(k)}(0) = \exp(0) = 1$).
 
   \textit{(3).} Formule de Taylor avec reste de Lagrange : $\exp^{(n+1)} = \exp$,
-  d'où le reste $\dfrac{\exp(\xi)}{(n+1)!}x^{n+1}$ pour un $\xi$ entre $0$ et $x$.
+  d'où le reste $\tfrac{\exp(\xi)}{(n+1)!}x^{n+1}$ pour un $\xi$ entre $0$ et $x$.
   \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 4 — CROISSANCES COMPARÉES
@@ -166,7 +166,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 \secnum{navyblue}{4}{Croissances comparées}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème.}\enspace
+  \textbf{Théorème.}\enspace%
   Pour tout $\alpha \in \mathbb{R}$ et tout $n \in \mathbb{N}$ :
   \[
     \lim_{x\to+\infty} \frac{x^\alpha}{\exp(x)} = 0, \qquad
@@ -189,7 +189,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
   \hfill$\blacksquare$
 \end{mdframed}
 
-\decsep
+\decsep{}
 
 %=============================================================
 %  § 5 — APPLICATIONS, PIÈGES ET EXERCICES
@@ -199,19 +199,19 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 \noindent{\bfseries\color{navyblue} Applications.}
 
 \begin{mdframed}[style=exbar]
-  \textbf{1. Puissances réelles.}\enspace
+  \textbf{1. Puissances réelles.}\enspace%
   Pour $a > 0$ et $\alpha \in \mathbb{R}$, on pose $a^\alpha = \exp(\alpha\ln a)$
   (la leçon sur $\ln$ construit le logarithme naturel comme réciproque de $\exp$).
   On a ainsi $e^x = \exp(x)$ pour tout $x$, cohérent avec la notation.
 
   \smallskip\noindent
-  \textbf{2. Modèle de croissance/décroissance.}\enspace
+  \textbf{2. Modèle de croissance/décroissance.}\enspace%
   La solution de $y' = \lambda y$, $y(0) = y_0$ est $y(t) = y_0 \exp(\lambda t)$.
   Si $\lambda < 0$, $y(t)\to 0$ (décroissance exponentielle) ;
   si $\lambda > 0$, $y(t)\to +\infty$ (explosion exponentielle).
 
   \smallskip\noindent
-  \textbf{3. Convexité et inégalités.}\enspace
+  \textbf{3. Convexité et inégalités.}\enspace%
   $\exp$ est convexe (car $\exp'' = \exp > 0$). L'inégalité de Jensen donne,
   pour $x_1, \ldots, x_n \in \mathbb{R}$ :
   \[
@@ -224,17 +224,17 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 \noindent{\bfseries\color{counterred} Pièges.}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{$\exp(a+b) \neq \exp(a)+\exp(b)$.}\enspace
+  \textbf{$\exp(a+b) \neq \exp(a)+\exp(b)$.}\enspace%
   L'équation fonctionnelle concerne le \emph{produit}, pas la somme :
   $\exp(1+1) = e^2 \approx 7{,}39$, mais $\exp(1)+\exp(1) = 2e \approx 5{,}44$.
 
   \smallskip\noindent
-  \textbf{$\exp$ ne s'annule jamais.}\enspace
+  \textbf{$\exp$ ne s'annule jamais.}\enspace%
   $\exp(x) = 0$ n'a pas de solution réelle. Le pôle apparent en $-\infty$
   est une limite, non une valeur.
 
   \smallskip\noindent
-  \textbf{L'inégalité $\exp(x)\geq 1+x$ peut être améliorée.}\enspace
+  \textbf{L'inégalité $\exp(x)\geq 1+x$ peut être améliorée.}\enspace%
   On a aussi $\exp(x) \geq 1+x+x^2/2$ pour $x \geq 0$, mais
   \emph{pas} pour $x$ arbitraire (les termes d'ordre supérieur alternent
   de signe pour $x < 0$). Pour $x < 0$, la troncature à l'ordre impair
