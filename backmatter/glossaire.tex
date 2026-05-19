@@ -91,3 +91,132 @@
   name={espace euclidien},
   description={Espace vectoriel réel de dimension finie muni d'un produit scalaire}
 }
+
+% --- Structures algébriques ---
+
+\newglossaryentry{groupe}{
+  name={groupe},
+  description={Ensemble muni d'une loi associative, d'un neutre et d'un symétrique pour tout élément}
+}
+
+\newglossaryentry{groupe-abelien}{
+  name={groupe abélien},
+  description={Groupe dont la loi est commutative ; noté additivement $(G,+)$}
+}
+
+\newglossaryentry{sous-groupe-distingue}{
+  name={sous-groupe distingué},
+  description={Sous-groupe $H \trianglelefteq G$ stable par conjugaison : $gHg^{-1}=H$ pour tout $g\in G$}
+}
+
+\newglossaryentry{groupe-quotient}{
+  name={groupe quotient},
+  description={Groupe $G/H$ des classes d'un sous-groupe distingué $H$, muni de $(aH)(bH)=abH$}
+}
+
+\newglossaryentry{ordre-element}{
+  name={ordre d'un élément},
+  description={Plus petit entier $k\geq 1$ tel que $g^k=e$ dans un groupe ; divise l'ordre du groupe (Lagrange)}
+}
+
+\newglossaryentry{groupe-cyclique}{
+  name={groupe cyclique},
+  description={Groupe engendré par un seul élément ; isomorphe à $\mathbb{Z}$ ou $\mathbb{Z}/n\mathbb{Z}$}
+}
+
+\newglossaryentry{ideal}{
+  name={idéal},
+  description={Sous-groupe additif $I$ d'un anneau $A$ stable par multiplication externe : $AI\subseteq I$}
+}
+
+\newglossaryentry{ideal-premier}{
+  name={idéal premier},
+  description={Idéal propre $\mathfrak{p}$ tel que $ab\in\mathfrak{p}\Rightarrow a\in\mathfrak{p}$ ou $b\in\mathfrak{p}$ ; équivalent à $A/\mathfrak{p}$ intègre}
+}
+
+\newglossaryentry{ideal-maximal}{
+  name={idéal maximal},
+  description={Idéal propre non contenu dans aucun idéal propre plus grand ; équivalent à $A/\mathfrak{m}$ corps}
+}
+
+\newglossaryentry{extension-corps}{
+  name={extension de corps},
+  description={Inclusion $K\subseteq L$ de corps ; le degré $[L:K]=\dim_K L$ mesure la taille de l'extension}
+}
+
+\newglossaryentry{polynome-minimal-ext}{
+  name={polynôme minimal (extension)},
+  description={Polynôme unitaire irréductible de plus petit degré annulant un élément algébrique $\alpha$ sur $K$}
+}
+
+\newglossaryentry{corps-finis}{
+  name={corps fini},
+  description={Corps à $q=p^n$ éléments ($p$ premier), unique à isomorphisme près, noté $\mathbb{F}_q$ ; son groupe multiplicatif est cyclique}
+}
+
+% --- Construction des nombres ---
+
+\newglossaryentry{axiomes-peano}{
+  name={axiomes de Peano},
+  description={Système axiomatique caractérisant $\mathbb{N}$ : élément $0$, successeur injectif ne touchant pas $0$, et principe de récurrence}
+}
+
+\newglossaryentry{successeur}{
+  name={successeur},
+  description={Application $S:\mathbb{N}\to\mathbb{N}$ définie par $S(n)=n+1$, fondamentale dans les axiomes de Peano}
+}
+
+\newglossaryentry{bonne-fondation}{
+  name={bonne fondation},
+  description={Propriété de $\mathbb{N}$ : tout sous-ensemble non vide admet un plus petit élément}
+}
+
+\newglossaryentry{von-neumann}{
+  name={construction de von Neumann},
+  description={Modèle ensembliste de $\mathbb{N}$ dans ZFC : $0=\emptyset$, $S(n)=n\cup\{n\}$}
+}
+
+\newglossaryentry{entiers-relatifs}{
+  name={entiers relatifs},
+  description={Ensemble $\mathbb{Z}=(\mathbb{N}\times\mathbb{N})/{\sim}$ où $(m,n)\sim(m',n')\Leftrightarrow m+n'=m'+n$, représentant la différence $m-n$}
+}
+
+\newglossaryentry{anneau-initial}{
+  name={anneau initial},
+  description={$\mathbb{Z}$ est l'anneau initial : il existe un unique homomorphisme d'anneaux $\mathbb{Z}\to A$ pour tout anneau $A$}
+}
+
+\newglossaryentry{coupure-dedekind}{
+  name={coupure de Dedekind},
+  description={Partition $(\mathcal{L},\mathcal{U})$ de $\mathbb{Q}$ en un segment initial sans maximum et son complémentaire, modélisant un réel}
+}
+
+\newglossaryentry{suite-cauchy}{
+  name={suite de Cauchy},
+  description={Suite $(a_n)$ dans $\mathbb{Q}$ (ou $\mathbb{R}$) telle que $\forall\varepsilon>0,\;\exists N,\;\forall n,m\geq N,\;|a_n-a_m|<\varepsilon$}
+}
+
+\newglossaryentry{completude}{
+  name={complétude},
+  description={Propriété d'un espace métrique dans lequel toute suite de Cauchy converge ; $\mathbb{R}$ est la complétion de $\mathbb{Q}$}
+}
+
+\newglossaryentry{corps-alg-clos}{
+  name={corps algébriquement clos},
+  description={Corps dans lequel tout polynôme non constant admet une racine ; $\mathbb{C}$ est la clôture algébrique de $\mathbb{R}$}
+}
+
+\newglossaryentry{quaternions}{
+  name={quaternions},
+  description={Algèbre $\mathbb{H}=\{a+bi+cj+dk\mid a,b,c,d\in\mathbb{R}\}$ de dimension 4 sur $\mathbb{R}$, corps gauche non commutatif}
+}
+
+\newglossaryentry{corps-gauche}{
+  name={corps gauche},
+  description={Anneau non nul dans lequel tout élément non nul est inversible, sans supposer la commutativité du produit ; exemple : $\mathbb{H}$}
+}
+
+\newglossaryentry{ZFC}{
+  name={ZFC},
+  description={Théorie des ensembles de Zermelo-Fraenkel avec axiome du choix, cadre standard de la mathématique moderne}
+}

@@ -1,0 +1,155 @@
+%==============================================================
+%  lecons/ensembles/construction_Q.tex — Construction de Q
+%==============================================================
+
+\lecontitle{Construction de $\mathbb{Q}$}{Théorie des ensembles — Corps des fractions de $\mathbb{Z}$}
+
+%=============================================================
+%  § 1 — MOTIVATION
+%=============================================================
+\secnum{navyblue}{1}{Motivation — inverser la multiplication}
+
+\rubriq{Pourquoi étendre $\mathbb{Z}$ ?}
+Dans $\mathbb{Z}$, l'équation $n \cdot x = m$ n'a de solution entière que
+si $n \mid m$. On veut le plus petit corps contenant $\mathbb{Z}$ — on force
+la division par tout entier non nul. Ce corps est exactement
+$\mathbb{Q} = \mathrm{Frac}(\mathbb{Z})$.
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{nombres rationnels!construction}\index{corps des fractions}
+  Sur $S = \mathbb{Z} \times \mathbb{Z}^*$ (avec $\mathbb{Z}^* = \mathbb{Z}\setminus\{0\}$),
+  on pose
+  \[
+    (a,b) \sim (c,d) \;\iff\; ad = bc.
+  \]
+  $\mathbb{Q} = S/{\sim}$, muni des lois $\tfrac{a}{b}+\tfrac{c}{d}=\tfrac{ad+bc}{bd}$
+  et $\tfrac{a}{b}\cdot\tfrac{c}{d}=\tfrac{ac}{bd}$, est un corps.
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — STRUCTURE ALGÉBRIQUE ET ORDRE
+%=============================================================
+\secnum{navyblue}{2}{Structure de $\mathbb{Q}$}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Propriétés de $\mathbb{Q}$.}\enspace%
+  \index{nombres rationnels!propriétés}
+  \begin{enumerate}
+    \item $\mathbb{Q}$ est un \emph{corps commutatif} de caractéristique $0$.
+    \item L'ordre $\tfrac{a}{b} \leq \tfrac{c}{d}$ (avec $b,d > 0$)
+          $\Leftrightarrow ad \leq bc$ fait de $\mathbb{Q}$ un \emph{corps ordonné}.
+    \item $\mathbb{Q}$ est \emph{dense} : entre deux rationnels distincts
+          il y en a toujours un autre.
+    \item $\mathbb{Q}$ est \emph{dénombrable} : il existe une bijection
+          $\mathbb{N} \to \mathbb{Q}$ (argument de Cantor — diagonale).
+  \end{enumerate}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Densité.} Si $p < q$ dans $\mathbb{Q}$, alors $p < \tfrac{p+q}{2} < q$. $\checkmark$
+
+  \textit{Dénombrabilité.} On liste les fractions irréductibles $a/b$ avec $b>0$
+  en parcourant les diagonales du tableau $\mathbb{Z} \times \mathbb{N}^*$.
+  L'image de cette liste est $\mathbb{Q}$, donc $|\mathbb{Q}| \leq |\mathbb{N}|$.
+  Comme $\mathbb{N} \hookrightarrow \mathbb{Q}$, on a $|\mathbb{Q}| = \aleph_0$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Représentation unique}
+Toute fraction $a/b \in \mathbb{Q}$ s'écrit de façon unique sous la forme
+$p/q$ avec $\pgcd(p,q) = 1$ et $q > 0$ (\emph{fraction irréductible}).
+
+\decsep{}
+
+%=============================================================
+%  § 3 — INCOMPLÉTUDE DE Q
+%=============================================================
+\secnum{navyblue}{3}{Incomplétude de $\mathbb{Q}$}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème ($\sqrt{2} \notin \mathbb{Q}$).}\enspace%
+  \index{irrationalité de $\sqrt{2}$}
+  Il n'existe pas de rationnel $x$ tel que $x^2 = 2$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Supposons $x = p/q$ irréductible vérifiant $p^2 = 2q^2$.
+  Alors $2 \mid p^2$, donc $2 \mid p$ (car $2$ est premier). Écrivons $p = 2k$.
+  Alors $4k^2 = 2q^2$, soit $2k^2 = q^2$, donc $2 \mid q$. Contradiction avec
+  $\pgcd(p,q) = 1$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Conséquence : $\mathbb{Q}$ n'est pas complet}
+La suite $(x_n)$ définie par $x_0 = 1$ et $x_{n+1} = \tfrac{x_n}{2} + \tfrac{1}{x_n}$
+est de Cauchy dans $\mathbb{Q}$ mais converge vers $\sqrt{2} \notin \mathbb{Q}$.
+Cette incomplétude motive la construction de $\mathbb{R}$.
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Corps premier.}\enspace%
+  \index{corps premier}
+  $\mathbb{Q}$ est le \emph{corps premier} de caractéristique $0$ : tout corps
+  de caractéristique $0$ contient un sous-corps isomorphe à $\mathbb{Q}$.
+
+  \smallskip\noindent
+  \textbf{2. Approximation.}\enspace%
+  Théorème de Dirichlet : pour tout $\alpha \in \mathbb{R}$ et $N \geq 1$,
+  il existe $p/q$ avec $1 \leq q \leq N$ et $|\alpha - p/q| \leq 1/(qN)$.
+  Ainsi $\mathbb{Q}$ est dense dans $\mathbb{R}$ pour la topologie usuelle.
+
+  \smallskip\noindent
+  \textbf{3. Topologie.}\enspace%
+  Muni de la valeur absolue usuelle, $\mathbb{Q}$ est un espace métrique.
+  Sa complétion est $\mathbb{R}$. Muni de la valeur absolue $p$-adique
+  $|\cdot|_p$, sa complétion est $\mathbb{Q}_p$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Dense $\neq$ complet.}\enspace%
+  $\mathbb{Q}$ est dense dans $\mathbb{R}$ (tout réel est limite de rationnels),
+  mais pas complet : des suites de Cauchy rationnelles peuvent converger vers
+  des irrationnels.
+
+  \smallskip\noindent
+  \textbf{Corps ordonné $\neq$ archimédien.}\enspace%
+  Tout corps ordonné n'est pas archimédien. Mais $\mathbb{Q}$ l'est :
+  pour tout $x \in \mathbb{Q}^+$, il existe $n \in \mathbb{N}$ tel que $n > x$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $\sqrt{3}$, $\sqrt{5}$ et $\sqrt{2}+\sqrt{3}$ sont irrationnels.
+
+    \item Montrer que $\mathbb{Q}$ est dénombrable en utilisant le théorème
+          de Schröder-Bernstein.
+
+    \item Montrer que tout corps ordonné archimédien se plonge dans $\mathbb{R}$.
+
+    \item Montrer que $\mathbb{Q}$ n'admet pas d'extension algébrique finie
+          de degré $1$ autre que lui-même (i.e.\ tout polynôme irréductible
+          sur $\mathbb{Q}$ de degré $\geq 2$ n'a pas de racine dans $\mathbb{Q}$).
+          Donner un exemple de degré $2$.
+
+    \item Soit $\alpha \in \mathbb{R}$ algébrique sur $\mathbb{Q}$.
+          Montrer que $\mathbb{Q}(\alpha)$ est dénombrable.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{Euclide (irrationnalité de $\sqrt{2}$, \textit{ca.} $-$300) — G.\ Cantor (dénombrabilité, 1874)}

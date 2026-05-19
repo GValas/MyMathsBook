@@ -1,0 +1,161 @@
+%==============================================================
+%  lecons/ensembles/construction_C.tex — Construction de C
+%==============================================================
+
+\lecontitle{Construction de $\mathbb{C}$}{Théorie des ensembles — Clôture algébrique de $\mathbb{R}$}
+
+%=============================================================
+%  § 1 — MOTIVATION
+%=============================================================
+\secnum{navyblue}{1}{Motivation — fermer algébriquement $\mathbb{R}$}
+
+\rubriq{Le problème}
+Dans $\mathbb{R}$, le polynôme $X^2 + 1$ n'a pas de racine. On veut étendre
+$\mathbb{R}$ en un corps algébriquement clos, c'est-à-dire dans lequel
+tout polynôme non constant a au moins une racine.
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Construction algébrique.}\enspace%
+  \index{nombres complexes!construction}\index{corps algébriquement clos}
+  On pose
+  \[
+    \mathbb{C} = \mathbb{R}[X]/(X^2+1) = \mathbb{R} \times \mathbb{R},
+  \]
+  avec les lois :
+  \begin{align*}
+    (a,b) + (c,d) &= (a+c,\; b+d), \\
+    (a,b) \times (c,d) &= (ac-bd,\; ad+bc).
+  \end{align*}
+  On note $i = (0,1)$, de sorte que $i^2 = (-1, 0) \equiv -1$.
+  L'injection $\mathbb{R} \hookrightarrow \mathbb{C},\; a \mapsto (a,0)$,
+  est un homomorphisme de corps.
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — STRUCTURE ALGÉBRIQUE
+%=============================================================
+\secnum{navyblue}{2}{$\mathbb{C}$ est un corps}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Corps.} Les axiomes de groupe abélien pour $+$ sont immédiats.
+  Pour l'inverse multiplicatif de $(a,b) \neq (0,0)$ :
+  \[
+    (a,b)^{-1} = \left(\frac{a}{a^2+b^2},\; \frac{-b}{a^2+b^2}\right).
+  \]
+  On vérifie $(a,b)\cdot(a,-b) = (a^2+b^2, 0) \neq (0,0)$ car $a^2+b^2 > 0$.
+
+  \textit{Dimension.} $\mathbb{C}$ est un $\mathbb{R}$-espace vectoriel de dimension $2$,
+  de base $(1, i)$. Tout $z \in \mathbb{C}$ s'écrit $z = a + ib$ avec $a,b\in\mathbb{R}$. \hfill$\blacksquare$
+\end{mdframed}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Propriétés fondamentales.}\enspace%
+  \index{nombres complexes!module}\index{nombres complexes!conjugué}
+  Pour $z = a+ib$, on définit :
+  \[
+    \bar{z} = a - ib \quad \text{(conjugué)}, \qquad
+    |z| = \sqrt{a^2+b^2} \quad \text{(module)}.
+  \]
+  On a $z \bar{z} = |z|^2$, $|zw| = |z||w|$, et $|z+w| \leq |z|+|w|$
+  (inégalité triangulaire).
+  La forme polaire est $z = |z|e^{i\theta}$ avec $\theta = \arg z$.
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — THÉORÈME FONDAMENTAL DE L'ALGÈBRE
+%=============================================================
+\secnum{navyblue}{3}{Théorème fondamental de l'algèbre}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (d'Alembert–Gauss).}\enspace%
+  \index{théorème fondamental de l'algèbre}
+  $\mathbb{C}$ est \emph{algébriquement clos} : tout polynôme
+  $P \in \mathbb{C}[X]$ de degré $n \geq 1$ admet exactement $n$ racines dans
+  $\mathbb{C}$ (comptées avec multiplicités).
+
+  \medskip
+  En particulier, $\mathbb{C}$ est la \emph{clôture algébrique} de $\mathbb{R}$ :
+  toute extension algébrique de $\mathbb{C}$ est égale à $\mathbb{C}$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Esquisse (preuve topologique).}
+  Si $P$ n'a pas de racine, la fonction $z \mapsto P(z)/|P(z)|$
+  définit un élément non trivial de $\pi_1(\mathbb{S}^1) \cong \mathbb{Z}$.
+  Mais $P(z)/|P(z)| \sim z^n/|z|^n$ pour $|z| \to \infty$, ce qui produit
+  un enroulement d'indice $n$ autour de l'origine — contradiction si $P$
+  est sans racine et $n \geq 1$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Conséquence : classification des corps}
+Toute extension algébrique finie de $\mathbb{R}$ est soit $\mathbb{R}$ soit $\mathbb{C}$
+(extension de degré $2$). Il n'existe pas d'extension algébrique de $\mathbb{R}$
+de degré $3$ ou plus.
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Formule d'Euler.}\enspace%
+  \index{formule d'Euler}
+  $e^{i\theta} = \cos\theta + i\sin\theta$. En particulier,
+  $e^{i\pi} + 1 = 0$ (identité d'Euler).
+
+  \smallskip\noindent
+  \textbf{2. Racines $n$-ièmes de l'unité.}\enspace%
+  \index{racines de l'unité}
+  Les solutions de $z^n = 1$ sont $\omega_k = e^{2ik\pi/n}$ pour $k = 0, \ldots, n-1$.
+  Elles forment le groupe cyclique $\mu_n \cong \mathbb{Z}/n\mathbb{Z}$.
+
+  \smallskip\noindent
+  \textbf{3. Transformée de Fourier.}\enspace%
+  L'utilisation de $\mathbb{C}$ est fondamentale en analyse harmonique :
+  $\hat{f}(\xi) = \int_{\mathbb{R}} f(x) e^{-2\pi i x\xi}\,dx$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$\mathbb{C}$ n'est pas un corps ordonné.}\enspace%
+  Il n'existe aucun ordre total sur $\mathbb{C}$ compatible avec $+$ et $\times$.
+  En effet, $i^2 = -1 < 0$ dans tout corps ordonné, impossible.
+
+  \smallskip\noindent
+  \textbf{Pas de clôture algébrique canonique.}\enspace%
+  La clôture algébrique de $\mathbb{Q}$ (les nombres algébriques $\bar{\mathbb{Q}}$)
+  n'est pas $\mathbb{C}$ entier — c'est un sous-corps strict, mais l'isomorphisme
+  $\mathrm{Aut}(\mathbb{C}/\mathbb{Q})$ est immense et non canonique.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $\mathbb{R}[X]/(X^2+1)$ est bien un corps, et que
+          $(X^2+1)$ est un idéal maximal de $\mathbb{R}[X]$.
+
+    \item Trouver toutes les racines carrées de $3 + 4i$.
+
+    \item Montrer que tout automorphisme de corps de $\mathbb{C}$
+          fixant $\mathbb{R}$ est soit l'identité, soit la conjugaison.
+
+    \item Factoriser $X^4 + 4$ dans $\mathbb{R}[X]$, puis dans $\mathbb{C}[X]$.
+
+    \item (Théorème de Liouville) Montrer qu'une fonction entière bornée
+          est constante, et en déduire le théorème fondamental de l'algèbre.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{R.\ Descartes (1637) — C.\ F.\ Gauss (1799, thèse) — J.\ le Rond d'Alembert (1746)}

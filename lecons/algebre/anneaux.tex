@@ -1,0 +1,213 @@
+%==============================================================
+%  lecons/algebre/anneaux.tex — Anneaux
+%==============================================================
+
+\lecontitle{Anneaux}{Algèbre — Structure d'anneau et idéaux}
+
+%=============================================================
+%  § 1 — DÉFINITION ET EXEMPLES
+%=============================================================
+\secnum{navyblue}{1}{Définition et exemples}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{anneau}
+  Un \emph{anneau} est un triplet $(A, +, \times)$ tel que :
+  \begin{enumerate}
+    \item[\textbf{A1.}] $(A, +)$ est un groupe abélien (de neutre $0$).
+    \item[\textbf{A2.}] $\times$ est associative et admet un neutre $1$.
+    \item[\textbf{A3.}] $\times$ est distributive sur $+$ :
+          $a(b+c)=ab+ac$ et $(a+b)c=ac+bc$.
+  \end{enumerate}
+  L'anneau est \emph{commutatif} si $ab = ba$ pour tous $a, b$.
+  Il est \emph{intègre} s'il est commutatif, $1 \neq 0$, et sans diviseur de zéro :
+  $ab = 0 \Rightarrow a = 0$ ou $b = 0$.
+\end{tcolorbox}
+
+\rubriq{Exemples fondamentaux}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$.}\enspace%
+  Anneaux commutatifs ($\mathbb{Z}$ intègre mais pas corps, les autres sont des corps).
+
+  \smallskip\noindent
+  \textbf{2. Anneaux de polynômes $A[X]$.}\enspace%
+  \index{anneau de polynômes}
+  Si $A$ est un anneau commutatif, $A[X]$ l'est aussi.
+  Si $A$ est intègre, $A[X]$ l'est.
+
+  \smallskip\noindent
+  \textbf{3. $\mathbb{Z}/n\mathbb{Z}$.}\enspace%
+  Anneau commutatif d'ordre $n$. Intègre ssi $n$ est premier.
+
+  \smallskip\noindent
+  \textbf{4. $\mathcal{M}_n(\mathbb{K})$.}\enspace%
+  Anneau non commutatif pour $n \geq 2$. Ses seuls idéaux bilatères sont $\{0\}$ et
+  $\mathcal{M}_n(\mathbb{K})$ (anneau simple).
+
+  \smallskip\noindent
+  \textbf{5. Anneau produit.}\enspace%
+  Si $A$ et $B$ sont des anneaux, $A \times B$ avec les lois composante par composante
+  est un anneau (non intègre en général : $(1,0)(0,1)=(0,0)$).
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — IDÉAUX ET ANNEAUX QUOTIENTS
+%=============================================================
+\secnum{navyblue}{2}{Idéaux et anneaux quotients}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{idéal}
+  Une partie $I \subseteq A$ est un \emph{idéal} (bilatère) de $A$ si :
+  \begin{enumerate}
+    \item $(I, +)$ est un sous-groupe de $(A, +)$.
+    \item $\forall a \in A,\; \forall x \in I : ax \in I$ et $xa \in I$.
+  \end{enumerate}
+  Si $A$ est commutatif, ces deux conditions se confondent.
+  L'idéal \emph{engendré} par $a \in A$ est $(a) = aA = \{ra \mid r \in A\}$.
+  Un anneau est \emph{principal}\index{anneau principal} si tout idéal est engendré
+  par un seul élément.
+\end{tcolorbox}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Anneau quotient.}\enspace%
+  \index{anneau quotient}
+  Si $I$ est un idéal de $A$, alors $A/I$ (muni de $[a]+[b]=[a+b]$ et
+  $[a]\cdot[b]=[ab]$) est un anneau, et la projection $\pi : A \to A/I$
+  est un morphisme d'anneaux surjectif de noyau $I$.
+
+  \medskip
+  \textbf{Premier théorème d'isomorphisme.}\enspace%
+  \index{isomorphisme (premier théorème d', anneaux)}
+  Si $\varphi : A \to B$ est un morphisme d'anneaux, alors $\ker\varphi$
+  est un idéal de $A$ et
+  \[
+    A/\ker\varphi \;\cong\; \mathrm{Im}(\varphi).
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Bien-fondé de $\cdot$.}
+  Si $a' = a + x$ et $b' = b + y$ avec $x, y \in I$, alors
+  $a'b' = (a+x)(b+y) = ab + ay + xb + xy$.
+  Comme $I$ est un idéal : $ay, xb, xy \in I$, donc $[a'b'] = [ab]$. $\checkmark$
+
+  \textit{Isomorphisme.}
+  $\bar\varphi : A/\ker\varphi \to \mathrm{Im}(\varphi),\; [a] \mapsto \varphi(a)$
+  est bien définie, injective ($\varphi(a)=0 \Rightarrow a \in \ker\varphi$),
+  surjective sur $\mathrm{Im}(\varphi)$, et c'est un morphisme. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — IDÉAUX PREMIERS, MAXIMAUX ET HIÉRARCHIE
+%=============================================================
+\secnum{navyblue}{3}{Idéaux premiers, maximaux et hiérarchie des anneaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Idéaux premiers et maximaux.}\enspace%
+  \index{idéal premier}\index{idéal maximal}
+  Soit $A$ commutatif et $I \subsetneq A$ un idéal propre.
+  \begin{itemize}
+    \item $I$ est \emph{premier} si $ab \in I \Rightarrow a \in I$ ou $b \in I$.
+          Équivalent : $A/I$ est intègre.
+    \item $I$ est \emph{maximal} si aucun idéal propre ne le contient strictement.
+          Équivalent : $A/I$ est un corps.
+  \end{itemize}
+  Tout idéal maximal est premier. La réciproque est fausse en général.
+\end{tcolorbox}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Hiérarchie des anneaux commutatifs intègres.}
+  \[
+    \text{Corps} \subsetneq \text{Euclidien} \subsetneq \text{Principal}
+    \subsetneq \text{Factoriel} \subsetneq \text{Intègre}
+  \]
+  \begin{itemize}
+    \item \textbf{Euclidien}\index{anneau euclidien} : muni d'un stathme (division euclidienne).
+          Ex.\ $\mathbb{Z}$, $\mathbb{K}[X]$, $\mathbb{Z}[i]$.
+    \item \textbf{Principal}\index{anneau principal} : tout idéal est principal.
+          Ex.\ $\mathbb{Z}$, $\mathbb{K}[X]$.
+    \item \textbf{Factoriel}\index{anneau factoriel} : tout élément se décompose
+          en irréductibles de façon essentiellement unique.
+          Ex.\ $\mathbb{Z}[X]$ (principal $\Rightarrow$ factoriel, mais $\mathbb{Z}[X]$
+          est factoriel sans être principal).
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Maximal $\Rightarrow$ premier.}
+  Soit $I$ maximal et $ab \in I$, $a \notin I$. L'idéal $(I, a) = A$ (car $I$ maximal),
+  donc $1 = x + ra$ avec $x \in I$, $r \in A$. Alors
+  $b = xb + r(ab) \in I + I = I$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. $\mathbb{Z}[i]$ euclidien.}\enspace%
+  \index{entiers de Gauss}
+  Les entiers de Gauss $\mathbb{Z}[i] = \{a+bi \mid a,b\in\mathbb{Z}\}$ sont euclidiens
+  pour la norme $N(a+bi)=a^2+b^2$, donc principaux et factoriels. Un entier $p$ premier
+  dans $\mathbb{Z}$ reste premier dans $\mathbb{Z}[i]$ ssi $p \equiv 3 \pmod 4$.
+
+  \smallskip\noindent
+  \textbf{2. $\mathbb{Z}[\sqrt{-5}]$ non factoriel.}\enspace%
+  Dans $\mathbb{Z}[\sqrt{-5}]$, on a $6 = 2 \cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5})$,
+  deux décompositions en irréductibles distinctes.
+
+  \smallskip\noindent
+  \textbf{3. Théorème chinois des restes.}\enspace%
+  \index{théorème chinois des restes}
+  Si $\pgcd(m,n)=1$, alors $\mathbb{Z}/mn\mathbb{Z} \cong \mathbb{Z}/m\mathbb{Z}
+  \times \mathbb{Z}/n\mathbb{Z}$ (cas particulier du théorème chinois).
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Idéal $\neq$ sous-anneau.}\enspace%
+  $2\mathbb{Z}$ est un idéal de $\mathbb{Z}$ mais pas un sous-anneau
+  (il ne contient pas $1$). Inversement, $\mathbb{Z}$ est un sous-anneau de
+  $\mathbb{Q}$ mais pas un idéal ($1/2 \cdot 1 = 1/2 \notin \mathbb{Z}$).
+
+  \smallskip\noindent
+  \textbf{Dans un corps, les seuls idéaux sont $\{0\}$ et $A$.}\enspace%
+  Si $I \neq \{0\}$, il contient un inversible $a$, donc $1 = a^{-1}a \in I$,
+  donc $I = A$. Ainsi un corps est \emph{simple} comme anneau.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que dans un anneau intègre, tout idéal premier non nul
+          est maximal si et seulement si l'anneau est un corps.
+
+    \item Montrer que $\mathbb{Z}[\sqrt{-5}]$ n'est pas principal en montrant
+          que l'idéal $(2, 1+\sqrt{-5})$ n'est pas engendré par un seul élément.
+
+    \item Soit $A$ un anneau commutatif et $f : A[X] \to A$ l'évaluation en $0$.
+          Déterminer $\ker f$ et montrer que $A[X]/\ker f \cong A$.
+
+    \item Montrer que $\mathbb{Q}[X]/(X^2-2) \cong \mathbb{Q}(\sqrt{2})$.
+
+    \item (Lemme de Nakayama) Soit $A$ commutatif local (unique idéal maximal $\mathfrak{m}$)
+          et $M$ un $A$-module fini. Montrer que si $M = \mathfrak{m}M$, alors $M = 0$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{R.\ Dedekind (1871) — D.\ Hilbert (1897) — E.\ Noether (1921)}

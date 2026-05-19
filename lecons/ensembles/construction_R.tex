@@ -1,0 +1,285 @@
+%==============================================================
+%  lecons/ensembles/construction_R.tex — Construction de R
+%==============================================================
+
+\lecontitle{Construction de $\mathbb{R}$}{Théorie des ensembles — Complétion de $\mathbb{Q}$}
+
+%=============================================================
+%  § 1 — DEUX APPROCHES
+%=============================================================
+\secnum{navyblue}{1}{Deux constructions classiques}
+
+\rubriq{Le problème}
+$\mathbb{Q}$ est dense mais incomplet. On veut le compléter : obtenir un corps
+ordonné archimédien \emph{complet}, c'est-à-dire dans lequel toute suite de
+Cauchy converge. Il existe deux méthodes standards.
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Construction A — Coupures de Dedekind (1872).}\enspace%
+  \index{coupures de Dedekind}\index{réels!construction par coupures}
+  Une \emph{coupure} est un couple $(L, U)$ de sous-ensembles non vides de $\mathbb{Q}$
+  vérifiant :
+  \begin{enumerate}
+    \item $L \cup U = \mathbb{Q}$ et $L \cap U = \emptyset$.
+    \item $L$ est un \emph{segment initial} : $x \in L$ et $y < x \Rightarrow y \in L$.
+    \item $L$ n'a pas de maximum.
+  \end{enumerate}
+  On pose $\mathbb{R} = \{$coupures$(L,U)\}$. L'ensemble $U$ est alors
+  entièrement déterminé par $L$, que l'on identifie à la coupure.
+\end{tcolorbox}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Construction B — Suites de Cauchy (Cantor, 1872).}\enspace%
+  \index{réels!construction par suites de Cauchy}
+  Soit $\mathcal{C}$ l'ensemble des suites de Cauchy dans $\mathbb{Q}$.
+  On pose $(a_n) \sim (b_n)$ si $a_n - b_n \to 0$. Alors
+  \[
+    \mathbb{R} = \mathcal{C}/{\sim}
+  \]
+  muni des lois terme à terme est un corps complet.
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — CONSTRUCTION PAR COUPURES
+%=============================================================
+\secnum{navyblue}{2}{Détail de la construction de Dedekind}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Ordre.} On pose $\alpha \leq \beta$ si $\alpha \subseteq \beta$ (en tant que
+  sous-ensembles de $\mathbb{Q}$). C'est un ordre total sur $\mathbb{R}$.
+
+  \textit{Borne supérieure.} Si $A \subseteq \mathbb{R}$ est non vide et majoré,
+  alors $\sup A = \bigcup_{\alpha \in A} \alpha$ est une coupure et c'est le plus
+  petit majorant de $A$. C'est la propriété de la \emph{borne supérieure}.
+
+  \textit{Addition.} $\alpha + \beta = \{a + b \mid a \in \alpha,\; b \in \beta\}$.
+  On vérifie que c'est une coupure, et que les axiomes de groupe abélien sont satisfaits.
+
+  \textit{Multiplication.} Plus délicate (gestion des signes) : pour $\alpha,\beta > 0$,
+  $\alpha \cdot \beta = \{q \in \mathbb{Q} \mid q \leq ab,\ a\in\alpha\cap\mathbb{Q}^+,\ b\in\beta\cap\mathbb{Q}^+\}$.
+
+  \textit{Plongement de $\mathbb{Q}$.} À $q \in \mathbb{Q}$ on associe la coupure
+  $\hat{q} = \{r \in \mathbb{Q} \mid r < q\}$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — CONSTRUCTION PAR SUITES DE CAUCHY
+%=============================================================
+\secnum{navyblue}{3}{Détail de la construction de Cantor}
+
+\rubriq{Étape 1 — L'anneau $\mathcal{C}$}
+
+\begin{mdframed}[style=proofbar]
+  Soit $\mathcal{C} = \{(a_n)_{n\in\mathbb{N}} \in \mathbb{Q}^{\mathbb{N}} \mid (a_n)
+  \text{ est de Cauchy}\}$ l'ensemble des suites de Cauchy à valeurs dans $\mathbb{Q}$.
+  On vérifie que $\mathcal{C}$ est un sous-anneau de $\mathbb{Q}^{\mathbb{N}}$ :
+
+  \begin{itemize}
+    \item Si $(a_n)$ et $(b_n)$ sont de Cauchy, alors $(a_n + b_n)$ l'est
+    (inégalité triangulaire : $|(a_n+b_n)-(a_m+b_m)| \leq |a_n-a_m|+|b_n-b_m|$).
+    \item Si $(a_n)$ et $(b_n)$ sont de Cauchy, elles sont bornées
+    ($|a_n| \leq M$, $|b_n| \leq N$). Alors
+    $|a_nb_n - a_mb_m| \leq M|b_n-b_m| + N|a_n-a_m| \to 0$,
+    donc $(a_nb_n)$ est de Cauchy.
+  \end{itemize}
+  \hfill$\checkmark$
+\end{mdframed}
+
+\rubriq{Étape 2 — La relation d'équivalence}
+
+\begin{mdframed}[style=proofbar]
+  On définit $(a_n) \sim (b_n)$ si $a_n - b_n \to 0$ dans $\mathbb{Q}$.
+  C'est bien une relation d'équivalence (réflexivité et symétrie sont immédiates ;
+  transitivité : $a_n - c_n = (a_n - b_n) + (b_n - c_n) \to 0$).
+
+  \textit{Compatibilité avec les lois.}
+  Si $(a_n)\sim(a_n')$ et $(b_n)\sim(b_n')$, alors
+  $(a_n+b_n)-(a_n'+b_n') = (a_n-a_n')+(b_n-b_n') \to 0$ ($+$ bien fondé).
+  Pour $\times$ : $(a_nb_n - a_n'b_n') = a_n(b_n-b_n') + b_n'(a_n-a_n') \to 0$
+  car $(a_n)$ est bornée et $(b_n-b_n'),(a_n-a_n')\to 0$ ($\times$ bien fondé).
+  \hfill$\checkmark$
+\end{mdframed}
+
+\rubriq{Étape 3 — $\mathbb{R} = \mathcal{C}/{\sim}$ est un corps}
+
+\begin{mdframed}[style=proofbar]
+  On note $[(a_n)]$ la classe d'équivalence de $(a_n)$, avec lois
+  $[(a_n)]+[(b_n)] = [(a_n+b_n)]$ et $[(a_n)]\cdot[(b_n)]=[(a_nb_n)]$.
+
+  \textit{Neutre additif :} $[(0)]$ (suite constante nulle).
+  \textit{Opposé de $[(a_n)]$ :} $[(-a_n)]$.
+
+  \textit{Inverse multiplicatif.}
+  Soit $[(a_n)] \neq [(0)]$, i.e.\ $(a_n) \not\to 0$.
+  Alors il existe $\varepsilon > 0$ et $N \in \mathbb{N}$ tels que
+  $|a_n| > \varepsilon$ pour tout $n \geq N$.
+  On pose
+  \[
+    b_n =
+    \begin{cases}
+      1 & \text{si } n < N, \\
+      1/a_n & \text{si } n \geq N.
+    \end{cases}
+  \]
+  Pour $n, m \geq N$ : $|b_n - b_m| = \dfrac{|a_n - a_m|}{|a_n||a_m|}
+  \leq \dfrac{|a_n-a_m|}{\varepsilon^2} \to 0$,
+  donc $(b_n) \in \mathcal{C}$.
+  Et $a_nb_n = 1$ pour $n \geq N$, donc $[(a_n)]\cdot[(b_n)] = [(1)]$.
+  Ainsi tout élément non nul est inversible : $\mathbb{R}$ est un corps.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Étape 4 — Ordre et plongement de $\mathbb{Q}$}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Ordre.} On dit que $[(a_n)] > 0$ s'il existe $\varepsilon > 0$
+  et $N$ tels que $a_n > \varepsilon$ pour tout $n \geq N$.
+  (Bien fondé : si $(a_n)\sim(a_n')$ et $a_n > \varepsilon$ pour $n\geq N$,
+  alors $|a_n-a_n'| < \varepsilon/2$ pour $n$ assez grand, donc $a_n' > \varepsilon/2$.)
+  On pose $\alpha \leq \beta$ si $\beta - \alpha \geq 0$.
+  C'est un ordre total compatible avec les lois.
+
+  \textit{Plongement.} $\iota : \mathbb{Q} \to \mathbb{R},\; q \mapsto [(q,q,q,\ldots)]$
+  est un homomorphisme de corps ordonné injectif.
+  On identifie $\mathbb{Q}$ à son image.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Étape 5 — $\mathbb{R}$ est complet}
+
+\begin{mdframed}[style=proofbar]
+  \textbf{Théorème.}\enspace Toute suite de Cauchy dans $\mathbb{R}$ converge.
+
+  \medskip
+  Soit $(\alpha^{(k)})_{k\geq 1}$ une suite de Cauchy dans $\mathbb{R}$,
+  avec $\alpha^{(k)} = [(a_n^{(k)})_{n\geq 0}]$.
+
+  \textit{Extraction d'une suite diagonale.}
+  Pour chaque $k$, $(a_n^{(k)})$ est de Cauchy dans $\mathbb{Q}$, donc
+  il existe $N_k \in \mathbb{N}$ tel que
+  \[
+    n, m \geq N_k \;\Rightarrow\; |a_n^{(k)} - a_m^{(k)}| < \tfrac{1}{k}.
+  \]
+  On pose $c_k = a_{N_k}^{(k)} \in \mathbb{Q}$.
+
+  \textit{$(c_k)$ est de Cauchy dans $\mathbb{Q}$.}
+  Pour $k, \ell$ grands, $|\alpha^{(k)} - \alpha^{(\ell)}| < \varepsilon/3$
+  (hypothèse Cauchy sur $(\alpha^{(k)})$), et $|\alpha^{(k)} - \iota(c_k)| \leq 1/k$
+  (par construction de $c_k$). L'inégalité triangulaire donne $|c_k - c_\ell| < \varepsilon$
+  pour $k, \ell$ assez grands.
+
+  \textit{Convergence.} Posons $\ell = [(c_k)] \in \mathbb{R}$.
+  Alors $|\alpha^{(k)} - \ell| \leq |\alpha^{(k)} - \iota(c_k)| + |\iota(c_k) - \ell| \to 0$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — PROPRIÉTÉS FONDAMENTALES
+%=============================================================
+\secnum{navyblue}{4}{Caractérisation axiomatique de $\mathbb{R}$}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (unicité).}\enspace%
+  \index{réels!axiomatique}
+  À isomorphisme de corps ordonnés près, il existe un \emph{unique} corps ordonné
+  complet archimédien. C'est $\mathbb{R}$.
+
+  \medskip
+  \textbf{Propriétés équivalentes à la complétude.}
+  Les énoncés suivants sont tous équivalents pour un corps ordonné archimédien :
+  \begin{enumerate}
+    \item Toute suite de Cauchy converge.
+    \item Tout sous-ensemble non vide majoré admet une borne supérieure.
+    \item Tout intervalle emboîté $[a_n, b_n]$ avec $b_n-a_n\to 0$
+          admet un point commun.
+    \item Toute suite croissante majorée converge (théorème de la limite monotone).
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Non dénombrabilité}
+
+\begin{mdframed}[style=proofbar]
+  \textbf{Théorème de Cantor.}\enspace%
+  \index{non dénombrabilité de $\mathbb{R}$}
+  $\mathbb{R}$ n'est pas dénombrable : $|\mathbb{R}| = 2^{\aleph_0} =: \mathfrak{c}$
+  (puissance du continu).
+
+  \textit{Preuve (argument diagonal).}
+  Supposons $\mathbb{R}$ dénombrable : $\mathbb{R} = \{x_1, x_2, \ldots\}$.
+  Construisons $y \in [0,1]$ différent de chaque $x_n$ : si le $n$-ième décimale
+  de $x_n$ est $d$, on pose le $n$-ième décimale de $y$ égal à $d+1 \pmod{10}$.
+  Alors $y \neq x_n$ pour tout $n$ : contradiction. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Exemples, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Nombres algébriques et transcendants.}\enspace%
+  \index{nombres transcendants}
+  Les réels algébriques sur $\mathbb{Q}$ forment un sous-corps dénombrable de $\mathbb{R}$.
+  Donc «\,la plupart\,» des réels sont transcendants ($e$ par Hermite 1873,
+  $\pi$ par Lindemann 1882).
+
+  \smallskip\noindent
+  \textbf{2. Mesure de Lebesgue.}\enspace%
+  $\mathbb{Q}$ est de mesure nulle dans $\mathbb{R}$ : $\lambda(\mathbb{Q}) = 0$.
+  Cela illustre que densité et mesure positive sont des notions indépendantes.
+
+  \smallskip\noindent
+  \textbf{3. Topologie.}\enspace%
+  $\mathbb{R}$ est localement compact, $\sigma$-compact, connexe, et localement
+  connexe. C'est la seule droite topologique (à homéomorphisme près).
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Les deux constructions donnent le même objet.}\enspace%
+  Les constructions de Dedekind et de Cantor-Cauchy produisent des corps
+  ordonnés complets archimédiens, donc isomorphes par unicité.
+  La «\,meilleure\,» construction dépend du contexte.
+
+  \smallskip\noindent
+  \textbf{Hypothèse du continu.}\enspace%
+  On a $\aleph_0 < \mathfrak{c}$, mais la question de savoir s'il existe
+  un cardinal strictement entre $\aleph_0$ et $\mathfrak{c}$ est
+  \emph{indécidable} dans ZFC (Cohen, 1963).
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Vérifier que la borne supérieure de coupures $\sup A = \bigcup_{\alpha\in A}\alpha$
+          est bien une coupure de Dedekind.
+
+    \item Montrer que les quatre propriétés de complétude (Cauchy, borne sup,
+          intervalles emboîtés, suite monotone majorée) sont équivalentes dans
+          un corps ordonné archimédien.
+
+    \item Montrer que $\mathbb{R}\setminus\mathbb{Q}$ est non dénombrable.
+
+    \item Montrer que la complétion de $(\mathbb{Q}, |\cdot|_p)$ pour la valeur
+          absolue $p$-adique est $\mathbb{Q}_p$, qui n'est \emph{pas} archimédien.
+
+    \item (Théorème de Baire) Montrer que $\mathbb{R}$ n'est pas réunion
+          dénombrable d'ensembles fermés d'intérieur vide.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{R.\ Dedekind (1872) — G.\ Cantor (1872) — unicité due à E.\ Huntington (1903)}

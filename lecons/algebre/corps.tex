@@ -1,0 +1,200 @@
+%==============================================================
+%  lecons/algebre/corps.tex — Corps
+%==============================================================
+
+\lecontitle{Corps}{Algèbre — Structures de corps et extensions}
+
+%=============================================================
+%  § 1 — DÉFINITION, CARACTÉRISTIQUE, CORPS PREMIERS
+%=============================================================
+\secnum{navyblue}{1}{Définition, caractéristique et corps premiers}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{corps}
+  Un \emph{corps} est un anneau commutatif $(K, +, \times)$ tel que
+  $1 \neq 0$ et tout élément non nul est inversible :
+  \[
+    \forall a \in K^* = K \setminus \{0\},\; \exists a^{-1} \in K,\; aa^{-1} = 1.
+  \]
+  $(K^*, \times)$ est alors un groupe abélien.
+
+  \medskip
+  \textbf{Caractéristique.}\enspace%
+  \index{caractéristique d'un corps}
+  La \emph{caractéristique} de $K$ est le plus petit entier $p \geq 1$ tel que
+  $\underbrace{1+\cdots+1}_{p} = 0$, ou $0$ si un tel entier n'existe pas.
+  Elle est toujours $0$ ou un nombre premier.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{La caractéristique est $0$ ou première.}
+  Soit $p = \mathrm{car}(K) > 0$.
+  Si $p = ab$ avec $1 < a, b < p$, alors $(a \cdot 1)(b \cdot 1) = p \cdot 1 = 0$
+  dans $K$. Comme $K$ est intègre (c'est un corps), $a \cdot 1 = 0$ ou $b \cdot 1 = 0$,
+  contredisant la minimalité de $p$. \hfill$\blacksquare$
+\end{mdframed}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Corps premiers.}\enspace%
+  \index{corps premier}
+  Tout corps $K$ contient un unique plus petit sous-corps, son \emph{corps premier} :
+  \begin{itemize}
+    \item Si $\mathrm{car}(K) = 0$ : le corps premier est $\mathbb{Q}$.
+    \item Si $\mathrm{car}(K) = p$ : le corps premier est $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$.
+  \end{itemize}
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — EXTENSIONS DE CORPS
+%=============================================================
+\secnum{navyblue}{2}{Extensions de corps}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{extension de corps}\index{degré d'une extension}
+  Si $K \subseteq L$ sont deux corps, on dit que $L/K$ est une \emph{extension}.
+  $L$ est naturellement un $K$-espace vectoriel ; son \emph{degré}
+  $[L:K] = \dim_K L$ peut être fini ou infini.
+
+  \medskip
+  \textbf{Multiplicativité du degré.}\enspace%
+  Si $K \subseteq L \subseteq M$, alors $[M:K] = [M:L]\cdot[L:K]$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Éléments algébriques et transcendants.}\enspace%
+  \index{élément algébrique}\index{élément transcendant}
+  Soit $L/K$ une extension et $\alpha \in L$.
+  \begin{itemize}
+    \item $\alpha$ est \emph{algébrique} sur $K$ s'il est racine d'un polynôme
+          non nul $P \in K[X]$. Le \emph{polynôme minimal}\index{polynôme minimal!extension}
+          de $\alpha$ sur $K$ est l'unique polynôme unitaire irréductible
+          $\mu_\alpha \in K[X]$ annulant $\alpha$.
+    \item $\alpha$ est \emph{transcendant} sinon ($\pi$, $e$ sont transcendants sur $\mathbb{Q}$).
+  \end{itemize}
+  Si $\alpha$ est algébrique de degré $d = \deg\mu_\alpha$, alors
+  $K(\alpha) \cong K[X]/(\mu_\alpha)$ et $[K(\alpha):K] = d$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{$K[X]/(\mu_\alpha)$ est un corps.}
+  $\mu_\alpha$ est irréductible dans $K[X]$, donc $(\mu_\alpha)$ est un idéal maximal
+  de $K[X]$ (car $K[X]$ est principal et tout idéal premier non nul y est maximal),
+  donc le quotient est un corps.
+
+  \textit{$K(\alpha) \cong K[X]/(\mu_\alpha)$.}
+  L'évaluation $\mathrm{ev}_\alpha : K[X] \to L,\; P \mapsto P(\alpha)$,
+  est un morphisme de noyau $(\mu_\alpha)$, d'image $K[\alpha] = K(\alpha)$
+  (car $K(\alpha)$ est un corps). \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — CORPS FINIS
+%=============================================================
+\secnum{navyblue}{3}{Corps finis}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (classification des corps finis).}\enspace%
+  \index{corps finis}\index{$\mathbb{F}_q$}
+  \begin{enumerate}
+    \item Tout corps fini a $q = p^n$ éléments pour un premier $p$ et $n \geq 1$.
+    \item Pour tout $p$ premier et $n \geq 1$, il existe un unique corps à $p^n$
+          éléments, noté $\mathbb{F}_q$ ou $\mathrm{GF}(q)$ (corps de Galois).
+    \item $\mathbb{F}_{p^n}$ est le corps de décomposition\index{corps de décomposition}
+          de $X^{p^n} - X$ sur $\mathbb{F}_p$.
+    \item Le groupe multiplicatif $\mathbb{F}_q^*$ est cyclique d'ordre $q-1$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{$|K| = p^n$.}
+  $K$ est un $\mathbb{F}_p$-espace vectoriel de dimension $n = [K:\mathbb{F}_p]$,
+  donc $|K| = p^n$.
+
+  \textit{$K$ est le corps de décomposition de $X^{p^n}-X$.}
+  Dans $K^*$ (groupe d'ordre $p^n - 1$), tout élément vérifie $a^{p^n-1} = 1$,
+  donc $a^{p^n} = a$. L'élément $0$ aussi. Ainsi les $p^n$ éléments de $K$ sont
+  racines de $X^{p^n}-X$, qui a au plus $p^n$ racines.
+
+  \textit{$K^*$ est cyclique.}
+  Tout sous-groupe fini d'un corps (ici $K^*$) est cyclique.
+  Preuve : si $d \mid |K^*|$, le polynôme $X^d - 1$ a au plus $d$ racines dans $K$,
+  donc il y a au plus $d$ éléments d'ordre divisant $d$.
+  Par le critère de cyclicité, $K^*$ est cyclique. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. $\mathbb{F}_4$.}\enspace%
+  \index{$\mathbb{F}_4$}
+  $X^2+X+1$ est irréductible sur $\mathbb{F}_2$ (pas de racine dans $\{0,1\}$).
+  Donc $\mathbb{F}_4 = \mathbb{F}_2[X]/(X^2+X+1) = \{0,1,\alpha,\alpha+1\}$
+  où $\alpha^2 = \alpha + 1$. Le groupe $\mathbb{F}_4^*$ est cyclique d'ordre $3$.
+
+  \smallskip\noindent
+  \textbf{2. $\mathbb{Q}(\sqrt{2})$.}\enspace%
+  Extension de degré $2$ de $\mathbb{Q}$, polynôme minimal $X^2-2$.
+  $\mathbb{Q}(\sqrt{2}) = \{a+b\sqrt{2} \mid a,b \in \mathbb{Q}\}$,
+  avec $(a+b\sqrt{2})^{-1} = (a-b\sqrt{2})/(a^2-2b^2)$.
+
+  \smallskip\noindent
+  \textbf{3. $\mathbb{Q}(\zeta_n)$, corps cyclotomiques.}\enspace%
+  \index{corps cyclotomique}
+  $\zeta_n = e^{2i\pi/n}$, polynôme minimal sur $\mathbb{Q}$ :
+  le $n$-ième polynôme cyclotomique $\Phi_n$. Degré $\varphi(n)$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Corps $\neq$ anneau intègre.}\enspace%
+  Tout corps est intègre, mais la réciproque est fausse.
+  $\mathbb{Z}$ est intègre mais pas un corps ($2$ non inversible).
+  En revanche, un anneau intègre \emph{fini} est un corps
+  (si $a \neq 0$, l'application $x \mapsto ax$ est injective donc bijective).
+
+  \smallskip\noindent
+  \textbf{Pas de corps à $6$ éléments.}\enspace%
+  $6 = 2 \times 3$ n'est pas une puissance de premier. Le théorème
+  de classification interdit les corps finis de tels ordres.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Construire $\mathbb{F}_8 = \mathbb{F}_2[X]/(X^3+X+1)$ et
+          vérifier que $X^3+X+1$ est bien irréductible sur $\mathbb{F}_2$.
+          Trouver un générateur de $\mathbb{F}_8^*$.
+
+    \item Montrer que $\mathbb{Q}(\sqrt{2}+\sqrt{3}) = \mathbb{Q}(\sqrt{2},\sqrt{3})$
+          et calculer $[\mathbb{Q}(\sqrt{2},\sqrt{3}):\mathbb{Q}]$.
+
+    \item Soit $K$ un corps fini. Montrer que $-1$ est un carré dans $K$
+          si et seulement si $|K| \equiv 1 \pmod{4}$.
+
+    \item Montrer que tout polynôme irréductible de degré $n$ sur $\mathbb{F}_p$
+          divise $X^{p^n} - X$.
+
+    \item (Théorème de Wedderburn) Tout corps fini est commutatif.
+          Admettre ce résultat et montrer qu'il implique que $\mathbb{H}$ est
+          infini (en supposant $\mathbb{H}$ non commutatif mais à division).
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{É.\ Galois (1832) — E.\ H.\ Moore (1893, corps finis) — E.\ Artin (1927)}

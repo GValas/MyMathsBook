@@ -1,0 +1,234 @@
+%==============================================================
+%  lecons/algebre/groupes.tex — Groupes
+%==============================================================
+
+\lecontitle{Groupes}{Algèbre — Structures avec une loi de groupe}
+
+%=============================================================
+%  § 1 — DÉFINITION ET EXEMPLES
+%=============================================================
+\secnum{navyblue}{1}{Définition et premiers exemples}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{groupe}\index{groupe abélien}
+  Un \emph{groupe} est un ensemble $G$ muni d'une loi interne $\cdot$ vérifiant :
+  \begin{enumerate}
+    \item[\textbf{G1.}] \textbf{Associativité :} $(a\cdot b)\cdot c = a\cdot(b\cdot c)$.
+    \item[\textbf{G2.}] \textbf{Élément neutre :} $\exists e \in G,\; \forall a,\; e\cdot a = a\cdot e = a$.
+    \item[\textbf{G3.}] \textbf{Symétrique :} $\forall a \in G,\; \exists a^{-1} \in G,\;
+          a\cdot a^{-1} = a^{-1}\cdot a = e$.
+  \end{enumerate}
+  Si de plus $a \cdot b = b \cdot a$ pour tous $a, b$, le groupe est dit
+  \emph{abélien} (ou \emph{commutatif}) ; on note alors la loi $+$ et le neutre $0$.
+\end{tcolorbox}
+
+\rubriq{Exemples fondamentaux}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Groupes additifs.}\enspace%
+  $(\mathbb{Z},+)$, $(\mathbb{Q},+)$, $(\mathbb{R},+)$, $(\mathbb{C},+)$
+  sont des groupes abéliens. $(\mathbb{N},+)$ n'est \emph{pas} un groupe
+  (pas d'opposé).
+
+  \smallskip\noindent
+  \textbf{2. Groupes multiplicatifs.}\enspace%
+  $(\mathbb{Q}^*,\times)$, $(\mathbb{R}^*,\times)$, $(\mathbb{C}^*,\times)$,
+  $(\mathbb{U},\times)$ (racines de l'unité) sont abéliens.
+
+  \smallskip\noindent
+  \textbf{3. Groupe symétrique $\mathfrak{S}_n$.}\enspace%
+  \index{groupe symétrique}
+  L'ensemble des bijections de $\{1,\ldots,n\}$ dans lui-même, muni de la
+  composition, est un groupe d'ordre $n!$. Non abélien pour $n \geq 3$.
+
+  \smallskip\noindent
+  \textbf{4. Groupe linéaire $\mathrm{GL}_n(\mathbb{K})$.}\enspace%
+  \index{groupe linéaire}
+  Les matrices inversibles de $\mathcal{M}_n(\mathbb{K})$, muni du produit matriciel.
+  Non abélien pour $n \geq 2$.
+
+  \smallskip\noindent
+  \textbf{5. $\mathbb{Z}/n\mathbb{Z}$.}\enspace%
+  \index{$\mathbb{Z}/n\mathbb{Z}$}
+  Groupe abélien d'ordre $n$, cyclique, engendré par $[1]$.
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — SOUS-GROUPES ET MORPHISMES
+%=============================================================
+\secnum{navyblue}{2}{Sous-groupes et morphismes}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{sous-groupe}\index{morphisme de groupes}
+  Une partie $H \subseteq G$ est un \emph{sous-groupe} si
+  $e \in H$ et $\forall a,b \in H,\; ab^{-1} \in H$.
+
+  \medskip
+  Une application $\varphi : G \to H$ est un \emph{morphisme de groupes} si
+  $\varphi(ab) = \varphi(a)\varphi(b)$ pour tous $a,b \in G$.
+  Son \emph{noyau}\index{noyau d'un morphisme} est $\ker\varphi = \varphi^{-1}(\{e_H\})$,
+  son \emph{image} est $\mathrm{Im}(\varphi) = \varphi(G)$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{$\ker\varphi$ est un sous-groupe de $G$.}
+  $e_G \in \ker\varphi$ car $\varphi(e_G) = e_H$.
+  Si $a,b \in \ker\varphi$ : $\varphi(ab^{-1}) = \varphi(a)\varphi(b)^{-1} = e_H$,
+  donc $ab^{-1} \in \ker\varphi$. $\checkmark$
+
+  \textit{$\mathrm{Im}(\varphi)$ est un sous-groupe de $H$.} Analogue. $\checkmark$
+
+  \textit{$\varphi$ est injective ssi $\ker\varphi = \{e_G\}$.}
+  Si $\ker\varphi = \{e_G\}$ et $\varphi(a)=\varphi(b)$, alors
+  $\varphi(ab^{-1}) = e_H$, donc $ab^{-1} = e_G$, soit $a = b$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Sous-groupes de $\mathbb{Z}$.}\enspace%
+  \index{sous-groupes de $\mathbb{Z}$}
+  Tout sous-groupe de $(\mathbb{Z},+)$ est de la forme $n\mathbb{Z}$
+  pour un unique $n \in \mathbb{N}$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Soit $H \leq \mathbb{Z}$. Si $H = \{0\}$, $H = 0\mathbb{Z}$. Sinon,
+  $H$ contient un entier $> 0$ (car si $a \in H$, $a\neq 0$, alors $|a| = \pm a \in H$).
+  Soit $n = \min(H \cap \mathbb{N}^*)$. Clairement $n\mathbb{Z} \subseteq H$.
+  Pour tout $h \in H$, la division euclidienne donne $h = qn + r$ avec $0 \leq r < n$ ;
+  or $r = h - qn \in H$, donc $r = 0$ par minimalité de $n$. Ainsi $H = n\mathbb{Z}$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — THÉORÈME DE LAGRANGE ET GROUPE QUOTIENT
+%=============================================================
+\secnum{navyblue}{3}{Théorème de Lagrange et premier théorème d'isomorphisme}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème de Lagrange.}\enspace%
+  \index{Lagrange (théorème de)}
+  \textit{Soit $G$ un groupe fini et $H$ un sous-groupe de $G$. Alors
+  $|H|$ divise $|G|$, et $|G| = |H| \cdot [G:H]$, où $[G:H]$ est le
+  nombre de classes à gauche de $H$ dans $G$.}
+
+  \medskip
+  \textbf{Corollaire.}\enspace%
+  L'\emph{ordre}\index{ordre d'un élément} d'un élément $a \in G$
+  (le plus petit $k \geq 1$ tel que $a^k = e$) divise $|G|$.
+  En particulier, $a^{|G|} = e$ pour tout $a \in G$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Les classes à gauche $aH = \{ah \mid h \in H\}$ forment une partition de $G$}
+  (cf.\ relation d'équivalence $a \sim b \Leftrightarrow a^{-1}b \in H$).
+  Chaque classe a cardinal $|H|$ (la bijection $h \mapsto ah$ est de $H$ vers $aH$).
+  Donc $|G| = |H| \cdot |\{$classes$\}| = |H| \cdot [G:H]$. \hfill$\blacksquare$
+\end{mdframed}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Sous-groupe distingué et groupe quotient.}\enspace%
+  \index{sous-groupe distingué}\index{groupe quotient}
+  $H$ est \emph{distingué} dans $G$ (noté $H \trianglelefteq G$) si
+  $gHg^{-1} = H$ pour tout $g \in G$.
+  Dans ce cas, l'ensemble des classes $G/H$ est muni d'une structure de groupe
+  par $(aH)(bH) = (ab)H$.
+
+  \medskip
+  \textbf{Premier théorème d'isomorphisme.}\enspace%
+  \index{isomorphisme (premier théorème d')}
+  Si $\varphi : G \to H$ est un morphisme de groupes, alors $\ker\varphi \trianglelefteq G$
+  et
+  \[
+    G/\ker\varphi \;\cong\; \mathrm{Im}(\varphi).
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Bien-fondé de la loi sur $G/H$.}
+  Si $a' \in aH$ et $b' \in bH$, alors $a'b' = (ah_1)(bh_2) = ab(b^{-1}h_1b)h_2$.
+  Comme $H \trianglelefteq G$, $b^{-1}h_1b \in H$, donc $a'b' \in abH$. $\checkmark$
+
+  \textit{Isomorphisme.}
+  L'application $\bar\varphi : G/\ker\varphi \to \mathrm{Im}(\varphi),\; a\ker\varphi \mapsto \varphi(a)$
+  est bien définie, injective (si $\varphi(a)=e_H$ alors $a\in\ker\varphi$),
+  surjective sur $\mathrm{Im}(\varphi)$, et c'est un morphisme. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — GROUPES CYCLIQUES, PIÈGES, EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Groupes cycliques, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Groupes cycliques.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{Définition.}\enspace%
+  \index{groupe cyclique}
+  $G$ est \emph{cyclique} s'il existe $g \in G$ (un \emph{générateur}) tel que
+  $G = \langle g \rangle = \{g^n \mid n \in \mathbb{Z}\}$.
+
+  \smallskip\noindent
+  \textbf{Classification.}\enspace%
+  Tout groupe cyclique est isomorphe à $\mathbb{Z}$ (si infini) ou $\mathbb{Z}/n\mathbb{Z}$
+  (si d'ordre $n$). Les générateurs de $\mathbb{Z}/n\mathbb{Z}$ sont les $[k]$ avec
+  $\pgcd(k,n)=1$ : il y en a $\varphi(n)$ (indicatrice d'Euler).
+
+  \smallskip\noindent
+  \textbf{Petit théorème de Fermat.}\enspace%
+  \index{Fermat (petit théorème de)}
+  Pour $p$ premier et $a \not\equiv 0 \pmod{p}$ : $a^{p-1} \equiv 1 \pmod{p}$.
+  Preuve : $(\mathbb{Z}/p\mathbb{Z})^*$ est un groupe d'ordre $p-1$, donc $a^{p-1}=e$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Un sous-groupe n'est pas toujours distingué.}\enspace%
+  Dans $\mathfrak{S}_3$, $H = \{e, (12)\}$ est un sous-groupe mais pas distingué :
+  $(123)(12)(123)^{-1} = (23) \notin H$.
+
+  \smallskip\noindent
+  \textbf{Tout groupe d'ordre premier est cyclique.}\enspace%
+  Si $|G| = p$ premier, tout $g \neq e$ engendre $G$ (car $|\langle g\rangle|$
+  divise $p$, donc vaut $p$). En particulier $G \cong \mathbb{Z}/p\mathbb{Z}$.
+
+  \smallskip\noindent
+  \textbf{Réciproque de Lagrange fausse.}\enspace%
+  Si $d \mid |G|$, il n'existe pas forcément un sous-groupe d'ordre $d$.
+  Contre-exemple : $A_4$ (d'ordre $12$) n'a pas de sous-groupe d'ordre $6$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que l'intersection d'une famille de sous-groupes de $G$
+          est un sous-groupe de $G$.
+
+    \item Montrer que $\mathfrak{S}_n$ est engendré par les transpositions,
+          et que le signe $\varepsilon : \mathfrak{S}_n \to \{+1,-1\}$
+          est un morphisme de groupes surjectif.
+
+    \item Montrer que tout groupe d'ordre $p^2$ (p premier) est abélien.
+          (\textit{Hint :} considérer le centre $Z(G)$.)
+
+    \item Soit $G$ fini et $H, K$ deux sous-groupes de $G$. Montrer que
+          $|HK| = |H||K|/|H\cap K|$.
+
+    \item (Théorème de Cayley) Montrer que tout groupe fini $G$ est
+          isomorphe à un sous-groupe de $\mathfrak{S}_{|G|}$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{É.\ Galois (1830) — A.\ Cayley (1854) — L.\ Sylow (1872)}

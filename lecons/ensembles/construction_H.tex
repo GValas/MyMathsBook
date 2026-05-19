@@ -1,0 +1,170 @@
+%==============================================================
+%  lecons/ensembles/construction_H.tex — Construction de H
+%==============================================================
+
+\lecontitle{Construction de $\mathbb{H}$}{Théorie des ensembles — Quaternions de Hamilton}
+
+%=============================================================
+%  § 1 — MOTIVATION ET DÉFINITION
+%=============================================================
+\secnum{navyblue}{1}{Définition des quaternions}
+
+\rubriq{Contexte historique}
+Hamilton cherchait (1843) à étendre $\mathbb{C}$ pour représenter les rotations
+de l'espace $\mathbb{R}^3$. Après des années à tenter une structure en
+dimension $3$, il découvrit que la dimension $4$ est nécessaire, en renonçant
+à la commutativité de la multiplication.
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{quaternions!définition}\index{Hamilton (quaternions de)}
+  L'algèbre des \emph{quaternions} est
+  \[
+    \mathbb{H} = \{a + bi + cj + dk \mid a,b,c,d \in \mathbb{R}\}
+  \]
+  munie de l'addition composante par composante et de la multiplication
+  déterminée par les relations de Hamilton :
+  \[
+    i^2 = j^2 = k^2 = ijk = -1.
+  \]
+  Ces relations imposent :
+  $ij = k,\ ji = -k,\ jk = i,\ kj = -i,\ ki = j,\ ik = -j$.
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — STRUCTURE ALGÉBRIQUE
+%=============================================================
+\secnum{navyblue}{2}{$\mathbb{H}$ est un corps gauche}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Propriétés fondamentales.}\enspace%
+  \index{quaternions!norme}\index{quaternions!conjugué}\index{corps gauche}
+  Pour $q = a + bi + cj + dk \in \mathbb{H}$, on définit :
+  \[
+    \bar{q} = a - bi - cj - dk \quad \text{(conjugué)},
+    \qquad
+    |q|^2 = q\bar{q} = a^2+b^2+c^2+d^2 \quad \text{(norme au carré)}.
+  \]
+  \begin{enumerate}
+    \item $\overline{pq} = \bar{q}\bar{p}$ pour tous $p,q \in \mathbb{H}$.
+    \item $|pq| = |p||q|$ (multiplicativité de la norme).
+    \item Pour $q \neq 0$ : $q^{-1} = \bar{q}/|q|^2$.
+    \item $(\mathbb{H}, +, \times)$ est un \emph{corps gauche} (division ring) :
+          tous les axiomes d'un corps sauf la commutativité de $\times$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Inverse.} $q \cdot \bar{q} = |q|^2 \in \mathbb{R}^+$, donc
+  $q \cdot (\bar{q}/|q|^2) = 1$. De même $(\bar{q}/|q|^2) \cdot q = 1$,
+  ce qui donne bien un inverse à gauche et à droite.
+
+  \textit{Non-commutativité.} $ij = k \neq -k = ji$. $\checkmark$
+
+  \textit{Associativité.} Vérification directe (fastidieuse mais mécanique) :
+  on vérifie les $27$ triplets de base $\{1,i,j,k\}^3$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Construction matricielle}
+
+\begin{mdframed}[style=proofbar]
+  $\mathbb{H}$ est isomorphe (comme algèbre réelle) au sous-anneau de
+  $\mathcal{M}_2(\mathbb{C})$ :
+  \[
+    a + bi + cj + dk \;\longmapsto\;
+    \begin{pmatrix} a+bi & c+di \\ -(c-di) & a-bi \end{pmatrix}
+    =
+    \begin{pmatrix} a+bi & c+di \\ -\bar{c+di} & \overline{a+bi} \end{pmatrix}.
+  \]
+  (Matrices unitaires de $\mathrm{SU}(2)$ pour les quaternions de norme $1$.)
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — ROTATIONS ET GÉOMÉTRIE
+%=============================================================
+\secnum{navyblue}{3}{Quaternions et rotations de $\mathbb{R}^3$}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (Hamilton–Rodrigues).}\enspace%
+  \index{quaternions!rotations}\index{Rodrigues (formule de)}
+  Soit $\mathbf{n}$ un vecteur unitaire de $\mathbb{R}^3$ et $\theta \in \mathbb{R}$.
+  Le quaternion unitaire $q = \cos(\theta/2) + \sin(\theta/2)(n_1 i + n_2 j + n_3 k)$
+  représente la rotation d'axe $\mathbf{n}$ et d'angle $\theta$ via :
+  \[
+    \mathbf{v} \;\longmapsto\; q\,\mathbf{v}\,\bar{q}
+  \]
+  où $\mathbf{v}$ est identifié au quaternion pur $v_1 i + v_2 j + v_3 k$.
+\end{tcolorbox}
+
+\rubriq{Double recouvrement de $\mathrm{SO}(3)$}
+L'application $q \mapsto (v \mapsto qv\bar{q})$ est un homomorphisme de groupes
+surjectif $\mathrm{Sp}(1) \to \mathrm{SO}(3)$ (où $\mathrm{Sp}(1)$ désigne les
+quaternions unitaires), de noyau $\{\pm 1\}$.
+Ainsi $\mathrm{SO}(3) \cong \mathrm{Sp}(1)/\{\pm 1\} \cong \mathrm{SU}(2)/\{\pm I\}$.
+
+\decsep{}
+
+%=============================================================
+%  § 4 — THÉORÈME DE FROBENIUS ET EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Classification, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Théorème de classification.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{Théorème de Frobenius (1877).}\enspace%
+  \index{Frobenius (théorème de)}
+  Les seules algèbres à division de dimension finie sur $\mathbb{R}$ sont :
+  $\mathbb{R}$, $\mathbb{C}$ et $\mathbb{H}$.
+
+  \smallskip\noindent
+  \textbf{Octonions $\mathbb{O}$.}\enspace%
+  \index{octonions}
+  En abandonnant aussi l'associativité, on obtient les \emph{octonions} $\mathbb{O}$
+  (dimension $8$). Par le théorème de Hurwitz (1898), les seules algèbres
+  normées sur $\mathbb{R}$ sont $\mathbb{R}, \mathbb{C}, \mathbb{H}, \mathbb{O}$
+  (dimensions $1, 2, 4, 8$).
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$\mathbb{H}$ n'est pas commutatif.}\enspace%
+  Ne pas écrire $q^2 = |q|^2$ en général : $q^2 = q\cdot q \neq q\bar{q} = |q|^2$
+  (sauf si $q$ est réel pur ou scalaire).
+
+  \smallskip\noindent
+  \textbf{Pas de polynômes bien définis.}\enspace%
+  Dans $\mathbb{H}[X]$, l'équation $X^2 + 1 = 0$ a une infinité de solutions :
+  tous les quaternions purs unitaires $bi+cj+dk$ avec $b^2+c^2+d^2=1$.
+  L'algèbre des polynômes est délicate en non-commutatif.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Vérifier les relations $ij=k$, $jk=i$, $ki=j$ à partir de $i^2=j^2=k^2=ijk=-1$.
+
+    \item Montrer que $|pq|=|p||q|$ pour tous $p,q\in\mathbb{H}$.
+
+    \item Montrer que les quaternions unitaires $\mathrm{Sp}(1) = \{q \in \mathbb{H} \mid |q|=1\}$
+          forment un groupe (homéomorphe à $\mathbb{S}^3$).
+
+    \item Calculer la rotation correspondant au quaternion $q = \tfrac{1}{2}(1+i+j+k)$.
+          Quel est son axe et son angle ?
+
+    \item Montrer que le centre de $\mathbb{H}$ est $\mathbb{R}$, i.e.\ que
+          seuls les scalaires commutent avec tous les quaternions.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{W.\ R.\ Hamilton (16 octobre 1843) — G.\ Frobenius (1877) — A.\ Hurwitz (1898)}
