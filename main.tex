@@ -48,7 +48,7 @@
 \input{frontmatter/preface}
 \input{backmatter/glossaire}   % Définitions des entrées de glossaire
 
-\tableofcontents
+{\setstretch{1.0}\tableofcontents}
 \clearpage
 
 %=============================================================
@@ -93,6 +93,11 @@
 %=============================================================
 \part{Algèbre linéaire}
 
+\chapter{Déterminant}
+
+\input{lecons/algebre/determinant}
+\clearpage
+
 \chapter{Endomorphismes et polynômes}
 
 \input{lecons/algebre/cayley}
@@ -106,6 +111,11 @@
 %=============================================================
 %  BACKMATTER
 %=============================================================
+\addtocontents{toc}{%
+  \protect\addvspace{14pt}%
+  \protect\noindent\protect\textcolor{goldaccent!60}{\protect\rule{\protect\linewidth}{0.4pt}}%
+  \protect\par\protect\addvspace{4pt}%
+}
 \backmatter
 
 %=== GLOSSAIRE ===============================================

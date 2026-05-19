@@ -18,13 +18,36 @@
 \usepackage[most]{tcolorbox}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{tikz}
+\usepackage{datetime}
 \usepackage{enumitem}
+\usepackage{titletoc}
 \usepackage{hyperref}
 \usepackage{imakeidx}
 \usepackage[acronym, toc]{glossaries}
 
 %=== MISE EN PAGE ============================================
 \usepackage[top=3cm, bottom=3.2cm, left=2.8cm, right=2.8cm]{geometry}
+
+%=== TABLE DES MATIÈRES ======================================
+\titlecontents{part}[0em]
+  {\addvspace{14pt}%
+   \noindent\textcolor{goldaccent!60}{\rule{\textwidth}{0.4pt}}\\[-2pt]%
+   \normalsize\bfseries\color{navyblue}}
+  {Partie \thecontentslabel\quad}{}
+  {\hfill\contentspage}
+  [\noindent\textcolor{goldaccent!60}{\rule{\textwidth}{0.4pt}}\addvspace{4pt}]
+
+\titlecontents{chapter}[2.2em]
+  {\addvspace{3pt}\bfseries\color{navyblue!80}}
+  {\contentslabel{1.8em}}{}
+  {\titlerule*[5pt]{.}\contentspage}
+  [\addvspace{1pt}]
+
+\titlecontents{section}[5em]
+  {\small\color{black!70}}
+  {\contentslabel{2.2em}}{}
+  {\titlerule*[5pt]{.}\contentspage}
+  []
 
 %=== LISTES ==================================================
 \setlist[itemize]{itemsep=5pt, topsep=7pt, leftmargin=1.6em}
@@ -54,8 +77,9 @@
     colframe=navyblue,
     boxrule=1pt,
     arc=3pt,
-    left=12pt, right=12pt, top=12pt, bottom=14pt,
-    before skip=16pt, after skip=20pt,
+    left=10pt, right=10pt, top=7pt, bottom=8pt,
+    before skip=10pt, after skip=12pt,
+    before upper={\setlist[itemize]{itemsep=1pt,topsep=3pt}\setlist[enumerate]{itemsep=1pt,topsep=3pt}},
   }
 }
 
