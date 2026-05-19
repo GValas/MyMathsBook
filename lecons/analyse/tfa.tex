@@ -1,0 +1,189 @@
+%==============================================================
+%  lecons/analyse/tfa.tex — Théorème fondamental de l'analyse
+%==============================================================
+
+\lecontitle{Théorème fondamental de l'analyse}{Analyse réelle — Intégration et primitives}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème fondamental de l'analyse.}\enspace
+  \index{théorème fondamental de l'analyse}
+  Soit $f : [a,b] \to \mathbb{R}$ \textbf{continue}.
+
+  \medskip
+  \textbf{Partie I — L'intégrale définit une primitive.}\enspace
+  \textit{La fonction $F$ définie par}
+  \[
+    F(x) = \int_a^x f(t)\,dt
+  \]
+  \textit{est l'unique primitive de $f$ sur $[a,b]$ qui s'annule en $a$. En particulier,
+  $F$ est dérivable sur $[a,b]$ et $F'(x) = f(x)$ pour tout $x \in [a,b]$.}
+
+  \medskip
+  \textbf{Partie II — Formule de Newton–Leibniz.}\enspace
+  \textit{Si $G$ est une primitive quelconque de $f$ sur $[a,b]$, alors}
+  \[
+    \int_a^b f(t)\,dt = G(b) - G(a) =: \bigl[G(t)\bigr]_a^b.
+  \]
+\end{tcolorbox}
+
+\rubriq{Signification}
+La Partie~I dit que l'intégration et la dérivation sont des opérations inverses :
+dériver l'intégrale de $f$ redonne $f$. La Partie~II donne le calcul effectif :
+pour évaluer une intégrale, il suffit de trouver une primitive.
+Ensemble, elles établissent l'équivalence entre le calcul différentiel et le calcul
+intégral, deux théories développées indépendamment (Newton, Leibniz).
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Preuve de la Partie I}
+
+\begin{mdframed}[style=proofbar]
+  Soit $x \in [a,b]$ et $h \neq 0$ assez petit. On a
+  \[
+    F(x+h) - F(x) = \int_x^{x+h} f(t)\,dt.
+  \]
+  On veut montrer que $\dfrac{F(x+h)-F(x)}{h} \to f(x)$ quand $h\to 0$.
+  On écrit
+  \[
+    \frac{F(x+h)-F(x)}{h} - f(x)
+    = \frac{1}{h}\int_x^{x+h}\bigl(f(t)-f(x)\bigr)\,dt.
+  \]
+  Soit $\varepsilon > 0$. Par continuité de $f$ en $x$, il existe $\delta > 0$ tel que
+  $|t-x| \leq |h| < \delta \Rightarrow |f(t)-f(x)| < \varepsilon$. Alors
+  \[
+    \left|\frac{F(x+h)-F(x)}{h} - f(x)\right|
+    \leq \frac{1}{|h|}\int_x^{x+h}|f(t)-f(x)|\,dt \leq \varepsilon.
+  \]
+  Donc $F'(x) = f(x)$. L'unicité vient du fait que deux primitives diffèrent
+  d'une constante, et $F(a) = 0$ fixe celle-ci. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Preuve de la Partie II}
+
+\begin{mdframed}[style=proofbar]
+  Soit $G$ une primitive de $f$. Alors $(G-F)' = f - f = 0$ sur $[a,b]$,
+  donc $G - F$ est constante (corollaire du TAF\index{accroissements finis (théorème des)}).
+  En $a$ : $G(a) - F(a) = G(a) - 0 = G(a)$. Donc pour tout $x$ :
+  \[
+    G(x) - F(x) = G(a),
+    \qquad\text{soit}\quad
+    F(x) = G(x) - G(a).
+  \]
+  En $x = b$ : $\int_a^b f(t)\,dt = F(b) = G(b) - G(a)$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — COROLLAIRES
+%=============================================================
+\secnum{navyblue}{3}{Corollaires importants}
+
+\begin{tcolorbox}[thmbox]
+  Soient $f, g$ continues et $G, H$ des primitives respectives.
+  \begin{enumerate}
+    \item \textbf{Intégration par parties :}\index{intégration par parties}
+    \[
+      \int_a^b f(t)\,g'(t)\,dt = \bigl[f(t)g(t)\bigr]_a^b - \int_a^b f'(t)\,g(t)\,dt.
+    \]
+    \item \textbf{Changement de variable :}\index{changement de variable}
+    Si $\varphi : [\alpha,\beta]\to[a,b]$ est $\mathcal{C}^1$, $\varphi(\alpha)=a$, $\varphi(\beta)=b$ :
+    \[
+      \int_a^b f(t)\,dt = \int_\alpha^\beta f\bigl(\varphi(u)\bigr)\,\varphi'(u)\,du.
+    \]
+    \item \textbf{Dérivation sous le signe intégral :}
+    Si $f(x,t)$ et $\partial_x f(x,t)$ sont continues, alors
+    \[
+      \frac{d}{dx}\int_a^b f(x,t)\,dt = \int_a^b \partial_x f(x,t)\,dt.
+    \]
+    \item \textbf{Paramètre aux bornes :}
+    $\displaystyle\frac{d}{dx}\int_a^{u(x)} f(t)\,dt = f\bigl(u(x)\bigr)\cdot u'(x)$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Preuve de l'intégration par parties}
+
+\begin{mdframed}[style=proofbar]
+  $(fg)' = f'g + fg'$ s'intègre sur $[a,b]$ via Newton-Leibniz :
+  $[fg]_a^b = \int_a^b f'g + \int_a^b fg'$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 4 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Applications, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Calcul direct.}\enspace
+  $\displaystyle\int_0^1 t^n\,dt = \Bigl[\frac{t^{n+1}}{n+1}\Bigr]_0^1 = \frac{1}{n+1}$.
+
+  \smallskip\noindent
+  \textbf{2. Formule de Taylor avec reste intégral.}\enspace
+  \index{Taylor (reste intégral)}
+  Par applications successives de la Partie~I :
+  \[
+    f(b) = f(a) + f'(a)(b-a) + \cdots + \frac{f^{(n)}(a)}{n!}(b-a)^n
+    + \int_a^b \frac{(b-t)^n}{n!}f^{(n+1)}(t)\,dt.
+  \]
+
+  \smallskip\noindent
+  \textbf{3. Sommes de Riemann.}\enspace
+  Pour $f$ continue, $\dfrac{1}{n}\displaystyle\sum_{k=0}^{n-1}f\!\left(\frac{k}{n}\right) \to \int_0^1 f(t)\,dt$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges et contre-exemples.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{La continuité est indispensable pour la Partie~I.}\enspace
+  Soit $f = \mathbf{1}_{[1/2,1]}$ sur $[0,1]$ (indicatrice, discontinue en $1/2$).
+  $F(x) = \int_0^x f$ est continue et affine par morceaux, mais $F'(1/2)$ n'existe pas.
+
+  \smallskip\noindent
+  \textbf{Toute fonction dérivable n'est pas une primitive de sa dérivée
+  au sens de Riemann.}\enspace
+  Si $f'$ n'est pas intégrable au sens de Riemann, la formule de Newton–Leibniz
+  ne s'applique pas directement (elle est valide pour l'intégrale de Lebesgue).
+
+  \smallskip\noindent
+  \textbf{$\int_a^b f = 0$ n'implique pas $f = 0$.}\enspace
+  $\int_0^{2\pi}\sin t\,dt = 0$, mais $\sin \not\equiv 0$.
+  En revanche, si $f \geq 0$ et $\int f = 0$, alors $f = 0$ (par continuité).
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Calculer $\displaystyle\frac{d}{dx}\int_x^{x^2} e^{-t^2}\,dt$.
+
+    \item Montrer que $\displaystyle f(x) = \int_0^x (x-t)\sin(t^2)\,dt$
+          est de classe $\mathcal{C}^2$ et calculer $f''$.
+
+    \item Soit $f$ continue sur $[0,1]$. Montrer que
+          $\displaystyle\lim_{n\to+\infty} n\int_0^1 t^n f(t)\,dt = f(1)$.
+
+    \item Déduire la formule de Taylor-Lagrange du reste intégral en majorant
+          $\left|\int_a^b \frac{(b-t)^n}{n!}f^{(n+1)}(t)\,dt\right|$ par $\frac{M}{(n+1)!}|b-a|^{n+1}$.
+
+    \item Calculer $\displaystyle\int_0^{\pi/2}\frac{dt}{1+\tan^n(t)}$ pour $n > 0$.
+          (\textit{Hint :} changement $t \mapsto \pi/2 - t$.)
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{I.\ Newton (1666) — G.\ W.\ Leibniz (1675) — A.-L.\ Cauchy (1823)}

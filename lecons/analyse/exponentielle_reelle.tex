@@ -1,0 +1,273 @@
+%==============================================================
+%  lecons/analyse/exponentielle_reelle.tex
+%  Exponentielle réelle — définition par série entière
+%==============================================================
+
+\lecontitle{L'exponentielle réelle}{Analyse réelle — Fonctions élémentaires}
+
+%=============================================================
+%  § 1 — DÉFINITION PAR SÉRIE ENTIÈRE
+%=============================================================
+\secnum{navyblue}{1}{Définition par série entière}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace
+  \index{exponentielle réelle}
+  On appelle \emph{exponentielle réelle} la fonction
+  \[
+    \exp : \mathbb{R} \longrightarrow \mathbb{R}, \qquad
+    x \longmapsto \sum_{n=0}^{+\infty} \frac{x^n}{n!}
+    = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+  \]
+
+  \medskip
+  \textbf{Théorème.}\enspace
+  \textit{Cette série converge absolument pour tout $x \in \mathbb{R}$,
+  uniformément sur tout segment. La fonction $\exp$ est de classe
+  $\mathcal{C}^\infty$ sur $\mathbb{R}$.}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Pour tout $x \in \mathbb{R}$ et tout $M > 0$, la série
+  $\sum \dfrac{|x|^n}{n!}$ converge : elle est dominée par
+  $\sum \dfrac{M^n}{n!}$ sur $[-M, M]$ (série convergente car
+  $u_{n+1}/u_n = M/(n+1) \to 0$). La convergence est donc normale
+  sur tout segment, et la fonction somme est continue. La dérivabilité
+  terme à terme (la convergence reste normale après dérivation) donne
+  $\exp' = \exp$ (voir § 2). On itère : $\exp \in \mathcal{C}^\infty$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Premières valeurs}
+\[
+  \exp(0) = 1, \qquad
+  \exp(1) =: e \approx 2{,}718\ldots, \qquad
+  \exp(-1) = \frac{1}{e}.
+\]
+Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transcendant.
+
+\decsep
+
+%=============================================================
+%  § 2 — PROPRIÉTÉS FONDAMENTALES
+%=============================================================
+\secnum{navyblue}{2}{Propriétés fondamentales}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  \begin{enumerate}
+    \item \textbf{Équation différentielle :} $\exp' = \exp$ et $\exp(0) = 1$.
+    \item \textbf{Équation fonctionnelle :} pour tous $a, b \in \mathbb{R}$,
+    \[
+      \exp(a+b) = \exp(a)\,\exp(b).
+    \]
+    \item \textbf{Signe et inversibilité :} $\exp(x) > 0$ pour tout $x$,
+          et $\exp(x)^{-1} = \exp(-x)$.
+    \item \textbf{Monotonie :} $\exp$ est strictement croissante.
+    \item \textbf{Bijectivité :}
+          $\displaystyle\lim_{x\to +\infty}\exp(x)=+\infty$,\quad
+          $\displaystyle\lim_{x\to -\infty}\exp(x)=0^+$.\quad
+          $\exp$ est une bijection de $\mathbb{R}$ sur $(0,+\infty)$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{(1) Dérivée.}
+  La dérivation terme à terme (licite par convergence normale) donne :
+  \[
+    \exp'(x) = \sum_{n=1}^{+\infty} n\cdot\frac{x^{n-1}}{n!}
+    = \sum_{n=1}^{+\infty}\frac{x^{n-1}}{(n-1)!}
+    = \sum_{k=0}^{+\infty}\frac{x^k}{k!} = \exp(x).
+  \]
+  Et $\exp(0) = 1$ par définition.
+
+  \textit{(2) Équation fonctionnelle.}
+  Fixons $a \in \mathbb{R}$ et posons $\varphi(x) = \exp(a+x) - \exp(a)\exp(x)$.
+  Alors $\varphi'(x) = \exp(a+x) - \exp(a)\exp(x) = \varphi(x)$
+  et $\varphi(0) = \exp(a) - \exp(a)\cdot 1 = 0$.
+  Posons $\psi = \varphi\cdot\exp(-\cdot)$ :
+  \[
+    \psi'(x) = \varphi'(x)\exp(-x) + \varphi(x)\cdot(-\exp(-x))
+    = \varphi(x)\exp(-x) - \varphi(x)\exp(-x) = 0.
+  \]
+  Donc $\psi$ est constante : $\psi \equiv \psi(0) = \varphi(0)\cdot\exp(0) = 0$.
+  Puisque $\exp > 0$, on conclut $\varphi \equiv 0$, i.e.\ $\exp(a+x)=\exp(a)\exp(x)$.
+
+  \textit{(3) Signe.}
+  Pour tout $x$ : $\exp(x)\cdot\exp(-x) = \exp(0) = 1 > 0$,
+  donc $\exp(x) \neq 0$. Comme $\exp(0) = 1 > 0$ et $\exp$ est continue, $\exp > 0$.
+
+  \textit{(4) Monotonie.}
+  $\exp'(x) = \exp(x) > 0$ : $\exp$ est strictement croissante.
+
+  \textit{(5) Limites.}
+  Pour $x > 0$ : $\exp(x) \geq 1 + x \to +\infty$. Pour $x \to -\infty$ :
+  $\exp(x) = 1/\exp(-x) \to 0$. La bijectivité résulte du TVI.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Unicité}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (caractérisation).}\enspace
+  $\exp$ est l'unique fonction $f : \mathbb{R} \to \mathbb{R}$ de classe $\mathcal{C}^1$
+  vérifiant $f' = f$ et $f(0) = 1$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Si $f' = f$ et $f(0) = 1$, posons $g = f \cdot \exp(-\cdot)$.
+  Alors $g' = f'\exp(-\cdot) - f\exp(-\cdot) = (f'-f)\exp(-\cdot) = 0$.
+  Donc $g$ est constante : $g \equiv g(0) = f(0)\cdot\exp(0) = 1$.
+  Ainsi $f(x) = \exp(x)$ pour tout $x$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — INÉGALITÉS ET DÉVELOPPEMENTS
+%=============================================================
+\secnum{navyblue}{3}{Inégalités fondamentales et développements limités}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  Pour tout $x \in \mathbb{R}$ et tout $n \geq 0$ :
+  \begin{enumerate}
+    \item \textbf{Inégalité de convexité :} $\exp(x) \geq 1 + x$.
+    \item \textbf{Troncatures :}
+    \[
+      \exp(x) = \sum_{k=0}^n \frac{x^k}{k!} + o(x^n) \quad (x\to 0).
+    \]
+    \item \textbf{Reste de Taylor :} pour $x > 0$,
+    \[
+      \exp(x) = \sum_{k=0}^n \frac{x^k}{k!} + \frac{x^{n+1}}{(n+1)!}\,\exp(\xi),
+      \quad \xi \in (0,x).
+    \]
+  \end{enumerate}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{(1).} La fonction $h(x) = \exp(x) - 1 - x$ vérifie $h(0) = 0$ et
+  $h'(x) = \exp(x) - 1$. Or $h' \geq 0$ pour $x \geq 0$ et $h' \leq 0$ pour
+  $x \leq 0$, donc $h$ a un minimum global en $0$ : $h(x) \geq 0$ pour tout $x$.
+
+  \textit{(2).} C'est le développement de Taylor-Young de $\exp$ en $0$
+  (les dérivées $\exp^{(k)}(0) = \exp(0) = 1$).
+
+  \textit{(3).} Formule de Taylor avec reste de Lagrange : $\exp^{(n+1)} = \exp$,
+  d'où le reste $\dfrac{\exp(\xi)}{(n+1)!}x^{n+1}$ pour un $\xi$ entre $0$ et $x$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 4 — CROISSANCES COMPARÉES
+%=============================================================
+\secnum{navyblue}{4}{Croissances comparées}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  Pour tout $\alpha \in \mathbb{R}$ et tout $n \in \mathbb{N}$ :
+  \[
+    \lim_{x\to+\infty} \frac{x^\alpha}{\exp(x)} = 0, \qquad
+    \lim_{x\to-\infty} |x|^\alpha\,\exp(x) = 0, \qquad
+    \lim_{x\to+\infty} \frac{\exp(x)}{x^n} = +\infty.
+  \]
+  L'exponentielle croît plus vite que tout polynôme et que toute puissance.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Soit $n = \lceil\alpha\rceil + 1$. Pour $x > 0$, la troncature donne :
+  \[
+    \exp(x) \geq \frac{x^n}{n!},
+    \quad\text{donc}\quad
+    0 \leq \frac{x^\alpha}{\exp(x)} \leq \frac{n!\,x^\alpha}{x^n}
+    = \frac{n!}{x^{n-\alpha}} \xrightarrow[x\to+\infty]{} 0,
+  \]
+  car $n - \alpha \geq 1 > 0$.
+  La limite en $-\infty$ s'obtient par le changement $x \mapsto -x$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 5 — APPLICATIONS, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Applications, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Puissances réelles.}\enspace
+  Pour $a > 0$ et $\alpha \in \mathbb{R}$, on pose $a^\alpha = \exp(\alpha\ln a)$
+  (la leçon sur $\ln$ construit le logarithme naturel comme réciproque de $\exp$).
+  On a ainsi $e^x = \exp(x)$ pour tout $x$, cohérent avec la notation.
+
+  \smallskip\noindent
+  \textbf{2. Modèle de croissance/décroissance.}\enspace
+  La solution de $y' = \lambda y$, $y(0) = y_0$ est $y(t) = y_0 \exp(\lambda t)$.
+  Si $\lambda < 0$, $y(t)\to 0$ (décroissance exponentielle) ;
+  si $\lambda > 0$, $y(t)\to +\infty$ (explosion exponentielle).
+
+  \smallskip\noindent
+  \textbf{3. Convexité et inégalités.}\enspace
+  $\exp$ est convexe (car $\exp'' = \exp > 0$). L'inégalité de Jensen donne,
+  pour $x_1, \ldots, x_n \in \mathbb{R}$ :
+  \[
+    \exp\!\left(\frac{x_1+\cdots+x_n}{n}\right) \leq
+    \frac{\exp(x_1)+\cdots+\exp(x_n)}{n}.
+  \]
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$\exp(a+b) \neq \exp(a)+\exp(b)$.}\enspace
+  L'équation fonctionnelle concerne le \emph{produit}, pas la somme :
+  $\exp(1+1) = e^2 \approx 7{,}39$, mais $\exp(1)+\exp(1) = 2e \approx 5{,}44$.
+
+  \smallskip\noindent
+  \textbf{$\exp$ ne s'annule jamais.}\enspace
+  $\exp(x) = 0$ n'a pas de solution réelle. Le pôle apparent en $-\infty$
+  est une limite, non une valeur.
+
+  \smallskip\noindent
+  \textbf{L'inégalité $\exp(x)\geq 1+x$ peut être améliorée.}\enspace
+  On a aussi $\exp(x) \geq 1+x+x^2/2$ pour $x \geq 0$, mais
+  \emph{pas} pour $x$ arbitraire (les termes d'ordre supérieur alternent
+  de signe pour $x < 0$). Pour $x < 0$, la troncature à l'ordre impair
+  donne une majoration, à l'ordre pair une minoration.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $\exp(x) \geq 1 + x + x^2/2$ pour tout $x \geq 0$.
+          En déduire $\exp(x)/x^2 \to +\infty$ quand $x\to+\infty$.
+
+    \item Calculer $\displaystyle\lim_{n\to+\infty}\left(1+\frac{x}{n}\right)^n$
+          pour $x\in\mathbb{R}$. (\textit{Hint :} montrer que le logarithme
+          de l'expression tend vers $x$.)
+
+    \item Résoudre l'équation différentielle $y'' - 3y' + 2y = 0$
+          avec les conditions initiales $y(0) = 1$, $y'(0) = 0$.
+
+    \item Montrer que $e \notin \mathbb{Q}$. (\textit{Hint :} supposer
+          $e = p/q$, multiplier par $q!$ le développement
+          $e = \sum_{k=0}^q 1/k! + \sum_{k>q} 1/k!$,
+          et montrer que la partie fractionnaire est un entier strictement
+          entre $0$ et $1$.)
+
+    \item (Inégalité de Young revisitée)
+          Pour $p, q > 1$ avec $\tfrac{1}{p}+\tfrac{1}{q}=1$ et $a, b > 0$,
+          montrer $ab \leq \dfrac{a^p}{p}+\dfrac{b^q}{q}$ en appliquant
+          la convexité de $\exp$ à une combinaison convexe de $p\ln a$ et
+          $q\ln b$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{L.\ Euler (1748) — définition par série entière ; J.\ Liouville (1844) — transcendance de $e$}

@@ -1,0 +1,196 @@
+%==============================================================
+%  lecons/algebre/ensemble_quotient.tex — Ensemble quotient
+%==============================================================
+
+\lecontitle{Ensemble quotient}{Algèbre — Relations d'équivalence et passage au quotient}
+
+%=============================================================
+%  § 1 — RELATIONS D'ÉQUIVALENCE
+%=============================================================
+\secnum{navyblue}{1}{Relations d'équivalence}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace
+  \index{relation d'équivalence}
+  Une relation $\mathcal{R}$ sur un ensemble $E$ est une
+  \emph{relation d'équivalence} si elle est :
+  \begin{enumerate}
+    \item \textbf{Réflexive :} $\forall x \in E,\; x\,\mathcal{R}\,x$ ;
+    \item \textbf{Symétrique :} $x\,\mathcal{R}\,y \Rightarrow y\,\mathcal{R}\,x$ ;
+    \item \textbf{Transitive :} $x\,\mathcal{R}\,y \text{ et } y\,\mathcal{R}\,z \Rightarrow x\,\mathcal{R}\,z$.
+  \end{enumerate}
+  La \emph{classe d'équivalence}\index{classe d'équivalence} de $x \in E$ est
+  \[
+    [x]_{\mathcal{R}} = \bigl\{y \in E \mid x\,\mathcal{R}\,y\bigr\}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Classes et partition}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  \index{partition}
+  \textit{Les classes d'équivalence de $\mathcal{R}$ forment une
+  \emph{partition} de $E$ : elles sont deux à deux disjointes et leur
+  réunion est $E$. Réciproquement, toute partition de $E$ définit
+  une relation d'équivalence.}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Non-vide et recouvrement.} $x \in [x]$ par réflexivité, donc
+  $E = \bigcup_{x\in E}[x]$.
+
+  \textit{Disjonction.} Si $[x]\cap[y]\neq\emptyset$, soit $z\in[x]\cap[y]$.
+  Alors $x\,\mathcal{R}\,z$ et $y\,\mathcal{R}\,z$, donc par symétrie et transitivité
+  $x\,\mathcal{R}\,y$. Pour tout $t \in [x]$ : $x\,\mathcal{R}\,t$, et comme
+  $y\,\mathcal{R}\,x$, la transitivité donne $y\,\mathcal{R}\,t$, soit $t\in[y]$.
+  Ainsi $[x]\subseteq[y]$, et par symétrie $[x]=[y]$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 2 — ENSEMBLE QUOTIENT ET PROJECTION CANONIQUE
+%=============================================================
+\secnum{navyblue}{2}{Ensemble quotient et projection canonique}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace
+  \index{ensemble quotient}
+  L'\emph{ensemble quotient} de $E$ par $\mathcal{R}$ est l'ensemble des
+  classes d'équivalence :
+  \[
+    E/\mathcal{R} = \bigl\{[x] \mid x \in E\bigr\}.
+  \]
+  La \emph{projection canonique}\index{projection canonique} est l'application
+  \[
+    \pi : E \longrightarrow E/\mathcal{R}, \qquad x \longmapsto [x].
+  \]
+  Elle est surjective par définition.
+\end{tcolorbox}
+
+\rubriq{Propriété universelle du passage au quotient}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (factorisation).}\enspace
+  \index{passage au quotient}
+  \textit{Soit $f : E \to F$ une application. On dit que $f$ est
+  \emph{compatible} avec $\mathcal{R}$ si}
+  \[
+    x\,\mathcal{R}\,y \;\Rightarrow\; f(x) = f(y).
+  \]
+  \textit{Dans ce cas, il existe une unique application
+  $\bar{f} : E/\mathcal{R} \to F$ telle que $f = \bar{f} \circ \pi$,
+  i.e.\ le diagramme}
+  \[
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+      \node (E)  at (0,1)  {$E$};
+      \node (F)  at (2,1)  {$F$};
+      \node (Q)  at (0,-0.2) {$E/\mathcal{R}$};
+      \draw[->] (E) -- node[above]{\small$f$} (F);
+      \draw[->] (E) -- node[left]{\small$\pi$} (Q);
+      \draw[->, dashed] (Q) -- node[below right]{\small$\bar{f}$} (F);
+    \end{tikzpicture}
+  \]
+  \textit{est commutatif. De plus, $\bar{f}$ est injective si et seulement si
+  $f(x)=f(y) \Rightarrow x\,\mathcal{R}\,y$.}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Existence et unicité.} On pose $\bar{f}([x]) = f(x)$.
+  C'est bien défini : si $[x]=[y]$, alors $x\,\mathcal{R}\,y$, donc $f(x)=f(y)$.
+  L'unicité vient de $f = \bar{f}\circ\pi$ : on doit avoir $\bar{f}([x]) = f(x)$.
+
+  \textit{Injectivité.} $\bar{f}([x])=\bar{f}([y]) \Rightarrow f(x)=f(y)
+  \Rightarrow x\,\mathcal{R}\,y \Rightarrow [x]=[y]$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — EXEMPLES FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{3}{Exemples fondamentaux}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Congruences : $\mathbb{Z}/n\mathbb{Z}$.}\enspace
+  \index{congruence}\index{$\mathbb{Z}/n\mathbb{Z}$}
+  Sur $\mathbb{Z}$, poser $a \equiv b \pmod{n}$ si $n \mid (b-a)$.
+  C'est une relation d'équivalence ; la classe de $a$ est
+  $[a] = \{a + kn \mid k \in \mathbb{Z}\}$.
+  L'ensemble quotient $\mathbb{Z}/n\mathbb{Z} = \{[0],[1],\ldots,[n-1]\}$
+  est un anneau (et même un corps si $n$ est premier).
+
+  \smallskip\noindent
+  \textbf{2. Construction de $\mathbb{Q}$.}\enspace
+  \index{nombres rationnels!construction}
+  Sur $\mathbb{Z}\times\mathbb{Z}^*$, poser $(a,b)\sim(c,d)$ si $ad = bc$.
+  C'est une relation d'équivalence, et
+  $\mathbb{Q} = (\mathbb{Z}\times\mathbb{Z}^*)/{\sim}$.
+  La classe de $(a,b)$ est notée $\tfrac{a}{b}$.
+
+  \smallskip\noindent
+  \textbf{3. Espace vectoriel quotient.}\enspace
+  \index{espace vectoriel quotient}
+  Soit $F$ un sous-espace de $E$. On pose $x \sim y$ si $x-y \in F$.
+  L'ensemble quotient $E/F$ est naturellement un $\mathbb{K}$-espace vectoriel,
+  avec $\dim(E/F) = \dim E - \dim F$ (théorème du rang).
+
+  \smallskip\noindent
+  \textbf{4. Orbites d'une action de groupe.}\enspace
+  \index{orbite}
+  Si un groupe $G$ agit sur $E$, poser $x \sim y$ si $\exists\,g \in G,\, y=g\cdot x$.
+  Les classes sont les \emph{orbites} ; $E/{\sim}$ est l'espace des orbites.
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 4 — APPLICATIONS, PIÈGES, EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Applications, pièges et exercices}
+
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Bien-fondé des opérations.}\enspace
+  Pour définir une loi sur $E/\mathcal{R}$, il faut vérifier que l'opération
+  ne dépend pas du représentant choisi.
+  Exemple piège : sur $\mathbb{Z}$, la relation $a\sim b$ si $|a|=|b|$ est
+  une relation d'équivalence, mais $[a]+[b]:=[a+b]$ n'est \emph{pas} bien définie
+  car $[1]+[{-1}]=[0]$ mais $[{-1}]+[1]=[{-2}]$ si l'on choisit mal les représentants.
+
+  \smallskip\noindent
+  \textbf{$E/\mathcal{R}$ peut être très grand ou très petit.}\enspace
+  Si $\mathcal{R}$ est l'égalité, $E/\mathcal{R} \cong E$.
+  Si $\mathcal{R}$ est la relation totale ($x\mathcal{R}y$ toujours), $E/\mathcal{R}$
+  est un singleton.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que la relation $\sim$ sur $\mathbb{R}^2$ définie par
+          $(x,y)\sim(x',y')$ si $x^2+y^2=x'^2+y'^2$ est une relation
+          d'équivalence. Décrire $\mathbb{R}^2/{\sim}$ et la projection canonique.
+
+    \item Soit $f : E \to F$. Montrer que la relation $x\sim_f y \Leftrightarrow f(x)=f(y)$
+          est une relation d'équivalence, et que l'application induite
+          $\bar{f} : E/{\sim_f} \to F$ est injective. En déduire la décomposition
+          canonique $f = \iota \circ \bar{f} \circ \pi$ où $\iota$ est l'injection
+          de $\mathrm{Im}(f)$ dans $F$.
+
+    \item Montrer que $\mathbb{Z}/n\mathbb{Z}$ est un corps si et seulement si
+          $n$ est premier.
+
+    \item Soit $E = \mathcal{C}([0,1],\mathbb{R})$ et $f \sim g$ si $\int_0^1 f = \int_0^1 g$.
+          Montrer que c'est une relation d'équivalence. Décrire $E/{\sim}$.
+
+    \item (Théorème de Noether) Soit $\varphi : G \to H$ un homomorphisme de groupes.
+          Montrer que $G/\ker\varphi \cong \mathrm{Im}(\varphi)$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{G.\ Cantor (1874) — B.\ Russell (1903) — structures quotient omniprésentes en algèbre}

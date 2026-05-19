@@ -1,0 +1,247 @@
+%==============================================================
+%  lecons/algebre/matrices_orthogonales.tex
+%  Matrices orthogonales
+%==============================================================
+
+\lecontitle{Matrices orthogonales}{Algèbre linéaire — Isométries et groupe orthogonal}
+
+%=============================================================
+%  § 1 — DÉFINITION ET PREMIÈRES PROPRIÉTÉS
+%=============================================================
+\secnum{navyblue}{1}{Définition et premières propriétés}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace
+  \index{matrice orthogonale}\index{groupe orthogonal}
+  Une matrice $Q \in \mathcal{M}_n(\mathbb{R})$ est dite \emph{orthogonale} si
+  \[
+    Q^T Q = I_n \qquad (\text{i.e.}\ Q^T = Q^{-1}).
+  \]
+  L'ensemble de ces matrices forme le \emph{groupe orthogonal}
+  $\mathrm{O}(n) = \{Q \in \mathcal{M}_n(\mathbb{R}) \mid Q^TQ = I_n\}$.
+  Le sous-groupe $\mathrm{SO}(n) = \{Q \in \mathrm{O}(n) \mid \det Q = 1\}$
+  est le \emph{groupe orthogonal spécial}\index{groupe orthogonal spécial} (ou groupe des rotations).
+
+  \medskip
+  \textbf{Propriétés immédiates.}
+  \begin{enumerate}
+    \item $\det(Q) = \pm 1$ pour tout $Q \in \mathrm{O}(n)$.
+    \item $Q \in \mathrm{O}(n) \Rightarrow Q^T \in \mathrm{O}(n)$ et $Q^{-1} = Q^T$.
+    \item $\mathrm{O}(n)$ est un groupe pour la multiplication matricielle.
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Preuve de $\det(Q)=\pm 1$}
+
+\begin{mdframed}[style=proofbar]
+  $Q^TQ=I_n \Rightarrow \det(Q^T)\det(Q)=1 \Rightarrow \det(Q)^2=1
+  \Rightarrow \det(Q)=\pm 1$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 2 — CARACTÉRISATIONS
+%=============================================================
+\secnum{navyblue}{2}{Caractérisations équivalentes}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  Pour $Q \in \mathcal{M}_n(\mathbb{R})$, les assertions suivantes sont équivalentes :
+  \begin{enumerate}
+    \item $Q \in \mathrm{O}(n)$ (i.e.\ $Q^TQ = I_n$) ;
+    \item les colonnes de $Q$ forment une base orthonormale de $\mathbb{R}^n$ ;
+    \item les lignes de $Q$ forment une base orthonormale de $\mathbb{R}^n$ ;
+    \item $Q$ préserve le produit scalaire : $\langle Qx, Qy\rangle = \langle x,y\rangle$
+          pour tous $x,y\in\mathbb{R}^n$ ;
+    \item $Q$ préserve la norme euclidienne : $\|Qx\| = \|x\|$ pour tout $x\in\mathbb{R}^n$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{(1)$\Leftrightarrow$(2).} Notons $C_1,\ldots,C_n$ les colonnes de $Q$.
+  $(Q^TQ)_{ij} = C_i^T C_j = \langle C_i, C_j\rangle$. Donc $Q^TQ = I_n$
+  si et seulement si $\langle C_i,C_j\rangle = \delta_{ij}$, i.e.\ les colonnes
+  sont orthonormales.
+
+  \textit{(1)$\Leftrightarrow$(3).} $Q^TQ=I_n \Leftrightarrow QQ^T=I_n$
+  (car $Q$ est carrée), et $QQ^T=I_n$ exprime l'orthonormalité des lignes.
+
+  \textit{(1)$\Rightarrow$(4).}
+  $\langle Qx,Qy\rangle = (Qx)^T(Qy) = x^TQ^TQy = x^Ty = \langle x,y\rangle$.
+
+  \textit{(4)$\Rightarrow$(5).} $\|Qx\|^2 = \langle Qx,Qx\rangle = \langle x,x\rangle = \|x\|^2$.
+
+  \textit{(5)$\Rightarrow$(1).} Par polarisation,
+  $\langle Qx,Qy\rangle = \frac{1}{4}(\|Q(x+y)\|^2 - \|Q(x-y)\|^2)
+  = \frac{1}{4}(\|x+y\|^2-\|x-y\|^2) = \langle x,y\rangle$.
+  Donc $(Q^TQ-I_n)$ est une forme bilinéaire nulle, soit $Q^TQ=I_n$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — STRUCTURE EN PETITES DIMENSIONS
+%=============================================================
+\secnum{navyblue}{3}{Structure en dimension 2 et 3}
+
+\rubriq{En dimension 2}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  \index{rotation!en dimension 2}\index{réflexion}
+  Toute matrice de $\mathrm{O}(2)$ est soit une \emph{rotation} soit
+  une \emph{réflexion} :
+  \[
+    \mathrm{SO}(2) = \left\{R_\theta = \begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix} \;\middle|\; \theta\in\mathbb{R}\right\},
+  \]
+  \[
+    \mathrm{O}(2)\setminus\mathrm{SO}(2) = \left\{S_\theta = \begin{pmatrix}\cos\theta&\sin\theta\\\sin\theta&-\cos\theta\end{pmatrix} \;\middle|\; \theta\in\mathbb{R}\right\}.
+  \]
+  $S_\theta$ est la réflexion par rapport à la droite d'angle $\theta/2$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  Soit $Q=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\mathrm{O}(2)$.
+  Les colonnes sont orthonormales : $a^2+c^2=1$, $b^2+d^2=1$, $ab+cd=0$.
+  Donc il existe $\theta$ tel que $a=\cos\theta$, $c=\sin\theta$.
+  La condition $ab+cd=0$ donne $b=-\lambda\sin\theta$, $d=\lambda\cos\theta$
+  avec $\lambda^2=1$, i.e.\ $\lambda=\pm 1$.
+  Si $\lambda=1$ : $\det Q=1$, $Q=R_\theta$ ; si $\lambda=-1$ : $\det Q=-1$, $Q=S_\theta$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{En dimension 3 — forme réduite}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  \index{rotation!en dimension 3}
+  Toute matrice $Q \in \mathrm{SO}(3)$ est une rotation d'angle $\theta \in [0,\pi]$
+  autour d'un axe $\Delta$. Sa forme réduite dans une base adaptée est
+  \[
+    \begin{pmatrix}1&0&0\\0&\cos\theta&-\sin\theta\\0&\sin\theta&\cos\theta\end{pmatrix}.
+  \]
+  \textit{Tout $Q\in\mathrm{O}(3)\setminus\mathrm{SO}(3)$ est le produit d'une
+  rotation et d'une réflexion par rapport à un plan.}
+\end{tcolorbox}
+
+\decsep
+
+%=============================================================
+%  § 4 — VALEURS PROPRES ET DIAGONALISATION
+%=============================================================
+\secnum{navyblue}{4}{Valeurs propres et réduction}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  \index{matrice orthogonale!valeurs propres}
+  Soit $Q \in \mathrm{O}(n)$.
+  \begin{enumerate}
+    \item Les valeurs propres réelles de $Q$ sont $\pm 1$.
+    \item Les valeurs propres complexes non réelles viennent par paires
+          $e^{i\theta}, e^{-i\theta}$ avec $\theta \in (0,\pi)$.
+    \item Il existe $P \in \mathrm{O}(n)$ telle que $P^TQP$ est bloc-diagonale,
+          à blocs $(\pm 1)$ et $R_{\theta_k}$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Valeurs propres réelles.} Si $Qv=\lambda v$ avec $v\neq 0$,
+  $\|v\|=\|Qv\|=|\lambda|\|v\|$, donc $|\lambda|=1$.
+
+  \textit{Paires complexes conjuguées.} Les coefficients de $\chi_Q$ sont réels,
+  donc les racines complexes non réelles viennent par paires $\lambda,\bar\lambda$.
+  Sur $|\lambda|=1$, on écrit $\lambda=e^{i\theta}$.
+
+  \textit{Réduction.} Par récurrence sur $n$ et le théorème spectral pour les
+  matrices normales ($Q^TQ=I_n \Rightarrow QQ^T=Q^TQ$). \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Angle et trace}
+Pour $Q \in \mathrm{SO}(n)$ de forme réduite avec blocs $R_{\theta_1},\ldots,R_{\theta_p}$
+et des $1$ sur la diagonale :
+\[
+  \mathrm{tr}(Q) = (n-2p) + 2\sum_{k=1}^p \cos\theta_k.
+\]
+En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
+
+\decsep
+
+%=============================================================
+%  § 5 — APPLICATIONS, PIÈGES, EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Applications, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Décomposition QR.}\enspace
+  \index{décomposition QR}
+  Toute matrice $A \in \mathcal{M}_n(\mathbb{R})$ inversible s'écrit $A = QR$
+  avec $Q \in \mathrm{O}(n)$ et $R$ triangulaire supérieure à diagonale strictement
+  positive. Cette décomposition est unique et se construit par orthonormalisation
+  de Gram-Schmidt\index{Gram-Schmidt} sur les colonnes.
+
+  \smallskip\noindent
+  \textbf{2. Isométries de $\mathbb{R}^n$.}\enspace
+  Toute isométrie affine $f(x) = Qx + b$ avec $Q\in\mathrm{O}(n)$.
+  En dimension 2, cela donne les rotations, réflexions, translations et leurs
+  composées (isométries du plan euclidien).
+
+  \smallskip\noindent
+  \textbf{3. Exponentielle et $\mathrm{SO}(n)$.}\enspace
+  Une matrice $A$ est \emph{antisymétrique} ($A^T=-A$) si et seulement si
+  $e^{tA} \in \mathrm{SO}(n)$ pour tout $t \in \mathbb{R}$.
+  L'algèbre de Lie\index{algèbre de Lie} de $\mathrm{SO}(n)$ est
+  $\mathfrak{so}(n) = \{A \in \mathcal{M}_n(\mathbb{R}) \mid A^T = -A\}$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$Q^TQ = I_n$ n'implique pas $QQ^T = I_n$ en dimension infinie.}\enspace
+  En dimension finie, les deux sont équivalents (car $Q$ est carrée), mais le
+  shift $T : (x_1,x_2,\ldots)\mapsto(0,x_1,x_2,\ldots)$ vérifie $T^*T=I$
+  sans $TT^*=I$.
+
+  \smallskip\noindent
+  \textbf{$\mathrm{O}(n)$ n'est pas connexe.}\enspace
+  $\mathrm{O}(n)$ a deux composantes connexes : $\mathrm{SO}(n)$ (det $=1$)
+  et $\{Q : \det Q=-1\}$. On ne peut pas déformer continûment une rotation
+  en une réflexion dans $\mathrm{O}(n)$.
+
+  \smallskip\noindent
+  \textbf{Symétrique $\neq$ orthogonale.}\enspace
+  $A$ symétrique ($A^T=A$) et $A$ orthogonale ($A^T=A^{-1}$) simultanément
+  impose $A^2=I$, donc les valeurs propres sont $\pm 1$.
+  Ces matrices sont les \emph{involutions symétriques} (réflexions orthogonales).
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que si $A$ est antisymétrique, alors $e^A \in \mathrm{SO}(n)$.
+          (\textit{Hint :} calculer $(e^A)^T e^A$.)
+
+    \item Soit $Q \in \mathrm{O}(n)$ avec $\det Q = -1$. Montrer que $-1$ est
+          valeur propre de $Q$ lorsque $n$ est impair.
+
+    \item Trouver toutes les matrices $Q \in \mathrm{O}(2)$ telles que $Q^3 = I$.
+
+    \item Effectuer la décomposition QR de
+          $A = \begin{pmatrix}1&1\\1&0\\0&1\end{pmatrix}$
+          par l'algorithme de Gram-Schmidt.
+
+    \item (Formule de Rodrigues) Soit $u$ un vecteur unitaire de $\mathbb{R}^3$
+          et $R_\theta$ la rotation d'angle $\theta$ autour de $u$. Montrer que
+          \[
+            R_\theta = I + \sin\theta\,[u]_\times + (1-\cos\theta)\,[u]_\times^2,
+          \]
+          où $[u]_\times$ est la matrice antisymétrique de la multiplication
+          vectorielle par $u$ : $[u]_\times v = u \times v$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{A.-L.\ Cauchy (1829) — C.\ Jordan (1868) — fondements de la géométrie euclidienne}

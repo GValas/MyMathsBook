@@ -1,0 +1,209 @@
+%==============================================================
+%  lecons/algebre/corps_fractions.tex — Corps des fractions
+%==============================================================
+
+\lecontitle{Corps des fractions}{Algèbre — Anneaux intègres et localisation}
+
+%=============================================================
+%  § 1 — PRÉREQUIS : ANNEAU INTÈGRE
+%=============================================================
+\secnum{navyblue}{1}{Anneaux intègres — rappels et motivation}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace
+  \index{anneau intègre}
+  Un anneau commutatif $A$ (avec $1 \neq 0$) est dit \emph{intègre} s'il
+  n'a pas de \emph{diviseur de zéro} :
+  \[
+    ab = 0 \;\Rightarrow\; a = 0 \text{ ou } b = 0.
+  \]
+  \textbf{Exemples :} $\mathbb{Z}$, $\mathbb{K}[X]$ pour $\mathbb{K}$ corps,
+  tout corps, $\mathbb{Z}[i]$ (entiers de Gauss).\\
+  \textbf{Contre-exemples :} $\mathbb{Z}/6\mathbb{Z}$ ($2\cdot 3=0$),
+  $\mathcal{M}_2(\mathbb{K})$.
+\end{tcolorbox}
+
+\rubriq{Motivation}
+Dans $\mathbb{Z}$, on peut additionner et multiplier, mais pas toujours diviser :
+$3/2 \notin \mathbb{Z}$. Le corps des fractions est la plus petite extension
+dans laquelle tout élément non nul de $A$ est inversible — on « force » la division.
+
+\decsep
+
+%=============================================================
+%  § 2 — CONSTRUCTION
+%=============================================================
+\secnum{navyblue}{2}{Construction du corps des fractions}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème-définition.}\enspace
+  \index{corps des fractions}
+  Soit $A$ un anneau intègre. Sur $S = A \times (A\setminus\{0\})$, on définit
+  \[
+    (a,b) \sim (c,d) \;\iff\; ad = bc.
+  \]
+  \textit{C'est une relation d'équivalence. L'ensemble quotient
+  $\mathrm{Frac}(A) = S/{\sim}$, muni des lois}
+  \[
+    \frac{a}{b} + \frac{c}{d} = \frac{ad+bc}{bd},
+    \qquad
+    \frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd},
+  \]
+  \textit{est un corps, appelé \emph{corps des fractions} de $A$.
+  L'application $\iota : A \to \mathrm{Frac}(A),\; a \mapsto \tfrac{a}{1}$,
+  est un homomorphisme d'anneaux injectif.}
+\end{tcolorbox}
+
+\rubriq{Preuve — $\sim$ est bien une relation d'équivalence}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Réflexivité.} $ab = ba$ (commutativité). ✓
+
+  \textit{Symétrie.} $ad=bc \Rightarrow cb=da$. ✓
+
+  \textit{Transitivité.} Supposons $ad=bc$ et $cf=de$.
+  On veut $af=be$. On a $adf = bcf = bde$,
+  donc $d(af-be)=0$. Comme $d\neq 0$ et $A$ est \emph{intègre}, $af=be$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Preuve — $\mathrm{Frac}(A)$ est un corps}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Bien-fondé des lois.} Si $(a,b)\sim(a',b')$ et $(c,d)\sim(c',d')$
+  (i.e.\ $ab'=a'b$ et $cd'=c'd$), montrons $\frac{ad+bc}{bd}\sim\frac{a'd'+b'c'}{b'd'}$ :
+  \[
+    (ad+bc)(b'd') = adb'd' + bcb'd' = (ab')dd' + (cd')bb' = (a'b)dd'+(c'd)bb' = (a'd'+b'c')(bd).
+  \]
+
+  \textit{Anneau commutatif avec $1=\tfrac{1}{1}$ et $0=\tfrac{0}{1}$.}
+  Les vérifications sont immédiates.
+
+  \textit{Inverse de $\tfrac{a}{b}$ pour $a\neq 0$.}
+  $\dfrac{a}{b}\cdot\dfrac{b}{a} = \dfrac{ab}{ba} = \dfrac{1}{1}$.
+  Ainsi tout élément non nul est inversible : $\mathrm{Frac}(A)$ est un corps.
+
+  \textit{Injectivité de $\iota$.}
+  $\iota(a)=\iota(a') \Rightarrow \tfrac{a}{1}\sim\tfrac{a'}{1}
+  \Rightarrow a\cdot 1 = a'\cdot 1 \Rightarrow a=a'$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — PROPRIÉTÉ UNIVERSELLE
+%=============================================================
+\secnum{navyblue}{3}{Propriété universelle}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (propriété universelle).}\enspace
+  \index{corps des fractions!propriété universelle}
+  \textit{Soit $\varphi : A \to K$ un homomorphisme d'anneaux injectif vers
+  un corps $K$. Alors il existe un unique homomorphisme de corps
+  $\tilde{\varphi} : \mathrm{Frac}(A) \to K$ tel que $\tilde{\varphi}\circ\iota = \varphi$,
+  à savoir}
+  \[
+    \tilde{\varphi}\!\left(\frac{a}{b}\right) = \frac{\varphi(a)}{\varphi(b)}.
+  \]
+  \textit{En particulier, $\mathrm{Frac}(A)$ est le plus petit corps contenant $A$.}
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Bien-fondé.} Si $(a,b)\sim(c,d)$, alors $ad=bc$, donc
+  $\varphi(a)\varphi(d)=\varphi(b)\varphi(c)$.
+  Comme $\varphi$ est injectif et $b\neq 0$, $\varphi(b)\neq 0$, d'où
+  $\varphi(a)/\varphi(b) = \varphi(c)/\varphi(d)$ dans $K$.
+
+  \textit{Homomorphisme.} Vérification directe sur la somme et le produit.
+
+  \textit{Unicité.} $\tilde\varphi$ est forcée par $\tilde\varphi(a/b)
+  = \tilde\varphi(a/1)\cdot\tilde\varphi(1/b)
+  = \varphi(a)\cdot\varphi(b)^{-1}$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 4 — EXEMPLES
+%=============================================================
+\secnum{navyblue}{4}{Exemples fondamentaux}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. $\mathrm{Frac}(\mathbb{Z}) = \mathbb{Q}$.}\enspace
+  \index{nombres rationnels!construction}
+  La construction ci-dessus avec $A=\mathbb{Z}$ redonne exactement les rationnels,
+  avec $\tfrac{a}{b}$ au sens habituel.
+
+  \smallskip\noindent
+  \textbf{2. Corps des fractions rationnelles $\mathbb{K}(X)$.}\enspace
+  \index{fractions rationnelles}
+  $\mathrm{Frac}(\mathbb{K}[X]) = \mathbb{K}(X)$, les \emph{fractions rationnelles}
+  $P/Q$ avec $P,Q\in\mathbb{K}[X]$, $Q\neq 0$.
+  Plus généralement, $\mathrm{Frac}(\mathbb{K}[X_1,\ldots,X_n]) = \mathbb{K}(X_1,\ldots,X_n)$.
+
+  \smallskip\noindent
+  \textbf{3. Entiers de Gauss.}\enspace
+  \index{entiers de Gauss}
+  $\mathrm{Frac}(\mathbb{Z}[i]) = \mathbb{Q}(i) = \{a+bi \mid a,b\in\mathbb{Q}\}$,
+  le corps des \emph{Gaussiens rationnels}.
+
+  \smallskip\noindent
+  \textbf{4. Corps de fonctions d'une courbe.}\enspace
+  Si $A = \mathbb{K}[X,Y]/(f)$ est l'anneau de coordonnées d'une courbe algébrique
+  irréductible $f=0$, alors $\mathrm{Frac}(A)$ est le corps de fonctions de la courbe,
+  objet central de la géométrie algébrique.
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 5 — PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Pièges et exercices}
+
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{L'intégrité est indispensable pour la transitivité.}\enspace
+  Dans $\mathbb{Z}/6\mathbb{Z}$, $(2,2)\sim(3,3)$ (car $2\cdot3=3\cdot2$) et
+  $(3,3)\sim(2,4)$ (car $3\cdot4=12=2\cdot3\cdot2$), mais
+  $(2,2)\not\sim(2,4)$ (car $2\cdot4=8\neq 2\cdot2=4$).
+  La construction échoue sur un anneau non intègre.
+
+  \smallskip\noindent
+  \textbf{$\iota$ n'est pas surjective en général.}\enspace
+  $\iota : \mathbb{Z} \to \mathbb{Q}$ n'est pas surjective : $1/2 \notin \mathrm{Im}(\iota)$.
+  $\mathrm{Frac}(A)$ est strictement plus grand que $A$ dès que $A$ n'est pas
+  déjà un corps.
+
+  \smallskip\noindent
+  \textbf{$\mathrm{Frac}(A) = A$ si et seulement si $A$ est un corps.}\enspace
+  Dans ce cas, $\iota$ est un isomorphisme.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que si $A$ est intègre et $\mathrm{Frac}(A) = A$,
+          alors $A$ est un corps.
+
+    \item Déterminer $\mathrm{Frac}(\mathbb{Z}[\sqrt{2}])$.
+          Montrer que c'est $\mathbb{Q}(\sqrt{2}) = \{a+b\sqrt{2}\mid a,b\in\mathbb{Q}\}$.
+
+    \item Soit $p$ premier. Montrer que
+          $\mathbb{Z}_{(p)} = \bigl\{\tfrac{a}{b}\in\mathbb{Q}\mid p\nmid b\bigr\}$
+          est un sous-anneau de $\mathbb{Q}$ (l'anneau local en $p$), et que son
+          unique idéal maximal est $p\mathbb{Z}_{(p)}$.
+
+    \item Décomposer en éléments simples dans $\mathbb{R}(X)$ la fraction
+          $\dfrac{X^2+1}{(X-1)(X^2+X+1)}$.
+
+    \item Soit $A \subset B$ des anneaux intègres.
+          Montrer que $\mathrm{Frac}(A) \subset \mathrm{Frac}(B)$.
+          Si $\mathrm{Frac}(A) = \mathrm{Frac}(B)$, dit-on que $A = B$ ?
+          (Donner un contre-exemple.)
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{R.\ Dedekind (1871) — H.\ Weber (1882) — fondements de l'algèbre commutative}

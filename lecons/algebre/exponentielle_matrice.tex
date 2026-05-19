@@ -1,0 +1,236 @@
+%==============================================================
+%  lecons/algebre/exponentielle_matrice.tex
+%  Exponentielle de matrice
+%==============================================================
+
+\lecontitle{Exponentielle de matrice}{Algèbre linéaire — Séries de matrices et systèmes différentiels}
+
+%=============================================================
+%  § 1 — DÉFINITION ET CONVERGENCE
+%=============================================================
+\secnum{navyblue}{1}{Définition et convergence}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace
+  \index{exponentielle de matrice}
+  Pour $A \in \mathcal{M}_n(\mathbb{K})$, on définit
+  \[
+    e^A = \exp(A) = \sum_{k=0}^{+\infty} \frac{A^k}{k!}
+    = I_n + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots
+  \]
+
+  \textbf{Théorème.}\enspace
+  \textit{Cette série converge absolument pour toute matrice $A$,
+  uniformément sur tout borné de $\mathcal{M}_n(\mathbb{K})$.}
+\end{tcolorbox}
+
+\rubriq{Preuve de la convergence}
+
+\begin{mdframed}[style=proofbar]
+  On munit $\mathcal{M}_n(\mathbb{K})$ d'une norme sous-multiplicative $\|\cdot\|$
+  vérifiant $\|AB\|\leq\|A\|\,\|B\|$ (par exemple la norme subordonnée à la norme
+  euclidienne). Alors $\|A^k\|\leq\|A\|^k$, d'où
+  \[
+    \sum_{k=0}^{N}\left\|\frac{A^k}{k!}\right\| \leq \sum_{k=0}^{N}\frac{\|A\|^k}{k!}
+    \xrightarrow[N\to\infty]{} e^{\|A\|} < +\infty.
+  \]
+  La série converge absolument ; $\mathcal{M}_n(\mathbb{K})$ étant complet,
+  elle converge. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Premières valeurs}
+\[
+  e^{0_n} = I_n, \qquad
+  e^{\mathrm{diag}(\lambda_1,\ldots,\lambda_n)} = \mathrm{diag}(e^{\lambda_1},\ldots,e^{\lambda_n}).
+\]
+
+\decsep
+
+%=============================================================
+%  § 2 — PROPRIÉTÉS FONDAMENTALES
+%=============================================================
+\secnum{navyblue}{2}{Propriétés fondamentales}
+
+\begin{tcolorbox}[thmbox]
+  Soient $A, B \in \mathcal{M}_n(\mathbb{K})$.
+  \begin{enumerate}
+    \item \textbf{Commutativité.}\enspace Si $AB = BA$, alors $e^{A+B} = e^A e^B$.
+    \item \textbf{Inversibilité.}\enspace $e^A$ est toujours inversible et
+          $(e^A)^{-1} = e^{-A}$.
+    \item \textbf{Conjugaison.}\enspace Si $P$ est inversible,
+          $e^{PAP^{-1}} = P\,e^A\,P^{-1}$.
+    \item \textbf{Transposée.}\enspace $e^{A^T} = (e^A)^T$.
+    \item \textbf{Déterminant (formule de Jacobi).}\enspace
+    \index{formule de Jacobi}
+          $\det(e^A) = e^{\mathrm{tr}(A)}$.
+    \item \textbf{Dérivation.}\enspace $\dfrac{d}{dt}e^{tA} = A\,e^{tA} = e^{tA}A$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Preuve de 1 — formule du produit}
+
+\begin{mdframed}[style=proofbar]
+  Si $AB=BA$, le binôme de Newton s'applique : $(A+B)^k = \sum_{j=0}^k \binom{k}{j}A^j B^{k-j}$.
+  Alors, en intervertissant les sommes (convergence absolue) :
+  \[
+    e^{A+B} = \sum_{k=0}^\infty \frac{(A+B)^k}{k!}
+    = \sum_{k=0}^\infty \sum_{j=0}^k \frac{A^j B^{k-j}}{j!(k-j)!}
+    = \left(\sum_{j=0}^\infty\frac{A^j}{j!}\right)\!\left(\sum_{l=0}^\infty\frac{B^l}{l!}\right)
+    = e^A e^B. \hfill\blacksquare
+  \]
+\end{mdframed}
+
+\rubriq{Preuve de 5 — formule de Jacobi}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Cas diagonalisable.} Si $A = P\,\mathrm{diag}(\lambda_i)\,P^{-1}$, alors
+  $e^A = P\,\mathrm{diag}(e^{\lambda_i})\,P^{-1}$ et
+  $\det(e^A) = \prod e^{\lambda_i} = e^{\sum\lambda_i} = e^{\mathrm{tr}(A)}$.
+
+  \textit{Cas général.} La fonction $t\mapsto f(t) = \det(e^{tA})$ vérifie
+  $f(0)=1$ et, en dérivant :
+  $f'(t) = \mathrm{tr}(A)\,\det(e^{tA}) = \mathrm{tr}(A)\,f(t)$.
+  Donc $f(t) = e^{t\,\mathrm{tr}(A)}$, et en $t=1$ : $\det(e^A) = e^{\mathrm{tr}(A)}$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — CALCUL EFFECTIF
+%=============================================================
+\secnum{navyblue}{3}{Calcul effectif}
+
+\rubriq{Matrice diagonalisable}
+Si $A = P\,\mathrm{diag}(\lambda_1,\ldots,\lambda_n)\,P^{-1}$, alors
+\[
+  e^A = P\,\mathrm{diag}(e^{\lambda_1},\ldots,e^{\lambda_n})\,P^{-1}.
+\]
+
+\rubriq{Matrice nilpotente}
+Si $A^m = 0$, la série est finie :
+\[
+  e^A = I + A + \frac{A^2}{2!} + \cdots + \frac{A^{m-1}}{(m-1)!}.
+\]
+
+\rubriq{Décomposition de Dunford}
+\index{décomposition de Dunford}
+Toute matrice $A$ s'écrit $A = D + N$ avec $D$ diagonalisable, $N$ nilpotente
+et $DN = ND$. Comme $D$ et $N$ commutent :
+\[
+  e^A = e^D \cdot e^N,
+\]
+où $e^D$ se calcule via la diagonalisation et $e^N$ par la série finie.
+
+\begin{mdframed}[style=exbar]
+  \textbf{Exemple — matrice $2\times 2$.}\enspace
+  Calculer $e^A$ pour $A = \begin{pmatrix}1&1\\0&1\end{pmatrix} = I + N$,
+  $N = \begin{pmatrix}0&1\\0&0\end{pmatrix}$ (nilpotente, $N^2=0$).
+
+  $I$ et $N$ commutent, donc $e^A = e^I\,e^N = e\bigl(I+N\bigr)
+  = e\begin{pmatrix}1&1\\0&1\end{pmatrix}$.
+
+  \medskip
+  \textbf{Exemple — rotation.}\enspace
+  $A = \theta\begin{pmatrix}0&-1\\1&0\end{pmatrix}$.
+  Valeurs propres complexes $\pm i\theta$. En développant directement :
+  \[
+    e^A = \begin{pmatrix}\cos\theta & -\sin\theta\\\sin\theta & \cos\theta\end{pmatrix}.
+  \]
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 4 — APPLICATION : SYSTÈMES DIFFÉRENTIELS LINÉAIRES
+%=============================================================
+\secnum{navyblue}{4}{Application aux systèmes différentiels}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  \index{système différentiel linéaire}
+  \textit{Soit $A \in \mathcal{M}_n(\mathbb{R})$. L'unique solution du
+  problème de Cauchy}
+  \[
+    \begin{cases} X'(t) = A\,X(t) \\ X(0) = X_0 \in \mathbb{R}^n \end{cases}
+  \]
+  \textit{est $X(t) = e^{tA}\,X_0$.}
+
+  \medskip
+  \textit{Plus généralement, la solution de $X' = AX + B(t)$,
+  $X(0)=X_0$ est donnée par la formule de variation des constantes :}
+  \[
+    X(t) = e^{tA}\,X_0 + \int_0^t e^{(t-s)A}\,B(s)\,ds.
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Existence.} $\frac{d}{dt}(e^{tA}X_0) = Ae^{tA}X_0$ (propriété 6) et
+  $e^{0\cdot A}X_0 = X_0$.
+
+  \textit{Unicité.} Si $Y$ est une autre solution, posons $Z = e^{-tA}Y$.
+  Alors $Z' = -Ae^{-tA}Y + e^{-tA}Y' = e^{-tA}(-AY+AY) = 0$, donc $Z$ est
+  constante : $Z(t)=Z(0)=X_0$, soit $Y(t)=e^{tA}X_0$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Interprétation spectrale}
+Si $A$ est diagonalisable avec valeurs propres $\lambda_1,\ldots,\lambda_n$
+et vecteurs propres $v_1,\ldots,v_n$, la solution générale est
+\[
+  X(t) = \sum_{i=1}^n c_i\,e^{\lambda_i t}\,v_i.
+\]
+Les parties réelles $\mathrm{Re}(\lambda_i)$ gouvernent la stabilité :
+$X(t)\to 0$ si et seulement si tous les $\mathrm{Re}(\lambda_i) < 0$.
+
+\decsep
+
+%=============================================================
+%  § 5 — CONTRE-EXEMPLES, PIÈGES, EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Pièges et exercices}
+
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$e^{A+B} \neq e^A e^B$ sans commutativité.}\enspace
+  Pour $A=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ et $B=\begin{pmatrix}0&0\\1&0\end{pmatrix}$,
+  $AB\neq BA$ et $e^{A+B}\neq e^Ae^B$.
+  C'est la formule de Baker–Campbell–Hausdorff\index{Baker-Campbell-Hausdorff}
+  qui corrige cela : $e^Ae^B = e^{A+B+\frac{1}{2}[A,B]+\cdots}$.
+
+  \smallskip\noindent
+  \textbf{$e^A = I$ n'implique pas $A = 0$.}\enspace
+  Pour $A = 2\pi i \begin{pmatrix}1&0\\0&-1\end{pmatrix}$,
+  $e^A = I_2$ mais $A\neq 0$.
+
+  \smallskip\noindent
+  \textbf{$\log(e^A e^B) \neq A + B$ en général.}\enspace
+  Le logarithme matriciel (inverse local de l'exponentielle) n'est pas
+  un homomorphisme, contrairement au cas scalaire.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Calculer $e^{tA}$ pour $A = \begin{pmatrix}0&-1\\1&0\end{pmatrix}$
+          en utilisant $A^2 = -I$. Reconnaître le résultat.
+
+    \item Calculer $e^A$ pour $A = \begin{pmatrix}1&1&0\\0&1&1\\0&0&1\end{pmatrix}$
+          (matrice de Jordan d'ordre 3 pour la valeur propre 1).
+
+    \item Montrer que $\det(e^A) > 0$ pour toute matrice réelle $A$.
+          En déduire que l'exponentielle ne peut pas être surjective sur
+          $\mathcal{M}_n(\mathbb{R})$.
+
+    \item Résoudre le système $X' = AX$ avec $X(0)=\begin{pmatrix}1\\0\end{pmatrix}$
+          et $A = \begin{pmatrix}-1&2\\0&-3\end{pmatrix}$.
+          Étudier la stabilité ($X(t)\to 0$ ?)
+
+    \item (Formule de Liouville) Soit $X' = AX$ avec $W(t) = \det(X_1(t),\ldots,X_n(t))$
+          le wronskien de $n$ solutions. Montrer que $W(t) = W(0)\,e^{\int_0^t\mathrm{tr}(A)\,ds}$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{G.\ Peano (1888) — M.\ Fr\'echet (1905) — omniprésente en théorie des systèmes}

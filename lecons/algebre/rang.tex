@@ -1,0 +1,185 @@
+%==============================================================
+%  lecons/algebre/rang.tex — Théorème du rang
+%==============================================================
+
+\lecontitle{Théorème du rang}{Algèbre linéaire — Applications linéaires en dimension finie}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème du rang (théorème fondamental de l'algèbre linéaire).}\enspace
+  \index{théorème du rang}\index{noyau}\index{image}
+  \textit{Soit $f : E \to F$ une application linéaire, avec $E$ de dimension
+  finie $n$. Alors $\mathrm{Im}(f)$ est de dimension finie et}
+  \[
+    \dim(\ker f) + \dim(\mathrm{Im}\, f) = \dim(E).
+  \]
+  \textit{En notation matricielle, pour $A \in \mathcal{M}_{m,n}(\mathbb{K})$ :}
+  \[
+    \dim(\ker A) + \mathrm{rg}(A) = n.
+  \]
+\end{tcolorbox}
+
+\rubriq{Vocabulaire}
+$\dim(\ker f)$ est la \emph{nullité}\index{nullité} de $f$ ;
+$\dim(\mathrm{Im}\, f) = \mathrm{rg}(f)$ est le \emph{rang}\index{rang} de $f$.
+Le théorème affirme que nullité + rang = dimension de l'espace de départ.
+
+\decsep
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée}
+On complète une base du noyau en une base de $E$, et on montre que les images
+des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
+
+\begin{mdframed}[style=proofbar]
+  Soit $(e_1,\ldots,e_p)$ une base de $\ker f$ (avec $p = \dim\ker f$).
+  Par le théorème de la base incomplète\index{base incomplète (théorème de la)},
+  on complète en une base $(e_1,\ldots,e_p,\, e_{p+1},\ldots,e_n)$ de $E$.
+
+  \textit{Claim : $(f(e_{p+1}),\ldots,f(e_n))$ est une base de $\mathrm{Im}(f)$.}
+
+  \smallskip
+  \textit{Famille génératrice.}
+  Tout $y \in \mathrm{Im}(f)$ s'écrit $y = f(x)$ pour un
+  $x = \sum_{i=1}^p \lambda_i e_i + \sum_{j=p+1}^n \mu_j e_j$.
+  Comme $f(e_i) = 0$ pour $i \leq p$ :
+  \[
+    y = f(x) = \sum_{j=p+1}^n \mu_j f(e_j).
+  \]
+
+  \smallskip
+  \textit{Famille libre.}
+  Supposons $\sum_{j=p+1}^n \mu_j f(e_j) = 0$, i.e.\ $f\!\left(\sum_{j=p+1}^n \mu_j e_j\right) = 0$.
+  Alors $\sum_{j=p+1}^n \mu_j e_j \in \ker f = \mathrm{Vect}(e_1,\ldots,e_p)$, donc
+  \[
+    \sum_{j=p+1}^n \mu_j e_j = \sum_{i=1}^p \lambda_i e_i
+    \quad\Longrightarrow\quad
+    \sum_{i=1}^p (-\lambda_i)e_i + \sum_{j=p+1}^n \mu_j e_j = 0.
+  \]
+  La famille $(e_1,\ldots,e_n)$ étant libre, tous les coefficients sont nuls :
+  $\mu_j = 0$ pour tout $j$.
+
+  \smallskip
+  Ainsi $\mathrm{Im}(f)$ est engendré par $n-p$ vecteurs libres, donc
+  $\dim(\mathrm{Im}\,f) = n - p$, et $p + (n-p) = n$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 3 — COROLLAIRES FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{3}{Corollaires}
+
+\begin{tcolorbox}[thmbox]
+  Soit $f : E \to F$ linéaire, $\dim E = \dim F = n < +\infty$.
+  \begin{enumerate}
+    \item $f$ injective $\Leftrightarrow$ $f$ surjective $\Leftrightarrow$ $f$ bijective.
+    \item $f$ injective $\Leftrightarrow$ $\ker f = \{0\}$ $\Leftrightarrow$ $\mathrm{rg}(f) = n$.
+    \item \textbf{Système $Ax = b$, $A \in \mathcal{M}_n(\mathbb{K})$ :}
+          le système a une unique solution $\Leftrightarrow$ $\det(A)\neq 0$.
+    \item \textbf{Système $Ax = b$, $A \in \mathcal{M}_{m,n}(\mathbb{K})$ :}
+          l'ensemble des solutions est soit vide, soit un sous-espace affine
+          de dimension $n - \mathrm{rg}(A)$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Preuve du corollaire 1}
+
+\begin{mdframed}[style=proofbar]
+  $f$ injective $\Leftrightarrow$ $\ker f = \{0\}$ $\Leftrightarrow$ $\dim\ker f = 0$
+  $\Leftrightarrow$ $\mathrm{rg}(f) = n = \dim F$ $\Leftrightarrow$ $f$ surjective. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Rang et systèmes linéaires}
+
+\begin{mdframed}[style=proofbar]
+  Le système $Ax = b$ est compatible $\Leftrightarrow$ $b \in \mathrm{Im}(A)$
+  $\Leftrightarrow$ $\mathrm{rg}(A|b) = \mathrm{rg}(A)$ (théorème de Rouché-Fontené\index{Rouché-Fontené (théorème de)}).
+  L'espace des solutions de $Ax = 0$ est $\ker A$, de dimension $n - \mathrm{rg}(A)$
+  par le théorème du rang. Les solutions de $Ax = b$ forment un translaté de $\ker A$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+%=============================================================
+%  § 4 — APPLICATIONS, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Applications, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Calcul du rang d'une matrice.}\enspace
+  Pour $A = \begin{pmatrix}1&2&3\\2&4&6\\1&1&1\end{pmatrix}$ :
+  $L_2 \leftarrow L_2-2L_1$ et $L_3\leftarrow L_3-L_1$ donnent
+  $\begin{pmatrix}1&2&3\\0&0&0\\0&-1&-2\end{pmatrix}$, donc $\mathrm{rg}(A)=2$
+  et $\dim\ker A = 3 - 2 = 1$.
+
+  \smallskip\noindent
+  \textbf{2. Nombre de solutions d'un système.}\enspace
+  Un système de $m$ équations à $n$ inconnues avec $\mathrm{rg}(A)=r$ :
+  si compatible, l'espace des solutions est de dimension $n-r$
+  (infiniment de solutions si $r < n$, unique si $r = n$).
+
+  \smallskip\noindent
+  \textbf{3. Projecteurs.}\enspace
+  Si $p : E \to E$ est un projecteur ($p^2 = p$), alors $E = \ker p \oplus \mathrm{Im}\,p$
+  et le théorème du rang donne $\dim E = \dim\ker p + \dim\mathrm{Im}\,p$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Le théorème porte sur $\dim E$, pas $\dim F$.}\enspace
+  Pour $f : \mathbb{R}^3 \to \mathbb{R}^5$, le rang est au plus $3$ (pas $5$),
+  et $f$ ne peut pas être surjective.
+
+  \smallskip\noindent
+  \textbf{En dimension infinie, le théorème est faux.}\enspace
+  Soit $f : \ell^2 \to \ell^2$, $(x_1,x_2,\ldots) \mapsto (0,x_1,x_2,\ldots)$
+  (shift). $f$ est injective ($\ker f = \{0\}$) mais pas surjective
+  ($(1,0,0,\ldots)\notin\mathrm{Im}\,f$). Nullité $+$ rang $= 0 + \infty \neq \infty$.
+
+  \smallskip\noindent
+  \textbf{$\mathrm{rg}(A) = \mathrm{rg}(A^T)$, mais $\ker A \neq \ker A^T$.}\enspace
+  Le rang-ligne et le rang-colonne coïncident, mais les noyaux de $A$ et $A^T$
+  vivent dans des espaces différents ($\mathbb{K}^n$ et $\mathbb{K}^m$).
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Soit $f : \mathbb{R}^4 \to \mathbb{R}^3$ définie par la matrice
+          $A = \begin{pmatrix}1&2&1&0\\-1&1&0&2\\2&3&1&-2\end{pmatrix}$.
+          Déterminer $\mathrm{rg}(A)$, une base de $\ker A$ et une base de $\mathrm{Im}\,A$.
+
+    \item Soit $f : E \to E$ linéaire avec $f^2 = f$ (projecteur).
+          Montrer que $E = \ker f \oplus \mathrm{Im}\,f$.
+
+    \item Soit $A \in \mathcal{M}_n(\mathbb{K})$. Montrer que
+          $\mathrm{rg}(A^2) \geq 2\,\mathrm{rg}(A) - n$
+          (inégalité de Sylvester\index{Sylvester (inégalité de)}).
+
+    \item Soit $f : E \to F$ et $g : F \to G$ linéaires. Montrer que
+          $\mathrm{rg}(g\circ f) \geq \mathrm{rg}(f) + \mathrm{rg}(g) - \dim F$.
+
+    \item Soit $A \in \mathcal{M}_{m,n}(\mathbb{R})$. Montrer que
+          $\mathrm{rg}(A^T A) = \mathrm{rg}(A)$, et en déduire que
+          $A^T A$ est inversible si et seulement si $A$ est injective.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{G.\ Strang, \textit{Linear Algebra} — fondements de l'algèbre linéaire moderne}
