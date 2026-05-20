@@ -1,0 +1,252 @@
+%==============================================================
+%  lecons/algebre/euler_exp.tex
+%  Définition limite de l'exponentielle matricielle
+%==============================================================
+
+\lecontitle{%
+  $e^X = \lim_{k\to\infty}\!\left(I+\dfrac{X}{k}\right)^{\!k}$%
+}{Algèbre linéaire — Définition limite et méthode d'Euler}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace%
+  \index{exponentielle de matrice!définition limite}
+  Pour toute matrice $X \in \mathcal{M}_n(\mathbb{K})$, munie d'une norme
+  sous-multiplicative $\|\cdot\|$~:
+  \[
+    e^X \;=\; \lim_{k \to +\infty} \left(I + \frac{X}{k}\right)^{\!k}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Rappel scalaire}
+Pour $x \in \mathbb{R}$ ou $\mathbb{C}$, le résultat classique
+$e^x = \lim_{k\to\infty}(1+x/k)^k$ s'obtient en posant
+$f_k(x) = (1+x/k)^k$ et en remarquant que
+$\ln f_k(x) = k\ln(1+x/k) \to x$.
+La preuve matricielle ne peut utiliser le logarithme directement~;
+elle passe par une comparaison terme à terme avec la série $e^X$.
+
+\decsep{}
+
+%=============================================================
+%  § 2 — PREUVE
+%=============================================================
+\secnum{navyblue}{2}{Preuve}
+
+\rubriq{Développement binomial}
+
+\begin{mdframed}[style=proofbar]
+  Posons $M = \|X\|$. Par le binôme de Newton (les puissances de $I$ et $X/k$
+  commutent trivialement)~:
+  \[
+    \left(I + \frac{X}{k}\right)^{\!k}
+    = \sum_{j=0}^{k} \binom{k}{j}\frac{X^j}{k^j}
+    = \sum_{j=0}^{k} c_{k,j}\,X^j,
+  \]
+  où l'on pose
+  \[
+    c_{k,j}
+    = \frac{k(k-1)\cdots(k-j+1)}{j!\,k^j}
+    = \frac{1}{j!}\prod_{l=0}^{j-1}\!\left(1-\frac{l}{k}\right).
+  \]
+
+  \textit{Propriétés de $c_{k,j}$ (pour $k \geq j$)~:}
+  \begin{itemize}
+    \item $0 \leq c_{k,j} \leq \dfrac{1}{j!}$ \quad (le produit est $\leq 1$).
+    \item $c_{k,j} \xrightarrow[k\to\infty]{} \dfrac{1}{j!}$ pour $j$ fixé.
+  \end{itemize}
+\end{mdframed}
+
+\rubriq{Estimation de l'erreur}
+
+\begin{mdframed}[style=proofbar]
+  Par inégalité triangulaire~:
+  \[
+    \left\|\left(I+\frac{X}{k}\right)^{\!k} - e^X\right\|
+    \;\leq\;
+    \underbrace{\sum_{j=0}^{k}\!\left|c_{k,j}-\frac{1}{j!}\right|M^j}_{=:\,A_k}
+    \;+\;
+    \underbrace{\sum_{j=k+1}^{\infty}\frac{M^j}{j!}}_{=:\,B_k}.
+  \]
+
+  \textbf{Terme $B_k$.}\enspace
+  C'est le reste de la série $e^M$ après le rang $k$~; elle converge
+  absolument, donc $B_k \to 0$.
+
+  \textbf{Terme $A_k$.}\enspace
+  Soit $\varepsilon > 0$. Choisir $N$ tel que $2\sum_{j>N}M^j/j! < \varepsilon/2$.
+  \begin{itemize}
+    \item Pour $j > N$~: $|c_{k,j}-1/j!| \leq 2/j!$, donc
+          $\sum_{j=N+1}^{k}|c_{k,j}-1/j!|M^j \leq 2\sum_{j>N}M^j/j! < \varepsilon/2$.
+    \item Pour $j \leq N$~: en utilisant $1-\prod_l(1-l/k)\leq\sum_l l/k$,
+          \[
+            \left|c_{k,j}-\frac{1}{j!}\right|
+            \leq \frac{1}{j!}\sum_{l=0}^{j-1}\frac{l}{k}
+            \leq \frac{j^2}{2k\,j!},
+          \]
+          d'où $\sum_{j=0}^{N}|c_{k,j}-1/j!|M^j
+          \leq \frac{1}{2k}\sum_{j=0}^N\frac{j^2 M^j}{j!}
+          \xrightarrow[k\to\infty]{} 0$.
+  \end{itemize}
+  Pour $k$ assez grand, $A_k < \varepsilon$.
+  Donc $A_k + B_k \to 0$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — PREUVE HEURISTIQUE VIA LE LOGARITHME
+%=============================================================
+\secnum{navyblue}{3}{Preuve heuristique via le logarithme matriciel}
+
+\begin{mdframed}[style=proofbar]
+  Pour $k$ assez grand, $\|X/k\| < 1$, et le logarithme matriciel est défini~:
+  \[
+    \log\!\left(I + \frac{X}{k}\right)
+    = \sum_{m=1}^{\infty}\frac{(-1)^{m+1}}{m}\left(\frac{X}{k}\right)^{\!m}
+    = \frac{X}{k} - \frac{X^2}{2k^2} + \cdots
+    = \frac{X}{k} + O\!\left(\frac{1}{k^2}\right).
+  \]
+  Donc~:
+  \[
+    k\log\!\left(I+\frac{X}{k}\right) = X + O\!\left(\frac{1}{k}\right)
+    \;\xrightarrow[k\to\infty]{}\; X.
+  \]
+  Comme $\exp$ est continue~:
+  \[
+    \left(I + \frac{X}{k}\right)^{\!k}
+    = \exp\!\left(k\log\!\left(I+\frac{X}{k}\right)\right)
+    \;\xrightarrow[k\to\infty]{}\; \exp(X). \hfill\square
+  \]
+  (Cette preuve est rigoureuse pour les matrices à condition de justifier
+  que $\exp \circ (k\log(I+X/k)) \to \exp(X)$, ce que fait le §\,2.)
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — INTERPRÉTATIONS ET COROLLAIRES
+%=============================================================
+\secnum{navyblue}{4}{Interprétations et corollaires}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Corollaire 1 — Méthode d'Euler.}\enspace%
+  \index{méthode d'Euler}
+  Soit $y' = Xy$, $y(0) = y_0$. La méthode d'Euler avec $k$ pas de longueur
+  $t/k$ donne~:
+  \[
+    y_k = \left(I + \frac{t}{k}X\right)^{\!k} y_0
+    \;\xrightarrow[k\to\infty]{}\;
+    e^{tX}\,y_0,
+  \]
+  la solution exacte.
+
+  \medskip
+  \textbf{Corollaire 2 — Formule de Trotter--Kato.}\enspace%
+  \index{formule de Trotter}
+  Pour $A, B \in \mathcal{M}_n(\mathbb{K})$ (non nécessairement commutatifs)~:
+  \[
+    e^{A+B} = \lim_{k\to\infty}\!\left(e^{A/k}\,e^{B/k}\right)^k.
+  \]
+
+  \medskip
+  \textbf{Corollaire 3 — Continuité de $\exp$.}\enspace
+  La formule $(I+X/k)^k \to e^X$ avec des estimées explicites fournit~:
+  \[
+    \|e^X - e^Y\| \leq \|X - Y\|\,e^{\max(\|X\|,\|Y\|)}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Preuve du corollaire 2 (formule de Trotter)}
+
+\begin{mdframed}[style=proofbar]
+  On utilise l'identité $e^{A/k}e^{B/k} = e^{(A+B)/k}e^{R_k}$ où
+  $R_k = \log(e^{A/k}e^{B/k}) - (A+B)/k$. Le développement de Baker–Campbell–Hausdorff
+  \index{Baker-Campbell-Hausdorff} donne $\|R_k\| = O(1/k^2)$, donc
+  $k\|R_k\| \to 0$. Ainsi~:
+  \[
+    \left(e^{A/k}e^{B/k}\right)^k
+    = e^{A+B}\,e^{kR_k + O(1/k)}
+    \xrightarrow[k\to\infty]{} e^{A+B}.\hfill\blacksquare
+  \]
+\end{mdframed}
+
+\rubriq{Interprétation~: intérêts composés}
+
+\begin{mdframed}[style=exbar]
+  Pour $X = rI_n$ ($r \in \mathbb{R}$)~:
+  $\left(I + \frac{r}{k}I\right)^k = \left(1+\frac{r}{k}\right)^k I \to e^r I = e^{rI}$.
+
+  Le cas scalaire $\left(1+\frac{r}{k}\right)^k \to e^r$ traduit la limite
+  des intérêts composés~: capitaliser $r/k$ par période sur $k$ périodes
+  tend, lorsque $k\to\infty$, vers la capitalisation continue $e^r$.
+  La formule matricielle en est la généralisation naturelle.
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 5 — PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Pièges et exercices}
+
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Le binôme ne s'applique qu'à $I$ et $X/k$, pas à deux matrices
+  quelconques.}\enspace
+  Si $A \neq B$, $(A+B)^k \neq \sum_j\binom{k}{j}A^j B^{k-j}$ en général.
+  Ici l'écriture $(I + X/k)^k$ fonctionne car $I$ et $X$ commutent toujours.
+
+  \smallskip\noindent
+  \textbf{La convergence est uniforme sur les bornés, pas sur tout
+  $\mathcal{M}_n$.}\enspace
+  Pour $\|X\| \leq R$ fixé, la vitesse de convergence est en
+  $O(R^2/k)$~; mais pour $X$ quelconque, $k$ doit croître avec $\|X\|$.
+
+  \smallskip\noindent
+  \textbf{La formule de Trotter nécessite une preuve supplémentaire.}\enspace
+  Contrairement à $(I+X/k)^k \to e^X$, la formule
+  $(e^{A/k}e^{B/k})^k \to e^{A+B}$ n'est pas immédiate quand $AB \neq BA$~;
+  elle repose sur Baker–Campbell–Hausdorff.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Retrouver $e^{\lambda I_n} = e^\lambda I_n$ à partir de la formule
+          limite, puis calculer $\lim_{k\to\infty}(I + A/k)^k$ pour
+          $A = \begin{pmatrix}0&1\\0&0\end{pmatrix}$.
+
+    \item Montrer que $c_{k,j} \leq 1/j!$ et que $c_{k,j} \geq (1-j^2/(2k))/j!$
+          pour $j \leq \sqrt{k}$. En déduire une vitesse de convergence~:
+          \[
+            \left\|\left(I+\frac{X}{k}\right)^{\!k} - e^X\right\|
+            = O\!\left(\frac{\|X\|^2 e^{\|X\|}}{k}\right).
+          \]
+
+    \item En utilisant $(I+X/k)^k \to e^X$, prouver que
+          $\det(e^X) = e^{\mathrm{tr}(X)}$ via
+          $\det\!\bigl((I+X/k)^k\bigr) = \bigl(1 + \mathrm{tr}(X)/k
+          + O(1/k^2)\bigr)^k$.
+
+    \item Appliquer la méthode d'Euler avec $k=4$ pas au système
+          $y'=Ay$, $y(0)=(1,0)^T$, $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$,
+          sur $[0,\pi]$. Comparer la valeur approchée à $e^{\pi A}(-I)^{1/2}$.
+
+    \item Montrer que pour $A$ et $B$ qui commutent, la formule de Trotter
+          se réduit immédiatement à $(I+X/k)^k \to e^X$ avec $X = A+B$.
+          Expliquer pourquoi la preuve échoue sans commutativité.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{%
+  L.\ Euler (intérêts composés, 1748) —
+  H.\ F.\ Trotter (formule du produit, 1959)%
+}

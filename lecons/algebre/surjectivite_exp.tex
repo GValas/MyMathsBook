@@ -1,0 +1,244 @@
+%==============================================================
+%  lecons/algebre/surjectivite_exp.tex
+%  Surjectivité de l'exponentielle matricielle
+%==============================================================
+
+\lecontitle{Surjectivité de l'exponentielle matricielle}{Algèbre linéaire — Logarithme matriciel et formes de Jordan}
+
+%=============================================================
+%  § 1 — ÉNONCÉ ET OBSTRUCTIONS
+%=============================================================
+\secnum{navyblue}{1}{Énoncé et obstructions}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace\index{exponentielle de matrice!surjectivité}
+  \begin{enumerate}
+    \item \textbf{Sur $\mathbb{C}$.}\enspace
+          $\exp : \mathcal{M}_n(\mathbb{C}) \to \mathrm{GL}_n(\mathbb{C})$
+          est \emph{surjective}.
+    \item \textbf{Sur $\mathbb{R}$.}\enspace
+          $\exp : \mathcal{M}_n(\mathbb{R}) \to \mathrm{GL}_n(\mathbb{R})$
+          est \emph{non surjective} dès $n \geq 2$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Obstruction réelle — déterminant}
+
+\begin{mdframed}[style=cexbar]
+  La formule de Jacobi\index{formule de Jacobi} $\det(e^A) = e^{\mathrm{tr}(A)}$
+  implique $\det(e^A) > 0$ pour tout $A \in \mathcal{M}_n(\mathbb{R})$.
+  Ainsi toute matrice à déterminant strictement négatif
+  (par exemple $-I_n$ si $n$ est impair) est \emph{hors de l'image} de $\exp$.
+\end{mdframed}
+
+\rubriq{Obstruction réelle subtile — Jordan}
+
+\begin{mdframed}[style=cexbar]
+  \index{contre-exemple!surjectivité exponentielle réelle}
+  La matrice $M = \begin{pmatrix}-1 & 1 \\ 0 & -1\end{pmatrix}$
+  satisfait $\det(M) = 1 > 0$, mais \emph{n'est pas dans l'image} de
+  $\exp : \mathcal{M}_2(\mathbb{R}) \to \mathrm{GL}_2(\mathbb{R})$.
+
+  \smallskip
+  \textit{Preuve.} Supposons $M = e^A$ pour un certain $A \in \mathcal{M}_2(\mathbb{R})$.
+  Les valeurs propres de $A$ doivent être des logarithmes de $-1$
+  (unique valeur propre de $M$), c'est-à-dire de la forme $(2k+1)\pi i$
+  pour $k \in \mathbb{Z}$. Comme $A$ est réelle, ses valeurs propres complexes
+  forment des paires conjuguées~: elles seraient $(2k+1)\pi i$ et $-(2k+1)\pi i$,
+  deux valeurs distinctes. Donc $A$ est diagonalisable sur $\mathbb{C}$ et
+  $e^A = P\,\mathrm{diag}(-1,-1)\,P^{-1} = -I_2 \neq M$. Contradiction.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — LOGARITHME D'UN BLOC DE JORDAN
+%=============================================================
+\secnum{navyblue}{2}{Logarithme d'un bloc de Jordan}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition (logarithme matriciel).}\enspace%
+  \index{logarithme matriciel}
+  Pour $\lambda \in \mathbb{C}^*$ et $\mu \in \mathbb{C}$ tel que $e^\mu = \lambda$,
+  le \emph{logarithme du bloc de Jordan} $J_m(\lambda)$ est
+  \[
+    \log J_m(\lambda)
+    \;=\;
+    \mu\,I_m \;+\; \sum_{k=1}^{m-1} \frac{(-1)^{k+1}}{k}\,
+    \left(\frac{N}{\lambda}\right)^{\!k},
+  \]
+  où $N = J_m(\lambda) - \lambda I_m$ est la partie nilpotente ($N^m = 0$).
+  La somme est finie.
+
+  \medskip
+  \textbf{Propriété.}\enspace $\exp\!\bigl(\log J_m(\lambda)\bigr) = J_m(\lambda)$.
+\end{tcolorbox}
+
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  Posons $L_0 = \mu I_m$ et $L_1 = \log(I_m + N/\lambda)
+  = \sum_{k=1}^{m-1}\frac{(-1)^{k+1}}{k}(N/\lambda)^k$ (série formelle
+  tronquée car $(N/\lambda)^m = 0$).
+
+  $L_0$ et $L_1$ commutent (tous deux polynômes en $N$), donc
+  \[
+    e^{L_0 + L_1} = e^{L_0}\,e^{L_1} = e^\mu\,\exp\!\bigl(\log(I_m + N/\lambda)\bigr).
+  \]
+  Or la composition formelle $\exp \circ \log$ donne l'identité sur les
+  séries entières autour de $0$~: pour toute matrice nilpotente $Q$,
+  $\exp(\log(I+Q)) = I + Q$. Appliqué à $Q = N/\lambda$~:
+  \[
+    e^{L_0+L_1} = e^\mu\,(I_m + N/\lambda) = \lambda I_m + N = J_m(\lambda).
+    \hfill\blacksquare
+  \]
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — PREUVE DE LA SURJECTIVITÉ SUR ℂ
+%=============================================================
+\secnum{navyblue}{3}{Surjectivité sur $\mathbb{C}$}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace
+  Pour tout $M \in \mathrm{GL}_n(\mathbb{C})$, il existe
+  $A \in \mathcal{M}_n(\mathbb{C})$ tel que $e^A = M$.
+\end{tcolorbox}
+
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textbf{Étape 1 — Forme de Jordan.}\enspace
+  Il existe $P \in \mathrm{GL}_n(\mathbb{C})$ telle que
+  \[
+    M = P\,J\,P^{-1}, \qquad
+    J = \mathrm{diag}\!\bigl(J_{m_1}(\lambda_1),\ldots,J_{m_r}(\lambda_r)\bigr).
+  \]
+  Puisque $M$ est inversible, $\lambda_i \neq 0$ pour tout $i$.
+
+  \medskip
+  \textbf{Étape 2 — Logarithme bloc par bloc.}\enspace
+  Pour chaque $i$, choisir $\mu_i \in \mathbb{C}$ tel que $e^{\mu_i} = \lambda_i$
+  et poser $\Lambda_i = \log J_{m_i}(\lambda_i)$ (défini au §\,2). Définir
+  \[
+    B = \mathrm{diag}(\Lambda_1, \ldots, \Lambda_r), \qquad
+    A = P\,B\,P^{-1}.
+  \]
+
+  \textbf{Étape 3 — Vérification.}\enspace
+  Par conjugaison, $e^A = P\,e^B\,P^{-1}$. De plus,
+  \[
+    e^B = \mathrm{diag}(e^{\Lambda_1},\ldots,e^{\Lambda_r})
+        = \mathrm{diag}(J_{m_1}(\lambda_1),\ldots,J_{m_r}(\lambda_r))
+        = J,
+  \]
+  donc $e^A = PJP^{-1} = M$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — UNICITÉ ET STRUCTURE DU LOGARITHME
+%=============================================================
+\secnum{navyblue}{4}{Unicité et structure du logarithme}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Proposition.}\enspace
+  \begin{enumerate}
+    \item Le logarithme matriciel n'est \emph{pas unique}~: les choix de
+          $\mu_i$ (branches distinctes de $\log\lambda_i$) donnent
+          des antécédents distincts pour un même $M$.
+    \item $\exp$ n'est pas injective~: $e^A = e^{A + 2\pi i\,I_n}$,
+          et plus généralement $e^A = e^B$ dès que $A$ et $B$ ont
+          les mêmes valeurs propres à des multiples de $2\pi i$ près
+          \emph{et} le même comportement de Jordan.
+    \item L'image de $\exp$ sur $\mathcal{M}_n(\mathbb{R})$ est contenue
+          dans $\mathrm{GL}_n^+(\mathbb{R}) = \{M \in \mathrm{GL}_n(\mathbb{R})
+          \mid \det M > 0\}$, mais cette inclusion est stricte.
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Structure de l'image réelle}
+
+\begin{mdframed}[style=proofbar]
+  On a $\det(e^A) = e^{\mathrm{tr}(A)} > 0$, donc
+  $\mathrm{Im}(\exp|_{\mathbb{R}}) \subseteq \mathrm{GL}_n^+(\mathbb{R})$.
+  L'inclusion est stricte~: le contre-exemple du §\,1 montre que
+  $\begin{pmatrix}-1&1\\0&-1\end{pmatrix} \in \mathrm{GL}_2^+(\mathbb{R})$
+  n'est pas dans l'image. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 5 — PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Pièges et exercices}
+
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Confondre surjectivité et bijectivité.}\enspace
+  Sur $\mathbb{C}$, $\exp$ est surjective mais \emph{pas injective}~:
+  le noyau de $\exp$ (en tant qu'homomorphisme de groupes additifs) est
+  $2\pi i\,M_n^{\mathrm{diag}}(\mathbb{Z})$, ensemble infini.
+
+  \smallskip\noindent
+  \textbf{$\det M > 0$ ne suffit pas sur $\mathbb{R}$.}\enspace
+  La condition $\det(e^A)>0$ est nécessaire mais non suffisante pour
+  $M \in \mathrm{Im}(\exp|_{\mathbb{R}})$. Le contre-exemple
+  $\bigl(\begin{smallmatrix}-1&1\\0&-1\end{smallmatrix}\bigr)$
+  est dans $\mathrm{GL}_2^+(\mathbb{R})$ mais hors de l'image.
+
+  \smallskip\noindent
+  \textbf{Produit de deux exponentielles.}\enspace
+  Tout $M \in \mathrm{GL}_n^+(\mathbb{R})$ est produit \emph{fini}
+  d'exponentielles réelles (le groupe de Lie $\mathrm{GL}_n^+(\mathbb{R})$
+  est connexe), mais pas nécessairement une seule.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $-I_n$ est dans l'image de $\exp: \mathcal{M}_n(\mathbb{R})
+          \to \mathrm{GL}_n(\mathbb{R})$ si et seulement si $n$ est pair.
+          (\textit{Hint~:} pour $n$ pair, utiliser des blocs de rotation~;
+          pour $n$ impair, invoquer $\det(e^A) > 0$.)
+
+    \item Calculer explicitement $A \in \mathcal{M}_2(\mathbb{C})$ tel que
+          $e^A = \begin{pmatrix}-1&1\\0&-1\end{pmatrix}$.
+          (\textit{Hint~:} poser $A = \pi i\,I + B$ et chercher $B$
+          nilpotent avec $e^B = -\bigl(\begin{smallmatrix}1&-1\\0&1\end{smallmatrix}\bigr)$.)
+
+    \item Soit $M \in \mathrm{GL}_n(\mathbb{C})$ telle que tous ses blocs de Jordan
+          aient des valeurs propres de module $1$. Montrer que $M$ est dans
+          l'image de $\exp : \mathcal{M}_n(\mathbb{R})$ si et seulement si
+          ses blocs Jordan complexes sont échangés par conjugaison.
+
+    \item Montrer que pour tout $M \in \mathrm{GL}_n(\mathbb{R})$ il existe
+          $k \geq 1$ et $A_1, \ldots, A_k \in \mathcal{M}_n(\mathbb{R})$
+          tels que $M = e^{A_1}\cdots e^{A_k}$.
+          (\textit{Hint~:} décomposer $M = M_+(-I)^s$ avec $M_+ \in
+          \mathrm{GL}_n^+(\mathbb{R})$ et utiliser $-I_2 = e^{\pi J}$,
+          $J = \bigl(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\bigr)$.)
+
+    \item (\textit{Défi}) Montrer que
+          $\bigl\{e^A \mid A \in \mathcal{M}_2(\mathbb{R})\bigr\} \subsetneq
+          \mathrm{GL}_2^+(\mathbb{R})$
+          en prouvant que $\bigl(\begin{smallmatrix}-1&1\\0&-1\end{smallmatrix}\bigr)$
+          n'est pas dans l'image sans invoquer la forme de Jordan~:
+          supposer $e^{tA}$ atteint $M$ en $t=1$ et analyser la trajectoire
+          $t \mapsto e^{tA}$ dans $\mathrm{GL}_2(\mathbb{R})$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{%
+  L.\ Euler (logarithme complexe) —
+  É.\ Cartan (groupes de Lie, 1930) —
+  R.\ Godement, \textit{Introduction à la théorie des groupes de Lie} (1982)%
+}

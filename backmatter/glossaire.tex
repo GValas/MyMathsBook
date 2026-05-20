@@ -154,6 +154,38 @@
   description={Corps à $q=p^n$ éléments ($p$ premier), unique à isomorphisme près, noté $\mathbb{F}_q$~; son groupe multiplicatif est cyclique}
 }
 
+% --- Exponentielle et logarithme matriciels ---
+
+\newglossaryentry{euler-exp-limite}{
+  name={exponentielle matricielle (définition limite)},
+  description={Pour $X\in\mathcal{M}_n(\mathbb{K})$~: $e^X=\lim_{k\to\infty}(I+X/k)^k$~; la convergence est en $O(\|X\|^2 e^{\|X\|}/k)$ et généralise la limite des intérêts composés}
+}
+
+\newglossaryentry{trotter}{
+  name={formule de Trotter},
+  description={Pour $A,B\in\mathcal{M}_n(\mathbb{K})$ quelconques~: $e^{A+B}=\lim_{k\to\infty}(e^{A/k}e^{B/k})^k$~; repose sur Baker--Campbell--Hausdorff}
+}
+
+\newglossaryentry{jacobi-liouville}{
+  name={formule de Jacobi--Liouville},
+  description={Pour toute matrice $A$~: $\det(e^A)=e^{\mathrm{tr}(A)}$~; implique $\det(e^A)>0$ sur $\mathbb{R}$ et $\exp(\mathfrak{sl}_n)\subseteq\mathrm{SL}_n$}
+}
+
+\newglossaryentry{liouville-wronskien}{
+  name={formule de Liouville (wronskien)},
+  description={Pour $X'=A(t)X$, le wronskien vérifie $W(t)=W(0)\exp\!\int_0^t\mathrm{tr}(A(s))\,ds$~; généralise $\det(e^{tA})=e^{t\,\mathrm{tr}(A)}$}
+}
+
+\newglossaryentry{logarithme-matriciel}{
+  name={logarithme matriciel},
+  description={Antécédent $A$ de $M$ par l'exponentielle~: $e^A=M$~; pour un bloc de Jordan $J_m(\lambda)$ avec $\lambda\neq 0$, il vaut $\mu I_m + \sum_{k=1}^{m-1}\frac{(-1)^{k+1}}{k}(N/\lambda)^k$ où $e^\mu=\lambda$}
+}
+
+\newglossaryentry{surjectivite-exp}{
+  name={surjectivité de l'exponentielle matricielle},
+  description={$\exp:\mathcal{M}_n(\mathbb{C})\to\mathrm{GL}_n(\mathbb{C})$ est surjective (via le logarithme de Jordan)~; sur $\mathbb{R}$, l'image est contenue dans $\mathrm{GL}_n^+(\mathbb{R})$ mais l'inclusion est stricte}
+}
+
 % --- Polynômes classiques ---
 
 \newglossaryentry{tchebychev}{

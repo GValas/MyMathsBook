@@ -1,0 +1,263 @@
+%==============================================================
+%  lecons/algebre/jacobi_exp.tex
+%  Formule det(exp A) = exp(tr A)
+%==============================================================
+
+\lecontitle{Formule $\det(e^A) = e^{\mathrm{tr}(A)}$}{Algèbre linéaire — Déterminant et trace de l'exponentielle}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (formule de Jacobi–Liouville).}%
+  \index{formule de Jacobi}\index{det(exp A) = exp(tr A)}
+  Pour tout $A \in \mathcal{M}_n(\mathbb{K})$ ($\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$)~:
+  \[
+    \boxed{\det\!\bigl(e^A\bigr) = e^{\mathrm{tr}(A)}}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Deux ingrédients clés}
+
+\begin{mdframed}[style=exbar]
+  La preuve repose sur deux propriétés élémentaires~:
+  \begin{enumerate}
+    \item \textbf{Multiplicativité du déterminant}~:
+          $\det(MN) = \det(M)\det(N)$.
+    \item \textbf{Développement au premier ordre}~:
+          pour $\varepsilon \to 0$,
+          \[
+            \det(I + \varepsilon B) = 1 + \varepsilon\,\mathrm{tr}(B) + O(\varepsilon^2).
+          \]
+  \end{enumerate}
+\end{mdframed}
+
+\rubriq{Preuve du développement au premier ordre}
+
+\begin{mdframed}[style=proofbar]
+  Par définition, $\det(I + \varepsilon B) = \sum_{\sigma \in \mathfrak{S}_n}
+  \varepsilon(\sigma)\prod_{i=1}^n (I+\varepsilon B)_{i,\sigma(i)}$.
+
+  Pour $\sigma = \mathrm{id}$~: $\prod_i(1 + \varepsilon B_{ii})
+  = 1 + \varepsilon\,\mathrm{tr}(B) + O(\varepsilon^2)$.
+
+  Pour $\sigma \neq \mathrm{id}$~: $\sigma$ possède au moins deux points non fixes
+  $(i,j)$ avec $i \neq j$, donc le produit comporte au moins deux facteurs
+  $\varepsilon B_{i\sigma(i)}$ et contribue en $O(\varepsilon^2)$.
+
+  Ainsi $\det(I + \varepsilon B) = 1 + \varepsilon\,\mathrm{tr}(B) + O(\varepsilon^2)$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — PREUVE PRINCIPALE : ÉQUATION DIFFÉRENTIELLE
+%=============================================================
+\secnum{navyblue}{2}{Preuve par équation différentielle}
+
+\begin{mdframed}[style=proofbar]
+  Posons $f : \mathbb{R} \to \mathbb{R}^*$, $f(t) = \det(e^{tA})$.
+
+  \medskip
+  \textbf{Étape 1 — $f$ est un homomorphisme de $(\mathbb{R},+)$ dans
+  $(\mathbb{R}^*,\times)$.}
+
+  Pour tous $t, s \in \mathbb{R}$, les matrices $tA$ et $sA$ commutent,
+  donc $e^{(t+s)A} = e^{tA}e^{sA}$. La multiplicativité du déterminant donne
+  \[
+    f(t+s) = \det(e^{(t+s)A}) = \det(e^{tA})\,\det(e^{sA}) = f(t)\,f(s).
+  \]
+
+  \medskip
+  \textbf{Étape 2 — Calcul de $f'(0)$.}
+
+  \[
+    f'(0) = \lim_{h \to 0}\frac{f(h) - f(0)}{h}
+           = \lim_{h \to 0}\frac{\det(e^{hA}) - 1}{h}.
+  \]
+  Or $e^{hA} = I + hA + O(h^2)$, donc par le développement au premier ordre~:
+  \[
+    \det(e^{hA}) = \det(I + hA + O(h^2)) = 1 + h\,\mathrm{tr}(A) + O(h^2).
+  \]
+  Ainsi $f'(0) = \mathrm{tr}(A)$.
+
+  \medskip
+  \textbf{Étape 3 — Identification de $f$.}
+
+  $f$ est continue (composée de fonctions continues), satisfait
+  $f(t+s)=f(t)f(s)$ et $f(0)=1$. C'est donc la seule fonction continue
+  vérifiant ces propriétés~: $f(t) = e^{ct}$ avec $c = f'(0) = \mathrm{tr}(A)$.
+
+  \textit{Justification~:} de $f(t+s)=f(t)f(s)$, on tire par récurrence
+  $f(n) = f(1)^n$ pour tout $n \in \mathbb{Z}$, puis $f(p/q) = f(1)^{p/q}$
+  pour $p/q \in \mathbb{Q}$. La continuité étend l'égalité à $\mathbb{R}$.
+
+  \medskip
+  \textbf{Conclusion.}\enspace En $t = 1$~:
+  $\det(e^A) = f(1) = e^{f'(0)} = e^{\mathrm{tr}(A)}$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — PREUVE ALTERNATIVE : FORME DE JORDAN
+%=============================================================
+\secnum{navyblue}{3}{Preuve alternative via la forme de Jordan}
+
+\begin{mdframed}[style=proofbar]
+  On travaille sur $\mathbb{C}$~; le cas réel s'en déduit par densité ou par
+  restriction.
+
+  \medskip
+  Soit $A = P\,J\,P^{-1}$ la décomposition de Jordan,
+  $J = \mathrm{diag}(J_{m_1}(\lambda_1), \ldots, J_{m_r}(\lambda_r))$.
+  Par conjugaison~: $e^A = P\,e^J\,P^{-1}$, donc
+  \[
+    \det(e^A) = \det(e^J)
+    = \prod_{i=1}^r \det\!\bigl(e^{J_{m_i}(\lambda_i)}\bigr).
+  \]
+
+  Pour un bloc de Jordan $J_m(\lambda) = \lambda I_m + N$~:
+  \[
+    e^{J_m(\lambda)} = e^\lambda\,e^N = e^\lambda(I_m + N + \tfrac{N^2}{2!}+\cdots),
+  \]
+  qui est triangulaire supérieure avec $e^\lambda$ sur toute la diagonale.
+  Donc $\det(e^{J_m(\lambda)}) = (e^\lambda)^m = e^{m\lambda}$.
+
+  En sommant sur tous les blocs~:
+  \[
+    \det(e^A) = \prod_{i=1}^r e^{m_i \lambda_i}
+              = \exp\!\Bigl(\sum_{i=1}^r m_i \lambda_i\Bigr)
+              = e^{\mathrm{tr}(J)}
+              = e^{\mathrm{tr}(A)},
+  \]
+  car $\mathrm{tr}(PJP^{-1}) = \mathrm{tr}(J) = \sum_i m_i\lambda_i$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — COROLLAIRES
+%=============================================================
+\secnum{navyblue}{4}{Corollaires}
+
+\begin{tcolorbox}[thmbox]
+  \begin{enumerate}
+    \item \textbf{Positivité réelle.}\enspace%
+          \index{det(exp A) > 0}
+          Pour tout $A \in \mathcal{M}_n(\mathbb{R})$~:
+          $\det(e^A) = e^{\mathrm{tr}(A)} > 0$.
+          L'exponentielle réelle a son image dans
+          $\mathrm{GL}_n^+(\mathbb{R}) = \{M \mid \det M > 0\}$.
+
+    \item \textbf{Déterminant unité.}\enspace
+          $\det(e^A) = 1 \iff \mathrm{tr}(A) = 0$.
+          En particulier~:
+          \[
+            \exp : \mathfrak{sl}_n(\mathbb{K}) \to \mathrm{SL}_n(\mathbb{K}),
+          \]
+          où $\mathfrak{sl}_n = \{A \mid \mathrm{tr}(A)=0\}$ est l'algèbre de
+          Lie\index{algèbre de Lie} de $\mathrm{SL}_n$.
+
+    \item \textbf{Inversibilité de $e^A$.}\enspace
+          $(e^A)^{-1} = e^{-A}$, que l'on retrouve~:
+          $\det(e^A)\,\det(e^{-A}) = e^{\mathrm{tr}(A)}\,e^{-\mathrm{tr}(A)} = 1$.
+
+    \item \textbf{Formule de Liouville.}\enspace%
+          \index{formule de Liouville}
+          Soit $X' = A(t)\,X$ un système différentiel ($A$ pouvant dépendre de $t$)
+          et $W(t) = \det\bigl(x_1(t),\ldots,x_n(t)\bigr)$ le wronskien
+          de $n$ solutions. Alors~:
+          \[
+            W(t) = W(0)\,\exp\!\!\int_0^t \mathrm{tr}(A(s))\,ds.
+          \]
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Preuve du corollaire 4 — formule de Liouville}
+
+\begin{mdframed}[style=proofbar]
+  Posons $\Phi(t)$ la matrice dont les colonnes sont $x_1(t),\ldots,x_n(t)$
+  (matrice fondamentale). Elle vérifie $\Phi' = A(t)\Phi$.
+
+  En dérivant $W(t) = \det\Phi(t)$ et en utilisant la multilinéarité du
+  déterminant par rapport aux colonnes~:
+  \[
+    W'(t) = \sum_{j=1}^n \det(\ldots,x_j'(t),\ldots)
+           = \sum_{j=1}^n \det(\ldots,A(t)x_j(t),\ldots).
+  \]
+  Seul le terme diagonal de $A$ contribue à chaque déterminant
+  (les autres colonnes sont déjà présentes)~: la somme vaut
+  $\mathrm{tr}(A(t))\,W(t)$.
+  On obtient $W'(t) = \mathrm{tr}(A(t))\,W(t)$,
+  d'où $W(t) = W(0)\exp\!\bigl(\int_0^t\mathrm{tr}(A(s))\,ds\bigr)$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 5 — PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Pièges et exercices}
+
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{La réciproque est fausse~: $\det M > 0$ n'implique pas $M \in \mathrm{Im}(\exp)$
+  sur $\mathbb{R}$.}\enspace
+  Comme montré dans la leçon sur la surjectivité,
+  $\bigl(\begin{smallmatrix}-1&1\\0&-1\end{smallmatrix}\bigr)$ a déterminant $1$
+  mais n'est pas dans l'image de $\exp:\mathcal{M}_2(\mathbb{R})\to\mathrm{GL}_2(\mathbb{R})$.
+
+  \smallskip\noindent
+  \textbf{Ne pas confondre $\det(e^A)$ et $e^{\det(A)}$.}\enspace
+  Ces deux quantités sont généralement différentes~: pour
+  $A = \begin{pmatrix}1&0\\0&2\end{pmatrix}$,
+  $\det(e^A) = e^3$ mais $e^{\det(A)} = e^2$.
+
+  \smallskip\noindent
+  \textbf{La formule de Liouville suppose $A$ \emph{quelconque}, pas seulement constante.}\enspace
+  Lorsque $A$ est constante, $\Phi(t) = e^{tA}$ et
+  $W(t) = \det(e^{tA}) = e^{t\,\mathrm{tr}(A)}$, ce qui redonne la formule principale.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $\det(e^A) = e^{\mathrm{tr}(A)}$ en utilisant
+          uniquement la densité des matrices diagonalisables dans
+          $\mathcal{M}_n(\mathbb{C})$ et la continuité des deux membres.
+
+    \item Soit $A \in \mathcal{M}_n(\mathbb{R})$ antisymétrique ($A^T = -A$).
+          Montrer que $\det(e^A) = 1$ et que $e^A$ est une matrice
+          orthogonale.
+
+    \item Pour $A = \begin{pmatrix}a&b\\c&d\end{pmatrix}$, vérifier
+          directement que $\det(e^A) = e^{a+d}$ en calculant $e^A$
+          dans le cas $A$ diagonalisable, puis dans le cas $A$ nilpotente,
+          enfin dans le cas général (décomposition de Dunford).
+
+    \item Soit $X' = AX$ avec $A \in \mathcal{M}_2(\mathbb{R})$ constante et
+          $W(0)=1$. Exprimer $W(t)$ et montrer que le signe de $W(t)$
+          est constant.
+
+    \item (\textit{Défi}) Établir la formule de Jacobi différentielle~:
+          pour $M : \mathbb{R} \to \mathcal{M}_n(\mathbb{R})$ inversible et
+          différentiable,
+          \[
+            \frac{d}{dt}\det M(t) = \det(M(t))\,\mathrm{tr}\!\bigl(M(t)^{-1}M'(t)\bigr).
+          \]
+          En déduire une troisième preuve de $\det(e^A) = e^{\mathrm{tr}(A)}$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{%
+  C.\ G.\ J.\ Jacobi (1841) —
+  J.\ Liouville (formule du wronskien, 1838)%
+}
