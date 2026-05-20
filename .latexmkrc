@@ -15,6 +15,20 @@
 $pdf_mode = 1;
 $pdflatex = 'pdflatex -synctex=1 -interaction=nonstopmode -file-line-error %O %S';
 $out_dir = 'build';
+
+# Bibtex cherche les .bib depuis build/ alors que le chemin dans le .aux
+# est relatif à la racine du projet. On copie le .bib dans build/backmatter/
+# au démarrage de latexmk pour qu'il soit trouvable depuis build/.
+use File::Path qw(make_path);
+use File::Copy qw(copy);
+{
+    my $src = 'backmatter/references.bib';
+    my $dst = "$out_dir/backmatter/references.bib";
+    make_path("$out_dir/backmatter");
+    if (!-e $dst || (stat($src))[9] > (stat($dst))[9]) {
+        copy($src, $dst) or warn "Could not copy references.bib: $!";
+    }
+}
 $makeindex = 'makeindex %O -o %D %S';
 $success_cmd = 'perl -MFile::Copy -e "copy(q{build/main.pdf}, q{main.pdf})"';
 

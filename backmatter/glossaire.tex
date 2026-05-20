@@ -39,7 +39,7 @@
 
 \newglossaryentry{connexite}{
   name={connexité par arcs},
-  description={Propriété topologique des intervalles de $\mathbb{R}$ : deux points sont toujours reliés par un chemin continu}
+  description={Propriété topologique des intervalles de $\mathbb{R}$~: deux points sont toujours reliés par un chemin continu}
 }
 
 \newglossaryentry{endomorphisme}{
@@ -101,12 +101,12 @@
 
 \newglossaryentry{groupe-abelien}{
   name={groupe abélien},
-  description={Groupe dont la loi est commutative ; noté additivement $(G,+)$}
+  description={Groupe dont la loi est commutative~; noté additivement $(G,+)$}
 }
 
 \newglossaryentry{sous-groupe-distingue}{
   name={sous-groupe distingué},
-  description={Sous-groupe $H \trianglelefteq G$ stable par conjugaison : $gHg^{-1}=H$ pour tout $g\in G$}
+  description={Sous-groupe $H \trianglelefteq G$ stable par conjugaison~: $gHg^{-1}=H$ pour tout $g\in G$}
 }
 
 \newglossaryentry{groupe-quotient}{
@@ -116,32 +116,32 @@
 
 \newglossaryentry{ordre-element}{
   name={ordre d'un élément},
-  description={Plus petit entier $k\geq 1$ tel que $g^k=e$ dans un groupe ; divise l'ordre du groupe (Lagrange)}
+  description={Plus petit entier $k\geq 1$ tel que $g^k=e$ dans un groupe~; divise l'ordre du groupe (Lagrange)}
 }
 
 \newglossaryentry{groupe-cyclique}{
   name={groupe cyclique},
-  description={Groupe engendré par un seul élément ; isomorphe à $\mathbb{Z}$ ou $\mathbb{Z}/n\mathbb{Z}$}
+  description={Groupe engendré par un seul élément~; isomorphe à $\mathbb{Z}$ ou $\mathbb{Z}/n\mathbb{Z}$}
 }
 
 \newglossaryentry{ideal}{
   name={idéal},
-  description={Sous-groupe additif $I$ d'un anneau $A$ stable par multiplication externe : $AI\subseteq I$}
+  description={Sous-groupe additif $I$ d'un anneau $A$ stable par multiplication externe~: $AI\subseteq I$}
 }
 
 \newglossaryentry{ideal-premier}{
   name={idéal premier},
-  description={Idéal propre $\mathfrak{p}$ tel que $ab\in\mathfrak{p}\Rightarrow a\in\mathfrak{p}$ ou $b\in\mathfrak{p}$ ; équivalent à $A/\mathfrak{p}$ intègre}
+  description={Idéal propre $\mathfrak{p}$ tel que $ab\in\mathfrak{p}\Rightarrow a\in\mathfrak{p}$ ou $b\in\mathfrak{p}$~; équivalent à $A/\mathfrak{p}$ intègre}
 }
 
 \newglossaryentry{ideal-maximal}{
   name={idéal maximal},
-  description={Idéal propre non contenu dans aucun idéal propre plus grand ; équivalent à $A/\mathfrak{m}$ corps}
+  description={Idéal propre non contenu dans aucun idéal propre plus grand~; équivalent à $A/\mathfrak{m}$ corps}
 }
 
 \newglossaryentry{extension-corps}{
   name={extension de corps},
-  description={Inclusion $K\subseteq L$ de corps ; le degré $[L:K]=\dim_K L$ mesure la taille de l'extension}
+  description={Inclusion $K\subseteq L$ de corps~; le degré $[L:K]=\dim_K L$ mesure la taille de l'extension}
 }
 
 \newglossaryentry{polynome-minimal-ext}{
@@ -151,14 +151,48 @@
 
 \newglossaryentry{corps-finis}{
   name={corps fini},
-  description={Corps à $q=p^n$ éléments ($p$ premier), unique à isomorphisme près, noté $\mathbb{F}_q$ ; son groupe multiplicatif est cyclique}
+  description={Corps à $q=p^n$ éléments ($p$ premier), unique à isomorphisme près, noté $\mathbb{F}_q$~; son groupe multiplicatif est cyclique}
+}
+
+% --- Polynômes classiques ---
+
+\newglossaryentry{tchebychev}{
+  name={polynôme de Tchebychev},
+  description={Polynôme $T_n$ défini par $T_n(\cos\theta)=\cos(n\theta)$~; vérifie $T_{n+1}=2XT_n-T_{n-1}$, de coefficient dominant $2^{n-1}$ pour $n\geq 1$}
+}
+
+\newglossaryentry{tchebychev-approx}{
+  name={approximation minimale (Tchebychev)},
+  description={Parmi les polynômes unitaires de degré $n$, $\frac{1}{2^{n-1}}T_n$ minimise la norme uniforme sur $[-1,1]$, qui vaut $\frac{1}{2^{n-1}}$}
+}
+
+\newglossaryentry{noeuds-tchebychev}{
+  name={nœuds de Tchebychev},
+  description={Racines de $T_{n+1}$~: $x_k=\cos\!\bigl(\frac{(2k-1)\pi}{2(n+1)}\bigr)$, $k=1,\ldots,n+1$~; minimisent l'erreur d'interpolation sur $[-1,1]$}
+}
+
+% --- Combinatoire ---
+
+\newglossaryentry{nombre-bell}{
+  name={nombre de Bell},
+  description={Entier $B_n$ comptant le nombre de partitions de l'ensemble $\{1,\ldots,n\}$~; $B_0=1$, $B_1=1$, $B_2=2$, $B_3=5$, $B_4=15$}
+}
+
+\newglossaryentry{partition-ensemble}{
+  name={partition d'un ensemble},
+  description={Famille de parties non vides, deux à deux disjointes, dont la réunion est l'ensemble tout entier}
+}
+
+\newglossaryentry{stirling2}{
+  name={nombre de Stirling de deuxième espèce},
+  description={Entier $S(n,k)$ comptant les partitions de $\{1,\ldots,n\}$ en exactement $k$ blocs non vides~; vérifie $S(n,k)=kS(n-1,k)+S(n-1,k-1)$ et $B_n=\sum_k S(n,k)$}
 }
 
 % --- Construction des nombres ---
 
 \newglossaryentry{axiomes-peano}{
   name={axiomes de Peano},
-  description={Système axiomatique caractérisant $\mathbb{N}$ : élément $0$, successeur injectif ne touchant pas $0$, et principe de récurrence}
+  description={Système axiomatique caractérisant $\mathbb{N}$~: élément $0$, successeur injectif ne touchant pas $0$, et principe de récurrence}
 }
 
 \newglossaryentry{successeur}{
@@ -168,12 +202,12 @@
 
 \newglossaryentry{bonne-fondation}{
   name={bonne fondation},
-  description={Propriété de $\mathbb{N}$ : tout sous-ensemble non vide admet un plus petit élément}
+  description={Propriété de $\mathbb{N}$~: tout sous-ensemble non vide admet un plus petit élément}
 }
 
 \newglossaryentry{von-neumann}{
   name={construction de von Neumann},
-  description={Modèle ensembliste de $\mathbb{N}$ dans ZFC : $0=\emptyset$, $S(n)=n\cup\{n\}$}
+  description={Modèle ensembliste de $\mathbb{N}$ dans ZFC~: $0=\emptyset$, $S(n)=n\cup\{n\}$}
 }
 
 \newglossaryentry{entiers-relatifs}{
@@ -183,7 +217,7 @@
 
 \newglossaryentry{anneau-initial}{
   name={anneau initial},
-  description={$\mathbb{Z}$ est l'anneau initial : il existe un unique homomorphisme d'anneaux $\mathbb{Z}\to A$ pour tout anneau $A$}
+  description={$\mathbb{Z}$ est l'anneau initial~: il existe un unique homomorphisme d'anneaux $\mathbb{Z}\to A$ pour tout anneau $A$}
 }
 
 \newglossaryentry{coupure-dedekind}{
@@ -198,12 +232,12 @@
 
 \newglossaryentry{completude}{
   name={complétude},
-  description={Propriété d'un espace métrique dans lequel toute suite de Cauchy converge ; $\mathbb{R}$ est la complétion de $\mathbb{Q}$}
+  description={Propriété d'un espace métrique dans lequel toute suite de Cauchy converge~; $\mathbb{R}$ est la complétion de $\mathbb{Q}$}
 }
 
 \newglossaryentry{corps-alg-clos}{
   name={corps algébriquement clos},
-  description={Corps dans lequel tout polynôme non constant admet une racine ; $\mathbb{C}$ est la clôture algébrique de $\mathbb{R}$}
+  description={Corps dans lequel tout polynôme non constant admet une racine~; $\mathbb{C}$ est la clôture algébrique de $\mathbb{R}$}
 }
 
 \newglossaryentry{quaternions}{
@@ -213,7 +247,7 @@
 
 \newglossaryentry{corps-gauche}{
   name={corps gauche},
-  description={Anneau non nul dans lequel tout élément non nul est inversible, sans supposer la commutativité du produit ; exemple : $\mathbb{H}$}
+  description={Anneau non nul dans lequel tout élément non nul est inversible, sans supposer la commutativité du produit~; exemple~: $\mathbb{H}$}
 }
 
 \newglossaryentry{ZFC}{

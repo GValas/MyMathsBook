@@ -1,0 +1,294 @@
+%==============================================================
+%  lecons/combinatoire/bell.tex — Nombres de Bell
+%==============================================================
+
+\lecontitle{Nombres de Bell}{Combinatoire — Partitions d'ensembles}
+
+%=============================================================
+%  § 1 — DÉFINITIONS
+%=============================================================
+\secnum{navyblue}{1}{Définitions et premières valeurs}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{nombre de Bell}\index{partition d'un ensemble}
+  Une \emph{partition}\index{partition} de l'ensemble $[n] = \{1,2,\ldots,n\}$
+  est une famille de parties non vides, deux à deux disjointes, dont la réunion
+  est $[n]$.
+
+  \medskip
+  Le \emph{$n$-ième nombre de Bell}, noté $B_n$, est le nombre de partitions
+  de $[n]$. Par convention, $B_0 = 1$ (l'ensemble vide admet exactement une
+  partition : la partition vide).
+\end{tcolorbox}
+
+\rubriq{Premières valeurs}
+
+\begin{mdframed}[style=exbar]
+  \textbf{$B_0 = 1$.}\enspace La seule partition de $\emptyset$ est $\{\}$.
+
+  \smallskip\noindent
+  \textbf{$B_1 = 1$.}\enspace La seule partition de $\{1\}$ est $\bigl\{\{1\}\bigr\}$.
+
+  \smallskip\noindent
+  \textbf{$B_2 = 2$.}\enspace Les partitions de $\{1,2\}$ sont
+  $\bigl\{\{1,2\}\bigr\}$ et $\bigl\{\{1\},\{2\}\bigr\}$.
+
+  \smallskip\noindent
+  \textbf{$B_3 = 5$.}\enspace Les partitions de $\{1,2,3\}$ sont :
+  $\{123\}$,
+  $\{1\}\{23\}$, $\{2\}\{13\}$, $\{3\}\{12\}$,
+  $\{1\}\{2\}\{3\}$.
+
+  \medskip
+  \begin{center}
+    \begin{tabular}{c|ccccccc}
+      $n$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\\hline
+      $B_n$ & 1 & 1 & 2 & 5 & 15 & 52 & 203
+    \end{tabular}
+  \end{center}
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — RÉCURRENCE ET TRIANGLE DE BELL
+%=============================================================
+\secnum{navyblue}{2}{Récurrence et triangle de Bell}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (récurrence de Bell).}\enspace\index{récurrence de Bell}
+  Pour tout entier $n \geq 0$ :
+  \[
+    B_{n+1} = \sum_{k=0}^{n} \binom{n}{k} B_k.
+  \]
+\end{tcolorbox}
+
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  On conditionne par le bloc contenant l'élément $n+1$.
+  Ce bloc contient $n+1$ et $k$ autres éléments parmi $\{1,\ldots,n\}$
+  ($0 \leq k \leq n$) : il y a $\binom{n}{k}$ façons de choisir ces $k$
+  éléments. Les $n-k$ éléments restants se partitionnent en $B_{n-k}$ façons,
+  indépendamment. Ainsi :
+  \[
+    B_{n+1} = \sum_{k=0}^{n} \binom{n}{k} B_{n-k}
+             = \sum_{k=0}^{n} \binom{n}{k} B_k,
+  \]
+  où la dernière égalité s'obtient en substituant $k \leftarrow n-k$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Triangle de Bell}
+
+\begin{mdframed}[style=exbar]
+  \index{triangle de Bell}
+  Le \emph{triangle de Bell} est un tableau triangulaire $(a_{n,k})_{0\leq k\leq n}$
+  construit comme suit :
+  \begin{itemize}
+    \item $a_{n,0} = B_n$ (premier terme de chaque ligne).
+    \item $a_{n,k} = a_{n,k-1} + a_{n-1,k-1}$ (chaque terme est la somme du
+          terme précédent sur la même ligne et du terme au-dessus à gauche).
+  \end{itemize}
+  Le dernier terme de chaque ligne est $B_{n+1}$.
+
+  \medskip
+  \begin{center}
+    \begin{tabular}{ccccc}
+      1 & & & & \\
+      1 & 2 & & & \\
+      2 & 3 & 5 & & \\
+      5 & 7 & 10 & 15 & \\
+      15 & 20 & 27 & 37 & 52 \\
+    \end{tabular}
+  \end{center}
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — NOMBRES DE STIRLING ET LIEN AVEC $B_n$
+%=============================================================
+\secnum{navyblue}{3}{Nombres de Stirling de deuxième espèce}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{nombre de Stirling!de deuxième espèce}
+  Le \emph{nombre de Stirling de deuxième espèce} $S(n,k)$ est le nombre de
+  partitions de $[n]$ en exactement $k$ blocs non vides.
+
+  \medskip
+  \textbf{Récurrence.}\enspace\index{récurrence de Stirling}
+  \[
+    S(n,k) = k\,S(n-1,k) + S(n-1,k-1),
+    \qquad S(n,0)=[n=0],\quad S(n,n)=1.
+  \]
+
+  \medskip
+  \textbf{Lien avec les nombres de Bell.}\enspace
+  \[
+    B_n = \sum_{k=0}^{n} S(n,k).
+  \]
+\end{tcolorbox}
+
+\rubriq{Preuve de la récurrence de Stirling}
+
+\begin{mdframed}[style=proofbar]
+  Pour partitionner $[n]$ en $k$ blocs, on considère l'élément $n$.
+  \begin{itemize}
+    \item Soit $\{n\}$ forme un bloc seul : les $n-1$ éléments restants
+          se partitionnent en $k-1$ blocs — $S(n-1,k-1)$ façons.
+    \item Soit $n$ rejoint l'un des $k$ blocs d'une partition de $[n-1]$ :
+          il y a $k\cdot S(n-1,k)$ façons.
+  \end{itemize}
+  D'où $S(n,k) = k\,S(n-1,k) + S(n-1,k-1)$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Formule explicite}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Formule d'inclusion-exclusion.}\enspace
+  \[
+    S(n,k) = \frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n.
+  \]
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — FORMULE DE DOBI\'NSKI ET SÉRIE GÉNÉRATRICE
+%=============================================================
+\secnum{navyblue}{4}{Formule de Dobi\'nski et série génératrice}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Formule de Dobi\'nski.}\enspace%
+  \index{Dobi\'nski (formule de)}
+  \[
+    B_n = \frac{1}{e}\sum_{k=0}^{+\infty}\frac{k^n}{k!}.
+  \]
+
+  \medskip
+  \textbf{Série génératrice exponentielle.}\enspace%
+  \index{série génératrice exponentielle!nombres de Bell}
+  \[
+    \sum_{n=0}^{+\infty} B_n\,\frac{x^n}{n!} = e^{e^x - 1}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Preuve de la formule de Dobi\'nski}
+
+\begin{mdframed}[style=proofbar]
+  On utilise la formule d'inclusion-exclusion pour $S(n,k)$ et on somme sur
+  $k$ :
+  \[
+    B_n = \sum_{k=0}^{n} S(n,k)
+        = \sum_{k=0}^{n}\frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n.
+  \]
+  En permutant les sommations et en regroupant les termes, on reconnaît le
+  développement en série de $e^{-1} e^j = e^{j-1}$ évalué en $j=1$, ce qui
+  donne (après développement de $e^x$ en entier $k$) :
+  \[
+    B_n = e^{-1}\sum_{k=0}^{+\infty}\frac{k^n}{k!}.\hfill\blacksquare
+  \]
+\end{mdframed}
+
+\rubriq{Preuve de la série génératrice}
+
+\begin{mdframed}[style=proofbar]
+  On dispose, via la formule de Dobi\'nski, de :
+  \[
+    B_n = e^{-1}\sum_{k\geq 0}\frac{k^n}{k!}.
+  \]
+  Ainsi :
+  \[
+    \sum_{n\geq 0}B_n\frac{x^n}{n!}
+    = e^{-1}\sum_{k\geq 0}\frac{1}{k!}\sum_{n\geq 0}\frac{(kx)^n}{n!}
+    = e^{-1}\sum_{k\geq 0}\frac{e^{kx}}{k!}
+    = e^{-1}\,e^{e^x}
+    = e^{e^x - 1}.\hfill\blacksquare
+  \]
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 5 — APPLICATIONS, PIÈGES, EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Applications, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Classement de structures.}\enspace%
+  \index{relation d'équivalence}
+  Le nombre de relations d'équivalence sur $[n]$ est $B_n$
+  (une relation d'équivalence = une partition en classes).
+
+  \smallskip\noindent
+  \textbf{2. Moments d'une loi de Poisson.}\enspace%
+  \index{loi de Poisson}
+  Si $X \sim \mathrm{Poisson}(1)$, alors $\mathbb{E}[X^n] = B_n$.
+  Plus généralement, si $X \sim \mathrm{Poisson}(\lambda)$,
+  \[
+    \mathbb{E}[X^n] = \sum_{k=0}^{n} S(n,k)\,\lambda^k.
+  \]
+
+  \smallskip\noindent
+  \textbf{3. Dérivation de fonctions composées.}\enspace%
+  \index{formule de Fa\`a di Bruno}
+  La formule de Fa\`a di Bruno exprime $(f \circ g)^{(n)}$ en termes
+  des dérivées de $f$ et $g$ à l'aide des nombres $S(n,k)$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$B_n$ croît plus vite que toute exponentielle fixée.}\enspace%
+  On a $B_n \geq S(n,1) = 1$ et $B_n \geq S(n,n) = 1$, mais la croissance
+  réelle est bien plus rapide : $\ln B_n \sim n\ln n - n\ln\ln n$ (formule
+  asymptotique de Berge). On confondra $B_n$ avec $n!$ ou avec $2^n$ par
+  erreur.
+
+  \smallskip\noindent
+  \textbf{Confondre $S(n,k)$ avec $\begin{bmatrix}n\\k\end{bmatrix}$.}\enspace%
+  Les \emph{nombres de Stirling de première espèce}
+  $\begin{bmatrix}n\\k\end{bmatrix}$ comptent les permutations de $[n]$ à
+  $k$ cycles, et non les partitions. Ils vérifient une récurrence similaire
+  mais avec un signe différent.
+
+  \smallskip\noindent
+  \textbf{Convention $B_0 = 1$.}\enspace%
+  L'ensemble vide admet exactement une partition (la partition vide). Ne pas
+  confondre avec $B_1 = 1$ : les deux valent $1$, mais pour des raisons
+  différentes.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item En utilisant la récurrence $B_{n+1} = \sum_{k=0}^{n}\binom{n}{k}B_k$,
+          calculer $B_6 = 203$ à partir des valeurs précédentes.
+
+    \item Montrer que $S(n,2) = 2^{n-1}-1$ pour $n\geq 1$.
+          (\textit{Hint :} une partition en 2 blocs correspond au choix du
+          bloc contenant $1$, qui ne peut pas être $[n]$ tout entier.)
+
+    \item Vérifier sur $n=3$ que $\mathbb{E}[X^3] = B_3 = 5$ pour
+          $X\sim\mathrm{Poisson}(1)$ en calculant directement
+          $\sum_{k\geq 0} k^3\,e^{-1}/k!$.
+
+    \item Montrer que $B_n$ est impair si et seulement si $n\equiv 0,1$ ou
+          $2\pmod{3}$ (\textit{i.e.} $B_n$ est pair si et seulement si
+          $n\equiv 2\pmod{3}$, pour $n\geq 1$).
+
+    \item (\textit{Défi}) En utilisant la série génératrice $e^{e^x-1}$,
+          retrouver la formule de Dobi\'nski en développant $e^{e^x}$ comme
+          double somme.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{%
+  É.\ Dobi\'nski (1877) · E.\ T.\ Bell, \textit{Am.\ Math.\ Monthly} (1934)%
+}

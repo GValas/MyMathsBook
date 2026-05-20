@@ -1,0 +1,266 @@
+%==============================================================
+%  lecons/analyse/tchebychev.tex — Polynômes de Tchebychev
+%==============================================================
+
+\lecontitle{Polynômes de Tchebychev}{Analyse — Approximation et polynômes trigonométriques}
+
+%=============================================================
+%  § 1 — DÉFINITION ET PREMIÈRES VALEURS
+%=============================================================
+\secnum{navyblue}{1}{Définition et premières valeurs}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynôme de Tchebychev}
+  Le \emph{$n$-ième polynôme de Tchebychev de première espèce} est l'unique
+  polynôme $T_n \in \mathbb{R}[X]$ vérifiant
+  \[
+    T_n(\cos\theta) = \cos(n\theta) \qquad \forall\,\theta \in \mathbb{R}.
+  \]
+
+  \medskip
+  \textbf{Récurrence.}\enspace\index{récurrence de Tchebychev}
+  Les polynômes $T_n$ sont bien définis et vérifient
+  \[
+    T_0 = 1,\qquad T_1 = X,\qquad
+    T_{n+1} = 2X\,T_n - T_{n-1} \quad (n \geq 1).
+  \]
+\end{tcolorbox}
+
+\rubriq{Existence et unicité}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Existence.} Par récurrence sur $n$ à partir de la formule
+  d'addition de cosinus :
+  \[
+    \cos((n+1)\theta) = 2\cos\theta\cdot\cos(n\theta) - \cos((n-1)\theta).
+  \]
+  Posant $x = \cos\theta$, si $T_n(x) = \cos(n\theta)$ et
+  $T_{n-1}(x) = \cos((n-1)\theta)$, alors
+  $T_{n+1}(x) = 2x\,T_n(x) - T_{n-1}(x)$ est bien un polynôme en $x$.
+
+  \smallskip
+  \textit{Unicité.} Deux polynômes coïncidant sur $[-1,1]$ (qui contient
+  une infinité de points) sont égaux. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Premières valeurs}
+
+\begin{mdframed}[style=exbar]
+  \begin{align*}
+    T_0(x) &= 1 \\
+    T_1(x) &= x \\
+    T_2(x) &= 2x^2 - 1 \\
+    T_3(x) &= 4x^3 - 3x \\
+    T_4(x) &= 8x^4 - 8x^2 + 1 \\
+    T_5(x) &= 16x^5 - 20x^3 + 5x
+  \end{align*}
+  Le coefficient dominant de $T_n$ est $2^{n-1}$ pour $n \geq 1$.
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — PROPRIÉTÉS ALGÉBRIQUES
+%=============================================================
+\secnum{navyblue}{2}{Propriétés algébriques}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Proposition.}\enspace
+  Pour tout $n \geq 0$ :
+  \begin{enumerate}
+    \item \textbf{Parité.}\enspace $T_n(-x) = (-1)^n T_n(x)$.
+    \item \textbf{Racines.}\enspace $T_n$ a exactement $n$ racines simples
+          dans $(-1,1)$ :
+          \[
+            x_k = \cos\!\left(\frac{(2k-1)\pi}{2n}\right),
+            \quad k = 1, \ldots, n.
+          \]
+    \item \textbf{Extrema.}\enspace $T_n$ prend alternativement les valeurs
+          $+1$ et $-1$ aux $n+1$ points
+          \[
+            \xi_j = \cos\!\left(\frac{j\pi}{n}\right),
+            \quad j = 0, 1, \ldots, n.
+          \]
+    \item \textbf{Borne.}\enspace $|T_n(x)| \leq 1$ pour tout $x \in [-1,1]$.
+    \item \textbf{Composition.}\enspace $T_m \circ T_n = T_{mn}$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Preuve des points 1–3}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Parité.} $T_n(-\cos\theta)=T_n(\cos(\pi-\theta))=\cos(n(\pi-\theta))
+  =(-1)^n\cos(n\theta)=(-1)^n T_n(\cos\theta)$. \hfill$\square$
+
+  \smallskip
+  \textit{Racines.} $T_n(x_k)=\cos\!\bigl(n\cdot\tfrac{(2k-1)\pi}{2n}\bigr)
+  =\cos\!\bigl(\tfrac{(2k-1)\pi}{2}\bigr)=0$.
+  Ce sont $n$ valeurs distinctes dans $(-1,1)$, donc toutes les racines
+  d'un polynôme de degré $n$. \hfill$\square$
+
+  \smallskip
+  \textit{Extrema.} $T_n(\xi_j)=\cos(j\pi)=(-1)^j$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — THÉORÈME D'APPROXIMATION MINIMALE
+%=============================================================
+\secnum{navyblue}{3}{Théorème d'approximation minimale}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (Tchebychev).}\enspace%
+  \index{théorème d'approximation minimale de Tchebychev}
+  Parmi tous les polynômes unitaires\footnote{%
+    Coefficient dominant égal à $1$.}
+  de degré $n \geq 1$, le polynôme
+  \[
+    \widetilde{T}_n = \frac{1}{2^{n-1}}\,T_n
+  \]
+  est celui qui minimise la norme uniforme sur $[-1,1]$ :
+  \[
+    \min_{\substack{P \in \mathbb{R}[X] \\ \deg P = n,\; P \text{ unitaire}}}
+    \|P\|_{[-1,1]}
+    \;=\;
+    \|\widetilde{T}_n\|_{[-1,1]}
+    \;=\;
+    \frac{1}{2^{n-1}}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  On sait que $\|\widetilde{T}_n\|_{[-1,1]} = \frac{1}{2^{n-1}}$ (les $n+1$
+  extrema alternent entre $\pm\frac{1}{2^{n-1}}$).
+
+  \smallskip
+  Soit $P$ un polynôme unitaire de degré $n$ tel que $\|P\|_{[-1,1]} <
+  \frac{1}{2^{n-1}}$.
+  Posons $Q = \widetilde{T}_n - P$ ; c'est un polynôme de degré $< n$
+  (les termes dominants s'annulent). Aux $n+1$ points $\xi_j$~:
+  \[
+    \widetilde{T}_n(\xi_j) = \frac{(-1)^j}{2^{n-1}}, \qquad
+    |P(\xi_j)| < \frac{1}{2^{n-1}},
+  \]
+  donc $Q(\xi_j)$ change de signe entre $\xi_{j-1}$ et $\xi_j$ ($n$ fois).
+  Par le théorème des valeurs intermédiaires, $Q$ admet au moins $n$
+  racines. Contradiction avec $\deg Q < n$, sauf si $Q = 0$, mais alors
+  $P = \widetilde{T}_n$ et l'hypothèse est fausse. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — ORTHOGONALITÉ
+%=============================================================
+\secnum{navyblue}{4}{Orthogonalité}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace\index{orthogonalité des polynômes de Tchebychev}
+  Les polynômes de Tchebychev sont orthogonaux pour le produit scalaire à
+  poids $w(x)=(1-x^2)^{-1/2}$ sur $(-1,1)$~:
+  \[
+    \int_{-1}^{1} T_m(x)\,T_n(x)\,\frac{\mathrm{d}x}{\sqrt{1-x^2}}
+    =
+    \begin{cases}
+      0       & \text{si } m \neq n, \\
+      \pi     & \text{si } m = n = 0, \\
+      \pi/2   & \text{si } m = n \geq 1.
+    \end{cases}
+  \]
+\end{tcolorbox}
+
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  On pose $x = \cos\theta$, d'où $\mathrm{d}x = -\sin\theta\,\mathrm{d}\theta$
+  et $(1-x^2)^{1/2} = \sin\theta$.
+  \[
+    \int_{-1}^{1} T_m T_n \frac{\mathrm{d}x}{\sqrt{1-x^2}}
+    = \int_0^{\pi} \cos(m\theta)\cos(n\theta)\,\mathrm{d}\theta.
+  \]
+  La formule de linéarisation $2\cos(m\theta)\cos(n\theta)
+  = \cos((m-n)\theta)+\cos((m+n)\theta)$ et le calcul standard des intégrales
+  de cosinus donnent le résultat. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 5 — APPLICATIONS, PIÈGES, EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Applications, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Applications.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Nœuds de Tchebychev pour l'interpolation.}\enspace%
+  \index{nœuds de Tchebychev}
+  Pour interpoler une fonction $f$ en $n+1$ points de $[-1,1]$, les racines
+  de $T_{n+1}$ (nœuds de Tchebychev) minimisent le terme d'erreur, qui
+  contient $\|\omega\|_\infty$ avec $\omega=\prod(x-x_k)$.
+
+  \smallskip\noindent
+  \textbf{2. Polynômes de Tchebychev de deuxième espèce.}\enspace%
+  \index{polynôme de Tchebychev!de deuxième espèce}
+  On définit $U_n$ par $U_n(\cos\theta)\sin\theta = \sin((n+1)\theta)$.
+  Ils vérifient la même récurrence $U_{n+1}=2X\,U_n - U_{n-1}$ avec
+  $U_0=1$, $U_1=2X$, et $T_n' = n\,U_{n-1}$.
+
+  \smallskip\noindent
+  \textbf{3. Développement en série de Tchebychev.}\enspace
+  Toute fonction continue $f:[-1,1]\to\mathbb{R}$ admet un développement
+  $f = \sum_{n\geq 0} c_n T_n$ convergent, analogue de la série de Fourier,
+  avec $c_n = \frac{2}{\pi}\int_{-1}^1 f(x)T_n(x)\frac{\mathrm{d}x}{\sqrt{1-x^2}}$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Coefficient dominant $2^{n-1}$, pas $1$.}\enspace
+  $T_n$ n'est pas unitaire pour $n\geq 2$. Le polynôme unitaire associé est
+  $\widetilde{T}_n = \frac{1}{2^{n-1}}T_n$.
+
+  \smallskip\noindent
+  \textbf{Poids de l'orthogonalité.}\enspace
+  L'orthogonalité de $(T_n)$ est relative au poids
+  $(1-x^2)^{-1/2}$, non à la mesure de Lebesgue. Sans ce poids,
+  $\int_{-1}^1 T_m T_n\,\mathrm{d}x \neq 0$ en général.
+
+  \smallskip\noindent
+  \textbf{Ne pas confondre $T_n$ et $U_n$.}\enspace
+  $T_n' = n\,U_{n-1}$ ; les polynômes de deuxième espèce $U_n$ ont les
+  racines $\cos\!\bigl(\frac{k\pi}{n+1}\bigr)$, $k=1,\ldots,n$, et non
+  les racines de $T_n$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Vérifier par la récurrence que $T_3(x) = 4x^3 - 3x$ et
+          $T_4(x) = 8x^4 - 8x^2 + 1$, puis retrouver les racines de $T_3$
+          via la formule trigonométrique.
+
+    \item Montrer que $T_m(T_n(x)) = T_{mn}(x)$ en utilisant la définition
+          $T_n(\cos\theta)=\cos(n\theta)$.
+
+    \item En utilisant le théorème d'approximation minimale, montrer que
+          pour tout polynôme $P$ de degré $\leq n-1$ :
+          \[
+            \max_{x\in[-1,1]}\left|\,x^n - P(x)\right| \geq \frac{1}{2^{n-1}}.
+          \]
+
+    \item Calculer $\int_{-1}^1 T_3(x)^2\,\frac{\mathrm{d}x}{\sqrt{1-x^2}}$
+          directement, puis via le théorème d'orthogonalité.
+
+    \item Montrer que $T_n'(x) = n\,U_{n-1}(x)$ en dérivant la relation
+          $\cos(n\theta) = T_n(\cos\theta)$ par rapport à $\theta$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{P.\ L.\ Tchebychev, \textit{Théorie des mécanismes} (1853)}
