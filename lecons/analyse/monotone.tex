@@ -1,0 +1,199 @@
+%==============================================================
+%  lecons/analyse/monotone.tex — Théorème de la limite monotone
+%==============================================================
+
+\lecontitle{Théorème de la limite monotone}{Analyse réelle — Suites numériques}
+
+%=============================================================
+%  § 1 — ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{Énoncé et signification}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (limite monotone).}%
+  \enspace\index{théorème de la limite monotone}\index{suite monotone}
+  \textit{Toute suite monotone\index{suite monotone} bornée\index{suite bornée}
+  est convergente.}
+
+  \medskip
+  Plus précisément :
+  \begin{itemize}
+    \item Si $(u_n)$ est \textbf{croissante} et \textbf{majorée}, elle converge
+          vers $\sup\{u_n \mid n \in \mathbb{N}\}$.
+    \item Si $(u_n)$ est \textbf{décroissante} et \textbf{minorée}, elle converge
+          vers $\inf\{u_n \mid n \in \mathbb{N}\}$.
+  \end{itemize}
+
+  \medskip
+  \textbf{Corollaire (suite monotone divergente).}\enspace%
+  Une suite monotone non bornée diverge vers $+\infty$ (si croissante) ou
+  $-\infty$ (si décroissante).
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Une suite croissante avance toujours vers la droite sur la droite réelle.
+Si elle est en plus majorée, elle ne peut pas partir à l'infini : elle doit
+\emph{s'accumuler} quelque part. La borne supérieure de l'ensemble des termes,
+garantie par la \emph{complétude}\index{complétude} de $\mathbb{R}$, est
+précisément la limite. Ce théorème est l'un des équivalents de la propriété
+de la borne supérieure : il caractérise à lui seul la complétude de $\mathbb{R}$.
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\rubriq{Idée de la preuve}
+On pose $\ell = \sup_n u_n$, qui existe par complétude de $\mathbb{R}$.
+Par définition du supremum, $\ell$ est la plus petite borne supérieure : pour
+tout $\varepsilon > 0$, il existe un rang $N$ à partir duquel les termes
+dépassent $\ell - \varepsilon$. La monotonie garantit qu'ils restent au
+voisinage de $\ell$ pour tout $n \geq N$.
+
+\vspace{10pt}
+\noindent{\bfseries\color{navyblue} Preuve (cas croissant).}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Existence de la limite candidate.}
+  Soit $(u_n)$ croissante et majorée. L'ensemble
+  $S = \{u_n \mid n \in \mathbb{N}\}$ est non vide et majoré.
+  Par la propriété de la borne supérieure de $\mathbb{R}$,
+  \[
+    \ell := \sup S \in \mathbb{R}
+  \]
+  est bien défini.
+
+  \medskip
+  \textit{Vérification de la convergence.}
+  Soit $\varepsilon > 0$. Puisque $\ell - \varepsilon$ n'est pas un majorant
+  de $S$, il existe $N \in \mathbb{N}$ tel que
+  \[
+    u_N > \ell - \varepsilon.
+  \]
+  Pour tout $n \geq N$, la croissance donne $u_n \geq u_N > \ell - \varepsilon$.
+  D'autre part $u_n \leq \ell$ par définition du supremum. Donc :
+  \[
+    \forall n \geq N, \quad \ell - \varepsilon < u_n \leq \ell,
+  \]
+  ce qui signifie $|u_n - \ell| < \varepsilon$. Ainsi $(u_n) \to \ell$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Cas décroissant}
+
+\begin{mdframed}[style=proofbar]
+  Si $(u_n)$ est décroissante et minorée, la suite $v_n = -u_n$ est croissante
+  et majorée. Par le cas précédent, $(v_n)$ converge vers $\sup_n v_n =
+  -\inf_n u_n$. Donc $(u_n) = (-v_n)$ converge vers $\inf_n u_n$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Équivalence avec la propriété de la borne supérieure}
+
+\begin{mdframed}[style=proofbar]
+  Les deux propriétés suivantes sont équivalentes pour un corps ordonné :
+  \begin{enumerate}
+    \item Toute suite croissante majorée converge (\emph{théorème de la limite
+          monotone}).
+    \item Toute partie non vide et majorée admet un supremum (\emph{propriété
+          de la borne supérieure}).
+  \end{enumerate}
+  \textit{$(2) \Rightarrow (1)$} : c'est la preuve ci-dessus.
+
+  \textit{$(1) \Rightarrow (2)$} : soit $A$ une partie non vide et majorée.
+  Pour tout $n$, on construit par dichotomie des intervalles $[a_n, b_n]$
+  avec $b_n - a_n \to 0$, $a_n \in A$ impossible et $b_n$ majorant de $A$.
+  La suite $(b_n)$ décroissante et minorée converge vers $\ell$, qui est le
+  supremum de $A$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Suite géométrique décroissante.}\enspace%
+  Pour $0 < r < 1$, la suite $u_n = r^n$ est décroissante (car $u_{n+1} =
+  r \cdot u_n < u_n$) et minorée par $0$. Le théorème garantit la convergence
+  ; la limite est $\inf_n r^n = 0$.
+
+  \smallskip\noindent
+  \textbf{2. Suite définie par récurrence : $u_{n+1} = \sqrt{2 + u_n}$.}\enspace%
+  Avec $u_0 = 0$. On montre par récurrence que $(u_n)$ est croissante et
+  majorée par $2$ (car $u \leq 2 \Rightarrow \sqrt{2+u} \leq 2$). Donc
+  $(u_n)$ converge vers un $\ell$ vérifiant $\ell = \sqrt{2 + \ell}$, soit
+  $\ell^2 - \ell - 2 = 0$, d'où $\ell = 2$ (en rejetant $\ell = -1 < 0$).
+
+  \smallskip\noindent
+  \textbf{3. Suite des sommes partielles de série à termes positifs.}\enspace%
+  Si $a_n \geq 0$ pour tout $n$, la suite $S_N = \sum_{n=0}^{N} a_n$ est
+  croissante. Elle converge si et seulement si elle est majorée, ce qui
+  caractérise la convergence de la série $\sum a_n$ à termes positifs.
+
+  \smallskip\noindent
+  \textbf{4. Définition de $e$ par limite monotone.}\enspace%
+  La suite $e_n = \left(1 + \frac{1}{n}\right)^n$ est croissante et majorée
+  par $3$ (preuve via l'inégalité de Bernoulli ou par la concavité du
+  logarithme). Elle converge vers le nombre d'Euler $e \approx 2{,}718$.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Monotonie seule ne suffit pas.}\enspace%
+  $u_n = n$ est croissante mais non bornée : elle diverge vers $+\infty$.
+  La monotonie sans borne ne garantit pas la convergence.
+
+  \smallskip\noindent
+  \textbf{Bornée seule ne suffit pas.}\enspace%
+  $u_n = (-1)^n$ est bornée (dans $[-1,1]$) mais ni croissante ni décroissante.
+  Elle n'est pas convergente (Bolzano--Weierstrass garantit seulement l'existence
+  de sous-suites convergentes).
+
+  \smallskip\noindent
+  \textbf{La limite peut être non atteinte.}\enspace%
+  La suite $u_n = 1 - 1/n$ est croissante, majorée par $1$, et converge vers
+  $1 = \sup_n u_n$, mais $u_n < 1$ pour tout $n$ fini : la borne supérieure
+  n'est pas un terme de la suite.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Soit $u_0 > 0$ et $u_{n+1} = \dfrac{1}{2}\!\left(u_n +
+          \dfrac{a}{u_n}\right)$ pour $a > 0$ (algorithme de Héron). Montrer
+          que pour $n \geq 1$, $(u_n)$ est décroissante et minorée par
+          $\sqrt{a}$, puis déterminer sa limite.
+
+    \item Montrer que la suite définie par $u_0 \in {]0,1[}$ et
+          $u_{n+1} = u_n(1 - u_n)$ est décroissante, minorée par $0$,
+          et converger vers $0$.
+
+    \item Soit $(u_n)$ croissante et $(v_n)$ décroissante avec $u_n \leq v_n$
+          pour tout $n$. Montrer que $(u_n)$ et $(v_n)$ convergent et que
+          $\lim u_n \leq \lim v_n$ (théorème des suites adjacentes si de plus
+          $v_n - u_n \to 0$).
+
+    \item Montrer que la suite $H_n = \sum_{k=1}^{n} \dfrac{1}{k}$ (série
+          harmonique) est croissante et non majorée, donc diverge vers
+          $+\infty$.
+
+    \item (Théorème de Cesàro) Soit $(u_n)$ une suite convergeant vers
+          $\ell \in \mathbb{R}$. Montrer que la suite des moyennes
+          $\sigma_n = \dfrac{1}{n}\sum_{k=1}^{n} u_k$ converge aussi vers
+          $\ell$. (\emph{Indication} : utiliser la convergence et décomposer
+          la somme en deux parties.)
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Bolzano (1817) \& A.-L.\ Cauchy (1821)}
