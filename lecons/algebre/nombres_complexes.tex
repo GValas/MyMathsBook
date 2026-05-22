@@ -1,0 +1,303 @@
+%==============================================================
+%  lecons/algebre/nombres_complexes.tex — Nombres complexes
+%==============================================================
+
+\lecontitle{Nombres complexes}{Structures algébriques — Arithmétique de \texorpdfstring{$\mathbb{C}$}{C}}
+
+%=============================================================
+%  § 1 — FORMES ET OPÉRATIONS ÉLÉMENTAIRES
+%=============================================================
+\secnum{navyblue}{1}{Représentations et opérations élémentaires}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Forme algébrique.}\enspace%
+  \index{nombres complexes!forme algébrique}
+  Tout $z \in \mathbb{C}$ s'écrit de façon unique
+  \[
+    z = a + ib, \quad a = \mathrm{Re}(z) \in \mathbb{R},\quad b = \mathrm{Im}(z) \in \mathbb{R}.
+  \]
+  Le \textbf{conjugué}\index{nombres complexes!conjugué} et le
+  \textbf{module}\index{nombres complexes!module} sont :
+  \[
+    \bar{z} = a - ib, \qquad |z| = \sqrt{a^2 + b^2} = \sqrt{z\bar{z}}.
+  \]
+\end{tcolorbox}
+
+\rubriq{Propriétés du conjugué et du module}
+
+Les règles suivantes découlent directement des définitions. Pour tous
+$z, w \in \mathbb{C}$ :
+\[
+  \overline{z + w} = \bar{z} + \bar{w}, \quad
+  \overline{zw} = \bar{z}\,\bar{w}, \quad
+  \overline{\bar{z}} = z, \quad
+  z + \bar{z} = 2\,\mathrm{Re}(z), \quad
+  z - \bar{z} = 2i\,\mathrm{Im}(z).
+\]
+Pour le module :
+\[
+  |zw| = |z|\,|w|, \quad
+  \left|\frac{z}{w}\right| = \frac{|z|}{|w|} \;(w \neq 0), \quad
+  |\bar{z}| = |z|, \quad
+  |z + w| \leq |z| + |w|.
+\]
+
+\rubriq{Inverse et division}
+Pour $z = a + ib \neq 0$ :
+\[
+  z^{-1} = \frac{\bar{z}}{|z|^2} = \frac{a - ib}{a^2 + b^2}.
+\]
+La division se ramène à une multiplication par le conjugué du dénominateur :
+$\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
+
+\decsep{}
+
+%=============================================================
+%  § 2 — FORME TRIGONOMÉTRIQUE ET FORMULE D'EULER
+%=============================================================
+\secnum{navyblue}{2}{Forme trigonométrique et formule d'Euler}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Forme trigonométrique.}\enspace%
+  \index{nombres complexes!forme trigonométrique}\index{argument}
+  Tout $z \neq 0$ s'écrit
+  \[
+    z = |z|(\cos\theta + i\sin\theta), \quad \theta \in \mathbb{R}.
+  \]
+  Le réel $\theta$ est un \textbf{argument}\index{argument} de $z$, noté
+  $\theta \equiv \arg(z) \pmod{2\pi}$. L'argument principal est choisi dans
+  $]-\pi, \pi]$.
+
+  \medskip
+  \textbf{Formule d'Euler.}\enspace%
+  \index{formule d'Euler}
+  Pour tout $\theta \in \mathbb{R}$ :
+  \[
+    e^{i\theta} = \cos\theta + i\sin\theta.
+  \]
+  La forme exponentielle est donc $z = |z|\,e^{i\arg z}$.
+\end{tcolorbox}
+
+\rubriq{Multiplication en forme polaire}
+
+\begin{mdframed}[style=proofbar]
+  Si $z = r e^{i\theta}$ et $w = s e^{i\varphi}$, alors
+  \[
+    zw = rs\, e^{i(\theta + \varphi)}.
+  \]
+  \textit{Règles pour l'argument :}
+  $\arg(zw) \equiv \arg z + \arg w \pmod{2\pi}$,
+  $\arg(z^{-1}) \equiv -\arg z$,
+  $\arg(\bar{z}) \equiv -\arg z$.
+
+  \textit{Conséquence géométrique :} multiplier par $e^{i\alpha}$ est une
+  \textbf{rotation}\index{rotation (multiplication complexe)} de centre $O$ et d'angle $\alpha$ dans le plan complexe.
+  Multiplier par $r > 0$ est une homothétie de rapport $r$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Formules de De Moivre et de linéarisation}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Formule de De Moivre.}\enspace%
+  \index{De Moivre (formule de)}
+  Pour tout $n \in \mathbb{Z}$ et $\theta \in \mathbb{R}$ :
+  \[
+    (\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta).
+  \]
+
+  \medskip
+  \textbf{Formules d'Euler inverses.}\enspace%
+  \[
+    \cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2}, \qquad
+    \sin\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i}.
+  \]
+  Elles permettent de \textbf{linéariser}\index{linéarisation trigonométrique} $\cos^n\theta$ et $\sin^n\theta$
+  (exprimer une puissance en combinaison de $\cos(k\theta)$, $\sin(k\theta)$).
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Preuve de De Moivre.} Par récurrence sur $n \geq 0$ en utilisant
+  $e^{i(n+1)\theta} = e^{in\theta} \cdot e^{i\theta}$. Le cas $n < 0$ suit
+  par passage à l'inverse. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — RACINES N-IÈMES
+%=============================================================
+\secnum{navyblue}{3}{Racines $n$-ièmes}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (racines $n$-ièmes).}\enspace%
+  \index{racines n-ièmes}
+  Soit $n \geq 1$ et $w = \rho e^{i\varphi} \in \mathbb{C}^*$. L'équation
+  $z^n = w$ admet exactement $n$ solutions dans $\mathbb{C}$ :
+  \[
+    z_k = \rho^{1/n}\, \exp\!\left(i\,\frac{\varphi + 2k\pi}{n}\right),
+    \quad k = 0, 1, \ldots, n-1.
+  \]
+  Ces solutions sont les sommets d'un polygone régulier à $n$ côtés inscrit
+  dans le cercle de rayon $\rho^{1/n}$, équidistants d'angle $2\pi/n$.
+
+  \medskip
+  \textbf{Racines de l'unité.}\enspace%
+  \index{racines de l'unité}
+  Pour $w = 1$ ($\rho = 1$, $\varphi = 0$) :
+  \[
+    \omega_k = e^{2ik\pi/n}, \quad k = 0, \ldots, n-1.
+  \]
+  Ces racines vérifient $\displaystyle\sum_{k=0}^{n-1} \omega_k^j = 0$
+  pour $j \not\equiv 0 \pmod{n}$.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Existence.} On vérifie $z_k^n = \rho\,e^{i(\varphi+2k\pi)} = \rho e^{i\varphi} = w$.
+
+  \textit{Unicité (exactement $n$ solutions).} Si $z^n = w$, on écrit $z = r e^{i\alpha}$.
+  Alors $r^n = \rho$ donne $r = \rho^{1/n}$ (unique réel positif), et
+  $n\alpha \equiv \varphi \pmod{2\pi}$, ce qui donne exactement $n$ valeurs
+  $\alpha \in [0, 2\pi[$.
+
+  \textit{Somme des racines.} Pour $j \not\equiv 0 \pmod{n}$, la somme est
+  une série géométrique :
+  $\sum_{k=0}^{n-1} \omega_k^j = \sum_{k=0}^{n-1} (e^{2i\pi j/n})^k
+  = \dfrac{1 - e^{2i\pi j}}{1 - e^{2i\pi j/n}} = 0$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — GÉOMÉTRIE DU PLAN COMPLEXE
+%=============================================================
+\secnum{navyblue}{4}{Géométrie du plan complexe}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Transformations géométriques.}\enspace%
+  \index{plan complexe!transformations}
+  On identifie $\mathbb{C}$ et $\mathbb{R}^2$ via $z = x + iy \leftrightarrow (x,y)$.
+  \begin{itemize}
+    \item \textbf{Translation} de vecteur $b$ : $z \mapsto z + b$.
+    \item \textbf{Homothétie} de centre $O$, rapport $r > 0$ : $z \mapsto rz$.
+    \item \textbf{Rotation} de centre $O$, angle $\alpha$ : $z \mapsto e^{i\alpha} z$.
+    \item \textbf{Similitude directe} (générale) : $z \mapsto az + b$,
+          $a \in \mathbb{C}^*$, $b \in \mathbb{C}$.
+    \item \textbf{Réflexion} d'axe réel : $z \mapsto \bar{z}$.
+    \item \textbf{Inversion} de centre $O$, puissance $1$ : $z \mapsto 1/\bar{z}$.
+  \end{itemize}
+\end{tcolorbox}
+
+\rubriq{Alignement et cocyclicité}
+
+\begin{mdframed}[style=proofbar]
+  Trois points $A$, $B$, $C$ d'affixes $a$, $b$, $c$ sont
+  \textbf{alignés}\index{alignement (plan complexe)} si et seulement si
+  \[
+    \frac{c - a}{b - a} \in \mathbb{R}.
+  \]
+  Quatre points sont \textbf{cocycliques ou alignés}\index{cocyclicité} si et
+  seulement si leur birapport\index{birapport}
+  $[z_1, z_2; z_3, z_4] = \dfrac{(z_3-z_1)(z_4-z_2)}{(z_3-z_2)(z_4-z_1)}$
+  est réel. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 5 — EXEMPLES, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{5}{Exemples, pièges et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Linéarisation de $\cos^3\theta$.}\enspace%
+  En développant $\left(\dfrac{e^{i\theta}+e^{-i\theta}}{2}\right)^3$ par le
+  binôme de Newton :
+  \[
+    \cos^3\theta = \frac{1}{4}\cos(3\theta) + \frac{3}{4}\cos\theta.
+  \]
+
+  \smallskip\noindent
+  \textbf{2. Racines cubiques de $-8$.}\enspace%
+  $w = -8 = 8e^{i\pi}$, $n = 3$ : $z_k = 2\exp\!\bigl(i\dfrac{\pi + 2k\pi}{3}\bigr)$.
+  Cela donne $z_0 = 2e^{i\pi/3} = 1 + i\sqrt{3}$, $z_1 = -2$,
+  $z_2 = 1 - i\sqrt{3}$.
+
+  \smallskip\noindent
+  \textbf{3. Somme trigonométrique.}\enspace%
+  $\displaystyle S_n = \sum_{k=0}^{n} \cos(k\theta) = \mathrm{Re}\!\sum_{k=0}^n e^{ik\theta}
+  = \mathrm{Re}\,\frac{1 - e^{i(n+1)\theta}}{1 - e^{i\theta}}$.
+  On factorise pour obtenir la formule fermée :
+  \[
+    S_n = \frac{\sin\!\bigl(\tfrac{(n+1)\theta}{2}\bigr)}
+               {\sin\!\bigl(\tfrac{\theta}{2}\bigr)}\,
+          \cos\!\left(\frac{n\theta}{2}\right), \quad \theta \notin 2\pi\mathbb{Z}.
+  \]
+
+  \smallskip\noindent
+  \textbf{4. Identité d'Euler.}\enspace%
+  $e^{i\pi} + 1 = 0$ : les cinq constantes fondamentales liées en une seule
+  égalité.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Argument non additif sur $\mathbb{R}$.}\enspace%
+  $\arg(zw) = \arg z + \arg w$ n'est valide que modulo $2\pi$. L'argument
+  principal peut présenter un saut de $\pm 2\pi$ : $\arg(-1 \cdot -1) =
+  \arg(1) = 0$, mais $\arg(-1) + \arg(-1) = -\pi + (-\pi) = -2\pi \neq 0$.
+
+  \smallskip\noindent
+  \textbf{$\sqrt{z^2} \neq z$ en général.}\enspace%
+  On ne peut pas définir une racine carrée globale continue sur $\mathbb{C}^*$
+  (le logarithme complexe est multiforme). Par exemple,
+  $\sqrt{(-i)^2} = \sqrt{-1} = i \neq -i$.
+
+  \smallskip\noindent
+  \textbf{Inégalité triangulaire : égalité.}\enspace%
+  $|z + w| = |z| + |w|$ si et seulement si $\arg z \equiv \arg w \pmod{2\pi}$
+  (même argument, c.-à-d.\ $w = \lambda z$ pour un $\lambda \geq 0$), pas
+  simplement si $z$ et $w$ sont positifs.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{goldaccent} Exercices.}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Linéariser $\sin^4\theta$ et $\cos^2\theta\sin^2\theta$ à l'aide des
+          formules d'Euler.
+
+    \item Calculer les racines cinquièmes de l'unité. En déduire les valeurs
+          exactes de $\cos(2\pi/5)$ et $\cos(4\pi/5)$.
+
+    \item Soit $z_0 \in \mathbb{C}$, $|z_0| < 1$. Montrer que la transformation
+          de Möbius\index{transformation de Möbius}
+          $f(z) = \dfrac{z - z_0}{1 - \bar{z}_0 z}$
+          est une bijection du disque unité ouvert sur lui-même, et que $|f(z)| = 1$
+          si $|z| = 1$.
+
+    \item Résoudre dans $\mathbb{C}$ l'équation $z^4 + 2z^2 + 4 = 0$.
+          (\textit{Indication :} discriminant de l'équation en $z^2$.)
+
+    \item Soit $P(z) = z^n + a_{n-1}z^{n-1} + \cdots + a_0 \in \mathbb{R}[X]$.
+          Montrer que si $z_0$ est racine de $P$, alors $\bar{z}_0$ l'est aussi,
+          et que les racines non réelles viennent par paires conjuguées.
+          En déduire que tout polynôme réel de degré impair admet au moins une
+          racine réelle.
+
+    \item (Inégalité de Ptolémée) Montrer que pour tous $z_1, z_2, z_3 \in \mathbb{C}$ :
+          \[
+            |z_1 - z_3| \cdot |z_2| \;\leq\;
+            |z_1 - z_2| \cdot |z_3| + |z_2 - z_3| \cdot |z_1|.
+          \]
+          (\textit{Indication :} écrire $z_1 - z_3 = (z_1 - z_2) + (z_2 - z_3)$
+          et factoriser habilement.)
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{R.\ Descartes (1637) — L.\ Euler (1748) — A.\ de Moivre (1730) — C.\ F.\ Gauss (1799)}
