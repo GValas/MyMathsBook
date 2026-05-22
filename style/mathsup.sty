@@ -19,7 +19,6 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage[most]{tcolorbox}
 \usepackage[framemethod=tikz]{mdframed}
-\usepackage{tikz}
 \usepackage{datetime}
 \usepackage{enumitem}
 \usepackage{titletoc}
@@ -153,6 +152,9 @@
   \noindent{\bfseries\color{navyblue} #1.}\enspace
 }
 
+% Étiquettes de blocs récurrents
+\newcommand{\exolabel}{\noindent{\bfseries\color{goldaccent} Exercices.}}
+
 % Séparateur décoratif or
 \newcommand{\decsep}{%
   \vspace{14pt}
@@ -186,6 +188,33 @@
   \noindent\textcolor{navyblue!20}{\rule{\textwidth}{0.4pt}}
   \begin{center}
     \small\color{navyblue!50}
-    Fiche de cours — Analyse réelle \quad|\quad #1
+    Fiche de cours \quad|\quad #1
   \end{center}
 }
+
+%=== EN-TÊTES ET PIEDS DE PAGE ===============================
+\usepackage{fancyhdr}
+\setlength{\headheight}{13.07002pt}
+\addtolength{\topmargin}{-0.77002pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{navyblue!70}\leftmark}
+\fancyhead[RO]{\small\color{navyblue!70}\rightmark}
+\fancyfoot[C]{\small\color{navyblue!50}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\color{goldaccent}\hrule width\headwidth height\headrulewidth} % chktex 1
+
+%=== CHAPITRES STYLISÉS ======================================
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{navyblue}}
+  {\textcolor{goldaccent}{\chaptertitlename\ \thechapter}}
+  {10pt}
+  {\Huge}
+  [\vspace{4pt}\textcolor{goldaccent!40}{\titlerule[1pt]}]
+
+\titleformat{\section}[block]
+  {\normalfont\large\bfseries\color{navyblue}}
+  {}
+  {0pt}
+  {}
