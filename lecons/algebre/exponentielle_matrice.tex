@@ -56,10 +56,10 @@
   \begin{enumerate}
     \item \textbf{Commutativité.}\enspace{}Si $AB = BA$, alors $e^{A+B} = e^A e^B$.
     \item \textbf{Inversibilité.}\enspace{}$e^A$ est toujours inversible et
-          $(e^A)^{-1} = e^{-A}$.
+          ${(e^A)}^{-1} = e^{-A}$.
     \item \textbf{Conjugaison.}\enspace{}Si $P$ est inversible,
           $e^{PAP^{-1}} = P\,e^A\,P^{-1}$.
-    \item \textbf{Transposée.}\enspace{}$e^{A^T} = (e^A)^T$.
+    \item \textbf{Transposée.}\enspace{}$e^{A^T} = {(e^A)}^T$.
     \item \textbf{Déterminant (formule de Jacobi).}\enspace%
     \index{formule de Jacobi}
           $\det(e^A) = e^{\mathrm{tr}(A)}$.
@@ -70,10 +70,10 @@
 \rubriq{Preuve de 1 — formule du produit}
 
 \begin{mdframed}[style=proofbar]
-  Si $AB=BA$, le binôme de Newton s'applique : $(A+B)^k = \sum_{j=0}^k \binom{k}{j}A^j B^{k-j}$.
+  Si $AB=BA$, le binôme de Newton s'applique : ${(A+B)}^k = \sum_{j=0}^k \binom{k}{j}A^j B^{k-j}$.
   Alors, en intervertissant les sommes (convergence absolue) :
   \[
-    e^{A+B} = \sum_{k=0}^\infty \frac{(A+B)^k}{k!}
+    e^{A+B} = \sum_{k=0}^\infty \frac{{(A+B)}^k}{k!}
     = \sum_{k=0}^\infty \sum_{j=0}^k \frac{A^j B^{k-j}}{j!(k-j)!}
     = \left(\sum_{j=0}^\infty\frac{A^j}{j!}\right)\!\left(\sum_{l=0}^\infty\frac{B^l}{l!}\right)
     = e^A e^B. \hfill\blacksquare

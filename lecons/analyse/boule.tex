@@ -58,14 +58,14 @@ On écrit $B_n(R)$ comme une pile de boules $(n{-}1)$-di\-men\-sion\-nelles :
 Par le théorème de Fubini\index{Fubini (théorème de)} :
 \[
   V_n(R) = \int_{-R}^{R} V_{n-1}\!\bigl(\sqrt{R^2-x^2}\bigr)\,dx
-          = \mu_{n-1}\int_{-R}^{R}(R^2-x^2)^{(n-1)/2}\,dx.
+          = \mu_{n-1}\int_{-R}^{R}{(R^2-x^2)}^{(n-1)/2}\,dx.
 \]
 
 \rubriq{Changement de variable et intégrales de Wallis}
 On pose $x = R\cos\theta$, $dx = -R\sin\theta\,d\theta$
 (avec $\theta : \pi \to 0$ quand $x : -R \to R$) :
 \[
-  (R^2-x^2)^{(n-1)/2} = R^{n-1}\sin^{n-1}\theta,
+  {(R^2-x^2)}^{(n-1)/2} = R^{n-1}\sin^{n-1}\theta,
 \]
 d'où
 \[
@@ -200,7 +200,7 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
   \smallskip\noindent
   \textbf{2. Volume de la boule en dehors d'une bande centrale.}\enspace%
   La fraction du volume de $B_n(1)$ à distance $\geq \varepsilon$ de l'équateur
-  $\{x_1=0\}$ est $1 - V_{n-1}(\sqrt{1-\varepsilon^2})/V_{n-1}(1) \approx 1 - (1-\varepsilon^2)^{(n-1)/2} \to 1$ :
+  $\{x_1=0\}$ est $1 - V_{n-1}(\sqrt{1-\varepsilon^2})/V_{n-1}(1) \approx 1 - {(1-\varepsilon^2)}^{(n-1)/2} \to 1$ :
   presque tout le volume se concentre près de l'équateur.
 
   \smallskip\noindent

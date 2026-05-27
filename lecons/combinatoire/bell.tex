@@ -148,7 +148,7 @@
 \begin{tcolorbox}[thmbox]
   \textbf{Formule d'inclusion-exclusion.}\enspace
   \[
-    S(n,k) = \frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n.
+    S(n,k) = \frac{1}{k!}\sum_{j=0}^{k}{(-1)}^{k-j}\binom{k}{j}j^n.
   \]
 \end{tcolorbox}
 
@@ -181,7 +181,7 @@
   $k$ :
   \[
     B_n = \sum_{k=0}^{n} S(n,k)
-        = \sum_{k=0}^{n}\frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n.
+        = \sum_{k=0}^{n}\frac{1}{k!}\sum_{j=0}^{k}{(-1)}^{k-j}\binom{k}{j}j^n.
   \]
   En permutant les sommations et en regroupant les termes, on reconnaît le
   développement en série de $e^{-1} e^j = e^{j-1}$ évalué en $j=1$, ce qui
@@ -201,7 +201,7 @@
   Ainsi :
   \[
     \sum_{n\geq 0}B_n\frac{x^n}{n!}
-    = e^{-1}\sum_{k\geq 0}\frac{1}{k!}\sum_{n\geq 0}\frac{(kx)^n}{n!}
+    = e^{-1}\sum_{k\geq 0}\frac{1}{k!}\sum_{n\geq 0}\frac{{(kx)}^n}{n!}
     = e^{-1}\sum_{k\geq 0}\frac{e^{kx}}{k!}
     = e^{-1}\,e^{e^x}
     = e^{e^x - 1}.\hfill\blacksquare
@@ -235,7 +235,7 @@
   \smallskip\noindent
   \textbf{3. Dérivation de fonctions composées.}\enspace%
   \index{formule de Fa\`a di Bruno}
-  La formule de Fa\`a di Bruno exprime $(f \circ g)^{(n)}$ en termes
+  La formule de Fa\`a di Bruno exprime ${(f \circ g)}^{(n)}$ en termes
   des dérivées de $f$ et $g$ à l'aide des nombres $S(n,k)$.
 \end{mdframed}
 

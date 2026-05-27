@@ -24,8 +24,8 @@
 
 \rubriq{Rappel scalaire}
 Pour $x \in \mathbb{R}$ ou $\mathbb{C}$, le résultat classique
-$e^x = \lim_{k\to\infty}(1+x/k)^k$ s'obtient en posant
-$f_k(x) = (1+x/k)^k$ et en remarquant que
+$e^x = \lim_{k\to\infty}{(1+x/k)}^k$ s'obtient en posant
+$f_k(x) = {(1+x/k)}^k$ et en remarquant que
 $\ln f_k(x) = k\ln(1+x/k) \to x$.
 La preuve matricielle ne peut utiliser le logarithme directement~;
 elle passe par une comparaison terme à terme avec la série $e^X$.
@@ -107,7 +107,7 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
   Pour $k$ assez grand, $\|X/k\| < 1$, et le logarithme matriciel est défini~:
   \[
     \log\!\left(I + \frac{X}{k}\right)
-    = \sum_{m=1}^{\infty}\frac{(-1)^{m+1}}{m}\left(\frac{X}{k}\right)^{\!m}
+    = \sum_{m=1}^{\infty}\frac{{(-1)}^{m+1}}{m}\left(\frac{X}{k}\right)^{\!m}
     = \frac{X}{k} - \frac{X^2}{2k^2} + \cdots
     = \frac{X}{k} + O\!\left(\frac{1}{k^2}\right).
   \]
@@ -155,7 +155,7 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
 
   \medskip
   \textbf{Corollaire 3 — Continuité de $\exp$.}\enspace
-  La formule $(I+X/k)^k \to e^X$ avec des estimées explicites fournit~:
+  La formule ${(I+X/k)}^k \to e^X$ avec des estimées explicites fournit~:
   \[
     \|e^X - e^Y\| \leq \|X - Y\|\,e^{\max(\|X\|,\|Y\|)}.
   \]
@@ -198,9 +198,9 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
 
 \begin{mdframed}[style=cexbar]
   \textbf{Le binôme ne s'applique qu'à $I$ et $X/k$, pas à deux matrices
-  quelconques.}\enspace
-  Si $A \neq B$, $(A+B)^k \neq \sum_j\binom{k}{j}A^j B^{k-j}$ en général.
-  Ici l'écriture $(I + X/k)^k$ fonctionne car $I$ et $X$ commutent toujours.
+  quelconques.}\enspace{}
+  Si $A \neq B$, ${(A+B)}^k \neq \sum_j\binom{k}{j}A^j B^{k-j}$ en général.
+  Ici l'écriture ${(I + X/k)}^k$ fonctionne car $I$ et $X$ commutent toujours.
 
   \smallskip\noindent
   \textbf{La convergence est uniforme sur les bornés, pas sur tout
@@ -210,18 +210,18 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
 
   \smallskip\noindent
   \textbf{La formule de Trotter nécessite une preuve supplémentaire.}\enspace
-  Contrairement à $(I+X/k)^k \to e^X$, la formule
-  $(e^{A/k}e^{B/k})^k \to e^{A+B}$ n'est pas immédiate quand $AB \neq BA$~;
+  Contrairement à ${(I+X/k)}^k \to e^X$, la formule
+  ${(e^{A/k}e^{B/k})}^k \to e^{A+B}$ n'est pas immédiate quand $AB \neq BA$~;
   elle repose sur Baker–Campbell–Hausdorff.
 \end{mdframed}
 
 \vspace{6pt}
-\exolabel
+\exolabel{}
 
 \begin{mdframed}[style=exobar]
   \begin{enumerate}
-    \item Retrouver $e^{\lambda I_n} = e^\lambda I_n$ à partir de la formule
-          limite, puis calculer $\lim_{k\to\infty}(I + A/k)^k$ pour
+    \item Retrouver $e^{\lambda I_n} = e^{\lambda} I_n$ à partir de la formule
+          limite, puis calculer $\lim_{k\to\infty}{(I + A/k)}^k$ pour
           $A = \begin{pmatrix}0&1\\0&0\end{pmatrix}$.
 
     \item Montrer que $c_{k,j} \leq 1/j!$ et que $c_{k,j} \geq (1-j^2/(2k))/j!$
@@ -231,17 +231,17 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
             = O\!\left(\frac{\|X\|^2 e^{\|X\|}}{k}\right).
           \]
 
-    \item En utilisant $(I+X/k)^k \to e^X$, prouver que
+    \item En utilisant ${(I+X/k)}^k \to e^X$, prouver que
           $\det(e^X) = e^{\mathrm{tr}(X)}$ via
-          $\det\!\bigl((I+X/k)^k\bigr) = \bigl(1 + \mathrm{tr}(X)/k
+          $\det\!\bigl({(I+X/k)}^k\bigr) = \bigl(1 + \mathrm{tr}(X)/k
           + O(1/k^2)\bigr)^k$.
 
     \item Appliquer la méthode d'Euler avec $k=4$ pas au système
-          $y'=Ay$, $y(0)=(1,0)^T$, $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$,
-          sur $[0,\pi]$. Comparer la valeur approchée à $e^{\pi A}(-I)^{1/2}$.
+          $y'=Ay$, $y(0)={(1,0)}^T$, $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$,
+          sur $[0,\pi]$. Comparer la valeur approchée à $e^{\pi A}{(-I)}^{1/2}$.
 
     \item Montrer que pour $A$ et $B$ qui commutent, la formule de Trotter
-          se réduit immédiatement à $(I+X/k)^k \to e^X$ avec $X = A+B$.
+          se réduit immédiatement à ${(I+X/k)}^k \to e^X$ avec $X = A+B$.
           Expliquer pourquoi la preuve échoue sans commutativité.
   \end{enumerate}
 \end{mdframed}

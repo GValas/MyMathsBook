@@ -61,7 +61,7 @@ La seconde se retient par la \emph{règle de Sarrus}\index{règle de Sarrus}
     \item \textbf{Transposée :} $\det(A^T) = \det(A)$.
     \index{déterminant!transposée}
     \item \textbf{Inversibilité :} $A$ est inversible si et seulement si
-          $\det(A) \neq 0$, et alors $\det(A^{-1}) = \det(A)^{-1}$.
+          $\det(A) \neq 0$, et alors $\det(A^{-1}) = {\det(A)}^{-1}$.
     \index{déterminant!inversibilité}
     \item \textbf{Opérations élémentaires :}
     \begin{itemize}
@@ -97,7 +97,7 @@ La seconde se retient par la \emph{règle de Sarrus}\index{règle de Sarrus}
   \index{développement de Laplace}\index{cofacteur}
   \textit{Soit $A \in \mathcal{M}_n(\mathbb{K})$. On note $A_{ij}$ la matrice
   obtenue en supprimant la $i$-ème ligne et la $j$-ème colonne, et
-  $\Delta_{ij} = (-1)^{i+j}\det(A_{ij})$ le \emph{cofacteur} de l'entrée $a_{ij}$.
+  $\Delta_{ij} = {(-1)}^{i+j}\det(A_{ij})$ le \emph{cofacteur} de l'entrée $a_{ij}$.
   Alors, pour tout $i \in \{1,\ldots,n\}$ (développement en ligne) :}
   \[
     \det(A) = \sum_{j=1}^{n} a_{ij}\,\Delta_{ij}.
@@ -118,11 +118,11 @@ La \emph{comatrice} (ou matrice adjointe classique) est la transposée de la
 matrice des cofacteurs\index{comatrice} :
 \[
   \mathrm{com}(A) = \bigl(\Delta_{ij}\bigr)_{i,j},
-  \qquad A \cdot \mathrm{com}(A)^T = \det(A)\,I_n.
+  \qquad A \cdot {\mathrm{com}(A)}^T = \det(A)\,I_n.
 \]
 Lorsque $\det(A)\neq 0$, on en déduit la formule d'inversion :
 \[
-  A^{-1} = \frac{1}{\det(A)}\,\mathrm{com}(A)^T.
+  A^{-1} = \frac{1}{\det(A)}\,{\mathrm{com}(A)}^T.
 \]
 
 \decsep{}
@@ -214,7 +214,7 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
   \smallskip\noindent
   \textbf{3. Matrice compagnon.}\enspace%
   Si $P(X) = X^n + a_{n-1}X^{n-1} + \cdots + a_0$, la matrice compagnon
-  associée a pour polynôme caractéristique $(-1)^n P(X)$.
+  associée a pour polynôme caractéristique ${(-1)}^n P(X)$.
   Le déterminant de $XI - C_P$ se calcule par développement de Laplace
   sur la dernière colonne.
 \end{mdframed}
@@ -242,7 +242,7 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
   \textbf{Développement de Laplace croisé.}\enspace%
   $\sum_j a_{ij}\Delta_{kj} = 0$ pour $i\neq k$ (développement d'un déterminant
   avec une ligne dupliquée). Cette propriété est utile pour prouver
-  $A\cdot\mathrm{com}(A)^T = \det(A)\,I_n$, mais attention à ne pas confondre
+  $A\cdot{\mathrm{com}(A)}^T = \det(A)\,I_n$, mais attention à ne pas confondre
   avec le développement sur la bonne ligne.
 \end{mdframed}
 

@@ -92,7 +92,7 @@
   vérifiant ces propriétés~: $f(t) = e^{ct}$ avec $c = f'(0) = \mathrm{tr}(A)$.
 
   \textit{Justification~:} de $f(t+s)=f(t)f(s)$, on tire par récurrence
-  $f(n) = f(1)^n$ pour tout $n \in \mathbb{Z}$, puis $f(p/q) = f(1)^{p/q}$
+  $f(n) = {f(1)}^n$ pour tout $n \in \mathbb{Z}$, puis $f(p/q) = {f(1)}^{p/q}$
   pour $p/q \in \mathbb{Q}$. La continuité étend l'égalité à $\mathbb{R}$.
 
   \medskip
@@ -125,7 +125,7 @@
     e^{J_m(\lambda)} = e^\lambda\,e^N = e^\lambda(I_m + N + \tfrac{N^2}{2!}+\cdots),
   \]
   qui est triangulaire supérieure avec $e^\lambda$ sur toute la diagonale.
-  Donc $\det(e^{J_m(\lambda)}) = (e^\lambda)^m = e^{m\lambda}$.
+  Donc $\det(e^{J_m(\lambda)}) = {(e^\lambda)}^m = e^{m\lambda}$.
 
   En sommant sur tous les blocs~:
   \[
@@ -153,7 +153,7 @@
           L'exponentielle réelle a son image dans
           $\mathrm{GL}_n^+(\mathbb{R}) = \{M \mid \det M > 0\}$.
 
-    \item \textbf{Déterminant unité.}\enspace
+    \item \textbf{Déterminant unité.}\enspace{}
           $\det(e^A) = 1 \iff \mathrm{tr}(A) = 0$.
           En particulier~:
           \[
@@ -162,8 +162,8 @@
           où $\mathfrak{sl}_n = \{A \mid \mathrm{tr}(A)=0\}$ est l'algèbre de
           Lie\index{algèbre de Lie} de $\mathrm{SL}_n$.
 
-    \item \textbf{Inversibilité de $e^A$.}\enspace
-          $(e^A)^{-1} = e^{-A}$, que l'on retrouve~:
+    \item \textbf{Inversibilité de $e^A$.}\enspace{}
+          ${(e^A)}^{-1} = e^{-A}$, que l'on retrouve~:
           $\det(e^A)\,\det(e^{-A}) = e^{\mathrm{tr}(A)}\,e^{-\mathrm{tr}(A)} = 1$.
 
     \item \textbf{Formule de Liouville.}\enspace%
@@ -208,25 +208,25 @@
 
 \begin{mdframed}[style=cexbar]
   \textbf{La réciproque est fausse~: $\det M > 0$ n'implique pas $M \in \mathrm{Im}(\exp)$
-  sur $\mathbb{R}$.}\enspace
+  sur $\mathbb{R}$.}\enspace{}
   Comme montré dans la leçon sur la surjectivité,
   $\bigl(\begin{smallmatrix}-1&1\\0&-1\end{smallmatrix}\bigr)$ a déterminant $1$
   mais n'est pas dans l'image de $\exp:\mathcal{M}_2(\mathbb{R})\to\mathrm{GL}_2(\mathbb{R})$.
 
   \smallskip\noindent
-  \textbf{Ne pas confondre $\det(e^A)$ et $e^{\det(A)}$.}\enspace
+  \textbf{Ne pas confondre $\det(e^A)$ et $e^{\det(A)}$.}\enspace{}
   Ces deux quantités sont généralement différentes~: pour
   $A = \begin{pmatrix}1&0\\0&2\end{pmatrix}$,
   $\det(e^A) = e^3$ mais $e^{\det(A)} = e^2$.
 
   \smallskip\noindent
-  \textbf{La formule de Liouville suppose $A$ \emph{quelconque}, pas seulement constante.}\enspace
+  \textbf{La formule de Liouville suppose $A$ \emph{quelconque}, pas seulement constante.}\enspace{}
   Lorsque $A$ est constante, $\Phi(t) = e^{tA}$ et
   $W(t) = \det(e^{tA}) = e^{t\,\mathrm{tr}(A)}$, ce qui redonne la formule principale.
 \end{mdframed}
 
 \vspace{6pt}
-\exolabel
+\exolabel{}
 
 \begin{mdframed}[style=exobar]
   \begin{enumerate}
@@ -251,7 +251,7 @@
           pour $M : \mathbb{R} \to \mathcal{M}_n(\mathbb{R})$ inversible et
           différentiable,
           \[
-            \frac{d}{dt}\det M(t) = \det(M(t))\,\mathrm{tr}\!\bigl(M(t)^{-1}M'(t)\bigr).
+            \frac{d}{dt}\det M(t) = \det(M(t))\,\mathrm{tr}\!\bigl({M(t)}^{-1}M'(t)\bigr).
           \]
           En déduire une troisième preuve de $\det(e^A) = e^{\mathrm{tr}(A)}$.
   \end{enumerate}

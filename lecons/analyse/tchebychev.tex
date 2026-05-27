@@ -68,7 +68,7 @@
   \textbf{Proposition.}\enspace
   Pour tout $n \geq 0$ :
   \begin{enumerate}
-    \item \textbf{Parité.}\enspace $T_n(-x) = (-1)^n T_n(x)$.
+    \item \textbf{Parité.}\enspace $T_n(-x) = {(-1)}^n T_n(x)$.
     \item \textbf{Racines.}\enspace $T_n$ a exactement $n$ racines simples
           dans $(-1,1)$ :
           \[
@@ -90,7 +90,7 @@
 
 \begin{mdframed}[style=proofbar]
   \textit{Parité.} $T_n(-\cos\theta)=T_n(\cos(\pi-\theta))=\cos(n(\pi-\theta))
-  =(-1)^n\cos(n\theta)=(-1)^n T_n(\cos\theta)$. \hfill$\square$
+  ={(-1)}^n\cos(n\theta)={(-1)}^n T_n(\cos\theta)$. \hfill$\square$
 
   \smallskip
   \textit{Racines.} $T_n(x_k)=\cos\!\bigl(n\cdot\tfrac{(2k-1)\pi}{2n}\bigr)
@@ -99,7 +99,7 @@
   d'un polynôme de degré $n$. \hfill$\square$
 
   \smallskip
-  \textit{Extrema.} $T_n(\xi_j)=\cos(j\pi)=(-1)^j$. \hfill$\blacksquare$
+  \textit{Extrema.} $T_n(\xi_j)=\cos(j\pi)={(-1)}^j$. \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -141,7 +141,7 @@
   Posons $Q = \widetilde{T}_n - P$ ; c'est un polynôme de degré $< n$
   (les termes dominants s'annulent). Aux $n+1$ points $\xi_j$~:
   \[
-    \widetilde{T}_n(\xi_j) = \frac{(-1)^j}{2^{n-1}}, \qquad
+    \widetilde{T}_n(\xi_j) = \frac{{(-1)}^j}{2^{n-1}}, \qquad
     |P(\xi_j)| < \frac{1}{2^{n-1}},
   \]
   donc $Q(\xi_j)$ change de signe entre $\xi_{j-1}$ et $\xi_j$ ($n$ fois).
@@ -160,7 +160,7 @@
 \begin{tcolorbox}[thmbox]
   \textbf{Théorème.}\enspace\index{orthogonalité des polynômes de Tchebychev}
   Les polynômes de Tchebychev sont orthogonaux pour le produit scalaire à
-  poids $w(x)=(1-x^2)^{-1/2}$ sur $(-1,1)$~:
+  poids $w(x)={(1-x^2)}^{-1/2}$ sur $(-1,1)$~:
   \[
     \int_{-1}^{1} T_m(x)\,T_n(x)\,\frac{\mathrm{d}x}{\sqrt{1-x^2}}
     =
@@ -176,7 +176,7 @@
 
 \begin{mdframed}[style=proofbar]
   On pose $x = \cos\theta$, d'où $\mathrm{d}x = -\sin\theta\,\mathrm{d}\theta$
-  et $(1-x^2)^{1/2} = \sin\theta$.
+  et ${(1-x^2)}^{1/2} = \sin\theta$.
   \[
     \int_{-1}^{1} T_m T_n \frac{\mathrm{d}x}{\sqrt{1-x^2}}
     = \int_0^{\pi} \cos(m\theta)\cos(n\theta)\,\mathrm{d}\theta.
@@ -227,7 +227,7 @@
   \smallskip\noindent
   \textbf{Poids de l'orthogonalité.}\enspace
   L'orthogonalité de $(T_n)$ est relative au poids
-  $(1-x^2)^{-1/2}$, non à la mesure de Lebesgue. Sans ce poids,
+  ${(1-x^2)}^{-1/2}$, non à la mesure de Lebesgue. Sans ce poids,
   $\int_{-1}^1 T_m T_n\,\mathrm{d}x \neq 0$ en général.
 
   \smallskip\noindent
@@ -255,7 +255,7 @@
             \max_{x\in[-1,1]}\left|\,x^n - P(x)\right| \geq \frac{1}{2^{n-1}}.
           \]
 
-    \item Calculer $\int_{-1}^1 T_3(x)^2\,\frac{\mathrm{d}x}{\sqrt{1-x^2}}$
+    \item Calculer $\int_{-1}^1 {T_3(x)}^2\,\frac{\mathrm{d}x}{\sqrt{1-x^2}}$
           directement, puis via le théorème d'orthogonalité.
 
     \item Montrer que $T_n'(x) = n\,U_{n-1}(x)$ en dérivant la relation

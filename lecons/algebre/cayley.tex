@@ -43,7 +43,7 @@ et de la décomposition de Dunford.
 
 \rubriq{Idée de la preuve}
 L'idée est d'utiliser la comatrice (matrice adjointe) : $\chi_f(X) = \det(X\,\mathrm{Id}-f)$,
-et $(X\,\mathrm{Id}-f)\cdot\mathrm{com}(X\,\mathrm{Id}-f)^T = \chi_f(X)\cdot\mathrm{Id}$.
+et $(X\,\mathrm{Id}-f)\cdot{\mathrm{com}(X\,\mathrm{Id}-f)}^T = \chi_f(X)\cdot\mathrm{Id}$.
 En substituant $X = f$ dans cette identité matricielle de façon algébrique
 (en identifiant les coefficients en puissances de $X$), on obtient $\chi_f(f) = 0$.
 La subtilité est que la substitution $X \leftarrow f$ doit se faire
@@ -53,7 +53,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 \noindent{\bfseries\color{navyblue} Preuve.}
 
 \begin{mdframed}[style=proofbar]
-  \textit{Mise en place.} Soit $B(X) = \mathrm{com}(X\,\mathrm{Id}-A)^T$
+  \textit{Mise en place.} Soit $B(X) = {\mathrm{com}(X\,\mathrm{Id}-A)}^T$
   la comatrice transposée (ou matrice adjointe) de $X\,\mathrm{Id}-A$.
   Chaque entrée de $B(X)$ est un mineur d'ordre $n-1$ de $X\,\mathrm{Id}-A$,
   donc un polynôme en $X$ de degré au plus $n-1$. On écrit :
@@ -144,7 +144,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 
   \smallskip\noindent
   \textbf{Le polynôme caractéristique n'est pas minimal.}\enspace%
-  $A = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ : $\chi_A = (X-1)^2$,
+  $A = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ : $\chi_A = {(X-1)}^2$,
   mais le polynôme minimal est $X-1$, de degré $1$. Cayley--Hamilton
   garantit que $\chi_A$ annule $A$, pas qu'il est minimal.
 \end{mdframed}
@@ -172,7 +172,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
     \item (Décomposition de Dunford) En utilisant la décomposition de
           $\chi_A$ en facteurs premiers, montrer que $E$ se décompose
           en somme directe de sous-espaces caractéristiques
-          $E = \bigoplus_i \ker(f-\lambda_i\,\mathrm{Id})^{n_i}$.
+          $E = \bigoplus_i \ker{(f-\lambda_i\,\mathrm{Id})}^{n_i}$.
   \end{enumerate}
 \end{mdframed}
 
