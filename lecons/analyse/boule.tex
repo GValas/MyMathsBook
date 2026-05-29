@@ -112,8 +112,9 @@ en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d
 \rubriq{Preuve de la formule pour $\mu_n$}
 
 \begin{mdframed}[style=proofbar]
-  \textit{Cas pair $n = 2m$.}\enspace{}En appliquant $m$ fois $\mu_n = \frac{\pi}{m}\mu_{n-2}$
-  depuis $\mu_0 = 1$ :
+  \textit{Cas pair $n = 2m$.}\enspace{}La récurrence $\mu_n = \frac{2\pi}{n}\mu_{n-2}$
+  donne pour $n=2k$ : $\mu_{2k} = \frac{\pi}{k}\,\mu_{2(k-1)}$.
+  En itérant $m$ fois depuis $\mu_0 = 1$ :
   \[
     \mu_{2m} = \frac{\pi}{m}\cdot\frac{\pi}{m-1}\cdots\frac{\pi}{1}\cdot\mu_0
     = \frac{\pi^m}{m!}.

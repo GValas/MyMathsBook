@@ -7,38 +7,10 @@
 
 %=== CHARGEMENT DU STYLE COMMUN ==============================
 \usepackage{style/mathsup}
-% (ou \usepackage{style/mathsup} si compilé depuis la racine)
 
 %=== INDEX & GLOSSAIRE =======================================
 \makeindex[columns=2, title=Index, intoc]
 \makeglossaries{}
-
-%=== PAGE HEADERS ============================================
-\usepackage{fancyhdr}
-\setlength{\headheight}{13.07002pt}
-\addtolength{\topmargin}{-0.77002pt}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE]{\small\color{navyblue!70}\leftmark}
-\fancyhead[RO]{\small\color{navyblue!70}\rightmark}
-\fancyfoot[C]{\small\color{navyblue!50}\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
-\renewcommand{\headrule}{\color{goldaccent}\hrule width\headwidth height\headrulewidth} % chktex 1
-
-%=== CHAPITRES STYLISÉS ======================================
-\usepackage{titlesec}
-\titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries\color{navyblue}}
-  {\textcolor{goldaccent}{\chaptertitlename\ \thechapter}}
-  {10pt}
-  {\Huge}
-  [\vspace{4pt}\textcolor{goldaccent!40}{\titlerule[1pt]}]
-
-\titleformat{\section}[block]
-  {\normalfont\large\bfseries\color{navyblue}}
-  {}
-  {0pt}
-  {}
 
 %=============================================================
 \begin{document}
@@ -148,14 +120,14 @@
 \input{lecons/algebre/corps}
 \clearpage
 
-\chapter{Nombres complexes}
-
-\input{lecons/algebre/nombres_complexes}
-\clearpage
-
 \chapter{Corps des fractions}
 
 \input{lecons/algebre/corps_fractions}
+\clearpage
+
+\chapter{Nombres complexes}
+
+\input{lecons/algebre/nombres_complexes}
 \clearpage
 
 %=============================================================
@@ -189,7 +161,7 @@
 \clearpage
 
 %=============================================================
-%  PARTIE IV — ALGÈBRE LINÉAIRE
+%  PARTIE VI — ALGÈBRE LINÉAIRE
 %=============================================================
 \part{Algèbre linéaire}
 
@@ -249,6 +221,7 @@
 
 %=== GLOSSAIRE ===============================================
 \clearpage
+\glsaddall
 \printglossary[type=main, title=Glossaire, toctitle=Glossaire]
 
 %=== BIBLIOGRAPHIE ===========================================

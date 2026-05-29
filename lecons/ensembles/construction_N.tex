@@ -15,7 +15,7 @@
   Il existe un ensemble $\mathbb{N}$ muni d'un élément distingué $0 \in \mathbb{N}$
   et d'une application $S : \mathbb{N} \to \mathbb{N}$ (le \emph{successeur}) vérifiant :
   \begin{enumerate}
-    \item[\textbf{P1.}] $0$ n'est le successeur d'aucun entier : $S$ est non surjective sur $\{0\}$.
+    \item[\textbf{P1.}] $0$ n'est le successeur d'aucun entier : $0 \notin \mathrm{Im}(S)$.
     \item[\textbf{P2.}] $S$ est injective : $S(n) = S(m) \Rightarrow n = m$.
     \item[\textbf{P3.}] \textbf{(Récurrence)} Si $A \subseteq \mathbb{N}$ vérifie
       $0 \in A$ et $\forall n \in A,\; S(n) \in A$, alors $A = \mathbb{N}$.
@@ -101,8 +101,11 @@ interprétation purement ensembliste de l'ordre.
   \textbf{1. Principe de bonne fondation.}\enspace%
   \index{bonne fondation}
   Tout sous-ensemble non vide $A \subseteq \mathbb{N}$ admet un plus petit élément.
-  Cela résulte de P3 appliqué à $B = \mathbb{N} \setminus A$ : si $B \neq \mathbb{N}$,
-  $B$ ne peut contenir tous les successeurs, donc $A$ a un minimum.
+  \textit{Preuve} : supposons $A$ sans minimum. Posons
+  $B = \{n\in\mathbb{N} \mid n < a \text{ pour tout } a\in A\}$.
+  Alors $0\in B$ (sinon $0\in A$ serait minimal), et
+  $n\in B \Rightarrow S(n)\in B$ (sinon $S(n)\in A$ serait le minimum de $A$).
+  Par P3, $B = \mathbb{N}$, donc $A = \emptyset$. Contradiction.
 
   \smallskip\noindent
   \textbf{2. Récurrence forte.}\enspace%
