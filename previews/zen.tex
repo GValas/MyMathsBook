@@ -1,0 +1,182 @@
+%==============================================================
+%  STYLE "ZEN" — Blanc pur, un seul rouge vermillon
+%  Inspiré du design éditorial japonais
+%==============================================================
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{mathpazo}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.4}
+\usepackage{amsmath, amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[top=3.5cm, bottom=3.5cm, left=3.5cm, right=3.5cm]{geometry}
+\usepackage{enumitem}
+
+%=== PALETTE ZEN =============================================
+\definecolor{vermillon}{HTML}{C0392B}
+\definecolor{encre}{HTML}{111111}
+\definecolor{grisfonc}{HTML}{444444}
+\definecolor{grisnuage}{HTML}{F7F7F7}
+\definecolor{grislegr}{HTML}{DDDDDD}
+
+%=== BOÎTE THÉORÈME ==========================================
+\tcbset{
+  thmbox/.style={
+    enhanced,
+    colback=white,
+    colframe=encre,
+    boxrule=0.5pt,
+    arc=0pt,
+    left=16pt, right=14pt, top=10pt, bottom=11pt,
+    before skip=14pt, after skip=16pt,
+    borderline west={2.5pt}{0pt}{vermillon},
+    shadow={1.5pt}{-1.5pt}{0pt}{black!8},
+  }
+}
+
+%=== BLOCS ===================================================
+\mdfdefinestyle{proofbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=grislegr, linewidth=1pt,
+  innerleftmargin=20pt, innerrightmargin=0pt,
+  innertopmargin=4pt, innerbottommargin=8pt,
+  backgroundcolor=white,
+  skipabove=6pt, skipbelow=12pt,
+}
+\mdfdefinestyle{exbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=vermillon!30, linewidth=1.5pt,
+  innerleftmargin=18pt, innerrightmargin=0pt,
+  innertopmargin=4pt, innerbottommargin=8pt,
+  backgroundcolor=grisnuage,
+  skipabove=6pt, skipbelow=10pt,
+}
+\mdfdefinestyle{exobar}{
+  topline=true, bottomline=false, rightline=false, leftline=false,
+  linecolor=grislegr, linewidth=0.5pt,
+  innerleftmargin=0pt, innerrightmargin=0pt,
+  innertopmargin=10pt, innerbottommargin=8pt,
+  backgroundcolor=white,
+  skipabove=6pt, skipbelow=6pt,
+}
+
+%=== TITRE DE LEÇON ==========================================
+\newcommand{\lecontitle}[2]{%
+  \thispagestyle{empty}
+  \vspace*{30pt}
+  \noindent
+  \begin{tikzpicture}[remember picture]
+    % Grand numéro fantôme en arrière-plan
+    \node[anchor=north west, inner sep=0pt] at (0,0)
+      {\fontsize{110}{110}\selectfont\bfseries\color{grislegr} §};
+    \node[anchor=north west, inner sep=0pt] at (1.4cm,-0.5cm)
+      {\begin{minipage}{10cm}
+        {\fontsize{21}{27}\selectfont\bfseries\color{encre} #1}\\[6pt]
+        {\normalsize\color{grisfonc}\itshape #2}
+      \end{minipage}};
+  \end{tikzpicture}
+  \vspace{10pt}
+  \noindent\textcolor{vermillon}{\rule{2cm}{1.5pt}}
+  \vspace{22pt}
+}
+
+%=== NUMÉRO DE SECTION =======================================
+\newcommand{\secnum}[3]{%
+  \vspace{22pt}
+  \noindent
+  {\fontsize{32}{32}\selectfont\color{grislegr}\bfseries #2}%
+  \hspace{-0.05em}%
+  {\large\bfseries\color{encre} #3}%
+  \par\vspace{6pt}
+  \noindent\textcolor{grislegr}{\rule{\textwidth}{0.3pt}}
+  \vspace{8pt}
+}
+
+%=== RUBRIQ ==================================================
+\newcommand{\rubriq}[1]{%
+  \vspace{10pt}
+  \noindent\textcolor{vermillon}{\rule{4pt}{4pt}}\hspace{6pt}%
+  {\bfseries\color{encre} #1.}\enspace
+}
+
+%=== SÉPARATEUR ==============================================
+\newcommand{\decsep}{%
+  \vspace{16pt}
+  \noindent\hfill\textcolor{vermillon}{\rule{1.5cm}{0.8pt}}\hfill
+  \vspace{12pt}
+}
+
+%=== PIED DE PAGE ============================================
+\newcommand{\leconfooter}[1]{%
+  \vfill
+  \noindent\textcolor{grislegr}{\rule{\textwidth}{0.3pt}}
+  \vspace{4pt}\\
+  {\footnotesize\color{grisfonc} #1}
+}
+
+\setlist[enumerate]{label={\small\color{vermillon}\arabic*.},
+  itemsep=5pt, topsep=8pt, leftmargin=1.8em}
+\setlist[itemize]{itemsep=5pt, topsep=8pt,
+  label=\textcolor{vermillon}{—}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\lecontitle{Théorème des valeurs intermédiaires}{Analyse réelle — Fonctions continues}
+
+\secnum{}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (TVI).}\enspace
+  Soit $f : [a,b] \to \mathbb{R}$ continue. Pour tout $y$ compris entre
+  $f(a)$ et $f(b)$, il existe $c \in [a,b]$ tel que $f(c) = y$.
+
+  \medskip En particulier, si $f(a) < 0 < f(b)$, alors $f$ admet une
+  racine dans $]a,b[$.
+\end{tcolorbox}
+
+\rubriq{Ingrédient clé}
+La preuve repose sur la \textbf{complétude de $\mathbb{R}$} (propriété de
+la borne supérieure) et la continuité de $f$.
+
+\decsep
+
+\secnum{}{2}{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1.} Posons $E = \{x \in [a,b] \mid f(x) \leq y\}$.
+  L'ensemble $E$ est non vide (car $a \in E$) et majoré par $b$.
+
+  \medskip
+  \textit{Étape 2.} Posons $c = \sup E$. Par continuité de $f$ en $c$,
+  $f(c) = y$.\hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+\secnum{}{3}{Exemples et exercices}
+
+\begin{mdframed}[style=exbar]
+  \textbf{Exemple.}\enspace $f(x) = x^3 - 2x - 5$ vérifie $f(2) = -1 < 0$
+  et $f(3) = 16 > 0$, donc $f$ admet une racine dans $]2,3[$.
+\end{mdframed}
+
+\vspace{6pt}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $e^x = 2-x$ a une solution réelle.
+    \item Soit $f$ continue sur $[0,1]$ avec $f(0) = f(1) = 0$.
+          Montrer que $f$ n'est pas nécessairement dérivable.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Bolzano (1817) — A.-L.\ Cauchy (1821)}
+
+\end{document}

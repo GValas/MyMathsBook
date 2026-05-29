@@ -1,0 +1,204 @@
+%==============================================================
+%  STYLE "TABLEAU NOIR" — Ardoise sombre, craie colorée
+%==============================================================
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.3}
+\usepackage{amsmath, amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage[most]{tcolorbox}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[top=2.8cm, bottom=2.8cm, left=3cm, right=2.8cm]{geometry}
+\usepackage{enumitem}
+
+%=== PALETTE ARDOISE =========================================
+\definecolor{ardoise}{HTML}{1B2535}
+\definecolor{craie}{HTML}{EDE8DC}
+\definecolor{craieyellow}{HTML}{F5C842}
+\definecolor{craieblue}{HTML}{6EC6E6}
+\definecolor{craiegreen}{HTML}{7BC67E}
+\definecolor{craierose}{HTML}{F28B82}
+\definecolor{ardsub}{HTML}{2E3F56}
+\definecolor{ardmid}{HTML}{3D546E}
+
+\pagecolor{ardoise}
+\color{craie}
+
+%=== HYPERREF ================================================
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=craieblue,urlcolor=craieblue}
+
+%=== BOÎTE THÉORÈME — cadre pointillé craie ==================
+\tcbset{
+  thmbox/.style={
+    enhanced,
+    colback=ardsub,
+    colframe=craieyellow,
+    boxrule=1.2pt,
+    arc=1pt,
+    leftrule=3pt,
+    left=12pt, right=10pt, top=8pt, bottom=9pt,
+    before skip=12pt, after skip=14pt,
+    colupper=craie,
+  }
+}
+
+%=== BARRES LATÉRALES ========================================
+\mdfdefinestyle{proofbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=craieblue, linewidth=2.5pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=4pt, innerbottommargin=8pt,
+  backgroundcolor=ardsub,
+  fontcolor=craie,
+  skipabove=4pt, skipbelow=10pt,
+}
+\mdfdefinestyle{exbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=craiegreen, linewidth=2.5pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=4pt, innerbottommargin=8pt,
+  backgroundcolor=ardsub,
+  fontcolor=craie,
+  skipabove=4pt, skipbelow=8pt,
+}
+\mdfdefinestyle{exobar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=craierose, linewidth=2.5pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=4pt, innerbottommargin=8pt,
+  backgroundcolor=ardsub,
+  fontcolor=craie,
+  skipabove=4pt, skipbelow=6pt,
+}
+
+%=== TITRE DE LEÇON ==========================================
+\newcommand{\lecontitle}[2]{%
+  \thispagestyle{empty}
+  \vspace*{10pt}
+  \begin{center}
+    \begin{tikzpicture}
+      \node[align=center] (t) at (0,0)
+        {\fontsize{24}{30}\selectfont\bfseries\color{craieyellow} #1};
+      \draw[craieyellow!60, line width=1pt,
+            decoration={random steps, segment length=6pt, amplitude=0.5pt},
+            decorate]
+        ([yshift=-5pt]t.south west) -- ([yshift=-5pt]t.south east);
+    \end{tikzpicture}\\[8pt]
+    {\large\itshape\color{craie!60} #2}
+  \end{center}
+  \vspace{20pt}
+}
+
+%=== NUMÉRO DE SECTION =======================================
+\newcommand{\secnum}[3]{%
+  \vspace{18pt}
+  \noindent
+  \begin{tikzpicture}[baseline=(n.base)]
+    \draw[#1, line width=1pt] (0,0) rectangle (0.55cm,0.55cm);
+    \node (n) at (0.275cm,0.275cm) {\small\bfseries\color{#1} #2};
+  \end{tikzpicture}
+  \hspace{8pt}%
+  {\large\bfseries\color{craie} #3}%
+  \par\vspace{4pt}
+  \noindent\textcolor{#1!40}{\rule{\textwidth}{0.4pt}}
+  \vspace{6pt}
+}
+
+%=== RUBRIQ ==================================================
+\newcommand{\rubriq}[1]{%
+  \vspace{8pt}
+  \noindent{\bfseries\color{craieyellow} #1.}\enspace
+}
+
+%=== SÉPARATEUR ==============================================
+\newcommand{\decsep}{%
+  \vspace{10pt}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[craie!30, line width=0.5pt,
+            decoration={random steps, segment length=4pt, amplitude=0.3pt},
+            decorate] (-3,0) -- (3,0);
+      \fill[craieyellow!70] (0,0) circle (2pt);
+    \end{tikzpicture}
+  \end{center}
+  \vspace{6pt}
+}
+
+%=== PIED DE PAGE ============================================
+\newcommand{\leconfooter}[1]{%
+  \vfill
+  \noindent\textcolor{craie!20}{\rule{\textwidth}{0.4pt}}
+  \begin{center}
+    \small\color{craie!40}
+    Fiche de cours \quad|\quad #1
+  \end{center}
+}
+
+\setlist[enumerate]{label=\textcolor{craieyellow}{\arabic*.},
+  itemsep=4pt, topsep=6pt}
+\setlist[itemize]{itemsep=4pt, topsep=6pt,
+  label=\textcolor{craieyellow}{\textbullet}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\lecontitle{Théorème des valeurs intermédiaires}{Analyse réelle — Fonctions continues}
+
+\secnum{craieyellow}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (TVI).}\enspace
+  Soit $f : [a,b] \to \mathbb{R}$ continue. Pour tout $y$ compris entre
+  $f(a)$ et $f(b)$, il existe $c \in [a,b]$ tel que $f(c) = y$.
+
+  \medskip En particulier, si $f(a) < 0 < f(b)$, alors $f$ admet une
+  racine dans $]a,b[$.
+\end{tcolorbox}
+
+\rubriq{Ingrédient clé}
+La preuve repose sur la \textbf{complétude de $\mathbb{R}$} (propriété de
+la borne supérieure) et la continuité de $f$.
+
+\decsep
+
+\secnum{craieblue}{2}{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1.} Posons $E = \{x \in [a,b] \mid f(x) \leq y\}$.
+  L'ensemble $E$ est non vide (car $a \in E$) et majoré par $b$.
+
+  \medskip
+  \textit{Étape 2.} Posons $c = \sup E$. Par continuité de $f$ en $c$,
+  $f(c) = y$.\hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+\secnum{craiegreen}{3}{Exemples et exercices}
+
+\begin{mdframed}[style=exbar]
+  \textbf{Exemple.}\enspace $f(x) = x^3 - 2x - 5$ vérifie $f(2) = -1 < 0$
+  et $f(3) = 16 > 0$, donc $f$ admet une racine dans $]2,3[$.
+\end{mdframed}
+
+\vspace{6pt}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $e^x = 2-x$ a une solution réelle.
+    \item Soit $f$ continue sur $[0,1]$ avec $f(0) = f(1) = 0$.
+          Montrer que $f$ n'est pas nécessairement dérivable.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Bolzano (1817) — A.-L.\ Cauchy (1821)}
+
+\end{document}

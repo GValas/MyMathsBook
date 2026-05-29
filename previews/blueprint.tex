@@ -1,0 +1,245 @@
+%==============================================================
+%  STYLE "BLUEPRINT" — Plan technique, fond indigo, encre blanche
+%==============================================================
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.25}
+\usepackage{amsmath, amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{patterns, calc}
+\usepackage[most]{tcolorbox}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[top=2.8cm, bottom=2.8cm, left=3cm, right=2.8cm]{geometry}
+\usepackage{enumitem}
+
+%=== PALETTE BLUEPRINT =======================================
+\definecolor{bpblue}{HTML}{0F2A4A}
+\definecolor{bpmid}{HTML}{173A66}
+\definecolor{bplight}{HTML}{D0E4F7}
+\definecolor{bpline}{HTML}{6AAED6}
+\definecolor{bpyellow}{HTML}{FFD166}
+\definecolor{bpgrid}{HTML}{1E3F6F}
+\definecolor{bpwhite}{HTML}{E8F4FD}
+
+\pagecolor{bpblue}
+\color{bpwhite}
+
+%=== FOND GRILLE TECHNIQUE ===================================
+\usepackage{eso-pic}
+\AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \foreach \x in {0,0.5,...,21} {
+      \draw[bpgrid, line width=0.15pt]
+        ([xshift=\x cm]current page.south west)
+        -- ([xshift=\x cm]current page.north west);
+    }
+    \foreach \y in {0,0.5,...,30} {
+      \draw[bpgrid, line width=0.15pt]
+        ([yshift=\y cm]current page.south west)
+        -- ([yshift=\y cm]current page.south east);
+    }
+    \draw[bpline!60, line width=0.6pt]
+      ([xshift=1cm, yshift=1cm]current page.south west)
+      rectangle
+      ([xshift=-1cm, yshift=-1cm]current page.north east);
+  \end{tikzpicture}%
+}
+
+%=== HYPERREF ================================================
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=bpyellow,urlcolor=bpyellow}
+
+%=== BOÎTE THÉORÈME ==========================================
+\tcbset{
+  thmbox/.style={
+    enhanced,
+    colback=bpmid,
+    colframe=bpline,
+    boxrule=0.8pt,
+    arc=0pt,
+    left=12pt, right=10pt, top=8pt, bottom=9pt,
+    before skip=12pt, after skip=14pt,
+    colupper=bpwhite,
+    borderline north={1pt}{0pt}{bpyellow},
+    % Coins "technique"
+    overlay={
+      \draw[bpyellow, line width=1pt]
+        (frame.north west) -- ++(8pt,0pt)
+        (frame.north west) -- ++(0pt,-8pt)
+        (frame.north east) -- ++(-8pt,0pt)
+        (frame.north east) -- ++(0pt,-8pt)
+        (frame.south west) -- ++(8pt,0pt)
+        (frame.south west) -- ++(0pt,8pt)
+        (frame.south east) -- ++(-8pt,0pt)
+        (frame.south east) -- ++(0pt,8pt);
+    }
+  }
+}
+
+%=== BARRES LATÉRALES ========================================
+\mdfdefinestyle{proofbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=bpline, linewidth=2pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=4pt, innerbottommargin=8pt,
+  backgroundcolor=bpmid,
+  fontcolor=bpwhite,
+  skipabove=4pt, skipbelow=10pt,
+}
+\mdfdefinestyle{exbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=bpyellow, linewidth=2pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=4pt, innerbottommargin=8pt,
+  backgroundcolor=bpmid,
+  fontcolor=bpwhite,
+  skipabove=4pt, skipbelow=8pt,
+}
+\mdfdefinestyle{exobar}{
+  topline=true, bottomline=true, rightline=false, leftline=false,
+  linecolor=bpline!50, linewidth=0.5pt,
+  innerleftmargin=4pt, innerrightmargin=0pt,
+  innertopmargin=8pt, innerbottommargin=8pt,
+  backgroundcolor=bpblue,
+  fontcolor=bpwhite,
+  skipabove=4pt, skipbelow=6pt,
+}
+
+%=== TITRE DE LEÇON ==========================================
+\newcommand{\lecontitle}[2]{%
+  \thispagestyle{empty}
+  \vspace*{6pt}
+  \begin{center}
+    \begin{tikzpicture}
+      % Bandeau titre style plan technique
+      \fill[bpmid] (-7.5cm,-0.9cm) rectangle (7.5cm, 0.9cm);
+      \draw[bpline, line width=0.6pt] (-7.5cm,-0.9cm) rectangle (7.5cm,0.9cm);
+      % Marqueurs d'angle techniques
+      \draw[bpyellow, line width=0.8pt]
+        (-7.5,-0.9) -- (-7.2,-0.9) (-7.5,-0.9) -- (-7.5,-0.6)
+        ( 7.5,-0.9) -- ( 7.2,-0.9) ( 7.5,-0.9) -- ( 7.5,-0.6)
+        (-7.5, 0.9) -- (-7.2, 0.9) (-7.5, 0.9) -- (-7.5, 0.6)
+        ( 7.5, 0.9) -- ( 7.2, 0.9) ( 7.5, 0.9) -- ( 7.5, 0.6);
+      \node at (0,0.25)
+        {\fontsize{20}{26}\selectfont\bfseries\color{bpwhite} #1};
+      \node at (0,-0.45)
+        {\normalsize\itshape\color{bpline} #2};
+    \end{tikzpicture}
+  \end{center}
+  \vspace{18pt}
+}
+
+%=== NUMÉRO DE SECTION =======================================
+\newcommand{\secnum}[3]{%
+  \vspace{16pt}
+  \noindent
+  \begin{tikzpicture}[baseline=(n.base)]
+    % Losange technique
+    \draw[bpline, line width=0.8pt]
+      (0,0.25) -- (0.25,0) -- (0,-0.25) -- (-0.25,0) -- cycle;
+    \node (n) at (0,0) {\footnotesize\bfseries\color{bpyellow} #2};
+  \end{tikzpicture}
+  \hspace{8pt}%
+  {\large\bfseries\color{bpwhite} #3}%
+  \par\vspace{3pt}
+  \noindent\textcolor{bpline!40}{\rule{\textwidth}{0.4pt}}
+  \vspace{6pt}
+}
+
+%=== RUBRIQ ==================================================
+\newcommand{\rubriq}[1]{%
+  \vspace{8pt}
+  \noindent\textcolor{bpyellow}{$\blacktriangleright$}\hspace{5pt}%
+  {\bfseries\color{bpwhite} #1.}\enspace
+}
+
+%=== SÉPARATEUR ==============================================
+\newcommand{\decsep}{%
+  \vspace{10pt}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[bpline!50, line width=0.5pt] (-3,0) -- (-0.5,0);
+      \draw[bpline!50, line width=0.5pt] (0.5,0) -- (3,0);
+      \draw[bpyellow, line width=0.8pt]
+        (-0.25,0) -- (0,0.2) -- (0.25,0) -- (0,-0.2) -- cycle;
+    \end{tikzpicture}
+  \end{center}
+  \vspace{6pt}
+}
+
+%=== PIED DE PAGE ============================================
+\newcommand{\leconfooter}[1]{%
+  \vfill
+  \noindent\textcolor{bpline!40}{\rule{\textwidth}{0.4pt}}
+  \begin{center}
+    \small\color{bpline}
+    Fiche de cours \quad|\quad #1
+  \end{center}
+}
+
+\setlist[enumerate]{label=\textcolor{bpyellow}{\arabic*.},
+  itemsep=4pt, topsep=6pt}
+\setlist[itemize]{itemsep=4pt, topsep=6pt,
+  label=\textcolor{bpline}{\textbullet}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\lecontitle{Théorème des valeurs intermédiaires}{Analyse réelle — Fonctions continues}
+
+\secnum{bpline}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (TVI).}\enspace
+  Soit $f : [a,b] \to \mathbb{R}$ continue. Pour tout $y$ compris entre
+  $f(a)$ et $f(b)$, il existe $c \in [a,b]$ tel que $f(c) = y$.
+
+  \medskip En particulier, si $f(a) < 0 < f(b)$, alors $f$ admet une
+  racine dans $]a,b[$.
+\end{tcolorbox}
+
+\rubriq{Ingrédient clé}
+La preuve repose sur la \textbf{complétude de $\mathbb{R}$} (propriété de
+la borne supérieure) et la continuité de $f$.
+
+\decsep
+
+\secnum{bpline}{2}{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1.} Posons $E = \{x \in [a,b] \mid f(x) \leq y\}$.
+  L'ensemble $E$ est non vide (car $a \in E$) et majoré par $b$.
+
+  \medskip
+  \textit{Étape 2.} Posons $c = \sup E$. Par continuité de $f$ en $c$,
+  $f(c) = y$.\hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+\secnum{bpline}{3}{Exemples et exercices}
+
+\begin{mdframed}[style=exbar]
+  \textbf{Exemple.}\enspace $f(x) = x^3 - 2x - 5$ vérifie $f(2) = -1 < 0$
+  et $f(3) = 16 > 0$, donc $f$ admet une racine dans $]2,3[$.
+\end{mdframed}
+
+\vspace{6pt}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $e^x = 2-x$ a une solution réelle.
+    \item Soit $f$ continue sur $[0,1]$ avec $f(0) = f(1) = 0$.
+          Montrer que $f$ n'est pas nécessairement dérivable.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Bolzano (1817) — A.-L.\ Cauchy (1821)}
+
+\end{document}
