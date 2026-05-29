@@ -1,0 +1,178 @@
+%==============================================================
+%  STYLE B — Minimaliste moderne (Noir + Rouge cerise)
+%==============================================================
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.25}
+\usepackage{amsmath, amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+%=== PALETTE — Noir & Rouge cerise ==========================
+\definecolor{nearblack}{HTML}{1A1A1A}
+\definecolor{crimson}{HTML}{B5121B}
+\definecolor{lightgray}{HTML}{F4F4F4}
+\definecolor{midgray}{HTML}{888888}
+\definecolor{accentvt}{HTML}{1A6B3C}
+
+%=== BOÎTE THÉORÈME ==========================================
+\tcbset{
+  thmbox/.style={
+    enhanced,
+    colback=white,
+    colframe=nearblack,
+    boxrule=0.8pt,
+    arc=0pt,
+    left=12pt, right=10pt, top=8pt, bottom=9pt,
+    before skip=12pt, after skip=14pt,
+    borderline west={3pt}{0pt}{crimson},
+  }
+}
+
+%=== BARRES LATÉRALES ========================================
+\mdfdefinestyle{proofbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=midgray, linewidth=2pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=3pt, innerbottommargin=7pt,
+  backgroundcolor=white,
+  skipabove=4pt, skipbelow=10pt,
+}
+\mdfdefinestyle{exbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=accentvt, linewidth=2pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=3pt, innerbottommargin=7pt,
+  backgroundcolor=lightgray,
+  skipabove=4pt, skipbelow=8pt,
+}
+\mdfdefinestyle{exobar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=crimson, linewidth=2pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=3pt, innerbottommargin=8pt,
+  backgroundcolor=white,
+  skipabove=4pt, skipbelow=6pt,
+}
+
+%=== TITRE DE LEÇON ==========================================
+\newcommand{\lecontitle}[2]{%
+  \thispagestyle{empty}
+  \vspace*{6pt}
+  \noindent
+  \begin{tikzpicture}
+    \fill[crimson] (0,0) rectangle (3pt, 1.6cm);
+    \node[anchor=west] at (10pt, 0.8cm)
+      {\fontsize{22}{28}\selectfont\bfseries\color{nearblack} #1};
+  \end{tikzpicture}
+  \par\vspace{2pt}
+  {\large\color{midgray} #2}
+  \par\vspace{20pt}
+}
+
+%=== NUMÉRO DE SECTION =======================================
+\newcommand{\secnum}[3]{%
+  \vspace{18pt}
+  \noindent
+  {\sffamily\large\bfseries\color{midgray} 0#2\enspace}%
+  {\sffamily\large\bfseries\color{nearblack} #3}%
+  \par\vspace{2pt}
+  \noindent\textcolor{nearblack!15}{\rule{\textwidth}{0.5pt}}
+  \vspace{6pt}
+}
+
+%=== RUBRIQ ==================================================
+\newcommand{\rubriq}[1]{%
+  \vspace{8pt}
+  \noindent{\bfseries\color{crimson} #1.}\enspace
+}
+
+%=== SÉPARATEUR ==============================================
+\newcommand{\decsep}{%
+  \vspace{12pt}
+  \begin{center}
+    \textcolor{nearblack!20}{\rule{6cm}{0.5pt}}
+  \end{center}
+  \vspace{6pt}
+}
+
+%=== PIED DE LEÇON ===========================================
+\newcommand{\leconfooter}[1]{%
+  \vfill
+  \noindent\textcolor{nearblack!15}{\rule{\textwidth}{0.5pt}}
+  \begin{center}
+    \small\color{midgray}
+    Fiche de cours \quad|\quad #1
+  \end{center}
+}
+
+\setlist[enumerate]{label=\textcolor{crimson}{\arabic*.}, itemsep=4pt, topsep=6pt}
+\setlist[itemize]{itemsep=4pt, topsep=6pt,
+  label=\textcolor{crimson}{\textbullet}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+%--------------------------------------------------------------
+\lecontitle{Théorème des valeurs intermédiaires}{Analyse réelle — Fonctions continues}
+
+\secnum{}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (TVI).}\enspace
+  Soit $f : [a,b] \to \mathbb{R}$ continue. Pour tout $y$ compris entre
+  $f(a)$ et $f(b)$, il existe $c \in [a,b]$ tel que $f(c) = y$.
+
+  \medskip En particulier, si $f(a) < 0 < f(b)$, alors $f$ admet une
+  racine dans $]a,b[$.
+\end{tcolorbox}
+
+\rubriq{Ingrédient clé}
+La preuve repose sur la \textbf{complétude de $\mathbb{R}$} (propriété de
+la borne supérieure) et la continuité de $f$.
+
+\decsep
+
+\secnum{}{2}{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1.} Posons $E = \{x \in [a,b] \mid f(x) \leq y\}$.
+  L'ensemble $E$ est non vide (car $a \in E$) et majoré par $b$.
+
+  \medskip
+  \textit{Étape 2.} Posons $c = \sup E$. Par continuité de $f$ en $c$,
+  $f(c) = y$.\hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+\secnum{}{3}{Exemples et exercices}
+
+\begin{mdframed}[style=exbar]
+  \textbf{Exemple.}\enspace $f(x) = x^3 - 2x - 5$ vérifie $f(2) = -1 < 0$
+  et $f(3) = 16 > 0$, donc $f$ admet une racine dans $]2,3[$.
+\end{mdframed}
+
+\vspace{6pt}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $e^x = 2-x$ a une solution réelle.
+    \item Soit $f$ continue sur $[0,1]$ avec $f(0) = f(1) = 0$.
+          Montrer que $f$ n'est pas nécessairement dérivable.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Bolzano (1817) — A.-L.\ Cauchy (1821)}
+
+\end{document}

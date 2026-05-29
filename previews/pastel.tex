@@ -1,0 +1,191 @@
+%==============================================================
+%  STYLE C — Pastel aéré (Ardoise + Sauge + Saumon)
+%==============================================================
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{mathpazo}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.3}
+\usepackage{amsmath, amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+%=== PALETTE — Ardoise & Pastels =============================
+\definecolor{ardoise}{HTML}{3D5A80}
+\definecolor{sauge}{HTML}{5C8A6A}
+\definecolor{saumon}{HTML}{C26B54}
+\definecolor{ardbg}{HTML}{EBF0F7}
+\definecolor{saugebg}{HTML}{EAF3EC}
+\definecolor{saumonbg}{HTML}{FAF0ED}
+\definecolor{darktext}{HTML}{212121}
+
+%=== BOÎTE THÉORÈME ==========================================
+\tcbset{
+  thmbox/.style={
+    enhanced,
+    colback=ardbg,
+    colframe=ardoise,
+    boxrule=0pt,
+    toprule=2pt,
+    arc=4pt,
+    left=12pt, right=10pt, top=8pt, bottom=9pt,
+    before skip=12pt, after skip=14pt,
+  }
+}
+
+%=== BARRES LATÉRALES ========================================
+\mdfdefinestyle{proofbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=ardoise, linewidth=3pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=3pt, innerbottommargin=7pt,
+  backgroundcolor=ardbg!40,
+  skipabove=4pt, skipbelow=10pt,
+}
+\mdfdefinestyle{exbar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=sauge, linewidth=3pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=3pt, innerbottommargin=7pt,
+  backgroundcolor=saugebg,
+  skipabove=4pt, skipbelow=8pt,
+}
+\mdfdefinestyle{exobar}{
+  topline=false, bottomline=false, rightline=false,
+  linecolor=saumon, linewidth=3pt,
+  innerleftmargin=14pt, innerrightmargin=0pt,
+  innertopmargin=3pt, innerbottommargin=8pt,
+  backgroundcolor=saumonbg,
+  skipabove=4pt, skipbelow=6pt,
+}
+
+%=== TITRE DE LEÇON ==========================================
+\newcommand{\lecontitle}[2]{%
+  \thispagestyle{empty}
+  \vspace*{2pt}
+  \begin{tcolorbox}[
+    enhanced, arc=6pt,
+    colback=ardoise, colframe=ardoise,
+    left=14pt, right=14pt, top=12pt, bottom=12pt,
+    before skip=0pt, after skip=18pt,
+  ]
+    {\fontsize{21}{27}\selectfont\bfseries\color{white} #1}\\[4pt]
+    {\large\itshape\color{white!75} #2}
+  \end{tcolorbox}
+}
+
+%=== NUMÉRO DE SECTION =======================================
+\newcommand{\secnum}[3]{%
+  \vspace{16pt}
+  \noindent
+  \begin{tikzpicture}[baseline=(n.base)]
+    \node[
+      rounded corners=3pt,
+      fill=#1, text=white,
+      font=\small\bfseries,
+      inner xsep=7pt, inner ysep=3pt,
+    ] (n) {#2};
+  \end{tikzpicture}
+  \hspace{7pt}%
+  {\large\bfseries\color{darktext} #3}%
+  \par\vspace{4pt}
+  \noindent\textcolor{#1!25}{\rule{\textwidth}{0.5pt}}
+  \vspace{6pt}
+}
+
+%=== RUBRIQ ==================================================
+\newcommand{\rubriq}[1]{%
+  \vspace{8pt}
+  \noindent{\bfseries\color{ardoise} #1.}\enspace
+}
+
+%=== SÉPARATEUR ==============================================
+\newcommand{\decsep}{%
+  \vspace{14pt}
+  \begin{center}
+    \begin{tikzpicture}
+      \foreach \x in {0,0.5,1} {
+        \fill[ardoise!35] (\x,0) circle (3pt);
+      }
+    \end{tikzpicture}
+  \end{center}
+  \vspace{6pt}
+}
+
+%=== PIED DE LEÇON ===========================================
+\newcommand{\leconfooter}[1]{%
+  \vfill
+  \noindent\textcolor{ardoise!20}{\rule{\textwidth}{0.4pt}}
+  \begin{center}
+    \small\color{darktext!45}
+    Fiche de cours \quad|\quad #1
+  \end{center}
+}
+
+\setlist[enumerate]{label=\textcolor{saumon}{\arabic*.}, itemsep=4pt, topsep=6pt}
+\setlist[itemize]{itemsep=4pt, topsep=6pt}
+
+\pagestyle{empty}
+
+\begin{document}
+
+%--------------------------------------------------------------
+\lecontitle{Théorème des valeurs intermédiaires}{Analyse réelle — Fonctions continues}
+
+\secnum{ardoise}{1}{Énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (TVI).}\enspace
+  Soit $f : [a,b] \to \mathbb{R}$ continue. Pour tout $y$ compris entre
+  $f(a)$ et $f(b)$, il existe $c \in [a,b]$ tel que $f(c) = y$.
+
+  \medskip En particulier, si $f(a) < 0 < f(b)$, alors $f$ admet une
+  racine dans $]a,b[$.
+\end{tcolorbox}
+
+\rubriq{Ingrédient clé}
+La preuve repose sur la \textbf{complétude de $\mathbb{R}$} (propriété de
+la borne supérieure) et la continuité de $f$.
+
+\decsep
+
+\secnum{ardoise}{2}{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1.} Posons $E = \{x \in [a,b] \mid f(x) \leq y\}$.
+  L'ensemble $E$ est non vide (car $a \in E$) et majoré par $b$.
+
+  \medskip
+  \textit{Étape 2.} Posons $c = \sup E$. Par continuité de $f$ en $c$,
+  $f(c) = y$.\hfill$\blacksquare$
+\end{mdframed}
+
+\decsep
+
+\secnum{ardoise}{3}{Exemples et exercices}
+
+\begin{mdframed}[style=exbar]
+  \textbf{Exemple.}\enspace $f(x) = x^3 - 2x - 5$ vérifie $f(2) = -1 < 0$
+  et $f(3) = 16 > 0$, donc $f$ admet une racine dans $]2,3[$.
+\end{mdframed}
+
+\vspace{6pt}
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $e^x = 2-x$ a une solution réelle.
+    \item Soit $f$ continue sur $[0,1]$ avec $f(0) = f(1) = 0$.
+          Montrer que $f$ n'est pas nécessairement dérivable.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Bolzano (1817) — A.-L.\ Cauchy (1821)}
+
+\end{document}
