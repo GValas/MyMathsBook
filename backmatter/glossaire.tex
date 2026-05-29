@@ -47,6 +47,31 @@
   description={Toute fonction continue sur un intervalle $[a,b]$ prend toutes les valeurs entre $f(a)$ et $f(b)$}
 }
 
+\newglossaryentry{module}{
+  name={module (nombre complexe)},
+  description={Pour $z=a+ib$~: $|z|=\sqrt{a^2+b^2}=\sqrt{z\bar{z}}$~; vérifie $|zw|=|z||w|$ et l'inégalité triangulaire}
+}
+
+\newglossaryentry{argument}{
+  name={argument (nombre complexe)},
+  description={Réel $\theta$ tel que $z=|z|e^{i\theta}$~; défini modulo $2\pi$~; l'argument principal est dans $]-\pi,\pi]$}
+}
+
+\newglossaryentry{forme-polaire}{
+  name={forme polaire},
+  description={Écriture $z=re^{i\theta}$ d'un complexe non nul, où $r=|z|>0$ et $\theta=\arg z$~; la multiplication correspond à la somme des arguments}
+}
+
+\newglossaryentry{de-moivre}{
+  name={formule de De Moivre},
+  description={$(\cos\theta+i\sin\theta)^n=\cos(n\theta)+i\sin(n\theta)$ pour tout $n\in\mathbb{Z}$~; sert à exprimer $\cos(n\theta)$ et $\sin(n\theta)$ en fonction de $\cos\theta$ et $\sin\theta$}
+}
+
+\newglossaryentry{racines-unite}{
+  name={racines $n$-ièmes de l'unité},
+  description={Les $n$ solutions de $z^n=1$~: $\omega_k=e^{2ik\pi/n}$, $k=0,\ldots,n-1$~; forment un groupe cyclique $\mu_n\cong\mathbb{Z}/n\mathbb{Z}$ et somment à zéro}
+}
+
 \newglossaryentry{connexite}{
   name={connexité par arcs},
   description={Propriété topologique des intervalles de $\mathbb{R}$~: deux points sont toujours reliés par un chemin continu}
@@ -94,7 +119,7 @@
 
 \newglossaryentry{stirling}{
   name={formule de Stirling},
-  description={Équivalent asymptotique $n!\sim\sqrt{2\pi n}\,{(n/e)}^n$}
+  description={Équivalent asymptotique $n!\sim\sqrt{2\pi n}\,(n/e)^n$}
 }
 
 \newglossaryentry{espace-euclidien}{
@@ -168,12 +193,12 @@
 
 \newglossaryentry{euler-exp-limite}{
   name={exponentielle matricielle (définition limite)},
-  description={Pour $X\in\mathcal{M}_n(\mathbb{K})$~: $e^X=\lim_{k\to\infty}{(I+X/k)}^k$~; la convergence est en $O(\|X\|^2 e^{\|X\|}/k)$ et généralise la limite des intérêts composés}
+  description={Pour $X\in\mathcal{M}_n(\mathbb{K})$~: $e^X=\lim_{k\to\infty}(I+X/k)^k$~; la convergence est en $O(\|X\|^2 e^{\|X\|}/k)$ et généralise la limite des intérêts composés}
 }
 
 \newglossaryentry{trotter}{
   name={formule de Trotter},
-  description={Pour $A,B\in\mathcal{M}_n(\mathbb{K})$ quelconques~: $e^{A+B}=\lim_{k\to\infty}{(e^{A/k}e^{B/k})}^k$~; repose sur Baker--Campbell--Hausdorff}
+  description={Pour $A,B\in\mathcal{M}_n(\mathbb{K})$ quelconques~: $e^{A+B}=\lim_{k\to\infty}(e^{A/k}e^{B/k})^k$~; repose sur Baker--Campbell--Hausdorff}
 }
 
 \newglossaryentry{jacobi-liouville}{
@@ -188,7 +213,7 @@
 
 \newglossaryentry{logarithme-matriciel}{
   name={logarithme matriciel},
-  description={Antécédent $A$ de $M$ par l'exponentielle~: $e^A=M$~; pour un bloc de Jordan $J_m(\lambda)$ avec $\lambda\neq 0$, il vaut $\mu I_m + \sum_{k=1}^{m-1}\frac{{(-1)}^{k+1}}{k}{(N/\lambda)}^k$ où $e^\mu=\lambda$}
+  description={Antécédent $A$ de $M$ par l'exponentielle~: $e^A=M$~; pour un bloc de Jordan $J_m(\lambda)$ avec $\lambda\neq 0$, il vaut $\mu I_m + \sum_{k=1}^{m-1}\frac{(-1)^{k+1}}{k}(N/\lambda)^k$ où $e^\mu=\lambda$}
 }
 
 \newglossaryentry{surjectivite-exp}{

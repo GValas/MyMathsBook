@@ -7,7 +7,6 @@
 
 %=== PACKAGES FONDAMENTAUX ===================================
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
 \usepackage{mathpazo}
 \usepackage{microtype}
@@ -17,6 +16,7 @@
 \DeclareMathOperator{\pgcd}{pgcd}
 \DeclareMathOperator{\ppcm}{ppcm}
 \usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
 \usepackage[most]{tcolorbox}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{datetime}
@@ -68,9 +68,9 @@
 %=== HYPERREF ================================================
 \hypersetup{
   colorlinks=true,
-  linkcolor=NavyBlue,
-  citecolor=NavyBlue,
-  urlcolor=NavyBlue,
+  linkcolor=navyblue,
+  citecolor=navyblue,
+  urlcolor=navyblue,
 }
 
 %=== BOÎTE THÉORÈME ==========================================
@@ -124,6 +124,9 @@
   backgroundcolor=white,
   skipabove=4pt, skipbelow=6pt,
 }
+
+%=== COMMANDES MATHÉMATIQUES =================================
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
 
 %=== COMMANDES STRUCTURANTES =================================
 

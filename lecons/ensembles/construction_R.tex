@@ -212,9 +212,12 @@ Cauchy converge. Il existe deux méthodes standards.
 
   \textit{Preuve (argument diagonal).}
   Supposons $\mathbb{R}$ dénombrable : $\mathbb{R} = \{x_1, x_2, \ldots\}$.
-  Construisons $y \in [0,1]$ différent de chaque $x_n$ : si le $n$-ième décimale
-  de $x_n$ est $d$, on pose le $n$-ième décimale de $y$ égal à $d+1 \pmod{10}$.
-  Alors $y \neq x_n$ pour tout $n$ : contradiction. \hfill$\blacksquare$
+  Construisons $y \in [0,1]$ différent de chaque $x_n$ : si le $n$-ième chiffre
+  décimal de $x_n$ est $d$, on pose le $n$-ième chiffre décimal de $y$ égal à
+  $5$ si $d \neq 5$, et $6$ sinon. En n'utilisant que les chiffres $5$ et $6$,
+  $y$ admet un développement décimal unique (pas de phénomène $0{,}999\ldots=1$),
+  et $y \neq x_n$ pour tout $n$ (ils diffèrent au rang $n$) : contradiction.
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}

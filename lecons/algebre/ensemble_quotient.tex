@@ -157,8 +157,11 @@
   Pour définir une loi sur $E/\mathcal{R}$, il faut vérifier que l'opération
   ne dépend pas du représentant choisi.
   Exemple piège : sur $\mathbb{Z}$, la relation $a\sim b$ si $|a|=|b|$ est
-  une relation d'équivalence, mais $[a]+[b]:=[a+b]$ n'est \emph{pas} bien définie
-  car $[1]+[{-1}]=[0]$ mais $[{-1}]+[1]=[{-2}]$ si l'on choisit mal les représentants.
+  une relation d'équivalence, mais $[a]+[b]:=[a+b]$ n'est \emph{pas} bien définie.
+  En effet $1\sim{-1}$, donc $[1]=[{-1}]$. Calculons $[1]+[1]$ :
+  avec le représentant $1$, on obtient $[1+1]=[2]$ ;
+  avec le représentant $-1$, on obtient $[{-1}+1]=[0]$.
+  Or $[2]=\{2,-2\}\neq\{0\}=[0]$ : le résultat dépend du choix du représentant.
 
   \smallskip\noindent
   \textbf{$E/\mathcal{R}$ peut être très grand ou très petit.}\enspace%
