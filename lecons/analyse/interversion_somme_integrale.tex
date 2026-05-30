@@ -1,0 +1,310 @@
+%==============================================================
+%  lecons/analyse/interversion_somme_integrale.tex
+%  Théorèmes d'interversion somme — intégrale
+%==============================================================
+
+\lecontitle{Interversion somme et intégrale}{Analyse réelle — Séries de fonctions et intégration}
+
+%=============================================================
+%  § 1 — ÉNONCÉS
+%=============================================================
+\secnum{navyblue}{1}{Énoncés}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Problème.}\enspace%
+  \index{interversion somme--intégrale}
+  Étant donnée une série de fonctions $\sum_{n\geq 0} f_n$ convergeant
+  (simplement) vers $f$ sur un intervalle $I$, sous quelles hypothèses
+  peut-on écrire
+  \[
+    \int_I \sum_{n=0}^{+\infty} f_n(t)\,\mathrm{d}t
+    \;=\; \sum_{n=0}^{+\infty} \int_I f_n(t)\,\mathrm{d}t\;\;?
+  \]
+  La question est non triviale dès que l'intervalle est non borné ou que
+  les $f_n$ ne sont pas uniformément contrôlées.
+
+  \medskip
+  \textbf{Théorème 1 (convergence uniforme sur un segment).}\enspace%
+  \index{convergence uniforme}\index{convergence normale}
+  Soit $(f_n)$ une suite de fonctions continues sur un segment $[a,b]$
+  convergeant \emph{uniformément} vers $f$. Alors $f$ est continue et
+  \[
+    \int_a^b f_n(t)\,\mathrm{d}t \;\xrightarrow[n\to+\infty]{}\;
+    \int_a^b f(t)\,\mathrm{d}t.
+  \]
+  En particulier, si $\sum f_n$ converge \emph{normalement} sur $[a,b]$,
+  \[
+    \int_a^b \sum_{n=0}^{+\infty} f_n(t)\,\mathrm{d}t
+    \;=\; \sum_{n=0}^{+\infty} \int_a^b f_n(t)\,\mathrm{d}t.
+  \]
+
+  \medskip
+  \textbf{Théorème 2 (sommation des séries à termes positifs).}\enspace%
+  \index{Beppo Levi (théorème de)}
+  Soit $(f_n)$ une suite de fonctions \emph{positives} et continues par
+  morceaux sur un intervalle $I$. Alors, dans $[0,+\infty]$~:
+  \[
+    \int_I \sum_{n=0}^{+\infty} f_n(t)\,\mathrm{d}t
+    \;=\; \sum_{n=0}^{+\infty} \int_I f_n(t)\,\mathrm{d}t.
+  \]
+  La somme $\sum f_n$ est intégrable sur $I$ si et seulement si
+  $\sum_n \int_I f_n < +\infty$.
+
+  \medskip
+  \textbf{Théorème 3 (intégration terme à terme).}\enspace%
+  \index{intégration terme à terme}
+  Soit $(f_n)$ une suite de fonctions continues par morceaux et
+  intégrables sur $I$. On suppose~:
+  \begin{enumerate}
+    \item la série $\sum f_n$ converge simplement vers une fonction $f$
+          continue par morceaux sur $I$~;
+    \item $\displaystyle\sum_{n=0}^{+\infty}\int_I |f_n(t)|\,\mathrm{d}t
+          \;<\; +\infty.$
+  \end{enumerate}
+  Alors $f$ est intégrable sur $I$ et
+  \[
+    \int_I f(t)\,\mathrm{d}t
+    \;=\; \sum_{n=0}^{+\infty} \int_I f_n(t)\,\mathrm{d}t.
+  \]
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Permuter $\sum$ et $\int$ revient à échanger deux limites~: l'intégrale est
+un passage à la limite (sommes de Riemann), et la série en est un autre
+(sommes partielles). Une telle interversion exige toujours une forme
+d'\emph{uniformité} ou de \emph{domination}. Trois cadres se dégagent~:
+sur un segment, la convergence uniforme suffit~; sur un intervalle
+quelconque, la positivité (Théorème~2) ou la sommabilité absolue
+(Théorème~3) prennent le relais.
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstrations}
+
+\rubriq{Théorème 1 — convergence uniforme}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Continuité de la limite.}\enspace%
+  La limite uniforme d'une suite de fonctions continues est continue
+  (résultat classique)~; en particulier $f$ est intégrable sur $[a,b]$.
+
+  \medskip
+  \textit{Passage à la limite.}\enspace%
+  La majoration fondamentale de l'intégrale sur un segment donne
+  \[
+    \left|\int_a^b f_n - \int_a^b f\right|
+    \;\leq\; \int_a^b |f_n(t) - f(t)|\,\mathrm{d}t
+    \;\leq\; (b-a)\,\|f_n - f\|_{\infty,[a,b]}.
+  \]
+  Comme $\|f_n - f\|_\infty \to 0$ par convergence uniforme, le membre
+  de gauche tend vers $0$.
+
+  \medskip
+  \textit{Application aux séries normalement convergentes.}\enspace%
+  Soit $S_N = \sum_{n=0}^{N} f_n$. La convergence normale entraîne la
+  convergence uniforme de $(S_N)$ vers $S = \sum f_n$ sur $[a,b]$. On
+  applique le résultat précédent à $(S_N)$~:
+  \[
+    \int_a^b S_N \;=\; \sum_{n=0}^{N}\int_a^b f_n
+    \;\xrightarrow[N\to+\infty]{}\;
+    \int_a^b S \;=\; \int_a^b \sum_{n=0}^{+\infty} f_n.
+  \]
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Théorème 2 — termes positifs}
+
+\begin{mdframed}[style=proofbar]
+  Notons $S_N = \sum_{n=0}^{N} f_n$ et $S = \sum_{n=0}^{+\infty} f_n$
+  (avec valeur éventuellement infinie). Les $f_n$ étant positives, la
+  suite $(S_N)$ est croissante et tend simplement vers $S$ sur $I$.
+
+  \medskip
+  \textit{Inégalité $(\leq)$.}\enspace%
+  Pour tout $N$, $S_N \leq S$, donc par croissance de l'intégrale
+  des fonctions positives,
+  \[
+    \sum_{n=0}^{N}\int_I f_n \;=\; \int_I S_N \;\leq\; \int_I S.
+  \]
+  En passant à la limite $N\to+\infty$~: $\sum_{n=0}^{+\infty}\int_I f_n \leq \int_I S$.
+
+  \medskip
+  \textit{Inégalité $(\geq)$.}\enspace%
+  Soit $[a,b]\subset I$ un segment quelconque. Par positivité,
+  $\int_a^b S_N \leq \sum_{n=0}^{N}\int_I f_n$. La suite $(S_N)$ est
+  croissante de limite $S$ sur $[a,b]$, et la convergence de
+  $\int_a^b S_N$ vers $\int_a^b S$ s'obtient en majorant chaque
+  $S_N$ par $S$ (théorème de la limite monotone appliqué à l'intégrale).
+  Donc
+  \[
+    \int_a^b S \;\leq\; \sum_{n=0}^{+\infty}\int_I f_n.
+  \]
+  En prenant l'enveloppe supérieure sur les segments $[a,b]\subset I$,
+  on obtient $\int_I S \leq \sum_{n=0}^{+\infty}\int_I f_n$.
+
+  \medskip
+  Les deux inégalités donnent l'égalité (avec valeur $+\infty$
+  autorisée des deux côtés).\hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Théorème 3 — intégration terme à terme}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Intégrabilité de $f$.}\enspace%
+  La fonction $|f| = \bigl|\sum f_n\bigr| \leq \sum |f_n|$ est dominée
+  par une fonction positive dont l'intégrale vaut, par le Théorème~2,
+  $\sum_n \int_I |f_n| < +\infty$. Donc $f$ est intégrable sur $I$.
+
+  \medskip
+  \textit{Convergence de $\int_I (f - S_N)$ vers $0$.}\enspace%
+  Le reste $f - S_N = \sum_{k>N} f_k$ vérifie
+  \[
+    |f - S_N| \;\leq\; \sum_{k=N+1}^{+\infty} |f_k|.
+  \]
+  Le Théorème~2 appliqué aux $|f_k|$ donne
+  \[
+    \int_I |f - S_N| \;\leq\;
+    \sum_{k=N+1}^{+\infty} \int_I |f_k|
+    \;\xrightarrow[N\to+\infty]{}\; 0,
+  \]
+  comme reste d'une série convergente à termes positifs.
+
+  \medskip
+  \textit{Conclusion.}\enspace%
+  Par l'inégalité triangulaire,
+  \[
+    \left|\int_I f \;-\; \sum_{n=0}^{N}\int_I f_n\right|
+    \;=\; \left|\int_I (f - S_N)\right|
+    \;\leq\; \int_I |f - S_N|
+    \;\xrightarrow[N\to+\infty]{}\; 0.
+  \]
+  Ainsi $\sum_n \int_I f_n = \int_I f$.\hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Développement en série de $\ln(1+x)$.}\enspace%
+  Pour $x \in {]-1,1[}$, $\dfrac{1}{1+t} = \sum_{n=0}^{+\infty} {(-1)}^n t^n$
+  uniformément sur tout $[0,x]$ avec $|x|<1$. Une intégration terme à terme
+  donne
+  \[
+    \ln(1+x) \;=\; \sum_{n=0}^{+\infty}\frac{{(-1)}^n}{n+1}x^{n+1}
+    \;=\; \sum_{n=1}^{+\infty}\frac{{(-1)}^{n-1}}{n}x^n.
+  \]
+
+  \smallskip\noindent
+  \textbf{2. Fonction zêta et intégrale.}\enspace%
+  Pour $s > 1$,
+  $\displaystyle\zeta(s)\,\Gamma(s) = \int_0^{+\infty}\frac{t^{s-1}}{e^t-1}\,\mathrm{d}t$.
+  La preuve consiste à écrire $\dfrac{1}{e^t - 1} = \sum_{n\geq 1} e^{-nt}$
+  (série à termes positifs), puis à appliquer le Théorème~2~:
+  $\int_0^{+\infty} t^{s-1}\sum_{n\geq 1} e^{-nt}\,\mathrm{d}t
+  = \sum_{n\geq 1}\int_0^{+\infty} t^{s-1}e^{-nt}\,\mathrm{d}t
+  = \sum_{n\geq 1}\Gamma(s)/n^s$.
+
+  \smallskip\noindent
+  \textbf{3. Identité d'Euler $\sum 1/n^2 = \pi^2/6$.}\enspace%
+  Le développement
+  $\dfrac{1}{1-tu} = \sum_{n\geq 0}{(tu)}^n$ et le Théorème~2 donnent
+  $\displaystyle\int_0^1\!\int_0^1 \frac{\mathrm{d}t\,\mathrm{d}u}{1-tu}
+   = \sum_{n=0}^{+\infty}\frac{1}{{(n+1)}^2} = \zeta(2)$.
+  Un changement de variable astucieux permet alors de calculer
+  l'intégrale et de retrouver $\pi^2/6$ (Apéry, Beukers).
+
+  \smallskip\noindent
+  \textbf{4. Fonction $\Gamma$ et série exponentielle.}\enspace%
+  $\displaystyle\int_0^{+\infty} \frac{t^{s-1}}{1+t}\,\mathrm{d}t
+  = \frac{\pi}{\sin(\pi s)}$ pour $0<s<1$, via le développement
+  $1/(1+t) = \sum {(-1)}^n t^n$ (Théorème~3 sur $[0,1]$, prolongement).
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Sans uniformité, l'interversion peut échouer.}\enspace%
+  Soit $f_n : [0,1] \to \mathbb{R}$ définie par $f_n(t) = n$ si
+  $t\in{]0,1/n]}$, et $0$ sinon. On a $\int_0^1 f_n = 1$ pour tout $n$,
+  alors que $f_n(t) \to 0$ pour tout $t \in [0,1]$. Donc
+  $\int \lim f_n = 0 \neq 1 = \lim \int f_n$.
+  En posant $g_n = f_n - f_{n-1}$ (avec $f_{-1}=0$), la série $\sum g_n$
+  donne un contre-exemple à l'interversion.
+
+  \smallskip\noindent
+  \textbf{L'hypothèse de positivité est essentielle pour le Théorème~2.}\enspace%
+  Sans positivité, des compensations entre termes peuvent rendre les
+  deux membres différents (ou rendre l'un convergent et l'autre pas).
+  L'exemple précédent, lu comme série télescopique signée, illustre
+  ce phénomène.
+
+  \smallskip\noindent
+  \textbf{$\sum\int |f_n| < +\infty$ est strictement plus forte que la
+  convergence simple.}\enspace%
+  La série $\sum_{n\geq 1}\dfrac{{(-1)}^n}{n}\mathbf{1}_{[n,n+1]}$
+  converge simplement sur $[1,+\infty[$ vers une fonction nulle hors d'un
+  ensemble de mesure finie, mais $\sum\int |f_n| = \sum 1/n = +\infty$~;
+  l'interversion via le Théorème~3 ne s'applique pas (bien que, par
+  d'autres arguments, le résultat puisse rester valable).
+
+  \smallskip\noindent
+  \textbf{Convergence simple $\neq$ convergence uniforme.}\enspace%
+  Sur $[0,1]$, $f_n(t) = t^n$ converge simplement vers $\mathbf{1}_{\{1\}}$
+  mais non uniformément. Pourtant l'interversion $\int f_n = 1/(n+1)\to 0$
+  fonctionne ici~; la convergence uniforme est suffisante, pas nécessaire.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $\displaystyle\int_0^1\frac{\ln t}{t-1}\,\mathrm{d}t
+          = \sum_{n=1}^{+\infty}\frac{1}{n^2} = \frac{\pi^2}{6}$.
+          (\textit{Indication}~: développer $1/(1-t)$ en série
+          géométrique, puis appliquer le Théorème~2 après vérification
+          du signe.)
+
+    \item Calculer $\displaystyle\int_0^{+\infty}\frac{t}{e^t-1}\,\mathrm{d}t$
+          et plus généralement, pour $s>1$,
+          $\displaystyle\int_0^{+\infty}\frac{t^{s-1}}{e^t-1}\,\mathrm{d}t
+          = \Gamma(s)\,\zeta(s)$.
+
+    \item Montrer que $\displaystyle\int_0^1 t^{-t}\,\mathrm{d}t
+          = \sum_{n=1}^{+\infty}\frac{1}{n^n}$
+          (\emph{sophomore's dream}). \textit{Indication}~: écrire
+          $t^{-t} = e^{-t\ln t} = \sum_n \frac{{(-t\ln t)}^n}{n!}$ puis
+          intégrer terme à terme~; calculer $\int_0^1 t^n(-\ln t)^n\,\mathrm{d}t$
+          par le changement $t = e^{-u}$.
+
+    \item Soit $f$ continue sur $[0,1]$. Montrer que
+          $\displaystyle\sum_{n=1}^{+\infty}\int_0^1 t^n f(t)\,\mathrm{d}t$
+          converge et calculer sa somme en fonction de $f$.
+
+    \item (\textit{Échec contrôlé}) Soit $f_n(t) = n\,t^n(1-t)$ sur $[0,1]$.
+          Montrer que $f_n \to 0$ simplement mais non uniformément~;
+          calculer $\int_0^1 f_n$ et conclure si l'interversion
+          $\lim\int = \int\lim$ tient.
+
+    \item En écrivant $\dfrac{1}{1-x} = \sum x^n$, retrouver
+          $\displaystyle\int_0^1 \frac{-\ln(1-x)}{x}\,\mathrm{d}x = \zeta(2)$.
+
+    \item Démontrer la formule d'Abel--Plana sous une forme simplifiée~:
+          si $f$ est analytique et décroît assez vite,
+          $\displaystyle\sum_{n=0}^{+\infty} f(n) = \int_0^{+\infty} f(t)\,\mathrm{d}t
+          + \frac{f(0)}{2} + \text{terme correctif}$. Quelle interversion
+          est en jeu~?
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Levi (1906) — H.\ Lebesgue (1904) — G.\ Fubini (1907)}

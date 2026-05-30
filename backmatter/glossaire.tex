@@ -64,7 +64,7 @@
 
 \newglossaryentry{de-moivre}{
   name={formule de De Moivre},
-  description={$(\cos\theta+i\sin\theta)^n=\cos(n\theta)+i\sin(n\theta)$ pour tout $n\in\mathbb{Z}$~; sert à exprimer $\cos(n\theta)$ et $\sin(n\theta)$ en fonction de $\cos\theta$ et $\sin\theta$}
+  description={${(\cos\theta+i\sin\theta)}^n=\cos(n\theta)+i\sin(n\theta)$ pour tout $n\in\mathbb{Z}$~; sert à exprimer $\cos(n\theta)$ et $\sin(n\theta)$ en fonction de $\cos\theta$ et $\sin\theta$}
 }
 
 \newglossaryentry{racines-unite}{
@@ -119,12 +119,117 @@
 
 \newglossaryentry{stirling}{
   name={formule de Stirling},
-  description={Équivalent asymptotique $n!\sim\sqrt{2\pi n}\,(n/e)^n$}
+  description={Équivalent asymptotique $n!\sim\sqrt{2\pi n}\,{(n/e)}^n$}
+}
+
+\newglossaryentry{integrale-riemann}{
+  name={intégrale de Riemann},
+  description={Intégrale $\int_a^b f$ d'une fonction bornée définie par égalité des intégrales de Darboux inférieure et supérieure, ou de façon équivalente par convergence des sommes $\sum f(\xi_i)(x_i-x_{i-1})$ quand le pas tend vers $0$}
+}
+
+\newglossaryentry{sommes-darboux}{
+  name={sommes de Darboux},
+  description={Pour une subdivision $\sigma$~: $s(f,\sigma)=\sum m_i(x_i-x_{i-1})$ (inférieure) et $S(f,\sigma)=\sum M_i(x_i-x_{i-1})$ (supérieure), où $m_i,M_i$ sont l'inf et le sup de $f$ sur $[x_{i-1},x_i]$}
+}
+
+\newglossaryentry{sommes-riemann}{
+  name={sommes de Riemann},
+  description={Sommes $R(f,\sigma,\xi)=\sum_i f(\xi_i)(x_i-x_{i-1})$ avec $\xi_i\in[x_{i-1},x_i]$~; convergent vers $\int_a^b f$ pour $|\sigma|\to 0$ si $f$ est Riemann-intégrable}
+}
+
+\newglossaryentry{subdivision}{
+  name={subdivision},
+  description={Famille ordonnée $\sigma=(x_0,\ldots,x_n)$ avec $a=x_0<x_1<\cdots<x_n=b$, de pas $|\sigma|=\max_i(x_i-x_{i-1})$}
+}
+
+\newglossaryentry{critere-lebesgue}{
+  name={critère de Lebesgue (Riemann-intégrabilité)},
+  description={Une fonction bornée $f:[a,b]\to\mathbb{R}$ est Riemann-intégrable si et seulement si son ensemble de points de discontinuité est de mesure nulle}
+}
+
+\newglossaryentry{integrale-lebesgue}{
+  name={intégrale de Lebesgue},
+  description={Intégrale d'une fonction mesurable construite à partir de la mesure $\lambda$, par approximation croissante par fonctions étagées~; $f\in L^1$ si $\int|f|<+\infty$, et elle étend l'intégrale de Riemann sur les fonctions bornées sur un segment}
+}
+
+\newglossaryentry{tribu-borelienne}{
+  name={tribu borélienne},
+  description={Plus petite tribu sur $\mathbb{R}$ contenant les ouverts~; ses éléments (\emph{boréliens}) sont les ensembles mesurables au sens usuel}
+}
+
+\newglossaryentry{mesure-lebesgue}{
+  name={mesure de Lebesgue},
+  description={Mesure $\lambda$ sur $\mathbb{R}$, $\sigma$-additive, invariante par translation, telle que $\lambda([a,b])=b-a$~; unique à normalisation près}
+}
+
+\newglossaryentry{mesure-nulle}{
+  name={ensemble de mesure nulle},
+  description={Borélien $N$ tel que $\lambda(N)=0$~; tout ensemble dénombrable, ainsi que l'ensemble de Cantor triadique, sont de mesure nulle bien que non triviaux}
+}
+
+\newglossaryentry{convergence-monotone}{
+  name={théorème de convergence monotone},
+  description={Pour $(f_n)$ croissante de fonctions mesurables positives convergeant vers $f$~: $\int f_n\to\int f$ dans $[0,+\infty]$~; aussi appelé théorème de Beppo Levi}
+}
+
+\newglossaryentry{convergence-dominee}{
+  name={théorème de convergence dominée},
+  description={Si $f_n\to f$ p.p.\ et $|f_n|\leq g\in L^1$, alors $f\in L^1$ et $\int f_n\to\int f$~; pierre angulaire de la théorie de Lebesgue, autorise le passage à la limite sous l'intégrale}
+}
+
+\newglossaryentry{fatou}{
+  name={lemme de Fatou},
+  description={Pour $(f_n)$ mesurables positives~: $\int\liminf f_n\leq\liminf\int f_n$~; outil clé pour démontrer la convergence dominée}
+}
+
+\newglossaryentry{fubini-tonelli}{
+  name={théorème de Fubini--Tonelli},
+  description={Pour $f$ mesurable sur $\mathbb{R}^2$~: si $f\geq 0$ (Tonelli) ou $\iint|f|<+\infty$ (Fubini), les intégrales doubles et itérées dans n'importe quel ordre coïncident}
+}
+
+\newglossaryentry{presque-partout}{
+  name={presque partout (p.p.)},
+  description={Une propriété est vraie \emph{p.p.}\ si l'ensemble des points où elle est fausse est de mesure nulle~; deux fonctions égales p.p.\ ont même intégrale}
+}
+
+\newglossaryentry{convergence-uniforme}{
+  name={convergence uniforme},
+  description={Convergence d'une suite $(f_n)$ vers $f$ pour la norme du sup~: $\|f_n-f\|_\infty\to 0$~; entraîne la continuité de la limite si les $f_n$ sont continues}
+}
+
+\newglossaryentry{convergence-normale}{
+  name={convergence normale},
+  description={Convergence d'une série de fonctions $\sum f_n$ telle que $\sum\|f_n\|_\infty<+\infty$~; entraîne la convergence uniforme et absolue}
+}
+
+\newglossaryentry{interversion-somme-integrale}{
+  name={interversion somme--intégrale},
+  description={Égalité $\int\sum f_n=\sum\int f_n$, valide notamment sous convergence normale sur un segment, ou positivité des $f_n$ (Beppo Levi), ou sommabilité $\sum\int|f_n|<+\infty$ (intégration terme à terme)}
+}
+
+\newglossaryentry{beppo-levi}{
+  name={théorème de Beppo Levi},
+  description={Pour une suite de fonctions positives $(f_n)$ sur un intervalle $I$~: $\int_I\sum f_n=\sum\int_I f_n$ dans $[0,+\infty]$~; cas particulier du théorème de convergence monotone}
+}
+
+\newglossaryentry{integration-terme-a-terme}{
+  name={intégration terme à terme},
+  description={Théorème permettant d'écrire $\int\sum f_n=\sum\int f_n$ sous l'hypothèse $\sum\int|f_n|<+\infty$, sans exiger d'uniformité}
 }
 
 \newglossaryentry{espace-euclidien}{
   name={espace euclidien},
   description={Espace vectoriel réel de dimension finie muni d'un produit scalaire}
+}
+
+\newglossaryentry{hyperplan-matrices}{
+  name={hyperplan de $\mathcal{M}_n(\mathbb{R})$},
+  description={Sous-espace de dimension $n^2-1$, noyau d'une forme linéaire non nulle~; toute forme linéaire s'écrit $M\mapsto\mathrm{tr}(AM)$ pour un unique $A\neq 0$, donc tout hyperplan est $H_A=\{M\mid\mathrm{tr}(AM)=0\}$. Pour $n\geq 2$, $H_A$ rencontre $\mathrm{GL}_n(\mathbb{R})$ et même $\mathrm{O}_n(\mathbb{R})$}
+}
+
+\newglossaryentry{valeurs-singulieres}{
+  name={décomposition en valeurs singulières},
+  description={Écriture $A=USV$ d'une matrice réelle avec $U,V$ orthogonales et $S=\mathrm{diag}(\sigma_1,\ldots,\sigma_n)$, $\sigma_i\geq 0$ (les \emph{valeurs singulières})~; ramène $\mathrm{tr}(AQ)$ à $\mathrm{tr}(SR)$ sur le groupe orthogonal}
 }
 
 % --- Structures algébriques ---
@@ -193,12 +298,12 @@
 
 \newglossaryentry{euler-exp-limite}{
   name={exponentielle matricielle (définition limite)},
-  description={Pour $X\in\mathcal{M}_n(\mathbb{K})$~: $e^X=\lim_{k\to\infty}(I+X/k)^k$~; la convergence est en $O(\|X\|^2 e^{\|X\|}/k)$ et généralise la limite des intérêts composés}
+  description={Pour $X\in\mathcal{M}_n(\mathbb{K})$~: $e^X=\lim_{k\to\infty}{(I+X/k)}^k$~; la convergence est en $O(\|X\|^2 e^{\|X\|}/k)$ et généralise la limite des intérêts composés}
 }
 
 \newglossaryentry{trotter}{
   name={formule de Trotter},
-  description={Pour $A,B\in\mathcal{M}_n(\mathbb{K})$ quelconques~: $e^{A+B}=\lim_{k\to\infty}(e^{A/k}e^{B/k})^k$~; repose sur Baker--Campbell--Hausdorff}
+  description={Pour $A,B\in\mathcal{M}_n(\mathbb{K})$ quelconques~: $e^{A+B}=\lim_{k\to\infty}{(e^{A/k}e^{B/k})}^k$~; repose sur Baker--Campbell--Hausdorff}
 }
 
 \newglossaryentry{jacobi-liouville}{
@@ -213,7 +318,7 @@
 
 \newglossaryentry{logarithme-matriciel}{
   name={logarithme matriciel},
-  description={Antécédent $A$ de $M$ par l'exponentielle~: $e^A=M$~; pour un bloc de Jordan $J_m(\lambda)$ avec $\lambda\neq 0$, il vaut $\mu I_m + \sum_{k=1}^{m-1}\frac{(-1)^{k+1}}{k}(N/\lambda)^k$ où $e^\mu=\lambda$}
+  description={Antécédent $A$ de $M$ par l'exponentielle~: $e^A=M$~; pour un bloc de Jordan $J_m(\lambda)$ avec $\lambda\neq 0$, il vaut $\mu I_m + \sum_{k=1}^{m-1}\frac{{(-1)}^{k+1}}{k}{(N/\lambda)}^k$ où $e^\mu=\lambda$}
 }
 
 \newglossaryentry{surjectivite-exp}{

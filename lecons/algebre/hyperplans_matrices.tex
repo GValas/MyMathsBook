@@ -1,0 +1,299 @@
+%==============================================================
+%  lecons/algebre/hyperplans_matrices.tex
+%  Hyperplans de M_n(R) : intersection avec GL_n et O_n
+%==============================================================
+
+\lecontitle{Hyperplans de $\mathcal{M}_n(\mathbb{R})$}{Algèbre linéaire — Rencontre avec $\mathrm{GL}_n(\mathbb{R})$ et $\mathrm{O}_n(\mathbb{R})$}
+
+%=============================================================
+%  § 0 — PRÉLIMINAIRE : FORMES LINÉAIRES ET TRACE
+%=============================================================
+\secnum{navyblue}{1}{Préliminaire : hyperplans et représentation par la trace}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Cadre.}\enspace%
+  \index{hyperplan de matrices}\index{forme linéaire}
+  On travaille dans l'espace $\mathcal{M}_n(\mathbb{R})$ des matrices carrées
+  réelles, de dimension $n^2$. Un \emph{hyperplan} $H$ est un sous-espace de
+  dimension $n^2 - 1$, c'est-à-dire le noyau d'une forme linéaire non nulle.
+
+  \medskip
+  \textbf{Théorème (représentation des formes linéaires).}\enspace%
+  L'application
+  \[
+    \Phi : \mathcal{M}_n(\mathbb{R}) \longrightarrow \mathcal{M}_n(\mathbb{R})^*,
+    \qquad A \longmapsto \bigl(M \mapsto \mathrm{tr}(AM)\bigr)
+  \]
+  est un \emph{isomorphisme}. Autrement dit, toute forme linéaire
+  $\varphi$ sur $\mathcal{M}_n(\mathbb{R})$ s'écrit de manière unique
+  \[
+    \varphi(M) = \mathrm{tr}(AM), \qquad A \in \mathcal{M}_n(\mathbb{R}).
+  \]
+  Tout hyperplan est donc de la forme
+  \[
+    H_A = \{\,M \in \mathcal{M}_n(\mathbb{R}) \mid \mathrm{tr}(AM) = 0\,\},
+    \qquad A \neq 0.
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  $\Phi$ est linéaire et part d'un espace de dimension $n^2$ vers son dual,
+  de même dimension : il suffit de vérifier l'injectivité. Si $\mathrm{tr}(AM)=0$
+  pour toute $M$, on choisit $M = E_{ji}$ (matrice élémentaire) et l'on obtient
+  $\mathrm{tr}(AE_{ji}) = A_{ij} = 0$ pour tous $i,j$, donc $A = 0$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Question}
+Un hyperplan $H_A$ est un objet « générique » de codimension $1$. Contient-il
+nécessairement des matrices remarquables — \emph{inversibles}, voire
+\emph{orthogonales} ? La réponse est \textbf{oui} dès que $n \geq 2$, et c'est
+l'objet des deux parties qui suivent. (Pour $n=1$, $\mathcal{M}_1(\mathbb{R})=\mathbb{R}$
+et le seul hyperplan est $\{0\}$, qui ne rencontre ni $\mathrm{GL}_1$ ni $\mathrm{O}_1$.)
+
+\decsep{}
+
+%=============================================================
+%  PARTIE I — GL_n(R)
+%=============================================================
+\secnum{navyblue}{2}{Partie I — Tout hyperplan rencontre $\mathrm{GL}_n(\mathbb{R})$}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace%
+  \index{groupe linéaire}
+  Soit $n \geq 2$. Tout hyperplan $H$ de $\mathcal{M}_n(\mathbb{R})$ contient
+  une matrice inversible :
+  \[
+    H \cap \mathrm{GL}_n(\mathbb{R}) \neq \varnothing.
+  \]
+\end{tcolorbox}
+
+\rubriq{Idée}
+On écrit $H = \ker\bigl(M\mapsto\mathrm{tr}(AM)\bigr)$ avec $A\neq 0$, puis on
+ramène $A$ à une matrice $J_r = \mathrm{diag}(I_r,0)$ par équivalence. Il reste
+à exhiber une matrice inversible dont les $r$ premiers coefficients diagonaux
+ont une somme nulle : la \emph{matrice de permutation cyclique} convient, car
+elle a une diagonale entièrement nulle.
+
+\begin{mdframed}[style=proofbar]
+  \textit{Réduction.}\enspace%
+  Soit $A \neq 0$ avec $H = \{M : \mathrm{tr}(AM)=0\}$. Posons $r = \mathrm{rg}(A) \geq 1$.
+  Il existe $P,Q \in \mathrm{GL}_n(\mathbb{R})$ telles que $A = P\,J_r\,Q$, où
+  $J_r = \mathrm{diag}(I_r,\,0_{n-r})$. Pour toute $M$,
+  \[
+    \mathrm{tr}(AM) = \mathrm{tr}(P J_r Q M) = \mathrm{tr}(J_r\,QMP).
+  \]
+  L'application $M \mapsto N := QMP$ est une bijection de $\mathrm{GL}_n(\mathbb{R})$
+  sur lui-même. Il suffit donc de trouver $N \in \mathrm{GL}_n(\mathbb{R})$ avec
+  \[
+    \mathrm{tr}(J_r N) = \sum_{i=1}^{r} N_{ii} = 0,
+  \]
+  car alors $M = Q^{-1}N P^{-1} \in H \cap \mathrm{GL}_n(\mathbb{R})$.
+
+  \medskip
+  \textit{Construction.}\enspace%
+  \index{matrice de permutation}
+  Soit $C$ la matrice de la permutation cyclique $\gamma = (1\,2\,\cdots\,n)$,
+  définie par $C e_i = e_{i+1}$ (indices modulo $n$). Comme $n \geq 2$, on a
+  $\gamma(i) \neq i$ pour tout $i$, donc \emph{tous} les coefficients diagonaux
+  de $C$ sont nuls : en particulier $\sum_{i=1}^{r} C_{ii} = 0$. De plus $C$ est
+  une matrice de permutation, donc inversible ($\det C = (-1)^{n-1}$). Le choix
+  $N = C$ conclut. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Remarque}
+L'énoncé voisin « $\mathrm{GL}_n(\mathbb{R})$ n'est contenu dans aucun
+hyperplan » est différent (et plus facile) : il résulte de $\mathrm{Vect}\,\mathrm{GL}_n(\mathbb{R}) = \mathcal{M}_n(\mathbb{R})$.
+Ici on affirme bien plus : \emph{chaque} hyperplan, si fin soit-il, attrape une
+matrice inversible.
+
+\decsep{}
+
+%=============================================================
+%  PARTIE II — O_n(R)
+%=============================================================
+\secnum{navyblue}{3}{Partie II — Extension : tout hyperplan rencontre $\mathrm{O}_n(\mathbb{R})$}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace%
+  \index{groupe orthogonal}
+  Soit $n \geq 2$. Tout hyperplan $H$ de $\mathcal{M}_n(\mathbb{R})$ contient
+  une matrice orthogonale :
+  \[
+    H \cap \mathrm{O}_n(\mathbb{R}) \neq \varnothing.
+  \]
+\end{tcolorbox}
+
+\rubriq{Idée}
+On écrit $H = \ker\bigl(M\mapsto\mathrm{tr}(AQ)\bigr)$. La
+\emph{décomposition en valeurs singulières}\index{décomposition en valeurs singulières}
+réduit $A$ à une matrice diagonale $S = \mathrm{diag}(\sigma_1,\ldots,\sigma_n)$
+à coefficients $\geq 0$, sans modifier le groupe orthogonal sur lequel on
+optimise. On considère alors le \emph{chemin continu} de rotations $\theta \mapsto R(\theta)$
+et l'on applique le théorème des valeurs intermédiaires à
+$g(\theta) = \mathrm{tr}\bigl(S\,R(\theta)\bigr)$.
+
+\begin{mdframed}[style=proofbar]
+  \textit{Réduction orthogonale (SVD).}\enspace%
+  Soit $A \neq 0$ avec $H = \{Q : \mathrm{tr}(AQ)=0\}$. La décomposition en
+  valeurs singulières fournit $U,V \in \mathrm{O}_n(\mathbb{R})$ et
+  $S = \mathrm{diag}(\sigma_1,\ldots,\sigma_n)$ avec $\sigma_i \geq 0$, telles
+  que $A = U S V$. Pour $Q \in \mathrm{O}_n(\mathbb{R})$,
+  \[
+    \mathrm{tr}(AQ) = \mathrm{tr}(U S V Q) = \mathrm{tr}\bigl(S\,(VQU)\bigr).
+  \]
+  Quand $Q$ parcourt $\mathrm{O}_n(\mathbb{R})$, $R := VQU$ parcourt aussi
+  $\mathrm{O}_n(\mathbb{R})$. Il suffit donc de trouver $R \in \mathrm{O}_n(\mathbb{R})$
+  avec
+  \[
+    \mathrm{tr}(SR) = \sum_{i=1}^{n} \sigma_i\,R_{ii} = 0,
+  \]
+  car alors $Q = V^{\!\top} R\, U^{\!\top} \in H \cap \mathrm{O}_n(\mathbb{R})$.
+  Quitte à conjuguer $S$ par une matrice de permutation (orthogonale), on
+  suppose les $\sigma_i$ rangés de sorte que $\sigma_n = \min_i \sigma_i$.
+  Notons $\tau = \sigma_1 + \cdots + \sigma_n > 0$ (car $A \neq 0$).
+
+  \medskip
+  \textit{Un chemin de rotations.}\enspace%
+  On regroupe les coordonnées par paires consécutives $(1,2),(3,4),\ldots$ et,
+  sur chaque paire, on place le bloc de rotation
+  $\rho(\theta) = \left(\begin{smallmatrix}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{smallmatrix}\right)$.
+  \begin{itemize}
+    \item si $n$ est \textbf{pair}, les $n/2$ paires couvrent tout : $R(\theta)$
+          est diagonale par blocs $\rho(\theta)$, et $R(\theta)_{ii} = \cos\theta$
+          pour tout $i$ ;
+    \item si $n$ est \textbf{impair}, on laisse fixe la dernière coordonnée
+          (celle du plus petit $\sigma_n$) et l'on fait tourner les $n-1$ autres.
+  \end{itemize}
+  Dans les deux cas $R(\theta) \in \mathrm{SO}_n(\mathbb{R}) \subset \mathrm{O}_n(\mathbb{R})$
+  et $\theta \mapsto R(\theta)$ est continue. On calcule
+  \[
+    g(\theta) = \mathrm{tr}\bigl(S\,R(\theta)\bigr) =
+    \begin{cases}
+      \tau\cos\theta & (n \text{ pair}),\\[4pt]
+      (\tau - \sigma_n)\cos\theta + \sigma_n & (n \text{ impair}).
+    \end{cases}
+  \]
+
+  \medskip
+  \textit{Conclusion par le théorème des valeurs intermédiaires.}\enspace%
+  \index{théorème des valeurs intermédiaires}
+  On a $g(0) = \tau > 0$, tandis que
+  \[
+    g(\pi) =
+    \begin{cases}
+      -\tau < 0 & (n \text{ pair}),\\[4pt]
+      2\sigma_n - \tau \leq 0 & (n \text{ impair}),
+    \end{cases}
+  \]
+  la dernière inégalité car $\sigma_n = \min_i \sigma_i \leq \tau/n \leq \tau/2$.
+  La fonction continue $g$ change de signe (au sens large) sur $[0,\pi]$ : il
+  existe $\theta_0 \in (0,\pi]$ tel que $g(\theta_0) = 0$. La matrice
+  $R = R(\theta_0)$ répond à la question. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Variante : argument de moyennisation}
+On peut éviter la SVD au profit d'un argument de symétrie. Sur le groupe
+compact connexe $\mathrm{SO}_n(\mathbb{R})$ ($n\geq 2$), la mesure de Haar
+$\mathrm{d}Q$ vérifie $\int_{\mathrm{SO}_n} Q\,\mathrm{d}Q = 0$ : en effet
+$M := \int Q\,\mathrm{d}Q$ satisfait $RM = M$ pour tout $R\in\mathrm{SO}_n$, et
+le seul vecteur fixé par toute rotation est nul ($n\geq 2$). Dès lors
+\[
+  \int_{\mathrm{SO}_n} \mathrm{tr}(AQ)\,\mathrm{d}Q = \mathrm{tr}\!\Bigl(A\!\int Q\,\mathrm{d}Q\Bigr) = 0.
+\]
+La fonction continue $Q\mapsto\mathrm{tr}(AQ)$ est de moyenne nulle sur le
+connexe $\mathrm{SO}_n$ : si elle ne s'annulait pas, elle garderait un signe
+constant et son intégrale serait non nulle. Elle s'annule donc en un point.
+
+\decsep{}
+
+%=============================================================
+%  § — EXEMPLES, REMARQUES, EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, remarques et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. L'hyperplan de trace nulle ($A = I_n$).}\enspace%
+  $H = \{M : \mathrm{tr}(M) = 0\}$ est le célèbre hyperplan
+  $\mathfrak{sl}_n(\mathbb{R})$. La matrice de permutation cyclique $C$, de
+  trace nulle et inversible, y vit : $C \in H \cap \mathrm{GL}_n$. Pour $n=2$,
+  $C = \left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ est même orthogonale,
+  donc $C \in H \cap \mathrm{O}_2$.
+
+  \smallskip\noindent
+  \textbf{2. Cas $n=2$, $A = I_2$, version orthogonale fine.}\enspace%
+  La rotation $\rho(\theta)$ a pour trace $2\cos\theta$, nulle pour
+  $\theta = \pi/2$ : $\rho(\pi/2) = \left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)
+  \in \mathrm{SO}_2 \cap H$. On illustre directement la Partie II.
+
+  \smallskip\noindent
+  \textbf{3. Hyperplan « coin supérieur gauche » ($A = E_{11}$, $r=1$).}\enspace%
+  $H = \{M : M_{11} = 0\}$. La matrice de permutation cyclique a son coefficient
+  $(1,1)$ nul, donc $C \in H \cap \mathrm{O}_n$ : ici une seule construction
+  règle les deux parties.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Remarques et pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$n=1$ est exclu.}\enspace%
+  L'unique hyperplan de $\mathcal{M}_1(\mathbb{R}) = \mathbb{R}$ est $\{0\}$,
+  qui ne contient aucun scalaire non nul : ni $\mathrm{GL}_1$ ni $\mathrm{O}_1$
+  ne sont rencontrés. L'hypothèse $n\geq 2$ est essentielle (elle sert au moment
+  où l'on affirme que la diagonale de $C$ est nulle, ou qu'aucun vecteur non nul
+  n'est fixé par toute rotation).
+
+  \smallskip\noindent
+  \textbf{« Rencontrer » n'est pas « contenir ».}\enspace%
+  Un hyperplan ne contient jamais $\mathrm{GL}_n$ tout entier (qui engendre
+  $\mathcal{M}_n$) ; le théorème dit seulement qu'il en contient \emph{au moins}
+  un élément. De même il ne contient pas tout $\mathrm{O}_n$.
+
+  \smallskip\noindent
+  \textbf{La SVD n'est pas un luxe.}\enspace%
+  Sans réduction, $\mathrm{tr}(AR(\theta))$ n'est pas une simple fonction de
+  $\cos\theta$ : c'est la diagonalisation orthogonale des « directions » de $A$
+  qui rend le calcul de $g(\theta)$ explicite.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Démontrer en détail que $M\mapsto\mathrm{tr}(AM)$ décrit \emph{toutes}
+          les formes linéaires de $\mathcal{M}_n(\mathbb{R})$, et que $A$ est unique.
+
+    \item Calculer $\det C$ pour la matrice de permutation cyclique
+          $\gamma=(1\,2\,\cdots\,n)$ et vérifier $\mathrm{tr}(C)=0$ pour $n\geq 2$.
+
+    \item Pour $n=3$ et $A = \mathrm{diag}(1,1,1)$ (hyperplan de trace nulle),
+          exhiber explicitement une matrice de $\mathrm{O}_3 \cap H$ à l'aide du
+          chemin de rotations de la Partie II. (\textit{Indication :} faire
+          tourner deux coordonnées et garder la troisième fixe ;
+          $g(\theta) = 2\cos\theta + 1$ s'annule en $\theta = 2\pi/3$.)
+
+    \item Montrer que $\mathrm{Vect}\,\mathrm{GL}_n(\mathbb{R}) = \mathcal{M}_n(\mathbb{R})$
+          et en déduire qu'aucun hyperplan ne contient $\mathrm{GL}_n$ tout entier.
+          Comparer avec le théorème de la Partie I.
+
+    \item \textbf{(Renforcement)} Montrer que, pour $n\geq 2$, tout hyperplan de
+          $\mathcal{M}_n(\mathbb{R})$ rencontre $\mathrm{SL}_n(\mathbb{R})$.
+          (\textit{Indication :} reprendre $N$ inversible de la Partie I avec
+          $\sum_{i\leq r} N_{ii}=0$, puis ajuster une colonne pour normaliser le
+          déterminant sans toucher aux coefficients diagonaux utiles.)
+
+    \item \textbf{(Moyennisation)} Justifier $\int_{\mathrm{O}_n} Q\,\mathrm{d}Q = 0$
+          pour $n\geq 2$ et en redéduire la Partie II sans recourir à la SVD.
+
+    \item Le résultat de la Partie II subsiste-t-il en remplaçant $\mathrm{O}_n(\mathbb{R})$
+          par $\mathrm{SO}_n(\mathbb{R})$~? (\textit{Oui :} le chemin construit
+          reste dans $\mathrm{SO}_n$.) Et par $\mathrm{O}_n \setminus \mathrm{SO}_n$~?
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{Forme linéaire $M\mapsto\mathrm{tr}(AM)$ — équivalence \& valeurs singulières — argument de connexité}
+</content>
+</invoke>

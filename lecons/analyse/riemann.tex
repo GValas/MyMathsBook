@@ -1,0 +1,327 @@
+%==============================================================
+%  lecons/analyse/riemann.tex — Intégrale de Riemann
+%==============================================================
+
+\lecontitle{Intégrale de Riemann}{Analyse réelle — Construction de l'intégrale}
+
+%=============================================================
+%  § 1 — DÉFINITION
+%=============================================================
+\secnum{navyblue}{1}{Subdivisions, sommes de Darboux et définition}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Cadre.}\enspace%
+  \index{intégrale de Riemann}
+  Soit $f:[a,b]\to\mathbb{R}$ \textbf{bornée} sur un segment.
+
+  \medskip
+  \textbf{Subdivision.}\enspace\index{subdivision}
+  Une \emph{subdivision} de $[a,b]$ est une famille finie ordonnée
+  $\sigma = (x_0, x_1, \ldots, x_n)$ avec
+  \[
+    a = x_0 < x_1 < \cdots < x_n = b.
+  \]
+  Son \emph{pas} est $|\sigma| = \max_{i}(x_i - x_{i-1})$.
+
+  \medskip
+  \textbf{Sommes de Darboux.}\enspace\index{sommes de Darboux}
+  Pour une subdivision $\sigma$, on pose
+  $m_i = \inf_{[x_{i-1},x_i]} f$ et $M_i = \sup_{[x_{i-1},x_i]} f$, puis
+  \[
+    s(f,\sigma) = \sum_{i=1}^{n} m_i\,(x_i - x_{i-1}),
+    \qquad
+    S(f,\sigma) = \sum_{i=1}^{n} M_i\,(x_i - x_{i-1}).
+  \]
+  Les \emph{intégrales de Darboux} sont
+  \[
+    \underline{I}(f) = \sup_\sigma s(f,\sigma),
+    \qquad
+    \overline{I}(f) = \inf_\sigma S(f,\sigma).
+  \]
+  On a toujours $\underline{I}(f) \leq \overline{I}(f)$.
+
+  \medskip
+  \textbf{Définition (intégrale de Riemann).}\enspace%
+  \index{Riemann-intégrable}
+  La fonction $f$ est dite \emph{Riemann-intégrable} sur $[a,b]$ si
+  $\underline{I}(f) = \overline{I}(f)$. Cette valeur commune est notée
+  \[
+    \int_a^b f(t)\,\mathrm{d}t.
+  \]
+
+  \medskip
+  \textbf{Théorème (critère de Riemann).}\enspace%
+  $f$ est Riemann-intégrable sur $[a,b]$ si et seulement si
+  \[
+    \forall\varepsilon > 0,\ \exists\,\sigma\ \text{subdivision tel que}\
+    S(f,\sigma) - s(f,\sigma) < \varepsilon.
+  \]
+
+  \medskip
+  \textbf{Théorème (formulation par sommes de Riemann).}\enspace%
+  \index{sommes de Riemann}
+  $f$ est Riemann-intégrable si et seulement si il existe $I\in\mathbb{R}$ tel
+  que, pour toute suite $(\sigma_n)$ de subdivisions de pas $|\sigma_n|\to 0$
+  et tout choix $\xi_i^{(n)} \in [x_{i-1}^{(n)}, x_i^{(n)}]$,
+  \[
+    R(f,\sigma_n,\xi^{(n)}) \,=\, \sum_{i} f\bigl(\xi_i^{(n)}\bigr)\bigl(x_i^{(n)} - x_{i-1}^{(n)}\bigr)
+    \xrightarrow[n\to+\infty]{} I = \int_a^b f.
+  \]
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+On approche l'aire sous la courbe par des rectangles. La somme inférieure
+$s(f,\sigma)$ sous-estime l'aire (rectangles « par défaut »), la somme
+supérieure $S(f,\sigma)$ la sur-estime (rectangles « par excès »).
+Si les deux encadrements peuvent être rendus arbitrairement proches en
+raffinant la subdivision, l'aire est bien définie : c'est l'intégrale.
+L'idée géométrique remonte à Archimède (méthode d'exhaustion) ; la
+formalisation rigoureuse est due à Riemann (1854).
+
+\decsep{}
+
+%=============================================================
+%  § 2 — PROPRIÉTÉS FONDAMENTALES
+%=============================================================
+\secnum{navyblue}{2}{Propriétés de l'intégrale}
+
+\begin{tcolorbox}[thmbox]
+  Soient $f, g : [a,b] \to \mathbb{R}$ Riemann-intégrables et
+  $\lambda, \mu \in \mathbb{R}$.
+  \begin{enumerate}
+    \item \textbf{Linéarité :}
+          $\lambda f + \mu g$ est intégrable et
+          $\displaystyle\int_a^b (\lambda f + \mu g) = \lambda\!\int_a^b f + \mu\!\int_a^b g$.
+
+    \item \textbf{Positivité :}
+          $f \geq 0 \Rightarrow \int_a^b f \geq 0$.
+          Si de plus $f$ est continue et $\int_a^b f = 0$, alors $f \equiv 0$.
+
+    \item \textbf{Croissance :}
+          $f \leq g \Rightarrow \int_a^b f \leq \int_a^b g$.
+
+    \item \textbf{Inégalité triangulaire :}
+          $|f|$ est intégrable et
+          $\displaystyle\left|\int_a^b f\right| \leq \int_a^b |f| \leq (b-a)\,\|f\|_{\infty,[a,b]}$.
+
+    \item \textbf{Relation de Chasles :}\index{Chasles (relation de)}
+          pour $c\in[a,b]$, $f$ intégrable sur $[a,c]$ et $[c,b]$ et
+          $\displaystyle\int_a^b f = \int_a^c f + \int_c^b f$.
+
+    \item \textbf{Produit :} $f\cdot g$ est intégrable.
+
+    \item \textbf{Formule de la moyenne.}\enspace\index{formule de la moyenne}
+          Si $f$ est continue, il existe $c\in[a,b]$ tel que
+          $\displaystyle\int_a^b f = (b-a)\,f(c)$.
+  \end{enumerate}
+\end{tcolorbox}
+
+\rubriq{Classes de fonctions Riemann-intégrables}
+
+\begin{tcolorbox}[thmbox]
+  Sur tout segment $[a,b]$, sont Riemann-intégrables :
+  \begin{itemize}
+    \item les fonctions \textbf{continues} (Darboux 1875)~;
+    \item les fonctions \textbf{monotones} (même si elles présentent des
+          discontinuités, du moment qu'elles sont bornées)~;
+    \item les fonctions \textbf{continues par morceaux} ;
+    \item plus généralement (\textbf{critère de Lebesgue}\index{critère de Lebesgue}) :
+          $f$ bornée est Riemann-intégrable si et seulement si son ensemble
+          de points de discontinuité est de \emph{mesure nulle}.
+  \end{itemize}
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — DÉMONSTRATIONS
+%=============================================================
+\secnum{navyblue}{3}{Démonstrations}
+
+\rubriq{Critère de Riemann}
+
+\begin{mdframed}[style=proofbar]
+  \textit{$(\Rightarrow)$}\enspace%
+  Si $f$ est intégrable, $\underline{I}=\overline{I}=I$. Par définition du
+  sup et de l'inf, pour $\varepsilon>0$, il existe deux subdivisions
+  $\sigma_1, \sigma_2$ telles que $s(f,\sigma_1) > I - \varepsilon/2$ et
+  $S(f,\sigma_2) < I + \varepsilon/2$. La subdivision plus fine $\sigma$
+  réunion de $\sigma_1$ et $\sigma_2$ vérifie
+  $s(f,\sigma)\geq s(f,\sigma_1)$ et $S(f,\sigma)\leq S(f,\sigma_2)$
+  (le raffinement augmente $s$ et diminue $S$), donc
+  $S(f,\sigma) - s(f,\sigma) < \varepsilon$.
+
+  \medskip
+  \textit{$(\Leftarrow)$}\enspace%
+  Inversement, $s(f,\sigma) \leq \underline{I} \leq \overline{I} \leq S(f,\sigma)$
+  pour tout $\sigma$. Donc $\overline{I} - \underline{I} \leq S(f,\sigma) - s(f,\sigma) < \varepsilon$
+  pour tout $\varepsilon>0$ ; on a $\underline{I} = \overline{I}$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Continuité $\Rightarrow$ intégrabilité}
+
+\begin{mdframed}[style=proofbar]
+  Soit $f$ continue sur $[a,b]$. Par le théorème de Heine, $f$ est
+  \emph{uniformément continue} : pour $\varepsilon>0$, il existe $\delta>0$
+  tel que $|x-y| < \delta \Rightarrow |f(x)-f(y)| < \varepsilon/(b-a)$.
+
+  \medskip
+  Soit $\sigma$ une subdivision de pas $|\sigma| < \delta$. Sur chaque
+  intervalle $[x_{i-1},x_i]$, $M_i - m_i \leq \varepsilon/(b-a)$ (atteint sur
+  un compact par continuité), donc
+  \[
+    S(f,\sigma) - s(f,\sigma) = \sum_i (M_i - m_i)(x_i - x_{i-1})
+    \leq \tfrac{\varepsilon}{b-a}\sum_i (x_i - x_{i-1}) = \varepsilon.
+  \]
+  Le critère de Riemann conclut.\hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Monotonie $\Rightarrow$ intégrabilité}
+
+\begin{mdframed}[style=proofbar]
+  Soit $f$ croissante sur $[a,b]$ (donc bornée, de bornes $f(a)$ et $f(b)$).
+  Sur une subdivision $\sigma$ de pas $|\sigma|$, $m_i = f(x_{i-1})$ et
+  $M_i = f(x_i)$ par croissance. Donc
+  \[
+    S(f,\sigma) - s(f,\sigma) = \sum_i \bigl(f(x_i) - f(x_{i-1})\bigr)(x_i - x_{i-1})
+    \leq |\sigma|\cdot\bigl(f(b) - f(a)\bigr).
+  \]
+  Pour $|\sigma|$ assez petit, c'est $< \varepsilon$. Le critère
+  s'applique.\hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Équivalence Darboux $\Leftrightarrow$ sommes de Riemann}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Encadrement.}\enspace%
+  Pour toute subdivision pointée $(\sigma, \xi)$ avec
+  $\xi_i\in[x_{i-1},x_i]$,
+  \[
+    s(f,\sigma) \leq R(f,\sigma,\xi) = \sum_i f(\xi_i)(x_i - x_{i-1}) \leq S(f,\sigma)
+  \]
+  car $m_i \leq f(\xi_i) \leq M_i$.
+
+  \medskip
+  \textit{$(\Rightarrow)$}\enspace%
+  Si $f$ est intégrable, le critère de Riemann donne
+  $S(f,\sigma_n)-s(f,\sigma_n)\to 0$ pour $|\sigma_n|\to 0$. L'encadrement
+  ci-dessus force $R(f,\sigma_n,\xi^{(n)})\to I$.
+
+  \medskip
+  \textit{$(\Leftarrow)$}\enspace%
+  En choisissant les $\xi_i$ pour approcher $m_i$ ou $M_i$ à $\varepsilon$
+  près (sur compact, supremum et infimum sont atteints ou approchés), on
+  voit que $s(f,\sigma)$ et $S(f,\sigma)$ peuvent être obtenus comme
+  limites de sommes de Riemann. Si toutes ces sommes convergent vers
+  $I$, alors $\underline{I} = \overline{I} = I$.\hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Formule de la moyenne}
+
+\begin{mdframed}[style=proofbar]
+  Pour $f$ continue, posons $m = \min_{[a,b]} f$ et $M = \max_{[a,b]} f$.
+  Par croissance, $m(b-a) \leq \int_a^b f \leq M(b-a)$, donc
+  $\mu := \dfrac{1}{b-a}\int_a^b f \in [m, M]$. Le théorème des valeurs
+  intermédiaires\index{théorème des valeurs intermédiaires} donne
+  $c\in[a,b]$ avec $f(c) = \mu$.\hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Fonction constante.}\enspace%
+  Si $f \equiv c$, alors $s(f,\sigma) = S(f,\sigma) = c(b-a)$ pour toute
+  subdivision : $\int_a^b c\,\mathrm{d}t = c(b-a)$.
+
+  \smallskip\noindent
+  \textbf{2. Identité par sommes de Riemann.}\enspace%
+  $\displaystyle\int_0^1 t\,\mathrm{d}t = \lim_{n\to+\infty}\frac{1}{n}\sum_{k=1}^{n}\frac{k}{n}
+   = \lim_{n\to+\infty}\frac{n+1}{2n} = \frac{1}{2}$.
+
+  \smallskip\noindent
+  \textbf{3. Puissance par découpe géométrique.}\enspace%
+  Pour $\alpha > 0$, $\int_0^1 t^\alpha\,\mathrm{d}t = \dfrac{1}{\alpha+1}$
+  s'obtient par subdivision géométrique $x_k = q^k$ avec $q = a^{1/n}$,
+  méthode de Fermat (avant Riemann).
+
+  \smallskip\noindent
+  \textbf{4. Reconnaissance d'une somme de Riemann.}\enspace%
+  $\displaystyle\lim_{n\to+\infty}\sum_{k=1}^{n}\frac{n}{n^2 + k^2}
+   = \int_0^1 \frac{\mathrm{d}t}{1+t^2} = \frac{\pi}{4}$.
+
+  \smallskip\noindent
+  \textbf{5. Fonction monotone discontinue intégrable.}\enspace%
+  $f(t) = \lfloor 1/t \rfloor$ sur $]0,1]$, prolongée par $f(0)=0$, est
+  décroissante avec une infinité dénombrable de sauts, donc Riemann-intégrable.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Fonction de Dirichlet.}\enspace\index{fonction de Dirichlet}
+  $\mathbf{1}_{\mathbb{Q}}:[0,1]\to\{0,1\}$ : sur tout sous-intervalle non
+  trivial, $m_i = 0$ et $M_i = 1$, donc $s(f,\sigma) = 0$ et $S(f,\sigma) = 1$
+  pour toute $\sigma$. Donc $\underline{I} = 0 \neq 1 = \overline{I}$ :
+  cette fonction n'est \emph{pas} Riemann-intégrable. Elle est Lebesgue-intégrable
+  d'intégrale $0$ (l'ensemble $\mathbb{Q}\cap[0,1]$ est de mesure nulle).
+
+  \smallskip\noindent
+  \textbf{Fonctionalité non bornée.}\enspace%
+  $f(t) = 1/\sqrt{t}$ sur $]0,1]$ n'est pas bornée, donc \emph{pas}
+  Riemann-intégrable sur $[0,1]$ au sens strict. On peut cependant définir
+  une \emph{intégrale impropre} $\int_0^1 t^{-1/2}\,\mathrm{d}t = 2$
+  par passage à la limite $\int_\epsilon^1$.
+
+  \smallskip\noindent
+  \textbf{La continuité ponctuelle ne suffit pas pour l'intégrabilité.}\enspace%
+  La fonction de Thomae $f(p/q) = 1/q$ (fraction irréductible) et $f(x) = 0$
+  pour $x$ irrationnel est continue en chaque irrationnel mais discontinue
+  sur $\mathbb{Q}$. Elle reste Riemann-intégrable d'intégrale $0$
+  (ensemble de discontinuités dénombrable, donc de mesure nulle).
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Calculer $\displaystyle\int_0^1 t^2\,\mathrm{d}t$ par sommes
+          de Riemann ($\sum_{k=1}^n k^2 = n(n+1)(2n+1)/6$).
+
+    \item Montrer que $\displaystyle\lim_{n\to+\infty}\frac{1}{n}\sum_{k=1}^{n}\sqrt{\frac{k}{n}} = \int_0^1\sqrt{t}\,\mathrm{d}t = \frac{2}{3}$.
+
+    \item Calculer
+          $\displaystyle\lim_{n\to+\infty}\prod_{k=1}^{n}\!\left(1+\frac{k}{n}\right)^{1/n}$
+          en reconnaissant $\exp$ d'une somme de Riemann.
+
+    \item Démontrer que toute fonction continue par morceaux sur $[a,b]$
+          est Riemann-intégrable. (\textit{Indication}~: linéarité +
+          continuité sur chaque morceau, puis Chasles.)
+
+    \item Soit $f:[0,1]\to\mathbb{R}$ continue. Montrer que
+          $\displaystyle\lim_{n\to+\infty}\int_0^1 f(t^n)\,\mathrm{d}t = f(0)$.
+
+    \item Construire une fonction Riemann-intégrable sur $[0,1]$ dont
+          l'ensemble des discontinuités est exactement $\{1/n \mid n\geq 1\}\cup\{0\}$.
+
+    \item (\textit{Critère de Lebesgue, sens facile}) Si $f:[a,b]\to\mathbb{R}$
+          bornée admet un ensemble fini de discontinuités, montrer que $f$
+          est Riemann-intégrable par découpage et étude au voisinage de chaque
+          point de discontinuité.
+
+    \item Montrer que la moyenne $\frac{1}{b-a}\int_a^b f$ d'une fonction
+          continue est limite des moyennes discrètes
+          $\frac{1}{n}\sum_{k=1}^n f(a + k(b-a)/n)$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{B.\ Riemann (1854) — G.\ Darboux (1875) — H.\ Lebesgue (1904)}

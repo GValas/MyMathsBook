@@ -1,0 +1,316 @@
+%==============================================================
+%  lecons/analyse/lebesgue.tex — Intégrale de Lebesgue
+%==============================================================
+
+\lecontitle{Intégrale de Lebesgue}{Analyse réelle — Mesure et intégration}
+
+%=============================================================
+%  § 1 — CONSTRUCTION
+%=============================================================
+\secnum{navyblue}{1}{De la mesure à l'intégrale}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Idée directrice.}\enspace%
+  \index{intégrale de Lebesgue}
+  Là où Riemann découpe l'\emph{abscisse} (subdivisions de $[a,b]$),
+  Lebesgue découpe l'\emph{ordonnée} : il regroupe les points $t$ selon
+  la valeur $f(t)$, puis pèse chaque tranche par une \emph{mesure}.
+  La mesure de Lebesgue $\lambda$ généralise la longueur~: $\lambda([a,b])=b-a$.
+
+  \medskip
+  \textbf{Étape 1 — Tribu et mesure.}\enspace%
+  \index{tribu borélienne}\index{mesure de Lebesgue}
+  On dispose d'une tribu $\mathcal{B}(\mathbb{R})$ (borélienne) et d'une mesure
+  $\lambda : \mathcal{B}(\mathbb{R}) \to [0,+\infty]$, $\sigma$-additive,
+  invariante par translation, normalisée par $\lambda([0,1])=1$.
+
+  \medskip
+  \textbf{Étape 2 — Fonctions étagées.}\enspace%
+  Une fonction $\varphi = \sum_{k=1}^N \alpha_k \mathbf{1}_{A_k}$ avec
+  $\alpha_k \geq 0$ et $A_k$ mesurables disjoints est dite
+  \emph{étagée positive}. On pose
+  \[
+    \int \varphi\,\mathrm{d}\lambda \;=\; \sum_{k=1}^N \alpha_k\,\lambda(A_k)
+    \;\in\; [0,+\infty].
+  \]
+
+  \medskip
+  \textbf{Étape 3 — Fonctions mesurables positives.}\enspace%
+  Toute fonction mesurable $f \geq 0$ est limite croissante d'une suite
+  $(\varphi_n)$ de fonctions étagées positives. On définit
+  \[
+    \int f\,\mathrm{d}\lambda \;=\; \sup\!\left\{\int \varphi\,\mathrm{d}\lambda
+    \;\Big|\; \varphi\ \text{étagée},\ 0\leq\varphi\leq f\right\} \;\in\; [0,+\infty].
+  \]
+
+  \medskip
+  \textbf{Étape 4 — Fonctions de signe quelconque.}\enspace%
+  Pour $f$ mesurable, on décompose $f = f^+ - f^-$ avec $f^{\pm} \geq 0$.
+  Si $\int f^+ + \int f^- < +\infty$, $f$ est dite \emph{Lebesgue-intégrable}
+  (notation $f \in L^1$) et l'on pose
+  \[
+    \int f\,\mathrm{d}\lambda \;=\; \int f^+\,\mathrm{d}\lambda
+    \;-\; \int f^-\,\mathrm{d}\lambda.
+  \]
+\end{tcolorbox}
+
+\rubriq{Signification intuitive}
+Pour calculer l'aire sous $f$, Lebesgue fait des tranches horizontales :
+pour chaque hauteur $y$, on mesure l'ensemble $\{t : f(t) > y\}$. On
+intègre ensuite ces mesures :
+$\int f = \int_0^{+\infty} \lambda(\{f > y\})\,\mathrm{d}y$ pour $f \geq 0$.
+Cette construction permet d'intégrer toute fonction mesurable positive,
+y compris très irrégulière, et donne un théorème de convergence simple :
+si $f_n \to f$ presque partout avec une domination intégrable, alors
+$\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
+
+\decsep{}
+
+%=============================================================
+%  § 2 — THÉORÈMES FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{2}{Théorèmes de convergence}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème 1 (convergence monotone, Beppo Levi).}\enspace%
+  \index{convergence monotone (théorème de)}
+  Soit $(f_n)$ une suite croissante de fonctions mesurables positives,
+  convergeant simplement vers $f$. Alors
+  \[
+    \int f_n\,\mathrm{d}\lambda \;\xrightarrow[n\to+\infty]{}\;
+    \int f\,\mathrm{d}\lambda \quad \text{(dans }[0,+\infty]\text{)}.
+  \]
+
+  \medskip
+  \textbf{Théorème 2 (lemme de Fatou).}\enspace\index{Fatou (lemme de)}
+  Pour toute suite $(f_n)$ de fonctions mesurables positives,
+  \[
+    \int \liminf_n f_n\,\mathrm{d}\lambda
+    \;\leq\; \liminf_n \int f_n\,\mathrm{d}\lambda.
+  \]
+
+  \medskip
+  \textbf{Théorème 3 (convergence dominée, Lebesgue).}\enspace%
+  \index{convergence dominée (théorème de)}
+  Soit $(f_n)$ mesurables convergeant simplement (ou p.p.) vers $f$.
+  On suppose qu'il existe $g \in L^1$ positive telle que $|f_n| \leq g$
+  pour tout $n$ (\emph{hypothèse de domination}). Alors $f \in L^1$ et
+  \[
+    \int f_n\,\mathrm{d}\lambda \;\xrightarrow[n\to+\infty]{}\;
+    \int f\,\mathrm{d}\lambda,
+    \qquad
+    \int |f_n - f|\,\mathrm{d}\lambda \to 0.
+  \]
+
+  \medskip
+  \textbf{Théorème 4 (Fubini--Tonelli).}\enspace%
+  \index{Fubini--Tonelli (théorème de)}
+  Pour $f : \mathbb{R}^2 \to \mathbb{R}$ mesurable~:
+  \begin{itemize}
+    \item Si $f \geq 0$ (Tonelli) : les trois intégrales
+    \[
+      \iint f\,\mathrm{d}\lambda^2,\quad
+      \int\!\!\!\int f\,\mathrm{d}x\,\mathrm{d}y,\quad
+      \int\!\!\!\int f\,\mathrm{d}y\,\mathrm{d}x
+    \]
+    sont toutes égales dans $[0,+\infty]$.
+    \item Si $\iint |f| < +\infty$ (Fubini) : $f \in L^1(\mathbb{R}^2)$ et
+    les intégrales itérées dans n'importe quel ordre coïncident.
+  \end{itemize}
+\end{tcolorbox}
+
+\rubriq{Lien avec Riemann}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (Riemann $\subset$ Lebesgue).}\enspace%
+  Soit $f:[a,b]\to\mathbb{R}$ bornée. Alors
+  \begin{itemize}
+    \item $f$ est Riemann-intégrable si et seulement si l'ensemble de ses
+          points de discontinuité est de mesure nulle (\emph{critère de
+          Lebesgue}\index{critère de Lebesgue})~;
+    \item dans ce cas, $f$ est Lebesgue-intégrable et les deux intégrales
+          coïncident :
+          $\displaystyle\int_a^b f(t)\,\mathrm{d}t = \int_{[a,b]} f\,\mathrm{d}\lambda.$
+  \end{itemize}
+  \textbf{Pour les intégrales impropres absolument convergentes au sens de Riemann}, la
+  Lebesgue-intégrabilité équivaut à $\int |f|\,\mathrm{d}\lambda < +\infty$.
+  Les intégrales semi-convergentes (type $\int_0^{+\infty}\sin(t)/t\,\mathrm{d}t$)
+  sont définies par Riemann mais pas par Lebesgue.
+\end{tcolorbox}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — DÉMONSTRATIONS (esquissées)
+%=============================================================
+\secnum{navyblue}{3}{Éléments de démonstration}
+
+\rubriq{Convergence monotone}
+
+\begin{mdframed}[style=proofbar]
+  Soit $f_n \uparrow f$ avec $f_n \geq 0$ mesurables. La suite
+  $\bigl(\int f_n\bigr)$ est croissante majorée par $\int f$, donc admet
+  une limite $L \leq \int f$.
+
+  \medskip
+  \textit{Inégalité inverse.}\enspace%
+  Pour montrer $L \geq \int f$, on prend $\varphi$ étagée avec
+  $0 \leq \varphi \leq f$, $0 < c < 1$, et $A_n = \{f_n \geq c\varphi\}$.
+  Comme $f_n \uparrow f \geq \varphi > c\varphi$ sur le support de $\varphi$,
+  $A_n \uparrow$ l'ensemble entier. Par $\sigma$-additivité,
+  $\int c\varphi\,\mathbf{1}_{A_n} \to \int c\varphi$. Mais
+  $\int f_n \geq \int c\varphi\,\mathbf{1}_{A_n}$, donc à la limite
+  $L \geq c\int\varphi$. Faisant $c \to 1^-$ puis $\sup_\varphi$ :
+  $L \geq \int f$.\hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Lemme de Fatou}
+
+\begin{mdframed}[style=proofbar]
+  Posons $g_n = \inf_{k\geq n} f_k$. La suite $(g_n)$ est croissante et
+  $g_n \to \liminf f_n$. Par convergence monotone,
+  $\int g_n \to \int \liminf f_n$. Comme $g_n \leq f_n$,
+  $\int g_n \leq \int f_n$, donc à la limite inférieure :
+  $\int \liminf f_n \leq \liminf \int f_n$.\hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Convergence dominée}
+
+\begin{mdframed}[style=proofbar]
+  Soit $|f_n|\leq g \in L^1$ et $f_n \to f$ p.p. Alors $|f|\leq g$ p.p., donc
+  $f \in L^1$. On applique Fatou à $g + f_n - f \geq 0$ (à un terme près
+  d'absolue valeur) et à $g - (f_n - f) \geq 0$~:
+  \[
+    \int (g \pm f) \;\leq\; \liminf_n \int (g \pm f_n)
+    \;=\; \int g \pm \liminf_n \int f_n.
+  \]
+  Combiné, cela donne $\limsup \int f_n \leq \int f \leq \liminf \int f_n$,
+  d'où $\int f_n \to \int f$.
+
+  \medskip
+  Pour la convergence dans $L^1$ : appliquer Fatou à $|f_n - f| \leq 2g$
+  avec $\liminf |f_n - f| = 0$.\hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Comparaison Riemann/Lebesgue (sens facile)}
+
+\begin{mdframed}[style=proofbar]
+  Soit $f:[a,b]\to\mathbb{R}$ continue. Pour une subdivision régulière
+  $\sigma_n$ de pas $1/n$, les sommes de Darboux
+  $s(f,\sigma_n) \to \int_{[a,b]} f\,\mathrm{d}\lambda$ par convergence
+  monotone appliquée aux fonctions étagées
+  $\varphi_n = \sum_i m_i^{(n)} \mathbf{1}_{[x_{i-1},x_i[}$. De même
+  $S(f,\sigma_n) \to \int_{[a,b]} f\,\mathrm{d}\lambda$. Comme $f$ est
+  Riemann-intégrable, $s, S \to \int_a^b f$ (Riemann). Les deux limites
+  coïncident.\hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, contre-exemples et exercices}
+
+\noindent{\bfseries\color{navyblue} Exemples.}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Dirichlet est Lebesgue-intégrable.}\enspace%
+  $\mathbf{1}_{\mathbb{Q}\cap[0,1]}$ vaut $0$ sauf sur un ensemble dénombrable,
+  donc de mesure nulle :
+  $\int_{[0,1]} \mathbf{1}_{\mathbb{Q}}\,\mathrm{d}\lambda = 0$,
+  alors que Riemann ne sait pas l'intégrer.
+
+  \smallskip\noindent
+  \textbf{2. Limite simple non dominée.}\enspace%
+  $f_n(t) = n\,\mathbf{1}_{[0,1/n]}(t)$ vérifie $f_n \to 0$ p.p.\ mais
+  $\int f_n = 1$ pour tout $n$. La domination $|f_n| \leq g$ est violée
+  (la borne $g = \sup f_n = +\infty$).
+
+  \smallskip\noindent
+  \textbf{3. Échange dérivation-intégrale.}\enspace%
+  Pour $F(x) = \int_\mathbb{R} f(x,t)\,\mathrm{d}\lambda(t)$ avec $f$ dérivable
+  en $x$ et $|\partial_x f(x,t)| \leq g(t) \in L^1$ uniformément en $x$,
+  la convergence dominée donne $F'(x) = \int \partial_x f(x,t)\,\mathrm{d}\lambda(t)$.
+
+  \smallskip\noindent
+  \textbf{4. Calcul de $\int_0^{+\infty}\frac{\sin t}{t}\,\mathrm{d}t$.}\enspace%
+  Cette intégrale vaut $\pi/2$ au sens de Riemann (limite de $\int_0^A$),
+  mais $\int_0^{+\infty}|\sin t/t| = +\infty$, donc \emph{pas}
+  Lebesgue-intégrable.
+
+  \smallskip\noindent
+  \textbf{5. Fubini.}\enspace%
+  $\displaystyle\int_0^1\!\!\int_0^1 \frac{x^2 - y^2}{{(x^2+y^2)}^2}\,\mathrm{d}x\,\mathrm{d}y
+  = \frac{\pi}{4}$ alors que l'intégrale dans l'autre ordre vaut $-\pi/4$ :
+  l'hypothèse $\iint |f| < +\infty$ est violée, Fubini ne s'applique pas.
+\end{mdframed}
+
+\vspace{6pt}
+\noindent{\bfseries\color{counterred} Contre-exemples et subtilités.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Mesure nulle $\neq$ ensemble petit.}\enspace%
+  L'ensemble de Cantor triadique est non dénombrable, mais de mesure nulle :
+  $\lambda(\mathcal{C}) = 0$. La fonction indicatrice $\mathbf{1}_\mathcal{C}$
+  est d'intégrale nulle.
+
+  \smallskip\noindent
+  \textbf{Convergence p.p.\ sans convergence dans $L^1$.}\enspace%
+  $f_n = n\,\mathbf{1}_{[0,1/n]} \to 0$ p.p., mais $\|f_n\|_1 = 1 \not\to 0$.
+  Sans hypothèse de domination, on ne contrôle pas l'intégrale de la limite.
+
+  \smallskip\noindent
+  \textbf{Lebesgue ne « voit » pas la semi-convergence.}\enspace%
+  $\int_0^{+\infty}\sin(t)/t\,\mathrm{d}t$ existe au sens de Riemann impropre
+  ($=\pi/2$) mais pas au sens de Lebesgue. Lebesgue est strictement plus
+  exigeant pour les intégrales infinies (il demande absolue convergence).
+
+  \smallskip\noindent
+  \textbf{Une fonction Lebesgue-intégrable peut être nulle part Riemann-intégrable.}\enspace%
+  $\mathbf{1}_{\mathbb{Q}\cap[0,1]}$ est partout discontinue : aucun
+  sous-intervalle ne porte $f$ Riemann-intégrable.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Soit $f_n(t) = \dfrac{n}{1+n^2 t^2}$ sur $[0,1]$. Montrer que
+          $f_n \to 0$ p.p.\ mais $\int_0^1 f_n \not\to 0$. Identifier la
+          masse de Dirac qui se cache derrière.
+
+    \item Montrer que $\displaystyle\int_0^{+\infty}\frac{\mathrm{d}t}{1+t^n}
+          \xrightarrow[n\to+\infty]{} 1$ par convergence dominée.
+
+    \item Démontrer la formule
+          $\displaystyle\int_0^{+\infty} e^{-t}t^{s-1}\,\mathrm{d}t = \Gamma(s)$,
+          de classe $\mathcal{C}^\infty$ en $s>0$, par dérivation
+          sous le signe intégral.
+
+    \item Soit $f \in L^1(\mathbb{R})$. Montrer la \emph{continuité dans $L^1$}~:
+          $\|f(\cdot - h) - f\|_1 \to 0$ quand $h\to 0$.
+          (\textit{Indication}~: densité des fonctions $\mathcal{C}_c$ dans $L^1$.)
+
+    \item Établir la formule
+          $\displaystyle\int_0^{+\infty}\frac{\ln t}{1+t^2}\,\mathrm{d}t = 0$
+          via Fubini sur $\iint \frac{\mathrm{d}t\,\mathrm{d}u}{(1+t^2)(1+t u)}$
+          ou par changement $t \mapsto 1/t$.
+
+    \item Soit $A \subset [0,1]$ borélien avec $\lambda(A) = 1$. Montrer
+          que $A$ est dense dans $[0,1]$.
+
+    \item (\textit{Ensemble de Cantor « gras »}) Construire un sous-ensemble
+          fermé d'intérieur vide de $[0,1]$ de mesure $1/2$. En déduire qu'il
+          existe une fonction Riemann-intégrable nulle part continue
+          sur un intervalle non trivial.
+
+    \item Soit $f_n \to f$ dans $L^1$. Montrer qu'il existe une sous-suite
+          $(f_{n_k})$ convergeant vers $f$ presque partout.
+          (\textit{Indication}~: choisir $n_k$ tel que $\|f_{n_k}-f\|_1 \leq 2^{-k}$
+          et appliquer Borel--Cantelli.)
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{H.\ Lebesgue, \textit{Intégrale, longueur, aire} (1902) — É.\ Borel — G.\ Vitali}
