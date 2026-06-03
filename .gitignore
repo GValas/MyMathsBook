@@ -1,6 +1,4 @@
 build/
 .claude/
 .vscode/
-*.mp4
 *Zone.Identifier
-theme-book.pdf
