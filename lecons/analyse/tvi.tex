@@ -24,13 +24,14 @@
   alors il existe $c \in\; ]a,b[$ tel que $f(c) = 0$.
 \end{tcolorbox}
 
-\rubriq{Signification intuitive}
+\begin{significationintuitive}
 Une fonction continue ne peut pas « sauter » : son graphe est un trait
 continu. Si $f(a) < \gamma < f(b)$, la courbe part de $(a, f(a))$ en dessous
 de la droite $y = \gamma$ et termine en $(b, f(b))$ au-dessus : elle doit
 nécessairement la traverser en un point $c$. Ce résultat traduit en analyse la
 \emph{connexité par arcs}\index{connexité par arcs} des intervalles de
 $\mathbb{R}$.
+\end{significationintuitive}
 
 \decsep{}
 
@@ -39,11 +40,12 @@ $\mathbb{R}$.
 %=============================================================
 \secnum{navyblue}{2}{Démonstration}
 
-\rubriq{Idée de la preuve}
+\begin{ideepreuve}
 On raisonne par dichotomie : on cherche $c$ tel que $f(c) = 0$ (quitte à
 remplacer $f$ par $f - \gamma$). On divise $[a,b]$ en deux, on garde le
 demi-intervalle où $f$ change de signe, et on répète. Les extrémités des
 intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
+\end{ideepreuve}
 
 \vspace{10pt}
 \noindent{\bfseries\color{navyblue} Preuve.}

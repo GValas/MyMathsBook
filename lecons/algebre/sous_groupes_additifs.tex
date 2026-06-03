@@ -1,0 +1,206 @@
+%==============================================================
+%  lecons/algebre/sous_groupes_additifs.tex — Sous-groupes additifs de R
+%==============================================================
+
+\lecontitle{Sous-groupes additifs de \texorpdfstring{$\mathbb{R}$}{R}}{Algèbre \& topologie — Dichotomie monogène ou dense}
+
+%=============================================================
+%  § 1 — ÉNONCÉ ET SIGNIFICATION
+%=============================================================
+\secnum{navyblue}{1}{Énoncé et signification}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (dichotomie).}\enspace%
+  \index{sous-groupe additif de $\mathbb{R}$}\index{sous-groupe!monogène}\index{sous-groupe!dense}
+  Soit $G$ un sous-groupe de $(\mathbb{R},+)$. Alors l'une exactement des deux
+  situations suivantes se produit :
+  \begin{enumerate}
+    \item \textbf{cas monogène :} il existe un unique réel $a \geq 0$ tel que
+          \[
+            G = a\mathbb{Z} = \{\,na : n \in \mathbb{Z}\,\} ;
+          \]
+    \item \textbf{cas dense :} $G$ est dense dans $\mathbb{R}$.
+  \end{enumerate}
+  Plus précisément, en posant $a = \inf\bigl(G \cap \,]0,+\infty[\,\bigr)$ (avec
+  $a = +\infty$ si $G = \{0\}$), on est dans le cas monogène lorsque $a > 0$ (ou
+  $G=\{0\}$), et dans le cas dense lorsque $a = 0$.
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Un sous-groupe additif de $\mathbb{R}$ ne peut pas être « à moitié discret ».
+Soit ses éléments strictement positifs admettent un plus petit représentant $a$,
+et alors tout le groupe est constitué des multiples entiers de ce « pas »~; soit
+ils s'accumulent en $0$, et la translation par ces éléments arbitrairement petits
+permet d'atteindre n'importe quel réel d'aussi près que l'on veut. La frontière
+entre les deux mondes est nette : il n'existe pas d'intermédiaire.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+On mesure la « finesse » du groupe par $a = \inf(G \cap \,]0,+\infty[)$.
+Si $a > 0$, on montre d'abord que cette borne inférieure est atteinte
+($a \in G$) à l'aide d'un argument de différence de deux éléments trop proches,
+puis la division euclidienne réelle donne $G = a\mathbb{Z}$. Si $a = 0$, le
+groupe contient des éléments positifs aussi petits que voulu, et leurs multiples
+quadrillent $\mathbb{R}$ : c'est la densité.
+\end{ideepreuve}
+
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Le cas trivial.}\enspace
+  Si $G = \{0\}$, alors $G = 0\cdot\mathbb{Z}$ : c'est le cas monogène avec $a=0$.
+  On suppose désormais $G \neq \{0\}$. Si $x \in G \setminus \{0\}$, alors $-x \in G$
+  (sous-groupe), donc $|x| \in G \cap \,]0,+\infty[$ : cet ensemble est non vide
+  et minoré par $0$, sa borne inférieure
+  \[
+    a = \inf\bigl(G \cap \,]0,+\infty[\,\bigr) \geq 0
+  \]
+  est bien définie.
+
+  \medskip
+  \textit{Cas $a > 0$ : montrons d'abord $a \in G$.}\enspace
+  Supposons par l'absurde $a \notin G$. Par définition de la borne inférieure
+  appliquée à $\varepsilon = a$, il existe $g \in G$ avec $a < g < 2a$ (l'inégalité
+  est stricte à gauche car $a \notin G$). Appliquée ensuite à $\varepsilon = g - a > 0$,
+  elle fournit $h \in G$ avec $a < h < g$. Alors
+  \[
+    g - h \in G \quad\text{et}\quad 0 < g - h < g - a < a,
+  \]
+  ce qui contredit la définition de $a$ comme \emph{plus petit} élément
+  $> 0$ approché. Donc $a \in G$.
+
+  \medskip
+  \textit{Cas $a > 0$ : conclusion $G = a\mathbb{Z}$.}\enspace
+  Comme $a \in G$, on a $a\mathbb{Z} \subseteq G$. Réciproquement, soit $x \in G$.
+  La division euclidienne réelle donne $q = \lfloor x/a \rfloor \in \mathbb{Z}$ et
+  un reste $r = x - qa$ avec $0 \leq r < a$. Or $r = x - qa \in G$ (car $x \in G$
+  et $qa \in G$), et $a$ est le plus petit élément strictement positif de $G$ ;
+  l'encadrement $0 \leq r < a$ force $r = 0$. Ainsi $x = qa \in a\mathbb{Z}$, d'où
+  $G = a\mathbb{Z}$.
+
+  \medskip
+  \textit{Cas $a = 0$ : densité.}\enspace
+  Soit $x \in \mathbb{R}$ et $\varepsilon > 0$. Puisque $\inf(G \cap \,]0,+\infty[) = 0$,
+  il existe $g \in G$ avec $0 < g < \varepsilon$. Posons $n = \lfloor x/g \rfloor \in \mathbb{Z}$,
+  de sorte que $ng \leq x < (n+1)g$, donc
+  \[
+    |x - ng| < g < \varepsilon, \qquad ng \in G.
+  \]
+  Tout réel est donc limite d'éléments de $G$ : $G$ est dense dans $\mathbb{R}$.
+
+  \medskip
+  \textit{Exclusivité et unicité.}\enspace
+  Si $a > 0$, l'intervalle $]0,a[$ ne rencontre pas $G$, donc $G$ n'est pas dense :
+  les deux cas s'excluent. Enfin, si $a\mathbb{Z} = b\mathbb{Z}$ avec $a,b \geq 0$,
+  alors $a$ et $b$ sont le plus petit élément $>0$ commun (ou $0$), d'où $a = b$ :
+  le générateur positif est unique. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — APPLICATION : LE GROUPE $\mathbb{Z} + \alpha\mathbb{Z}$
+%=============================================================
+\secnum{navyblue}{3}{Application : le groupe \texorpdfstring{$\mathbb{Z}+\alpha\mathbb{Z}$}{Z + aZ}}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (critère d'irrationalité).}\enspace%
+  \index{groupe!$\mathbb{Z}+\alpha\mathbb{Z}$}\index{Kronecker (théorème de)}
+  Soit $\alpha \in \mathbb{R}$ et $G = \mathbb{Z} + \alpha\mathbb{Z}
+  = \{\,m + n\alpha : (m,n) \in \mathbb{Z}^2\,\}$. Alors :
+  \[
+    G \text{ est dense dans } \mathbb{R} \iff \alpha \notin \mathbb{Q}.
+  \]
+  De façon équivalente, la suite des parties fractionnaires $(\{n\alpha\})_{n\in\mathbb{N}}$
+  est dense dans $[0,1]$ si et seulement si $\alpha$ est irrationnel.
+\end{tcolorbox}
+
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  $G$ est un sous-groupe de $(\mathbb{R},+)$, on lui applique la dichotomie.
+
+  \smallskip\noindent
+  \textit{Si $\alpha = p/q \in \mathbb{Q}$} (fraction irréductible, $q \geq 1$),
+  alors $m + n\alpha = (mq + np)/q \in \tfrac{1}{q}\mathbb{Z}$, et par Bézout
+  $\tfrac1q\mathbb{Z} \subseteq G$ ; donc $G = \tfrac1q\mathbb{Z}$ est monogène,
+  \emph{non} dense.
+
+  \smallskip\noindent
+  \textit{Si $\alpha \notin \mathbb{Q}$}, supposons $G$ monogène, $G = a\mathbb{Z}$
+  avec $a > 0$. Comme $1 \in G$ et $\alpha \in G$, il existe $k, \ell \in \mathbb{Z}$
+  avec $1 = ka$ et $\alpha = \ell a$. Alors $a = 1/k$ puis $\alpha = \ell/k \in \mathbb{Q}$,
+  contradiction. Le cas monogène est donc exclu : $G$ est dense.
+
+  \smallskip\noindent
+  Enfin $\{n\alpha\} = n\alpha - \lfloor n\alpha\rfloor$ parcourt $G \cap [0,1[$ ;
+  la densité de $G$ dans $\mathbb{R}$ équivaut à celle de $(\{n\alpha\})$ dans $[0,1]$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Pas régulier.}\enspace%
+  $G = \frac{1}{2}\mathbb{Z} = \{\ldots,-1,-\tfrac12,0,\tfrac12,1,\ldots\}$ est
+  monogène de générateur $a = \tfrac12$.
+
+  \smallskip\noindent
+  \textbf{2. $\mathbb{Q}$ est dense.}\enspace%
+  $\mathbb{Q}$ est un sous-groupe de $(\mathbb{R},+)$ contenant des éléments
+  positifs arbitrairement petits ($\tfrac1n \to 0$) : $a = 0$, il est dense
+  --- ce que l'on savait déjà, ici relu par la dichotomie.
+
+  \smallskip\noindent
+  \textbf{3. Densité de $(\cos n)_{n\in\mathbb{N}}$.}\enspace%
+  \index{densité!de $(\cos n)$}
+  Comme $\pi \notin \mathbb{Q}$, $2\pi$ est irrationnel, donc
+  $\mathbb{Z} + 2\pi\mathbb{Z}$ est dense dans $\mathbb{R}$ : les entiers $n$ pris
+  modulo $2\pi$ sont denses dans $[0,2\pi[$. Par continuité du cosinus,
+  $\{\cos n : n \in \mathbb{N}\}$ est dense dans $[-1,1]$.
+\end{mdframed}
+
+\noindent{\bfseries\color{counterred} Contre-exemples et points de vigilance.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$\mathbb{N}$ n'est pas un sous-groupe.}\enspace%
+  $\mathbb{N}$ est discret mais n'est \emph{pas} de la forme $a\mathbb{Z}$ : la
+  dichotomie ne s'y applique pas, faute d'opposés. L'hypothèse « sous-groupe »
+  est essentielle.
+
+  \smallskip\noindent
+  \textbf{Dense $\neq$ égal à $\mathbb{R}$.}\enspace%
+  $\mathbb{Q}$ et $\mathbb{Z}+\sqrt2\,\mathbb{Z}$ sont denses dans $\mathbb{R}$
+  sans être $\mathbb{R}$ tout entier : la densité est une propriété topologique,
+  pas une égalité ensembliste.
+
+  \smallskip\noindent
+  \textbf{Pas d'intermédiaire.}\enspace%
+  Il n'existe pas de sous-groupe de $\mathbb{R}$ qui soit à la fois non monogène
+  et non dense : un sous-groupe additif de $\mathbb{R}$ est soit fermé (et alors
+  $\{0\}$, $a\mathbb{Z}$ ou $\mathbb{R}$), soit dense.
+\end{mdframed}
+
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que tout sous-groupe \emph{fermé} de $(\mathbb{R},+)$ est
+          $\{0\}$, $a\mathbb{Z}$ ($a>0$), ou $\mathbb{R}$.
+    \item Soit $\alpha$ irrationnel. Montrer que $\{m + n\alpha : m,n \in \mathbb{Z}\}$
+          rencontre tout intervalle ouvert non vide.
+    \item En déduire que $(\sin n)_{n \in \mathbb{N}}$ est dense dans $[-1,1]$.
+    \item Montrer que l'adhérence d'un sous-groupe de $(\mathbb{R},+)$ est encore
+          un sous-groupe, puis retrouver la dichotomie à partir de ce fait.
+    \item Soient $a, b > 0$. Montrer que $a\mathbb{Z} + b\mathbb{Z}$ est monogène
+          si et seulement si $a/b \in \mathbb{Q}$, et préciser alors son générateur
+          ($\pgcd$ généralisé).
+  \end{enumerate}
+\end{mdframed}

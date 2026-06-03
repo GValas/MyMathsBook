@@ -25,7 +25,7 @@
   \]
 \end{tcolorbox}
 
-\rubriq{Signification intuitive}
+\begin{significationintuitive}
 Tout endomorphisme satisfait une relation polynomiale de degré $n$ à
 coefficients dans le corps de base — son propre polynôme caractéristique.
 Autrement dit, $f^n$ se réécrit comme combinaison linéaire de
@@ -33,6 +33,7 @@ $\mathrm{Id}, f, \ldots, f^{n-1}$ : l'algèbre $\mathbb{R}[f]$ est
 de dimension finie sur $\mathbb{R}$, au plus $n$. Ce théorème est la
 pierre angulaire de la théorie des \emph{polynômes minimaux}\index{polynôme minimal}
 et de la décomposition de Dunford.
+\end{significationintuitive}
 
 \decsep{}
 
@@ -41,13 +42,14 @@ et de la décomposition de Dunford.
 %=============================================================
 \secnum{navyblue}{2}{Démonstration}
 
-\rubriq{Idée de la preuve}
+\begin{ideepreuve}
 L'idée est d'utiliser la comatrice (matrice adjointe) : $\chi_f(X) = \det(X\,\mathrm{Id}-f)$,
 et $(X\,\mathrm{Id}-f)\cdot{\mathrm{com}(X\,\mathrm{Id}-f)}^T = \chi_f(X)\cdot\mathrm{Id}$.
 En substituant $X = f$ dans cette identité matricielle de façon algébrique
 (en identifiant les coefficients en puissances de $X$), on obtient $\chi_f(f) = 0$.
 La subtilité est que la substitution $X \leftarrow f$ doit se faire
 \emph{avant} d'évaluer, et non après.
+\end{ideepreuve}
 
 \vspace{10pt}
 \noindent{\bfseries\color{navyblue} Preuve.}

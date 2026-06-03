@@ -13,6 +13,8 @@
   },
   "remoteUser": "vscode",
   "updateRemoteUserUID": true,
+  "runArgs": ["--init"],
+  "containerEnv": { "TZ": "Europe/Paris" },
   "customizations": {
     "vscode": {
       "extensions": [

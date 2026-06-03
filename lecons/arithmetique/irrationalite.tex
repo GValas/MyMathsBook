@@ -1,0 +1,194 @@
+%==============================================================
+%  lecons/arithmetique/irrationalite.tex — Irrationalité de e et de pi
+%==============================================================
+
+\lecontitle{Irrationalité de \texorpdfstring{$e$ et de $\pi$}{e et de pi}}{Arithmétique \& analyse — Deux preuves classiques}
+
+%=============================================================
+%  § 1 — IRRATIONALITÉ DE e
+%=============================================================
+\secnum{navyblue}{1}{Irrationalité de \texorpdfstring{$e$}{e}}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace%
+  \index{irrationalité!de $e$}\index{nombre irrationnel}
+  Le nombre $e = \displaystyle\sum_{k=0}^{\infty} \frac{1}{k!}$ est irrationnel.
+\end{tcolorbox}
+
+\begin{significationintuitive}
+La série $\sum 1/k!$ converge si vite que sa « queue » au-delà du rang $q$ est
+minuscule : multipliée par $q!$, elle reste strictement comprise entre $0$ et
+$1$. Si $e$ était de dénominateur $q$, ce même produit serait pourtant entier —
+impossible. La rapidité de convergence est l'ingrédient décisif.
+\end{significationintuitive}
+
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  Supposons par l'absurde $e = p/q$ avec $p \in \mathbb{Z}$ et $q \in \mathbb{N}^*$.
+  Posons
+  \[
+    N = q!\left(e - \sum_{k=0}^{q} \frac{1}{k!}\right)
+      = \sum_{k=q+1}^{\infty} \frac{q!}{k!} .
+  \]
+
+  \smallskip\noindent
+  \textit{$N$ est un entier.}\enspace
+  D'une part $q!\,e = q!\,\dfrac{p}{q} = (q-1)!\,p \in \mathbb{Z}$. D'autre part
+  $q!\displaystyle\sum_{k=0}^{q}\frac1{k!} = \sum_{k=0}^{q}\frac{q!}{k!} \in \mathbb{Z}$,
+  car $\frac{q!}{k!}$ est entier pour $k \leq q$. Donc $N \in \mathbb{Z}$.
+
+  \smallskip\noindent
+  \textit{Mais $0 < N < 1$.}\enspace
+  Tous les termes étant strictement positifs, $N > \dfrac{q!}{(q+1)!} = \dfrac{1}{q+1} > 0$.
+  De plus, pour $k \geq q+1$,
+  \[
+    \frac{q!}{k!} = \frac{1}{(q+1)(q+2)\cdots k} \leq \frac{1}{(q+1)^{\,k-q}},
+  \]
+  d'où, par sommation géométrique,
+  \[
+    N \leq \sum_{j=1}^{\infty} \frac{1}{(q+1)^{j}}
+      = \frac{1}{q} \leq 1, \qquad\text{et même } N < 1 .
+  \]
+
+  \smallskip\noindent
+  Ainsi $N$ est un entier strictement compris entre $0$ et $1$ : contradiction.
+  Donc $e \notin \mathbb{Q}$. \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — IRRATIONALITÉ DE pi (NIVEN)
+%=============================================================
+\secnum{navyblue}{2}{Irrationalité de \texorpdfstring{$\pi$}{pi} (preuve de Niven)}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème.}\enspace%
+  \index{irrationalité!de $\pi$}\index{Niven (preuve de)}
+  Le nombre $\pi$ est irrationnel.
+\end{tcolorbox}
+
+\begin{significationintuitive}
+On fabrique une intégrale $I_n = \int_0^\pi f_n(x)\sin x\,\mathrm{d}x$ qui, si
+$\pi$ était rationnel, serait un \emph{entier} pour tout $n$ (grâce à des
+intégrations par parties répétées). Mais on majore aussi $I_n$ par une quantité
+qui tend vers $0$ : pour $n$ grand, $0 < I_n < 1$, ce qui est impossible pour un
+entier. Tout repose sur un polynôme astucieux dont les dérivées prennent des
+valeurs entières en $0$ et en $\pi$.
+\end{significationintuitive}
+
+\begin{ideepreuve}
+On suppose $\pi = a/b$ et l'on introduit $f_n(x) = \dfrac{x^n (a-bx)^n}{n!}$.
+Sa symétrie $f_n(\pi - x) = f_n(x)$ et le fait que $n!\,f_n \in \mathbb{Z}[X]$
+assurent que toutes ses dérivées sont entières en $0$ et en $\pi$. La fonction
+auxiliaire $F_n = f_n - f_n'' + f_n^{(4)} - \cdots$ vérifie $F_n + F_n'' = f_n$,
+ce qui rend l'intégrale calculable exactement.
+\end{ideepreuve}
+
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  Supposons par l'absurde $\pi = a/b$ avec $a, b \in \mathbb{N}^*$. Pour
+  $n \in \mathbb{N}$, posons
+  \[
+    f_n(x) = \frac{x^n (a - bx)^n}{n!}, \qquad
+    F_n = f_n - f_n^{(2)} + f_n^{(4)} - \cdots + (-1)^n f_n^{(2n)} .
+  \]
+
+  \smallskip\noindent
+  \textit{Étape 1 — les dérivées de $f_n$ sont entières en $0$ et en $\pi$.}\enspace
+  En développant, $n!\,f_n(x) = \sum_{k=n}^{2n} c_k\,x^k$ avec $c_k \in \mathbb{Z}$.
+  Pour $j < n$ ou $j > 2n$, $f_n^{(j)}(0) = 0$ ; pour $n \leq j \leq 2n$,
+  \[
+    f_n^{(j)}(0) = \frac{j!}{n!}\,c_j \in \mathbb{Z}
+  \]
+  car $\frac{j!}{n!} \in \mathbb{Z}$ dès que $j \geq n$. Enfin, comme
+  $f_n\!\left(\tfrac{a}{b} - x\right) = f_n(x)$ (vérification directe), on a
+  $f_n^{(j)}(\pi) = (-1)^j f_n^{(j)}(0) \in \mathbb{Z}$. Donc $F_n(0)$ et
+  $F_n(\pi)$ sont entiers.
+
+  \smallskip\noindent
+  \textit{Étape 2 — calcul exact de l'intégrale.}\enspace
+  Comme $\deg f_n = 2n$, on a $f_n^{(2n+2)} = 0$, donc $F_n + F_n'' = f_n$. Alors
+  \[
+    \frac{\mathrm{d}}{\mathrm{d}x}\bigl(F_n'(x)\sin x - F_n(x)\cos x\bigr)
+    = \bigl(F_n''(x) + F_n(x)\bigr)\sin x = f_n(x)\sin x .
+  \]
+  En intégrant sur $[0,\pi]$ et en utilisant $\sin 0 = \sin \pi = 0$,
+  $\cos 0 = 1$, $\cos \pi = -1$ :
+  \[
+    I_n := \int_0^\pi f_n(x)\sin x\,\mathrm{d}x = F_n(\pi) + F_n(0) \in \mathbb{Z}.
+  \]
+
+  \smallskip\noindent
+  \textit{Étape 3 — encadrement.}\enspace
+  Sur $]0,\pi[$, on a $0 < x < \pi$ et $0 < a - bx < a$, donc $\sin x > 0$ et
+  \[
+    0 < f_n(x)\sin x < \frac{\pi^n a^n}{n!} = \frac{(\pi a)^n}{n!} .
+  \]
+  En intégrant, $0 < I_n < \dfrac{\pi\,(\pi a)^n}{n!}$. Or
+  $\dfrac{(\pi a)^n}{n!} \to 0$ quand $n \to \infty$ : il existe donc $n$ tel que
+  $0 < I_n < 1$.
+
+  \smallskip\noindent
+  Pour un tel $n$, $I_n$ est un entier strictement compris entre $0$ et $1$ :
+  contradiction. Donc $\pi \notin \mathbb{Q}$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Compléments et exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. La même mécanique.}\enspace%
+  Les deux preuves suivent le même schéma : exhiber une quantité \emph{à la fois}
+  entière (sous l'hypothèse de rationalité) et strictement comprise entre $0$
+  et $1$. C'est le principe « \emph{no integer in $(0,1)$} ».
+
+  \smallskip\noindent
+  \textbf{2. Irrationalité de $e^r$.}\enspace%
+  La méthode du § 1 s'adapte et montre que $e^r$ est irrationnel pour tout
+  $r \in \mathbb{Q}^*$ ; en particulier $\sqrt{e}$ est irrationnel.
+
+  \smallskip\noindent
+  \textbf{3. Plus fort : la transcendance.}\enspace%
+  \index{nombre transcendant}
+  $e$ (Hermite, 1873) et $\pi$ (Lindemann, 1882) sont en fait
+  \emph{transcendants} : ils ne sont racine d'aucun polynôme non nul à
+  coefficients rationnels. L'irrationalité n'en est que le premier étage.
+\end{mdframed}
+
+\noindent{\bfseries\color{counterred} Points de vigilance.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Irrationnel n'est pas transcendant.}\enspace%
+  $\sqrt2$ est irrationnel mais \emph{algébrique} (racine de $X^2 - 2$).
+  Irrationalité et transcendance sont deux niveaux distincts.
+
+  \smallskip\noindent
+  \textbf{Convergence rapide indispensable (cas $e$).}\enspace%
+  L'argument du § 1 exploite la décroissance factorielle de $1/k!$. Il échoue
+  pour une série à convergence lente : la « queue » multipliée par $q!$ ne
+  resterait pas $< 1$.
+
+  \smallskip\noindent
+  \textbf{Statut ouvert.}\enspace%
+  On ignore encore si $e + \pi$ ou $e\pi$ sont irrationnels (l'un des deux au
+  moins l'est, car $e$ et $\pi$ ne peuvent être tous deux racines de
+  $X^2 - (e+\pi)X + e\pi$ à coefficients rationnels).
+\end{mdframed}
+
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Reprendre la preuve du § 1 pour montrer que $\sum_{k=0}^{\infty} \frac{1}{k!^2}$
+          est irrationnel.
+    \item Montrer que si $r \in \mathbb{Q}^*$, alors $e^r \notin \mathbb{Q}$
+          (on pourra raisonner sur $e^{a/b}$ et adapter Niven).
+    \item Dans la preuve de Niven, vérifier en détail l'identité
+          $f_n(\pi - x) = f_n(x)$ et en déduire $f_n^{(j)}(\pi) = (-1)^j f_n^{(j)}(0)$.
+    \item Montrer que $\cos(1)$ est irrationnel.
+    \item Montrer que $\pi^2$ est irrationnel (variante de Niven avec
+          $\int_0^1 f_n(x)\cos(\pi x)\,\mathrm{d}x$).
+  \end{enumerate}
+\end{mdframed}

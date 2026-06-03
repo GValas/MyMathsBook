@@ -22,7 +22,9 @@
 \input{frontmatter/preface}
 \input{backmatter/glossaire}   % Définitions des entrées de glossaire
 
-{\setstretch{1.0}\tableofcontents}
+% \hfuzz : les points de conduite des lignes de TOC dépassent de < 1 mm
+% (débordement invisible) — on évite de le signaler.
+{\setstretch{1.0}\hfuzz=4pt\tableofcontents}
 \clearpage
 
 %=============================================================
@@ -123,6 +125,9 @@
 \input{lecons/algebre/groupes}
 \clearpage
 
+\input{lecons/algebre/sous_groupes_additifs}
+\clearpage
+
 \input{lecons/algebre/anneaux}
 \clearpage
 
@@ -139,6 +144,9 @@
 \input{lecons/algebre/nombres_complexes}
 \clearpage
 
+\input{lecons/algebre/polynomes_image}
+\clearpage
+
 %=============================================================
 %  PARTIE III — ARITHMÉTIQUE
 %=============================================================
@@ -147,6 +155,11 @@
 \chapter{Nombres premiers}
 
 \input{lecons/arithmetique/decomposition_premiers}
+\clearpage
+
+\chapter{Nombres irrationnels}
+
+\input{lecons/arithmetique/irrationalite}
 \clearpage
 
 %=============================================================
@@ -234,7 +247,11 @@
 %=== GLOSSAIRE ===============================================
 \clearpage
 \glsaddall
-\printglossary[type=main, title=Glossaire, toctitle=Glossaire]
+% Descriptions du glossaire en mesure étroite : quelques sous-expressions
+% mathématiques insécables débordent de < 1 mm. On assouplit l'espacement
+% (\sloppy) et on ignore ces micro-débordements invisibles (\hfuzz), sans
+% toucher au reste du document.
+{\sloppy\hfuzz=4pt\printglossary[type=main, title=Glossaire, toctitle=Glossaire]\par}
 
 %=== BIBLIOGRAPHIE ===========================================
 \clearpage

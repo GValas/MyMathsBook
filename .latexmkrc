@@ -12,6 +12,11 @@
 #   run_makeglossaries  : sous-routine appelée par latexmk pour lancer makeglossaries
 #                         en ciblant le bon répertoire de sortie (build/)
 
+# Fuseau horaire de compilation : le conteneur tourne en UTC, on force l'heure
+# de Paris pour que la date/heure de la page de garde (\today, \currenttime)
+# soit correcte (gère automatiquement l'heure d'été CET/CEST).
+$ENV{'TZ'} = 'Europe/Paris';
+
 $pdf_mode = 1;
 $pdflatex = 'pdflatex -synctex=1 -interaction=nonstopmode -file-line-error %O %S';
 $out_dir = 'build';
