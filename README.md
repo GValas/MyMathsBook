@@ -5,8 +5,10 @@ Projet LaTeX structuré pour un recueil de leçons de mathématiques de classes 
 ## Structure du projet
 
 ```
-mathsup/
+MyMathsBook/
 ├── main.tex                  ← Point d'entrée, compiler celui-ci
+├── .latexmkrc                ← Configuration de la recette latexmk
+├── build/                    ← Sortie de compilation (PDF, .aux, .log…)
 ├── .vscode/
 │   └── settings.json         ← Configuration LaTeX Workshop (VS Code)
 ├── style/
@@ -14,37 +16,41 @@ mathsup/
 ├── frontmatter/
 │   ├── pagedeGarde.tex       ← Page de garde
 │   └── preface.tex           ← Avant-propos
-├── lecons/
-│   ├── analyse/
-│   │   ├── bolzano.tex       ← Bolzano-Weierstrass
-│   │   ├── tvi.tex           ← Théorème des valeurs intermédiaires
-│   │   └── wallis.tex        ← Intégrales de Wallis
-│   └── algebre/
-│       ├── cayley.tex        ← Cayley-Hamilton
-│       └── spectral.tex      ← Théorème spectral
+├── lecons/                   ← 42 leçons réparties en 6 parties
+│   ├── analyse/              ← Analyse réelle (suites, continuité, intégration…)
+│   ├── algebre/              ← Structures algébriques & algèbre linéaire
+│   ├── ensembles/            ← Construction des nombres (ℕ, ℤ, ℚ, ℝ, ℂ, ℍ)
+│   ├── arithmetique/         ← Nombres premiers, irrationalité
+│   ├── combinatoire/         ← Partitions d'ensembles (Bell)
+│   └── topologie/            ← Espaces métriques complets (Baire)
 └── backmatter/
     ├── glossaire.tex         ← Définitions du glossaire
     └── references.bib        ← Bibliographie BibTeX
 ```
 
+Le livre est organisé en six parties : **Analyse réelle**, **Structures
+algébriques**, **Arithmétique**, **Combinatoire**, **Topologie** et
+**Algèbre linéaire**.
+
 ## Compilation sous VS Code
 
 1. Installer l'extension **LaTeX Workshop** (James Yu)
-2. Ouvrir le dossier `mathsup/` dans VS Code
+2. Ouvrir le dossier `MyMathsBook/` dans VS Code
 3. Ouvrir `main.tex` et sauvegarder : la compilation démarre automatiquement
-4. La recette complète est : `pdflatex → makeindex → makeglossaries → bibtex → pdflatex → pdflatex`
+4. La recette `latexmk` enchaîne automatiquement `pdflatex`, `makeindex`,
+   `makeglossaries` et `bibtex` autant de fois que nécessaire.
 
 ## Compilation en ligne de commande
 
+La compilation se fait **toujours** via `latexmk` (jamais `pdflatex`
+directement) ; tous les fichiers intermédiaires sont écrits dans `build/` :
+
 ```bash
-cd mathsup
-pdflatex main
-makeindex main
-makeglossaries main
-bibtex main
-pdflatex main
-pdflatex main
+latexmk -pdf -interaction=nonstopmode -outdir=build -f main.tex
 ```
+
+Le PDF final est produit dans `build/main.pdf` (et recopié en `main.pdf`
+à la racine).
 
 ## Ajouter une nouvelle leçon
 
@@ -65,10 +71,12 @@ pdflatex main
 
 ## Palette de couleurs
 
-| Nom          | Hex       | Usage                    |
-|--------------|-----------|--------------------------|
-| `navyblue`   | `#1A2E4A` | Titres, cadres, preuves  |
-| `goldaccent` | `#C9A84C` | Séparateurs, exercices   |
-| `exgreen`    | `#2E6B3E` | Exemples                 |
-| `counterred` | `#8B2020` | Contre-exemples          |
-| `theorembg`  | `#EDF2F9` | Fond boîte théorème      |
+| Nom          | Valeur      | Usage                                   |
+|--------------|-------------|-----------------------------------------|
+| `thmblue`    | `#2E5FA0`   | Cadres et titres de théorèmes           |
+| `proofgreen` | `#2E6B3E`   | Preuves & exemples                      |
+| `exred`      | `#8B2020`   | Exercices & contre-exemples             |
+| `ideegray`   | `gray 0.32` | « Idée de la preuve » (italique gris)   |
+| `goldaccent` | `gray 0.45` | Séparateurs décoratifs                  |
+| `rulegray`   | `gray 0.55` | Filets et règles                        |
+| `theorembg`  | `#FFFFFF`   | Fond des boîtes théorème                |
