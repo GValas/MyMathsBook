@@ -30,13 +30,14 @@
   $-\infty$ (si décroissante).
 \end{tcolorbox}
 
-\rubriq{Signification intuitive}
+\begin{significationintuitive}
 Une suite croissante avance toujours vers la droite sur la droite réelle.
 Si elle est en plus majorée, elle ne peut pas partir à l'infini : elle doit
 \emph{s'accumuler} quelque part. La borne supérieure de l'ensemble des termes,
 garantie par la \emph{complétude}\index{complétude} de $\mathbb{R}$, est
 précisément la limite. Ce théorème est l'un des équivalents de la propriété
 de la borne supérieure : il caractérise à lui seul la complétude de $\mathbb{R}$.
+\end{significationintuitive}
 
 \decsep{}
 
@@ -45,12 +46,13 @@ de la borne supérieure : il caractérise à lui seul la complétude de $\mathbb
 %=============================================================
 \secnum{navyblue}{2}{Démonstration}
 
-\rubriq{Idée de la preuve}
+\begin{ideepreuve}
 On pose $\ell = \sup_n u_n$, qui existe par complétude de $\mathbb{R}$.
 Par définition du supremum, $\ell$ est la plus petite borne supérieure : pour
 tout $\varepsilon > 0$, il existe un rang $N$ à partir duquel les termes
 dépassent $\ell - \varepsilon$. La monotonie garantit qu'ils restent au
 voisinage de $\ell$ pour tout $n \geq N$.
+\end{ideepreuve}
 
 \vspace{10pt}
 \noindent{\bfseries\color{navyblue} Preuve (cas croissant).}

@@ -29,13 +29,14 @@
   avec $\lambda_i \in \mathbb{R}$.
 \end{tcolorbox}
 
-\rubriq{Signification intuitive}
+\begin{significationintuitive}
 Un endomorphisme autoadjoint est le pendant abstrait d'une matrice symétrique.
 Le théorème spectral affirme que de tels opérateurs sont « géométriquement
 simples » : l'espace se décompose en directions propres orthogonales, et
 $f$ agit sur chacune par une simple homothétie. C'est le fondement des
 méthodes spectrales en physique, probabilités (matrices de covariance)
 et traitement du signal (ACP).
+\end{significationintuitive}
 
 \decsep{}
 
@@ -44,12 +45,13 @@ et traitement du signal (ACP).
 %=============================================================
 \secnum{navyblue}{2}{Démonstration}
 
-\rubriq{Idée de la preuve}
+\begin{ideepreuve}
 On montre d'abord que toutes les valeurs propres sont réelles, puis que
 les sous-espaces propres associés à des valeurs propres distinctes sont
 orthogonaux. On conclut par récurrence sur la dimension : $f$ admet une
 valeur propre réelle (son polynôme caractéristique est scindé sur $\mathbb{R}$
 par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
+\end{ideepreuve}
 
 \vspace{10pt}
 \noindent{\bfseries\color{navyblue} Preuve.}

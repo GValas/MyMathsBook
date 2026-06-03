@@ -1,223 +1,225 @@
 %==============================================================
 %  style/mathsup.sty — Feuille de style commune
-%  Palette bleu & or · Barres latérales · Boîte théorème
+%  Thème « Classique » inspiré de theme-book.pdf :
+%  monochrome · serif Latin Modern · sobre · sans encadrés colorés
+%  (Mêmes macros que la version couleur : les leçons sont inchangées.)
 %==============================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{style/mathsup}[2024/01/01 Style Maths Sup/Spe]
+\ProvidesPackage{style/mathsup}[2026/06/02 Style Maths Sup/Spe — Classique]
 
 %=== PACKAGES FONDAMENTAUX ===================================
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
-\usepackage{mathpazo}
+\usepackage{lmodern}                 % Latin Modern : aspect Computer Modern classique
+% Latin Modern n'a pas de petites capitales grasses (bx/sc) ni italiques (m/scit) :
+% on déclare des substitutions vers les variantes existantes pour éviter les
+% « Font shape undefined » (PC penchées pour l'italique, PC maigres pour le gras).
+% On force d'abord le chargement de t1lmr.fd (sinon la famille T1/lmr est inconnue).
+{\usefont{T1}{lmr}{m}{n}}
+\DeclareFontShape{T1}{lmr}{m}{scit}{<->ssub*lmr/m/scsl}{}
+\DeclareFontShape{T1}{lmr}{bx}{scit}{<->ssub*lmr/m/scsl}{}
+\DeclareFontShape{T1}{lmr}{b}{scit}{<->ssub*lmr/m/scsl}{}
+\DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*lmr/m/sc}{}
+\DeclareFontShape{T1}{lmr}{b}{sc}{<->ssub*lmr/m/sc}{}
 \usepackage{microtype}
 \usepackage{setspace}
-\setstretch{1.3}
+\setstretch{1.1}
 \usepackage{amsmath, amssymb, amsthm}
+\allowdisplaybreaks  % autorise la coupure des alignements multi-lignes (mieux dans les encadrés)
 \DeclareMathOperator{\pgcd}{pgcd}
 \DeclareMathOperator{\ppcm}{ppcm}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
-\usepackage[most]{tcolorbox}
-\usepackage[framemethod=tikz]{mdframed}
+\usepackage[most]{tcolorbox}  % gère aussi les barres latérales (breakable, robuste sur sauts de page)
 \usepackage{datetime}
 \usepackage{enumitem}
 \usepackage{titletoc}
-\usepackage{hyperref}
+% imakeidx AVANT hyperref : indispensable pour que les numéros de page de
+% l'index soient encapsulés par \hyperpage (donc cliquables).
 \usepackage{imakeidx}
-\usepackage[acronym, toc]{glossaries}
+\usepackage{hyperref}
+% nonumberlist : glossaire = lexique de définitions, sans numéros de page
+% (les leçons n'utilisent pas \gls, les numéros n'auraient aucun sens).
+\usepackage[acronym, toc, nonumberlist]{glossaries}
 
 %=== MISE EN PAGE ============================================
-\usepackage[top=3cm, bottom=3.2cm, left=2.8cm, right=2.8cm]{geometry}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
 \raggedbottom
 \emergencystretch=2em
 
-%=== TABLE DES MATIÈRES ======================================
+%=== PALETTE SÉMANTIQUE (thème classique rehaussé) ===========
+% Couleurs par catégorie : théorèmes (bleu), preuves & exemples (vert),
+% exercices & contre-exemples (rouge). Sobres, dérivées du thème d'origine.
+\definecolor{thmblue}{HTML}{2E5FA0}    % théorèmes (bleu medium, plus clair)
+\definecolor{proofgreen}{HTML}{2E6B3E} % preuves & exemples
+\definecolor{exred}{HTML}{8B2020}      % exercices & contre-exemples
+\definecolor{goldaccent}{gray}{0.45}
+\definecolor{theorembg}{HTML}{FFFFFF}
+\definecolor{rulegray}{gray}{0.55}
+\definecolor{ideegray}{gray}{0.32}     % « Idée de la preuve » (italique gris foncé)
+% Le TEXTE (labels compris) reste entièrement noir : seuls les cadres et les
+% barres latérales portent la couleur. Les noms employés dans les leçons sont
+% donc redirigés vers le noir.
+\colorlet{navyblue}{black}        % labels « Preuve. » / « Exemples. » → noir
+\colorlet{counterred}{black}      % labels « Contre-exemples. »        → noir
+\colorlet{exgreen}{black}
+
+%=== HYPERREF (liens noirs, discrets) ========================
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black,
+}
+
+%=== TABLE DES MATIÈRES (classique, monochrome) ==============
 \titlecontents{part}[0em]
   {\addvspace{14pt}%
-   \noindent\rlap{\textcolor{goldaccent!60}{\rule{\linewidth}{0.4pt}}}\\[-2pt]%
-   \normalsize\bfseries\color{navyblue}}
+   \noindent\rlap{\textcolor{rulegray}{\rule{\linewidth}{0.4pt}}}\\[-2pt]%
+   \large\bfseries\scshape}
   {Partie \thecontentslabel\quad}{}
   {\hfill\contentspage}
-  [\noindent\rlap{\textcolor{goldaccent!60}{\rule{\linewidth}{0.4pt}}}\addvspace{4pt}]
+  [\noindent\rlap{\textcolor{rulegray}{\rule{\linewidth}{0.4pt}}}\addvspace{4pt}]
 
 \titlecontents{chapter}[2.2em]
-  {\addvspace{3pt}\bfseries\color{navyblue!80}}
+  {\addvspace{3pt}\bfseries}
   {\contentslabel{1.8em}}{}
   {\titlerule*[5pt]{.}\contentspage}
   [\addvspace{1pt}]
 
 \titlecontents{section}[4.5em]
-  {\small\color{black!70}}
+  {\small}
   {\contentslabel{2.2em}}
   {\hspace{0pt}}
   {\titlerule*[5pt]{.}\contentspage}
   []
 
 %=== LISTES ==================================================
-\setlist[itemize]{itemsep=5pt, topsep=7pt, leftmargin=1.6em}
-\setlist[enumerate]{itemsep=6pt, topsep=9pt, leftmargin=1.8em,
-                    label=\textcolor{navyblue}{\arabic*.}}
+\setlist[itemize]{itemsep=4pt, topsep=6pt, leftmargin=1.6em}
+\setlist[enumerate]{itemsep=5pt, topsep=8pt, leftmargin=1.8em,
+                    label=\arabic*.}
 
-%=== PALETTE =================================================
-\definecolor{navyblue}{HTML}{1A2E4A}
-\definecolor{goldaccent}{HTML}{C9A84C}
-\definecolor{exgreen}{HTML}{2E6B3E}
-\definecolor{counterred}{HTML}{8B2020}
-\definecolor{theorembg}{HTML}{EDF2F9}
-
-%=== HYPERREF ================================================
-\hypersetup{
-  colorlinks=true,
-  linkcolor=navyblue,
-  citecolor=navyblue,
-  urlcolor=navyblue,
-}
-
-%=== BOÎTE THÉORÈME ==========================================
+%=== BOÎTE THÉORÈME (cadre bleu fin, sans fond) ==============
 \tcbset{
   thmbox/.style={
     enhanced,
-    colback=theorembg,
-    colframe=navyblue,
-    boxrule=1pt,
-    arc=3pt,
-    left=10pt, right=10pt, top=7pt, bottom=8pt,
-    before skip=10pt, after skip=12pt,
+    colback=white,
+    colframe=thmblue,
+    boxrule=1.4pt,
+    arc=0pt, outer arc=0pt,
+    grow to left by=10pt, grow to right by=10pt,  % un peu plus large que le texte
+    left=12pt, right=12pt, top=8pt, bottom=9pt,
+    before skip=12pt, after skip=14pt,
     before upper={\setlist[itemize]{itemsep=1pt,topsep=3pt}\setlist[enumerate]{itemsep=1pt,topsep=3pt}},
   }
 }
 
-%=== BARRES LATÉRALES (mdframed) =============================
-
-\mdfdefinestyle{proofbar}{
-  topline=false, bottomline=false, rightline=false,
-  linecolor=navyblue, linewidth=3pt,
-  innerleftmargin=14pt, innerrightmargin=0pt,
-  innertopmargin=2pt, innerbottommargin=6pt,
-  backgroundcolor=white,
-  skipabove=4pt, skipbelow=10pt,
+%=== BARRES LATÉRALES (tcolorbox) — filet gauche discret =====
+% Démonstrations, exemples, contre-exemples, exercices : simple filet
+% gauche, sans fond. tcolorbox « breakable » coupe proprement sur les
+% sauts de page (contrairement à mdframed sur les démos > 1 page).
+% Les leçons écrivent \begin{mdframed}[style=proofbar] : on conserve
+% cette syntaxe via une clé « style » et un environnement mdframed aliasé.
+\tcbset{
+  barbase/.style={breakable, enhanced, colback=white, frame hidden,
+    boxrule=0pt, sharp corners, boxsep=0pt,
+    left=14pt, right=0pt, top=2pt, bottom=6pt,
+    before skip=4pt, after skip=10pt},
+  proofbar/.style={barbase},                          % preuves → indenté, sans trait
+  exbar/.style={barbase, after skip=8pt},             % exemples → indenté, sans trait
+  cexbar/.style={barbase, after skip=8pt},            % contre-exemples → indenté, sans trait
+  exobar/.style={barbase, bottom=8pt, after skip=6pt}, % exercices → indenté, sans trait
+  style/.style={#1},      % permet \begin{mdframed}[style=proofbar]
+  nobreak/.style={unbreakable},  % compat. clé mdframed nobreak=true
 }
-
-\mdfdefinestyle{exbar}{
-  topline=false, bottomline=false, rightline=false,
-  linecolor=exgreen, linewidth=3pt,
-  innerleftmargin=14pt, innerrightmargin=0pt,
-  innertopmargin=2pt, innerbottommargin=6pt,
-  backgroundcolor=white,
-  skipabove=4pt, skipbelow=8pt,
-}
-
-\mdfdefinestyle{cexbar}{
-  topline=false, bottomline=false, rightline=false,
-  linecolor=counterred, linewidth=3pt,
-  innerleftmargin=14pt, innerrightmargin=0pt,
-  innertopmargin=2pt, innerbottommargin=6pt,
-  backgroundcolor=white,
-  skipabove=4pt, skipbelow=8pt,
-}
-
-\mdfdefinestyle{exobar}{
-  topline=false, bottomline=false, rightline=false,
-  linecolor=goldaccent, linewidth=3pt,
-  innerleftmargin=14pt, innerrightmargin=0pt,
-  innertopmargin=2pt, innerbottommargin=8pt,
-  backgroundcolor=white,
-  skipabove=4pt, skipbelow=6pt,
-}
+\newenvironment{mdframed}[1][]{\tcolorbox[#1]}{\endtcolorbox}
 
 %=== COMMANDES MATHÉMATIQUES =================================
 \newcommand{\dd}{\mathop{}\!\mathrm{d}}
 
 %=== COMMANDES STRUCTURANTES =================================
 
-% Numéro de section avec cercle coloré
+% Titre de sous-partie : titre gras serif, sans numéro ni couleur
+% (#1 = ancienne couleur, ignorée ; #2 = numéro, ignoré ; #3 = titre)
 \newcommand{\secnum}[3]{%
-  \vspace{22pt}
-  \noindent
-  \begin{tikzpicture}[baseline=(n.base)]
-    \node[
-      circle, fill=#1, text=white,
-      font=\small\bfseries,
-      inner sep=4pt,
-      minimum size=20pt
-    ] (n) {#2};
-  \end{tikzpicture}
-  \hspace{8pt}%
-  {\large\bfseries\color{navyblue} #3}%
-  \par\vspace{4pt}
-  \noindent\textcolor{#1!40}{\rule{\textwidth}{0.5pt}}
-  \vspace{8pt}
+  \vspace{20pt}
+  \noindent{\large\bfseries #3}%
+  \par\vspace{8pt}
 }
 
-% Sous-rubrique en gras bleu
+% Sous-rubrique : intitulé gras en amorce de paragraphe
 \newcommand{\rubriq}[1]{%
-  \vspace{10pt}
-  \noindent{\bfseries\color{navyblue} #1.}\enspace
+  \vspace{8pt}
+  \noindent{\bfseries #1.}\enspace
 }
 
-% Étiquettes de blocs récurrents
-\newcommand{\exolabel}{\noindent{\bfseries\color{goldaccent} Exercices.}}
+% Blocs d'intuition (idée de preuve, signification) : paragraphe en italique
+% gris foncé. Environnement (donc groupe) pour que le style ne déborde pas.
+\newenvironment{intuitionbloc}[1]{%
+  \par\vspace{8pt}\normalfont\itshape\color{ideegray}%
+  \noindent\textbf{#1.}\enspace\ignorespaces
+}{\par\vspace{2pt}}
+\newenvironment{ideepreuve}{\intuitionbloc{Idée de la preuve}}{\endintuitionbloc}
+\newenvironment{significationintuitive}{\intuitionbloc{Signification intuitive}}{\endintuitionbloc}
 
-% Séparateur décoratif or
+% Étiquette de bloc d'exercices
+\newcommand{\exolabel}{\noindent{\bfseries Exercices.}}
+
+% Séparateur sobre : simple respiration verticale
 \newcommand{\decsep}{%
-  \vspace{14pt}
+  \par\vspace{12pt}
   \begin{center}
-    \textcolor{goldaccent}{%
-      \rule{40pt}{0.5pt}\quad\textbullet\quad\rule{40pt}{0.5pt}}
+    \textcolor{rulegray}{$\ast\quad\ast\quad\ast$}
   \end{center}
-  \vspace{6pt}
+  \vspace{4pt}
 }
 
-% En-tête de leçon (titre, sous-titre, filet or)
+% En-tête de leçon : titre centré, sous-titre en italique, filet fin
 \newcommand{\lecontitle}[2]{%
   \phantomsection\addcontentsline{toc}{section}{#1}%
   \thispagestyle{empty}
   \vspace*{4pt}
   \begin{center}
-    {\fontsize{23}{28}\selectfont\bfseries\color{navyblue} #1}\\[8pt]
-    {\large\itshape\color{navyblue!60} #2}\\[10pt]
-    \begin{tikzpicture}
-      \draw[goldaccent, line width=1.5pt] (0,0) -- (4,0);
-      \fill[goldaccent] (2,0) circle (2.5pt);
-      \draw[navyblue!25, line width=0.5pt] (-1,0) -- (0,0) (4,0) -- (5,0);
-    \end{tikzpicture}
+    {\fontsize{22}{27}\selectfont\bfseries #1}\\[8pt]
+    {\large\itshape #2}\\[10pt]
+    \textcolor{rulegray}{\rule{0.55\textwidth}{0.4pt}}
   \end{center}
-  \vspace{18pt}
+  \vspace{16pt}
 }
 
-% Pied de page de leçon
+% Pied de page de leçon : note discrète centrée
 \newcommand{\leconfooter}[1]{%
   \vfill
-  \noindent\textcolor{navyblue!20}{\rule{\textwidth}{0.4pt}}
+  \noindent\textcolor{rulegray}{\rule{\textwidth}{0.4pt}}
   \begin{center}
-    \small\color{navyblue!50}
+    \small\itshape\color{black!55}
     Fiche de cours \quad|\quad #1
   \end{center}
 }
 
-%=== EN-TÊTES ET PIEDS DE PAGE ===============================
+%=== EN-TÊTES ET PIEDS DE PAGE (sobres) ======================
 \usepackage{fancyhdr}
-\setlength{\headheight}{13.07002pt}
-\addtolength{\topmargin}{-0.77002pt}
+\setlength{\headheight}{14pt}
+\addtolength{\topmargin}{-1.7pt}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE]{\small\color{navyblue!70}\leftmark}
-\fancyhead[RO]{\small\color{navyblue!70}\rightmark}
-\fancyfoot[C]{\small\color{navyblue!50}\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
-\renewcommand{\headrule}{\color{goldaccent}\hrule width\headwidth height\headrulewidth} % chktex 1
+\fancyhead[LE]{\small\itshape\leftmark}
+\fancyhead[RO]{\small\itshape\rightmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\color{black}\hrule width\headwidth height\headrulewidth} % chktex 1
 
-%=== CHAPITRES STYLISÉS ======================================
+%=== CHAPITRES (classiques, monochromes) =====================
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries\color{navyblue}}
-  {\textcolor{goldaccent}{\chaptertitlename\ \thechapter}}
-  {10pt}
+  {\normalfont\huge\bfseries}
+  {\normalsize\scshape\chaptertitlename\ \thechapter}
+  {8pt}
   {\Huge}
-  [\vspace{4pt}\textcolor{goldaccent!40}{\titlerule[1pt]}]
+  [\vspace{4pt}\rule{\textwidth}{0.8pt}]
 
 \titleformat{\section}[block]
-  {\normalfont\large\bfseries\color{navyblue}}
+  {\normalfont\large\bfseries}
   {}
   {0pt}
   {}

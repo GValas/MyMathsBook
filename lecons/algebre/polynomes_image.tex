@@ -1,0 +1,243 @@
+%==============================================================
+%  lecons/algebre/polynomes_image.tex — Polynômes surjectifs sur C, R, Q
+%==============================================================
+
+\lecontitle{Polynômes surjectifs sur \texorpdfstring{$\mathbb{C}$, $\mathbb{R}$, $\mathbb{Q}$}{C, R, Q}}{Algèbre — Un exercice d'oral (Mines-Ponts / ENS, MP)}
+
+%=============================================================
+%  § 1 — L'ÉNONCÉ
+%=============================================================
+\secnum{navyblue}{1}{L'énoncé}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Problème.}\enspace%
+  \index{polynôme!surjectif}\index{image d'un polynôme}
+  Déterminer les polynômes $P \in \mathbb{C}[X]$ tels que :
+  \[
+    \text{(a)}\ \ P(\mathbb{C}) = \mathbb{C}, \qquad
+    \text{(b)}\ \ P(\mathbb{R}) = \mathbb{R}, \qquad
+    \text{(c)}\ \ P(\mathbb{Q}) = \mathbb{Q},
+  \]
+  où l'on note $P(A) = \{\,P(z) : z \in A\,\}$ l'image directe de $A$ par $P$.
+\end{tcolorbox}
+
+\begin{significationintuitive}
+La même fonction polynomiale « remplit » ou non son corps d'arrivée selon le
+corps que l'on regarde. Sur $\mathbb{C}$, la clôture algébrique rend tout
+polynôme non constant surjectif. Sur $\mathbb{R}$, c'est une affaire de
+\emph{parité} du degré (les branches partent-elles vers $+\infty$ des deux
+côtés ?). Sur $\mathbb{Q}$, l'arithmétique des dénominateurs est bien plus
+contraignante : seules les fonctions affines y parviennent.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — UN OUTIL : LES COEFFICIENTS PAR INTERPOLATION
+%=============================================================
+\secnum{navyblue}{2}{Un lemme d'interpolation}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Lemme (descente des coefficients).}\enspace%
+  \index{interpolation de Lagrange}
+  Soit $\mathbb{K} \in \{\mathbb{R}, \mathbb{Q}\}$ et $P \in \mathbb{C}[X]$ de
+  degré $\leq n$. Si $P(k) \in \mathbb{K}$ pour tout $k \in \{0,1,\ldots,n\}$,
+  alors $P \in \mathbb{K}[X]$.
+\end{tcolorbox}
+
+\begin{ideepreuve}
+Un polynôme de degré $\leq n$ est entièrement déterminé par ses valeurs en
+$n+1$ points : la formule d'interpolation de Lagrange le reconstitue à partir
+de $P(0),\ldots,P(n)$ et de polynômes de base à coefficients rationnels.
+\end{ideepreuve}
+
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  Notons $L_0,\ldots,L_n$ les polynômes de Lagrange associés aux points
+  $0,1,\ldots,n$ :
+  \[
+    L_k(X) = \prod_{\substack{0 \leq j \leq n \\ j \neq k}}
+             \frac{X - j}{k - j} \in \mathbb{Q}[X].
+  \]
+  Le polynôme $\widetilde P = \sum_{k=0}^{n} P(k)\,L_k$ vérifie
+  $\widetilde P(i) = P(i)$ pour tout $i \in \{0,\ldots,n\}$. Comme $P$ et
+  $\widetilde P$ sont de degré $\leq n$ et coïncident en $n+1$ points, ils sont
+  égaux. Or chaque $L_k \in \mathbb{Q}[X] \subseteq \mathbb{K}[X]$ et chaque
+  $P(k) \in \mathbb{K}$ : donc $P = \widetilde P \in \mathbb{K}[X]$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — SUR C : LA CLÔTURE ALGÉBRIQUE SUFFIT
+%=============================================================
+\secnum{navyblue}{3}{Sur \texorpdfstring{$\mathbb{C}$}{C}}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Réponse (a).}\enspace%
+  \index{d'Alembert-Gauss (théorème de)}
+  $P(\mathbb{C}) = \mathbb{C}$ si et seulement si $P$ est \emph{non constant}.
+\end{tcolorbox}
+
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  Si $P = c$ est constant, alors $P(\mathbb{C}) = \{c\} \neq \mathbb{C}$.
+
+  \smallskip\noindent
+  Réciproquement, supposons $P$ non constant et soit $w \in \mathbb{C}$. Le
+  polynôme $P - w$ est non constant, donc, $\mathbb{C}$ étant algébriquement
+  clos (théorème de d'Alembert--Gauss), il admet une racine $z \in \mathbb{C}$ :
+  $P(z) = w$. Ainsi tout $w$ est atteint, $P(\mathbb{C}) = \mathbb{C}$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 4 — SUR R : UNE QUESTION DE PARITÉ
+%=============================================================
+\secnum{navyblue}{4}{Sur \texorpdfstring{$\mathbb{R}$}{R}}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Réponse (b).}\enspace%
+  $P(\mathbb{R}) = \mathbb{R}$ si et seulement si $P \in \mathbb{R}[X]$ et
+  $\deg P$ est \emph{impair}.
+\end{tcolorbox}
+
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Coefficients réels.}\enspace
+  Si $P(\mathbb{R}) = \mathbb{R}$, alors en particulier $P(k) \in \mathbb{R}$
+  pour $k \in \{0,\ldots,\deg P\}$, donc $P \in \mathbb{R}[X]$ par le lemme du
+  § 2. On peut désormais voir $P$ comme une fonction $\mathbb{R} \to \mathbb{R}$,
+  continue.
+
+  \smallskip\noindent
+  \textit{Le degré pair échoue.}\enspace
+  Si $\deg P = 2p$ est pair, de coefficient dominant $a$, alors
+  $P(x) \sim a\,x^{2p}$ quand $x \to \pm\infty$ : $P$ tend vers $+\infty$ (si
+  $a>0$) ou $-\infty$ (si $a<0$) aux deux extrémités. Étant continue, $P$ est
+  alors minorée (resp. majorée) sur $\mathbb{R}$, donc \emph{non surjective}.
+  Le cas constant ($\deg P = 0$) est exclu de même.
+
+  \smallskip\noindent
+  \textit{Le degré impair convient.}\enspace
+  Si $\deg P$ est impair, $P$ admet des limites infinies de signes opposés en
+  $-\infty$ et $+\infty$. Par le théorème des valeurs intermédiaires, $P$ prend
+  toute valeur réelle : $P(\mathbb{R}) = \mathbb{R}$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 5 — SUR Q : SEULES LES FONCTIONS AFFINES
+%=============================================================
+\secnum{navyblue}{5}{Sur \texorpdfstring{$\mathbb{Q}$}{Q}}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Réponse (c).}\enspace%
+  \index{théorème des racines rationnelles}
+  $P(\mathbb{Q}) = \mathbb{Q}$ si et seulement si $P = aX + b$ avec
+  $a \in \mathbb{Q}^*$ et $b \in \mathbb{Q}$.
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Sur $\mathbb{Q}$, le critère de parité ne suffit plus : $X^3$ est de degré
+impair mais $2$ n'est pas un cube de rationnel, donc $X^3$ n'atteint pas $2$.
+La raison profonde est arithmétique — les dénominateurs des antécédents sont
+bornés par le coefficient dominant, ce qui empêche dès le degré $2$ d'atteindre
+les rationnels de dénominateur arbitrairement grand.
+\end{significationintuitive}
+
+\noindent{\bfseries\color{navyblue} Preuve.}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Coefficients rationnels et cas affine.}\enspace
+  Si $P(\mathbb{Q}) = \mathbb{Q}$, alors $P(k) \in \mathbb{Q}$ pour
+  $k \in \{0,\ldots,\deg P\}$, donc $P \in \mathbb{Q}[X]$ (lemme du § 2).
+  Réciproquement, si $P = aX + b$ avec $a \neq 0$ rationnels, tout
+  $y \in \mathbb{Q}$ admet l'antécédent rationnel $x = (y-b)/a$ : $P$ est même
+  une bijection de $\mathbb{Q}$. Il reste à exclure $\deg P \geq 2$.
+
+  \smallskip\noindent
+  \textit{Une borne sur les dénominateurs des antécédents.}\enspace
+  Supposons $\deg P = n \geq 2$ et écrivons
+  $P = \frac{1}{d}\bigl(c_n X^n + \cdots + c_1 X + c_0\bigr)$ avec
+  $c_i \in \mathbb{Z}$, $c_n \neq 0$, $d \in \mathbb{Z}_{>0}$. Soit $y \in P(\mathbb{Q})$
+  et $x = p/m$ un antécédent écrit sous forme irréductible ($m \geq 1$,
+  $\pgcd(p,m)=1$). En multipliant $P(p/m) = y$ par $d\,m^n$ :
+  \[
+    c_n p^n + c_{n-1}p^{n-1}m + \cdots + c_0 m^n = d\,y\,m^n .
+  \]
+  Tous les termes sauf $c_n p^n$ sont divisibles par $m$, ainsi que le membre de
+  droite ($m \mid m^n$ car $n \geq 1$). Donc $m \mid c_n p^n$, et comme
+  $\pgcd(p,m)=1$, il vient $m \mid c_n$.
+
+  \smallskip\noindent
+  \textit{L'image rate des rationnels.}\enspace
+  Les antécédents possibles ont donc un dénominateur $m$ divisant l'entier fixe
+  $c_n$ : ils vivent dans $\frac{1}{c_n}\mathbb{Z}$. Pour un tel $x = t/c_n$
+  ($t \in \mathbb{Z}$),
+  \[
+    y = P(x) = \frac{1}{d}\sum_{i=0}^{n} c_i \frac{t^i}{c_n^{\,i}}
+      \in \frac{1}{d\,c_n^{\,n}}\,\mathbb{Z}.
+  \]
+  Autrement dit $P(\mathbb{Q}) \subseteq \frac{1}{d\,c_n^{\,n}}\mathbb{Z}$, un
+  sous-groupe \emph{discret} de $\mathbb{Q}$. Or $\frac{1}{2\,d\,c_n^{\,n}} \in \mathbb{Q}$
+  n'y appartient pas : $P$ n'est pas surjective. Donc $\deg P \leq 1$, ce qui
+  achève la caractérisation. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Exemples et contre-exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. $P = X^2$ sur $\mathbb{C}$ et $\mathbb{R}$.}\enspace%
+  Surjectif sur $\mathbb{C}$ (non constant), mais $P(\mathbb{R}) = \mathbb{R}_+ \neq \mathbb{R}$
+  (degré pair).
+
+  \smallskip\noindent
+  \textbf{2. $P = X^3 - X$.}\enspace%
+  Degré impair à coefficients réels : $P(\mathbb{R}) = \mathbb{R}$.
+
+  \smallskip\noindent
+  \textbf{3. $P = 2X + 1$.}\enspace%
+  Convient sur les trois corps : $P(\mathbb{C})=\mathbb{C}$, $P(\mathbb{R})=\mathbb{R}$
+  et $P(\mathbb{Q})=\mathbb{Q}$.
+\end{mdframed}
+
+\noindent{\bfseries\color{counterred} Contre-exemples instructifs.}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Le degré impair ne suffit pas sur $\mathbb{Q}$.}\enspace%
+  $P = X^3$ vérifie $P(\mathbb{Q}) \subseteq \mathbb{Q}$ et $\deg P$ impair,
+  mais $2 \notin P(\mathbb{Q})$ : $\sqrt[3]{2}$ est irrationnel. La parité,
+  décisive sur $\mathbb{R}$, est insuffisante sur $\mathbb{Q}$.
+
+  \smallskip\noindent
+  \textbf{Coefficients complexes.}\enspace%
+  $P = iX$ vérifie $P(\mathbb{C}) = \mathbb{C}$, mais $P(\mathbb{R}) = i\mathbb{R} \neq \mathbb{R}$
+  et $P(\mathbb{Q}) = i\mathbb{Q} \neq \mathbb{Q}$ : sans coefficients réels
+  (resp. rationnels), l'image quitte la droite réelle.
+\end{mdframed}
+
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que $P \in \mathbb{C}[X]$ vérifie $P(\mathbb{R}) \subseteq \mathbb{R}$
+          si et seulement si $P \in \mathbb{R}[X]$.
+    \item Déterminer les $P \in \mathbb{C}[X]$ tels que $P(\mathbb{R}) = \mathbb{R}_+$.
+    \item Soit $P \in \mathbb{Q}[X]$ de degré $\geq 2$. Montrer que
+          $\mathbb{Q} \setminus P(\mathbb{Q})$ est infini.
+    \item Caractériser les $P \in \mathbb{C}[X]$ tels que $P(\mathbb{Z}) \subseteq \mathbb{Z}$
+          (polynômes à valeurs entières~: base des $\binom{X}{k}$).
+    \item Existe-t-il $P \in \mathbb{C}[X]$ non constant tel que
+          $P(\mathbb{U}) = \mathbb{U}$, où $\mathbb{U}$ est le cercle unité ?
+          (Indication~: $P = X^n$.)
+  \end{enumerate}
+\end{mdframed}
