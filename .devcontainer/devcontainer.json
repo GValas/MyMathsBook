@@ -1,20 +1,11 @@
 {
   "name": "MyMathsBook (TeX Live)",
-  "image": "texlive/texlive:latest-full",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "username": "vscode",
-      "userUid": "automatic",
-      "userGid": "automatic",
-      "installZsh": true,
-      "configureZshAsDefaultShell": false
-    },
-    "ghcr.io/devcontainers/features/git:1": {}
-  },
+  "build": { "dockerfile": "Dockerfile" },
   "remoteUser": "vscode",
   "updateRemoteUserUID": true,
   "runArgs": ["--init"],
   "containerEnv": { "TZ": "Europe/Paris" },
+  "remoteEnv": { "PATH": "${containerEnv:HOME}/.local/bin:${containerEnv:PATH}" },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -24,6 +15,7 @@
       ],
       "settings": {
         "files.eol": "\n",
+        "terminal.integrated.defaultLocation": "editor",
         "[latex]": {
           "editor.wordWrap": "on",
           "editor.tabSize": 2
@@ -32,6 +24,6 @@
       }
     }
   },
-  "postCreateCommand": "latexmk --version >/dev/null && makeglossaries --version >/dev/null 2>&1 && chktex --version >/dev/null && (command -v claude >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash) && echo 'TeX Live + Claude Code devcontainer prêt.'",
+  "postCreateCommand": "latexmk --version >/dev/null && makeglossaries --version >/dev/null 2>&1 && chktex --version >/dev/null && claude --version >/dev/null && echo 'TeX Live + Claude Code devcontainer prêt.'",
   "postStartCommand": "sudo chown -R vscode:vscode /workspaces/MyMathsBook"
 }
