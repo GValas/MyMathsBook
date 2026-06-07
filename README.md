@@ -28,9 +28,13 @@ MyMathsBook/
     └── references.bib        ← Bibliographie BibTeX
 ```
 
-Le livre est organisé en six parties : **Analyse réelle**, **Structures
-algébriques**, **Arithmétique**, **Combinatoire**, **Topologie** et
-**Algèbre linéaire**.
+Le livre est organisé en six parties :
+1. **Analyse réelle** — Suites, continuité, dérivabilité, intégration, fonctions élémentaires, approximation polynomiale, géométrie en grande dimension.
+2. **Structures algébriques** — Relations et ensembles quotients, construction des nombres (ℕ, ℤ, ℚ, ℝ, ℂ, ℍ), groupes, anneaux et corps, corps des fractions, nombres complexes.
+3. **Arithmétique** — Nombres premiers, irrationalité.
+4. **Combinatoire** — Partitions d'ensembles.
+5. **Topologie** — Espaces métriques complets.
+6. **Algèbre linéaire** — Applications linéaires, déterminant, endomorphismes, exponentielle matricielle, produit scalaire, matrices orthogonales, endomorphismes autoadjoints.
 
 ## Compilation sous VS Code
 

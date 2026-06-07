@@ -294,6 +294,16 @@
   description={Corps à $q=p^n$ éléments ($p$ premier), unique à isomorphisme près, noté $\mathbb{F}_q$~; son groupe multiplicatif est cyclique}
 }
 
+\newglossaryentry{nombre-algebrique}{
+  name={nombre algébrique},
+  description={Nombre réel ou complexe qui est racine d'un polynôme non nul à coefficients rationnels~; par exemple $\sqrt{2}$ est algébrique (racine de $X^2-2$)~; l'ensemble des nombres algébriques est dénombrable}
+}
+
+\newglossaryentry{nombre-transcendant}{
+  name={nombre transcendant},
+  description={Nombre réel ou complexe qui n'est racine d'aucun polynôme non nul à coefficients rationnels~; $e$ (Hermite, 1873) et $\pi$ (Lindemann, 1882) sont transcendants~; l'ensemble des nombres transcendants est non dénombrable tandis que celui des nombres algébriques est dénombrable}
+}
+
 % --- Exponentielle et logarithme matriciels ---
 
 \newglossaryentry{euler-exp-limite}{
@@ -324,6 +334,13 @@
 \newglossaryentry{surjectivite-exp}{
   name={surjectivité de l'exponentielle matricielle},
   description={$\exp:\mathcal{M}_n(\mathbb{C})\to\mathrm{GL}_n(\mathbb{C})$ est surjective (via le logarithme de Jordan)~; sur $\mathbb{R}$, l'image est contenue dans $\mathrm{GL}_n^+(\mathbb{R})$ mais l'inclusion est stricte}
+}
+
+% --- Interpolation et approximation ---
+
+\newglossaryentry{interpolation-lagrange}{
+  name={interpolation de Lagrange},
+  description={Technique de reconstruction d'un polynôme de degré $\leq n$ à partir de ses valeurs en $n+1$ points distincts~; utilise les polynômes de base de Lagrange $L_i(x) = \prod_{j\neq i}\frac{x-x_j}{x_i-x_j}$, et le polynôme interpolant s'écrit $P(x)=\sum_i y_i L_i(x)$}
 }
 
 % --- Polynômes classiques ---
