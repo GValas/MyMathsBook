@@ -32,5 +32,6 @@
       }
     }
   },
-  "postCreateCommand": "latexmk --version >/dev/null && makeglossaries --version >/dev/null 2>&1 && chktex --version >/dev/null && (command -v claude >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash) && echo 'TeX Live + Claude Code devcontainer prêt.'"
+  "postCreateCommand": "latexmk --version >/dev/null && makeglossaries --version >/dev/null 2>&1 && chktex --version >/dev/null && (command -v claude >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash) && echo 'TeX Live + Claude Code devcontainer prêt.'",
+  "postStartCommand": "sudo chown -R vscode:vscode /workspaces/MyMathsBook"
 }
