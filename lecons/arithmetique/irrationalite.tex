@@ -22,7 +22,7 @@ $1$. Si $e$ était de dénominateur $q$, ce même produit serait pourtant entier
 impossible. La rapidité de convergence est l'ingrédient décisif.
 \end{significationintuitive}
 
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   Supposons par l'absurde $e = p/q$ avec $p \in \mathbb{Z}$ et $q \in \mathbb{N}^*$.
@@ -47,13 +47,14 @@ impossible. La rapidité de convergence est l'ingrédient décisif.
   \]
   d'où, par sommation géométrique,
   \[
-    N \leq \sum_{j=1}^{\infty} \frac{1}{(q+1)^{j}}
-      = \frac{1}{q} \leq 1, \qquad\text{et même } N < 1 .
+    N < \sum_{j\geq 1} \frac{1}{(q+1)^{j}}
+      = \frac{1}{q} \leq 1 .
   \]
 
   \smallskip\noindent
   Ainsi $N$ est un entier strictement compris entre $0$ et $1$ : contradiction.
-  Donc $e \notin \mathbb{Q}$. \hfill$\blacksquare$
+  Donc $e \notin \mathbb{Q}$.
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -86,7 +87,7 @@ auxiliaire $F_n = f_n - f_n'' + f_n^{(4)} - \cdots$ vérifie $F_n + F_n'' = f_n$
 ce qui rend l'intégrale calculable exactement.
 \end{ideepreuve}
 
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   Supposons par l'absurde $\pi = a/b$ avec $a, b \in \mathbb{N}^*$. Pour
@@ -133,7 +134,8 @@ ce qui rend l'intégrale calculable exactement.
 
   \smallskip\noindent
   Pour un tel $n$, $I_n$ est un entier strictement compris entre $0$ et $1$ :
-  contradiction. Donc $\pi \notin \mathbb{Q}$. \hfill$\blacksquare$
+  contradiction. Donc $\pi \notin \mathbb{Q}$.
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Compléments et exemples}
@@ -157,7 +159,7 @@ ce qui rend l'intégrale calculable exactement.
   coefficients rationnels. L'irrationalité n'en est que le premier étage.
 \end{mdframed}
 
-\noindent{\bfseries\color{counterred} Points de vigilance.}
+\rubriq{Points de vigilance}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Irrationnel n'est pas transcendant.}\enspace%
@@ -192,3 +194,5 @@ ce qui rend l'intégrale calculable exactement.
           $\int_0^1 f_n(x)\cos(\pi x)\,\mathrm{d}x$).
   \end{enumerate}
 \end{mdframed}
+
+\leconfooter{Fourier (1815, pour $e$) — I.\ Niven (1947, pour $\pi$)}

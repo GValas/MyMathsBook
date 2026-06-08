@@ -38,7 +38,7 @@ Les trois conditions sont indépendantes et toutes nécessaires (voir §3).
 
 \begin{ideepreuve}
 $f$ est continue sur un compact $[a,b]$, donc elle y atteint son maximum et son
-minimum. Si l'un deux est atteint en un point intérieur $c$, alors $f'(c) = 0$.
+minimum. Si l'un d'eux est atteint en un point intérieur $c$, alors $f'(c) = 0$.
 L'hypothèse $f(a)=f(b)$ force au moins un extremum à être intérieur dès que $f$
 n'est pas constante.
 \end{ideepreuve}
@@ -76,7 +76,7 @@ n'est pas constante.
 %=============================================================
 \secnum{exgreen}{3}{Applications, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Unicité des racines.}\enspace%
@@ -97,7 +97,7 @@ n'est pas constante.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples — nécessité des hypothèses.}
+\rubriq{Contre-exemples — nécessité des hypothèses}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Continuité indispensable.}\enspace%
@@ -108,7 +108,7 @@ n'est pas constante.
   \smallskip\noindent
   \textbf{Dérivabilité indispensable.}\enspace%
   $f(x) = |x|$ sur $[-1,1]$ : $f(-1)=f(1)=1$, $f$ continue, mais
-  $f'(x) = \mathrm{sgn}(x) \neq 0$ sur $]-1,1[\,\setminus\{0\}$
+  $f'(x) = \operatorname{sgn}(x) \neq 0$ sur $]-1,1[\,\setminus\{0\}$
   et $f$ n'est pas dérivable en $0$.
 
   \smallskip\noindent
@@ -126,7 +126,7 @@ n'est pas constante.
 
     \item Soit $f$ dérivable sur $\mathbb{R}$ avec $f(0)=0$ et $f(1)=1$.
           Montrer qu'il existe $a,b \in\,]0,1[$, $a\neq b$, tels que
-          $f'(a)+f'(b)=2$. (\textit{Hint :} appliquer Rolle à $f(x)-x$ sur
+          $f'(a)+f'(b)=2$. (\textit{Indication :} appliquer Rolle à $f(x)-x$ sur
           $[0,1/2]$ et $[1/2,1]$.)
 
     \item (Rolle itéré) Soit $P$ un polynôme de degré $n$ ayant $n$ racines

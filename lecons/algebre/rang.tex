@@ -13,9 +13,9 @@
   \textbf{Théorème du rang (théorème fondamental de l'algèbre linéaire).}\enspace%
   \index{théorème du rang}\index{noyau}\index{image}
   \textit{Soit $f : E \to F$ une application linéaire, avec $E$ de dimension
-  finie $n$. Alors $\mathrm{Im}(f)$ est de dimension finie et}
+  finie $n$. Alors $\mathrm{Im}\,f$ est de dimension finie et}
   \[
-    \dim(\ker f) + \dim(\mathrm{Im}\, f) = \dim(E).
+    \dim(\ker f) + \dim(\mathrm{Im}\,f) = \dim(E).
   \]
   \textit{En notation matricielle, pour $A \in \mathcal{M}_{m,n}(\mathbb{K})$ :}
   \[
@@ -25,7 +25,7 @@
 
 \rubriq{Vocabulaire}
 $\dim(\ker f)$ est la \emph{nullité}\index{nullité} de $f$ ;
-$\dim(\mathrm{Im}\, f) = \mathrm{rg}(f)$ est le \emph{rang}\index{rang} de $f$.
+$\dim(\mathrm{Im}\,f) = \mathrm{rg}(f)$ est le \emph{rang}\index{rang} de $f$.
 Le théorème affirme que nullité + rang = dimension de l'espace de départ.
 
 \decsep{}
@@ -37,18 +37,18 @@ Le théorème affirme que nullité + rang = dimension de l'espace de départ.
 
 \rubriq{Idée}
 On complète une base du noyau en une base de $E$, et on montre que les images
-des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
+des vecteurs ajoutés forment une base de $\mathrm{Im}\,f$.
 
 \begin{mdframed}[style=proofbar]
   Soit $(e_1,\ldots,e_p)$ une base de $\ker f$ (avec $p = \dim\ker f$).
   Par le théorème de la base incomplète\index{base incomplète (théorème de la)},
   on complète en une base $(e_1,\ldots,e_p,\, e_{p+1},\ldots,e_n)$ de $E$.
 
-  \textit{Claim : $(f(e_{p+1}),\ldots,f(e_n))$ est une base de $\mathrm{Im}(f)$.}
+  \textit{Indication : $(f(e_{p+1}),\ldots,f(e_n))$ est une base de $\mathrm{Im}\,f$.}
 
   \smallskip
   \textit{Famille génératrice.}
-  Tout $y \in \mathrm{Im}(f)$ s'écrit $y = f(x)$ pour un
+  Tout $y \in \mathrm{Im}\,f$ s'écrit $y = f(x)$ pour un
   $x = \sum_{i=1}^p \lambda_i e_i + \sum_{j=p+1}^n \mu_j e_j$.
   Comme $f(e_i) = 0$ pour $i \leq p$ :
   \[
@@ -58,7 +58,9 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
   \smallskip
   \textit{Famille libre.}
   Supposons $\sum_{j=p+1}^n \mu_j f(e_j) = 0$.
-  Alors $\sum_{j=p+1}^n \mu_j e_j \in \ker f$, donc
+  Alors $\sum_{j=p+1}^n \mu_j e_j \in \ker f$ ; comme $(e_1,\ldots,e_p)$ est une
+  base de $\ker f$, il existe \emph{certains} scalaires $\lambda_1,\ldots,\lambda_p$
+  tels que
   \[
     \sum_{j=p+1}^n \mu_j e_j = \sum_{i=1}^p \lambda_i e_i
     \quad\Longrightarrow\quad
@@ -68,8 +70,9 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
   $\mu_j = 0$ pour tout $j$.
 
   \smallskip
-  Ainsi $\mathrm{Im}(f)$ est engendré par $n-p$ vecteurs libres, donc
-  $\dim(\mathrm{Im}\,f) = n - p$, et $p + (n-p) = n$. \hfill$\blacksquare$
+  Ainsi $\mathrm{Im}\,f$ est engendré par $n-p$ vecteurs libres, donc
+  $\dim(\mathrm{Im}\,f) = n - p$, et $p + (n-p) = n$.
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -102,8 +105,10 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
 \rubriq{Rang et systèmes linéaires}
 
 \begin{mdframed}[style=proofbar]
-  Le système $Ax = b$ est compatible $\Leftrightarrow$ $b \in \mathrm{Im}(A)$
-  $\Leftrightarrow$ $\mathrm{rg}(A|b) = \mathrm{rg}(A)$ (théorème de Rouché-Fontené\index{Rouché-Fontené (théorème de)}).
+  Le système $Ax = b$ est compatible $\Leftrightarrow$ $b \in \mathrm{Im}\,A$
+  $\Leftrightarrow$ $\mathrm{rg}(A|b) = \mathrm{rg}(A)$ (ce critère de compatibilité,
+  parfois attribué à Rouché-Fontené\index{Rouché-Fontené (critère de)}, est hors-programme
+  strict en prépa française et n'est mentionné ici qu'à titre indicatif).
   L'espace des solutions de $Ax = 0$ est $\ker A$, de dimension $n - \mathrm{rg}(A)$
   par le théorème du rang. Les solutions de $Ax = b$ forment un translaté de $\ker A$.
   \hfill$\blacksquare$
@@ -116,7 +121,7 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
 %=============================================================
 \secnum{exgreen}{4}{Applications, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar, nobreak=true]
   \textbf{1. Calcul du rang d'une matrice.}\enspace%
@@ -129,7 +134,7 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
   \textbf{2. Nombre de solutions d'un système.}\enspace%
   Un système de $m$ équations à $n$ inconnues avec $\mathrm{rg}(A)=r$ :
   si compatible, l'espace des solutions est de dimension $n-r$
-  (infiniment de solutions si $r < n$, unique si $r = n$).
+  (une infinité de solutions si $r < n$, unique si $r = n$).
 
   \smallskip\noindent
   \textbf{3. Projecteurs.}\enspace%
@@ -138,7 +143,7 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Le théorème porte sur $\dim E$, pas $\dim F$.}\enspace%
@@ -149,7 +154,8 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}(f)$.
   \textbf{En dimension infinie, le théorème est faux.}\enspace%
   Soit $f : \ell^2 \to \ell^2$, $(x_1,x_2,\ldots) \mapsto (0,x_1,x_2,\ldots)$
   (shift). $f$ est injective ($\ker f = \{0\}$) mais pas surjective
-  ($(1,0,0,\ldots)\notin\mathrm{Im}\,f$). Nullité $+$ rang $= 0 + \infty \neq \infty$.
+  ($(1,0,0,\ldots)\notin\mathrm{Im}\,f$). Ici le rang n'est pas fini : l'égalité
+  du théorème du rang n'a plus de sens en dimension infinie.
 
   \smallskip\noindent
   \textbf{$\mathrm{rg}(A) = \mathrm{rg}(A^T)$, mais $\ker A \neq \ker A^T$.}\enspace%

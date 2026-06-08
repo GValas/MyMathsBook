@@ -53,13 +53,19 @@ valeur propre réelle (son polynôme caractéristique est scindé sur $\mathbb{R
 par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
 \end{ideepreuve}
 
-\vspace{10pt}
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   \textit{Lemme 1 — Valeurs propres réelles.}
-  Soit $\lambda \in \mathbb{C}$ valeur propre (dans $\mathbb{C}$) et
-  $v\neq 0$ vecteur propre associé. Alors :
+  A priori, $\chi_f$ peut admettre des racines complexes ; on travaille donc
+  dans le complexifié $E_{\mathbb{C}} = E \otimes_{\mathbb{R}} \mathbb{C}$,
+  muni du produit \emph{hermitien} $\langle\cdot,\cdot\rangle$ prolongeant le
+  produit scalaire euclidien (sesquilinéaire, semi-linéaire à droite). Comme
+  la matrice de $f$ dans une base orthonormale réelle est symétrique réelle,
+  donc hermitienne, l'endomorphisme prolongé reste autoadjoint sur
+  $E_{\mathbb{C}}$ : $\langle f(x),y\rangle = \langle x,f(y)\rangle$. Soit alors
+  $\lambda \in \mathbb{C}$ valeur propre et $v\neq 0$ un vecteur propre associé
+  dans $E_{\mathbb{C}}$. Avec $\|v\|^2 = \langle v,v\rangle > 0$ :
   \[
     \lambda\|v\|^2 = \langle f(v),v\rangle = \langle v,f(v)\rangle
     = \overline{\langle f(v),v\rangle} = \bar\lambda\|v\|^2,
@@ -93,7 +99,11 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   \[
     \langle f(y),v\rangle = \langle y,f(v)\rangle = \lambda\langle y,v\rangle = 0.
   \]
-  La restriction $f|_{V^\perp}$ est autoadjointe sur $V^\perp$, de dimension
+  L'espace $V^\perp$, muni de la restriction du produit scalaire de $E$, est
+  euclidien ; comme $V^\perp$ est stable par $f$, la restriction $f|_{V^\perp}$
+  y est un endomorphisme bien défini, et elle hérite de l'autoadjonction :
+  pour $x,y\in V^\perp$, $\langle f(x),y\rangle = \langle x,f(y)\rangle$. Ainsi
+  $f|_{V^\perp}$ est autoadjointe sur $V^\perp$, de dimension
   $n - \dim V < n$. Par hypothèse de récurrence, $V^\perp$ admet une base
   orthonormale de vecteurs propres. En la combinant avec une base orthonormale
   de $V$, on obtient une base orthonormale de $E$ diagonalisant $f$.
@@ -107,7 +117,7 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
 %=============================================================
 \secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Diagonalisation d'une symétrique $2\times 2$.}
@@ -130,8 +140,7 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   base de Fourier en sinus.
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples.}
+\rubriq{Contre-exemples}
 
 \begin{mdframed}[style=cexbar]
   \textbf{La symétrie est indispensable.}\enspace%
@@ -140,10 +149,15 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   n'est pas diagonalisable.
 
   \smallskip\noindent
-  \textbf{Sur $\mathbb{C}$ : le cas hermitien.}\enspace%
-  Le théorème spectral s'étend aux matrices hermitiennes ($A^* = A$) sur
-  $\mathbb{C}$. En revanche, une matrice unitaire est normale mais pas
-  nécessairement hermitienne, et ses valeurs propres sont sur le cercle unité.
+  \textbf{La condition $A^*=A$ ne se relâche pas en \og normale \fg.}\enspace%
+  (Ceci n'est pas un contre-exemple au théorème, mais une mise en garde sur
+  ses hypothèses sur $\mathbb{C}$.) Le théorème spectral s'étend aux matrices
+  hermitiennes ($A^* = A$), dont les valeurs propres sont réelles. Si l'on se
+  contente de la normalité ($A^*A = AA^*$), $A$ reste diagonalisable en base
+  orthonormale, mais ses valeurs propres ne sont plus réelles en général :
+  une matrice unitaire est normale, non hermitienne, et ses valeurs propres
+  sont sur le cercle unité. L'hypothèse hermitienne est donc bien ce qui force
+  le spectre réel.
 
   \smallskip\noindent
   \textbf{Dimension infinie.}\enspace%
@@ -158,7 +172,8 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
 \begin{mdframed}[style=exobar]
   \begin{enumerate}
     \item Diagonaliser orthogonalement
-          $A = \begin{pmatrix}5&2&2\\2&2&-1\\2&-1&2\end{pmatrix}$
+          $A = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}$
+          (valeurs propres $1$, $1$ et $4$)
           et vérifier que $P^TAP$ est diagonale.
 
     \item Montrer que si $A$ est symétrique et définie positive (i.e.\

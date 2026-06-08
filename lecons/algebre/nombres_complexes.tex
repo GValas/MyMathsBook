@@ -157,7 +157,7 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
   \textit{Unicité (exactement $n$ solutions).} Si $z^n = w$, on écrit $z = r e^{i\alpha}$.
   Alors $r^n = \rho$ donne $r = \rho^{1/n}$ (unique réel positif), et
   $n\alpha \equiv \varphi \pmod{2\pi}$, ce qui donne exactement $n$ valeurs
-  $\alpha \in [0, 2\pi[$.
+  $\alpha \in {]-\pi, \pi]}$.
 
   \textit{Somme des racines.} Pour $j \not\equiv 0 \pmod{n}$, la somme est
   une série géométrique :
@@ -209,7 +209,7 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
 %=============================================================
 \secnum{exgreen}{5}{Exemples, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Linéarisation de $\cos^3\theta$.}\enspace%
@@ -231,9 +231,8 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
   = \mathrm{Re}\,\frac{1 - e^{i(n+1)\theta}}{1 - e^{i\theta}}$.
   On factorise pour obtenir la formule fermée :
   \[
-    S_n = \frac{\sin\!\bigl(\tfrac{(n+1)\theta}{2}\bigr)}
-               {\sin\!\bigl(\tfrac{\theta}{2}\bigr)}\,
-          \cos\!\left(\frac{n\theta}{2}\right), \quad \theta \notin 2\pi\mathbb{Z}.
+    S_n = \frac{\sin\!\big(\frac{(n+1)\theta}{2}\big)\cos\!\big(\frac{n\theta}{2}\big)}
+               {\sin(\theta/2)}, \quad \theta \notin 2\pi\mathbb{Z}.
   \]
 
   \smallskip\noindent
@@ -242,13 +241,12 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
   égalité.
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Argument non additif sur $\mathbb{R}$.}\enspace%
   $\arg(zw) = \arg z + \arg w$ n'est valide que modulo $2\pi$. L'argument
-  principal peut présenter un saut de $\pm 2\pi$ : $\arg(-1 \cdot -1) =
+  principal peut présenter un saut de $\pm 2\pi$ : $\arg((-1)\cdot(-1)) =
   \arg(1) = 0$, mais $\arg(-1) + \arg(-1) = -\pi + (-\pi) = -2\pi \neq 0$.
 
   \smallskip\noindent
@@ -259,13 +257,14 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
 
   \smallskip\noindent
   \textbf{Inégalité triangulaire : égalité.}\enspace%
-  $|z + w| = |z| + |w|$ si et seulement si $\arg z \equiv \arg w \pmod{2\pi}$
-  (même argument, c.-à-d.\ $w = \lambda z$ pour un $\lambda \geq 0$), pas
-  simplement si $z$ et $w$ sont positifs.
+  $|z + w| = |z| + |w|$ si et seulement si $w = \lambda z$ pour un réel
+  $\lambda \geq 0$ (ou $z = 0$). La seule condition $\arg z \equiv \arg w
+  \pmod{2\pi}$ est incomplète : elle suppose $z, w \neq 0$ et ne couvre pas
+  le cas où l'un d'eux est nul. Ce n'est donc pas simplement « $z$ et $w$
+  positifs ».
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{goldaccent} Exercices.}
+\exolabel
 
 \begin{mdframed}[style=exobar]
   \begin{enumerate}

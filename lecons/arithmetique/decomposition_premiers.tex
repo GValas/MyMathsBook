@@ -24,7 +24,7 @@
   \textit{En particulier, $a \wedge b = 1 \Rightarrow \exists\,u,v : au+bv=1$.}
 
   \medskip
-  \textbf{Lemme d'Euclide (ou de Gauss).}\enspace\index{Euclide (lemme d')}
+  \textbf{Lemme d'Euclide.}\enspace\index{Euclide (lemme d')}
   \textit{Soit $p$ premier. Si $p \mid ab$, alors $p \mid a$ ou $p \mid b$.}
 \end{tcolorbox}
 
@@ -37,7 +37,8 @@
   \[
     pub + avb = b.
   \]
-  $p \mid pub$ (car $p \mid p$) et $p \mid avb$ (car $p \mid ab$), donc $p \mid b$. \hfill$\blacksquare$
+  $p \mid pub$ (car $p \mid p$) et $p \mid avb$ (car $p \mid ab$), donc $p \mid b$.
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Généralisation}
@@ -70,7 +71,8 @@ alors $p \mid a_i$ pour au moins un $i$.
   \textit{Hérédité :} Soit $n \geq 3$. Si $n$ est premier, c'est sa propre décomposition.
   Sinon, $n = ab$ avec $2 \leq a,b < n$. Par hypothèse de récurrence, $a$ et $b$
   admettent chacun une décomposition en facteurs premiers. En les concaténant,
-  on obtient une décomposition de $n$. \hfill$\blacksquare$
+  on obtient une décomposition de $n$.
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Preuve — Unicité}
@@ -81,7 +83,12 @@ alors $p \mid a_i$ pour au moins un $i$.
   (nombre de facteurs premiers comptés avec multiplicité) que les deux décompositions
   coïncident.
 
-  \textit{Base :} $\Omega(n)=1$ signifie $n$ premier, l'unicité est évidente.
+  \textit{Base :} $\Omega(n)=1$ signifie que $n = p_1$ est premier. Toute autre
+  décomposition $n = q_1^{\beta_1}\cdots q_l^{\beta_l}$ a au moins un facteur ;
+  si elle comportait au moins deux facteurs premiers (comptés avec multiplicité),
+  alors $n$ s'écrirait comme produit de $\ge 2$ premiers, donc admettrait un diviseur
+  premier strictement compris entre $1$ et $n$, ce qui contredit la primalité de $n$.
+  Ainsi $l=1$, $\beta_1=1$ et $q_1 = n = p_1$ : l'unicité est acquise.
 
   \textit{Hérédité :} $p_1$ divise $q_1^{\beta_1}\cdots q_l^{\beta_l}$, donc par le
   lemme d'Euclide (appliqué $\beta_1+\cdots+\beta_l$ fois), $p_1 = q_j$ pour un $j$.
@@ -89,7 +96,7 @@ alors $p \mid a_i$ pour au moins un $i$.
   $n/p_1 = p_1^{\alpha_1-1}\cdots p_k^{\alpha_k} = q_1^{\beta_1-1}\cdots q_l^{\beta_l}$.
   Par hypothèse de récurrence ($\Omega(n/p_1) < \Omega(n)$), les deux factorisations de
   $n/p_1$ coïncident, donc $k=l$, $p_i=q_i$ et $\alpha_i=\beta_i$ pour tout $i$.
-  \hfill$\blacksquare$
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -119,7 +126,8 @@ alors $p \mid a_i$ pour au moins un $i$.
   Supposons par l'absurde qu'il n'existe qu'un nombre fini de premiers $p_1,\ldots,p_k$.
   Posons $N = p_1 p_2 \cdots p_k + 1$. Par le théorème, $N$ admet un facteur premier
   $q$, qui divise donc $N$ et $p_1\cdots p_k$. Il divise leur différence $1$ :
-  contradiction. \hfill$\blacksquare$
+  contradiction.
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -129,7 +137,7 @@ alors $p \mid a_i$ pour au moins un $i$.
 %=============================================================
 \secnum{exgreen}{4}{Applications, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Irrationalité de $\sqrt{2}$.}\enspace%
@@ -150,13 +158,13 @@ alors $p \mid a_i$ pour au moins un $i$.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{L'unicité dépend du lemme d'Euclide, pas de la seule existence.}\enspace%
   Dans $\mathbb{Z}[\sqrt{-5}]$, on a $6 = 2\times 3 = (1+\sqrt{-5})(1-\sqrt{-5})$,
   deux factorisations en « irréductibles » différentes. L'unicité est une propriété
-  spécifique à $\mathbb{Z}$ (anneau principal).
+  spécifique à $\mathbb{Z}$ (anneau factoriel, et même principal).
 
   \smallskip\noindent
   \textbf{$\pgcd(a,b)=1$ ne signifie pas que $a$ ou $b$ est premier.}\enspace%
@@ -173,10 +181,10 @@ alors $p \mid a_i$ pour au moins un $i$.
           puissance $k$-ième parfaite.
 
     \item Calculer $\pgcd(2^{100}-1, 2^{75}-1)$.
-          (\textit{Hint :} montrer que $\pgcd(2^a-1, 2^b-1) = 2^{\pgcd(a,b)}-1$.)
+          (\textit{Indication :} montrer que $\pgcd(2^a-1, 2^b-1) = 2^{\pgcd(a,b)}-1$.)
 
     \item Montrer que pour tout $n \geq 1$, le produit de $n$ entiers consécutifs
-          est divisible par $n!$. (\textit{Hint :} coefficients binomiaux.)
+          est divisible par $n!$. (\textit{Indication :} coefficients binomiaux.)
 
     \item (Théorème de Wilson) Montrer que $p$ est premier si et seulement si
           $(p-1)! \equiv -1 \pmod{p}$.

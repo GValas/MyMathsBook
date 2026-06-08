@@ -38,7 +38,7 @@
 
 \begin{mdframed}[style=proofbar]
   Par définition, $\det(I + \varepsilon B) = \sum_{\sigma \in \mathfrak{S}_n}
-  \varepsilon(\sigma)\prod_{i=1}^n (I+\varepsilon B)_{i,\sigma(i)}$.
+  \operatorname{sgn}(\sigma)\prod_{i=1}^n (I+\varepsilon B)_{i,\sigma(i)}$.
 
   Pour $\sigma = \mathrm{id}$~: $\prod_i(1 + \varepsilon B_{ii})
   = 1 + \varepsilon\,\mathrm{tr}(B) + O(\varepsilon^2)$.
@@ -59,11 +59,11 @@
 \secnum{navyblue}{2}{Preuve par équation différentielle}
 
 \begin{mdframed}[style=proofbar]
-  Posons $f : \mathbb{R} \to \mathbb{R}^*$, $f(t) = \det(e^{tA})$.
+  Posons $f : \mathbb{R} \to \mathbb{K}^*$, $f(t) = \det(e^{tA})$.
 
   \medskip
   \textbf{Étape 1 — $f$ est un homomorphisme de $(\mathbb{R},+)$ dans
-  $(\mathbb{R}^*,\times)$.}
+  $(\mathbb{K}^*,\times)$.}
 
   Pour tous $t, s \in \mathbb{R}$, les matrices $tA$ et $sA$ commutent,
   donc $e^{(t+s)A} = e^{tA}e^{sA}$. La multiplicativité du déterminant donne
@@ -85,15 +85,25 @@
   Ainsi $f'(0) = \mathrm{tr}(A)$.
 
   \medskip
-  \textbf{Étape 3 — Identification de $f$.}
+  \textbf{Étape 3 — $f$ vérifie une équation différentielle linéaire.}
 
-  $f$ est continue (composée de fonctions continues), satisfait
-  $f(t+s)=f(t)f(s)$ et $f(0)=1$. C'est donc la seule fonction continue
-  vérifiant ces propriétés~: $f(t) = e^{ct}$ avec $c = f'(0) = \mathrm{tr}(A)$.
-
-  \textit{Justification~:} de $f(t+s)=f(t)f(s)$, on tire par récurrence
-  $f(n) = {f(1)}^n$ pour tout $n \in \mathbb{Z}$, puis $f(p/q) = {f(1)}^{p/q}$
-  pour $p/q \in \mathbb{Q}$. La continuité étend l'égalité à $\mathbb{R}$.
+  Fixons $t \in \mathbb{R}$. Grâce à l'équation fonctionnelle de l'étape~1,
+  pour tout $h$~:
+  \[
+    f(t+h) = f(t)\,f(h).
+  \]
+  En soustrayant $f(t)$ et en divisant par $h$, puis en faisant $h \to 0$, on
+  obtient (l'étape~2 garantissant que $f$ est dérivable en $0$)~:
+  \[
+    f'(t) = \lim_{h\to 0}\frac{f(t+h)-f(t)}{h}
+          = f(t)\,\lim_{h\to 0}\frac{f(h)-1}{h}
+          = f'(0)\,f(t) = \mathrm{tr}(A)\,f(t).
+  \]
+  Ainsi $f$ est solution de l'équation différentielle linéaire
+  $f'(t) = \mathrm{tr}(A)\,f(t)$ avec $f(0)=1$. Cet argument est valable
+  indifféremment pour $\mathbb{K}=\mathbb{R}$ et $\mathbb{K}=\mathbb{C}$, $f$
+  étant à valeurs dans $\mathbb{K}^*$. La solution est unique~:
+  $f(t) = e^{t\,\mathrm{tr}(A)}$.
 
   \medskip
   \textbf{Conclusion.}\enspace En $t = 1$~:
@@ -127,7 +137,7 @@
   qui est triangulaire supérieure avec $e^\lambda$ sur toute la diagonale.
   Donc $\det(e^{J_m(\lambda)}) = {(e^\lambda)}^m = e^{m\lambda}$.
 
-  En sommant sur tous les blocs~:
+  En multipliant sur tous les blocs~:
   \[
     \det(e^A) = \prod_{i=1}^r e^{m_i \lambda_i}
               = \exp\!\Bigl(\sum_{i=1}^r m_i \lambda_i\Bigr)
@@ -186,15 +196,27 @@
   En dérivant $W(t) = \det\Phi(t)$ et en utilisant la multilinéarité du
   déterminant par rapport aux colonnes~:
   \[
-    W'(t) = \sum_{j=1}^n \det(\ldots,x_j'(t),\ldots)
-           = \sum_{j=1}^n \det(\ldots,A(t)x_j(t),\ldots).
+    W'(t) = \sum_{j=1}^n \det(x_1,\ldots,x_j',\ldots,x_n)
+           = \sum_{j=1}^n \det(x_1,\ldots,A(t)x_j,\ldots,x_n),
   \]
-  Seul le terme diagonal de $A$ contribue à chaque déterminant
-  (les autres colonnes sont déjà présentes)~: la somme vaut
-  $\mathrm{tr}(A(t))\,W(t)$.
-  On obtient $W'(t) = \mathrm{tr}(A(t))\,W(t)$,
-  d'où $W(t) = W(0)\exp\!\bigl(\int_0^t\mathrm{tr}(A(s))\,ds\bigr)$.
-  \hfill$\blacksquare$
+  où, dans le $j$-ème terme, seule la $j$-ème colonne est dérivée.
+  Décomposons $A(t)x_j$ sur la base canonique~: en notant
+  $A(t)=(a_{k\ell}(t))$, on a $A(t)x_j = \sum_{k=1}^n a_{kj}(t)\,x_k$, d'où
+  \[
+    \det(x_1,\ldots,A(t)x_j,\ldots,x_n)
+      = \sum_{k=1}^n a_{kj}(t)\,
+        \det(x_1,\ldots,\underbrace{x_k}_{\text{place }j},\ldots,x_n).
+  \]
+  Pour $k \neq j$, le déterminant possède deux colonnes égales
+  (la colonne $x_k$ figure déjà en position $k$ et est répétée en position $j$)~:
+  il est donc nul. Seul le terme $k=j$ survit, et il vaut
+  $a_{jj}(t)\,\det(x_1,\ldots,x_n) = a_{jj}(t)\,W(t)$. En sommant sur $j$~:
+  \[
+    W'(t) = \sum_{j=1}^n a_{jj}(t)\,W(t) = \mathrm{tr}(A(t))\,W(t).
+  \]
+  Cette équation différentielle linéaire scalaire s'intègre en
+  $W(t) = W(0)\exp\!\bigl(\int_0^t\mathrm{tr}(A(s))\,ds\bigr)$.
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -204,7 +226,7 @@
 %=============================================================
 \secnum{exgreen}{5}{Pièges et exercices}
 
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{La réciproque est fausse~: $\det M > 0$ n'implique pas $M \in \mathrm{Im}(\exp)$

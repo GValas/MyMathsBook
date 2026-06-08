@@ -29,7 +29,7 @@ Une fonction continue ne peut pas « sauter » : son graphe est un trait
 continu. Si $f(a) < \gamma < f(b)$, la courbe part de $(a, f(a))$ en dessous
 de la droite $y = \gamma$ et termine en $(b, f(b))$ au-dessus : elle doit
 nécessairement la traverser en un point $c$. Ce résultat traduit en analyse la
-\emph{connexité par arcs}\index{connexité par arcs} des intervalles de
+\emph{connexité}\index{connexité} des intervalles de
 $\mathbb{R}$.
 \end{significationintuitive}
 
@@ -47,12 +47,13 @@ demi-intervalle où $f$ change de signe, et on répète. Les extrémités des
 intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
 \end{ideepreuve}
 
-\vspace{10pt}
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
-  \textit{Réduction.} Sans perte de généralité (quitte à considérer $f - \gamma$),
-  on suppose $f(a) \leq 0 \leq f(b)$ et on cherche $c$ tel que $f(c) = 0$.
+  \textit{Réduction.} Quitte à considérer $f - \gamma$, on cherche $c$ tel que
+  $f(c) = 0$. Quitte à remplacer $f$ par $-f$ (ou à échanger $a$ et $b$), on peut
+  de plus supposer $f(a) \leq 0 \leq f(b)$, ce qui couvre aussi le cas
+  $f(b) < \gamma < f(a)$.
 
   \medskip
   \textit{Construction par dichotomie.} Posons $a_0 = a$, $b_0 = b$.
@@ -81,7 +82,7 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
 \rubriq{Preuve alternative — image d'un connexe}
 
 \begin{mdframed}[style=proofbar]
-  $[a,b]$ est connexe par arcs\index{connexité par arcs} ; l'image continue
+  $[a,b]$ est connexe\index{connexité} ; l'image continue
   d'un connexe est connexe ; les connexes de $\mathbb{R}$ sont exactement les
   intervalles. Donc $f([a,b])$ est un intervalle, ce qui conclut. \hfill$\blacksquare$
 \end{mdframed}
@@ -93,7 +94,7 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
 %=============================================================
 \secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Existence d'une racine de $x^3 - x - 1$.}\enspace%
@@ -108,11 +109,10 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
   \smallskip\noindent
   \textbf{3. Dichotomie numérique.}\enspace%
   La preuve par dichotomie est à la base des algorithmes de recherche de zéro
-  (méthode de la bissection), convergence en $O((b-a)/2^n)$.
+  (méthode de la bissection), convergence en $O((b-a)/2^k)$.
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples.}
+\rubriq{Contre-exemples}
 
 \begin{mdframed}[style=cexbar]
   \textbf{La continuité est indispensable.}\enspace%

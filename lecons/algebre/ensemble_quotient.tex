@@ -23,6 +23,8 @@
   \[
     [x]_{\mathcal{R}} = \bigl\{y \in E \mid x\,\mathcal{R}\,y\bigr\}.
   \]
+  Lorsque la relation $\mathcal{R}$ est sous-entendue, on note simplement $[x]$
+  au lieu de $[x]_{\mathcal{R}}$.
 \end{tcolorbox}
 
 \rubriq{Classes et partition}
@@ -42,9 +44,13 @@
 
   \textit{Disjonction.} Si $[x]\cap[y]\neq\emptyset$, soit $z\in[x]\cap[y]$.
   Alors $x\,\mathcal{R}\,z$ et $y\,\mathcal{R}\,z$, donc par symétrie et transitivité
-  $x\,\mathcal{R}\,y$. Pour tout $t \in [x]$ : $x\,\mathcal{R}\,t$, et comme
-  $y\,\mathcal{R}\,x$, la transitivité donne $y\,\mathcal{R}\,t$, soit $t\in[y]$.
-  Ainsi $[x]\subseteq[y]$, et par symétrie $[x]=[y]$. \hfill$\blacksquare$
+  $x\,\mathcal{R}\,y$ (et, symétriquement, $y\,\mathcal{R}\,x$). Montrons les deux
+  inclusions. Pour tout $t \in [x]$ : $x\,\mathcal{R}\,t$, et comme
+  $y\,\mathcal{R}\,x$, la transitivité donne $y\,\mathcal{R}\,t$, soit $t\in[y]$ ;
+  ainsi $[x]\subseteq[y]$. En échangeant les rôles de $x$ et $y$ dans le même
+  raisonnement (on dispose aussi de $x\,\mathcal{R}\,y$), on obtient pour tout
+  $t\in[y]$ que $t\in[x]$, soit $[y]\subseteq[x]$. Les deux inclusions donnent
+  $[x]=[y]$. \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -134,7 +140,8 @@
   \index{espace vectoriel quotient}
   Soit $F$ un sous-espace de $E$. On pose $x \sim y$ si $x-y \in F$.
   L'ensemble quotient $E/F$ est naturellement un $\mathbb{K}$-espace vectoriel,
-  avec $\dim(E/F) = \dim E - \dim F$ (théorème du rang).
+  et lorsque $E$ est de dimension finie, $\dim(E/F) = \dim E - \dim F$
+  (propriété du quotient).
 
   \smallskip\noindent
   \textbf{4. Orbites d'une action de groupe.}\enspace%
@@ -150,7 +157,7 @@
 %=============================================================
 \secnum{exgreen}{4}{Applications, pièges et exercices}
 
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Bien-fondé des opérations.}\enspace%
@@ -166,7 +173,7 @@
   \smallskip\noindent
   \textbf{$E/\mathcal{R}$ peut être très grand ou très petit.}\enspace%
   Si $\mathcal{R}$ est l'égalité, $E/\mathcal{R} \cong E$.
-  Si $\mathcal{R}$ est la relation totale ($x\mathcal{R}y$ toujours), $E/\mathcal{R}$
+  Si $\mathcal{R}$ est la relation grossière ($x\,\mathcal{R}\,y$ toujours), $E/\mathcal{R}$
   est un singleton.
 \end{mdframed}
 

@@ -65,7 +65,7 @@ calculé via les formules closes.
 \end{ideepreuve}
 
 \vspace{10pt}
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   \textit{Étape 1 — Égalité sin/cos et monotonie.}
@@ -99,8 +99,9 @@ calculé via les formules closes.
   Comme $W_{2p+1}\sim W_{2p}$, on obtient $W_{2p}^2\sim\pi/(4p)$, soit
   $W_{2p}\sim\sqrt{\pi/(4p)}$. Par symétrie des indices :
   \[
-    \Wn\;\sim\;\sqrt{\frac{\pi}{2n}}. \hfill\blacksquare
+    \Wn\;\sim\;\sqrt{\frac{\pi}{2n}}.
   \]
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -110,7 +111,7 @@ calculé via les formules closes.
 %=============================================================
 \secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Premières valeurs.}
@@ -135,7 +136,7 @@ calculé via les formules closes.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+\rubriq{Contre-exemples et pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Décroissance lente.}\enspace%
@@ -156,7 +157,12 @@ calculé via les formules closes.
     \item Calculer $\displaystyle\int_0^\pi\sin^7(t)\,\mathrm{d}t$ et
           $\displaystyle\int_0^{\pi/4}\cos^4(t)\,\mathrm{d}t$.
 
-    \item Montrer que $\displaystyle\sum_{n=0}^{+\infty}{(-1)}^n W_{2n+1}=\frac{\pi}{4}$.
+    \item Montrer que
+          $\displaystyle\sum_{n=0}^{+\infty}{(-1)}^n W_{2n+1}
+          =\int_0^{\pi/2}\frac{\sin t}{1+\sin^2 t}\,\mathrm{d}t
+          =\frac{1}{2\sqrt{2}}\ln\!\frac{\sqrt{2}+1}{\sqrt{2}-1}\approx 0{,}623$.
+          \textit{Indication :} intervertir somme et intégrale en
+          sommant la série géométrique $\sum {(-1)}^n\sin^{2n+1}t$.
 
     \item En utilisant $W_n\sim\sqrt{\pi/(2n)}$, retrouver la formule
           de Stirling (exprimer $W_{2n}$ en termes de $(2n)!$ et ${(n!)}^2$).

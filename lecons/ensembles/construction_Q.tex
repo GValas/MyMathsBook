@@ -76,16 +76,18 @@ $p/q$ avec $\pgcd(p,q) = 1$ et $q > 0$ (\emph{fraction irréductible}).
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
-  Supposons $x = p/q$ irréductible vérifiant $p^2 = 2q^2$.
+  Supposons par l'absurde qu'il existe $x \in \mathbb{Q}$ tel que $x^2 = 2$.
+  Écrivons $x = p/q$ sous forme irréductible ($\pgcd(p,q) = 1$, $q > 0$).
+  De $x^2 = 2$ on tire $p^2 = 2q^2$.
   Alors $2 \mid p^2$, donc $2 \mid p$ (car $2$ est premier). Écrivons $p = 2k$.
   Alors $4k^2 = 2q^2$, soit $2k^2 = q^2$, donc $2 \mid q$. Contradiction avec
   $\pgcd(p,q) = 1$. \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Conséquence : $\mathbb{Q}$ n'est pas complet}
-La suite $(x_n)$ définie par $x_0 = 1$ et $x_{n+1} = \tfrac{x_n}{2} + \tfrac{1}{x_n}$
-est de Cauchy dans $\mathbb{Q}$ mais converge vers $\sqrt{2} \notin \mathbb{Q}$.
-Cette incomplétude motive la construction de $\mathbb{R}$.
+La suite de Héron $(x_n)$ définie par $x_0 = 1$ et $x_{n+1} = \tfrac{x_n}{2} + \tfrac{1}{x_n}$
+est, on l'admet, de Cauchy dans $\mathbb{Q}$ : elle converge en effet vers $\sqrt{2}$,
+qui n'appartient pas à $\mathbb{Q}$. Cette incomplétude motive la construction de $\mathbb{R}$.
 
 \decsep{}
 
@@ -94,7 +96,7 @@ Cette incomplétude motive la construction de $\mathbb{R}$.
 %=============================================================
 \secnum{exgreen}{4}{Exemples, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Corps premier.}\enspace%
@@ -116,7 +118,7 @@ Cette incomplétude motive la construction de $\mathbb{R}$.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Dense $\neq$ complet.}\enspace%
@@ -126,7 +128,7 @@ Cette incomplétude motive la construction de $\mathbb{R}$.
 
   \smallskip\noindent
   \textbf{Corps ordonné $\neq$ archimédien.}\enspace%
-  Tout corps ordonné n'est pas archimédien. Mais $\mathbb{Q}$ l'est :
+  Un corps ordonné n'est pas nécessairement archimédien. Mais $\mathbb{Q}$ l'est :
   pour tout $x \in \mathbb{Q}^+$, il existe $n \in \mathbb{N}$ tel que $n > x$.
 \end{mdframed}
 
@@ -142,14 +144,13 @@ Cette incomplétude motive la construction de $\mathbb{R}$.
 
     \item Montrer que tout corps ordonné archimédien se plonge dans $\mathbb{R}$.
 
-    \item Montrer que $\mathbb{Q}$ n'admet pas d'extension algébrique finie
-          de degré $1$ autre que lui-même (i.e.\ tout polynôme irréductible
-          sur $\mathbb{Q}$ de degré $\geq 2$ n'a pas de racine dans $\mathbb{Q}$).
-          Donner un exemple de degré $2$.
+    \item Montrer que $\mathbb{Q}$ n'est pas algébriquement clos : exhiber un
+          polynôme non constant de $\mathbb{Q}[X]$ sans racine dans $\mathbb{Q}$
+          (on pourra considérer $X^2 - 2$).
 
     \item Soit $\alpha \in \mathbb{R}$ algébrique sur $\mathbb{Q}$.
           Montrer que $\mathbb{Q}(\alpha)$ est dénombrable.
   \end{enumerate}
 \end{mdframed}
 
-\leconfooter{Euclide (irrationnalité de $\sqrt{2}$, \textit{ca.} $-$300) — G.\ Cantor (dénombrabilité, 1874)}
+\leconfooter{Euclide (irrationalité de $\sqrt{2}$, \textit{ca.} $-$300) — G.\ Cantor (dénombrabilité, 1874)}

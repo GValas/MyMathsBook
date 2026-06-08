@@ -67,7 +67,8 @@
     \item $\forall a \in A,\; \forall x \in I : ax \in I$ et $xa \in I$.
   \end{enumerate}
   Si $A$ est commutatif, ces deux conditions se confondent.
-  L'idéal \emph{engendré} par $a \in A$ est $(a) = aA = \{ra \mid r \in A\}$.
+  Si $A$ est commutatif, l'idéal \emph{engendré} par $a \in A$ est
+  $(a) = aA = \{ra \mid r \in A\}$.
   Un anneau est \emph{principal}\index{anneau principal} si tout idéal est engendré
   par un seul élément.
 \end{tcolorbox}
@@ -98,7 +99,8 @@
   \textit{Isomorphisme.}
   $\bar\varphi : A/\ker\varphi \to \mathrm{Im}(\varphi),\; [a] \mapsto \varphi(a)$
   est bien définie, injective ($\varphi(a)=0 \Rightarrow a \in \ker\varphi$),
-  surjective sur $\mathrm{Im}(\varphi)$, et c'est un morphisme. \hfill$\blacksquare$
+  surjective sur $\mathrm{Im}(\varphi)$, et c'est un morphisme.
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -146,7 +148,8 @@
   \textit{Maximal $\Rightarrow$ premier.}
   Soit $I$ maximal et $ab \in I$, $a \notin I$. L'idéal $(I, a) = A$ (car $I$ maximal),
   donc $1 = x + ra$ avec $x \in I$, $r \in A$. Alors
-  $b = xb + r(ab) \in I + I = I$. \hfill$\blacksquare$
+  $b = xb + r(ab) \in I + I = I$.
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -156,7 +159,7 @@
 %=============================================================
 \secnum{exgreen}{4}{Exemples, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. $\mathbb{Z}[i]$ euclidien.}\enspace%
@@ -178,7 +181,7 @@
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Idéal $\neq$ sous-anneau.}\enspace%
@@ -197,8 +200,9 @@
 
 \begin{mdframed}[style=exobar]
   \begin{enumerate}
-    \item Montrer que dans un anneau intègre, tout idéal premier non nul
-          est maximal si et seulement si l'anneau est un corps.
+    \item Montrer qu'un anneau commutatif intègre $A$ est un corps si et
+          seulement si $\{0\}$ est son seul idéal premier (c'est-à-dire si et
+          seulement si $\{0\}$ est maximal).
 
     \item Montrer que $\mathbb{Z}[\sqrt{-5}]$ n'est pas principal en montrant
           que l'idéal $(2, 1+\sqrt{-5})$ n'est pas engendré par un seul élément.

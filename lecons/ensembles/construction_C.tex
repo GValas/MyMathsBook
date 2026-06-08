@@ -24,7 +24,7 @@ tout polynôme non constant a au moins une racine.
     (a,b) + (c,d) &= (a+c,\; b+d), \\
     (a,b) \times (c,d) &= (ac-bd,\; ad+bc).
   \end{align*}
-  On note $i = (0,1)$, de sorte que $i^2 = (-1, 0) \equiv -1$.
+  On note $i = (0,1)$, de sorte que $i^2 = (-1, 0)$, identifié à $-1$.
   L'injection $\mathbb{R} \hookrightarrow \mathbb{C},\; a \mapsto (a,0)$,
   est un homomorphisme de corps.
 \end{tcolorbox}
@@ -45,7 +45,8 @@ tout polynôme non constant a au moins une racine.
   On vérifie $(a,b)\cdot(a,-b) = (a^2+b^2, 0) \neq (0,0)$ car $a^2+b^2 > 0$.
 
   \textit{Dimension.} $\mathbb{C}$ est un $\mathbb{R}$-espace vectoriel de dimension $2$,
-  de base $(1, i)$. Tout $z \in \mathbb{C}$ s'écrit $z = a + ib$ avec $a,b\in\mathbb{R}$. \hfill$\blacksquare$
+  de base $(1, i)$. Tout $z \in \mathbb{C}$ s'écrit $z = a + ib$ avec $a,b\in\mathbb{R}$.
+  $\blacksquare$
 \end{mdframed}
 
 \begin{tcolorbox}[thmbox]
@@ -72,12 +73,20 @@ tout polynôme non constant a au moins une racine.
   \textbf{Théorème (d'Alembert–Gauss).}\enspace%
   \index{théorème fondamental de l'algèbre}
   $\mathbb{C}$ est \emph{algébriquement clos} : tout polynôme
-  $P \in \mathbb{C}[X]$ de degré $n \geq 1$ admet exactement $n$ racines dans
-  $\mathbb{C}$ (comptées avec multiplicités).
+  $P \in \mathbb{C}[X]$ de degré $n \geq 1$ admet au moins une racine dans
+  $\mathbb{C}$.
 
   \medskip
-  En particulier, $\mathbb{C}$ est la \emph{clôture algébrique} de $\mathbb{R}$ :
-  toute extension algébrique de $\mathbb{C}$ est égale à $\mathbb{C}$.
+  \emph{Corollaire.} Par récurrence sur le degré (en factorisant un facteur
+  $(X-a)$ à chaque étape), tout $P$ de degré $n \geq 1$ admet alors
+  \emph{exactement} $n$ racines dans $\mathbb{C}$, comptées avec multiplicités.
+
+  \medskip
+  Comme $\mathbb{C}$ est algébriquement clos et que l'extension
+  $\mathbb{C}/\mathbb{R}$ est algébrique (de degré $2$), $\mathbb{C}$ est la
+  \emph{clôture algébrique} de $\mathbb{R}$. À ne pas confondre avec la définition
+  d'algébriquement clos elle-même, qui exprime que toute extension algébrique de
+  $\mathbb{C}$ est triviale (égale à $\mathbb{C}$).
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
@@ -101,7 +110,7 @@ de degré $3$ ou plus.
 %=============================================================
 \secnum{exgreen}{4}{Exemples, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Formule d'Euler.}\enspace%
@@ -118,22 +127,23 @@ de degré $3$ ou plus.
   \smallskip\noindent
   \textbf{3. Transformée de Fourier.}\enspace%
   L'utilisation de $\mathbb{C}$ est fondamentale en analyse harmonique :
-  $\hat{f}(\xi) = \int_{\mathbb{R}} f(x) e^{-2\pi i x\xi}\,dx$.
+  $\hat{f}(\xi) = \int_{\mathbb{R}} f(x) e^{-2\pi i x\xi}\,\mathrm{d}x$.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\mathbb{C}$ n'est pas un corps ordonné.}\enspace%
   Il n'existe aucun ordre total sur $\mathbb{C}$ compatible avec $+$ et $\times$.
-  En effet, $i^2 = -1 < 0$ dans tout corps ordonné, impossible.
+  En effet, dans un corps ordonné tout carré est $\geq 0$, donc on aurait
+  $i^2 = -1 \geq 0$, en contradiction avec $-1 < 0$.
 
   \smallskip\noindent
   \textbf{Pas de clôture algébrique canonique.}\enspace%
   La clôture algébrique de $\mathbb{Q}$ (les nombres algébriques $\bar{\mathbb{Q}}$)
-  n'est pas $\mathbb{C}$ entier — c'est un sous-corps strict, mais l'isomorphisme
-  $\mathrm{Aut}(\mathbb{C}/\mathbb{Q})$ est immense et non canonique.
+  n'est pas $\mathbb{C}$ entier — c'est un sous-corps strict, mais le groupe
+  d'automorphismes $\mathrm{Aut}(\mathbb{C}/\mathbb{Q})$ est immense et non canonique.
 \end{mdframed}
 
 \vspace{6pt}

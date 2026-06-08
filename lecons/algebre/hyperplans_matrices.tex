@@ -124,11 +124,11 @@ matrice inversible.
 \end{tcolorbox}
 
 \rubriq{Idée}
-On écrit $H = \ker\bigl(M\mapsto\mathrm{tr}(AQ)\bigr)$. La
+On écrit $H = \ker\bigl(Q\mapsto\mathrm{tr}(AQ)\bigr)$. La
 \emph{décomposition en valeurs singulières}\index{décomposition en valeurs singulières}
 réduit $A$ à une matrice diagonale $S = \mathrm{diag}(\sigma_1,\ldots,\sigma_n)$
 à coefficients $\geq 0$, sans modifier le groupe orthogonal sur lequel on
-optimise. On considère alors le \emph{chemin continu} de rotations $\theta \mapsto R(\theta)$
+cherche un zéro. On considère alors le \emph{chemin continu} de rotations $\theta \mapsto R(\theta)$
 et l'on applique le théorème des valeurs intermédiaires à
 $g(\theta) = \mathrm{tr}\bigl(S\,R(\theta)\bigr)$.
 
@@ -156,7 +156,7 @@ $g(\theta) = \mathrm{tr}\bigl(S\,R(\theta)\bigr)$.
   \textit{Un chemin de rotations.}\enspace%
   On regroupe les coordonnées par paires consécutives $(1,2),(3,4),\ldots$ et,
   sur chaque paire, on place le bloc de rotation
-  $\rho(\theta) = \left(\begin{smallmatrix}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{smallmatrix}\right)$.
+  $\rho(\theta) = \bigl(\begin{smallmatrix}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{smallmatrix}\bigr)$.
   \begin{itemize}
     \item si $n$ est \textbf{pair}, les $n/2$ paires couvrent tout : $R(\theta)$
           est diagonale par blocs $\rho(\theta)$, et $R(\theta)_{ii} = \cos\theta$
@@ -211,20 +211,20 @@ constant et son intégrale serait non nulle. Elle s'annule donc en un point.
 %=============================================================
 \secnum{exgreen}{4}{Exemples, remarques et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. L'hyperplan de trace nulle ($A = I_n$).}\enspace%
   $H = \{M : \mathrm{tr}(M) = 0\}$ est le célèbre hyperplan
   $\mathfrak{sl}_n(\mathbb{R})$. La matrice de permutation cyclique $C$, de
   trace nulle et inversible, y vit : $C \in H \cap \mathrm{GL}_n$. Pour $n=2$,
-  $C = \left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ est même orthogonale,
+  $C = \bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr)$ est même orthogonale,
   donc $C \in H \cap \mathrm{O}_2$.
 
   \smallskip\noindent
   \textbf{2. Cas $n=2$, $A = I_2$, version orthogonale fine.}\enspace%
   La rotation $\rho(\theta)$ a pour trace $2\cos\theta$, nulle pour
-  $\theta = \pi/2$ : $\rho(\pi/2) = \left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)
+  $\theta = \pi/2$ : $\rho(\pi/2) = \bigl(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\bigr)
   \in \mathrm{SO}_2 \cap H$. On illustre directement la Partie II.
 
   \smallskip\noindent
@@ -235,7 +235,7 @@ constant et son intégrale serait non nulle. Elle s'annule donc en un point.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Remarques et pièges.}
+\rubriq{Remarques et pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$n=1$ est exclu.}\enspace%
@@ -285,8 +285,10 @@ constant et son intégrale serait non nulle. Elle s'annule donc en un point.
           $\sum_{i\leq r} N_{ii}=0$, puis ajuster une colonne pour normaliser le
           déterminant sans toucher aux coefficients diagonaux utiles.)
 
-    \item \textbf{(Moyennisation)} Justifier $\int_{\mathrm{O}_n} Q\,\mathrm{d}Q = 0$
+    \item \textbf{(Moyennisation)} Justifier $\int_{\mathrm{SO}_n} Q\,\mathrm{d}Q = 0$
           pour $n\geq 2$ et en redéduire la Partie II sans recourir à la SVD.
+          (On intègre et l'on conclut sur $\mathrm{SO}_n$, qui est connexe,
+          et non sur $\mathrm{O}_n$.)
 
     \item Le résultat de la Partie II subsiste-t-il en remplaçant $\mathrm{O}_n(\mathbb{R})$
           par $\mathrm{SO}_n(\mathbb{R})$~? (\textit{Oui :} le chemin construit

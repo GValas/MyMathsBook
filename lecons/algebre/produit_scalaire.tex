@@ -72,11 +72,20 @@
   \]
   C'est un trinôme en $\lambda$ positif ou nul, donc son discriminant est $\leq 0$ :
   \[
-    4\langle x,y\rangle^2 - 4\langle x,x\rangle\langle y,y\rangle \leq 0.
+    4\langle x,y\rangle^2 - 4\langle x,x\rangle\langle y,y\rangle \leq 0,
   \]
-  L'égalité a lieu si et seulement si le trinôme a une racine, i.e.\ si
-  $\langle x - \lambda_0 y, x - \lambda_0 y\rangle = 0$ pour un $\lambda_0$,
-  soit $x = \lambda_0 y$. \hfill$\blacksquare$
+  ce qui donne l'inégalité annoncée.
+
+  \smallskip
+  \textit{Cas d'égalité.} Si $x = 0$, alors $x = 0\cdot y$ : $x$ et $y$ sont
+  colinéaires et les deux membres de l'inégalité sont nuls. Supposons $x \neq 0$.
+  L'égalité dans Cauchy-Schwarz équivaut à la nullité du discriminant du trinôme
+  ci-dessus, c'est-à-dire à l'existence d'une racine double $\lambda_0$ telle que
+  $\langle x - \lambda_0 y,\, x - \lambda_0 y\rangle = 0$ ; par définie positivité,
+  cela signifie $x = \lambda_0 y$, donc $x$ et $y$ sont colinéaires.
+  Réciproquement, si $x$ et $y$ sont colinéaires, un calcul immédiat montre que
+  l'inégalité est une égalité. On a donc bien équivalence entre l'égalité et la
+  colinéarité de $x$ et $y$. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Conséquences directes}
@@ -126,8 +135,9 @@
   \textit{Identité du parallélogramme.}
   $\|x+y\|^2 + \|x-y\|^2 = 2\|x\|^2 + 2\|y\|^2$ par développement direct.
 
-  \textit{Polarisation.} Découle immédiatement de l'identité du parallélogramme.
-  \hfill$\blacksquare$
+  \textit{Polarisation.} S'obtient elle aussi par développement direct :
+  $\|x+y\|^2 - \|x-y\|^2 = 4\langle x,y\rangle$, d'où la formule.
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Réciproque — caractérisation des normes euclidiennes}
@@ -162,13 +172,15 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
-  Soit $(e_1,\ldots,e_p)$ une base orthonormale de $F$ (obtenue par Gram-Schmidt,
+  Soit $(e_1,\ldots,e_p)$ une base orthonormée de $F$ (obtenue par Gram-Schmidt,
   voir § 5). Pour $x \in E$, posons $p_F(x) = \sum_{i=1}^p \langle x, e_i\rangle\, e_i$.
   Alors $p_F(x) \in F$ et $x - p_F(x) \in F^\perp$ (vérification : pour tout $j$,
   $\langle x - p_F(x), e_j\rangle = \langle x,e_j\rangle - \langle x,e_j\rangle = 0$).
   Donc $x = p_F(x) + (x-p_F(x)) \in F + F^\perp$.
   Si $y \in F \cap F^\perp$, alors $\langle y,y\rangle = 0$ d'où $y = 0$.
-  La somme est donc directe. \hfill$\blacksquare$
+  La somme est donc directe. Enfin, comme $E = F \oplus F^\perp$, la formule de
+  Grassmann pour une somme directe donne $\dim E = \dim F + \dim F^\perp$, soit
+  $\dim F^\perp = \dim E - \dim F$. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Projection orthogonale}
@@ -191,7 +203,7 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
   \[
     \|x-y\|^2 = \|x-p_F(x)\|^2 + \|p_F(x)-y\|^2 \geq \|x-p_F(x)\|^2,
   \]
-  avec égalité si et seulement si $y = p_F(x)$. \hfill$\blacksquare$
+  avec égalité si et seulement si $y = p_F(x)$. $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -203,16 +215,16 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 
 \begin{tcolorbox}[thmbox]
   \textbf{Théorème (Gram-Schmidt).}\enspace%
-  \index{Gram-Schmidt}\index{base orthonormale}
+  \index{Gram-Schmidt}\index{base orthonormée}
   Soit $(x_1, \ldots, x_n)$ une base d'un espace euclidien $E$.
-  On construit par récurrence une base orthonormale $(e_1,\ldots,e_n)$ telle que
+  On construit par récurrence une base orthonormée $(e_1,\ldots,e_n)$ telle que
   $\mathrm{Vect}(e_1,\ldots,e_k) = \mathrm{Vect}(x_1,\ldots,x_k)$ pour tout $k$ :
   \[
     e_1 = \frac{x_1}{\|x_1\|}, \qquad
     \tilde{e}_k = x_k - \sum_{i=1}^{k-1}\langle x_k, e_i\rangle\,e_i, \qquad
     e_k = \frac{\tilde{e}_k}{\|\tilde{e}_k\|}.
   \]
-  Tout espace euclidien admet une base orthonormale.
+  Tout espace euclidien admet une base orthonormée.
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
@@ -220,7 +232,7 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
   sur $\mathrm{Vect}(e_1,\ldots,e_{k-1})$. Donc $\tilde{e}_k \perp e_i$ pour
   $i < k$ (par construction), et $\tilde{e}_k \neq 0$ car $x_k \notin
   \mathrm{Vect}(x_1,\ldots,x_{k-1})$ (famille libre). En normalisant, $e_k$
-  complète la famille orthonormale. \hfill$\blacksquare$
+  complète la famille orthonormée. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Identité de Parseval}
@@ -228,7 +240,7 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 \begin{tcolorbox}[thmbox]
   \textbf{Théorème (Parseval).}\enspace%
   \index{identité de Parseval}
-  Soit $(e_1,\ldots,e_n)$ une base orthonormale de $E$. Pour tous $x, y \in E$ :
+  Soit $(e_1,\ldots,e_n)$ une base orthonormée de $E$. Pour tous $x, y \in E$ :
   \[
     \langle x,y\rangle = \sum_{i=1}^n \langle x,e_i\rangle\,\langle y,e_i\rangle,
     \qquad
@@ -238,9 +250,9 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 
 \begin{mdframed}[style=proofbar]
   On écrit $x = \sum_i \langle x,e_i\rangle\,e_i$ et
-  $y = \sum_j \langle y,e_j\rangle\,e_j$ dans la base orthonormale.
+  $y = \sum_j \langle y,e_j\rangle\,e_j$ dans la base orthonormée.
   La bilinéarité et $\langle e_i,e_j\rangle = \delta_{ij}$ donnent le résultat.
-  \hfill$\blacksquare$
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -250,7 +262,7 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 %=============================================================
 \secnum{exgreen}{6}{Pièges et exercices}
 
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Norme sans produit scalaire.}\enspace%
@@ -265,9 +277,13 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 
   \smallskip\noindent
   \textbf{$E = F \oplus F^\perp$ en dimension infinie.}\enspace%
-  Ce résultat est faux en général dans un espace de dimension infinie non complet.
-  Il tient dans les espaces de Hilbert (complets) mais pas dans tous les
-  espaces préhilbertiens.
+  Ce résultat est faux en général dans un espace de dimension infinie.
+  Dans un espace de Hilbert (préhilbertien complet), on a $E = F \oplus F^\perp$
+  \emph{à condition que $F$ soit fermé} ; sans cette hypothèse le résultat tombe en
+  défaut. Par exemple, si $F$ est un sous-espace \emph{dense} mais distinct de $E$,
+  alors $F^\perp = \{0\}$ et pourtant $F \neq E$, de sorte que $F \oplus F^\perp = F
+  \neq E$. Dans un préhilbertien non complet, le résultat échoue de surcroît même
+  pour certains sous-espaces fermés.
 \end{mdframed}
 
 \vspace{6pt}
@@ -294,7 +310,7 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
           $\langle x,y\rangle_A = x^T A y$ est un produit scalaire sur $\mathbb{R}^n$.
 
     \item (Inégalité de Bessel) Soit $(e_1,\ldots,e_p)$ une famille
-          orthonormale dans $E$ (pas nécessairement une base).
+          orthonormée dans $E$ (pas nécessairement une base).
           Montrer que $\sum_{i=1}^p \langle x,e_i\rangle^2 \leq \|x\|^2$,
           avec égalité si et seulement si $x \in \mathrm{Vect}(e_1,\ldots,e_p)$.
   \end{enumerate}

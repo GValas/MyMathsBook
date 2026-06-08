@@ -53,8 +53,7 @@ garantit que les centres forment une suite de Cauchy qui converge vers un point
 appartenant à toutes les boules, et donc à toutes les intersections.
 \end{ideepreuve}
 
-\vspace{10pt}
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   Soient $(U_n)_{n \geq 1}$ des ouverts denses de $E$. Soit $V$ un ouvert
@@ -93,7 +92,7 @@ appartenant à toutes les boules, et donc à toutes les intersections.
     \ell \;\in\; V \;\cap\; \bigcap_{n \geq 1} U_n \;\neq\; \emptyset.
   \]
   $V$ étant arbitraire, $\bigcap_{n \geq 1} U_n$ est dense dans $E$.
-  \hfill$\blacksquare$
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Équivalence des deux formulations}
@@ -105,7 +104,7 @@ appartenant à toutes les boules, et donc à toutes les intersections.
     \bigcap_{n \geq 1} U_n = E \setminus \bigcup_{n \geq 1} F_n = \emptyset,
   \]
   ce qui contredit la densité (car $E \neq \emptyset$).
-  \hfill$\blacksquare$
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -115,7 +114,7 @@ appartenant à toutes les boules, et donc à toutes les intersections.
 %=============================================================
 \secnum{exgreen}{3}{Applications, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. $\mathbb{R}$ est indénombrable.}
@@ -128,22 +127,22 @@ appartenant à toutes les boules, et donc à toutes les intersections.
   \textbf{2. Fonctions continues nulle part dérivables.}
   Dans $(\mathcal{C}([0,1]), \|\cdot\|_\infty)$, complet, l'ensemble
   \[
-    D_n = \Bigl\{f : \exists\, x,\; \bigl|f(x+h)-f(x)\bigr| \leq n|h|
-    \;\text{ pour tout } h\Bigr\}
+    D_n = \Bigl\{f : \exists\, x_0\in[0,1],\;
+    \sup_{\substack{h\neq 0\\ x_0+h\in[0,1]}}
+    \frac{\bigl|f(x_0+h)-f(x_0)\bigr|}{|h|} \leq n\Bigr\}
   \]
-  est un fermé d'intérieur vide. Par Baire, $\bigcup D_n \neq \mathcal{C}([0,1])$ :
+  est un fermé d'intérieur vide. Par Baire, $\bigcup_{n\geq 1} D_n \neq \mathcal{C}([0,1])$ :
   il existe des fonctions continues nulle part dérivables.
 
   \smallskip\noindent
   \textbf{3. Principe de Banach-Steinhaus.}\index{Banach-Steinhaus (théorème de)}
-  Soient $E$ de Banach et $(T_n)$ des opérateurs linéaires continus $E\to F$
+  Soient $E$ de Banach, $F$ un espace normé et $(T_n)$ des opérateurs linéaires continus $E\to F$
   tels que $\sup_n \|T_n x\| < +\infty$ pour tout $x$. Baire, appliqué aux
   fermés $F_k = \{x : \sup_n \|T_n x\| \leq k\}$, donne l'existence d'une
   boule sur laquelle ils sont uniformément bornés, d'où $\sup_n \|T_n\| < +\infty$.
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples.}
+\rubriq{Contre-exemples}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Complétude indispensable.}\enspace%
@@ -180,9 +179,10 @@ appartenant à toutes les boules, et donc à toutes les intersections.
           convergeant simplement vers $f$. Montrer que $f$ est continue sur
           un ensemble dense (théorème d'Osgood\index{Osgood (théorème d')}).
 
-    \item Montrer que $\mathbb{R}$ ne peut s'écrire comme réunion dénombrable
-          d'ensembles fermés deux à deux disjoints, sauf si l'un d'eux a un
-          intérieur non vide.
+    \item (Théorème de Sierpiński.) Montrer qu'un espace métrique connexe
+          complet ayant au moins deux points ne peut être partitionné en une
+          famille dénombrable (de cardinal $\geq 2$) de fermés non vides deux à
+          deux disjoints.
   \end{enumerate}
 \end{mdframed}
 
