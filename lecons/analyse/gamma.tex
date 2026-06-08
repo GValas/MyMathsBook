@@ -1,0 +1,260 @@
+%==============================================================
+%  lecons/analyse/gamma.tex — La fonction Gamma d'Euler
+%==============================================================
+
+\lecontitle{La fonction Gamma}{Analyse réelle — Intégrales à paramètre et fonctions spéciales}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Gam}{\Gamma}
+\newcommand{\intzi}{\int_0^{+\infty}}
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{fonction Gamma}
+  Pour tout réel $x>0$, l'\textit{intégrale d'Euler de seconde espèce}
+  \[
+    \Gam(x) \;=\; \intzi t^{x-1}\,e^{-t}\,\mathrm{d}t
+  \]
+  est convergente. Elle définit la \textit{fonction Gamma} sur $]0,+\infty[$.
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}
+  \begin{itemize}
+    \item \textit{Équation fonctionnelle :} pour tout $x>0$,
+    \[
+      \Gam(x+1) = x\,\Gam(x), \qquad \Gam(1)=1,
+    \]
+    d'où $\Gam(n+1)=n!$ pour tout entier $n\geq 0$ : $\Gam$ prolonge la
+    factorielle.
+    \item \textit{Régularité :} $\Gam$ est de classe $\mathcal{C}^\infty$ sur
+    $]0,+\infty[$ (dérivation sous le signe intégral), avec
+    \[
+      \Gam^{(k)}(x) = \intzi {(\ln t)}^k\,t^{x-1}\,e^{-t}\,\mathrm{d}t.
+    \]
+    \item \textit{Log-convexité :} $\ln\circ\,\Gam$ est convexe sur
+    $]0,+\infty[$. Le \textit{théorème de Bohr--Mollerup}
+    \index{théorème de Bohr-Mollerup} caractérise $\Gam$ comme l'unique
+    fonction $f:\,]0,+\infty[\,\to\,]0,+\infty[$ vérifiant $f(1)=1$,
+    $f(x+1)=x\,f(x)$ et $\ln f$ convexe.
+    \item \textit{Valeurs remarquables :}
+    \[
+      \Gam\!\left(\tfrac12\right)=\sqrt{\pi}, \qquad
+      \Gam(x)\,\Gam(1-x)=\frac{\pi}{\sin(\pi x)} \quad (0<x<1)
+    \]
+    (\textit{formule des compléments}\index{formule des compléments}).
+    \item \textit{Équivalent de Stirling :}
+    \[
+      \Gam(x+1) \;\sim\; \sqrt{2\pi x}\,{\left(\frac{x}{e}\right)}^{\!x}
+      \quad (x\to+\infty).
+    \]
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+La factorielle $n!$ n'est définie que pour des entiers ; pourtant l'identité
+$\,n! = n\cdot(n-1)!$ et l'intégrale $\intzi t^{n}e^{-t}\,\mathrm{d}t=n!$
+suggèrent un sens « continu ». La fonction $\Gam$ réalise ce prolongement :
+elle interpole les points $(n,\,(n-1)!)$ par une courbe lisse, et l'exigence
+de log-convexité (théorème de Bohr--Mollerup) en fait le prolongement
+\emph{canonique}, à l'exclusion de toute autre interpolation raisonnable.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+La convergence se traite séparément en $0$ (où $t^{x-1}$ peut être singulier)
+et en $+\infty$ (où $e^{-t}$ domine). L'équation fonctionnelle vient d'une
+intégration par parties. La régularité $\mathcal{C}^\infty$ repose sur le
+théorème de dérivation sous le signe intégral, justifié par une domination
+locale uniforme. Enfin $\Gam(1/2)$ se ramène à l'intégrale de Gauss via le
+changement $t=u^2$.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Convergence.}
+  Soit $x>0$. La fonction $t\mapsto t^{x-1}e^{-t}$ est continue positive sur
+  $]0,+\infty[$. Au voisinage de $0$, $t^{x-1}e^{-t}\sim t^{x-1}$, intégrable
+  ssi $x-1>-1$, c'est-à-dire $x>0$. Au voisinage de $+\infty$, on a
+  $t^{x-1}e^{-t}=o(t^{-2})$ (croissances comparées), donc intégrable. Ainsi
+  $\Gam(x)$ est bien défini pour tout $x>0$, et l'intégrale diverge pour
+  $x\leq 0$.
+
+  \medskip
+  \textit{Étape 2 — Équation fonctionnelle.}
+  Pour $x>0$, une intégration par parties sur $[\varepsilon,A]$ avec
+  $u=t^{x}$, $v'=e^{-t}$ donne
+  \[
+    \int_\varepsilon^A t^{x}e^{-t}\,\mathrm{d}t
+    = {\big[-t^{x}e^{-t}\big]}_\varepsilon^A
+      + x\int_\varepsilon^A t^{x-1}e^{-t}\,\mathrm{d}t.
+  \]
+  Le terme tout intégré tend vers $0$ quand $\varepsilon\to 0^+$ et
+  $A\to+\infty$ (car $x>0$). En passant à la limite :
+  \[
+    \Gam(x+1) = x\,\Gam(x).
+  \]
+  De plus $\Gam(1)=\intzi e^{-t}\,\mathrm{d}t=1$, d'où par récurrence
+  $\Gam(n+1)=n\,\Gam(n)=\dots=n!\,\Gam(1)=n!$.
+
+  \medskip
+  \textit{Étape 3 — Continuité et dérivabilité $\mathcal{C}^\infty$.}
+  Posons $f(x,t)=t^{x-1}e^{-t}$. Fixons un segment $[a,b]\subset\,]0,+\infty[$.
+  La dérivée partielle $\partial_x^{\,k} f(x,t)={(\ln t)}^k\,t^{x-1}e^{-t}$ est
+  continue en $x$, et pour tout $x\in[a,b]$ on a la domination
+  \[
+    \bigl|{(\ln t)}^k\,t^{x-1}\bigr|\,e^{-t}
+    \;\leq\; {|\ln t|}^k\bigl(t^{a-1}+t^{b-1}\bigr)\,e^{-t}
+    \;=:\;\varphi_k(t),
+  \]
+  où $\varphi_k$ est intégrable sur $]0,+\infty[$ (le facteur logarithmique ne
+  modifie ni la convergence en $0$ — car $t^{\delta}{|\ln t|}^k\to 0$ pour tout
+  $\delta>0$ — ni celle en $+\infty$, dominée par $e^{-t}$). Le théorème de
+  dérivation sous le signe intégral s'applique sur $[a,b]$, donc $\Gam$ est
+  $\mathcal{C}^\infty$ et
+  \[
+    \Gam^{(k)}(x) = \intzi {(\ln t)}^k\,t^{x-1}e^{-t}\,\mathrm{d}t.
+  \]
+  En particulier $\Gam''(x)=\intzi {(\ln t)}^2\,t^{x-1}e^{-t}\,\mathrm{d}t>0$,
+  donc $\Gam$ est convexe ; la log-convexité s'obtient par l'inégalité de
+  Cauchy--Schwarz appliquée à
+  $\Gam'(x)^2\leq\Gam(x)\,\Gam''(x)$, qui équivaut à
+  ${(\ln\Gam)}''\geq 0$.
+
+  \medskip
+  \textit{Étape 4 — Valeur $\Gam(1/2)$ et intégrale de Gauss.}
+  Le changement de variable $t=u^2$ (donc $\mathrm{d}t=2u\,\mathrm{d}u$) donne
+  \[
+    \Gam\!\left(\tfrac12\right)
+    = \intzi t^{-1/2}e^{-t}\,\mathrm{d}t
+    = \intzi u^{-1}e^{-u^2}\,2u\,\mathrm{d}u
+    = 2\intzi e^{-u^2}\,\mathrm{d}u
+    = \sqrt{\pi},
+  \]
+  où l'on a utilisé l'intégrale de Gauss $\intzi e^{-u^2}\,\mathrm{d}u
+  =\tfrac{\sqrt{\pi}}{2}$ (elle-même limite des intégrales de Wallis). On en
+  déduit, via l'équation fonctionnelle,
+  $\Gam(3/2)=\tfrac12\sqrt{\pi}$, $\Gam(5/2)=\tfrac34\sqrt{\pi}$, etc.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Valeurs aux entiers et demi-entiers.}
+  \[
+    \Gam(n+1)=n!,\qquad
+    \Gam\!\left(\tfrac12\right)=\sqrt{\pi},\qquad
+    \Gam\!\left(\tfrac32\right)=\tfrac{\sqrt{\pi}}{2},\qquad
+    \Gam\!\left(\tfrac52\right)=\tfrac{3\sqrt{\pi}}{4}.
+  \]
+  Plus généralement
+  $\Gam\!\left(n+\tfrac12\right)=\dfrac{(2n)!}{4^n\,n!}\sqrt{\pi}
+   =\dfrac{(2n-1)!!}{2^{n}}\sqrt{\pi}$.
+
+  \smallskip\noindent
+  \textbf{2. Fonction Bêta.}\enspace\index{fonction Bêta}
+  Pour $x,y>0$,
+  \[
+    B(x,y)=\int_0^1 u^{x-1}{(1-u)}^{y-1}\,\mathrm{d}u
+          =\frac{\Gam(x)\,\Gam(y)}{\Gam(x+y)}.
+  \]
+  C'est l'outil de calcul d'innombrables intégrales : par exemple
+  $\displaystyle\int_0^1\frac{\mathrm{d}u}{\sqrt{u(1-u)}}=B\!\left(\tfrac12,\tfrac12\right)
+   =\dfrac{\Gam(1/2)^2}{\Gam(1)}=\pi$.
+
+  \smallskip\noindent
+  \textbf{3. Lien avec les intégrales de Wallis.}\enspace\index{intégrales de Wallis}
+  Le changement $u=\sin^2 t$ donne
+  $W_n=\intz \sin^n t\,\mathrm{d}t=\tfrac12 B\!\left(\tfrac{n+1}{2},\tfrac12\right)
+   =\dfrac{\sqrt{\pi}}{2}\,\dfrac{\Gam\!\left(\frac{n+1}{2}\right)}
+   {\Gam\!\left(\frac{n}{2}+1\right)}$,
+  où $\displaystyle\intz=\int_0^{\pi/2}$.
+
+  \smallskip\noindent
+  \textbf{4. Stirling factoriel.}\enspace\index{formule de Stirling}
+  En $x=n$, l'équivalent de Stirling redonne
+  $n!=\Gam(n+1)\sim\sqrt{2\pi n}\,{(n/e)}^n$.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$\Gam$ n'est pas définie en $0$ ni aux entiers négatifs.}\enspace%
+  L'intégrale $\intzi t^{x-1}e^{-t}\,\mathrm{d}t$ \emph{diverge} dès que
+  $x\leq 0$ (divergence en $0$). Ainsi $\Gam(0)$ « n'existe pas » au sens de
+  l'intégrale.
+
+  \smallskip\noindent
+  \textbf{Pôles du prolongement.}\enspace%
+  La relation $\Gam(x)=\dfrac{\Gam(x+n)}{x(x+1)\cdots(x+n-1)}$ permet de
+  prolonger $\Gam$ aux réels (puis complexes) non entiers négatifs : on obtient
+  une fonction \textit{méromorphe} dont les seuls pôles sont $0,-1,-2,\dots$,
+  de résidu $\dfrac{{(-1)}^n}{n!}$ en $-n$. Il ne faut donc \emph{pas} croire
+  que $\Gam$ est partout finie.
+
+  \smallskip\noindent
+  \textbf{Convexité seule ne suffit pas.}\enspace%
+  Une fonction interpolant la factorielle et seulement \emph{convexe} n'est pas
+  unique : c'est la log-convexité (Bohr--Mollerup) qui force l'unicité.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Calculer $\displaystyle\intzi t^{3}e^{-t}\,\mathrm{d}t$ et
+          $\displaystyle\intzi \sqrt{t}\,e^{-t}\,\mathrm{d}t$.
+          \textit{Indication :} reconnaître $\Gam(4)$ et $\Gam(3/2)$.
+
+    \item Montrer que pour $a>0$,
+          $\displaystyle\intzi t^{x-1}e^{-at}\,\mathrm{d}t
+          =\dfrac{\Gam(x)}{a^{x}}$ (changement de variable affine).
+
+    \item Établir $\displaystyle\intzi e^{-t^2}\,t^{2n}\,\mathrm{d}t
+          =\tfrac12\,\Gam\!\left(n+\tfrac12\right)
+          =\dfrac{(2n-1)!!}{2^{n+1}}\sqrt{\pi}$.
+
+    \item À partir de la formule des compléments, déduire la valeur de
+          $\displaystyle\intzi\frac{\mathrm{d}u}{1+u^4}$.
+          \textit{Indication :} via $u^4=v$, se ramener à
+          $\tfrac14 B\!\left(\tfrac14,\tfrac34\right)$ puis
+          $\Gam(1/4)\Gam(3/4)=\pi/\sin(\pi/4)$.
+
+    \item (Bohr--Mollerup) Soit $f:\,]0,+\infty[\,\to\,]0,+\infty[$ vérifiant
+          $f(1)=1$, $f(x+1)=x f(x)$ et $\ln f$ convexe. Montrer que
+          $f=\Gam$. \textit{Indication :} encadrer $\ln f(x)$ pour
+          $0<x<1$ à l'aide de la convexité de $\ln f$ entre des entiers, puis
+          faire tendre $n\to+\infty$.
+
+    \item (Formule de Gauss) Établir
+          $\displaystyle\Gam(x)=\lim_{n\to+\infty}
+          \frac{n!\,n^{x}}{x(x+1)\cdots(x+n)}$ pour $x>0$, et en déduire la
+          formule du produit
+          $\dfrac{1}{\Gam(x)}=x\,e^{\gamma x}\prod_{k\geq 1}
+          \left(1+\tfrac{x}{k}\right)e^{-x/k}$
+          (avec $\gamma$ la constante d'Euler).
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{L.\ Euler (1729) ; H.\ Bohr \& J.\ Mollerup (1922)}

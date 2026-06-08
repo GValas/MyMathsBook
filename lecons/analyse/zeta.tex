@@ -1,0 +1,269 @@
+%==============================================================
+%  lecons/analyse/zeta.tex — La fonction zêta de Riemann
+%==============================================================
+
+\lecontitle{La fonction zêta de Riemann}{Analyse réelle — Séries de fonctions et fonctions spéciales}
+
+%=== NOTATION LOCALE =========================================
+% (aucune : \zeta et \Re sont fournis par amsmath/amssymb)
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{fonction zêta de Riemann}
+  Pour tout réel $s>1$, la \emph{fonction zêta de Riemann} est définie par la série
+  \[
+    \zeta(s) \;=\; \sum_{n=1}^{+\infty} \frac{1}{n^{s}}.
+  \]
+  Plus généralement, pour $s\in\mathbb{C}$ avec $\operatorname{Re}(s)>1$, on pose
+  $\zeta(s)=\sum_{n\geq 1} n^{-s}$ où $n^{-s}=\exp(-s\ln n)$, la série étant
+  absolument convergente puisque $|n^{-s}|=n^{-\operatorname{Re}(s)}$.
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}
+  \begin{itemize}
+    \item \textit{Domaine.} La série converge si et seulement si $s>1$ ; elle
+    diverge en $s=1$ (série harmonique) et pour tout $s\leq 1$.
+    \item \textit{Continuité.} $\zeta$ est continue sur $\,]1,+\infty[$, par
+    convergence normale sur tout segment $[a,+\infty[$ avec $a>1$.
+    \item \textit{Régularité.} $\zeta$ est de classe $\mathcal{C}^{\infty}$ sur
+    $\,]1,+\infty[$, avec dérivation terme à terme :
+    \[
+      \zeta^{(k)}(s) \;=\; \sum_{n=1}^{+\infty} \frac{(-\ln n)^{k}}{n^{s}}
+      \qquad (k\geq 0).
+    \]
+    \item \textit{Comportement aux bornes.}
+    \[
+      \zeta(s) \;\underset{s\to 1^{+}}{\sim}\; \frac{1}{s-1},
+      \qquad
+      \lim_{s\to +\infty} \zeta(s) = 1.
+    \]
+    \item \textit{Produit eulérien.}\index{produit eulérien} Pour $s>1$, en
+    notant $\mathcal{P}$ l'ensemble des nombres premiers,
+    \[
+      \zeta(s) \;=\; \prod_{p\in\mathcal{P}} \frac{1}{1-p^{-s}}.
+    \]
+    \item \textit{Valeurs paires.} $\zeta(2)=\dfrac{\pi^{2}}{6}$,
+    $\zeta(4)=\dfrac{\pi^{4}}{90}$, et plus généralement pour tout $k\geq 1$,
+    $\zeta(2k)=r_{k}\,\pi^{2k}$ avec $r_{k}\in\mathbb{Q}_{+}^{*}$ (nombres de
+    Bernoulli).\index{nombres de Bernoulli}
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+La fonction $\zeta$ encode la répartition des entiers, et — via le produit
+eulérien — celle des nombres premiers. La somme $\sum n^{-s}$ pèse chaque
+entier par $n^{-s}$ ; le produit $\prod_p (1-p^{-s})^{-1}$ traduit
+analytiquement le fait que tout entier se décompose de façon unique en facteurs
+premiers. Le pôle en $s=1$ (la divergence harmonique) est précisément le reflet
+de l'infinité des nombres premiers : c'est le pont d'Euler entre analyse et
+arithmétique.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+Le domaine et l'équivalent en $1$ s'obtiennent par comparaison série-intégrale
+(critère de Riemann). La continuité et le caractère $\mathcal{C}^{\infty}$
+viennent de la convergence normale sur $[a,+\infty[$ ($a>1$) de la série et de
+ses dérivées formelles. Le produit eulérien se déduit du développement
+géométrique $(1-p^{-s})^{-1}=\sum_{k\geq 0}p^{-ks}$ et de l'unicité de la
+décomposition en facteurs premiers.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Domaine et convergence.}
+  La fonction $t\mapsto t^{-s}$ est positive décroissante sur $[1,+\infty[$ pour
+  $s>0$, d'où l'encadrement, pour $n\geq 2$,
+  \[
+    \int_{n}^{n+1}\frac{\mathrm{d}t}{t^{s}}
+    \;\leq\; \frac{1}{n^{s}}
+    \;\leq\; \int_{n-1}^{n}\frac{\mathrm{d}t}{t^{s}}.
+  \]
+  En sommant, la série $\sum n^{-s}$ converge si et seulement si
+  $\int_{1}^{+\infty} t^{-s}\,\mathrm{d}t$ converge, c'est-à-dire si et
+  seulement si $s>1$. Pour $s=1$ on retrouve la série harmonique divergente, et
+  pour $s<1$ le terme général ne tend pas vers $0$ assez vite ($n^{-s}\geq 1/n$).
+
+  \medskip
+  \textit{Étape 2 — Continuité.}
+  Fixons $a>1$. Pour tout $s\geq a$ et tout $n\geq 1$, $0\leq n^{-s}\leq n^{-a}$,
+  donc $\sup_{s\geq a}|n^{-s}|=n^{-a}$ et $\sum n^{-a}<+\infty$. La série de
+  fonctions $\sum n^{-s}$ converge donc \emph{normalement} sur $[a,+\infty[$.
+  Chaque terme $s\mapsto n^{-s}$ étant continu, $\zeta$ est continue sur
+  $[a,+\infty[$, ceci pour tout $a>1$, donc sur $\,]1,+\infty[$.
+
+  \medskip
+  \textit{Étape 3 — Classe $\mathcal{C}^{\infty}$.}
+  Posons $u_{n}(s)=n^{-s}=e^{-s\ln n}$, de sorte que $u_{n}^{(k)}(s)=(-\ln
+  n)^{k}n^{-s}$. Sur $[a,+\infty[$ ($a>1$), choisissons $b$ avec
+  $1<b<a$ ; comme $(\ln n)^{k}=o(n^{a-b})$, il existe $C_{k}$ tel que
+  $|u_{n}^{(k)}(s)|=(\ln n)^{k}n^{-s}\leq C_{k}\,n^{-b}$ pour tout $s\geq a$.
+  Chaque série dérivée $\sum u_{n}^{(k)}$ converge donc normalement sur
+  $[a,+\infty[$. Par le théorème de dérivation terme à terme (appliqué de proche
+  en proche), $\zeta$ est $\mathcal{C}^{\infty}$ sur $\,]1,+\infty[$ et
+  \[
+    \zeta^{(k)}(s)=\sum_{n=1}^{+\infty}\frac{(-\ln n)^{k}}{n^{s}}.
+  \]
+  En particulier $\zeta'(s)=-\sum_{n\geq 2}(\ln n)\,n^{-s}<0$ : $\zeta$ est
+  strictement décroissante sur $\,]1,+\infty[$.
+
+  \medskip
+  \textit{Étape 4 — Équivalent en $1$ et limite en $+\infty$.}
+  La comparaison série-intégrale de l'étape~1 donne, pour $s>1$,
+  \[
+    \int_{1}^{+\infty}\frac{\mathrm{d}t}{t^{s}}
+    \;\leq\; \zeta(s)
+    \;\leq\; 1+\int_{1}^{+\infty}\frac{\mathrm{d}t}{t^{s}},
+    \qquad\text{soit}\qquad
+    \frac{1}{s-1}\;\leq\;\zeta(s)\;\leq\;1+\frac{1}{s-1}.
+  \]
+  En multipliant par $(s-1)$ : $1\leq (s-1)\zeta(s)\leq s$, donc
+  $(s-1)\zeta(s)\to 1$ quand $s\to 1^{+}$, c'est-à-dire
+  $\zeta(s)\sim 1/(s-1)$. Par ailleurs, pour $s\to+\infty$, $\zeta(s)-1=\sum_{n\geq
+  2}n^{-s}\leq \sum_{n\geq 2}2^{-s}\cdot(2/n)^{s}\to 0$ (domination par
+  $2^{1-s}$), d'où $\lim_{s\to+\infty}\zeta(s)=1$.
+
+  \medskip
+  \textit{Étape 5 — Produit eulérien.}
+  Fixons $s>1$. Pour chaque premier $p$, $|p^{-s}|<1$ donne
+  $(1-p^{-s})^{-1}=\sum_{k\geq 0}p^{-ks}$. Pour un réel $N$, le produit fini sur
+  les premiers $p\leq N$ vaut, en développant et en regroupant,
+  \[
+    \prod_{p\leq N}\frac{1}{1-p^{-s}}
+    \;=\; \sum_{n\in\mathcal{A}_{N}}\frac{1}{n^{s}},
+  \]
+  où $\mathcal{A}_{N}$ est l'ensemble des entiers dont tous les facteurs premiers
+  sont $\leq N$ (unicité de la décomposition en facteurs premiers : chaque tel
+  $n$ apparaît une et une seule fois). Comme $\mathcal{A}_{N}$ contient tous les
+  entiers $\leq N$,
+  \[
+    0\;\leq\; \zeta(s)-\prod_{p\leq N}\frac{1}{1-p^{-s}}
+    \;\leq\; \sum_{n>N}\frac{1}{n^{s}}\xrightarrow[N\to+\infty]{}0.
+  \]
+  Le produit infini converge donc vers $\zeta(s)$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Problème de Bâle.}\enspace\index{problème de Bâle}%
+  La valeur la plus célèbre est
+  \[
+    \zeta(2)=\sum_{n=1}^{+\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6},
+  \]
+  résolue par Euler en $1735$. On a de même $\zeta(4)=\pi^{4}/90$ et
+  $\zeta(6)=\pi^{6}/945$.
+
+  \smallskip\noindent
+  \textbf{2. Valeurs paires et nombres de Bernoulli.}\enspace%
+  Pour tout $k\geq 1$,
+  \[
+    \zeta(2k)=\frac{(-1)^{k+1}\,(2\pi)^{2k}\,B_{2k}}{2\,(2k)!},
+  \]
+  où $B_{2k}\in\mathbb{Q}$ est le $2k$-ième nombre de Bernoulli. Ainsi
+  $\zeta(2k)$ est un rationnel multiple de $\pi^{2k}$.
+
+  \smallskip\noindent
+  \textbf{3. Fonction êta de Dirichlet.}\enspace%
+  En séparant termes pairs et impairs, pour $s>0$,
+  \[
+    \eta(s)=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n^{s}}
+    =\bigl(1-2^{1-s}\bigr)\,\zeta(s)\quad(s>1),
+  \]
+  et $\eta$ converge dès $s>0$ (série alternée). En particulier
+  $\eta(1)=\ln 2$ et $\eta(2)=\pi^{2}/12$. Cette identité sert à
+  \emph{prolonger} $\zeta$ à $\,]0,1[\cup\,]1,+\infty[$.
+
+  \smallskip\noindent
+  \textbf{4. Lien arithmétique.}\enspace%
+  Le produit eulérien donne $1/\zeta(s)=\prod_{p}(1-p^{-s})=\sum_{n\geq
+  1}\mu(n)/n^{s}$ ($\mu$ : fonction de Möbius), et $\zeta(s)^{2}=\sum_{n\geq
+  1}d(n)/n^{s}$ ($d(n)$ : nombre de diviseurs de $n$).
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Pôle en $s=1$.}\enspace%
+  $\zeta$ ne se prolonge pas par continuité en $1$ : $\zeta(s)\to+\infty$ quand
+  $s\to 1^{+}$. Le prolongement analytique de $\zeta$ y possède un pôle simple,
+  de résidu $1$.
+
+  \smallskip\noindent
+  \textbf{Divergence pour $s\leq 1$.}\enspace%
+  La \emph{série} $\sum n^{-s}$ diverge pour tout $s\leq 1$. Écrire
+  $\zeta(0)$ ou $\zeta(-1)$ via la série n'a aucun sens.
+
+  \smallskip\noindent
+  \textbf{« $\zeta(-1)=-\tfrac{1}{12}$ ».}\enspace%
+  Cette égalité, vraie pour le \emph{prolongement analytique}\index{prolongement
+  analytique} de $\zeta$, ne signifie pas $1+2+3+\cdots=-\tfrac{1}{12}$ : la
+  série diverge grossièrement. La valeur $-1/12$ provient de l'équation
+  fonctionnelle, pas d'une sommation de la série.
+
+  \smallskip\noindent
+  \textbf{Convergence simple $\neq$ normale.}\enspace%
+  La convergence n'est pas normale sur $\,]1,+\infty[$ tout entier (regarder le
+  voisinage de $1$) : il faut se restreindre à $[a,+\infty[$ avec $a>1$.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Démontrer rigoureusement que $\zeta(s)\sim 1/(s-1)$ en $1^{+}$ à partir
+          de l'encadrement $\tfrac{1}{s-1}\leq\zeta(s)\leq 1+\tfrac{1}{s-1}$, puis
+          en déduire $\lim_{s\to 1^{+}}(s-1)\zeta(s)=1$.
+
+    \item Établir $\eta(s)=(1-2^{1-s})\zeta(s)$ pour $s>1$ en regroupant les termes
+          pairs. En déduire $\eta(2)=\pi^{2}/12$ à partir de $\zeta(2)=\pi^{2}/6$.
+
+    \item Montrer que $\zeta'(s)=-\sum_{n\geq 2}(\ln n)\,n^{-s}$ et en déduire que
+          $\zeta$ est strictement décroissante et convexe sur $\,]1,+\infty[$.
+          \textit{Indication :} justifier la dérivation terme à terme par
+          convergence normale sur $[a,+\infty[$.
+
+    \item (Produit eulérien) En passant au logarithme dans
+          $\zeta(s)=\prod_{p}(1-p^{-s})^{-1}$ et en faisant $s\to 1^{+}$, montrer
+          que $\sum_{p}1/p$ diverge — donc qu'il existe une infinité de nombres
+          premiers. \textit{Indication :} $-\ln(1-p^{-s})=p^{-s}+O(p^{-2s})$.
+
+    \item Montrer que $\displaystyle\zeta(s)=\frac{1}{\Gamma(s)}\int_{0}^{+\infty}
+          \frac{t^{s-1}}{e^{t}-1}\,\mathrm{d}t$ pour $s>1$.
+          \textit{Indication :} développer $1/(e^{t}-1)=\sum_{n\geq 1}e^{-nt}$ et
+          reconnaître la fonction $\Gamma$.
+
+    \item (Ouverture — hypothèse de Riemann)\index{hypothèse de Riemann}
+          Le prolongement analytique de $\zeta$ à $\mathbb{C}\setminus\{1\}$
+          vérifie l'équation fonctionnelle
+          $\zeta(s)=2^{s}\pi^{s-1}\sin(\tfrac{\pi s}{2})\Gamma(1-s)\zeta(1-s)$.
+          Vérifier qu'elle impose $\zeta(-2k)=0$ pour tout $k\geq 1$ (zéros
+          \emph{triviaux}). L'\emph{hypothèse de Riemann} affirme que tous les
+          autres zéros ont pour partie réelle $\tfrac{1}{2}$ : c'est l'un des
+          grands problèmes ouverts des mathématiques.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{L.\ Euler (1737) ; B.\ Riemann, \textit{Über die Anzahl der Primzahlen\dots} (1859)}

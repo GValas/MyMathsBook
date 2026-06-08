@@ -1,0 +1,272 @@
+%==============================================================
+%  lecons/analyse/lagrange.tex — Interpolation de Lagrange
+%==============================================================
+
+\lecontitle{Les polynômes de Lagrange}{Analyse réelle — Interpolation polynomiale}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Lbase}[1]{L_{#1}}
+\newcommand{\Rn}{\mathbb{R}_n[X]}
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynômes interpolateurs de Lagrange}%
+  \index{interpolation polynomiale}
+  Soit $x_0, x_1, \ldots, x_n$ des réels \emph{deux à deux distincts}. On
+  appelle \emph{polynômes de base de Lagrange} associés à ces nœuds les
+  $n+1$ polynômes
+  \[
+    \Lbase{i}(x) \;=\; \prod_{\substack{0 \leq j \leq n \\ j \neq i}}
+    \frac{x - x_j}{x_i - x_j}, \qquad 0 \leq i \leq n.
+  \]
+  Chaque $\Lbase{i}$ est de degré exactement $n$ et vérifie la propriété
+  fondamentale
+  \[
+    \Lbase{i}(x_k) = \delta_{ik} =
+    \begin{cases} 1 & \text{si } k = i, \\ 0 & \text{si } k \neq i, \end{cases}
+  \]
+  où $\delta_{ik}$ désigne le symbole de Kronecker.
+
+  \medskip
+  \textbf{Théorème (existence, unicité, erreur).}
+  \begin{itemize}
+    \item \textit{Existence et unicité.}\enspace Pour toute famille de
+          couples ${(x_i, y_i)}_{0 \leq i \leq n}$ avec les $x_i$ distincts,
+          il existe un \emph{unique} polynôme $P \in \Rn$ tel que
+          $P(x_i) = y_i$ pour tout $i$, donné par
+          \[
+            P(x) \;=\; \sum_{i=0}^{n} y_i\, \Lbase{i}(x).
+          \]
+    \item \textit{Base.}\enspace La famille ${(\Lbase{i})}_{0 \leq i \leq n}$
+          est une base de $\Rn$, duale de la famille des formes
+          d'évaluation $\varphi_k : Q \mapsto Q(x_k)$.
+    \item \textit{Formule d'erreur.}\enspace Si $f$ est de classe
+          $\mathcal{C}^{n+1}$ sur un intervalle $I$ contenant les $x_i$ et
+          $x$, et si $P$ interpole $f$ aux nœuds ($y_i = f(x_i)$), alors il
+          existe $\xi \in I$ tel que
+          \[
+            f(x) - P(x) \;=\; \frac{f^{(n+1)}(\xi)}{(n+1)!}
+            \prod_{j=0}^{n} (x - x_j).
+          \]
+    \item \textit{Lien avec Vandermonde.}\enspace\index{matrice de Vandermonde}
+          Dans la base canonique $(1, X, \ldots, X^n)$, la recherche de $P$
+          équivaut à résoudre un système linéaire de matrice la matrice de
+          Vandermonde $V = {\bigl(x_i^{\,j}\bigr)}_{0 \leq i,j \leq n}$,
+          inversible car $\det V = \prod_{i<j}(x_j - x_i) \neq 0$.
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Interpoler, c'est faire passer une courbe polynomiale par des points
+imposés du plan. Le théorème affirme qu'avec $n+1$ abscisses distinctes,
+il existe une et une seule telle courbe de degré $\leq n$. Les $\Lbase{i}$
+sont les « briques élémentaires » : $\Lbase{i}$ vaut $1$ au nœud $x_i$ et
+$0$ aux autres, de sorte que pondérer par les $y_i$ reconstitue exactement
+les ordonnées voulues. Algébriquement, $(\Lbase{i})$ est la base duale des
+formes d'évaluation aux nœuds : connaître un polynôme de $\Rn$ équivaut à
+connaître ses valeurs en $n+1$ points.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+L'existence est constructive : le polynôme $\sum y_i \Lbase{i}$ convient
+grâce à la propriété $\Lbase{i}(x_k)=\delta_{ik}$. L'unicité repose sur un
+argument de degré : une différence de deux interpolateurs est de degré
+$\leq n$ et possède $n+1$ racines, donc est nulle. La formule d'erreur
+s'obtient en figeant $x$ et en appliquant le théorème de Rolle de façon
+itérée à une fonction auxiliaire bien choisie.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Les $\Lbase{i}$ et la propriété
+  $\Lbase{i}(x_k)=\delta_{ik}$.}
+  Par construction, $\Lbase{i}$ est un produit de $n$ facteurs affines
+  $\tfrac{x-x_j}{x_i-x_j}$ ($j \neq i$), donc $\deg \Lbase{i} = n$ et le
+  dénominateur $\prod_{j\neq i}(x_i-x_j)$ est non nul (nœuds distincts).
+  Si $k \neq i$, le facteur d'indice $j=k$ s'annule en $x=x_k$, donc
+  $\Lbase{i}(x_k)=0$. Si $k=i$, chaque facteur vaut
+  $\tfrac{x_i-x_j}{x_i-x_j}=1$, donc $\Lbase{i}(x_i)=1$.
+
+  \medskip
+  \textit{Étape 2 — Existence.}
+  Posons $P = \sum_{i=0}^{n} y_i\,\Lbase{i}$. C'est un polynôme de degré
+  $\leq n$ comme combinaison linéaire des $\Lbase{i}$. Pour chaque nœud
+  $x_k$ :
+  \[
+    P(x_k) = \sum_{i=0}^{n} y_i\,\Lbase{i}(x_k)
+           = \sum_{i=0}^{n} y_i\,\delta_{ik} = y_k.
+  \]
+  Donc $P$ interpole les données : l'existence est acquise.
+
+  \medskip
+  \textit{Étape 3 — Unicité.}
+  Soit $P_1, P_2 \in \Rn$ deux interpolateurs des mêmes données. Le
+  polynôme $D = P_1 - P_2$ est de degré $\leq n$ et s'annule aux $n+1$
+  points distincts $x_0, \ldots, x_n$. Un polynôme non nul de degré
+  $\leq n$ a au plus $n$ racines ; ayant $n+1$ racines, $D$ est le
+  polynôme nul, d'où $P_1 = P_2$. En particulier, $(\Lbase{i})$ engendre
+  $\Rn$ (étape~2 avec des $y_i$ arbitraires) et compte $n+1 = \dim \Rn$
+  éléments : c'est une base.
+
+  \medskip
+  \textit{Étape 4 — Formule d'erreur.}
+  Fixons $x \in I$. Si $x = x_k$ pour un certain $k$, les deux membres
+  sont nuls. Supposons donc $x \notin \{x_0,\ldots,x_n\}$ et posons
+  $\omega(t) = \prod_{j=0}^{n}(t-x_j)$, puis
+  \[
+    K = \frac{f(x) - P(x)}{\omega(x)}, \qquad
+    g(t) = f(t) - P(t) - K\,\omega(t).
+  \]
+  La constante $K$ est choisie de sorte que $g(x)=0$. De plus
+  $g(x_k) = f(x_k) - P(x_k) - K\,\omega(x_k) = 0$ pour tout $k$, car
+  $P(x_k)=f(x_k)$ et $\omega(x_k)=0$. Ainsi $g$ s'annule en les $n+2$
+  points distincts $x, x_0, \ldots, x_n$. Comme $f \in \mathcal{C}^{n+1}$
+  (et $P,\omega$ polynomiaux), $g$ est de classe $\mathcal{C}^{n+1}$.
+
+  En appliquant le théorème de Rolle entre chaque paire de zéros
+  consécutifs, $g'$ admet au moins $n+1$ zéros ; en réitérant, $g''$ en a
+  au moins $n$, \ldots, et $g^{(n+1)}$ admet au moins un zéro $\xi \in I$.
+  Or $P^{(n+1)} = 0$ ($\deg P \leq n$) et $\omega^{(n+1)} = (n+1)!$
+  ($\omega$ unitaire de degré $n+1$), donc
+  \[
+    g^{(n+1)}(t) = f^{(n+1)}(t) - K\,(n+1)!.
+  \]
+  En $t=\xi$ : $0 = f^{(n+1)}(\xi) - K\,(n+1)!$, d'où
+  $K = \dfrac{f^{(n+1)}(\xi)}{(n+1)!}$. En reportant dans la définition de
+  $K$ :
+  \[
+    f(x) - P(x) = K\,\omega(x)
+    = \frac{f^{(n+1)}(\xi)}{(n+1)!} \prod_{j=0}^{n}(x-x_j).
+  \]
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Interpolation par trois points.}\enspace
+  Cherchons $P \in \mathbb{R}_2[X]$ tel que $P(0)=1$, $P(1)=3$, $P(2)=2$.
+  Avec $x_0=0$, $x_1=1$, $x_2=2$ :
+  \[
+    \Lbase{0}(x)=\tfrac{(x-1)(x-2)}{2},\quad
+    \Lbase{1}(x)=-x(x-2),\quad
+    \Lbase{2}(x)=\tfrac{x(x-1)}{2}.
+  \]
+  D'où
+  \[
+    P = 1\cdot\Lbase{0} + 3\cdot\Lbase{1} + 2\cdot\Lbase{2}
+      = -\tfrac{3}{2}x^2 + \tfrac{7}{2}x + 1.
+  \]
+
+  \smallskip\noindent
+  \textbf{2. Base de $\mathbb{R}_2[X]$ et lien Vandermonde.}\enspace
+  Les trois polynômes $\Lbase{0},\Lbase{1},\Lbase{2}$ forment une base de
+  $\mathbb{R}_2[X]$. La matrice de changement de base depuis
+  $(1,X,X^2)$ est la transposée de l'inverse de la matrice de Vandermonde
+  \[
+    V = \begin{pmatrix} 1 & 0 & 0 \\ 1 & 1 & 1 \\ 1 & 2 & 4 \end{pmatrix},
+    \qquad \det V = (1-0)(2-0)(2-1) = 2 \neq 0.
+  \]
+
+  \smallskip\noindent
+  \textbf{3. Forme de Newton et différences divisées.}\enspace%
+  \index{différences divisées}
+  Pour un calcul \emph{incrémental} (ajout d'un nœud sans tout recommencer),
+  on écrit $P$ dans la base de Newton
+  \[
+    P(x) = \sum_{i=0}^{n} f[x_0,\ldots,x_i]\prod_{j=0}^{i-1}(x-x_j),
+  \]
+  où les \emph{différences divisées} se calculent par récurrence :
+  $f[x_i] = f(x_i)$ et
+  \[
+    f[x_i,\ldots,x_{i+k}]
+    = \frac{f[x_{i+1},\ldots,x_{i+k}] - f[x_i,\ldots,x_{i+k-1}]}
+           {x_{i+k}-x_i}.
+  \]
+  Le coefficient dominant de $P$ vaut $f[x_0,\ldots,x_n]$.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Phénomène de Runge.}\enspace\index{phénomène de Runge}
+  Interpoler $f(x)=\dfrac{1}{1+25x^2}$ sur $[-1,1]$ aux $n+1$ nœuds
+  \emph{équirépartis} produit une suite $(P_n)$ qui \emph{diverge} :
+  $\max_{[-1,1]}|f-P_n| \to +\infty$, avec des oscillations explosant près
+  des bords. Augmenter le degré aggrave l'erreur, contrairement à
+  l'intuition.
+
+  \smallskip\noindent
+  \textbf{Remède : nœuds de Tchebychev.}\enspace\index{nœuds de Tchebychev}
+  La formule d'erreur fait intervenir $\|\omega\|_\infty$ avec
+  $\omega = \prod (x-x_j)$. Choisir pour $x_j$ les racines de $T_{n+1}$
+  (nœuds de Tchebychev, cf.\ leçon \emph{Polynômes de Tchebychev})
+  minimise $\|\omega\|_\infty$ et restaure la convergence pour les
+  fonctions régulières.
+
+  \smallskip\noindent
+  \textbf{Nœuds distincts obligatoires.}\enspace
+  Si deux $x_i$ coïncident, la matrice de Vandermonde est singulière et le
+  problème n'a plus de solution unique (il faudrait imposer aussi des
+  dérivées : interpolation d'Hermite).
+
+  \smallskip\noindent
+  \textbf{Instabilité numérique.}\enspace
+  En haut degré, l'évaluation directe de $\sum y_i \Lbase{i}$ est sensible
+  aux erreurs d'arrondi ; on lui préfère la \emph{forme barycentrique} de
+  Lagrange, numériquement stable.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Déterminer le polynôme $P \in \mathbb{R}_2[X]$ tel que
+          $P(-1)=2$, $P(0)=0$, $P(1)=2$. \textit{Indication :} écrire les
+          trois $\Lbase{i}$, ou remarquer la parité.
+
+    \item Montrer que $\sum_{i=0}^{n} \Lbase{i}(x) = 1$ pour tout $x$.
+          \textit{Indication :} c'est l'interpolateur de la fonction
+          constante $1$, dont l'unicité conclut.
+
+    \item Établir l'identité $\sum_{i=0}^{n} \Lbase{i}'(x_k) = 0$ pour tout
+          $k$, en dérivant la relation de la question~2.
+
+    \item Soit $f(x)=\sin x$ interpolée aux nœuds $0, \tfrac{\pi}{2}, \pi$.
+          Majorer $\max_{[0,\pi]}|f-P|$ à l'aide de la formule d'erreur
+          (on a $|f^{(3)}| \leq 1$).
+
+    \item (Différences divisées) Construire la table des différences
+          divisées de $f$ aux nœuds $0,1,2,3$ avec
+          $f(0)=1, f(1)=2, f(2)=9, f(3)=28$, puis écrire $P$ sous forme de
+          Newton et vérifier que $P(x)=x^3+1$.
+
+    \item (Vandermonde) Démontrer la formule
+          $\det V = \prod_{0\leq i<j\leq n}(x_j-x_i)$ par récurrence sur
+          $n$, en utilisant des opérations élémentaires sur les colonnes.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{J.-L.\ Lagrange (1795) ; E.\ Waring (1779)}

@@ -360,6 +360,23 @@
   description={Racines de $T_{n+1}$~: $x_k=\cos\!\bigl(\frac{(2k-1)\pi}{2(n+1)}\bigr)$, $k=1,\ldots,n+1$~; minimisent l'erreur d'interpolation sur $[-1,1]$}
 }
 
+\newglossaryentry{legendre}{
+  name={polynôme de Legendre},
+  description={Polynôme $P_n$ donné par la formule de Rodrigues $P_n(x)=\frac{1}{2^n n!}\frac{\mathrm{d}^n}{\mathrm{d}x^n}\bigl[(x^2-1)^n\bigr]$~; famille orthogonale sur $[-1,1]$ pour le produit scalaire $\langle f,g\rangle=\int_{-1}^1 fg$, avec $\lVert P_n\rVert^2=\frac{2}{2n+1}$}
+}
+
+% --- Fonctions spéciales ---
+
+\newglossaryentry{fonction-gamma}{
+  name={fonction Gamma},
+  description={Fonction $\Gamma(x)=\int_0^{+\infty}t^{x-1}e^{-t}\,\mathrm{d}t$, définie et de classe $\mathcal{C}^\infty$ sur $]0,+\infty[$~; vérifie $\Gamma(x+1)=x\,\Gamma(x)$ et $\Gamma(n+1)=n!$, prolongeant la factorielle, avec $\Gamma(1/2)=\sqrt{\pi}$}
+}
+
+\newglossaryentry{fonction-zeta}{
+  name={fonction zêta de Riemann},
+  description={Fonction $\zeta(s)=\sum_{n\geq 1}n^{-s}$, convergente pour $s>1$, de classe $\mathcal{C}^\infty$~; admet le produit eulérien $\prod_p (1-p^{-s})^{-1}$ et les valeurs $\zeta(2)=\frac{\pi^2}{6}$, $\zeta(4)=\frac{\pi^4}{90}$}
+}
+
 % --- Combinatoire ---
 
 \newglossaryentry{nombre-bell}{

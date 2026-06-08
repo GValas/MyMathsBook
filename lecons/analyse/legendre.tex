@@ -1,0 +1,270 @@
+%==============================================================
+%  lecons/analyse/legendre.tex — Les polynômes de Legendre
+%==============================================================
+
+\lecontitle{Les polynômes de Legendre}{Analyse réelle — Polynômes orthogonaux et approximation}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Leg}{P_n}
+\newcommand{\psL}[2]{\langle #1,\,#2\rangle}
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynômes de Legendre}
+  Muni de l'espace $\mathbb{R}[X]$ du produit scalaire
+  \[
+    \psL{f}{g} \;=\; \int_{-1}^{1} f(x)\,g(x)\,\mathrm{d}x,
+  \]
+  on appelle \emph{$n$-ième polynôme de Legendre} le polynôme $P_n$ obtenu en
+  orthogonalisant (procédé de Gram--Schmidt) la base canonique
+  $(1,X,X^2,\ldots)$, normalisé par la condition $P_n(1)=1$.
+  De façon équivalente, $P_n$ est donné par la
+  \emph{formule de Rodrigues}\index{formule de Rodrigues}~:
+  \[
+    P_n(x) \;=\; \frac{1}{2^n\,n!}\,
+    \frac{\mathrm{d}^n}{\mathrm{d}x^n}\!\Bigl[{(x^2-1)}^n\Bigr].
+  \]
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}\enspace%
+  \index{polynômes orthogonaux}
+  La famille ${(P_n)}_{n\geq 0}$ vérifie~:
+  \begin{itemize}
+    \item \textit{Orthogonalité} sur $[-1,1]$ pour le poids $w\equiv 1$~:
+    \[
+      \psL{P_m}{P_n} = \int_{-1}^{1} P_m(x)\,P_n(x)\,\mathrm{d}x
+      = \begin{cases}
+          0 & \text{si } m\neq n,\\[2pt]
+          \dfrac{2}{2n+1} & \text{si } m=n.
+        \end{cases}
+    \]
+    \item $\deg P_n = n$, parité $P_n(-x)={(-1)}^n P_n(x)$, et
+          $P_n(1)=1$, $P_n(-1)={(-1)}^n$ ; coefficient dominant
+          $\dfrac{(2n)!}{2^n\,{(n!)}^2}$.
+    \item \textit{Récurrence à trois termes}~:
+    \[
+      (n+1)\,P_{n+1}(x) = (2n+1)\,x\,P_n(x) - n\,P_{n-1}(x),
+      \quad P_0=1,\ P_1=X.
+    \]
+    \item \textit{Équation différentielle de Legendre}~:
+    \[
+      (1-x^2)\,y'' - 2x\,y' + n(n+1)\,y = 0,
+    \]
+    dont $P_n$ est solution.
+    \item $P_n$ possède $n$ racines simples dans $\,]-1,1[\,$ (nœuds de la
+          \emph{quadrature de Gauss--Legendre}\index{quadrature de Gauss-Legendre}).
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Les polynômes de Legendre forment une \emph{base orthogonale} de l'espace
+$\mathbb{R}[X]$ pour le produit scalaire de $L^2(-1,1)$. Projeter une fonction
+$f$ sur l'espace des polynômes de degré $\leq n$ revient à chercher sa
+\emph{meilleure approximation au sens quadratique}~: la somme partielle
+$\sum_{k=0}^{n}\frac{\psL{f}{P_k}}{\psL{P_k}{P_k}}P_k$ minimise
+$\|f-Q\|_2$ parmi tous les $Q$ de degré $\leq n$. C'est l'analogue
+polynomial des séries de Fourier, le poids étant ici uniforme ($w\equiv 1$)
+sur l'intervalle symétrique $[-1,1]$.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+L'orthogonalité s'obtient en intégrant par parties $n$ fois la formule de
+Rodrigues, en exploitant que $\pm 1$ sont des racines d'ordre $n$ de
+${(x^2-1)}^n$ : tous les termes de bord s'annulent. La même technique, poussée
+jusqu'au bout, fournit la norme. La récurrence à trois termes est une
+conséquence générale de l'orthogonalité (le polynôme $x P_n$ se décompose sur
+les $P_k$, et la plupart des coefficients sont nuls). L'équation différentielle
+vient de la formule de Rodrigues ; les racines simples découlent de
+l'orthogonalité de $P_n$ à tout polynôme de degré $<n$.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  On note $u_n(x)={(x^2-1)}^n$, de sorte que $P_n=\frac{1}{2^n n!}u_n^{(n)}$.
+  Le réel $\pm 1$ est racine d'ordre $n$ de $u_n$, donc
+  $u_n^{(k)}(\pm 1)=0$ pour tout $0\leq k\leq n-1$.
+
+  \medskip
+  \textit{Étape 1 — Orthogonalité (Rodrigues + IPP).}
+  Soit $Q$ un polynôme de degré $m<n$. En intégrant $n$ fois par parties,
+  les crochets $\bigl[u_n^{(k)}\,Q^{(n-1-k)}\bigr]_{-1}^{1}$ sont nuls
+  (car $u_n^{(k)}(\pm 1)=0$ pour $k\leq n-1$)~:
+  \[
+    \int_{-1}^{1} u_n^{(n)}(x)\,Q(x)\,\mathrm{d}x
+    = {(-1)}^n \int_{-1}^{1} u_n(x)\,Q^{(n)}(x)\,\mathrm{d}x = 0,
+  \]
+  puisque $Q^{(n)}\equiv 0$ ($\deg Q<n$). Ainsi $\psL{P_n}{Q}=0$ pour tout
+  $Q$ de degré $<n$ ; en particulier $\psL{P_m}{P_n}=0$ si $m<n$, et par
+  symétrie si $m\neq n$.
+
+  \medskip
+  \textit{Étape 2 — Norme.} On prend $Q=P_n$, dont le terme dominant est
+  $\frac{(2n)!}{2^n{(n!)}^2}x^n$, donc $P_n^{(n)}=\frac{(2n)!}{2^n n!}$
+  (constante). La même intégration par parties donne
+  \[
+    {\|P_n\|}^2 = \frac{1}{2^n n!}\int_{-1}^{1} u_n^{(n)}\,P_n\,\mathrm{d}x
+    = \frac{{(-1)}^n}{2^n n!}\,P_n^{(n)}\int_{-1}^{1} u_n(x)\,\mathrm{d}x.
+  \]
+  Or $\int_{-1}^{1}{(x^2-1)}^n\,\mathrm{d}x={(-1)}^n\frac{2^{2n+1}{(n!)}^2}{(2n+1)!}$
+  (intégrale de Wallis). En reportant et en simplifiant~:
+  \[
+    {\|P_n\|}^2 = \frac{2}{2n+1}.
+  \]
+
+  \medskip
+  \textit{Étape 3 — Relation de récurrence à trois termes.}
+  $x P_n$ est de degré $n+1$, donc se décompose~:
+  $x P_n=\sum_{k=0}^{n+1} a_k P_k$ avec
+  $a_k=\frac{\psL{xP_n}{P_k}}{\|P_k\|^2}=\frac{\psL{P_n}{xP_k}}{\|P_k\|^2}$.
+  Si $k\leq n-2$, alors $\deg(xP_k)\leq n-1<n$ et $a_k=0$. Il ne reste donc
+  que les termes $k\in\{n-1,n,n+1\}$~:
+  $x P_n=a_{n+1}P_{n+1}+a_n P_n+a_{n-1}P_{n-1}$. La comparaison des
+  coefficients dominants donne $a_{n+1}=\frac{n+1}{2n+1}$ ; la parité impose
+  $a_n=0$ ; et $a_{n-1}=\frac{n}{2n+1}$ s'obtient via les normes. D'où
+  \[
+    (n+1)P_{n+1}=(2n+1)xP_n-nP_{n-1}.
+  \]
+
+  \medskip
+  \textit{Étape 4 — Équation différentielle et racines.}
+  Posons $v=(1-x^2)P_n'$. De $u_n'=2nx\,u_n^{}/(x^2-1)$ on tire
+  $(x^2-1)u_n'=2nx\,u_n$ ; en dérivant $n+1$ fois par la formule de Leibniz,
+  on obtient $(1-x^2)P_n''-2xP_n'+n(n+1)P_n=0$, c'est-à-dire
+  $v'=-n(n+1)P_n$.
+
+  \smallskip
+  \emph{Racines.} $P_n$ est orthogonal à tout polynôme de degré $<n$, en
+  particulier à $1$, donc $\int_{-1}^1 P_n=0$ : $P_n$ change de signe dans
+  $]-1,1[$. Soient $x_1,\ldots,x_r$ les points de $]-1,1[$ où $P_n$ change de
+  signe ($r\geq 1$). Si $r<n$, le polynôme $R=\prod_{i=1}^r(X-x_i)$ vérifie
+  $\deg R<n$, donc $\psL{P_n}{R}=0$ ; mais $P_n R$ garde un signe constant
+  sur $[-1,1]$ et n'est pas identiquement nul, d'où $\psL{P_n}{R}\neq 0$~:
+  contradiction. Donc $r=n$, et $P_n$ a $n$ racines simples dans
+  $]-1,1[$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Premiers polynômes.}
+  \[
+    P_0=1,\quad P_1=x,\quad P_2=\tfrac{1}{2}(3x^2-1),\quad
+    P_3=\tfrac{1}{2}(5x^3-3x),
+  \]
+  \[
+    P_4=\tfrac{1}{8}(35x^4-30x^2+3),\qquad
+    P_5=\tfrac{1}{8}(63x^5-70x^3+15x).
+  \]
+  On vérifie $P_n(1)=1$ et la parité $P_n(-x)={(-1)}^n P_n(x)$.
+
+  \smallskip\noindent
+  \textbf{2. Fonction génératrice.}\enspace\index{fonction génératrice}
+  Pour $|x|\leq 1$ et $|t|<1$~:
+  \[
+    \frac{1}{\sqrt{1-2xt+t^2}} \;=\; \sum_{n=0}^{+\infty} P_n(x)\,t^n.
+  \]
+  Cette identité, issue du potentiel newtonien, fournit une autre
+  caractérisation des $P_n$ et redonne la récurrence à trois termes en
+  dérivant par rapport à $t$.
+
+  \smallskip\noindent
+  \textbf{3. Quadrature de Gauss--Legendre.}\enspace%
+  \index{quadrature de Gauss-Legendre}
+  Si $x_1,\ldots,x_n$ sont les racines de $P_n$ et
+  $\lambda_i=\frac{2}{(1-x_i^2){[P_n'(x_i)]}^2}$ les poids associés, alors
+  \[
+    \int_{-1}^{1} f(x)\,\mathrm{d}x \;=\; \sum_{i=1}^{n}\lambda_i\,f(x_i)
+  \]
+  est \emph{exacte} pour tout polynôme $f$ de degré $\leq 2n-1$ : c'est le
+  degré d'exactitude maximal atteignable avec $n$ nœuds.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{L'orthogonalité dépend du couple (intervalle, poids).}\enspace
+  $(P_n)$ est orthogonale pour $w\equiv 1$ sur $[-1,1]$. En changeant le
+  poids ou le domaine, on obtient d'\emph{autres} familles de polynômes
+  orthogonaux~:
+  \[
+    \begin{array}{lll}
+      \text{Tchebychev}\ (T_n): & {(1-x^2)}^{-1/2} & \text{sur } [-1,1],\\
+      \text{Hermite}\ (H_n):    & e^{-x^2}         & \text{sur } \mathbb{R},\\
+      \text{Laguerre}\ (L_n):   & e^{-x}           & \text{sur } [0,+\infty[.
+    \end{array}
+  \]
+  Sur $[-1,1]$ avec le poids ${(1-x^2)}^{-1/2}$, on a $\int_{-1}^1 P_m P_n\,
+  w\neq 0$ en général : ce ne sont pas les bons polynômes pour ce poids.
+
+  \smallskip\noindent
+  \textbf{Les $P_n$ ne sont pas normés.}\enspace
+  $\|P_n\|^2=\frac{2}{2n+1}\neq 1$. La normalisation choisie est
+  $P_n(1)=1$, et non $\|P_n\|=1$ ; les polynômes orthonormés sont
+  $\widehat{P}_n=\sqrt{\frac{2n+1}{2}}\,P_n$.
+
+  \smallskip\noindent
+  \textbf{Ne pas confondre avec Tchebychev.}\enspace
+  $P_n$ et $T_n$ vérifient des récurrences distinctes
+  ($(n+1)P_{n+1}=(2n+1)xP_n-nP_{n-1}$ contre $T_{n+1}=2xT_n-T_{n-1}$) et
+  ne partagent ni les racines, ni le poids d'orthogonalité.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item À partir de la formule de Rodrigues, retrouver
+          $P_2=\tfrac{1}{2}(3x^2-1)$ et $P_3=\tfrac{1}{2}(5x^3-3x)$, puis
+          vérifier $\int_{-1}^1 P_2 P_3\,\mathrm{d}x=0$.
+
+    \item En utilisant la récurrence à trois termes, calculer $P_4$ et $P_5$,
+          et vérifier que le coefficient dominant de $P_n$ vaut
+          $\frac{(2n)!}{2^n{(n!)}^2}$.
+
+    \item \textit{(Norme.)} Calculer directement
+          $\int_{-1}^1 {P_2(x)}^2\,\mathrm{d}x$ et comparer à
+          $\frac{2}{2\cdot 2+1}=\frac{2}{5}$.
+
+    \item \textit{(Fonction génératrice.)} En dérivant
+          $g(x,t)={(1-2xt+t^2)}^{-1/2}$ par rapport à $t$, montrer que
+          $(1-2xt+t^2)\,\partial_t g=(x-t)\,g$, puis en déduire la
+          récurrence $(n+1)P_{n+1}=(2n+1)xP_n-nP_{n-1}$.
+          \textit{Indication :} identifier les coefficients de $t^n$.
+
+    \item \textit{(Gauss--Legendre.)} Avec $n=2$, les racines de $P_2$ sont
+          $x_{1,2}=\pm\frac{1}{\sqrt 3}$. Déterminer les poids $\lambda_1,
+          \lambda_2$ et vérifier que la formule
+          $\int_{-1}^1 f=\lambda_1 f(x_1)+\lambda_2 f(x_2)$ est exacte pour
+          $f(x)=x^k$, $k\leq 3$, mais pas pour $f(x)=x^4$.
+
+    \item \textit{(Équation différentielle.)} Vérifier que
+          $P_3=\tfrac{1}{2}(5x^3-3x)$ est solution de
+          $(1-x^2)y''-2xy'+12y=0$, et expliciter le second membre $n(n+1)$
+          en fonction de $n$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{A.-M.\ Legendre (1782)}
