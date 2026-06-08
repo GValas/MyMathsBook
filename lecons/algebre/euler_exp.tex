@@ -120,8 +120,11 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
   \[
     \left(I + \frac{X}{k}\right)^{\!k}
     = \exp\!\left(k\log\!\left(I+\frac{X}{k}\right)\right)
-    \;\xrightarrow[k\to\infty]{}\; \exp(X). \hfill\square
+    \;\xrightarrow[k\to\infty]{}\; \exp(X).
   \]
+  \hfill$\blacksquare$
+
+  \smallskip\noindent
   (Cette preuve est rigoureuse pour les matrices à condition de justifier
   que $\exp \circ (k\log(I+X/k)) \to \exp(X)$, ce que fait le §\,2.)
 \end{mdframed}
@@ -164,15 +167,27 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
 \rubriq{Preuve du corollaire 2 (formule de Trotter)}
 
 \begin{mdframed}[style=proofbar]
-  On utilise l'identité $e^{A/k}e^{B/k} = e^{(A+B)/k}e^{R_k}$ où
-  $R_k = \log(e^{A/k}e^{B/k}) - (A+B)/k$. Le développement de Baker–Campbell–Hausdorff
-  \index{Baker-Campbell-Hausdorff} donne $\|R_k\| = O(1/k^2)$, donc
-  $k\|R_k\| \to 0$. Ainsi~:
+  Posons $U_k = e^{A/k}e^{B/k}$ et $V_k = e^{(A+B)/k}$. Les développements en série
+  donnent $U_k = I + \frac{A+B}{k} + O(1/k^2)$ et $V_k = I + \frac{A+B}{k} + O(1/k^2)$,
+  d'où l'estimation du facteur élémentaire~:
   \[
-    \left(e^{A/k}e^{B/k}\right)^k
-    = e^{A+B}\,e^{kR_k + O(1/k)}
-    \xrightarrow[k\to\infty]{} e^{A+B}.\hfill\blacksquare
+    \|U_k - V_k\| = O\!\left(\frac{1}{k^2}\right).
   \]
+  On compare alors $U_k^k$ et $V_k^k$ par un argument télescopique. Pour deux
+  matrices, $\displaystyle U^k - V^k = \sum_{i=0}^{k-1} U^i (U-V) V^{k-1-i}$, et comme
+  $\|U_k\|, \|V_k\| \leq e^{(\|A\|+\|B\|)/k}$, chacun des $k$ termes se majore~:
+  \[
+    \bigl\|U_k^{\,k} - V_k^{\,k}\bigr\|
+    \;\leq\; k\,e^{(\|A\|+\|B\|)/k}\,\|U_k - V_k\|
+    \;=\; k \cdot O\!\left(\frac{1}{k^2}\right)
+    \;=\; O\!\left(\frac{1}{k}\right).
+  \]
+  Or $V_k^{\,k} = \left(e^{(A+B)/k}\right)^k = e^{A+B}$ exactement. Donc
+  $U_k^{\,k} \to e^{A+B}$.
+  \index{Baker--Campbell--Hausdorff}%
+  (L'estimation $\|U_k - V_k\| = O(1/k^2)$ équivaut à dire que le premier terme
+  correctif de Baker--Campbell--Hausdorff, en $\tfrac12[A,B]/k^2$, est d'ordre $1/k^2$.)
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Interprétation~: intérêts composés}
@@ -194,7 +209,7 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
 %=============================================================
 \secnum{exgreen}{5}{Pièges et exercices}
 
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Le binôme ne s'applique qu'à $I$ et $X/k$, pas à deux matrices
@@ -212,7 +227,7 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
   \textbf{La formule de Trotter nécessite une preuve supplémentaire.}\enspace
   Contrairement à ${(I+X/k)}^k \to e^X$, la formule
   ${(e^{A/k}e^{B/k})}^k \to e^{A+B}$ n'est pas immédiate quand $AB \neq BA$~;
-  elle repose sur Baker–Campbell–Hausdorff.
+  elle repose sur Baker--Campbell--Hausdorff.
 \end{mdframed}
 
 \vspace{6pt}
@@ -225,7 +240,8 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
           $A = \begin{pmatrix}0&1\\0&0\end{pmatrix}$.
 
     \item Montrer que $c_{k,j} \leq 1/j!$ et que $c_{k,j} \geq (1-j^2/(2k))/j!$
-          pour $j \leq \sqrt{k}$. En déduire une vitesse de convergence~:
+          (cette minoration vaut pour tout $j \leq k$, sans restriction du type
+          $j \leq \sqrt{k}$). En déduire une vitesse de convergence~:
           \[
             \left\|\left(I+\frac{X}{k}\right)^{\!k} - e^X\right\|
             = O\!\left(\frac{\|X\|^2 e^{\|X\|}}{k}\right).
@@ -238,7 +254,9 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
 
     \item Appliquer la méthode d'Euler avec $k=4$ pas au système
           $y'=Ay$, $y(0)={(1,0)}^T$, $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$,
-          sur $[0,\pi]$. Comparer la valeur approchée à $e^{\pi A}{(-I)}^{1/2}$.
+          sur $[0,\pi]$. Comme $e^{\pi A} = -I$, la solution exacte en $t=\pi$ vaut
+          $e^{\pi A}y_0 = -y_0 = {(-1,0)}^T$~; comparer la valeur approchée d'Euler
+          à $-y_0$.
 
     \item Montrer que pour $A$ et $B$ qui commutent, la formule de Trotter
           se réduit immédiatement à ${(I+X/k)}^k \to e^X$ avec $X = A+B$.

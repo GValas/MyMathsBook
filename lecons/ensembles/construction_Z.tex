@@ -44,7 +44,8 @@ contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
   \end{align*}
   L'élément neutre de $+$ est $[0,0]$, l'opposé de $[m,n]$ est $[n,m]$.
   L'injection $\iota : \mathbb{N} \to \mathbb{Z},\; n \mapsto [n,0]$,
-  est un homomorphisme d'anneaux.
+  est un morphisme de semi-anneaux (injection compatible avec $+$ et $\times$ ;
+  $\mathbb{N}$ n'étant pas un anneau, on ne parle pas ici d'homomorphisme d'anneaux).
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
@@ -58,8 +59,7 @@ contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
   \textit{Groupe abélien.} Associativité et commutativité héritées de $\mathbb{N}$.
   Neutre $[0,0]$, opposé $[n,m]$ : $[m,n]+[n,m]=[m+n,n+m]=[0,0]$ (car $m+n=n+m$).
 
-  \textit{Anneau.} La distributivité se vérifie par calcul direct.
-  \hfill$\blacksquare$
+  \textit{Anneau.} La distributivité se vérifie par calcul direct. $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -83,14 +83,36 @@ contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
   \end{enumerate}
 \end{tcolorbox}
 
-\rubriq{Propriété universelle}
+\rubriq{Propriétés universelles}
+
+Il faut distinguer deux énoncés de nature différente.
+
+\begin{tcolorbox}[thmbox]
+  \textbf{(a) Symétrisation : prolongement des morphismes additifs.}\enspace%
+  Soit $(A,+)$ un groupe abélien et $\varphi : \mathbb{N} \to A$ un morphisme
+  de monoïdes (i.e.\ $\varphi(m+n)=\varphi(m)+\varphi(n)$ et $\varphi(0)=0_A$).
+  Il existe un unique morphisme de groupes $\tilde\varphi : \mathbb{Z} \to A$
+  prolongeant $\varphi$, donné par $\tilde\varphi([m,n]) = \varphi(m) - \varphi(n)$.
+  C'est la propriété universelle du \emph{groupe des différences} (symétrisation
+  du monoïde $(\mathbb{N},+)$) ; elle vaut aussi pour les morphismes de
+  semi-anneaux $\mathbb{N}\to A$ vers un anneau $A$, prolongés en morphismes
+  d'anneaux.
+
+  \smallskip
+  \textbf{(b) Initialité de $\mathbb{Z}$ dans les anneaux unitaires.}\enspace%
+  Pour tout anneau unitaire $A$, il existe un \emph{unique} homomorphisme
+  d'anneaux unitaires $\chi : \mathbb{Z} \to A$. Autrement dit, $\mathbb{Z}$ est
+  l'objet initial de la catégorie des anneaux unitaires.
+\end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
-  Soit $A$ un anneau et $\varphi : \mathbb{N} \to A$ un homomorphisme d'anneaux.
-  Il existe un unique homomorphisme d'anneaux $\tilde\varphi : \mathbb{Z} \to A$
-  prolongeant $\varphi$, donné par $\tilde\varphi([m,n]) = \varphi(m) - \varphi(n)$.
-  Ainsi $\mathbb{Z}$ est \emph{l'anneau initial} : il existe un unique homomorphisme
-  $\mathbb{Z} \to A$ pour tout anneau $A$. \hfill$\blacksquare$
+  \textit{Preuve de (b).} Un homomorphisme d'anneaux unitaires $\chi$ doit
+  vérifier $\chi(1)=1_A$. Par additivité, $\chi(n)=n\cdot 1_A$ pour tout
+  $n\in\mathbb{N}$, puis $\chi(-n)=-(n\cdot 1_A)$ : la valeur de $\chi$ sur tout
+  $\mathbb{Z}$ est donc entièrement déterminée par $\chi(1)=1_A$, d'où
+  l'unicité. Réciproquement, l'application $\chi(k)=k\cdot 1_A$ est bien définie
+  (compatible avec $\sim$) et l'on vérifie que c'est un homomorphisme d'anneaux
+  unitaires, d'où l'existence. $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -100,12 +122,13 @@ contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
 %=============================================================
 \secnum{exgreen}{4}{Exemples, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Représentation standard.}\enspace%
   Tout $[m,n]$ est représenté soit par $[k,0]$ (entier $k = m-n \geq 0$)
-  soit par $[0,k]$ (entier $-k < 0$). On retrouve la présentation habituelle.
+  soit par $[0,k]$ avec $k \geq 1$ (entier $-k < 0$). On retrouve la
+  présentation habituelle.
 
   \smallskip\noindent
   \textbf{2. Arithmétique.}\enspace%
@@ -119,7 +142,7 @@ contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\mathbb{Z}$ n'est pas un corps.}\enspace%
@@ -145,7 +168,7 @@ contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
           et $[m,n]\neq[0,0]$, alors $[p,q]=[0,0]$.
 
     \item Montrer que tout idéal de $\mathbb{Z}$ est principal.
-          (On utilisera la bonne fondation de $\mathbb{N}$.)
+          (On utilisera la propriété du bon ordre de $\mathbb{N}$.)
 
     \item Montrer que $\mathbb{Z}/n\mathbb{Z}$ est un corps si et seulement si
           $n$ est premier.
@@ -155,4 +178,4 @@ contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
   \end{enumerate}
 \end{mdframed}
 
-\leconfooter{Construction attribuée à H.\ Grassmann (1861) — formalisée dans ZFC au \textsc{xx}\textsuperscript{e} siècle}
+\leconfooter{Construction par paires due à Hamilton, Dedekind et Peano (fin \textsc{xix}\textsuperscript{e} s.) — formalisée dans ZFC au \textsc{xx}\textsuperscript{e} siècle}

@@ -20,7 +20,7 @@
           $\det$ est $\mathbb{K}$-linéaire en chaque colonne, les autres étant fixées ;}
     \item \textit{\textbf{Alternée} : $\det(C_1,\ldots,C_n)=0$ dès que deux colonnes
           sont égales (équivalent : échanger deux colonnes change le signe) ;}
-    \item \textbf{Normalisée} : $\det(I_n) = 1$.
+    \item \textit{\textbf{Normalisée} : $\det(I_n) = 1$.}
   \end{enumerate}
   \textit{Elle est donnée par la formule de Leibniz :}
   \[
@@ -114,8 +114,7 @@ calculs. En présence d'une ligne avec un seul coefficient non nul, un seul
 sous-déterminant $(n{-}1)\times(n{-}1)$ suffit.
 
 \rubriq{Comatrice et inverse}
-La \emph{comatrice} (ou matrice adjointe classique) est la transposée de la
-matrice des cofacteurs\index{comatrice} :
+La \emph{comatrice} de $A$ est la matrice des cofacteurs\index{comatrice} :
 \[
   \mathrm{com}(A) = \bigl(\Delta_{ij}\bigr)_{i,j},
   \qquad A \cdot {\mathrm{com}(A)}^T = \det(A)\,I_n.
@@ -187,7 +186,7 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
 %=============================================================
 \secnum{exgreen}{6}{Applications, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications et exemples.}
+\rubriq{Applications et exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Déterminant de Vandermonde.}\enspace%
@@ -220,7 +219,7 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges et contre-exemples.}
+\rubriq{Pièges et contre-exemples}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\det(A+B) \neq \det(A)+\det(B)$ en général.}\enspace%
@@ -259,11 +258,15 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
     \item Soit $J_n = \mathbf{1}\mathbf{1}^T \in \mathcal{M}_n(\mathbb{R})$
           (matrice dont tous les coefficients valent $1$).
           Calculer $\det(I_n + J_n)$ à l'aide de la formule de rang $1$ :
-          $\det(I + uv^T) = 1 + v^Tu$.
+          pour $u,v \in \mathbb{K}^n$ vecteurs colonnes,
+          $\det(I_n + uv^T) = 1 + v^Tu$.
 
     \item Montrer que pour $A,B \in \mathcal{M}_n(\mathbb{K})$ et $n\geq 2$,
-          $\det(A+B) = \det(A) + \det(B)$ n'est en général pas vrai,
-          mais que c'est vrai si $\mathrm{rang}(A) \leq 1$ et $B = I_n$.
+          l'égalité $\det(A+B) = \det(A) + \det(B)$ n'est en général pas vraie.
+          Établir en revanche que, pour $A$ de rang $\leq 1$,
+          $\det(A+I_n) = 1 + \mathrm{tr}(A)$ ;
+          en déduire que $\det(A+I_n) = \det(A) + \det(I_n)$ si et seulement si
+          $A$ est de rang $\leq 1$ et nilpotente (c'est-à-dire $\mathrm{tr}(A) = 0$).
 
     \item (Critère de Sylvester) Montrer qu'une matrice symétrique réelle
           est définie positive si et seulement si tous ses sous-déterminants

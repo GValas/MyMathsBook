@@ -75,7 +75,12 @@
   \textit{(5)$\Rightarrow$(1).} Par polarisation,
   $\langle Qx,Qy\rangle = \frac{1}{4}(\|Q(x+y)\|^2 - \|Q(x-y)\|^2)
   = \frac{1}{4}(\|x+y\|^2-\|x-y\|^2) = \langle x,y\rangle$.
-  Donc $(Q^TQ-I_n)$ est une forme bilinéaire nulle, soit $Q^TQ=I_n$. \hfill$\blacksquare$
+  Posons $M = Q^TQ - I_n$ ; on a alors $x^T M y = \langle Qx,Qy\rangle - \langle x,y\rangle = 0$
+  pour tous $x,y\in\mathbb{R}^n$. On conclut grâce au lemme suivant : si une matrice
+  $M\in\mathcal{M}_n(\mathbb{R})$ vérifie $x^TMy=0$ pour tous $x,y$, alors $M=0$ ;
+  en effet, en prenant $x=e_i$ et $y=e_j$ (vecteurs de la base canonique) on obtient
+  $M_{ij}=e_i^TMe_j=0$ pour tout couple $(i,j)$. Donc $Q^TQ-I_n=0$, soit $Q^TQ=I_n$.
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -152,8 +157,19 @@
   donc les racines complexes non réelles viennent par paires $\lambda,\bar\lambda$.
   Sur $|\lambda|=1$, on écrit $\lambda=e^{i\theta}$.
 
-  \textit{Réduction.} Par récurrence sur $n$ et le théorème spectral pour les
-  matrices normales ($Q^TQ=I_n \Rightarrow QQ^T=Q^TQ$). \hfill$\blacksquare$
+  \textit{Réduction.} Comme $Q^TQ=QQ^T=I_n$, la matrice $Q$ est normale ;
+  vue comme matrice de $\mathcal{M}_n(\mathbb{C})$, le théorème spectral pour les
+  matrices normales fournit une base orthonormale de $\mathbb{C}^n$ formée de vecteurs
+  propres, dans laquelle $Q$ est diagonale, de coefficients diagonaux $\pm 1$ et
+  $e^{\pm i\theta_k}$. Les valeurs propres réelles $\pm 1$ donnent directement des
+  blocs $(\pm 1)$. Pour chaque paire conjuguée $e^{i\theta_k},e^{-i\theta_k}$ de
+  vecteurs propres $w_k,\overline{w_k}$, on regroupe ces deux valeurs propres : la
+  partie réelle et la partie imaginaire $u_k=\mathrm{Re}(w_k)$, $v_k=\mathrm{Im}(w_k)$
+  engendrent un plan réel stable par $Q$, sur lequel $Q$ agit comme la rotation
+  $R_{\theta_k}$. En normalisant les familles $(u_k,v_k)$ ainsi obtenues, on construit
+  une base orthonormale \emph{réelle} de $\mathbb{R}^n$, c'est-à-dire une matrice
+  $P\in\mathrm{O}(n)$, dans laquelle $P^TQP$ est bloc-diagonale, à blocs $(\pm 1)$ et
+  $R_{\theta_k}$. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Angle et trace}
@@ -171,7 +187,7 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
 %=============================================================
 \secnum{exgreen}{5}{Applications, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Décomposition QR.}\enspace%
@@ -183,7 +199,9 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
 
   \smallskip\noindent
   \textbf{2. Isométries de $\mathbb{R}^n$.}\enspace%
-  Toute isométrie affine $f(x) = Qx + b$ avec $Q\in\mathrm{O}(n)$.
+  Toute isométrie affine $f$ de $\mathbb{R}^n$ s'écrit $f(x) = Qx + b$ avec
+  $Q\in\mathrm{O}(n)$ et $b\in\mathbb{R}^n$ ; réciproquement, toute application de
+  cette forme est une isométrie affine (la partie linéaire $Q$ préservant la norme).
   En dimension 2, cela donne les rotations, réflexions, translations et leurs
   composées (isométries du plan euclidien).
 
@@ -195,8 +213,7 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
   $\mathfrak{so}(n) = \{A \in \mathcal{M}_n(\mathbb{R}) \mid A^T = -A\}$.
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$Q^TQ = I_n$ n'implique pas $QQ^T = I_n$ en dimension infinie.}\enspace%
@@ -223,7 +240,7 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
 \begin{mdframed}[style=exobar]
   \begin{enumerate}
     \item Montrer que si $A$ est antisymétrique, alors $e^A \in \mathrm{SO}(n)$.
-          (\textit{Hint :} calculer ${(e^A)}^T e^A$.)
+          (\textit{Indication :} calculer ${(e^A)}^T e^A$.)
 
     \item Soit $Q \in \mathrm{O}(n)$ avec $\det Q = -1$. Montrer que $-1$ est
           valeur propre de $Q$ lorsque $n$ est impair.
@@ -235,7 +252,9 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
           par l'algorithme de Gram-Schmidt.
 
     \item (Formule de Rodrigues) Soit $u$ un vecteur unitaire de $\mathbb{R}^3$
-          et $R_\theta$ la rotation d'angle $\theta$ autour de $u$. Montrer que
+          et $R_\theta$ la rotation \emph{directe} d'angle $\theta$ autour de l'axe
+          orienté par $u$ (le sens positif étant celui donné par la règle de la main
+          droite relativement à $u$). Montrer que
           \[
             R_\theta = I + \sin\theta\,[u]_\times + (1-\cos\theta)\,[u]_\times^2,
           \]

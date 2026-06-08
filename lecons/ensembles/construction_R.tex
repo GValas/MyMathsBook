@@ -24,8 +24,11 @@ Cauchy converge. Il existe deux méthodes standards.
     \item $L$ est un \emph{segment initial} : $x \in L$ et $y < x \Rightarrow y \in L$.
     \item $L$ n'a pas de maximum.
   \end{enumerate}
-  On pose $\mathbb{R} = \{$coupures$(L,U)\}$. L'ensemble $U$ est alors
-  entièrement déterminé par $L$, que l'on identifie à la coupure.
+  On pose $\mathbb{R} = \{\,L\mid (L,U)\text{ coupure}\,\}$. L'ensemble $U$ est alors
+  entièrement déterminé par $L = \mathbb{Q}\setminus U$ : dans toute la suite, on
+  \emph{identifie la coupure à son segment initial $L$}, de sorte que tous les
+  énoncés ci-dessous ($\subseteq$, $\sup = \bigcup$, $\hat q = \{r < q\}$) portent
+  sur des ensembles de rationnels.
 \end{tcolorbox}
 
 \begin{tcolorbox}[thmbox]
@@ -57,8 +60,17 @@ Cauchy converge. Il existe deux méthodes standards.
   \textit{Addition.} $\alpha + \beta = \{a + b \mid a \in \alpha,\; b \in \beta\}$.
   On vérifie que c'est une coupure, et que les axiomes de groupe abélien sont satisfaits.
 
-  \textit{Multiplication.} Plus délicate (gestion des signes) : pour $\alpha,\beta > 0$,
-  $\alpha \cdot \beta = \{q \in \mathbb{Q} \mid q \leq ab,\ a\in\alpha\cap\mathbb{Q}^+,\ b\in\beta\cap\mathbb{Q}^+\}$.
+  \textit{Multiplication.} Plus délicate, car il faut gérer les signes.
+  Pour $\alpha, \beta > 0$ (c'est-à-dire $\alpha, \beta \supsetneq \hat 0$), on pose
+  \[
+    \alpha \cdot \beta = \mathbb{Q}^- \cup \{\, ab \mid a \in \alpha,\ b \in \beta,\ a, b > 0 \,\},
+  \]
+  soit tous les rationnels $\leq 0$ réunis aux produits de représentants strictement
+  positifs des deux coupures (l'ensemble obtenu est bien fermé vers le bas, donc une
+  coupure). On étend ensuite à $\alpha, \beta$ quelconques par les règles des signes :
+  $\alpha\cdot 0 = 0$, et pour $\alpha < 0$ ou $\beta < 0$ on pose
+  $\alpha\cdot\beta = \pm\bigl(|\alpha|\cdot|\beta|\bigr)$ selon le signe attendu,
+  avec $|\gamma| = \max(\gamma, -\gamma)$.
 
   \textit{Plongement de $\mathbb{Q}$.} À $q \in \mathbb{Q}$ on associe la coupure
   $\hat{q} = \{r \in \mathbb{Q} \mid r < q\}$. \hfill$\blacksquare$
@@ -86,7 +98,7 @@ Cauchy converge. Il existe deux méthodes standards.
     $|a_nb_n - a_mb_m| \leq M|b_n-b_m| + N|a_n-a_m| \to 0$,
     donc $(a_nb_n)$ est de Cauchy.
   \end{itemize}
-  \hfill$\checkmark$
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Étape 2 — La relation d'équivalence}
@@ -101,7 +113,7 @@ Cauchy converge. Il existe deux méthodes standards.
   $(a_n+b_n)-(a_n'+b_n') = (a_n-a_n')+(b_n-b_n') \to 0$ ($+$ bien fondé).
   Pour $\times$ : $(a_nb_n - a_n'b_n') = a_n(b_n-b_n') + b_n'(a_n-a_n') \to 0$
   car $(a_n)$ est bornée et $(b_n-b_n'),(a_n-a_n')\to 0$ ($\times$ bien fondé).
-  \hfill$\checkmark$
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Étape 3 — $\mathbb{R} = \mathcal{C}/{\sim}$ est un corps}
@@ -211,23 +223,26 @@ Cauchy converge. Il existe deux méthodes standards.
   (puissance du continu).
 
   \textit{Preuve (argument diagonal).}
-  Supposons $\mathbb{R}$ dénombrable : $\mathbb{R} = \{x_1, x_2, \ldots\}$.
+  Il suffit de montrer que le segment $[0,1]$ n'est pas dénombrable, ce qui
+  entraîne $a$~fortiori la non-dénombrabilité de $\mathbb{R}$. Supposons donc
+  $[0,1]$ dénombrable : $[0,1] = \{x_1, x_2, \ldots\}$.
   Construisons $y \in [0,1]$ différent de chaque $x_n$ : si le $n$-ième chiffre
   décimal de $x_n$ est $d$, on pose le $n$-ième chiffre décimal de $y$ égal à
   $5$ si $d \neq 5$, et $6$ sinon. En n'utilisant que les chiffres $5$ et $6$,
   $y$ admet un développement décimal unique (pas de phénomène $0{,}999\ldots=1$),
-  et $y \neq x_n$ pour tout $n$ (ils diffèrent au rang $n$) : contradiction.
+  et $y \in [0,1]$ mais $y \neq x_n$ pour tout $n$ (ils diffèrent au rang $n$) :
+  contradiction.
   \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
 
 %=============================================================
-%  § 4 — EXEMPLES, PIÈGES ET EXERCICES
+%  § 5 — EXEMPLES, PIÈGES ET EXERCICES
 %=============================================================
 \secnum{exgreen}{5}{Exemples, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Nombres algébriques et transcendants.}\enspace%
@@ -248,7 +263,7 @@ Cauchy converge. Il existe deux méthodes standards.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Les deux constructions donnent le même objet.}\enspace%

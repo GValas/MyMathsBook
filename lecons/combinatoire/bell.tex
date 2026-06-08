@@ -73,10 +73,12 @@
   indépendamment. Ainsi :
   \[
     B_{n+1} = \sum_{k=0}^{n} \binom{n}{k} B_{n-k}
-             = \sum_{k=0}^{n} \binom{n}{k} B_k,
+             = \sum_{j=0}^{n} \binom{n}{n-j} B_j
+             = \sum_{j=0}^{n} \binom{n}{j} B_j,
   \]
-  où la dernière égalité s'obtient en substituant $k \leftarrow n-k$.
-  \hfill$\blacksquare$
+  où l'avant-dernière égalité s'obtient en posant $j=n-k$, et la dernière
+  en utilisant $\binom{n}{n-j}=\binom{n}{j}$.
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Triangle de Bell}
@@ -140,7 +142,7 @@
     \item Soit $n$ rejoint l'un des $k$ blocs d'une partition de $[n-1]$ :
           il y a $k\cdot S(n-1,k)$ façons.
   \end{itemize}
-  D'où $S(n,k) = k\,S(n-1,k) + S(n-1,k-1)$. \hfill$\blacksquare$
+  D'où $S(n,k) = k\,S(n-1,k) + S(n-1,k-1)$. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Formule explicite}
@@ -177,18 +179,33 @@
 \rubriq{Preuve de la formule de Dobi\'nski}
 
 \begin{mdframed}[style=proofbar]
-  On utilise la formule d'inclusion-exclusion pour $S(n,k)$ et on somme sur
-  $k$ :
+  On part de la formule d'inclusion-exclusion pour $S(n,k)$ et on somme sur
+  $k$. En écrivant $\binom{k}{j}=\dfrac{k!}{j!\,(k-j)!}$, le facteur $1/k!$ se
+  simplifie :
   \[
     B_n = \sum_{k=0}^{n} S(n,k)
-        = \sum_{k=0}^{n}\frac{1}{k!}\sum_{j=0}^{k}{(-1)}^{k-j}\binom{k}{j}j^n.
+        = \sum_{k=0}^{n}\frac{1}{k!}\sum_{j=0}^{k}{(-1)}^{k-j}\binom{k}{j}j^n
+        = \sum_{k=0}^{n}\sum_{j=0}^{k}\frac{{(-1)}^{k-j}}{j!\,(k-j)!}\,j^n.
   \]
-  En permutant les sommations et en regroupant les termes, on reconnaît le
-  développement en série de $e^{-1} e^j = e^{j-1}$ évalué en $j=1$, ce qui
-  donne (après développement de $e^x$ en entier $k$) :
+  On peut prolonger la sommation sur $k$ jusqu'à $+\infty$ : pour $j>k$ on a
+  $\binom{k}{j}=0$, et seuls les indices $0\leq j\leq k$ contribuent.
+  Intervertissons alors les deux sommations (la série double est absolument
+  convergente, $j^n/(j!\,(k-j)!)\geq 0$), en sommant d'abord sur $k\geq j$ :
   \[
-    B_n = e^{-1}\sum_{k=0}^{+\infty}\frac{k^n}{k!}.\hfill\blacksquare
+    B_n = \sum_{j=0}^{+\infty}\frac{j^n}{j!}
+          \sum_{k\geq j}\frac{{(-1)}^{k-j}}{(k-j)!}.
   \]
+  Le facteur intérieur ne dépend plus que de $k-j$ : en posant $\ell=k-j$,
+  \[
+    \sum_{k\geq j}\frac{{(-1)}^{k-j}}{(k-j)!}
+      = \sum_{\ell=0}^{+\infty}\frac{{(-1)}^{\ell}}{\ell!}
+      = e^{-1}.
+  \]
+  En reportant, il vient
+  \[
+    B_n = e^{-1}\sum_{j=0}^{+\infty}\frac{j^n}{j!}.
+  \]
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Preuve de la série génératrice}
@@ -204,8 +221,9 @@
     = e^{-1}\sum_{k\geq 0}\frac{1}{k!}\sum_{n\geq 0}\frac{{(kx)}^n}{n!}
     = e^{-1}\sum_{k\geq 0}\frac{e^{kx}}{k!}
     = e^{-1}\,e^{e^x}
-    = e^{e^x - 1}.\hfill\blacksquare
+    = e^{e^x - 1}.
   \]
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -215,7 +233,7 @@
 %=============================================================
 \secnum{exgreen}{5}{Applications, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Classement de structures.}\enspace%
@@ -236,18 +254,28 @@
   \textbf{3. Dérivation de fonctions composées.}\enspace%
   \index{formule de Fa\`a di Bruno}
   La formule de Fa\`a di Bruno exprime ${(f \circ g)}^{(n)}$ en termes
-  des dérivées de $f$ et $g$ à l'aide des nombres $S(n,k)$.
+  des dérivées de $f$ et $g$ à l'aide des \emph{polynômes de Bell partiels}
+  $B_{n,k}\bigl(g',g'',\ldots,g^{(n-k+1)}\bigr)$ :
+  \[
+    {(f\circ g)}^{(n)}
+      = \sum_{k=0}^{n} f^{(k)}\!\circ g \;\cdot\;
+        B_{n,k}\bigl(g',\ldots,g^{(n-k+1)}\bigr).
+  \]
+  (Les nombres de Stirling de deuxième espèce s'en déduisent comme cas
+  particulier : $S(n,k)=B_{n,k}(1,1,\ldots,1)$.)
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$B_n$ croît plus vite que toute exponentielle fixée.}\enspace%
   On a $B_n \geq S(n,1) = 1$ et $B_n \geq S(n,n) = 1$, mais la croissance
-  réelle est bien plus rapide : $\ln B_n \sim n\ln n - n\ln\ln n$ (formule
-  asymptotique de Berge). On confondra $B_n$ avec $n!$ ou avec $2^n$ par
-  erreur.
+  réelle est bien plus rapide :
+  \[
+    \ln B_n = n\bigl(\ln n - \ln\ln n - 1\bigr) + o(n)
+  \]
+  (asymptotique de Moser--Wyman / de Bruijn). On confondra $B_n$ avec $n!$ ou
+  avec $2^n$ par erreur.
 
   \smallskip\noindent
   \textbf{Confondre $S(n,k)$ avec $\begin{bmatrix}n\\k\end{bmatrix}$.}\enspace%
@@ -272,7 +300,7 @@
           calculer $B_6 = 203$ à partir des valeurs précédentes.
 
     \item Montrer que $S(n,2) = 2^{n-1}-1$ pour $n\geq 1$.
-          (\textit{Hint :} une partition en 2 blocs correspond au choix du
+          (\textit{Indication :} une partition en 2 blocs correspond au choix du
           bloc contenant $1$, qui ne peut pas être $[n]$ tout entier.)
 
     \item Vérifier sur $n=3$ que $\mathbb{E}[X^3] = B_3 = 5$ pour

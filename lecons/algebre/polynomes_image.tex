@@ -51,7 +51,7 @@ $n+1$ points : la formule d'interpolation de Lagrange le reconstitue à partir
 de $P(0),\ldots,P(n)$ et de polynômes de base à coefficients rationnels.
 \end{ideepreuve}
 
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   Notons $L_0,\ldots,L_n$ les polynômes de Lagrange associés aux points
@@ -81,7 +81,7 @@ de $P(0),\ldots,P(n)$ et de polynômes de base à coefficients rationnels.
   $P(\mathbb{C}) = \mathbb{C}$ si et seulement si $P$ est \emph{non constant}.
 \end{tcolorbox}
 
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   Si $P = c$ est constant, alors $P(\mathbb{C}) = \{c\} \neq \mathbb{C}$.
@@ -90,7 +90,7 @@ de $P(0),\ldots,P(n)$ et de polynômes de base à coefficients rationnels.
   Réciproquement, supposons $P$ non constant et soit $w \in \mathbb{C}$. Le
   polynôme $P - w$ est non constant, donc, $\mathbb{C}$ étant algébriquement
   clos (théorème de d'Alembert--Gauss), il admet une racine $z \in \mathbb{C}$ :
-  $P(z) = w$. Ainsi tout $w$ est atteint, $P(\mathbb{C}) = \mathbb{C}$.
+  $P(z) = w$. Ainsi tout $w$ est atteint, donc $P(\mathbb{C}) = \mathbb{C}$.
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -107,7 +107,7 @@ de $P(0),\ldots,P(n)$ et de polynômes de base à coefficients rationnels.
   $\deg P$ est \emph{impair}.
 \end{tcolorbox}
 
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   \textit{Coefficients réels.}\enspace
@@ -149,48 +149,73 @@ de $P(0),\ldots,P(n)$ et de polynômes de base à coefficients rationnels.
 \begin{significationintuitive}
 Sur $\mathbb{Q}$, le critère de parité ne suffit plus : $X^3$ est de degré
 impair mais $2$ n'est pas un cube de rationnel, donc $X^3$ n'atteint pas $2$.
-La raison profonde est arithmétique — les dénominateurs des antécédents sont
-bornés par le coefficient dominant, ce qui empêche dès le degré $2$ d'atteindre
-les rationnels de dénominateur arbitrairement grand.
+La raison profonde est arithmétique et se lit \emph{du côté des valeurs}. En
+choisissant un nombre premier $q$ qui ne perturbe ni les coefficients ni le
+coefficient dominant, on contrôle la valuation $q$-adique de $P(x)$ : lorsque
+$q$ divise le dénominateur de $x$, c'est le terme dominant qui l'emporte et
+$v_q\bigl(P(x)\bigr)$ devient un multiple du degré $n$. Dès que $n \geq 2$, les
+rationnels dont la $q$-valuation du dénominateur n'est pas multiple de $n$
+(comme $1/q$) restent hors de portée : l'image manque une infinité de valeurs.
 \end{significationintuitive}
 
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   \textit{Coefficients rationnels et cas affine.}\enspace
   Si $P(\mathbb{Q}) = \mathbb{Q}$, alors $P(k) \in \mathbb{Q}$ pour
   $k \in \{0,\ldots,\deg P\}$, donc $P \in \mathbb{Q}[X]$ (lemme du § 2).
-  Réciproquement, si $P = aX + b$ avec $a \neq 0$ rationnels, tout
+  Réciproquement, si $P = aX + b$ avec $a,b$ rationnels, $a \neq 0$, tout
   $y \in \mathbb{Q}$ admet l'antécédent rationnel $x = (y-b)/a$ : $P$ est même
   une bijection de $\mathbb{Q}$. Il reste à exclure $\deg P \geq 2$.
 
   \smallskip\noindent
-  \textit{Une borne sur les dénominateurs des antécédents.}\enspace
-  Supposons $\deg P = n \geq 2$ et écrivons
-  $P = \frac{1}{d}\bigl(c_n X^n + \cdots + c_1 X + c_0\bigr)$ avec
-  $c_i \in \mathbb{Z}$, $c_n \neq 0$, $d \in \mathbb{Z}_{>0}$. Soit $y \in P(\mathbb{Q})$
-  et $x = p/m$ un antécédent écrit sous forme irréductible ($m \geq 1$,
-  $\pgcd(p,m)=1$). En multipliant $P(p/m) = y$ par $d\,m^n$ :
+  \textit{Choix d'un premier de bonne réduction.}\enspace
+  Supposons $\deg P = n \geq 2$ et écrivons $P = \sum_{k=0}^{n} c_k X^k$ avec
+  $c_k \in \mathbb{Q}$ et $c_n \neq 0$. Pour un nombre premier $q$, notons $v_q$
+  la valuation $q$-adique sur $\mathbb{Q}$ (avec $v_q(0) = +\infty$), qui vérifie
+  $v_q(uv) = v_q(u) + v_q(v)$ et l'inégalité ultramétrique
+  $v_q(u+v) \geq \min\bigl(v_q(u), v_q(v)\bigr)$, avec \emph{égalité} dès que les
+  deux valuations diffèrent. Comme les $c_k$ sont en nombre fini, on peut choisir
+  $q$ tel que
   \[
-    c_n p^n + c_{n-1}p^{n-1}m + \cdots + c_0 m^n = d\,y\,m^n .
+    v_q(c_k) \geq 0 \quad (0 \leq k \leq n)
+    \qquad\text{et}\qquad
+    v_q(c_n) = 0 ,
   \]
-  Tous les termes sauf $c_n p^n$ sont divisibles par $m$, ainsi que le membre de
-  droite ($m \mid m^n$ car $n \geq 1$). Donc $m \mid c_n p^n$, et comme
-  $\pgcd(p,m)=1$, il vient $m \mid c_n$.
+  c'est-à-dire $q$ ne divisant aucun dénominateur des $c_k$ ni le numérateur de
+  $c_n$ : seuls les diviseurs premiers de ces entiers sont à éviter.
 
   \smallskip\noindent
-  \textit{L'image rate des rationnels.}\enspace
-  Les antécédents possibles ont donc un dénominateur $m$ divisant l'entier fixe
-  $c_n$ : ils vivent dans $\frac{1}{c_n}\mathbb{Z}$. Pour un tel $x = t/c_n$
-  ($t \in \mathbb{Z}$),
+  \textit{La valuation des valeurs est un multiple de $n$.}\enspace
+  Soit $x = a/b \in \mathbb{Q}$ écrit sous forme irréductible avec $q \mid b$,
+  c'est-à-dire $e := v_q(b) \geq 1$ et $v_q(a) = 0$ ; alors $v_q(x) = -e < 0$.
+  Pour le terme dominant,
   \[
-    y = P(x) = \frac{1}{d}\sum_{i=0}^{n} c_i \frac{t^i}{c_n^{\,i}}
-      \in \frac{1}{d\,c_n^{\,n}}\,\mathbb{Z}.
+    v_q\bigl(c_n x^n\bigr) = v_q(c_n) + n\,v_q(x) = -ne ,
   \]
-  Autrement dit $P(\mathbb{Q}) \subseteq \frac{1}{d\,c_n^{\,n}}\mathbb{Z}$, un
-  sous-groupe \emph{discret} de $\mathbb{Q}$. Or $\frac{1}{2\,d\,c_n^{\,n}} \in \mathbb{Q}$
-  n'y appartient pas : $P$ n'est pas surjective. Donc $\deg P \leq 1$, ce qui
-  achève la caractérisation. \hfill$\blacksquare$
+  tandis que pour $k < n$, en majorant $v_q(c_k) \geq 0$,
+  \[
+    v_q\bigl(c_k x^k\bigr) = v_q(c_k) + k\,v_q(x) \geq -ke > -ne .
+  \]
+  Le terme dominant a donc une valuation \emph{strictement} plus petite que tous
+  les autres ; par l'égalité ultramétrique,
+  \[
+    v_q\bigl(P(x)\bigr) = v_q\bigl(c_n x^n\bigr) = -ne \in n\mathbb{Z}.
+  \]
+  Et si $q \nmid b$, alors $v_q(x) \geq 0$, d'où $v_q\bigl(P(x)\bigr) \geq 0$.
+  Dans tous les cas, pour $x \in \mathbb{Q}$, ou bien $v_q\bigl(P(x)\bigr) \geq 0$,
+  ou bien $v_q\bigl(P(x)\bigr)$ est un entier négatif multiple de $n$.
+
+  \smallskip\noindent
+  \textit{L'image rate une infinité de rationnels.}\enspace
+  Prenons $y = 1/q$, de sorte que $v_q(y) = -1$. Puisque $n \geq 2$, $-1$ n'est
+  ni positif ni multiple de $n$ : aucun $x \in \mathbb{Q}$ ne vérifie
+  $P(x) = y$. Donc $1/q \notin P(\mathbb{Q})$ et $P$ n'est pas surjective sur
+  $\mathbb{Q}$. (Plus généralement, tout $y$ dont la valuation $v_q(y)$ est
+  négative sans être multiple de $n$ — il y en a une infinité, p.ex. $1/q^j$
+  avec $n \nmid j$ — manque à l'image.) Ainsi
+  $\deg P \leq 1$, ce qui achève la caractérisation.
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Exemples et contre-exemples}
@@ -210,7 +235,7 @@ les rationnels de dénominateur arbitrairement grand.
   et $P(\mathbb{Q})=\mathbb{Q}$.
 \end{mdframed}
 
-\noindent{\bfseries\color{counterred} Contre-exemples instructifs.}
+\rubriq{Contre-exemples instructifs}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Le degré impair ne suffit pas sur $\mathbb{Q}$.}\enspace%
@@ -241,3 +266,5 @@ les rationnels de dénominateur arbitrairement grand.
           (Indication~: $P = X^n$.)
   \end{enumerate}
 \end{mdframed}
+
+\leconfooter{C.\ F.\ Gauss (d'Alembert--Gauss, 1799) — K.\ Hensel (valuation $p$-adique, 1897)}

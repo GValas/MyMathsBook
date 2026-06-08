@@ -44,7 +44,7 @@
   \exp(1) =: e \approx 2{,}718\ldots, \qquad
   \exp(-1) = \frac{1}{e}.
 \]
-Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transcendant.
+Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même transcendant.
 
 \decsep{}
 
@@ -62,7 +62,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
       \exp(a+b) = \exp(a)\,\exp(b).
     \]
     \item \textbf{Signe et inversibilité :} $\exp(x) > 0$ pour tout $x$,
-          et ${\exp(x)}^{-1} = \exp(-x)$.
+          et $(\exp x)^{-1} = \exp(-x)$.
     \item \textbf{Monotonie :} $\exp$ est strictement croissante.
     \item \textbf{Bijectivité :}
           $\displaystyle\lim_{x\to +\infty}\exp(x)=+\infty$,\quad
@@ -137,10 +137,10 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
     \[
       \exp(x) = \sum_{k=0}^n \frac{x^k}{k!} + o(x^n) \quad (x\to 0).
     \]
-    \item \textbf{Reste de Taylor :} pour $x > 0$,
+    \item \textbf{Reste de Taylor :} pour tout $x \in \mathbb{R}$,
     \[
       \exp(x) = \sum_{k=0}^n \frac{x^k}{k!} + \frac{x^{n+1}}{(n+1)!}\,\exp(\xi),
-      \quad \xi \in (0,x).
+      \quad \xi \text{ strictement entre } 0 \text{ et } x.
     \]
   \end{enumerate}
 \end{tcolorbox}
@@ -153,8 +153,10 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
   \textit{(2).} C'est le développement de Taylor-Young de $\exp$ en $0$
   (les dérivées $\exp^{(k)}(0) = \exp(0) = 1$).
 
-  \textit{(3).} Formule de Taylor avec reste de Lagrange : $\exp^{(n+1)} = \exp$,
-  d'où le reste $\tfrac{\exp(\xi)}{(n+1)!}x^{n+1}$ pour un $\xi$ entre $0$ et $x$.
+  \textit{(3).} Formule de Taylor avec reste de Lagrange, valable pour tout
+  $x \in \mathbb{R}$ : comme $\exp^{(n+1)} = \exp$ est continue sur $\mathbb{R}$,
+  il existe $\xi$ strictement entre $0$ et $x$ tel que le reste vaille
+  $\tfrac{\exp(\xi)}{(n+1)!}x^{n+1}$.
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -177,15 +179,28 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
-  Soit $n = \lceil\alpha\rceil + 1$. Pour $x > 0$, la troncature donne :
+  \textit{Première limite.} Si $\alpha \leq 0$, alors pour $x \geq 1$ on a
+  $0 \leq x^\alpha \leq 1$ et $\exp(x) \to +\infty$, donc
+  $x^\alpha/\exp(x) \to 0$ trivialement. Supposons donc $\alpha > 0$ et
+  posons $m = \lceil\alpha\rceil + 1$. Pour $x > 0$, la troncature donne
+  $\exp(x) \geq \dfrac{x^m}{m!}$, donc
   \[
-    \exp(x) \geq \frac{x^n}{n!},
-    \quad\text{donc}\quad
-    0 \leq \frac{x^\alpha}{\exp(x)} \leq \frac{n!\,x^\alpha}{x^n}
-    = \frac{n!}{x^{n-\alpha}} \xrightarrow[x\to+\infty]{} 0,
+    0 \leq \frac{x^\alpha}{\exp(x)} \leq \frac{m!\,x^\alpha}{x^m}
+    = \frac{m!}{x^{m-\alpha}} \xrightarrow[x\to+\infty]{} 0,
   \]
-  car $n - \alpha \geq 1 > 0$.
-  La limite en $-\infty$ s'obtient par le changement $x \mapsto -x$.
+  car $m - \alpha \geq 1 > 0$.
+
+  \textit{Limite en $-\infty$.} On l'obtient par le changement $x \mapsto -x$ :
+  $|x|^\alpha\exp(x) = \dfrac{|x|^\alpha}{\exp(-x)} = \dfrac{t^\alpha}{\exp(t)} \to 0$
+  en posant $t = -x \to +\infty$.
+
+  \textit{Troisième limite.} Pour $n \in \mathbb{N}$, on applique la première
+  limite à $\alpha = n+1 > 0$ : pour $x > 0$,
+  \[
+    \frac{\exp(x)}{x^n} = x \cdot \frac{\exp(x)}{x^{n+1}}
+    = \frac{x}{\,x^{n+1}/\exp(x)\,} \xrightarrow[x\to+\infty]{} +\infty,
+  \]
+  puisque $x \to +\infty$ tandis que $x^{n+1}/\exp(x) \to 0$.
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -196,7 +211,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 %=============================================================
 \secnum{exgreen}{5}{Applications, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Puissances réelles.}\enspace%
@@ -221,7 +236,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\exp(a+b) \neq \exp(a)+\exp(b)$.}\enspace%
@@ -250,13 +265,13 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
           En déduire $\exp(x)/x^2 \to +\infty$ quand $x\to+\infty$.
 
     \item Calculer $\displaystyle\lim_{n\to+\infty}\left(1+\frac{x}{n}\right)^n$
-          pour $x\in\mathbb{R}$. (\textit{Hint :} montrer que le logarithme
+          pour $x\in\mathbb{R}$. (\textit{Indication :} montrer que le logarithme
           de l'expression tend vers $x$.)
 
     \item Résoudre l'équation différentielle $y'' - 3y' + 2y = 0$
           avec les conditions initiales $y(0) = 1$, $y'(0) = 0$.
 
-    \item Montrer que $e \notin \mathbb{Q}$. (\textit{Hint :} supposer
+    \item Montrer que $e \notin \mathbb{Q}$. (\textit{Indication :} supposer
           $e = p/q$, multiplier par $q!$ le développement
           $e = \sum_{k=0}^q 1/k! + \sum_{k>q} 1/k!$,
           et montrer que la partie fractionnaire est un entier strictement
@@ -270,4 +285,4 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), voire transce
   \end{enumerate}
 \end{mdframed}
 
-\leconfooter{L.\ Euler (1748) — définition par série entière ; J.\ Liouville (1844) — transcendance de $e$}
+\leconfooter{L.\ Euler (1748) — définition par série entière ; Ch.\ Hermite (1873) — transcendance de $e$}

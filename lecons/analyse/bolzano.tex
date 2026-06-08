@@ -40,25 +40,28 @@ d'existence en analyse.
 \secnum{navyblue}{2}{Démonstration}
 
 \begin{ideepreuve}
-On coupe $[-M,M]$ en deux ; la moitié contenant infiniment de termes est
+On coupe $[-M,M]$ en deux ; la moitié contenant une infinité de termes est
 gardée, et on y sélectionne un terme. En répétant, les intervalles emboîtés
 se resserrent vers un point $\ell$, limite de la sous-suite construite.
 \end{ideepreuve}
 
-\vspace{10pt}
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
-  \textit{Initialisation.} Posons $I_0 = [-M,M]$. Tous les termes de
-  $(u_n)$ appartiennent à $I_0$.
+  \textit{Initialisation.} Posons $I_0 = [-M,M]$ : tous les termes de
+  $(u_n)$ appartiennent à $I_0$, qui en contient donc une infinité. On pose
+  $\varphi(0) = 0$, de sorte que $u_{\varphi(0)} \in I_0$ ; c'est le rang de
+  base de l'extractrice.
 
   \medskip
-  \textit{Induction.} Supposons construits, pour $j \leq k$ :
+  \textit{Induction.} Supposons construits, pour tout $j$ tel que
+  $0 \leq j \leq k$ :
   \begin{itemize}
-    \item un intervalle fermé $I_j \subset I_{j-1}$ de longueur $2M/2^j$
-          contenant une infinité de termes de $(u_n)$ ;
-    \item un indice $\varphi(j) > \varphi(j-1)$ tel que
-          $u_{\varphi(j)} \in I_j$.
+    \item un intervalle fermé $I_j$ de longueur $2M/2^j$ contenant une
+          infinité de termes de $(u_n)$, avec $I_j \subset I_{j-1}$ dès que
+          $j \geq 1$ ;
+    \item un indice $\varphi(j)$ tel que $u_{\varphi(j)} \in I_j$, avec
+          $\varphi(j) > \varphi(j-1)$ dès que $j \geq 1$.
   \end{itemize}
   On divise $I_k = [a_k, b_k]$ en ses deux moitiés et on choisit $I_{k+1}$
   parmi celles qui contiennent une infinité de termes. On extrait
@@ -72,8 +75,8 @@ se resserrent vers un point $\ell$, limite de la sous-suite construite.
     a_k \;\leq\; u_{\varphi(k)} \;\leq\; b_k
     \quad\Longrightarrow\quad
     u_{\varphi(k)} \;\xrightarrow{k \to \infty}\; \ell.
-    \hfill\blacksquare
   \]
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Reformulation : l'ensemble des valeurs d'adhérence}
@@ -97,7 +100,7 @@ se resserrent vers un point $\ell$, limite de la sous-suite construite.
 %=============================================================
 \secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1.}\enspace%
@@ -111,12 +114,12 @@ se resserrent vers un point $\ell$, limite de la sous-suite construite.
 
   \smallskip\noindent
   \textbf{3.}\enspace%
-  $v_n = \{n\sqrt{2}\}$ est bornée dans $[0,1)$ et dense dans $[0,1]$ :
+  $v_n = \{n\sqrt{2}\}$ (partie fractionnaire de $n\sqrt{2}$) est bornée
+  dans $[0,1)$ et dense dans $[0,1]$ :
   chaque point de $[0,1]$ est limite d'une sous-suite.
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples.}
+\rubriq{Contre-exemples}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Borne nécessaire.}\enspace%

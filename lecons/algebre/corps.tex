@@ -122,10 +122,13 @@
   racines de $X^{p^n}-X$, qui a au plus $p^n$ racines.
 
   \textit{$K^*$ est cyclique.}
-  Tout sous-groupe fini d'un corps (ici $K^*$) est cyclique.
+  Tout sous-groupe fini du groupe multiplicatif d'un corps (ici $K^*$) est cyclique.
   Preuve : si $d \mid |K^*|$, le polynôme $X^d - 1$ a au plus $d$ racines dans $K$,
   donc il y a au plus $d$ éléments d'ordre divisant $d$.
-  Par le critère de cyclicité, $K^*$ est cyclique. \hfill$\blacksquare$
+  On conclut par le lemme suivant : \emph{un groupe abélien fini $G$ dans lequel,
+  pour tout $d \geq 1$, l'équation $x^d = 1$ admet au plus $d$ solutions, est
+  cyclique.} Ici $G = K^*$ vérifie cette hypothèse, donc $K^*$ est cyclique.
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -135,7 +138,7 @@
 %=============================================================
 \secnum{exgreen}{4}{Exemples, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. $\mathbb{F}_4$.}\enspace%
@@ -158,7 +161,7 @@
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Corps $\neq$ anneau intègre.}\enspace%
@@ -187,14 +190,13 @@
 
     \item Soit $K$ un corps fini de caractéristique impaire. Montrer que $-1$
           est un carré dans $K$ si et seulement si $|K| \equiv 1 \pmod{4}$.
-          (En caractéristique $2$, $-1=1$ est toujours un carré.)
 
     \item Montrer que tout polynôme irréductible de degré $n$ sur $\mathbb{F}_p$
           divise $X^{p^n} - X$.
 
     \item (Théorème de Wedderburn) Tout corps fini est commutatif.
-          Admettre ce résultat et montrer qu'il implique que $\mathbb{H}$ est
-          infini (en supposant $\mathbb{H}$ non commutatif mais à division).
+          Admettre ce résultat et en déduire qu'un corps à division non commutatif
+          est nécessairement infini.
   \end{enumerate}
 \end{mdframed}
 

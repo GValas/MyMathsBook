@@ -34,7 +34,12 @@
   \[
     \cos((n+1)\theta) = 2\cos\theta\cdot\cos(n\theta) - \cos((n-1)\theta).
   \]
-  Posant $x = \cos\theta$, si $T_n(x) = \cos(n\theta)$ et
+  \emph{Initialisation.} Les polynômes $T_0 = 1$ et $T_1 = X$ conviennent,
+  car $T_0(\cos\theta) = 1 = \cos(0\cdot\theta)$ et
+  $T_1(\cos\theta) = \cos\theta$.
+
+  \smallskip
+  \emph{Hérédité.} Posant $x = \cos\theta$, si $T_n(x) = \cos(n\theta)$ et
   $T_{n-1}(x) = \cos((n-1)\theta)$, alors
   $T_{n+1}(x) = 2x\,T_n(x) - T_{n-1}(x)$ est bien un polynôme en $x$.
 
@@ -144,10 +149,14 @@
     \widetilde{T}_n(\xi_j) = \frac{{(-1)}^j}{2^{n-1}}, \qquad
     |P(\xi_j)| < \frac{1}{2^{n-1}},
   \]
-  donc $Q(\xi_j)$ change de signe entre $\xi_{j-1}$ et $\xi_j$ ($n$ fois).
+  L'inégalité $|P(\xi_j)| < \frac{1}{2^{n-1}} = |\widetilde{T}_n(\xi_j)|$
+  est stricte aux $n+1$ nœuds, donc $Q(\xi_j)$ a le signe de
+  $\widetilde{T}_n(\xi_j) = \frac{{(-1)}^j}{2^{n-1}}$, c'est-à-dire que $Q$
+  change de signe entre $\xi_{j-1}$ et $\xi_j$ ($n$ fois).
   Par le théorème des valeurs intermédiaires, $Q$ admet au moins $n$
-  racines. Contradiction avec $\deg Q < n$, sauf si $Q = 0$, mais alors
-  $P = \widetilde{T}_n$ et l'hypothèse est fausse. \hfill$\blacksquare$
+  racines ; comme ces changements de signe sont stricts, $Q \not\equiv 0$.
+  Un polynôme non nul de degré $< n$ ne peut avoir $n$ racines :
+  contradiction. \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -193,14 +202,14 @@
 %=============================================================
 \secnum{exgreen}{5}{Applications, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Nœuds de Tchebychev pour l'interpolation.}\enspace%
   \index{nœuds de Tchebychev}
   Pour interpoler une fonction $f$ en $n+1$ points de $[-1,1]$, les racines
   de $T_{n+1}$ (nœuds de Tchebychev) minimisent le terme d'erreur, qui
-  contient $\|\omega\|_\infty$ avec $\omega=\prod(x-x_k)$.
+  contient $\|\omega\|_\infty$ avec $\omega=\prod_{k=0}^{n}(x-x_k)$.
 
   \smallskip\noindent
   \textbf{2. Polynômes de Tchebychev de deuxième espèce.}\enspace%
@@ -217,7 +226,7 @@
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Coefficient dominant $2^{n-1}$, pas $1$.}\enspace

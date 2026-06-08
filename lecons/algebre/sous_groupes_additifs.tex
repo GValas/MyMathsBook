@@ -21,9 +21,11 @@
           \]
     \item \textbf{cas dense :} $G$ est dense dans $\mathbb{R}$.
   \end{enumerate}
-  Plus précisément, en posant $a = \inf\bigl(G \cap \,]0,+\infty[\,\bigr)$ (avec
-  $a = +\infty$ si $G = \{0\}$), on est dans le cas monogène lorsque $a > 0$ (ou
-  $G=\{0\}$), et dans le cas dense lorsque $a = 0$.
+  Plus précisément, lorsque $G \neq \{0\}$ on pose
+  $a = \inf\bigl(G \cap \,]0,+\infty[\,\bigr)$ : on est dans le cas monogène
+  lorsque $a > 0$, et dans le cas dense lorsque $a = 0$. Le cas $G = \{0\}$ est
+  monogène de générateur $a = 0$ (la convention $\inf(\emptyset) = +\infty$ sert
+  seulement à exprimer qu'alors $G$ n'a aucun élément $> 0$).
 \end{tcolorbox}
 
 \begin{significationintuitive}
@@ -51,7 +53,7 @@ groupe contient des éléments positifs aussi petits que voulu, et leurs multipl
 quadrillent $\mathbb{R}$ : c'est la densité.
 \end{ideepreuve}
 
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   \textit{Le cas trivial.}\enspace
@@ -73,8 +75,8 @@ quadrillent $\mathbb{R}$ : c'est la densité.
   \[
     g - h \in G \quad\text{et}\quad 0 < g - h < g - a < a,
   \]
-  ce qui contredit la définition de $a$ comme \emph{plus petit} élément
-  $> 0$ approché. Donc $a \in G$.
+  donc $g - h \in G \cap \,]0,+\infty[$ tout en vérifiant $g - h < a$, ce qui
+  contredit le fait que $a$ minore $G \cap \,]0,+\infty[$. Donc $a \in G$.
 
   \medskip
   \textit{Cas $a > 0$ : conclusion $G = a\mathbb{Z}$.}\enspace
@@ -122,15 +124,17 @@ quadrillent $\mathbb{R}$ : c'est la densité.
   est dense dans $[0,1]$ si et seulement si $\alpha$ est irrationnel.
 \end{tcolorbox}
 
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   $G$ est un sous-groupe de $(\mathbb{R},+)$, on lui applique la dichotomie.
 
   \smallskip\noindent
   \textit{Si $\alpha = p/q \in \mathbb{Q}$} (fraction irréductible, $q \geq 1$),
-  alors $m + n\alpha = (mq + np)/q \in \tfrac{1}{q}\mathbb{Z}$, et par Bézout
-  $\tfrac1q\mathbb{Z} \subseteq G$ ; donc $G = \tfrac1q\mathbb{Z}$ est monogène,
+  alors $m + n\alpha = (mq + np)/q \in \tfrac{1}{q}\mathbb{Z}$. Réciproquement,
+  comme $\gcd(p,q) = 1$, le théorème de Bézout fournit $u,v \in \mathbb{Z}$ avec
+  $up + vq = 1$, d'où $\tfrac1q = u\alpha + v \in G$ et donc
+  $\tfrac1q\mathbb{Z} \subseteq G$ ; ainsi $G = \tfrac1q\mathbb{Z}$ est monogène,
   \emph{non} dense.
 
   \smallskip\noindent
@@ -161,13 +165,13 @@ quadrillent $\mathbb{R}$ : c'est la densité.
   \smallskip\noindent
   \textbf{3. Densité de $(\cos n)_{n\in\mathbb{N}}$.}\enspace%
   \index{densité!de $(\cos n)$}
-  Comme $\pi \notin \mathbb{Q}$, $2\pi$ est irrationnel, donc
+  Comme $\pi \notin \mathbb{Q}$ (irrationalité admise), $2\pi$ est irrationnel, donc
   $\mathbb{Z} + 2\pi\mathbb{Z}$ est dense dans $\mathbb{R}$ : les entiers $n$ pris
   modulo $2\pi$ sont denses dans $[0,2\pi[$. Par continuité du cosinus,
   $\{\cos n : n \in \mathbb{N}\}$ est dense dans $[-1,1]$.
 \end{mdframed}
 
-\noindent{\bfseries\color{counterred} Contre-exemples et points de vigilance.}
+\rubriq{Contre-exemples et points de vigilance}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\mathbb{N}$ n'est pas un sous-groupe.}\enspace%

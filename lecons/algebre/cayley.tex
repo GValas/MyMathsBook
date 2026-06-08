@@ -23,6 +23,9 @@
   \[
     \chi_A(A) = 0_n, \qquad \text{où } \chi_A = \det(XI_n - A).
   \]
+  \textit{Remarque.} Le résultat est valable sur un corps quelconque
+  $\mathbb{K}$ : la preuve par la comatrice ci-dessous est purement
+  algébrique et n'utilise aucune propriété analytique du corps de base.
 \end{tcolorbox}
 
 \begin{significationintuitive}
@@ -51,8 +54,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 \emph{avant} d'évaluer, et non après.
 \end{ideepreuve}
 
-\vspace{10pt}
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   \textit{Mise en place.} Soit $B(X) = {\mathrm{com}(X\,\mathrm{Id}-A)}^T$
@@ -83,12 +85,13 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
     A^k\cdot(\cdot) &: \quad A^k B_{k-1} - A^{k+1} B_k = c_k A^k, \\
     A^n &: \quad A^n B_{n-1} = A^n.
   \end{alignat*}
-  En sommant toutes ces égalités, les termes $A^k B_{k-1}$ et $-A^k B_{k-1}$
-  se télescopent, et il reste :
+  En sommant toutes ces égalités, le membre de gauche se télescope : le terme
+  $-A^{k+1} B_k$ de la ligne $k$ s'annule avec le terme $+A^{k+1} B_k$ de la
+  ligne $k+1$. Il ne reste donc rien à gauche, et il vient :
   \[
     0 = c_0 I_n + c_1 A + \cdots + c_{n-1}A^{n-1} + A^n = \chi_A(A).
-    \hfill\blacksquare
   \]
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Preuve alternative — cas diagonalisable (puis densité)}
@@ -99,9 +102,24 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
   \[\chi_A(A) = P\,\mathrm{diag}(\chi_A(\lambda_1),\ldots,\chi_A(\lambda_n))\,P^{-1} = 0\]
   car chaque $\lambda_i$ est racine de $\chi_A$.
 
-  Pour le cas général, on invoque la densité des matrices diagonalisables dans
-  $\mathcal{M}_n(\mathbb{R})$ (ou $\mathcal{M}_n(\mathbb{C})$) et la continuité
-  de $A\mapsto\chi_A(A)$. \hfill$\blacksquare$
+  Pour le cas général, on travaille sur $\mathbb{C}$ : les matrices
+  diagonalisables sont denses dans $\mathcal{M}_n(\mathbb{C})$ (une matrice à
+  valeurs propres deux à deux distinctes est diagonalisable, et de telles
+  matrices sont denses car le discriminant de $\chi_A$ ne s'annule pas
+  génériquement). Comme $A\mapsto\chi_A(A)$ est continue (polynomiale en les
+  coefficients) et nulle sur cette partie dense, elle est identiquement nulle
+  sur $\mathcal{M}_n(\mathbb{C})$.
+
+  \smallskip\noindent
+  Attention : sur $\mathbb{R}$ les matrices diagonalisables ne sont
+  \emph{pas} denses dans $\mathcal{M}_n(\mathbb{R})$ (par exemple, une matrice
+  de rotation d'angle $\neq 0,\pi$ a un voisinage sans matrice diagonalisable
+  sur $\mathbb{R}$), et cet argument ne s'y applique pas directement. On
+  redescend toutefois immédiatement le résultat réel : une matrice
+  $A\in\mathcal{M}_n(\mathbb{R})$ est aussi élément de $\mathcal{M}_n(\mathbb{C})$,
+  et l'égalité $\chi_A(A)=0$ obtenue dans $\mathcal{M}_n(\mathbb{C})$ vaut
+  a fortiori dans $\mathcal{M}_n(\mathbb{R})$.
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -111,7 +129,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 %=============================================================
 \secnum{exgreen}{3}{Applications, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications et exemples.}
+\rubriq{Applications et exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Inversibilité.}\enspace%
@@ -135,8 +153,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
   $A^2 = (a+d)A-(ad-bc)I_2$, qu'on vérifie directement.
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges et contre-exemples.}
+\rubriq{Pièges et contre-exemples}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Substitution naïve interdite.}\enspace%

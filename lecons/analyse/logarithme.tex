@@ -38,8 +38,8 @@
 On définit le nombre de Néper\index{nombre $e$} comme l'unique réel $e > 0$
 vérifiant $\ln(e) = 1$. Son existence et son unicité découlent de la
 bijectivité de $\ln$ et du théorème des valeurs intermédiaires. On a
-$e \approx 2{,}718$. Pour tout $r \in \mathbb{Q}$, l'équation fonctionnelle
-donne $\ln(e^r) = r$, ce qui justifie rétrospectivement la notation.
+$e \approx 2{,}718$. Pour tout $n \in \mathbb{Z}$, l'équation fonctionnelle
+donne $\ln(e^n) = n$, ce qui justifie rétrospectivement la notation.
 
 \decsep{}
 
@@ -56,15 +56,16 @@ obtenues par comparaison à des sommes de Riemann.
 \end{ideepreuve}
 
 \vspace{10pt}
-\noindent{\bfseries\color{navyblue} Preuve.}
+\rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
   \textit{Étape 1 — Dérivabilité.}
   La fonction $t\mapsto 1/t$ est continue sur $(0,+\infty)$. Par le théorème
   fondamental du calcul intégral\index{théorème fondamental de l'analyse},
   $\ln$ est dérivable et $\ln'(x) = 1/x > 0$. En particulier $\ln$ est
-  strictement croissante. Comme $\ln' = 1/(\cdot)$ est elle-même dérivable,
-  $\ln$ est $\mathcal{C}^\infty$, avec $\ln''(x) = -1/x^2 < 0$ (concavité).
+  strictement croissante. Comme $x\mapsto 1/x$ est $\mathcal{C}^\infty$ sur
+  $\mathbb{R}_+^*$, $\ln$ est $\mathcal{C}^\infty$, avec
+  $\ln''(x) = -1/x^2 < 0$ (concavité).
 
   \medskip
   \textit{Étape 2 — Équation fonctionnelle.}
@@ -75,12 +76,12 @@ obtenues par comparaison à des sommes de Riemann.
   \]
   donc $\varphi$ est constante. En $x = 1$ : $\varphi(1) = \ln(a) - \ln(a) - 0 = 0$.
   Ainsi $\ln(ax) = \ln(a) + \ln(x)$ pour tout $x > 0$, ce qui donne bien
-  $\ln(ab) = \ln(a) + \ln(b)$. \hfill
+  $\ln(ab) = \ln(a) + \ln(b)$.
 
   \medskip
   \textit{Étape 3 — Limites.}
   De l'équation fonctionnelle : $\ln(2^n) = n\ln(2)$. Comme $\ln(2) > 0$
-  (car $\int_1^2 dt/t > 0$), on a $\ln(2^n)\to+\infty$. Puisque $\ln$ est
+  (car $\int_1^2 \mathrm{d}t/t > 0$), on a $\ln(2^n)\to+\infty$. Puisque $\ln$ est
   croissante, $\lim_{x\to+\infty}\ln(x)=+\infty$.
   Puis $\ln(x) = -\ln(1/x)\to-\infty$ quand $x\to 0^+$.
 
@@ -117,7 +118,7 @@ obtenues par comparaison à des sommes de Riemann.
 %=============================================================
 \secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Croissances comparées.}
@@ -150,11 +151,11 @@ obtenues par comparaison à des sommes de Riemann.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+\rubriq{Contre-exemples et pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\ln$ n'est pas défini en $0$.}\enspace%
-  $\ln(0)$ n'existe pas : l'intégrale $\int_0^1 dt/t$ diverge (le pôle en
+  $\ln(0)$ n'existe pas : l'intégrale $\int_0^1 \mathrm{d}t/t$ diverge (le pôle en
   $0$ est non intégrable).
 
   \smallskip\noindent
@@ -165,7 +166,8 @@ obtenues par comparaison à des sommes de Riemann.
   \smallskip\noindent
   \textbf{Divergence lente.}\enspace%
   La série harmonique $\sum 1/n$ diverge, mais $H_n\sim\ln(n)$ :
-  c'est la divergence la plus lente qui soit.
+  une divergence remarquablement lente (d'autres séries divergent plus
+  lentement encore, comme $\sum 1/(n\ln n)$).
 \end{mdframed}
 
 \vspace{6pt}

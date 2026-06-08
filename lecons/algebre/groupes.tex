@@ -77,7 +77,7 @@
 \begin{mdframed}[style=proofbar]
   \textit{$\ker\varphi$ est un sous-groupe de $G$.}
   $e_G \in \ker\varphi$ car $\varphi(e_G) = e_H$.
-  Si $a,b \in \ker\varphi$ : $\varphi(ab^{-1}) = \varphi(a){\varphi(b)}^{-1} = e_H$,
+  Si $a,b \in \ker\varphi$ : $\varphi(ab^{-1}) = \varphi(a)\varphi(b)^{-1} = e_H$,
   donc $ab^{-1} \in \ker\varphi$. $\checkmark$
 
   \textit{$\mathrm{Im}(\varphi)$ est un sous-groupe de $H$.} Analogue. $\checkmark$
@@ -97,7 +97,7 @@
 
 \begin{mdframed}[style=proofbar]
   Soit $H \leq \mathbb{Z}$. Si $H = \{0\}$, $H = 0\mathbb{Z}$. Sinon,
-  $H$ contient un entier $> 0$ (car si $a \in H$, $a\neq 0$, alors $|a| = \pm a \in H$).
+  $H$ contient un entier $> 0$ (car si $a \in H$, $a\neq 0$, alors comme $a$ et $-a$ appartiennent à $H$, on a $|a|\in H$).
   Soit $n = \min(H \cap \mathbb{N}^*)$. Clairement $n\mathbb{Z} \subseteq H$.
   Pour tout $h \in H$, la division euclidienne donne $h = qn + r$ avec $0 \leq r < n$ ;
   or $r = h - qn \in H$, donc $r = 0$ par minimalité de $n$. Ainsi $H = n\mathbb{Z}$.
@@ -168,7 +168,7 @@
 %=============================================================
 \secnum{exgreen}{4}{Groupes cycliques, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Groupes cycliques.}
+\rubriq{Groupes cycliques}
 
 \begin{mdframed}[style=exbar]
   \textbf{Définition.}\enspace%
@@ -190,7 +190,7 @@
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Un sous-groupe n'est pas toujours distingué.}\enspace%
@@ -220,8 +220,8 @@
           et que le signe $\varepsilon : \mathfrak{S}_n \to \{+1,-1\}$
           est un morphisme de groupes surjectif.
 
-    \item Montrer que tout groupe d'ordre $p^2$ (p premier) est abélien.
-          (\textit{Hint :} considérer le centre $Z(G)$.)
+    \item Montrer que tout groupe d'ordre $p^2$ ($p$ premier) est abélien.
+          (\textit{Indication :} considérer le centre $Z(G)$.)
 
     \item Soit $G$ fini et $H, K$ deux sous-groupes de $G$. Montrer que
           $|HK| = |H||K|/|H\cap K|$.

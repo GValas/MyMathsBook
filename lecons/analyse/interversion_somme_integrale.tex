@@ -136,10 +136,9 @@ quelconque, la positivité (Théorème~2) ou la sommabilité absolue
   \textit{Inégalité $(\geq)$.}\enspace%
   Soit $[a,b]\subset I$ un segment quelconque. Par positivité,
   $\int_a^b S_N \leq \sum_{n=0}^{N}\int_I f_n$. La suite $(S_N)$ est
-  croissante de limite $S$ sur $[a,b]$, et la convergence de
-  $\int_a^b S_N$ vers $\int_a^b S$ s'obtient en majorant chaque
-  $S_N$ par $S$ (théorème de la limite monotone appliqué à l'intégrale).
-  Donc
+  croissante de limite $S$ sur le segment $[a,b]$, et le passage
+  $\int_a^b S_N \to \int_a^b S$ relève du théorème de convergence
+  monotone (Beppo Levi) appliqué sur ce segment. Donc
   \[
     \int_a^b S \;\leq\; \sum_{n=0}^{+\infty}\int_I f_n.
   \]
@@ -192,12 +191,12 @@ quelconque, la positivité (Théorème~2) ou la sommabilité absolue
 %=============================================================
 \secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Développement en série de $\ln(1+x)$.}\enspace%
   Pour $x \in {]-1,1[}$, $\dfrac{1}{1+t} = \sum_{n=0}^{+\infty} {(-1)}^n t^n$
-  uniformément sur tout $[0,x]$ avec $|x|<1$. Une intégration terme à terme
+  uniformément sur tout segment $[-r,r]$ avec $r<1$. Une intégration terme à terme
   donne
   \[
     \ln(1+x) \;=\; \sum_{n=0}^{+\infty}\frac{{(-1)}^n}{n+1}x^{n+1}
@@ -221,17 +220,20 @@ quelconque, la positivité (Théorème~2) ou la sommabilité absolue
   $\displaystyle\int_0^1\!\int_0^1 \frac{\mathrm{d}t\,\mathrm{d}u}{1-tu}
    = \sum_{n=0}^{+\infty}\frac{1}{{(n+1)}^2} = \zeta(2)$.
   Un changement de variable astucieux permet alors de calculer
-  l'intégrale et de retrouver $\pi^2/6$ (Apéry, Beukers).
+  l'intégrale et de retrouver $\pi^2/6$ (Beukers, Calabi).
 
   \smallskip\noindent
-  \textbf{4. Fonction $\Gamma$ et série exponentielle.}\enspace%
+  \textbf{4. Formule des compléments.}\enspace%
   $\displaystyle\int_0^{+\infty} \frac{t^{s-1}}{1+t}\,\mathrm{d}t
-  = \frac{\pi}{\sin(\pi s)}$ pour $0<s<1$, via le développement
-  $1/(1+t) = \sum {(-1)}^n t^n$ (Théorème~3 sur $[0,1]$, prolongement).
+  = \frac{\pi}{\sin(\pi s)}$ pour $0<s<1$. Le développement
+  $\dfrac{1}{1+t} = \sum {(-1)}^n t^n$ ne vaut que sur $[0,1[$~; on découpe
+  donc l'intégrale en $\int_0^1 + \int_1^{+\infty}$, on intègre terme à
+  terme sur $[0,1]$ (Théorème~3), puis le changement $t \mapsto 1/t$
+  ramène la partie $[1,+\infty[$ à une intégrale sur $[0,1]$ traitée de même.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+\rubriq{Contre-exemples et pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Sans uniformité, l'interversion peut échouer.}\enspace%
@@ -253,8 +255,9 @@ quelconque, la positivité (Théorème~2) ou la sommabilité absolue
   \textbf{$\sum\int |f_n| < +\infty$ est strictement plus forte que la
   convergence simple.}\enspace%
   La série $\sum_{n\geq 1}\dfrac{{(-1)}^n}{n}\mathbf{1}_{[n,n+1]}$
-  converge simplement sur $[1,+\infty[$ vers une fonction nulle hors d'un
-  ensemble de mesure finie, mais $\sum\int |f_n| = \sum 1/n = +\infty$~;
+  converge simplement sur $[1,+\infty[$ vers une fonction dont la somme est
+  intégrable (sur chaque palier $[n,n+1]$ elle vaut $(-1)^n/n$, et la série
+  $\sum (-1)^n/n$ converge), mais $\sum\int |f_n| = \sum 1/n = +\infty$~;
   l'interversion via le Théorème~3 ne s'applique pas (bien que, par
   d'autres arguments, le résultat puisse rester valable).
 

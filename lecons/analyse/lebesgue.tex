@@ -157,7 +157,7 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
   \textit{Inégalité inverse.}\enspace%
   Pour montrer $L \geq \int f$, on prend $\varphi$ étagée avec
   $0 \leq \varphi \leq f$, $0 < c < 1$, et $A_n = \{f_n \geq c\varphi\}$.
-  Comme $f_n \uparrow f \geq \varphi > c\varphi$ sur le support de $\varphi$,
+  Comme $f_n \uparrow f \geq \varphi > c\varphi$ là où $\varphi>0$,
   $A_n \uparrow$ l'ensemble entier. Par $\sigma$-additivité,
   $\int c\varphi\,\mathbf{1}_{A_n} \to \int c\varphi$. Mais
   $\int f_n \geq \int c\varphi\,\mathbf{1}_{A_n}$, donc à la limite
@@ -179,13 +179,32 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
 
 \begin{mdframed}[style=proofbar]
   Soit $|f_n|\leq g \in L^1$ et $f_n \to f$ p.p. Alors $|f|\leq g$ p.p., donc
-  $f \in L^1$. On applique Fatou à $g + f_n - f \geq 0$ (à un terme près
-  d'absolue valeur) et à $g - (f_n - f) \geq 0$~:
+  $f \in L^1$. Les fonctions $g + f_n \geq 0$ et $g - f_n \geq 0$ sont
+  positives ; on leur applique le lemme de Fatou.
+
+  \smallskip
+  \textit{Premier terme.}\enspace
+  Comme $g + f_n \to g + f$, Fatou donne
   \[
-    \int (g \pm f) \;\leq\; \liminf_n \int (g \pm f_n)
-    \;=\; \int g \pm \liminf_n \int f_n.
+    \int g + \int f
+    \;=\; \int (g + f)
+    \;\leq\; \liminf_n \int (g + f_n)
+    \;=\; \int g + \liminf_n \int f_n,
   \]
-  Combiné, cela donne $\limsup \int f_n \leq \int f \leq \liminf \int f_n$,
+  d'où, $\int g$ étant fini, $\displaystyle\int f \leq \liminf_n \int f_n$.
+
+  \smallskip
+  \textit{Second terme.}\enspace
+  De même, $g - f_n \to g - f$ et Fatou donne
+  $\int g - \int f \leq \liminf_n \int (g - f_n)$. Or
+  $\liminf_n\!\big({-}\!\int f_n\big) = -\limsup_n \int f_n$, donc
+  $\liminf_n \int (g - f_n) = \int g - \limsup_n \int f_n$. En simplifiant
+  par $\int g$ on obtient
+  $\displaystyle \limsup_n \int f_n \leq \int f$.
+
+  \smallskip
+  Les deux inégalités donnent
+  $\displaystyle \limsup_n \int f_n \leq \int f \leq \liminf_n \int f_n$,
   d'où $\int f_n \to \int f$.
 
   \medskip
@@ -213,7 +232,7 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
 %=============================================================
 \secnum{exgreen}{4}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Dirichlet est Lebesgue-intégrable.}\enspace%
@@ -226,7 +245,7 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
   \textbf{2. Limite simple non dominée.}\enspace%
   $f_n(t) = n\,\mathbf{1}_{[0,1/n]}(t)$ vérifie $f_n \to 0$ p.p.\ mais
   $\int f_n = 1$ pour tout $n$. La domination $|f_n| \leq g$ est violée
-  (la borne $g = \sup f_n = +\infty$).
+  (la dominante minimale $\sup_n f_n\notin L^1$).
 
   \smallskip\noindent
   \textbf{3. Échange dérivation-intégrale.}\enspace%
@@ -248,7 +267,7 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples et subtilités.}
+\rubriq{Contre-exemples et subtilités}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Mesure nulle $\neq$ ensemble petit.}\enspace%
@@ -303,9 +322,11 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
           que $A$ est dense dans $[0,1]$.
 
     \item (\textit{Ensemble de Cantor « gras »}) Construire un sous-ensemble
-          fermé d'intérieur vide de $[0,1]$ de mesure $1/2$. En déduire qu'il
-          existe une fonction Riemann-intégrable nulle part continue
-          sur un intervalle non trivial.
+          fermé $K \subset [0,1]$ d'intérieur vide et de mesure $\lambda(K) = 1/2$.
+          Montrer que l'ensemble des points de discontinuité de $\mathbf{1}_K$
+          est exactement $K$, puis en déduire, via le critère de Lebesgue, que
+          $\mathbf{1}_K$ n'est \emph{pas} Riemann-intégrable bien que $K$ soit
+          d'intérieur vide.
 
     \item Soit $f_n \to f$ dans $L^1$. Montrer qu'il existe une sous-suite
           $(f_{n_k})$ convergeant vers $f$ presque partout.

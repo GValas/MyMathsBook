@@ -156,7 +156,7 @@ en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d
   \textbf{Théorème.}\enspace\index{boule euclidienne!comportement asymptotique}
   \textit{$\mu_n \xrightarrow[n\to+\infty]{} 0$. Plus précisément, par la formule de Stirling :}
   \[
-    \mu_n \;\sim\; \sqrt{2\pi n}\left(\frac{2\pi e}{n}\right)^{n/2} \xrightarrow[n\to\infty]{} 0.
+    \mu_n \;\sim\; \frac{1}{\sqrt{\pi n}}\left(\frac{2\pi e}{n}\right)^{n/2} \xrightarrow[n\to\infty]{} 0.
   \]
 \end{tcolorbox}
 
@@ -171,8 +171,9 @@ en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d
   La suite $(\ln\mu_{2k})_k$ est une série télescopique :
   \[
     \ln\mu_{2m} = \ln\mu_0 + \sum_{k=1}^{m}\ln\frac{\pi}{k} = m\ln\pi - \ln(m!)
-    \;\sim\; m\ln\pi - m\ln m + m \to -\infty. \hfill\blacksquare
+    \;\sim\; m\ln\pi - m\ln m + m \to -\infty.
   \]
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Interprétation géométrique}
@@ -187,7 +188,7 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
 %=============================================================
 \secnum{exgreen}{4}{Applications, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Aire de la sphère.}\enspace%
@@ -199,10 +200,16 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
   Pour $n=3$ : $\mathrm{Aire}(S^2(R)) = 4\pi R^2 = 3\mu_3 R^2$. $\checkmark$
 
   \smallskip\noindent
-  \textbf{2. Volume de la boule en dehors d'une bande centrale.}\enspace%
-  La fraction du volume de $B_n(1)$ à distance $\geq \varepsilon$ de l'équateur
-  $\{x_1=0\}$ est $1 - V_{n-1}(\sqrt{1-\varepsilon^2})/V_{n-1}(1) \approx 1 - {(1-\varepsilon^2)}^{(n-1)/2} \to 1$ :
-  presque tout le volume se concentre près de l'équateur.
+  \textbf{2. Concentration du volume près de l'équateur.}\enspace%
+  La méthode des tranches donne la fraction du volume de $B_n(1)$ contenue dans
+  la bande centrale $\{|x_1| \leq \varepsilon\}$ :
+  \[
+    \frac{1}{\mu_n}\int_{-\varepsilon}^{\varepsilon}\mu_{n-1}\,{(1-t^2)}^{(n-1)/2}\,\mathrm{d}t
+    = \frac{\mu_{n-1}}{\mu_n}\int_{-\varepsilon}^{\varepsilon}{(1-t^2)}^{(n-1)/2}\,\mathrm{d}t.
+  \]
+  Comme $\mu_{n-1}/\mu_n = \Theta(\sqrt{n})$, cette fraction tend vers $1$ pour tout
+  $\varepsilon > 0$ fixé (déjà pour $\varepsilon \sim 1/\sqrt{n}$) : presque tout le
+  volume se concentre près de l'équateur $\{x_1 = 0\}$.
 
   \smallskip\noindent
   \textbf{3. Probabilité de tomber dans la boule.}\enspace%
@@ -211,8 +218,7 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
   bien au-delà de $1$ : $P(X \in B_n(1)) \to 0$ très vite.
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges et contre-exemples.}
+\rubriq{Pièges et contre-exemples}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Le maximum de $\mu_n$ n'est pas en $n=3$.}\enspace%
@@ -249,8 +255,10 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
           coordonnées sphériques. En déduire la valeur de $\mu_n$, et retrouver ainsi
           que $\mu_{2m} = \pi^m/m!$.
 
-    \item Montrer que $n \geq 5$ est le dernier entier tel que $\mu_n > \mu_{n-2}$,
-          en utilisant la condition $\frac{2\pi}{n} > 1$.
+    \item Montrer que $n = 6$ est le dernier entier tel que $\mu_n > \mu_{n-2}$,
+          en utilisant la condition $\frac{2\pi}{n} > 1 \iff n < 2\pi \approx 6{,}28
+          \iff n \leq 6$. (À ne pas confondre avec le maximum de la suite
+          $(\mu_n)$, atteint en $n = 5$.)
 
     \item Soit $E_n = \mathbb{E}[\|X\|]$ pour $X \sim \mathcal{N}(0,I_n)$.
           Montrer que $E_n \sim \sqrt{n}$ quand $n\to\infty$.
@@ -258,4 +266,4 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
   \end{enumerate}
 \end{mdframed}
 
-\leconfooter{P.-S.\ Laplace (1812), E.\ Borel (1906) — concentration de la mesure}
+\leconfooter{Wallis, Fubini — concentration de la mesure (P.\ Lévy, V.\ Milman, XX\textsuperscript{e} s.)}

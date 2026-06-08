@@ -54,12 +54,12 @@ ensuite pour montrer que c'est une bijection.
 
 \begin{mdframed}[style=proofbar]
   On vérifie par récurrence les propriétés algébriques usuelles :
-  commu\-tativité, associativité de $+$ et $\times$, distributivité.
+  commutativité, associativité de $+$ et $\times$, distributivité.
   Par exemple, $n + m = m + n$ se montre par double récurrence sur $n$ et $m$.
 
   \textit{Ordre.} On pose $n \leq m$ si $\exists k \in \mathbb{N},\; m = n + k$.
   C'est un ordre total (P3 garantit la comparabilité) et compatible avec $+$ et $\times$.
-  \hfill$\blacksquare$
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -95,17 +95,32 @@ interprétation purement ensembliste de l'ordre.
 %=============================================================
 \secnum{exgreen}{4}{Propriétés, pièges et exercices}
 
-\noindent{\bfseries\color{navyblue} Propriétés fondamentales.}
+\rubriq{Propriétés fondamentales}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Principe de bonne fondation.}\enspace%
   \index{bonne fondation}
   Tout sous-ensemble non vide $A \subseteq \mathbb{N}$ admet un plus petit élément.
-  \textit{Preuve} : supposons $A$ sans minimum. Posons
-  $B = \{n\in\mathbb{N} \mid n < a \text{ pour tout } a\in A\}$.
-  Alors $0\in B$ (sinon $0\in A$ serait minimal), et
-  $n\in B \Rightarrow S(n)\in B$ (sinon $S(n)\in A$ serait le minimum de $A$).
-  Par P3, $B = \mathbb{N}$, donc $A = \emptyset$. Contradiction.
+  \textit{Preuve} : on utilise le lemme de l'ordre discret
+  \[
+    \forall a,n\in\mathbb{N},\qquad n < a \;\Longrightarrow\; S(n) \leq a,
+  \]
+  qui exprime qu'aucun entier ne se glisse strictement entre $n$ et $S(n)$
+  (il se démontre par récurrence sur $a$ à partir de la définition de $\leq$).
+  Soit $A$ non vide et supposons par l'absurde qu'il n'a pas de plus petit
+  élément. Posons
+  \[
+    B = \{n\in\mathbb{N} \mid n \leq a \text{ pour tout } a\in A\}.
+  \]
+  \emph{Initialisation :} $0 \leq a$ pour tout $a$, donc $0\in B$.
+  \emph{Hérédité :} soit $n\in B$, c'est-à-dire $n\leq a$ pour tout $a\in A$.
+  Si l'on avait $n\in A$, alors $n$ serait un minorant de $A$ appartenant à $A$,
+  donc le plus petit élément de $A$, ce qui est exclu ; ainsi $n\notin A$,
+  et pour tout $a\in A$ l'inégalité $n\leq a$ est stricte : $n<a$.
+  Le lemme donne alors $S(n)\leq a$ pour tout $a\in A$, donc $S(n)\in B$.
+  Par P3, $B = \mathbb{N}$. Comme $A$ est non vide, prenons $a_0\in A$ ;
+  alors $S(a_0)\in B$ entraîne $S(a_0)\leq a_0$, ce qui est absurde
+  (on a toujours $a_0 < S(a_0)$). $A$ admet donc un plus petit élément.
 
   \smallskip\noindent
   \textbf{2. Récurrence forte.}\enspace%
@@ -119,24 +134,31 @@ interprétation purement ensembliste de l'ordre.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$0 \in \mathbb{N}$ ou $0 \notin \mathbb{N}$ ?}\enspace%
-  Par convention (ISO 80000\-2, Peano), $0 \in \mathbb{N}$. Certains auteurs
+  Par convention (ISO 80000-2, Peano), $0 \in \mathbb{N}$. Certains auteurs
   (tradition française classique) posent $\mathbb{N} = \{1,2,3,\ldots\}$.
   Vérifier la convention avant tout raisonnement.
 
   \smallskip\noindent
-  \textbf{Les axiomes de Peano ne suffisent pas à fonder ZFC.}\enspace%
-  Peano est une théorie du premier ordre : le schéma de récurrence (P3) ne
-  quantifie que sur les formules du premier ordre. Le modèle standard $\omega$
-  et des \emph{modèles non standard} satisfont tous les mêmes énoncés du premier
-  ordre (théorème de complétude de Gödel).
+  \textbf{Peano au premier ordre : incomplétude et modèles non standard.}\enspace%
+  Au premier ordre, l'axiome de récurrence (P3) devient un \emph{schéma} :
+  il ne porte que sur les parties de $\mathbb{N}$ définissables par une formule,
+  et non sur toutes les parties (catégoricité perdue par rapport à la version
+  du second ordre). Deux conséquences classiques en découlent.
+  D'une part, par le théorème de \emph{compacité} (ou Löwenheim--Skolem),
+  l'arithmétique de Peano admet, à côté du modèle standard $\omega$, des
+  \emph{modèles non standard} (contenant des entiers «\,infinis\,») satisfaisant
+  exactement les mêmes énoncés du premier ordre.
+  D'autre part, par le théorème d'\emph{incomplétude} de Gödel, si PA est
+  cohérente il existe des énoncés arithmétiques vrais (dans $\omega$) mais
+  non démontrables dans PA.
 \end{mdframed}
 
 \vspace{6pt}
-\exolabel{}
+\exolabel
 
 \begin{mdframed}[style=exobar]
   \begin{enumerate}
@@ -157,4 +179,4 @@ interprétation purement ensembliste de l'ordre.
   \end{enumerate}
 \end{mdframed}
 
-\leconfooter{G.\ Peano (1889) — J.\ von Neumann (1923) — E.\ Zermelo \& A.\ Fraenkel (1922)}
+\leconfooter{G.\ Peano (1889) — J.\ von Neumann (1923) — E.\ Zermelo (1908) \& A.\ Fraenkel (1922)}

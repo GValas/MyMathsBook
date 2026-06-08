@@ -40,10 +40,11 @@ En particulier, si $g'$ ne s'annule pas : $\dfrac{f(b)-f(a)}{g(b)-g(a)} = \dfrac
 %=============================================================
 \secnum{navyblue}{2}{Démonstration}
 
-\rubriq{Idée}
+\begin{ideepreuve}
 On soustrait à $f$ la fonction affine passant par $(a,f(a))$ et $(b,f(b))$,
 ramenant le problème à une situation où les deux extrémités ont même image,
 puis on applique Rolle.
+\end{ideepreuve}
 
 \begin{mdframed}[style=proofbar]
   Posons
@@ -56,8 +57,9 @@ puis on applique Rolle.
   tel que $g'(c)=0$, soit
   \[
     f'(c) - \frac{f(b)-f(a)}{b-a} = 0,
-    \qquad\text{i.e.}\quad f(b)-f(a) = f'(c)(b-a). \hfill\blacksquare
+    \qquad\text{i.e.}\quad f(b)-f(a) = f'(c)(b-a).
   \]
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -70,9 +72,10 @@ puis on applique Rolle.
 \begin{tcolorbox}[thmbox]
   Soit $f$ continue sur $[a,b]$, dérivable sur $]a,b[$.
   \begin{enumerate}
-    \item \textbf{Constance :} $f' = 0$ sur $]a,b[$ $\Rightarrow$ $f$ est constante.
-    \item \textbf{Monotonie :} $f' \geq 0$ (resp. $> 0$) sur $]a,b[$ $\Rightarrow$
-          $f$ est croissante (resp. strictement croissante).
+    \item \textbf{Constance :} $f' = 0$ sur l'intervalle $]a,b[$ $\Rightarrow$ $f$ est
+          constante sur $[a,b]$.
+    \item \textbf{Monotonie :} $f' \geq 0$ (resp. $> 0$) sur l'intervalle $]a,b[$
+          $\Rightarrow$ $f$ est croissante (resp. strictement croissante) sur $[a,b]$.
     \item \textbf{Inégalité des accroissements finis :}
     \index{inégalité des accroissements finis}
     Si $m \leq f'(x) \leq M$ pour tout $x \in\, ]a,b[$, alors
@@ -103,11 +106,15 @@ puis on applique Rolle.
 
 \rubriq{Application : règle de l'Hôpital (cas $0/0$)}
 \index{l'Hôpital (règle de)}
-Si $f(a)=g(a)=0$, $g' \neq 0$ au voisinage de $a$, et $\lim_{x\to a} f'(x)/g'(x) = \ell$,
-alors par le TAF de Cauchy appliqué sur $[a, a+h]$ :
+Supposons $f,g$ continues en $a$ avec $f(a)=g(a)=0$, $g' \neq 0$ au voisinage de $a$,
+et $\lim_{x\to a} f'(x)/g'(x) = \ell$. Alors par le TAF de Cauchy appliqué sur $[a, a+h]$,
+il existe $c_h \in\, ]a, a+h[$ tel que
 \[
   \frac{f(a+h)}{g(a+h)} = \frac{f(a+h)-f(a)}{g(a+h)-g(a)} = \frac{f'(c_h)}{g'(c_h)} \xrightarrow[h\to 0]{} \ell.
 \]
+La continuité de $f$ et $g$ en $a$ assure $f(a)=g(a)=0$ dans la première égalité ;
+de plus, comme $c_h \in\, ]a, a+h[$, on a $c_h \to a$ quand $h \to 0$, d'où le passage
+à la limite $f'(c_h)/g'(c_h) \to \ell$.
 
 \decsep{}
 
@@ -116,7 +123,7 @@ alors par le TAF de Cauchy appliqué sur $[a, a+h]$ :
 %=============================================================
 \secnum{exgreen}{4}{Applications, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Applications.}
+\rubriq{Applications}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Étude de $\ln(1+x)$.}\enspace%
@@ -135,14 +142,13 @@ alors par le TAF de Cauchy appliqué sur $[a, a+h]$ :
   (théorème du point fixe de Banach\index{Banach (point fixe)}).
 \end{mdframed}
 
-\vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+\rubriq{Contre-exemples et pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Le TAF ne vaut pas pour les fonctions à valeurs vectorielles.}\enspace%
   $f : t \mapsto (\cos t, \sin t)$ sur $[0, 2\pi]$ : $f(0)=f(2\pi)$,
   mais $\|f'(c)\| = 1 \neq 0$ pour tout $c$, donc $f(2\pi)-f(0) = \mathbf{0} \neq f'(c)\cdot 2\pi$.
-  La version vectorielle correcte est l'inégalité : $\|f(b)-f(a)\| \leq \sup|f'|\cdot(b-a)$.
+  La version vectorielle correcte est l'inégalité : $\|f(b)-f(a)\| \leq \sup_{t\in[a,b]}\|f'(t)\|\cdot(b-a)$.
 
   \smallskip\noindent
   \textbf{Le point $c$ n'est pas unique en général.}\enspace%
@@ -165,7 +171,7 @@ alors par le TAF de Cauchy appliqué sur $[a, a+h]$ :
 
     \item Soit $f$ dérivable sur $\mathbb{R}$ avec $f(0)=1$ et $f'(x) \geq f(x)$
           pour tout $x\geq 0$. Montrer que $f(x) \geq e^x$ pour tout $x \geq 0$.
-          (\textit{Hint :} étudier $g(x)=f(x)e^{-x}$.)
+          (\textit{Indication :} étudier $g(x)=f(x)e^{-x}$.)
 
     \item Montrer que si $f$ est dérivable sur $]a,b[$ et si $f'$ admet une
           limite finie $\ell$ en $a^+$, alors $f$ est dérivable à droite en $a$
@@ -177,7 +183,7 @@ alors par le TAF de Cauchy appliqué sur $[a, a+h]$ :
 
     \item Soit $f : [0,1]\to\mathbb{R}$ dérivable avec $f(0)=0$ et $|f'(x)|\leq |f(x)|$
           pour tout $x\in[0,1]$. Montrer que $f\equiv 0$.
-          (\textit{Hint :} majorer $\max_{[0,t]}|f|$ à l'aide du TAF, puis itérer.)
+          (\textit{Indication :} majorer $\max_{[0,t]}|f|$ à l'aide du TAF, puis itérer.)
   \end{enumerate}
 \end{mdframed}
 

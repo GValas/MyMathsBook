@@ -12,7 +12,7 @@
 \begin{tcolorbox}[thmbox]
   \textbf{Théorème (limite monotone).}%
   \enspace\index{théorème de la limite monotone}\index{suite monotone}
-  \textit{Toute suite monotone\index{suite monotone} bornée\index{suite bornée}
+  \textit{Toute suite monotone bornée\index{suite bornée}
   est convergente.}
 
   \medskip
@@ -26,8 +26,9 @@
 
   \medskip
   \textbf{Corollaire (suite monotone divergente).}\enspace%
-  Une suite monotone non bornée diverge vers $+\infty$ (si croissante) ou
-  $-\infty$ (si décroissante).
+  Une suite monotone non bornée diverge vers l'infini : une suite croissante
+  non bornée est en fait non majorée et diverge vers $+\infty$ ; une suite
+  décroissante non bornée est non minorée et diverge vers $-\infty$.
 \end{tcolorbox}
 
 \begin{significationintuitive}
@@ -55,7 +56,7 @@ voisinage de $\ell$ pour tout $n \geq N$.
 \end{ideepreuve}
 
 \vspace{10pt}
-\noindent{\bfseries\color{navyblue} Preuve (cas croissant).}
+\rubriq{Preuve (cas croissant)}
 
 \begin{mdframed}[style=proofbar]
   \textit{Existence de la limite candidate.}
@@ -105,10 +106,13 @@ voisinage de $\ell$ pour tout $n \geq N$.
   \textit{$(2) \Rightarrow (1)$} : c'est la preuve ci-dessus.
 
   \textit{$(1) \Rightarrow (2)$} : soit $A$ une partie non vide et majorée.
-  Pour tout $n$, on construit par dichotomie des intervalles $[a_n, b_n]$
-  avec $b_n - a_n \to 0$, $a_n \in A$ impossible et $b_n$ majorant de $A$.
-  La suite $(b_n)$ décroissante et minorée converge vers $\ell$, qui est le
-  supremum de $A$. \hfill$\blacksquare$
+  On construit par dichotomie deux suites adjacentes $(a_n)$ et $(b_n)$ telles
+  que, pour tout $n$, $a_n$ n'est pas un majorant de $A$, $b_n$ est un majorant
+  de $A$, et $b_n - a_n \to 0$. La suite $(a_n)$ est croissante et majorée, la
+  suite $(b_n)$ est décroissante et minorée ; par (1) elles convergent vers une
+  même limite $\ell = \lim b_n = \lim a_n$. Comme chaque $b_n$ majore $A$ et
+  qu'aucun $a_n$ ne le majore, $\ell$ est le plus petit des majorants de $A$,
+  c'est-à-dire $\ell = \sup A$. \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -118,7 +122,7 @@ voisinage de $\ell$ pour tout $n \geq N$.
 %=============================================================
 \secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Suite géométrique décroissante.}\enspace%
@@ -147,7 +151,7 @@ voisinage de $\ell$ pour tout $n \geq N$.
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples.}
+\rubriq{Contre-exemples}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Monotonie seule ne suffit pas.}\enspace%
@@ -179,7 +183,7 @@ voisinage de $\ell$ pour tout $n \geq N$.
 
     \item Montrer que la suite définie par $u_0 \in {]0,1[}$ et
           $u_{n+1} = u_n(1 - u_n)$ est décroissante, minorée par $0$,
-          et converger vers $0$.
+          et converge vers $0$.
 
     \item Soit $(u_n)$ croissante et $(v_n)$ décroissante avec $u_n \leq v_n$
           pour tout $n$. Montrer que $(u_n)$ et $(v_n)$ convergent et que

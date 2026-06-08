@@ -34,8 +34,10 @@
     \sum_{k=0}^{N}\left\|\frac{A^k}{k!}\right\| \leq \sum_{k=0}^{N}\frac{\|A\|^k}{k!}
     \xrightarrow[N\to\infty]{} e^{\|A\|} < +\infty.
   \]
-  La série converge absolument ; $\mathcal{M}_n(\mathbb{K})$ étant complet,
-  elle converge. \hfill$\blacksquare$
+  La série est absolument convergente ; comme $\mathcal{M}_n(\mathbb{K})$ est
+  un espace de Banach (espace vectoriel normé de dimension finie, donc complet),
+  toute série absolument convergente y est convergente, et donc cette série
+  converge. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Premières valeurs}
@@ -71,13 +73,16 @@
 
 \begin{mdframed}[style=proofbar]
   Si $AB=BA$, le binôme de Newton s'applique : ${(A+B)}^k = \sum_{j=0}^k \binom{k}{j}A^j B^{k-j}$.
-  Alors, en intervertissant les sommes (convergence absolue) :
+  Les séries définissant $e^A$ et $e^B$ étant absolument convergentes, leur
+  produit de Cauchy converge vers le produit $e^A e^B$ ; on reconnaît alors
+  précisément le développement de $e^{A+B}$ :
   \[
     e^{A+B} = \sum_{k=0}^\infty \frac{{(A+B)}^k}{k!}
     = \sum_{k=0}^\infty \sum_{j=0}^k \frac{A^j B^{k-j}}{j!(k-j)!}
     = \left(\sum_{j=0}^\infty\frac{A^j}{j!}\right)\!\left(\sum_{l=0}^\infty\frac{B^l}{l!}\right)
-    = e^A e^B. \hfill\blacksquare
+    = e^A e^B.
   \]
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Preuve de 5 — formule de Jacobi}
@@ -88,10 +93,16 @@
   $\det(e^A) = \prod e^{\lambda_i} = e^{\sum\lambda_i} = e^{\mathrm{tr}(A)}$.
 
   \textit{Cas général.} La fonction $t\mapsto f(t) = \det(e^{tA})$ vérifie
-  $f(0)=1$ et, en dérivant :
-  $f'(t) = \mathrm{tr}(A)\,\det(e^{tA}) = \mathrm{tr}(A)\,f(t)$.
+  $f(0)=1$. Posons $M(t) = e^{tA}$ : on a $M'(t) = A\,e^{tA}$ et $M(t)$ est
+  inversible avec $M(t)^{-1} = e^{-tA}$. La formule de Jacobi infinitésimale
+  donne, pour $M$ inversible,
+  \[
+    \frac{d}{dt}\det M(t) = \det M(t)\cdot\mathrm{tr}\bigl(M(t)^{-1}M'(t)\bigr).
+  \]
+  Ici $M(t)^{-1}M'(t) = e^{-tA}A\,e^{tA} = A$, d'où
+  $f'(t) = \det(e^{tA})\,\mathrm{tr}(A) = \mathrm{tr}(A)\,f(t)$.
   Donc $f(t) = e^{t\,\mathrm{tr}(A)}$, et en $t=1$ : $\det(e^A) = e^{\mathrm{tr}(A)}$.
-  \hfill$\blacksquare$
+  $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -179,8 +190,12 @@ et vecteurs propres $v_1,\ldots,v_n$, la solution générale est
 \[
   X(t) = \sum_{i=1}^n c_i\,e^{\lambda_i t}\,v_i.
 \]
-Les parties réelles $\mathrm{Re}(\lambda_i)$ gouvernent la stabilité :
+Les parties réelles $\mathrm{Re}(\lambda_i)$ gouvernent la stabilité. Dans ce
+cas diagonalisable, pour toute condition initiale $X_0$,
 $X(t)\to 0$ si et seulement si tous les $\mathrm{Re}(\lambda_i) < 0$.
+(Le critère reste valable dans le cas général en raisonnant sur la réduite de
+Jordan, les blocs faisant apparaître des facteurs polynomiaux qui ne modifient
+pas la conclusion.)
 
 \decsep{}
 
@@ -189,7 +204,7 @@ $X(t)\to 0$ si et seulement si tous les $\mathrm{Re}(\lambda_i) < 0$.
 %=============================================================
 \secnum{exgreen}{5}{Pièges et exercices}
 
-\noindent{\bfseries\color{counterred} Pièges.}
+\rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{$e^{A+B} \neq e^A e^B$ sans commutativité.}\enspace%
@@ -233,4 +248,4 @@ $X(t)\to 0$ si et seulement si tous les $\mathrm{Re}(\lambda_i) < 0$.
   \end{enumerate}
 \end{mdframed}
 
-\leconfooter{G.\ Peano (1888) — M.\ Fr\'echet (1905) — omniprésente en théorie des systèmes}
+\leconfooter{E.\ Laguerre (1867), J.\ Sylvester — G.\ Peano (1888) — omniprésente en théorie des systèmes}

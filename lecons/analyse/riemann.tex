@@ -53,7 +53,7 @@
   \textbf{Théorème (critère de Riemann).}\enspace%
   $f$ est Riemann-intégrable sur $[a,b]$ si et seulement si
   \[
-    \forall\varepsilon > 0,\ \exists\,\sigma\ \text{subdivision tel que}\
+    \forall\varepsilon > 0,\ \exists\,\sigma\ \text{subdivision telle que}\
     S(f,\sigma) - s(f,\sigma) < \varepsilon.
   \]
 
@@ -183,10 +183,13 @@ formalisation rigoureuse est due à Riemann (1854).
 \begin{mdframed}[style=proofbar]
   Soit $f$ croissante sur $[a,b]$ (donc bornée, de bornes $f(a)$ et $f(b)$).
   Sur une subdivision $\sigma$ de pas $|\sigma|$, $m_i = f(x_{i-1})$ et
-  $M_i = f(x_i)$ par croissance. Donc
+  $M_i = f(x_i)$ par croissance. En majorant chaque facteur
+  $(x_i - x_{i-1}) \leq |\sigma|$ et en utilisant le télescopage
+  $\sum_i \bigl(f(x_i) - f(x_{i-1})\bigr) = f(b) - f(a)$ (les termes positifs
+  se compensent deux à deux), on obtient
   \[
     S(f,\sigma) - s(f,\sigma) = \sum_i \bigl(f(x_i) - f(x_{i-1})\bigr)(x_i - x_{i-1})
-    \leq |\sigma|\cdot\bigl(f(b) - f(a)\bigr).
+    \leq |\sigma|\sum_i \bigl(f(x_i) - f(x_{i-1})\bigr) = |\sigma|\cdot\bigl(f(b) - f(a)\bigr).
   \]
   Pour $|\sigma|$ assez petit, c'est $< \varepsilon$. Le critère
   s'applique.\hfill$\blacksquare$
@@ -235,7 +238,7 @@ formalisation rigoureuse est due à Riemann (1854).
 %=============================================================
 \secnum{exgreen}{4}{Exemples, contre-exemples et exercices}
 
-\noindent{\bfseries\color{navyblue} Exemples.}
+\rubriq{Exemples}
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Fonction constante.}\enspace%
@@ -248,10 +251,10 @@ formalisation rigoureuse est due à Riemann (1854).
    = \lim_{n\to+\infty}\frac{n+1}{2n} = \frac{1}{2}$.
 
   \smallskip\noindent
-  \textbf{3. Puissance par découpe géométrique.}\enspace%
-  Pour $\alpha > 0$, $\int_0^1 t^\alpha\,\mathrm{d}t = \dfrac{1}{\alpha+1}$
-  s'obtient par subdivision géométrique $x_k = q^k$ avec $q = a^{1/n}$,
-  méthode de Fermat (avant Riemann).
+  \textbf{3. Carré par sommes de Riemann.}\enspace%
+  Avec la subdivision régulière $x_k = k/n$,
+  $\displaystyle\int_0^1 t^2\,\mathrm{d}t = \lim_{n\to+\infty}\frac{1}{n}\sum_{k=1}^{n}\frac{k^2}{n^2}
+   = \lim_{n\to+\infty}\frac{(n+1)(2n+1)}{6n^2} = \frac{1}{3}$.
 
   \smallskip\noindent
   \textbf{4. Reconnaissance d'une somme de Riemann.}\enspace%
@@ -265,7 +268,7 @@ formalisation rigoureuse est due à Riemann (1854).
 \end{mdframed}
 
 \vspace{6pt}
-\noindent{\bfseries\color{counterred} Contre-exemples et pièges.}
+\rubriq{Contre-exemples et pièges}
 
 \begin{mdframed}[style=cexbar]
   \textbf{Fonction de Dirichlet.}\enspace\index{fonction de Dirichlet}
@@ -276,11 +279,11 @@ formalisation rigoureuse est due à Riemann (1854).
   d'intégrale $0$ (l'ensemble $\mathbb{Q}\cap[0,1]$ est de mesure nulle).
 
   \smallskip\noindent
-  \textbf{Fonctionalité non bornée.}\enspace%
+  \textbf{Fonction non bornée.}\enspace%
   $f(t) = 1/\sqrt{t}$ sur $]0,1]$ n'est pas bornée, donc \emph{pas}
   Riemann-intégrable sur $[0,1]$ au sens strict. On peut cependant définir
   une \emph{intégrale impropre} $\int_0^1 t^{-1/2}\,\mathrm{d}t = 2$
-  par passage à la limite $\int_\epsilon^1$.
+  par passage à la limite $\int_\varepsilon^1$.
 
   \smallskip\noindent
   \textbf{La continuité ponctuelle ne suffit pas pour l'intégrabilité.}\enspace%
