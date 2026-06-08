@@ -1,0 +1,316 @@
+%==============================================================
+%  lecons/analyse/jacobi.tex — Les polynômes de Jacobi
+%==============================================================
+
+\lecontitle{Les polynômes de Jacobi}{Analyse réelle — Polynômes orthogonaux et approximation}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Jac}{P_n^{(\alpha,\beta)}}
+\newcommand{\wab}{w_{\alpha,\beta}}
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynômes de Jacobi}
+  Soient $\alpha,\beta>-1$. Sur $\mathbb{R}[X]$, on munit l'intervalle
+  $[-1,1]$ du poids
+  \[
+    \wab(x) \;=\; {(1-x)}^{\alpha}\,{(1+x)}^{\beta},
+  \]
+  intégrable sur $]-1,1[$ précisément lorsque $\alpha,\beta>-1$. Le
+  \emph{$n$-ième polynôme de Jacobi} $\Jac$ est défini par la
+  \emph{formule de Rodrigues}\index{formule de Rodrigues} généralisée~:
+  \[
+    \Jac(x) \;=\; \frac{{(-1)}^n}{2^n\,n!}\,
+    {(1-x)}^{-\alpha}{(1+x)}^{-\beta}\,
+    \frac{\mathrm{d}^n}{\mathrm{d}x^n}\!
+    \Bigl[{(1-x)}^{n+\alpha}{(1+x)}^{n+\beta}\Bigr].
+  \]
+  C'est un polynôme de degré $n$, normalisé par
+  $\Jac(1)=\dbinom{n+\alpha}{n}$.
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}\enspace%
+  \index{polynômes orthogonaux}
+  La famille ${\bigl(\Jac\bigr)}_{n\geq 0}$ vérifie~:
+  \begin{itemize}
+    \item \textit{Orthogonalité} sur $[-1,1]$ pour le poids $\wab$~:
+    \[
+      \int_{-1}^{1} P_m^{(\alpha,\beta)}(x)\,P_n^{(\alpha,\beta)}(x)\,
+      \wab(x)\,\mathrm{d}x = 0 \qquad (m\neq n),
+    \]
+    et, pour $m=n$, la norme vaut
+    \[
+      h_n^{(\alpha,\beta)}=\frac{2^{\alpha+\beta+1}}{2n+\alpha+\beta+1}\,
+      \frac{\Gamma(n+\alpha+1)\,\Gamma(n+\beta+1)}
+           {n!\,\Gamma(n+\alpha+\beta+1)}.
+    \]
+    \item \textit{Équation différentielle de Jacobi}~: $y=\Jac$ est
+          solution de
+    \[
+      (1-x^2)\,y'' + \bigl[\beta-\alpha-(\alpha+\beta+2)\,x\bigr]\,y'
+      + n(n+\alpha+\beta+1)\,y = 0.
+    \]
+    \item \textit{Récurrence à trois termes}~: il existe des suites de
+          réels $(a_n),(b_n),(c_n)$ telles que
+    \[
+      a_n\,P_{n+1}^{(\alpha,\beta)}(x)
+      = (b_n+x)\,c_n\,P_n^{(\alpha,\beta)}(x)
+      - d_n\,P_{n-1}^{(\alpha,\beta)}(x),
+    \]
+    avec $P_0^{(\alpha,\beta)}=1$ et
+    $P_1^{(\alpha,\beta)}=\tfrac12(\alpha+\beta+2)x+\tfrac12(\alpha-\beta)$.
+    \item $\Jac$ possède $n$ racines simples dans $\,]-1,1[\,$ (nœuds de
+          la quadrature de Gauss associée au poids $\wab$).
+  \end{itemize}
+
+  \medskip
+  \textbf{Famille mère.}\enspace Les familles classiques sur $[-1,1]$
+  s'obtiennent par spécialisation du couple $(\alpha,\beta)$~:
+  \[
+    \begin{array}{lll}
+      \text{Legendre } (P_n): & \alpha=\beta=0, & w\equiv 1,\\[2pt]
+      \text{Tchebychev } 1^{\text{re}}\text{ esp. } (T_n):
+        & \alpha=\beta=-\tfrac12, & {(1-x^2)}^{-1/2},\\[2pt]
+      \text{Tchebychev } 2^{\text{e}}\text{ esp. } (U_n):
+        & \alpha=\beta=+\tfrac12, & {(1-x^2)}^{+1/2},\\[2pt]
+      \text{Gegenbauer } (C_n^{\lambda}):
+        & \alpha=\beta=\lambda-\tfrac12, & {(1-x^2)}^{\lambda-1/2}.
+    \end{array}
+  \]
+  Les polynômes de Gegenbauer\index{polynômes de Gegenbauer} (ou
+  \emph{ultrasphériques}\index{polynômes ultrasphériques}), cas symétrique
+  $\alpha=\beta$, contiennent eux-mêmes Legendre ($\lambda=\tfrac12$) et les
+  deux familles de Tchebychev (à normalisation près).
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Un \emph{seul} cadre — l'orthogonalité sur $[-1,1]$ pour le poids
+$\wab(x)={(1-x)}^\alpha{(1+x)}^\beta$ — engendre toutes les familles
+classiques de cet intervalle. Les exposants $\alpha$ et $\beta$ règlent le
+comportement du poids \emph{aux bords} $x=1$ et $x=-1$~: positif, il
+\emph{déprime} la fonction (les racines fuient les bords), négatif (mais
+$>-1$), il \emph{renforce} le poids et concentre l'information près des
+extrémités. Faire varier $(\alpha,\beta)$, c'est donc choisir où l'on
+souhaite le mieux approcher~: poids uniforme pour Legendre, poids
+singulier aux bords pour Tchebychev. Les polynômes de Jacobi sont ainsi
+le « tronc commun » dont Legendre, Tchebychev et Gegenbauer ne sont que
+des branches.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+L'orthogonalité se prouve comme pour Legendre, en intégrant $n$ fois par
+parties la formule de Rodrigues~: les termes de bord s'annulent car les
+exposants $n+\alpha$ et $n+\beta$ sont $>0$, ce qui force la nullité aux
+points $\pm 1$. La spécialisation aux familles connues se lit directement
+sur le poids $\wab$ en substituant les valeurs de $(\alpha,\beta)$.
+L'équation différentielle découle de Rodrigues, et la structure générale
+(récurrence à trois termes, racines simples réelles) est une conséquence
+abstraite de l'orthogonalité, valable pour toute famille à poids positif.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  Posons $\rho_n(x)={(1-x)}^{n+\alpha}{(1+x)}^{n+\beta}$, de sorte que
+  $\Jac=\dfrac{{(-1)}^n}{2^n n!}\,\wab^{-1}\rho_n^{(n)}$. Comme
+  $n+\alpha>0$ et $n+\beta>0$, le facteur $\rho_n$ et ses dérivées
+  d'ordre $\leq n-1$ s'annulent en $\pm 1$~:
+  $\rho_n^{(k)}(\pm 1)=0$ pour $0\leq k\leq n-1$.
+
+  \medskip
+  \textit{Étape 1 — Orthogonalité (Rodrigues + IPP).}
+  Soit $Q$ un polynôme de degré $m<n$. Alors
+  \[
+    \int_{-1}^{1}\Jac(x)\,Q(x)\,\wab(x)\,\mathrm{d}x
+    = \frac{{(-1)}^n}{2^n n!}\int_{-1}^{1}\rho_n^{(n)}(x)\,Q(x)\,\mathrm{d}x.
+  \]
+  En intégrant $n$ fois par parties, les crochets
+  $\bigl[\rho_n^{(k)}\,Q^{(n-1-k)}\bigr]_{-1}^{1}$ sont nuls (car
+  $\rho_n^{(k)}(\pm 1)=0$ pour $k\leq n-1$), d'où
+  \[
+    \int_{-1}^{1}\rho_n^{(n)}\,Q\,\mathrm{d}x
+    = {(-1)}^n\int_{-1}^{1}\rho_n\,Q^{(n)}\,\mathrm{d}x = 0,
+  \]
+  puisque $Q^{(n)}\equiv 0$. Ainsi $\Jac$ est orthogonal (pour le poids
+  $\wab$) à tout polynôme de degré $<n$ ; en particulier
+  $\langle P_m^{(\alpha,\beta)},P_n^{(\alpha,\beta)}\rangle_{\wab}=0$ si
+  $m\neq n$. En prenant $Q=\Jac$ et en explicitant la dernière intégrale
+  $\int_{-1}^1\rho_n\,\mathrm{d}x$ par la fonction Bêta, on obtient la
+  norme $h_n^{(\alpha,\beta)}$ annoncée.
+
+  \medskip
+  \textit{Étape 2 — Spécialisation aux familles connues.}
+  Le poids $\wab(x)={(1-x)}^\alpha{(1+x)}^\beta$ se simplifie selon le
+  couple $(\alpha,\beta)$~:
+  \[
+    \alpha=\beta=0\ :\ \wab\equiv 1\ \text{(Legendre)} ; \quad
+    \alpha=\beta=\pm\tfrac12\ :\ \wab={(1-x^2)}^{\pm 1/2}\ \text{(Tchebychev)}.
+  \]
+  Pour $\alpha=\beta=-\tfrac12$, le poids ${(1-x^2)}^{-1/2}$ est celui des
+  $T_n$ ; le changement $x=\cos\theta$ donne $\mathrm{d}x=-\sin\theta\,
+  \mathrm{d}\theta$ et $\wab\,\mathrm{d}x=-\mathrm{d}\theta$, d'où
+  $\int_{-1}^1 T_mT_n\,\wab\,\mathrm{d}x=\int_0^\pi\cos(m\theta)\cos(n\theta)
+  \,\mathrm{d}\theta$, nul pour $m\neq n$~: on retrouve $T_n(\cos\theta)
+  =\cos(n\theta)$. Pour $\alpha=\beta=+\tfrac12$, le poids
+  ${(1-x^2)}^{1/2}$ donne de même $U_n(\cos\theta)=\sin((n+1)\theta)/
+  \sin\theta$. À chaque substitution, l'unicité (à un facteur près) du
+  système orthogonal identifie $\Jac$ à la famille correspondante.
+
+  \medskip
+  \textit{Étape 3 — Équation différentielle.}
+  L'opérateur $\mathcal{L}(y)=\bigl(\wab(1-x^2)\,y'\bigr)'$ est, par
+  construction du poids, \emph{auto-adjoint} pour $\langle\cdot,\cdot
+  \rangle_{\wab}$. On vérifie sur Rodrigues que $\mathcal{L}(\Jac)
+  =-\,n(n+\alpha+\beta+1)\,\wab\,\Jac$, ce qui, après division par $\wab$
+  et développement, donne exactement
+  $(1-x^2)y''+[\beta-\alpha-(\alpha+\beta+2)x]y'+n(n+\alpha+\beta+1)y=0$.
+  Ainsi $\Jac$ est vecteur propre de $\mathcal{L}$.
+
+  \medskip
+  \textit{Étape 4 — Structure générale (récurrence et racines).}
+  Ces propriétés ne dépendent que de l'orthogonalité pour un poids positif,
+  non du choix particulier de $\wab$.
+  \emph{Récurrence à trois termes~:} $x\,\Jac$ est de degré $n+1$, donc se
+  décompose sur la base $\bigl(P_k^{(\alpha,\beta)}\bigr)_{k\leq n+1}$ ; pour
+  $k\leq n-2$, $\deg(xP_k^{(\alpha,\beta)})\leq n-1<n$ entraîne que le
+  coefficient est nul. Il ne subsiste que les indices $n-1,n,n+1$, d'où une
+  relation de la forme annoncée.
+  \emph{Racines~:} $\Jac$ étant orthogonal à $1$ pour le poids \emph{positif}
+  $\wab$, on a $\int_{-1}^1\Jac\,\wab=0$, donc $\Jac$ change de signe dans
+  $]-1,1[$. Si $x_1,\dots,x_r$ ($r<n$) sont ses changements de signe, le
+  polynôme $R=\prod(X-x_i)$ vérifie $\deg R<n$, donc
+  $\langle\Jac,R\rangle_{\wab}=0$ ; mais $\Jac\,R\,\wab$ garde un signe
+  constant et n'est pas identiquement nul~: contradiction. Donc $r=n$ et
+  $\Jac$ a $n$ racines simples dans $]-1,1[$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Tableau des spécialisations.}\enspace Selon le couple
+  $(\alpha,\beta)$, $\Jac$ redonne (à normalisation près) une famille
+  classique sur $[-1,1]$~:
+  \[
+    \begin{array}{llll}
+      (\alpha,\beta) & \text{Famille} & \text{Poids } \wab(x) & \text{Normalisation}\\[2pt]
+      (0,0)            & \text{Legendre } P_n & 1 & P_n(1)=1\\[2pt]
+      (-\tfrac12,-\tfrac12) & \text{Tchebychev } T_n & {(1-x^2)}^{-1/2} & T_n(\cos\theta)=\cos n\theta\\[2pt]
+      (+\tfrac12,+\tfrac12) & \text{Tchebychev } U_n & {(1-x^2)}^{+1/2} & U_n(\cos\theta)=\tfrac{\sin((n+1)\theta)}{\sin\theta}\\[2pt]
+      (\lambda-\tfrac12,\lambda-\tfrac12) & \text{Gegenbauer } C_n^{\lambda} & {(1-x^2)}^{\lambda-1/2} & \text{ultrasphérique}
+    \end{array}
+  \]
+
+  \smallskip\noindent
+  \textbf{2. Tchebychev de $2^{\text{e}}$ espèce.}\enspace
+  Pour $\alpha=\beta=\tfrac12$, le changement $x=\cos\theta$ donne
+  \[
+    U_n(\cos\theta)=\frac{\sin\bigl((n+1)\theta\bigr)}{\sin\theta},
+  \]
+  d'où $U_0=1$, $U_1=2x$, $U_2=4x^2-1$, $U_3=8x^3-4x$. Ces polynômes sont
+  orthogonaux pour le poids ${(1-x^2)}^{1/2}$ et vérifient la récurrence
+  $U_{n+1}=2xU_n-U_{n-1}$.
+
+  \smallskip\noindent
+  \textbf{3. Gegenbauer.}\enspace\index{polynômes de Gegenbauer}
+  Le cas symétrique $\alpha=\beta=\lambda-\tfrac12$ définit les
+  $C_n^{\lambda}$, de fonction génératrice
+  \[
+    {(1-2xt+t^2)}^{-\lambda}=\sum_{n=0}^{+\infty}C_n^{\lambda}(x)\,t^n
+    \qquad (\lambda>0).
+  \]
+  Pour $\lambda=\tfrac12$ on retombe sur la génératrice des $P_n$ : les
+  ultrasphériques\index{polynômes ultrasphériques} interpolent ainsi entre
+  Tchebychev et Legendre.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Condition $\alpha,\beta>-1$.}\enspace
+  Le poids $\wab(x)={(1-x)}^\alpha{(1+x)}^\beta$ n'est intégrable sur
+  $]-1,1[$ que si $\alpha>-1$ \emph{et} $\beta>-1$ : pour $\alpha\leq -1$,
+  $\int_{-1}^1{(1-x)}^\alpha\,\mathrm{d}x$ diverge au voisinage de $1$, et le
+  produit scalaire perd tout sens. La famille de Jacobi n'est définie qu'à
+  l'intérieur de ce domaine.
+
+  \smallskip\noindent
+  \textbf{Hermite et Laguerre ne sont pas des Jacobi.}\enspace
+  Les polynômes d'Hermite (poids $e^{-x^2}$ sur $\mathbb{R}$) et de Laguerre
+  (poids $e^{-x}$ sur $[0,+\infty[$) sont orthogonaux sur un intervalle
+  \emph{non borné} : ils n'entrent pas dans le cadre Jacobi, qui vit sur le
+  segment $[-1,1]$. On les obtient seulement comme \emph{cas limites}
+  (par exemple Hermite via $C_n^{\lambda}$ quand $\lambda\to+\infty$ après
+  changement d'échelle), jamais par spécialisation directe de $(\alpha,\beta)$.
+
+  \smallskip\noindent
+  \textbf{Normalisations divergentes.}\enspace
+  La convention $\Jac(1)=\binom{n+\alpha}{n}$ ne coïncide pas avec celles de
+  $T_n$, $U_n$ ou $C_n^{\lambda}$ : passer d'une famille à l'autre demande un
+  facteur multiplicatif. On a par exemple $P_n=P_n^{(0,0)}$ mais
+  $T_n=\frac{n!}{(1/2)_n}\,2^{-n}\cdots$ : ne jamais identifier deux familles
+  sans expliciter le facteur d'échelle.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item \textit{(Legendre.)} En posant $\alpha=\beta=0$ dans la formule de
+          Rodrigues de Jacobi, vérifier que l'on retrouve
+          $P_n(x)=\dfrac{1}{2^n n!}\dfrac{\mathrm{d}^n}{\mathrm{d}x^n}
+          {(x^2-1)}^n$, c'est-à-dire les polynômes de Legendre.
+
+    \item \textit{(Tchebychev $1^{\text{re}}$ espèce.)} Pour
+          $\alpha=\beta=-\tfrac12$, montrer via $x=\cos\theta$ que le poids
+          ${(1-x^2)}^{-1/2}$ rend orthogonale la famille
+          $T_n(\cos\theta)=\cos(n\theta)$, et vérifier la récurrence
+          $T_{n+1}=2xT_n-T_{n-1}$.
+
+    \item \textit{(Tchebychev $2^{\text{e}}$ espèce.)} Pour
+          $\alpha=\beta=+\tfrac12$, établir
+          $U_n(\cos\theta)=\sin((n+1)\theta)/\sin\theta$, calculer
+          $U_2,U_3,U_4$, et vérifier
+          $\int_{-1}^1 U_mU_n\,{(1-x^2)}^{1/2}\,\mathrm{d}x=\tfrac{\pi}{2}
+          \delta_{mn}$.
+
+    \item \textit{(Équation différentielle.)} Vérifier que pour
+          $\alpha=\beta=0$ l'équation de Jacobi se réduit à l'équation de
+          Legendre $(1-x^2)y''-2xy'+n(n+1)y=0$.
+
+    \item \textit{(Gegenbauer.)} À partir de la fonction génératrice
+          ${(1-2xt+t^2)}^{-\lambda}=\sum_n C_n^{\lambda}(x)t^n$, calculer
+          $C_0^{\lambda},C_1^{\lambda},C_2^{\lambda}$ et retrouver les $P_n$
+          pour $\lambda=\tfrac12$.
+
+    \item \textit{(Intégrabilité.)} Montrer que
+          $\int_{-1}^1{(1-x)}^\alpha{(1+x)}^\beta\,\mathrm{d}x
+          =2^{\alpha+\beta+1}B(\alpha+1,\beta+1)$ pour $\alpha,\beta>-1$, et
+          en déduire que la condition $\alpha,\beta>-1$ est nécessaire et
+          suffisante à la convergence. \textit{Indication :} poser
+          $x=2u-1$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{C.\ G.\ J.\ Jacobi (XIX\textsuperscript{e} siècle)}

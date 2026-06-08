@@ -1,0 +1,302 @@
+%==============================================================
+%  lecons/analyse/laguerre.tex — Les polynômes de Laguerre
+%==============================================================
+
+\lecontitle{Les polynômes de Laguerre}{Analyse réelle — Polynômes orthogonaux et approximation}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Lag}{L_n}
+\newcommand{\psLag}[2]{\langle #1,\,#2\rangle}
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynômes de Laguerre}
+  Sur l'espace $\mathbb{R}[X]$ muni du produit scalaire à poids
+  $w(x)=e^{-x}$ sur $[0,+\infty[$,
+  \[
+    \psLag{f}{g} \;=\; \int_{0}^{+\infty} f(x)\,g(x)\,e^{-x}\,\mathrm{d}x,
+  \]
+  on appelle \emph{$n$-ième polynôme de Laguerre} le polynôme $L_n$ obtenu
+  en orthogonalisant (procédé de Gram--Schmidt) la base canonique
+  $(1,X,X^2,\ldots)$, normalisé par $\|L_n\|=1$. De façon équivalente, $L_n$
+  est donné par la \emph{formule de Rodrigues}\index{formule de Rodrigues}~:
+  \[
+    L_n(x) \;=\; \frac{e^{x}}{n!}\,
+    \frac{\mathrm{d}^n}{\mathrm{d}x^n}\!\bigl(x^n\,e^{-x}\bigr).
+  \]
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}\enspace%
+  \index{polynômes orthogonaux}
+  La famille ${(L_n)}_{n\geq 0}$ vérifie~:
+  \begin{itemize}
+    \item \textit{Orthogonalité} sur $[0,+\infty[$ pour le poids
+          $w(x)=e^{-x}$~:
+    \[
+      \psLag{L_m}{L_n} = \int_{0}^{+\infty} L_m(x)\,L_n(x)\,e^{-x}\,\mathrm{d}x
+      = \begin{cases}
+          0 & \text{si } m\neq n,\\[2pt]
+          1 & \text{si } m=n.
+        \end{cases}
+    \]
+    \item $\deg L_n = n$, coefficient dominant $\dfrac{{(-1)}^n}{n!}$, et
+          $L_n(0)=1$.
+    \item \textit{Récurrence à trois termes}~:
+    \[
+      (n+1)\,L_{n+1}(x) = (2n+1-x)\,L_n(x) - n\,L_{n-1}(x),
+      \quad L_0=1,\ L_1=1-X.
+    \]
+    \item \textit{Équation différentielle de Laguerre}~:
+    \[
+      x\,y'' + (1-x)\,y' + n\,y = 0,
+    \]
+    dont $L_n$ est solution.
+    \item \textit{Fonction génératrice}~: pour $|t|<1$,
+    \[
+      \frac{1}{1-t}\,\exp\!\Bigl(\!-\frac{x\,t}{1-t}\Bigr)
+      \;=\; \sum_{n=0}^{+\infty} L_n(x)\,t^n.
+    \]
+    \item $L_n$ possède $n$ racines simples dans $\,]0,+\infty[\,$ (nœuds de
+          la \emph{quadrature de Gauss--Laguerre}%
+          \index{quadrature de Gauss-Laguerre}).
+  \end{itemize}
+
+  \medskip
+  \textbf{Généralisation.}\enspace Pour $\alpha>-1$, les \emph{polynômes de
+  Laguerre généralisés} $L_n^{(\alpha)}$ sont orthogonaux pour le poids
+  $x^{\alpha}e^{-x}$ sur $[0,+\infty[$, avec
+  $L_n^{(\alpha)}(x)=\dfrac{x^{-\alpha}e^{x}}{n!}\dfrac{\mathrm{d}^n}{\mathrm{d}x^n}
+  \bigl(x^{n+\alpha}e^{-x}\bigr)$. On retrouve $L_n=L_n^{(0)}$. Ces polynômes
+  interviennent en physique dans la partie radiale des fonctions d'onde de
+  l'\emph{atome d'hydrogène}.
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Les polynômes de Laguerre forment une \emph{base orthonormale} de
+l'espace $\mathbb{R}[X]$ pour le produit scalaire de $L^2(\mathbb{R}_+,e^{-x})$.
+Le poids $e^{-x}$, qui décroît exponentiellement, permet d'intégrer des
+fonctions \emph{sur un intervalle non borné} : les $L_n$ sont l'analogue,
+sur $[0,+\infty[$, des polynômes de Legendre sur $[-1,1]$. Projeter $f$ sur
+les polynômes de degré $\leq n$ donne sa meilleure approximation au sens
+quadratique pondéré, et les nœuds de Gauss--Laguerre fournissent une méthode
+naturelle de calcul des intégrales $\int_0^{+\infty} f(x)\,e^{-x}\,\mathrm{d}x$.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+L'orthogonalité s'obtient en intégrant par parties $n$ fois la formule de
+Rodrigues : le poids $x^n e^{-x}$ et ses dérivées s'annulent en $0$ (facteur
+$x$) et en $+\infty$ (exponentielle), donc tous les termes de bord
+disparaissent. La même technique, poussée jusqu'au bout, fournit la norme
+unité. La récurrence à trois termes est une conséquence générale de
+l'orthogonalité (le polynôme $xL_n$ se décompose sur les $L_k$ et la plupart
+des coefficients sont nuls). L'équation différentielle découle directement de
+la formule de Rodrigues.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  On pose $\varphi_n(x)=x^n e^{-x}$, de sorte que
+  $L_n=\frac{e^{x}}{n!}\varphi_n^{(n)}$. Comme $\varphi_n$ s'écrit
+  $x^n e^{-x}$, chacune de ses dérivées $\varphi_n^{(k)}$ ($0\leq k\leq n-1$)
+  contient encore un facteur $x$ (donc s'annule en $0$) et le facteur $e^{-x}$
+  (donc tend vers $0$ en $+\infty$).
+
+  \medskip
+  \textit{Étape 1 — Orthogonalité (Rodrigues + IPP).}
+  Soit $Q$ un polynôme de degré $m<n$. En intégrant $n$ fois par parties,
+  les crochets $\bigl[\varphi_n^{(k)}\,Q^{(n-1-k)}\bigr]_{0}^{+\infty}$ sont
+  nuls (annulation en $0$ par le facteur $x$, en $+\infty$ par $e^{-x}$)~:
+  \[
+    \int_{0}^{+\infty} \varphi_n^{(n)}(x)\,Q(x)\,\mathrm{d}x
+    = {(-1)}^n \int_{0}^{+\infty} \varphi_n(x)\,Q^{(n)}(x)\,\mathrm{d}x = 0,
+  \]
+  puisque $Q^{(n)}\equiv 0$ ($\deg Q<n$). Comme
+  $\psLag{L_n}{Q}=\frac{1}{n!}\int_0^{+\infty}\varphi_n^{(n)}Q\,\mathrm{d}x$,
+  on a $\psLag{L_n}{Q}=0$ pour tout $Q$ de degré $<n$ ; en particulier
+  $\psLag{L_m}{L_n}=0$ si $m<n$, et par symétrie si $m\neq n$.
+
+  \medskip
+  \textit{Étape 2 — Norme.} On prend $Q=L_n$, de terme dominant
+  $\frac{{(-1)}^n}{n!}x^n$, donc $L_n^{(n)}=\frac{{(-1)}^n}{n!}\cdot n!\cdot
+  \frac{1}{n!}={(-1)}^n/n!\cdot n!$ ; plus simplement $L_n^{(n)}={(-1)}^n$
+  (constante). La même intégration par parties donne
+  \[
+    {\|L_n\|}^2 = \frac{1}{n!}\int_{0}^{+\infty}\varphi_n^{(n)}\,L_n\,\mathrm{d}x
+    = \frac{{(-1)}^n}{n!}\,L_n^{(n)}\int_{0}^{+\infty}\varphi_n(x)\,\mathrm{d}x.
+  \]
+  Or $\int_{0}^{+\infty} x^n e^{-x}\,\mathrm{d}x=\Gamma(n+1)=n!$, et
+  $L_n^{(n)}={(-1)}^n$. En reportant~:
+  \[
+    {\|L_n\|}^2 = \frac{{(-1)}^n}{n!}\cdot{(-1)}^n\cdot n! = 1.
+  \]
+  Les $L_n$ sont donc bien orthonormés. (La valeur $L_n(0)=1$ se lit sur
+  la formule de Rodrigues via la formule de Leibniz appliquée en $x=0$.)
+
+  \medskip
+  \textit{Étape 3 — Relation de récurrence à trois termes.}
+  $x L_n$ est de degré $n+1$, donc se décompose~:
+  $x L_n=\sum_{k=0}^{n+1} a_k L_k$ avec
+  $a_k=\psLag{xL_n}{L_k}=\psLag{L_n}{xL_k}$ (les $L_k$ étant orthonormés).
+  Si $k\leq n-2$, alors $\deg(xL_k)\leq n-1<n$ et $a_k=0$. Il ne reste que
+  $k\in\{n-1,n,n+1\}$~: $x L_n=a_{n+1}L_{n+1}+a_n L_n+a_{n-1}L_{n-1}$.
+  La comparaison des coefficients dominants donne $a_{n+1}=-(n+1)$ ; le calcul
+  de $\psLag{xL_n}{L_n}$ donne $a_n=2n+1$ ; et la symétrie
+  $a_{n-1}=\psLag{xL_n}{L_{n-1}}=\psLag{L_n}{xL_{n-1}}=-n$ (coefficient
+  dominant de $xL_{n-1}$). En isolant $L_{n+1}$~:
+  \[
+    (n+1)L_{n+1}=(2n+1-x)L_n-nL_{n-1}.
+  \]
+
+  \medskip
+  \textit{Étape 4 — Équation différentielle de Laguerre.}
+  Partons de $\varphi_n=x^n e^{-x}$, qui vérifie l'identité
+  $x\,\varphi_n'=(n-x)\,\varphi_n$. En dérivant cette relation $n+1$ fois par
+  la formule de Leibniz, puis en multipliant par $e^{x}/n!$ et en regroupant,
+  on obtient pour $y=L_n$~:
+  \[
+    x\,y'' + (1-x)\,y' + n\,y = 0.
+  \]
+
+  \smallskip
+  \emph{Racines.} $L_n$ est orthogonal à tout polynôme de degré $<n$, en
+  particulier à $1$, donc $\int_0^{+\infty} L_n\,e^{-x}\,\mathrm{d}x=0$ :
+  $L_n$ change de signe dans $]0,+\infty[$. Soient $x_1,\ldots,x_r$ les points
+  où $L_n$ change de signe ($r\geq 1$). Si $r<n$, le polynôme
+  $R=\prod_{i=1}^r(X-x_i)$ vérifie $\deg R<n$, donc $\psLag{L_n}{R}=0$ ; mais
+  $L_n R$ garde un signe constant sur $[0,+\infty[$ et n'est pas
+  identiquement nul, d'où $\psLag{L_n}{R}\neq 0$~: contradiction. Donc $r=n$,
+  et $L_n$ a $n$ racines simples dans $]0,+\infty[$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Premiers polynômes.}
+  \[
+    L_0=1,\qquad L_1=1-x,\qquad L_2=\tfrac{1}{2}\bigl(x^2-4x+2\bigr),
+  \]
+  \[
+    L_3=\tfrac{1}{6}\bigl(-x^3+9x^2-18x+6\bigr).
+  \]
+  On vérifie $L_n(0)=1$ et le coefficient dominant ${(-1)}^n/n!$ ; la
+  récurrence $(n+1)L_{n+1}=(2n+1-x)L_n-nL_{n-1}$ permet de poursuivre.
+
+  \smallskip\noindent
+  \textbf{2. Quadrature de Gauss--Laguerre.}\enspace%
+  \index{quadrature de Gauss-Laguerre}
+  Si $x_1,\ldots,x_n$ sont les racines de $L_n$ et $\lambda_i$ les poids
+  associés, alors
+  \[
+    \int_{0}^{+\infty} f(x)\,e^{-x}\,\mathrm{d}x
+    \;=\; \sum_{i=1}^{n}\lambda_i\,f(x_i)
+  \]
+  est \emph{exacte} pour tout polynôme $f$ de degré $\leq 2n-1$ : c'est la
+  méthode de choix pour intégrer numériquement sur $[0,+\infty[$ avec un poids
+  exponentiel.
+
+  \smallskip\noindent
+  \textbf{3. Atome d'hydrogène.}\enspace
+  En mécanique quantique, la résolution de l'équation de Schrödinger pour le
+  potentiel coulombien fait apparaître les polynômes de Laguerre généralisés~:
+  la partie radiale $R_{n\ell}(r)$ des orbitales atomiques s'exprime à l'aide
+  de $L_{n-\ell-1}^{(2\ell+1)}$. L'orthogonalité des $L_n^{(\alpha)}$ traduit
+  alors l'orthogonalité des états liés de l'atome d'hydrogène.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{L'orthogonalité dépend du couple (intervalle, poids).}\enspace
+  $(L_n)$ est orthogonale pour $w(x)=e^{-x}$ sur $[0,+\infty[$. En changeant le
+  poids ou le domaine, on obtient d'\emph{autres} familles classiques~:
+  \[
+    \begin{array}{lll}
+      \text{Legendre}\ (P_n): & 1        & \text{sur } [-1,1],\\
+      \text{Hermite}\ (H_n):  & e^{-x^2} & \text{sur } \mathbb{R},\\
+      \text{Laguerre}\ (L_n): & e^{-x}   & \text{sur } [0,+\infty[.
+    \end{array}
+  \]
+  Hors de ce couple précis, $\int L_m L_n\,w\neq 0$ en général : les $L_n$ ne
+  sont les « bons » polynômes que pour le poids $e^{-x}$ sur la demi-droite.
+
+  \smallskip\noindent
+  \textbf{Convention de normalisation.}\enspace
+  Selon les auteurs, on impose $\|L_n\|=1$ (convention adoptée ici) ou bien on
+  retient la forme de Rodrigues $\frac{e^x}{n!}(x^n e^{-x})^{(n)}$ \emph{sans}
+  normaliser. Dans cette dernière convention, qui est la plus répandue en
+  physique, on a aussi $\|L_n\|^2=1$ : les deux coïncident. Mais certaines
+  références utilisent $\widetilde L_n=n!\,L_n$ (coefficient dominant
+  ${(-1)}^n$), ou normalisent autrement les généralisés. Toujours vérifier la
+  convention avant d'appliquer une formule toute faite.
+
+  \smallskip\noindent
+  \textbf{Généralisés $L_n^{(\alpha)}$.}\enspace
+  Pour $\alpha\neq 0$, le poids devient $x^{\alpha}e^{-x}$ et la norme n'est
+  plus $1$ mais $\|L_n^{(\alpha)}\|^2=\frac{\Gamma(n+\alpha+1)}{n!}$ dans la
+  convention de Rodrigues usuelle. Ne pas appliquer aux $L_n^{(\alpha)}$ les
+  formules valables pour $L_n=L_n^{(0)}$ sans adapter le poids.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item À partir de la formule de Rodrigues, retrouver
+          $L_2=\tfrac{1}{2}(x^2-4x+2)$ et
+          $L_3=\tfrac{1}{6}(-x^3+9x^2-18x+6)$, puis vérifier
+          $\int_0^{+\infty} L_2 L_3\,e^{-x}\,\mathrm{d}x=0$.
+          \textit{Indication :} on rappelle
+          $\int_0^{+\infty} x^k e^{-x}\,\mathrm{d}x=k!$.
+
+    \item \textit{(Récurrence.)} En utilisant
+          $(n+1)L_{n+1}=(2n+1-x)L_n-nL_{n-1}$, calculer $L_4$ et vérifier
+          que son coefficient dominant vaut ${(-1)}^4/4!=\tfrac{1}{24}$.
+
+    \item \textit{(Norme.)} Calculer directement
+          $\int_0^{+\infty} {L_1(x)}^2\,e^{-x}\,\mathrm{d}x$ avec $L_1=1-x$ et
+          retrouver $\|L_1\|=1$.
+
+    \item \textit{(Fonction génératrice.)}\index{fonction génératrice}
+          Soit $g(x,t)=\frac{1}{1-t}\exp\!\bigl(-\frac{xt}{1-t}\bigr)$. Montrer
+          que $(1-t)^2\,\partial_t g=(1-t-x)\,g$, puis en identifiant les
+          coefficients de $t^n$, en déduire la récurrence
+          $(n+1)L_{n+1}=(2n+1-x)L_n-nL_{n-1}$.
+
+    \item \textit{(Équation différentielle.)} Vérifier que
+          $L_2=\tfrac{1}{2}(x^2-4x+2)$ est solution de
+          $xy''+(1-x)y'+2y=0$, et expliciter le coefficient $n$ en fonction du
+          degré.
+
+    \item \textit{(Gauss--Laguerre.)} Avec $n=2$, les racines de $L_2$ sont
+          $x_{1,2}=2\pm\sqrt{2}$. Déterminer les poids $\lambda_1,\lambda_2$
+          tels que la formule
+          $\int_0^{+\infty} f(x)e^{-x}\,\mathrm{d}x=\lambda_1 f(x_1)+\lambda_2 f(x_2)$
+          soit exacte pour $f(x)=x^k$, $k\leq 3$, et constater qu'elle ne
+          l'est plus pour $f(x)=x^4$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{E.\ Laguerre (1879)}

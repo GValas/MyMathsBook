@@ -1,0 +1,283 @@
+%==============================================================
+%  lecons/analyse/bernoulli.tex — Les polynômes de Bernoulli
+%==============================================================
+
+\lecontitle{Les polynômes de Bernoulli}{Analyse réelle — Sommes de puissances et formule d'Euler-Maclaurin}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Bpol}[1]{B_{#1}}      % polynôme de Bernoulli B_n(x)
+\newcommand{\Bnum}[1]{B_{#1}}      % nombre de Bernoulli B_n = B_n(0)
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynômes de Bernoulli}\index{nombres de Bernoulli}
+  Les \emph{polynômes de Bernoulli} $\bigl(\Bpol{n}(x)\bigr)_{n\geq 0}$ sont définis
+  par la fonction génératrice
+  \[
+    \frac{t\,e^{xt}}{e^{t}-1} \;=\; \sum_{n=0}^{+\infty} \Bpol{n}(x)\,\frac{t^{n}}{n!}
+    \qquad (|t|<2\pi).
+  \]
+  Les \emph{nombres de Bernoulli} sont les valeurs en $0$ : $\Bnum{n}=\Bpol{n}(0)$,
+  de fonction génératrice $\dfrac{t}{e^{t}-1}=\sum_{n\geq 0}\Bnum{n}\dfrac{t^{n}}{n!}$.
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}
+  \begin{itemize}
+    \item \textit{Caractérisation axiomatique.} La suite $(\Bpol{n})$ est l'unique
+    suite de polynômes telle que
+    \[
+      \Bpol{0}=1,\qquad \Bpol{n}'(x)=n\,\Bpol{n-1}(x),\qquad
+      \int_{0}^{1}\Bpol{n}(x)\,\mathrm{d}x=0\ \ (n\geq 1).
+    \]
+    \item \textit{Degré.} $\Bpol{n}$ est unitaire de degré $n$.
+    \item \textit{Relation de différence.}
+    \[
+      \Bpol{n}(x+1)-\Bpol{n}(x) \;=\; n\,x^{\,n-1} \qquad (n\geq 1).
+    \]
+    \item \textit{Symétrie.} $\Bpol{n}(1-x)=(-1)^{n}\,\Bpol{n}(x)$ ; en particulier
+    $\Bnum{2k+1}=0$ pour tout $k\geq 1$.
+    \item \textit{Premières valeurs.}
+    \[
+      \Bnum{0}=1,\quad \Bnum{1}=-\tfrac{1}{2},\quad \Bnum{2}=\tfrac{1}{6},\quad
+      \Bnum{4}=-\tfrac{1}{30},\quad \Bnum{6}=\tfrac{1}{42}.
+    \]
+    \item \textit{Formule de Faulhaber.}\index{formule de Faulhaber} Pour tous
+    entiers $p\geq 0$ et $m\geq 1$,
+    \[
+      \sum_{k=0}^{m-1} k^{p}
+      \;=\; \frac{1}{p+1}\Bigl(\Bpol{p+1}(m)-\Bnum{p+1}\Bigr).
+    \]
+    \item \textit{Formule d'Euler-Maclaurin.}\index{formule d'Euler-Maclaurin}
+    Pour $f\in\mathcal{C}^{2N}\bigl([a,b]\bigr)$ avec $a,b\in\mathbb{Z}$,
+    \[
+      \sum_{k=a}^{b} f(k)
+      = \int_{a}^{b} f(t)\,\mathrm{d}t
+      + \frac{f(a)+f(b)}{2}
+      + \sum_{j=1}^{N}\frac{\Bnum{2j}}{(2j)!}\Bigl(f^{(2j-1)}(b)-f^{(2j-1)}(a)\Bigr)
+      + R_{N},
+    \]
+    le reste $R_{N}$ s'exprimant à l'aide de $\Bpol{2N}$.
+    \item \textit{Lien avec la fonction zêta.}\index{fonction zêta de Riemann}
+    Pour tout $k\geq 1$,
+    \[
+      \zeta(2k)=\sum_{n=1}^{+\infty}\frac{1}{n^{2k}}
+      =\frac{(-1)^{k+1}\,\Bnum{2k}\,(2\pi)^{2k}}{2\,(2k)!}.
+    \]
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Les polynômes de Bernoulli sont l'outil naturel pour passer du \emph{discret}
+au \emph{continu} : la relation de différence $\Bpol{n}(x+1)-\Bpol{n}(x)=n\,x^{n-1}$
+fait d'eux des « primitives discrètes » des monômes, exactement comme
+l'intégration produit des primitives continues. C'est pourquoi ils gouvernent
+à la fois les sommes de puissances $\sum k^{p}$ (Faulhaber) et la correction
+entre une somme et l'intégrale qui l'approche (Euler-Maclaurin). Les nombres
+$\Bnum{2k}$ encodent enfin les valeurs $\zeta(2k)$ : le pont d'Euler entre
+combinatoire des entiers et analyse des séries.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+La fonction génératrice fournit existence et unicité, et les propriétés
+formelles se lisent sur elle : dériver en $x$ multiplie la série par $t$
+(d'où $\Bpol{n}'=n\Bpol{n-1}$), tandis que multiplier par $(e^{t}-1)$ fait
+apparaître la relation de différence. La formule de Faulhaber en découle par
+télescopage, et la symétrie $x\mapsto 1-x$ provient de l'invariance de la série
+génératrice sous $t\mapsto -t$.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Existence, unicité et dérivation.}
+  La fonction $g(x,t)=\dfrac{t\,e^{xt}}{e^{t}-1}$ est analytique en $t$ au
+  voisinage de $0$ (le facteur $t$ compense le zéro simple de $e^{t}-1$) ; ses
+  coefficients de Taylor définissent des polynômes $\Bpol{n}(x)$. Comme
+  $\partial_{x}g = t\,g$, l'identification des coefficients de $t^{n}/n!$ donne
+  $\Bpol{n}'(x)=n\,\Bpol{n-1}(x)$. De $g(x,0^{+})$ on tire $\Bpol{0}=1$, et
+  $\int_{0}^{1}g(x,t)\,\mathrm{d}x=\dfrac{t}{e^{t}-1}\cdot\dfrac{e^{t}-1}{t}=1$
+  impose $\int_{0}^{1}\Bpol{n}=0$ pour $n\geq 1$. Réciproquement, ces trois
+  conditions déterminent $\Bpol{n}$ de proche en proche (la dérivée fixe
+  $\Bpol{n}$ à une constante près, l'intégrale nulle fixe la constante), d'où
+  l'unicité.
+
+  \medskip
+  \textit{Étape 2 — Relation de différence.}
+  En multipliant par $(e^{t}-1)$ la fonction génératrice,
+  \[
+    t\,e^{xt}=\bigl(e^{t}-1\bigr)\sum_{n\geq 0}\Bpol{n}(x)\frac{t^{n}}{n!}
+    =\sum_{n\geq 0}\bigl(\Bpol{n}(x+1)-\Bpol{n}(x)\bigr)\frac{t^{n}}{n!}.
+  \]
+  Or $t\,e^{xt}=\sum_{n\geq 1}n\,x^{\,n-1}\dfrac{t^{n}}{n!}$. L'identification des
+  coefficients donne $\Bpol{n}(x+1)-\Bpol{n}(x)=n\,x^{\,n-1}$ pour $n\geq 1$.
+
+  \medskip
+  \textit{Étape 3 — Sommes de puissances (Faulhaber).}
+  Appliquons l'étape~2 à l'indice $n=p+1$ en $x=k$ : pour $0\leq k\leq m-1$,
+  \[
+    \Bpol{p+1}(k+1)-\Bpol{p+1}(k)=(p+1)\,k^{\,p}.
+  \]
+  En sommant sur $k$ de $0$ à $m-1$, la somme de gauche \emph{télescope} :
+  \[
+    (p+1)\sum_{k=0}^{m-1}k^{p}
+    =\Bpol{p+1}(m)-\Bpol{p+1}(0)
+    =\Bpol{p+1}(m)-\Bnum{p+1},
+  \]
+  d'où $\displaystyle\sum_{k=0}^{m-1}k^{p}=\frac{1}{p+1}\bigl(\Bpol{p+1}(m)-\Bnum{p+1}\bigr)$.
+
+  \medskip
+  \textit{Étape 4 — Symétrie et nullité des $\Bnum{2k+1}$.}
+  Posons $C_{n}(x)=(-1)^{n}\Bpol{n}(1-x)$. La série génératrice associée est
+  \[
+    \sum_{n\geq 0}C_{n}(x)\frac{t^{n}}{n!}
+    =\sum_{n\geq 0}\Bpol{n}(1-x)\frac{(-t)^{n}}{n!}
+    =\frac{(-t)e^{(1-x)(-t)}}{e^{-t}-1}
+    =\frac{t\,e^{xt}}{e^{t}-1},
+  \]
+  après multiplication haut et bas par $e^{t}$. C'est exactement la génératrice
+  des $\Bpol{n}(x)$ ; par unicité, $C_{n}=\Bpol{n}$, soit
+  $\Bpol{n}(1-x)=(-1)^{n}\Bpol{n}(x)$. En $x=0$ : $\Bpol{n}(1)=(-1)^{n}\Bnum{n}$.
+  Mais la relation de différence en $x=0$ donne $\Bpol{n}(1)-\Bnum{n}=0$ pour
+  $n\geq 2$, donc $\Bnum{n}=(-1)^{n}\Bnum{n}$ : pour $n$ impair $\geq 3$,
+  $2\Bnum{n}=0$, d'où $\Bnum{2k+1}=0$ pour $k\geq 1$.
+
+  \medskip
+  \textit{Étape 5 — Euler-Maclaurin (idée).}
+  Sur $[k,k+1]$, deux intégrations par parties successives faisant intervenir
+  $\Bpol{1},\Bpol{2}$ relient $f(k)$, $\int_{k}^{k+1}f$ et les dérivées
+  $f^{(2j-1)}$ aux extrémités ; les termes de bord se télescopent grâce à
+  $\Bpol{n}(1)=(-1)^{n}\Bnum{n}$, et la sommation sur $k$ produit la formule
+  annoncée, le reste $R_{N}$ s'écrivant
+  $-\frac{1}{(2N)!}\int_{a}^{b}\widetilde{B}_{2N}(t)\,f^{(2N)}(t)\,\mathrm{d}t$
+  ($\widetilde{B}_{2N}$ : prolongement $1$-périodique de $\Bpol{2N}$).
+  Enfin, appliquée à $f(t)=t^{-2k}$ avec passage à la limite, cette analyse
+  redonne $\zeta(2k)=(-1)^{k+1}\Bnum{2k}(2\pi)^{2k}/\bigl(2\,(2k)!\bigr)$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Premiers polynômes.}\enspace%
+  En partant de $\Bpol{0}=1$, de $\Bpol{n}'=n\Bpol{n-1}$ et de
+  $\int_{0}^{1}\Bpol{n}=0$ :
+  \[
+    \Bpol{0}=1,\quad \Bpol{1}=x-\tfrac{1}{2},\quad
+    \Bpol{2}=x^{2}-x+\tfrac{1}{6},\quad
+    \Bpol{3}=x^{3}-\tfrac{3}{2}x^{2}+\tfrac{1}{2}x.
+  \]
+
+  \smallskip\noindent
+  \textbf{2. Sommes de puissances.}\enspace%
+  La formule de Faulhaber redonne les identités classiques :
+  \[
+    \sum_{k=0}^{m-1}k=\frac{m(m-1)}{2},\quad
+    \sum_{k=0}^{m-1}k^{2}=\frac{m(m-1)(2m-1)}{6},\quad
+    \sum_{k=0}^{m-1}k^{3}=\left(\frac{m(m-1)}{2}\right)^{2}.
+  \]
+
+  \smallskip\noindent
+  \textbf{3. Valeurs paires de $\zeta$.}\enspace%
+  Avec $\Bnum{2}=\tfrac{1}{6}$ et $\Bnum{4}=-\tfrac{1}{30}$,
+  \[
+    \zeta(2)=\frac{(2\pi)^{2}}{2\cdot 2!}\cdot\frac{1}{6}=\frac{\pi^{2}}{6},
+    \qquad
+    \zeta(4)=\frac{-(2\pi)^{4}}{2\cdot 4!}\cdot\Bigl(-\tfrac{1}{30}\Bigr)
+    =\frac{\pi^{4}}{90}.
+  \]
+
+  \smallskip\noindent
+  \textbf{4. Développement de la cotangente.}\enspace%
+  Les nombres de Bernoulli apparaissent dans
+  \[
+    z\cot z=\sum_{k=0}^{+\infty}\frac{(-1)^{k}\,2^{2k}\,\Bnum{2k}}{(2k)!}\,z^{2k}
+    \qquad (|z|<\pi),
+  \]
+  source analytique de la formule sur $\zeta(2k)$.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Convention sur $\Bnum{1}$.}\enspace%
+  Selon les auteurs, $\Bnum{1}=-\tfrac{1}{2}$ (convention $\Bpol{n}(0)$, adoptée
+  ici) ou $\Bnum{1}=+\tfrac{1}{2}$ (convention $\Bpol{n}(1)$). Toutes les
+  formules dépendant de $\Bnum{1}$ changent de signe à cet endroit : il faut
+  fixer la convention avant tout calcul.
+
+  \smallskip\noindent
+  \textbf{Les $\Bnum{2k}$ ne tendent pas vers $0$.}\enspace%
+  De $\zeta(2k)\to 1$ et de la formule de $\zeta(2k)$ on tire
+  $|\Bnum{2k}|\sim \dfrac{2\,(2k)!}{(2\pi)^{2k}}\to+\infty$ : les nombres de
+  Bernoulli \emph{explosent}. Croire que la suite $(\Bnum{n})$ est bornée est
+  une erreur grossière.
+
+  \smallskip\noindent
+  \textbf{Euler-Maclaurin est asymptotique.}\enspace%
+  Comme $|\Bnum{2j}|\to+\infty$, la « série » $\sum_{j}\Bnum{2j}f^{(2j-1)}/(2j)!$
+  diverge en général : la formule n'est \emph{pas} une égalité de séries
+  convergentes, mais un développement asymptotique à reste contrôlé. Pousser
+  $N$ à l'infini est interdit.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Calculer $\Bpol{4}(x)$ à partir de $\Bpol{3}$, puis vérifier
+          $\Bnum{4}=-\tfrac{1}{30}$ et la symétrie $\Bpol{4}(1-x)=\Bpol{4}(x)$.
+          \textit{Indication :} primitiver $4\Bpol{3}$ puis ajuster la constante
+          par $\int_{0}^{1}\Bpol{4}=0$.
+
+    \item (Faulhaber) Établir $\displaystyle\sum_{k=0}^{m-1}k^{2}
+          =\frac{1}{3}\bigl(\Bpol{3}(m)-\Bnum{3}\bigr)$ et retrouver
+          $\frac{m(m-1)(2m-1)}{6}$. \textit{Indication :} télescoper
+          $\Bpol{3}(k+1)-\Bpol{3}(k)=3k^{2}$.
+
+    \item Démontrer la relation de récurrence
+          $\displaystyle\sum_{j=0}^{n-1}\binom{n}{j}\Bnum{j}=0$ pour $n\geq 2$,
+          et en déduire $\Bnum{0},\dots,\Bnum{6}$. \textit{Indication :}
+          multiplier $\dfrac{t}{e^{t}-1}\cdot(e^{t}-1)=t$ et identifier.
+
+    \item (Valeurs paires de $\zeta$) À partir de
+          $z\cot z=\sum_{k\geq 0}\frac{(-1)^{k}2^{2k}\Bnum{2k}}{(2k)!}z^{2k}$
+          et de $\pi\cot(\pi z)=\frac{1}{z}+\sum_{n\geq 1}\frac{2z}{z^{2}-n^{2}}$,
+          retrouver $\zeta(2k)=\frac{(-1)^{k+1}\Bnum{2k}(2\pi)^{2k}}{2(2k)!}$.
+          \textit{Indication :} développer $\frac{2z}{z^{2}-n^{2}}$ en série
+          entière et identifier les coefficients de $z^{2k}$.
+
+    \item Montrer que $\Bpol{n}(x)=\sum_{k=0}^{n}\binom{n}{k}\Bnum{k}\,x^{\,n-k}$
+          (formule du binôme de Bernoulli). \textit{Indication :} écrire
+          $\dfrac{t\,e^{xt}}{e^{t}-1}=\dfrac{t}{e^{t}-1}\,e^{xt}$ comme produit de
+          Cauchy de deux séries génératrices.
+
+    \item (Euler-Maclaurin) En appliquant la formule à $f(t)=\ln t$ sur
+          $[1,n]$, retrouver la formule de Stirling
+          $\ln(n!)=n\ln n-n+\tfrac{1}{2}\ln(2\pi n)+\tfrac{1}{12n}+o(1/n)$.
+          \textit{Indication :} le terme $\Bnum{2}/2=1/12$ fournit la correction
+          en $1/(12n)$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{Jacob Bernoulli, \textit{Ars Conjectandi} (1713) ; L.\ Euler}

@@ -365,6 +365,48 @@
   description={Polynôme $P_n$ donné par la formule de Rodrigues $P_n(x)=\frac{1}{2^n n!}\frac{\mathrm{d}^n}{\mathrm{d}x^n}\bigl[(x^2-1)^n\bigr]$~; famille orthogonale sur $[-1,1]$ pour le produit scalaire $\langle f,g\rangle=\int_{-1}^1 fg$, avec $\lVert P_n\rVert^2=\frac{2}{2n+1}$}
 }
 
+\newglossaryentry{jacobi-poly}{
+  name={polynôme de Jacobi},
+  description={Famille $P_n^{(\alpha,\beta)}$ orthogonale sur $[-1,1]$ pour le poids $(1-x)^\alpha(1+x)^\beta$ ($\alpha,\beta>-1$)~; « famille mère » dont Legendre ($\alpha=\beta=0$), Tchebychev ($\alpha=\beta=\mp\frac12$) et Gegenbauer sont des cas particuliers}
+}
+
+\newglossaryentry{hermite}{
+  name={polynôme de Hermite},
+  description={Polynôme $H_n$ orthogonal sur $\mathbb{R}$ pour le poids $e^{-x^2}$, donné par $H_n(x)=(-1)^n e^{x^2}\frac{\mathrm{d}^n}{\mathrm{d}x^n}e^{-x^2}$~; vérifie $H_{n+1}=2xH_n-2nH_{n-1}$ et apparaît dans l'oscillateur harmonique quantique}
+}
+
+\newglossaryentry{laguerre}{
+  name={polynôme de Laguerre},
+  description={Polynôme $L_n$ orthogonal sur $[0,+\infty[$ pour le poids $e^{-x}$, donné par $L_n(x)=\frac{e^x}{n!}\frac{\mathrm{d}^n}{\mathrm{d}x^n}(x^n e^{-x})$~; vérifie $\lVert L_n\rVert^2=1$ et intervient dans l'atome d'hydrogène}
+}
+
+\newglossaryentry{bernstein}{
+  name={polynôme de Bernstein},
+  description={Base $B_{i,n}(x)=\binom{n}{i}x^i(1-x)^{n-i}$ de $[0,1]$~; l'opérateur $B_n(f)=\sum_i f(i/n)B_{i,n}$ converge uniformément vers $f$ continue (preuve constructive du théorème de Weierstrass), fondement des courbes de Bézier}
+}
+
+\newglossaryentry{newton-diff}{
+  name={différences divisées (Newton)},
+  description={Coefficients $f[x_0,\ldots,x_k]$, définis par récurrence, du polynôme interpolateur écrit dans la base de Newton $\prod_{j<k}(x-x_j)$~; même polynôme que Lagrange, construit de façon incrémentale}
+}
+
+% --- Bernoulli et cyclotomiques ---
+
+\newglossaryentry{bernoulli-poly}{
+  name={polynôme de Bernoulli},
+  description={Famille $B_n(x)$ de fonction génératrice $\frac{te^{xt}}{e^t-1}=\sum_n B_n(x)\frac{t^n}{n!}$~; donne les sommes de puissances $\sum_{k<m}k^p$ (Faulhaber), la formule d'Euler-Maclaurin et les valeurs $\zeta(2k)$}
+}
+
+\newglossaryentry{nombres-bernoulli}{
+  name={nombres de Bernoulli},
+  description={Rationnels $B_n=B_n(0)$~: $B_0=1$, $B_1=-\frac12$, $B_2=\frac16$, $B_4=-\frac1{30}$, avec $B_{2k+1}=0$ pour $k\geq 1$~; reliés à $\zeta(2k)=\frac{(-1)^{k+1}B_{2k}(2\pi)^{2k}}{2(2k)!}$}
+}
+
+\newglossaryentry{cyclotomique}{
+  name={polynôme cyclotomique},
+  description={Polynôme $\Phi_n(X)=\prod_{\pgcd(k,n)=1}(X-e^{2i\pi k/n})$, unitaire à coefficients entiers, irréductible sur $\mathbb{Q}$, de degré $\varphi(n)$~; vérifie $X^n-1=\prod_{d\mid n}\Phi_d(X)$}
+}
+
 % --- Fonctions spéciales ---
 
 \newglossaryentry{fonction-gamma}{

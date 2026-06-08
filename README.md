@@ -29,9 +29,9 @@ MyMathsBook/
 ```
 
 Le livre est organisé en six parties :
-1. **Analyse réelle** — Suites, continuité, dérivabilité, intégration, fonctions élémentaires, fonctions spéciales (Gamma, zêta de Riemann), approximation polynomiale (Tchebychev, Legendre, Lagrange), géométrie en grande dimension.
+1. **Analyse réelle** — Suites, continuité, dérivabilité, intégration, fonctions élémentaires, fonctions spéciales (Gamma, zêta de Riemann, Bernoulli), polynômes orthogonaux (Tchebychev, Legendre, Jacobi, Hermite, Laguerre), interpolation et approximation polynomiale (Lagrange, Newton, Bernstein), géométrie en grande dimension.
 2. **Structures algébriques** — Relations et ensembles quotients, construction des nombres (ℕ, ℤ, ℚ, ℝ, ℂ, ℍ), groupes, anneaux et corps, corps des fractions, nombres complexes.
-3. **Arithmétique** — Nombres premiers, irrationalité.
+3. **Arithmétique** — Nombres premiers, irrationalité, polynômes cyclotomiques.
 4. **Combinatoire** — Partitions d'ensembles.
 5. **Topologie** — Espaces métriques complets.
 6. **Algèbre linéaire** — Applications linéaires, déterminant, endomorphismes, exponentielle matricielle, produit scalaire, matrices orthogonales, endomorphismes autoadjoints.

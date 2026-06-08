@@ -1,0 +1,288 @@
+%==============================================================
+%  lecons/arithmetique/cyclotomiques.tex
+%  Les polynômes cyclotomiques
+%==============================================================
+
+\lecontitle{Les polynômes cyclotomiques}{Arithmétique — Racines de l'unité et irréductibilité}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Cyc}{\Phi_n}
+\newcommand{\Un}{\mathbb{U}}
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynômes cyclotomiques}%
+  \index{racines de l'unité}
+  Une racine $\zeta\in\mathbb{C}$ de $X^n-1$ est appelée \emph{racine
+  $n$-ième de l'unité} ; elle est dite \emph{primitive} si son ordre dans le
+  groupe $\Un_n=\{z\in\mathbb{C}\mid z^n=1\}$ est exactement~$n$, c'est-à-dire
+  si $\zeta=e^{2i\pi k/n}$ avec $\pgcd(k,n)=1$. Le \emph{$n$-ième polynôme
+  cyclotomique} est le polynôme unitaire dont les racines sont précisément les
+  racines primitives $n$-ièmes de l'unité~:
+  \[
+    \Phi_n(X) \;=\; \prod_{\substack{1\leq k\leq n\\ \pgcd(k,n)=1}}
+      \bigl(X-e^{2i\pi k/n}\bigr).
+  \]
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}
+  \begin{itemize}
+    \item \textit{Degré.}\enspace\index{indicatrice d'Euler}
+      $\deg\Phi_n=\varphi(n)$, où $\varphi$ désigne l'\emph{indicatrice
+      d'Euler} (nombre d'entiers de $\{1,\ldots,n\}$ premiers à~$n$).
+    \item \textit{Relation fondamentale.}\enspace La partition des racines
+      $n$-ièmes de l'unité selon leur ordre $d\mid n$ donne
+      \[
+        X^n-1 \;=\; \prod_{d\mid n}\Phi_d(X).
+      \]
+    \item \textit{Intégralité.}\enspace $\Phi_n\in\mathbb{Z}[X]$ et $\Phi_n$
+      est unitaire (conséquence de la relation précédente, par récurrence et
+      division euclidienne dans $\mathbb{Z}[X]$).
+    \item \textit{Irréductibilité.}\enspace\index{critère d'Eisenstein}
+      $\Phi_n$ est \textbf{irréductible} sur $\mathbb{Q}$, et donc (par le
+      lemme de Gauss) sur $\mathbb{Z}$. Ainsi $\Phi_n$ est le \emph{polynôme
+      minimal} sur $\mathbb{Q}$ de toute racine primitive $n$-ième de l'unité.
+    \item \textit{Formule de Möbius.}\enspace\index{fonction de Möbius}
+      Par inversion de la relation fondamentale,
+      \[
+        \Phi_n(X) \;=\; \prod_{d\mid n}\bigl(X^d-1\bigr)^{\mu(n/d)},
+      \]
+      où $\mu$ est la \emph{fonction de Möbius}.
+  \end{itemize}
+
+  \medskip
+  \textbf{Cas particuliers.}
+  \[
+    \Phi_1=X-1,\qquad \Phi_2=X+1,\qquad
+    \Phi_p(X)=1+X+\cdots+X^{p-1}=\frac{X^p-1}{X-1}\ \ (p\text{ premier}).
+  \]
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Le polynôme $X^n-1$ se factorise sur $\mathbb{C}$ en facteurs linéaires
+distincts $(X-\zeta)$, un par racine $n$-ième de l'unité. Les $\Phi_d$,
+$d\mid n$, \emph{regroupent} ces racines selon leur \emph{ordre exact}~:
+$\Phi_d$ rassemble exactement les racines d'ordre~$d$. Les polynômes
+cyclotomiques sont ainsi les briques indécomposables (sur $\mathbb{Q}$) de
+$X^n-1$, et $\Phi_n$ est le « bon » objet algébrique attaché à $\zeta_n$ : son
+irréductibilité fait de $\mathbb{Q}(\zeta_n)$ une extension de degré
+$\varphi(n)$, fondement de la théorie des \emph{extensions cyclotomiques}.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+La relation $X^n-1=\prod_{d\mid n}\Phi_d$ traduit simplement le fait que
+chaque racine $n$-ième de l'unité possède un \emph{unique} ordre $d$ divisant
+$n$. On en déduit, par récurrence sur $n$ et division euclidienne par un
+polynôme \emph{unitaire à coefficients entiers}, que les $\Phi_n$ sont eux-mêmes
+à coefficients entiers. La formule de Möbius s'obtient par inversion
+multiplicative de cette relation. L'irréductibilité, plus délicate, repose sur
+un argument de réduction modulo un premier $p$~: si $\zeta$ est racine du
+facteur minimal $f$ de $\Phi_n$, on montre que $\zeta^p$ l'est aussi pour tout
+premier $p\nmid n$, d'où $f$ contient toutes les racines primitives.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Relation fondamentale.}
+  Toute racine $n$-ième de l'unité $\zeta$ engendre un sous-groupe cyclique de
+  $\Un_n$ ; son ordre $d=\mathrm{ord}(\zeta)$ divise $n$ (théorème de
+  Lagrange), et $\zeta$ est alors racine \emph{primitive} $d$-ième de l'unité.
+  Réciproquement, toute racine primitive $d$-ième pour $d\mid n$ vérifie
+  $\zeta^n=1$. Comme les $X^n-1$ a $n$ racines simples, on partitionne
+  l'ensemble de ses racines selon leur ordre $d\mid n$~:
+  \[
+    X^n-1 \;=\; \prod_{\zeta^n=1}(X-\zeta)
+            \;=\; \prod_{d\mid n}\ \prod_{\mathrm{ord}(\zeta)=d}(X-\zeta)
+            \;=\; \prod_{d\mid n}\Phi_d(X).
+  \]
+  En comparant les degrés, on retrouve au passage l'identité d'Euler
+  $\sum_{d\mid n}\varphi(d)=n$, et $\deg\Phi_n=\varphi(n)$.
+
+  \medskip
+  \textit{Étape 2 — Intégralité (récurrence \& division euclidienne).}
+  On montre $\Phi_n\in\mathbb{Z}[X]$ unitaire par récurrence forte sur~$n$.
+  Pour $n=1$, $\Phi_1=X-1$ convient. Pour $n\geq 2$, posons
+  $g=\prod_{d\mid n,\ d<n}\Phi_d$. Par hypothèse de récurrence, $g$ est unitaire
+  à coefficients entiers, et la relation de l'étape~1 s'écrit $X^n-1=g\,\Phi_n$.
+  On invoque le lemme suivant.
+
+  \smallskip\noindent
+  \textbf{Lemme (division par un unitaire entier).}\enspace
+  \textit{Si $A\in\mathbb{Z}[X]$ et $B\in\mathbb{Z}[X]$ est unitaire, le quotient
+  et le reste de la division euclidienne de $A$ par $B$ (dans $\mathbb{Q}[X]$)
+  sont à coefficients entiers.}
+
+  \smallskip\noindent
+  En effet, l'algorithme de division n'effectue que des soustractions et des
+  multiplications par les coefficients de $A$ et $B$ ; le coefficient dominant
+  de $B$ valant~$1$, aucune division non entière n'intervient. Appliqué à
+  $A=X^n-1$ et $B=g$, ce lemme donne $\Phi_n=(X^n-1)/g\in\mathbb{Z}[X]$, et
+  $\Phi_n$ est unitaire car $X^n-1$ et $g$ le sont.
+
+  \medskip
+  \textit{Étape 3 — Formule de Möbius.}
+  En passant au logarithme formel (ou en travaillant dans le groupe
+  multiplicatif des séries formelles de terme constant~$1$), la relation
+  $X^n-1=\prod_{d\mid n}\Phi_d$ est une identité du type
+  $F(n)=\sum_{d\mid n}G(d)$ avec $G=\log\Phi$, $F=\log(X^\bullet-1)$.
+  La \emph{formule d'inversion de Möbius} donne alors
+  $G(n)=\sum_{d\mid n}\mu(n/d)\,F(d)$, soit, en repassant à l'exponentielle,
+  \[
+    \Phi_n(X)=\prod_{d\mid n}\bigl(X^d-1\bigr)^{\mu(n/d)}.
+  \]
+  (La fonction $\mu$ vérifie $\sum_{d\mid n}\mu(d)=\mathbf{1}_{n=1}$, ce qui
+  fonde l'inversion.)
+
+  \medskip
+  \textit{Étape 4 — Irréductibilité sur $\mathbb{Q}$ (esquisse).}
+  Soit $\zeta=e^{2i\pi/n}$ une racine primitive et $f\in\mathbb{Z}[X]$ son
+  polynôme minimal unitaire ; $f$ divise $\Phi_n$ dans $\mathbb{Z}[X]$ (lemme de
+  Gauss), écrivons $\Phi_n=f\,g$ avec $g\in\mathbb{Z}[X]$ unitaire. Fixons un
+  premier $p\nmid n$. On montre que \emph{$\zeta^p$ est encore racine de~$f$}.
+
+  Sinon, $\zeta^p$ serait racine de~$g$ (car c'est une racine primitive
+  $n$-ième, donc de $\Phi_n=fg$), donc $\zeta$ serait racine de $g(X^p)$ ; comme
+  $f$ est le polynôme minimal de $\zeta$, on aurait $f\mid g(X^p)$ dans
+  $\mathbb{Z}[X]$. Réduisons modulo~$p$ dans $\mathbb{F}_p[X]$~: par le
+  morphisme de Frobenius, $\overline{g(X^p)}=\overline{g}(X)^p$, donc
+  $\overline f\mid \overline g^{\,p}$. Tout facteur irréductible de $\overline f$
+  divise alors $\overline g$, si bien que $\overline f$ et $\overline g$ ont un
+  facteur commun, et $\overline{\Phi_n}=\overline f\,\overline g$ a une racine
+  \emph{double} dans une clôture de $\mathbb{F}_p$. Or $\overline{\Phi_n}$
+  divise $X^n-1$, dont la dérivée $nX^{n-1}$ est non nulle modulo~$p$ (car
+  $p\nmid n$) et première avec $X^n-1$~: $X^n-1$ est \emph{séparable} sur
+  $\mathbb{F}_p$, donc sans racine multiple. Contradiction. Ainsi $\zeta^p$ est
+  racine de~$f$.
+
+  Par récurrence sur le nombre de facteurs premiers, $\zeta^k$ est racine
+  de~$f$ pour tout $k$ avec $\pgcd(k,n)=1$. Mais ces $\zeta^k$ décrivent
+  \emph{toutes} les racines primitives $n$-ièmes ; $f$ a donc $\varphi(n)$
+  racines, d'où $f=\Phi_n$ et $g=1$. Le polynôme $\Phi_n$ est irréductible sur
+  $\mathbb{Q}$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Les premiers polynômes cyclotomiques.}
+  \[
+    \begin{array}{llll}
+      \Phi_1=X-1, & \Phi_2=X+1, & \Phi_3=X^2+X+1, & \Phi_4=X^2+1,\\[2pt]
+      \Phi_5=\dfrac{X^5-1}{X-1}, & \Phi_6=X^2-X+1, & \Phi_7=\dfrac{X^7-1}{X-1},
+        & \Phi_8=X^4+1,\\[6pt]
+      \Phi_9=X^6+X^3+1, & \Phi_{10}=X^4-X^3+X^2-X+1, & \Phi_{12}=X^4-X^2+1. &
+    \end{array}
+  \]
+  On vérifie $\deg\Phi_n=\varphi(n)$ : par exemple $\varphi(12)=4=\deg\Phi_{12}$,
+  $\varphi(8)=4$, $\varphi(6)=2$. Le calcul de $\Phi_{12}$ illustre Möbius~:
+  $\Phi_{12}=\dfrac{(X^{12}-1)(X^2-1)}{(X^6-1)(X^4-1)}=X^4-X^2+1$.
+
+  \smallskip\noindent
+  \textbf{2. Irréductibilité de $\Phi_p$ par Eisenstein.}\enspace%
+  \index{critère d'Eisenstein}
+  Pour $p$ premier, $\Phi_p(X)=1+X+\cdots+X^{p-1}$. La translation $X\mapsto X+1$
+  donne, par la formule du binôme,
+  \[
+    \Phi_p(X+1)=\frac{(X+1)^p-1}{X}
+      =X^{p-1}+\binom{p}{1}X^{p-2}+\cdots+\binom{p}{p-1}.
+  \]
+  Tous les $\binom{p}{k}$, $1\leq k\leq p-1$, sont divisibles par~$p$, et le
+  terme constant $\binom{p}{p-1}=p$ ne l'est pas par~$p^2$~: le \emph{critère
+  d'Eisenstein} (avec le premier~$p$) s'applique, donc $\Phi_p(X+1)$, et par
+  conséquent $\Phi_p(X)$, est irréductible sur $\mathbb{Q}$.
+
+  \smallskip\noindent
+  \textbf{3. Application aux corps finis (Wedderburn).}\enspace
+  \index{nombre premier}
+  Dans la preuve du \emph{théorème de Wedderburn} (tout corps fini est
+  commutatif), l'évaluation $\Phi_n(q)$ apparaît dans l'équation des classes~:
+  l'entier $\Phi_n(q)$ divise $q^n-1$ et chaque $\dfrac{q^n-1}{q^d-1}$ pour
+  $d\mid n$, $d<n$, ce qui force $n=1$. Le caractère \emph{entier} de
+  $\Phi_n(q)$ est ici essentiel.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Idée fausse répandue~: « les coefficients de $\Phi_n$ sont dans
+  $\{-1,0,1\}$ ».}\enspace C'est \textbf{faux}. Le premier contre-exemple est
+  $n=105=3\cdot 5\cdot 7$~: le polynôme $\Phi_{105}$, de degré
+  $\varphi(105)=48$, contient un coefficient égal à $-2$. (Le phénomène est lié
+  au fait que $105$ est le plus petit entier produit de trois premiers impairs
+  distincts.) On peut même montrer que les coefficients des $\Phi_n$ ne sont pas
+  bornés lorsque $n$ varie.
+
+  \smallskip\noindent
+  \textbf{$\Phi_n$ n'est pas $X^n-1$.}\enspace On a $\Phi_n\mid X^n-1$, mais
+  $\Phi_n=X^n-1$ uniquement pour $n=1$. En général $\deg\Phi_n=\varphi(n)<n$
+  dès que $n\geq 2$, car $X^n-1=\prod_{d\mid n}\Phi_d$ comporte plusieurs
+  facteurs.
+
+  \smallskip\noindent
+  \textbf{Racines $n$-ièmes $\neq$ racines \emph{primitives} $n$-ièmes.}\enspace
+  $i$ est racine $4$-ième de l'unité \emph{et} primitive (ordre~$4$), mais
+  $-1$ est racine $4$-ième \emph{sans} être primitive (ordre~$2$)~:
+  $-1$ est racine de $\Phi_2$, pas de $\Phi_4$. Confondre les deux conduit à
+  attribuer le mauvais degré à~$\Phi_n$.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item \textit{(Eisenstein.)} Détailler la preuve de l'irréductibilité de
+          $\Phi_p$ pour $p$ premier en appliquant le critère d'Eisenstein à
+          $\Phi_p(X+1)$. \textit{Indication~:} $\binom{p}{k}\equiv 0\pmod p$
+          pour $1\leq k\leq p-1$ et terme constant égal à~$p$.
+
+    \item \textit{(Calcul via Möbius.)} À l'aide de
+          $\Phi_n=\prod_{d\mid n}(X^d-1)^{\mu(n/d)}$, calculer $\Phi_{12}$ et
+          $\Phi_{15}$. \textit{Indication~:} $\mu(1)=1$, $\mu(p)=-1$,
+          $\mu(pq)=1$, $\mu(p^2)=0$.
+
+    \item \textit{(Relation $\Phi_{2n}$.)} Montrer que pour $n\geq 1$ impair,
+          $\Phi_{2n}(X)=\Phi_n(-X)$. En déduire $\Phi_6$ à partir de $\Phi_3$.
+          \textit{Indication~:} $\zeta$ est racine primitive $2n$-ième ssi
+          $-\zeta$ est racine primitive $n$-ième, pour $n$ impair.
+
+    \item \textit{(Premier $p\equiv 1\bmod n$.)} Soit $p$ un premier ne divisant
+          pas~$n$ tel que $p\mid \Phi_n(a)$ pour un entier~$a$. Montrer que
+          l'ordre de~$\bar a$ dans $(\mathbb{Z}/p\mathbb{Z})^\times$ est
+          exactement~$n$, et en déduire $p\equiv 1\pmod n$. En conclure qu'il
+          existe \emph{une infinité} de premiers $\equiv 1\pmod n$ (cas
+          particulier de Dirichlet).
+
+    \item \textit{(Produit télescopique.)} Vérifier numériquement
+          $X^{12}-1=\Phi_1\Phi_2\Phi_3\Phi_4\Phi_6\Phi_{12}$ et retrouver
+          $\sum_{d\mid 12}\varphi(d)=12$.
+
+    \item \textit{(Coefficients.)} Calculer $\Phi_{15}$ et constater que ses
+          coefficients restent dans $\{-1,0,1\}$, puis (avec un outil de calcul
+          formel) exhiber le coefficient $-2$ dans $\Phi_{105}$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{C.\ F.\ Gauss, \textit{Disquisitiones Arithmeticae} (1801)}

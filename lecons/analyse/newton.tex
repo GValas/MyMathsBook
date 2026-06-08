@@ -1,0 +1,318 @@
+%==============================================================
+%  lecons/analyse/newton.tex — Forme de Newton, différences divisées
+%==============================================================
+
+\lecontitle{La forme de Newton et les différences divisées}{Analyse réelle — Interpolation polynomiale}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\ddiv}[1]{f[#1]}              % différence divisée
+\newcommand{\nbase}[1]{n_{#1}}          % base de Newton n_i
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{forme de Newton}\index{différences divisées}%
+  \index{interpolation polynomiale}
+  Soit $x_0, x_1, \ldots, x_n$ des réels \emph{deux à deux distincts} et $f$
+  une fonction définie en ces nœuds. On appelle \emph{base de Newton}
+  associée à ces nœuds la famille des polynômes
+  \[
+    \nbase{0}(x) = 1, \qquad
+    \nbase{i}(x) = \prod_{j=0}^{i-1}(x-x_j) \quad (1 \leq i \leq n),
+  \]
+  chaque $\nbase{i}$ étant unitaire de degré exactement $i$. Les
+  \emph{différences divisées} de $f$ sont définies par récurrence sur le
+  nombre de nœuds :
+  \[
+    \ddiv{x_i} = f(x_i), \qquad
+    \ddiv{x_i,\ldots,x_{i+k}}
+    = \dfrac{\ddiv{x_{i+1},\ldots,x_{i+k}} - \ddiv{x_i,\ldots,x_{i+k-1}}}
+            {x_{i+k}-x_i}.
+  \]
+
+  \medskip
+  \textbf{Théorème (forme de Newton du polynôme interpolateur).}
+  \begin{itemize}
+    \item \textit{Formule de Newton.}\enspace Le polynôme $P \in
+          \mathbb{R}_n[X]$ vérifiant $P(x_i)=f(x_i)$ pour $0\leq i\leq n$
+          s'écrit, dans la base de Newton,
+          \[
+            P(x) = \sum_{k=0}^{n} \ddiv{x_0,\ldots,x_k}\,\nbase{k}(x)
+                 = \sum_{k=0}^{n} \ddiv{x_0,\ldots,x_k}\prod_{j=0}^{k-1}(x-x_j).
+          \]
+          C'est le \emph{même} polynôme interpolateur que celui de Lagrange
+          (unicité de l'interpolation aux nœuds distincts), seule la base
+          d'expression change.
+    \item \textit{Coefficient dominant.}\enspace Le coefficient de $x^n$
+          dans $P$ vaut $\ddiv{x_0,\ldots,x_n}$ ; en particulier la $k$-ième
+          différence divisée est le coefficient dominant de l'interpolateur
+          aux $k+1$ premiers nœuds.
+    \item \textit{Symétrie.}\enspace La différence divisée
+          $\ddiv{x_0,\ldots,x_n}$ est une fonction \emph{symétrique} des
+          nœuds : elle ne dépend pas de leur ordre.
+    \item \textit{Construction incrémentale.}\enspace Si l'on ajoute un
+          nœud $x_{n+1}$, l'interpolateur se met à jour sans tout
+          recalculer :
+          \[
+            P_{n+1}(x) = P_n(x)
+              + \ddiv{x_0,\ldots,x_{n+1}}\prod_{j=0}^{n}(x-x_j).
+          \]
+    \item \textit{Lien avec la dérivée.}\enspace Si $f$ est de classe
+          $\mathcal{C}^n$ sur un intervalle $I$ contenant les nœuds, il
+          existe $\xi \in I$ tel que
+          \[
+            \ddiv{x_0,\ldots,x_n} = \dfrac{f^{(n)}(\xi)}{n!}.
+          \]
+    \item \textit{Interpolation d'Hermite.}\enspace\index{interpolation d'Hermite}
+          Lorsque des nœuds se confondent, les différences divisées se
+          prolongent par continuité : pour $m+1$ nœuds égaux à $a$,
+          $f[\underbrace{a,\ldots,a}_{m+1}] = \dfrac{f^{(m)}(a)}{m!}$, ce
+          qui permet d'imposer aussi des valeurs de \emph{dérivées} (forme
+          de Newton de l'interpolation d'Hermite).
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+La forme de Newton est l'analogue \emph{discret} du développement de
+Taylor : là où Taylor écrit $f(x)=\sum \tfrac{f^{(k)}(a)}{k!}(x-a)^k$ avec
+les dérivées en un point, Newton écrit
+$P(x)=\sum f[x_0,\ldots,x_k]\,(x-x_0)\cdots(x-x_{k-1})$ avec les
+différences divisées sur des nœuds répartis. La $k$-ième différence
+divisée joue le rôle d'une « dérivée $k$-ième moyennée », ce que confirme
+l'identité $f[x_0,\ldots,x_n]=f^{(n)}(\xi)/n!$ et le passage à la limite
+quand tous les nœuds tendent vers un même point. Surtout, l'écriture est
+\emph{triangulaire} : chaque terme raffine le précédent en faisant
+intervenir un nœud de plus, d'où une construction \emph{incrémentale} du
+polynôme interpolateur.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+La base de Newton est échelonnée en degré, ce qui rend le calcul des
+coefficients triangulaire : le coefficient dominant aux $k+1$ premiers
+nœuds est imposé. On identifie ce coefficient à $f[x_0,\ldots,x_k]$ en
+exploitant la structure incrémentale $P_k = P_{k-1} + c_k\,\nbase{k}$. La
+symétrie vient de l'unicité de l'interpolateur. Enfin le reste
+$f^{(n)}(\xi)/n!$ s'obtient en confrontant le coefficient dominant à la
+formule d'erreur de Lagrange, via le théorème de Rolle itéré.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — La base de Newton et la forme triangulaire.}
+  Chaque $\nbase{k}=\prod_{j<k}(x-x_j)$ est unitaire de degré $k$, donc la
+  famille $(\nbase{0},\ldots,\nbase{n})$ est échelonnée en degré : c'est
+  une base de $\mathbb{R}_n[X]$. Il existe donc des scalaires uniques
+  $c_0,\ldots,c_n$ avec $P=\sum_{k=0}^n c_k\,\nbase{k}$. Comme
+  $\nbase{k}(x_i)=0$ dès que $i<k$ (le facteur $x-x_i$ apparaît), la
+  condition $P(x_i)=f(x_i)$ s'écrit pour chaque $i$ :
+  $\sum_{k=0}^{i} c_k\,\nbase{k}(x_i)=f(x_i)$, système \emph{triangulaire
+  inférieur} en $(c_k)$ qui se résout de proche en proche, ce qui prouve à
+  nouveau l'existence et l'unicité de $P$.
+
+  \medskip
+  \textit{Étape 2 — Les coefficients sont les différences divisées.}
+  Notons $P_{k}$ l'interpolateur de $f$ aux nœuds $x_0,\ldots,x_k$. La
+  forme triangulaire de l'étape~1 montre que $P_k=P_{k-1}+c_k\,\nbase{k}$ :
+  ajouter le nœud $x_k$ n'altère pas les coefficients déjà calculés. Donc
+  $c_k$ est le \emph{coefficient dominant} de $P_k$. Montrons par
+  récurrence sur $k$ que $c_k=f[x_0,\ldots,x_k]$. Pour $k=0$,
+  $P_0=f(x_0)=f[x_0]$. Soit $Q$ (resp.\ $R$) l'interpolateur de $f$ aux
+  nœuds $x_0,\ldots,x_{k-1}$ (resp.\ $x_1,\ldots,x_k$). On vérifie que
+  \[
+    P_k(x) = R(x) + \frac{x-x_k}{x_k-x_0}\bigl(R(x)-Q(x)\bigr)
+           = \frac{(x-x_0)R(x)-(x-x_k)Q(x)}{x_k-x_0}
+  \]
+  interpole $f$ aux $k+1$ nœuds (vérification directe en chaque $x_i$).
+  Par unicité c'est bien $P_k$ ; en identifiant les coefficients dominants
+  de degré $k$ et en utilisant l'hypothèse de récurrence sur $Q$ et $R$ :
+  \[
+    c_k = \frac{(\text{dom } R)-(\text{dom } Q)}{x_k-x_0}
+        = \frac{f[x_1,\ldots,x_k]-f[x_0,\ldots,x_{k-1}]}{x_k-x_0}
+        = f[x_0,\ldots,x_k],
+  \]
+  qui est exactement la relation de récurrence définissant la différence
+  divisée. D'où la formule de Newton.
+
+  \medskip
+  \textit{Étape 3 — Symétrie.}
+  Toute permutation des nœuds $x_0,\ldots,x_n$ ne change ni l'ensemble des
+  contraintes $P(x_i)=f(x_i)$, ni donc le polynôme interpolateur $P$ (par
+  unicité), ni a fortiori son coefficient dominant. Or ce coefficient
+  dominant vaut $f[x_0,\ldots,x_n]$ d'après l'étape~2 : la différence
+  divisée est donc invariante par permutation des nœuds.
+
+  \medskip
+  \textit{Étape 4 — Formule du reste $f[x_0,\ldots,x_n]=f^{(n)}(\xi)/n!$.}
+  Supposons $f$ de classe $\mathcal{C}^{n}$ sur $I$. Posons
+  $g=f-P_{n-1}$, où $P_{n-1}$ interpole $f$ aux $n$ nœuds
+  $x_0,\ldots,x_{n-1}$ ; alors $g$ s'annule en ces $n$ points distincts.
+  Par le théorème de Rolle appliqué entre zéros consécutifs, $g'$ admet
+  $n-1$ zéros, puis $g''$ en a $n-2$, \ldots, et $g^{(n-1)}$ admet au moins
+  un zéro $\xi\in I$. La formule de Newton donne
+  $P_n = P_{n-1} + f[x_0,\ldots,x_n]\,\nbase{n}$, et $P_n(x_n)=f(x_n)$
+  équivaut à $f(x_n)-P_{n-1}(x_n)=f[x_0,\ldots,x_n]\,\nbase{n}(x_n)$.
+  Plutôt que de fixer $x_n$, exploitons directement le lien avec l'erreur
+  de Lagrange : pour $x\notin\{x_0,\ldots,x_{n-1}\}$, l'interpolation aux
+  $n$ nœuds donne (cf.\ leçon \emph{Lagrange})
+  \[
+    f(x)-P_{n-1}(x)
+    = f[x_0,\ldots,x_{n-1},x]\prod_{j=0}^{n-1}(x-x_j)
+    = \frac{f^{(n)}(\eta_x)}{n!}\prod_{j=0}^{n-1}(x-x_j),
+  \]
+  la première égalité étant la mise à jour incrémentale de Newton (le
+  nœud $x$ ajouté), la seconde la formule d'erreur de Lagrange avec
+  $\eta_x\in I$. En simplifiant par $\prod_{j<n}(x-x_j)\neq 0$ puis en
+  posant $x=x_n$, $\xi=\eta_{x_n}$ :
+  \[
+    f[x_0,\ldots,x_n] = \frac{f^{(n)}(\xi)}{n!}.
+  \]
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Table des différences divisées.}\enspace
+  Reprenons $f(0)=1$, $f(1)=2$, $f(2)=9$, $f(3)=28$. On dresse le tableau,
+  chaque colonne se déduisant de la précédente par la formule de récurrence
+  $\tfrac{\text{(bas)}-\text{(haut)}}{x_{i+k}-x_i}$ :
+  \[
+    \begin{array}{c|cccc}
+      x_i & f[\,\cdot\,] & f[\cdot,\cdot] & f[\cdot,\cdot,\cdot]
+          & f[\cdot,\cdot,\cdot,\cdot]\\ \hline
+      0 & 1  &    &    & \\
+        &    & 1  &    & \\
+      1 & 2  &    & 3  & \\
+        &    & 7  &    & 1\\
+      2 & 9  &    & 6  & \\
+        &    & 19 &    & \\
+      3 & 28 &    &    &
+    \end{array}
+  \]
+  Les coefficients de Newton sont la \emph{diagonale supérieure}
+  $1,\,1,\,3,\,1$, d'où
+  \[
+    P(x) = 1 + 1\cdot x + 3\,x(x-1) + 1\cdot x(x-1)(x-2) = x^3+1,
+  \]
+  comme attendu. Le coefficient dominant $f[0,1,2,3]=1$ vaut bien
+  $f^{(3)}(\xi)/3!=6/6$ ici, car $f^{(3)}\equiv 6$.
+
+  \smallskip\noindent
+  \textbf{2. Nœuds équirépartis et différences finies.}\enspace
+  Pour $x_i = x_0 + i\,h$, posons $\Delta^k f_0$ la $k$-ième différence
+  finie progressive. On a alors
+  \[
+    f[x_0,\ldots,x_k] = \dfrac{\Delta^k f_0}{k!\,h^k},
+  \]
+  et la forme de Newton devient la \emph{formule de Newton progressive}
+  \[
+    P(x_0+sh) = \sum_{k=0}^{n} \binom{s}{k}\Delta^k f_0,
+    \qquad \binom{s}{k}=\frac{s(s-1)\cdots(s-k+1)}{k!},
+  \]
+  où apparaît la factorielle décroissante $s^{\underline{k}}=s(s-1)\cdots(s-k+1)$.
+
+  \smallskip\noindent
+  \textbf{3. Passage à la limite : Taylor.}\enspace
+  Si tous les nœuds tendent vers un même point $a$ (avec $f$ régulière),
+  $f[x_0,\ldots,x_k]\to f^{(k)}(a)/k!$ et $\nbase{k}(x)\to(x-a)^k$ : la
+  forme de Newton dégénère exactement en la formule de Taylor
+  $\sum \tfrac{f^{(k)}(a)}{k!}(x-a)^k$. C'est l'interpolation d'Hermite
+  avec un unique nœud d'ordre $n+1$.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Ce n'est pas « un autre » polynôme que Lagrange.}\enspace
+  Forme de Newton et forme de Lagrange désignent le \emph{même} polynôme
+  interpolateur $P$ (unicité aux nœuds distincts) : seules les bases
+  d'expression diffèrent ($\nbase{k}=\prod_{j<k}(x-x_j)$ contre les
+  $L_i$). On ne gagne donc \emph{aucune} précision, seulement une commodité
+  de calcul.
+
+  \smallskip\noindent
+  \textbf{L'instabilité de l'interpolation persiste.}\enspace%
+  \index{phénomène de Runge}
+  Le phénomène de Runge sur des nœuds équirépartis n'est pas un défaut de
+  la base de Lagrange : c'est une propriété de $P$ lui-même. La forme de
+  Newton produisant le même $P$, elle diverge tout autant. Changer de base
+  ne corrige pas un mauvais choix de nœuds.
+
+  \smallskip\noindent
+  \textbf{Ordre des nœuds : sans effet sur $P$, mais pas sur les calculs.}\enspace
+  Par symétrie, $P$ ne dépend pas de l'ordre des $x_i$. En revanche les
+  \emph{coefficients intermédiaires} $f[x_0,\ldots,x_k]$ et les polynômes
+  $\nbase{k}$, eux, en dépendent : la table des différences divisées et le
+  conditionnement numérique changent avec l'ordre choisi (un ordre de type
+  Leja améliore la stabilité).
+
+  \smallskip\noindent
+  \textbf{Nœuds distincts pour la formule brute.}\enspace
+  La récurrence $\tfrac{\cdots}{x_{i+k}-x_i}$ divise par $x_{i+k}-x_i$ :
+  des nœuds confondus exigent le prolongement par les dérivées
+  $f[a,\ldots,a]=f^{(m)}(a)/m!$ (Hermite), sans quoi l'expression n'a pas
+  de sens.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Construire la table des différences divisées de $f$ aux nœuds
+          $-1,0,1,2$ avec $f(-1)=0$, $f(0)=1$, $f(1)=0$, $f(2)=3$, puis
+          écrire $P$ sous forme de Newton et le développer.
+          \textit{Indication :} la diagonale supérieure donne directement
+          les coefficients.
+
+    \item (Newton $\leftrightarrow$ Lagrange) Pour les nœuds $0,1,2$ et des
+          valeurs $y_0,y_1,y_2$, écrire $P$ dans les deux formes et vérifier
+          qu'elles coïncident. \textit{Indication :} développer la forme de
+          Newton et regrouper, ou comparer les coefficients dominants
+          $f[x_0,x_1,x_2]$.
+
+    \item Montrer la \emph{règle de Leibniz} pour les différences divisées :
+          $(fg)[x_0,\ldots,x_n]=\sum_{k=0}^{n} f[x_0,\ldots,x_k]\,
+          g[x_k,\ldots,x_n]$. \textit{Indication :} récurrence sur $n$
+          via la formule définissant la différence divisée d'un produit.
+
+    \item (Hermite) Déterminer $P\in\mathbb{R}_3[X]$ tel que $P(0)=1$,
+          $P'(0)=0$, $P(1)=0$, $P'(1)=0$. \textit{Indication :} table de
+          Newton avec nœuds doublés $0,0,1,1$ et
+          $f[a,a]=f'(a)$.
+
+    \item Établir l'expression explicite
+          $f[x_0,\ldots,x_n]=\sum_{i=0}^{n}
+          \dfrac{f(x_i)}{\prod_{j\neq i}(x_i-x_j)}$.
+          \textit{Indication :} c'est le coefficient dominant de la forme
+          de Lagrange ; en déduire à nouveau la symétrie.
+
+    \item Soit $f$ de classe $\mathcal{C}^n$. Montrer que
+          $x\mapsto f[x_0,\ldots,x_{n-1},x]$ est continue et que sa limite
+          quand $x\to x_{n-1}$ redonne $f[x_0,\ldots,x_{n-1},x_{n-1}]$ avec
+          une dérivée. \textit{Indication :} utiliser
+          $f[\ldots]=f^{(n)}(\xi)/n!$ et la régularité de $f$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{I.\ Newton (1675) ; E.\ Waring, J.-L.\ Lagrange}

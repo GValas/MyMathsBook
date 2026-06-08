@@ -1,0 +1,238 @@
+%==============================================================
+%  lecons/analyse/bernstein.tex — Polynômes de Bernstein
+%==============================================================
+
+\lecontitle{Les polynômes de Bernstein}{Analyse réelle — Approximation uniforme}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Bn}{B_n}
+\newcommand{\Bin}{B_{i,n}}
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynômes de Bernstein}
+  Pour $n \geq 1$ et $0 \leq i \leq n$, le $i$-ième \emph{polynôme de Bernstein
+  de base} de degré $n$ est
+  \[
+    \Bin(x) \;=\; \binom{n}{i}\,x^i\,{(1-x)}^{n-i}, \qquad x \in [0,1].
+  \]
+  À toute fonction $f : [0,1] \to \mathbb{R}$, on associe son \emph{$n$-ième
+  polynôme de Bernstein}\index{opérateur de Bernstein}
+  \[
+    \Bn(f)(x) \;=\; \sum_{i=0}^{n} f\!\left(\frac{i}{n}\right)
+                    \binom{n}{i}\,x^i\,{(1-x)}^{n-i}.
+  \]
+
+  \medskip
+  \textbf{Propriétés élémentaires.}
+  \begin{itemize}
+    \item \textit{Partition de l'unité :}\quad
+          $\displaystyle\sum_{i=0}^{n} \Bin(x) = 1$ pour tout $x \in [0,1]$.
+    \item \textit{Positivité :}\quad
+          $\Bin(x) \geq 0$ sur $[0,1]$, donc $\Bn$ est un opérateur \emph{positif}
+          ($f \geq 0 \Rightarrow \Bn(f) \geq 0$).
+    \item \textit{Reproduction des fonctions affines :}\quad
+          $\Bn(\mathbf{1}) = 1$ et $\Bn(\mathrm{id}) = \mathrm{id}$, autrement dit
+          \[
+            \Bn(1)(x) = 1, \qquad \Bn(x \mapsto x)(x) = x.
+          \]
+          Plus généralement, $\Bn$ fixe toute fonction affine.
+    \item \textit{Linéarité et monotonie :}\quad $\Bn$ est linéaire en $f$ et
+          $f \leq g \Rightarrow \Bn(f) \leq \Bn(g)$.
+  \end{itemize}
+
+  \medskip
+  \textbf{Théorème (Weierstrass, version constructive).}\enspace%
+  \index{théorème de Weierstrass}\index{approximation uniforme}
+  Si $f : [0,1] \to \mathbb{R}$ est continue, alors $\Bn(f)$ converge
+  \emph{uniformément} vers $f$ sur $[0,1]$ :
+  \[
+    \bigl\| \Bn(f) - f \bigr\|_\infty
+    \;=\; \sup_{x \in [0,1]} \bigl| \Bn(f)(x) - f(x) \bigr|
+    \;\xrightarrow[\;n \to +\infty\;]{}\; 0.
+  \]
+\end{tcolorbox}
+
+\begin{significationintuitive}
+La preuve de Weierstrass par les polynômes de Bernstein est
+\emph{constructive} : elle exhibe une suite explicite de polynômes
+approchant $f$, là où l'énoncé classique se contente d'en affirmer
+l'existence. Son ressort est \emph{probabiliste} : on lance $n$ fois une
+pièce de probabilité $x$ et l'on évalue $f$ à la fréquence observée de
+« piles ». La quantité $\Bn(f)(x)$ n'est autre que la \emph{moyenne pondérée}
+des valeurs $f(i/n)$, les poids $\Bin(x)$ étant ceux d'une loi binomiale.
+Par la loi des grands nombres, cette fréquence se concentre autour de $x$,
+si bien que la moyenne pondérée de $f$ tend vers $f(x)$.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+Soit $S_n \sim \mathcal{B}(n,x)$ une variable binomiale : $\mathbb{P}(S_n=i)
+= \Bin(x)$. Alors $\Bn(f)(x) = \mathbb{E}\!\left[f(S_n/n)\right]$. Comme
+$\mathbb{E}[S_n/n]=x$ et $\mathrm{Var}(S_n/n)=x(1-x)/n \to 0$, la fréquence
+$S_n/n$ se \emph{concentre} autour de $x$ (Bienaymé--Tchebychev). La
+continuité uniforme de $f$ transforme cette concentration en convergence
+de $\mathbb{E}[f(S_n/n)]$ vers $f(x)$, et l'uniformité en $x$ provient des
+bornes uniformes fournies par le théorème de Heine.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Les trois moments.}\enspace%
+  \index{inégalité de Bienaymé-Tchebychev}
+  La formule du binôme $\sum_{i=0}^n \binom{n}{i}x^i{(1-x)}^{n-i}={(x+(1-x))}^n=1$
+  donne la partition de l'unité. En dérivant l'identité
+  ${(x+y)}^n=\sum\binom{n}{i}x^i y^{n-i}$ par rapport à $x$ (puis $y=1-x$),
+  on obtient successivement
+  \[
+    \sum_{i=0}^{n} \Bin(x) = 1, \qquad
+    \sum_{i=0}^{n} \frac{i}{n}\,\Bin(x) = x, \qquad
+    \sum_{i=0}^{n} {\left(\frac{i}{n}-x\right)}^{\!2} \Bin(x)
+       = \frac{x(1-x)}{n}.
+  \]
+  Les deux premières expriment $\Bn(1)=1$ et $\Bn(\mathrm{id})=\mathrm{id}$.
+
+  \medskip
+  \textit{Étape 2 — Continuité uniforme (Heine).}
+  $f$ étant continue sur le compact $[0,1]$, elle y est bornée, disons
+  $|f|\leq M$, et \emph{uniformément continue} : pour $\varepsilon>0$ donné,
+  il existe $\delta>0$ tel que
+  \[
+    |u-v|\leq\delta \;\Longrightarrow\; |f(u)-f(v)|\leq\varepsilon.
+  \]
+
+  \medskip
+  \textit{Étape 3 — Découpage selon $|i/n-x|$.}
+  Fixons $x\in[0,1]$. En utilisant $\sum_i\Bin(x)=1$ :
+  \[
+    \bigl|\Bn(f)(x)-f(x)\bigr|
+    \;\leq\; \sum_{i=0}^{n}\left|f\!\left(\tfrac{i}{n}\right)-f(x)\right|\Bin(x).
+  \]
+  On scinde la somme selon que $\bigl|\tfrac{i}{n}-x\bigr|\leq\delta$ ($A$)
+  ou $>\delta$ ($B$). Sur $A$, l'uniforme continuité donne
+  $\sum_{A}\varepsilon\,\Bin(x)\leq\varepsilon$. Sur $B$, on majore par
+  $2M$ et l'on utilise $1 \leq \tfrac{1}{\delta^2}{\left(\tfrac{i}{n}-x\right)}^2$ :
+  \[
+    \sum_{B}2M\,\Bin(x)
+    \;\leq\; \frac{2M}{\delta^2}\sum_{i=0}^{n}
+             {\left(\tfrac{i}{n}-x\right)}^2\Bin(x)
+    \;=\; \frac{2M}{\delta^2}\cdot\frac{x(1-x)}{n}.
+  \]
+
+  \medskip
+  \textit{Étape 4 — Majoration finale uniforme.}
+  Comme $x(1-x)\leq\tfrac14$ sur $[0,1]$, on obtient, \emph{indépendamment
+  de $x$} :
+  \[
+    \bigl\|\Bn(f)-f\bigr\|_\infty
+    \;\leq\; \varepsilon + \frac{M}{2\,\delta^2\,n}.
+  \]
+  Pour $n\geq M/(2\delta^2\varepsilon)$, le majorant est $\leq 2\varepsilon$.
+  Comme $\varepsilon>0$ est arbitraire, $\|\Bn(f)-f\|_\infty\to 0$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Courbes de Bézier.}\enspace\index{courbes de Bézier}
+  En conception assistée par ordinateur (CAO), la courbe de Bézier de points
+  de contrôle $P_0,\dots,P_n\in\mathbb{R}^2$ est
+  \[
+    \gamma(t) = \sum_{i=0}^{n} P_i\,B_{i,n}(t),\qquad t\in[0,1].
+  \]
+  La partition de l'unité et la positivité des $B_{i,n}$ assurent que
+  $\gamma(t)$ reste dans l'enveloppe convexe des $P_i$.
+
+  \smallskip\noindent
+  \textbf{2. Image d'une fonction simple.}
+  Pour $f(x)=x^2$, un calcul direct (ou les trois moments) donne
+  \[
+    \Bn(f)(x) = \frac{n-1}{n}\,x^2 + \frac{1}{n}\,x
+             = x^2 + \frac{x(1-x)}{n}.
+  \]
+  On lit l'erreur $\Bn(f)-f = x(1-x)/n \to 0$ uniformément en $1/n$.
+
+  \smallskip\noindent
+  \textbf{3. Lien avec la loi binomiale.}\enspace%
+  $\Bn(f)(x)=\mathbb{E}\!\left[f(S_n/n)\right]$ avec $S_n\sim\mathcal{B}(n,x)$ ;
+  les poids $\Bin(x)$ sont exactement les probabilités $\mathbb{P}(S_n=i)$.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Convergence lente.}\enspace
+  Pour $f$ régulière, $\Bn(f)-f = O(1/n)$ seulement (cf. $f(x)=x^2$ ci-dessus) :
+  Bernstein n'est \emph{pas} fait pour l'interpolation rapide. Les nœuds de
+  Tchebychev offrent une convergence bien plus véloce pour les fonctions
+  lisses.
+
+  \smallskip\noindent
+  \textbf{Ce n'est pas de l'interpolation.}\enspace
+  En général $\Bn(f)$ ne passe \emph{pas} par les points $(i/n,\,f(i/n))$,
+  sauf aux extrémités $x=0$ et $x=1$. C'est de l'\emph{approximation},
+  non de l'interpolation : $\Bn(f)$ « lisse » $f$ au lieu de l'épouser.
+
+  \smallskip\noindent
+  \textbf{Ne pas confondre avec Lagrange.}\enspace
+  Le polynôme d'interpolation de Lagrange passe par tous les nœuds mais peut
+  \emph{diverger} (phénomène de Runge) ; $\Bn(f)$ converge toujours
+  uniformément, au prix d'une vitesse modeste.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item \textbf{Les trois moments.} Établir
+          $\sum_i \Bin(x)=1$, $\sum_i \tfrac{i}{n}\Bin(x)=x$ et
+          $\sum_i {\left(\tfrac{i}{n}-x\right)}^2\Bin(x)=\tfrac{x(1-x)}{n}$
+          en dérivant ${(x+y)}^n$ par rapport à $x$.
+
+    \item \textbf{Image d'un polynôme.} Montrer que si $f$ est un polynôme de
+          degré $d$, alors $\Bn(f)$ est un polynôme de degré $\leq d$, et que
+          $\Bn(f)\to f$ converge en réalité en $O(1/n)$.
+
+    \item \textbf{Reproduction des affines.} Déduire des moments que
+          $\Bn(ax+b)=ax+b$ pour tous $a,b\in\mathbb{R}$.
+
+    \item \textbf{Dérivée.} Établir la formule
+          \[
+            \Bn'(f)(x) = n\sum_{i=0}^{n-1}
+              \left[f\!\left(\tfrac{i+1}{n}\right)-f\!\left(\tfrac{i}{n}\right)\right]
+              B_{i,n-1}(x),
+          \]
+          et en déduire que $\Bn(f)$ est croissante dès que $f$ l'est.
+
+    \item \textbf{Module de continuité.} Avec $\omega_f(\delta)
+          =\sup_{|u-v|\leq\delta}|f(u)-f(v)|$, montrer
+          $\|\Bn(f)-f\|_\infty \leq \tfrac{3}{2}\,\omega_f\!\bigl(1/\sqrt{n}\bigr)$.
+
+    \item \textbf{Cas lipschitzien.} Si $f$ est $k$-lipschitzienne, en déduire
+          $\|\Bn(f)-f\|_\infty \leq \tfrac{k}{2\sqrt{n}}$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{S.\ Bernstein (1912)}

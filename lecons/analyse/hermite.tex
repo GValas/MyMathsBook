@@ -1,0 +1,309 @@
+%==============================================================
+%  lecons/analyse/hermite.tex — Les polynômes de Hermite
+%==============================================================
+
+\lecontitle{Les polynômes de Hermite}{Analyse réelle — Polynômes orthogonaux et approximation}
+
+%=== NOTATION LOCALE =========================================
+\newcommand{\Hn}{H_n}
+\newcommand{\He}{\mathrm{He}}
+\newcommand{\Hen}{\mathrm{He}_n}
+\newcommand{\psH}[2]{\langle #1,\,#2\rangle}
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace\index{polynômes de Hermite}
+  Sur l'espace $\mathbb{R}[X]$, muni du produit scalaire à poids
+  $w(x)=e^{-x^2}$ sur $\mathbb{R}$,
+  \[
+    \psH{f}{g} \;=\; \int_{-\infty}^{+\infty} f(x)\,g(x)\,e^{-x^2}\,\mathrm{d}x,
+  \]
+  on appelle \emph{$n$-ième polynôme de Hermite} (convention dite des
+  \emph{physiciens}) le polynôme $H_n$ obtenu en orthogonalisant
+  (procédé de Gram--Schmidt) la base canonique $(1,X,X^2,\ldots)$,
+  normalisé par un coefficient dominant égal à $2^n$. De façon
+  équivalente, $H_n$ est donné par la
+  \emph{formule de Rodrigues}\index{formule de Rodrigues}~:
+  \[
+    H_n(x) \;=\; {(-1)}^n\,e^{x^2}\,
+    \frac{\mathrm{d}^n}{\mathrm{d}x^n}\!\Bigl[e^{-x^2}\Bigr].
+  \]
+  La convention dite des \emph{probabilistes} fournit les polynômes
+  $\Hen$, associés au poids gaussien $e^{-x^2/2}$~:
+  \[
+    \Hen(x) \;=\; {(-1)}^n\,e^{x^2/2}\,
+    \frac{\mathrm{d}^n}{\mathrm{d}x^n}\!\Bigl[e^{-x^2/2}\Bigr],
+    \qquad \Hen(x) = 2^{-n/2}\,H_n\!\bigl(x/\sqrt{2}\,\bigr).
+  \]
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}\enspace%
+  \index{polynômes orthogonaux}
+  La famille ${(H_n)}_{n\geq 0}$ vérifie~:
+  \begin{itemize}
+    \item \textit{Orthogonalité} sur $\mathbb{R}$ pour le poids
+    $w(x)=e^{-x^2}$~:
+    \[
+      \psH{H_m}{H_n} = \int_{-\infty}^{+\infty} H_m(x)\,H_n(x)\,e^{-x^2}\,\mathrm{d}x
+      = \begin{cases}
+          0 & \text{si } m\neq n,\\[2pt]
+          2^n\,n!\,\sqrt{\pi} & \text{si } m=n.
+        \end{cases}
+    \]
+    \item $\deg H_n = n$, parité $H_n(-x)={(-1)}^n H_n(x)$, et
+          coefficient dominant $2^n$.
+    \item \textit{Récurrence à trois termes}~:
+    \[
+      H_{n+1}(x) = 2x\,H_n(x) - 2n\,H_{n-1}(x),
+      \quad H_0=1,\ H_1=2X.
+    \]
+    \item \textit{Équation différentielle de Hermite}~:
+    \[
+      y'' - 2x\,y' + 2n\,y = 0,
+    \]
+    dont $H_n$ est solution.
+    \item \textit{Fonction génératrice}\index{fonction génératrice}~:
+    \[
+      \exp\!\bigl(2xt-t^2\bigr) \;=\; \sum_{n=0}^{+\infty} H_n(x)\,\frac{t^n}{n!},
+      \qquad (x,t)\in\mathbb{R}^2.
+    \]
+    \item $H_n$ possède $n$ racines simples réelles (nœuds de la
+          \emph{quadrature de Gauss--Hermite}\index{quadrature de Gauss-Hermite}).
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Les polynômes de Hermite forment une \emph{base orthogonale} de l'espace
+$L^2(\mathbb{R},e^{-x^2}\,\mathrm{d}x)$ : projeter une fonction sur les
+$H_k$ revient à chercher sa meilleure approximation au sens quadratique
+\emph{pondéré} par la gaussienne, là où Legendre pondère uniformément un
+segment borné. Le poids $e^{-x^2}$ permet de travailler sur $\mathbb{R}$
+tout entier. Les fonctions $\psi_n(x)=H_n(x)\,e^{-x^2/2}$ — les
+\emph{fonctions de Hermite} — sont les états propres de
+l'\emph{oscillateur harmonique quantique}\index{oscillateur harmonique}
+et les vecteurs propres de la transformée de Fourier ; c'est pourquoi
+les $H_n$ sont omniprésents en physique mathématique et en probabilités
+(développement d'Edgeworth, chaos de Wiener).
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+L'orthogonalité s'obtient en intégrant par parties $n$ fois la formule de
+Rodrigues : le poids gaussien et toutes ses dérivées tendant vers $0$ à
+l'infini, les termes de bord s'annulent. Poussée jusqu'au bout, la même
+technique donne la norme. La récurrence à trois termes découle de la
+fonction génératrice (ou de l'orthogonalité générale). L'équation
+différentielle vient de la formule de Rodrigues, en dérivant l'identité
+caractéristique du poids.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  On pose $\varphi(x)=e^{-x^2}$, de sorte que
+  $H_n=(-1)^n\varphi^{-1}\varphi^{(n)}$, c'est-à-dire
+  $H_n(x)\,\varphi(x)=(-1)^n\varphi^{(n)}(x)$. Pour tout $k$, la dérivée
+  $\varphi^{(k)}$ est de la forme (polynôme)$\,\times\,e^{-x^2}$, donc
+  tend vers $0$ en $\pm\infty$.
+
+  \medskip
+  \textit{Étape 1 — Orthogonalité (Rodrigues + IPP).}
+  Soit $Q$ un polynôme de degré $m<n$. En intégrant $n$ fois par parties,
+  les crochets $\bigl[\varphi^{(k)}\,Q^{(n-1-k)}\bigr]_{-\infty}^{+\infty}$
+  sont nuls (chaque $\varphi^{(k)}$ s'annule à l'infini)~:
+  \[
+    \int_{-\infty}^{+\infty} H_n(x)\,Q(x)\,e^{-x^2}\,\mathrm{d}x
+    = {(-1)}^n\int_{-\infty}^{+\infty} \varphi^{(n)}(x)\,Q(x)\,\mathrm{d}x
+    = \int_{-\infty}^{+\infty} \varphi(x)\,Q^{(n)}(x)\,\mathrm{d}x = 0,
+  \]
+  puisque $Q^{(n)}\equiv 0$ ($\deg Q<n$). Ainsi $\psH{H_n}{Q}=0$ pour
+  tout $Q$ de degré $<n$ ; en particulier $\psH{H_m}{H_n}=0$ si $m\neq n$.
+
+  \medskip
+  \textit{Étape 2 — Norme.} On prend $Q=H_n$, dont le terme dominant est
+  $2^n x^n$, donc $H_n^{(n)}=2^n\,n!$ (constante). La même intégration par
+  parties donne
+  \[
+    {\|H_n\|}^2 = \int_{-\infty}^{+\infty} \varphi(x)\,H_n^{(n)}(x)\,\mathrm{d}x
+    = 2^n\,n!\int_{-\infty}^{+\infty} e^{-x^2}\,\mathrm{d}x
+    = 2^n\,n!\,\sqrt{\pi},
+  \]
+  car $\int_{-\infty}^{+\infty}e^{-x^2}\,\mathrm{d}x=\sqrt{\pi}$ (intégrale
+  de Gauss). D'où ${\|H_n\|}^2 = 2^n\,n!\,\sqrt{\pi}$.
+
+  \medskip
+  \textit{Étape 3 — Relation de récurrence à trois termes.}
+  Dérivons la fonction génératrice $g(x,t)=\exp(2xt-t^2)$ par rapport à
+  $t$~: $\partial_t g=(2x-2t)\,g$. En remplaçant $g=\sum_n H_n(x)t^n/n!$~:
+  \[
+    \sum_{n\geq 1}\frac{H_n}{(n-1)!}\,t^{n-1}
+    = (2x-2t)\sum_{n\geq 0}\frac{H_n}{n!}\,t^n.
+  \]
+  L'identification du coefficient de $t^n$ donne
+  $\frac{H_{n+1}}{n!}=\frac{2x\,H_n}{n!}-\frac{2H_{n-1}}{(n-1)!}$, soit
+  \[
+    H_{n+1}=2x\,H_n-2n\,H_{n-1}.
+  \]
+  De même $\partial_x g=2t\,g$ fournit $H_n'=2n\,H_{n-1}$.
+
+  \medskip
+  \textit{Étape 4 — Équation différentielle et racines.}
+  De $H_n'=2n\,H_{n-1}$ et de la récurrence $H_{n+1}=2xH_n-2nH_{n-1}$, on
+  tire $H_{n+1}=2xH_n-H_n'$. En dérivant cette dernière relation et en
+  utilisant $H_{n+1}'=2(n+1)H_n$, on obtient
+  $2(n+1)H_n=2H_n+2xH_n'-H_n''$, c'est-à-dire
+  \[
+    H_n''-2x\,H_n'+2n\,H_n=0.
+  \]
+
+  \smallskip
+  \emph{Racines.} $H_n$ est orthogonal à tout polynôme de degré $<n$, en
+  particulier à $1$, donc $\int_{\mathbb{R}} H_n\,e^{-x^2}\,\mathrm{d}x=0$
+  pour $n\geq 1$ : $H_n$ change de signe sur $\mathbb{R}$. Soient
+  $x_1,\ldots,x_r$ les points où $H_n$ change de signe ($r\geq 1$). Si
+  $r<n$, le polynôme $R=\prod_{i=1}^r(X-x_i)$ vérifie $\deg R<n$, donc
+  $\psH{H_n}{R}=0$ ; or $H_n R$ garde un signe constant et n'est pas
+  identiquement nul, d'où $\psH{H_n}{R}\neq 0$~: contradiction. Donc
+  $r=n$, et $H_n$ a $n$ racines simples réelles.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES, EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Premiers polynômes (physiciens).}
+  \[
+    H_0=1,\quad H_1=2x,\quad H_2=4x^2-2,\quad H_3=8x^3-12x,
+  \]
+  \[
+    H_4=16x^4-48x^2+12,\qquad H_5=32x^5-160x^3+120x.
+  \]
+  On vérifie la parité $H_n(-x)={(-1)}^n H_n(x)$ et le coefficient
+  dominant $2^n$ ; côté probabiliste,
+  $\He_2=x^2-1$, $\He_3=x^3-3x$.
+
+  \smallskip\noindent
+  \textbf{2. Fonction génératrice.}\enspace\index{fonction génératrice}
+  Pour tout $(x,t)\in\mathbb{R}^2$~:
+  \[
+    \exp\!\bigl(2xt-t^2\bigr) \;=\; \sum_{n=0}^{+\infty} H_n(x)\,\frac{t^n}{n!}.
+  \]
+  Le développement de $e^{2xt}e^{-t^2}$ en puissances de $t$ redonne
+  directement les $H_n$ et, par dérivation en $t$, la récurrence à trois
+  termes.
+
+  \smallskip\noindent
+  \textbf{3. Quadrature de Gauss--Hermite.}\enspace%
+  \index{quadrature de Gauss-Hermite}
+  Si $x_1,\ldots,x_n$ sont les racines de $H_n$ et
+  $\lambda_i=\dfrac{2^{n-1}\,n!\,\sqrt{\pi}}{n^2\,{[H_{n-1}(x_i)]}^2}$ les
+  poids associés, alors
+  \[
+    \int_{-\infty}^{+\infty} f(x)\,e^{-x^2}\,\mathrm{d}x
+    \;=\; \sum_{i=1}^{n}\lambda_i\,f(x_i)
+  \]
+  est \emph{exacte} pour tout polynôme $f$ de degré $\leq 2n-1$ : c'est le
+  degré d'exactitude maximal atteignable avec $n$ nœuds, idéal pour les
+  intégrales gaussiennes (espérances de lois normales).
+
+  \smallskip\noindent
+  \textbf{4. Oscillateur et transformée de Fourier.}\enspace%
+  \index{oscillateur harmonique}
+  Les fonctions de Hermite $\psi_n(x)=H_n(x)\,e^{-x^2/2}$ vérifient
+  $-\psi_n''+x^2\psi_n=(2n+1)\psi_n$ (oscillateur harmonique) et sont
+  fonctions propres de la transformée de Fourier~:
+  $\widehat{\psi_n}={(-i)}^n\psi_n$ (à la normalisation près). Elles
+  forment une base hilbertienne orthogonale de $L^2(\mathbb{R})$.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{L'orthogonalité dépend du couple (intervalle, poids).}\enspace
+  $(H_n)$ est orthogonale pour $w(x)=e^{-x^2}$ sur $\mathbb{R}$. En
+  changeant le poids ou le domaine, on obtient d'\emph{autres} familles de
+  polynômes orthogonaux~:
+  \[
+    \begin{array}{lll}
+      \text{Legendre}\ (P_n):    & 1                & \text{sur } [-1,1],\\
+      \text{Tchebychev}\ (T_n):  & {(1-x^2)}^{-1/2} & \text{sur } [-1,1],\\
+      \text{Laguerre}\ (L_n):    & e^{-x}           & \text{sur } [0,+\infty[,\\
+      \text{Hermite}\ (H_n):     & e^{-x^2}         & \text{sur } \mathbb{R}.
+    \end{array}
+  \]
+  Sur $[-1,1]$ avec $w\equiv 1$, on a $\int_{-1}^1 H_m H_n\neq 0$ en
+  général : les $H_n$ ne sont pas orthogonaux pour ce poids.
+
+  \smallskip\noindent
+  \textbf{Deux conventions à ne pas confondre.}\enspace
+  Physiciens : $H_n$, poids $e^{-x^2}$, coefficient dominant $2^n$.
+  Probabilistes : $\Hen$, poids $e^{-x^2/2}$, coefficient dominant $1$.
+  Le lien est $\Hen(x)=2^{-n/2}H_n(x/\sqrt{2})$. Confondre les deux fausse
+  d'un facteur $2^{n/2}$ tous les calculs de normes et de récurrence
+  (probabiliste~: $\He_{n+1}=x\,\Hen-n\,\He_{n-1}$).
+
+  \smallskip\noindent
+  \textbf{Les $H_n$ ne sont pas normés.}\enspace
+  ${\|H_n\|}^2=2^n\,n!\,\sqrt{\pi}\neq 1$ ; les polynômes orthonormés sont
+  $\widehat{H}_n=\bigl(2^n\,n!\,\sqrt{\pi}\bigr)^{-1/2}H_n$.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item À partir de la formule de Rodrigues, retrouver $H_2=4x^2-2$ et
+          $H_3=8x^3-12x$, puis vérifier
+          $\int_{-\infty}^{+\infty} H_2 H_3\,e^{-x^2}\,\mathrm{d}x=0$ par
+          parité.
+
+    \item En utilisant la récurrence $H_{n+1}=2xH_n-2nH_{n-1}$, calculer
+          $H_4$ et $H_5$, et vérifier que le coefficient dominant de $H_n$
+          vaut $2^n$.
+
+    \item \textit{(Norme.)} Calculer directement
+          $\int_{-\infty}^{+\infty} {H_1(x)}^2\,e^{-x^2}\,\mathrm{d}x$ et
+          $\int_{-\infty}^{+\infty} {H_2(x)}^2\,e^{-x^2}\,\mathrm{d}x$, puis
+          comparer à $2^n n!\sqrt{\pi}$.
+          \textit{Indication :} $\int_{\mathbb{R}}x^2 e^{-x^2}\,\mathrm{d}x=\tfrac{\sqrt{\pi}}{2}$,
+          $\int_{\mathbb{R}}x^4 e^{-x^2}\,\mathrm{d}x=\tfrac{3\sqrt{\pi}}{4}$.
+
+    \item \textit{(Fonction génératrice.)} En dérivant
+          $g(x,t)=\exp(2xt-t^2)$ par rapport à $x$, montrer que
+          $\partial_x g=2t\,g$, puis en déduire $H_n'=2n\,H_{n-1}$.
+          \textit{Indication :} identifier les coefficients de $t^n$.
+
+    \item \textit{(Équation différentielle.)} Vérifier que $H_3=8x^3-12x$
+          est solution de $y''-2xy'+6y=0$, et expliciter le terme $2n$ en
+          fonction de $n$.
+
+    \item \textit{(Gauss--Hermite.)} Avec $n=2$, les racines de
+          $H_2=4x^2-2$ sont $x_{1,2}=\pm\tfrac{1}{\sqrt{2}}$. Déterminer
+          les poids $\lambda_1,\lambda_2$ et vérifier que la formule
+          $\int_{\mathbb{R}} f(x)\,e^{-x^2}\,\mathrm{d}x
+          =\lambda_1 f(x_1)+\lambda_2 f(x_2)$ est exacte pour $f(x)=x^k$,
+          $k\leq 3$, mais pas pour $f(x)=x^4$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{Ch.\ Hermite (1864)}
