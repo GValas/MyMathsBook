@@ -64,21 +64,22 @@
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
-  Si $x = 0$, les deux membres sont nuls. Supposons $x \neq 0$.
+  Si $y = 0$, les deux membres sont nuls. Supposons $y \neq 0$.
   Pour tout $\lambda \in \mathbb{R}$, la définition positive donne :
   \[
     0 \leq \langle x - \lambda y,\, x - \lambda y\rangle
     = \langle x,x\rangle - 2\lambda\langle x,y\rangle + \lambda^2\langle y,y\rangle.
   \]
-  C'est un trinôme en $\lambda$ positif ou nul, donc son discriminant est $\leq 0$ :
+  C'est un trinôme en $\lambda$ de coefficient dominant $\langle y,y\rangle > 0$,
+  positif ou nul ; son discriminant est donc $\leq 0$ :
   \[
     4\langle x,y\rangle^2 - 4\langle x,x\rangle\langle y,y\rangle \leq 0,
   \]
   ce qui donne l'inégalité annoncée.
 
   \smallskip
-  \textit{Cas d'égalité.} Si $x = 0$, alors $x = 0\cdot y$ : $x$ et $y$ sont
-  colinéaires et les deux membres de l'inégalité sont nuls. Supposons $x \neq 0$.
+  \textit{Cas d'égalité.} Si $y = 0$, alors $x$ et $y$ sont colinéaires
+  ($y = 0\cdot x$) et les deux membres de l'inégalité sont nuls. Supposons $y \neq 0$.
   L'égalité dans Cauchy-Schwarz équivaut à la nullité du discriminant du trinôme
   ci-dessus, c'est-à-dire à l'existence d'une racine double $\lambda_0$ telle que
   $\langle x - \lambda_0 y,\, x - \lambda_0 y\rangle = 0$ ; par définie positivité,

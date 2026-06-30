@@ -39,8 +39,10 @@
 \begin{mdframed}[style=proofbar]
   $\Phi$ est linéaire et part d'un espace de dimension $n^2$ vers son dual,
   de même dimension : il suffit de vérifier l'injectivité. Si $\mathrm{tr}(AM)=0$
-  pour toute $M$, on choisit $M = E_{ji}$ (matrice élémentaire) et l'on obtient
-  $\mathrm{tr}(AE_{ji}) = A_{ij} = 0$ pour tous $i,j$, donc $A = 0$. \hfill$\blacksquare$
+  pour toute $M$, on choisit $M = E_{ji}$ (matrice élémentaire). Le produit
+  $A E_{ji}$ ne conserve que la $j$-ème colonne de $A$, reportée en $i$-ème
+  colonne, de sorte que $\mathrm{tr}(AE_{ji}) = A_{ij}$. Cette quantité étant
+  nulle pour tous $i,j$, on a $A = 0$. \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Question}
@@ -195,8 +197,11 @@ $g(\theta) = \mathrm{tr}\bigl(S\,R(\theta)\bigr)$.
 On peut éviter la SVD au profit d'un argument de symétrie. Sur le groupe
 compact connexe $\mathrm{SO}_n(\mathbb{R})$ ($n\geq 2$), la mesure de Haar
 $\mathrm{d}Q$ vérifie $\int_{\mathrm{SO}_n} Q\,\mathrm{d}Q = 0$ : en effet
-$M := \int Q\,\mathrm{d}Q$ satisfait $RM = M$ pour tout $R\in\mathrm{SO}_n$, et
-le seul vecteur fixé par toute rotation est nul ($n\geq 2$). Dès lors
+$M := \int Q\,\mathrm{d}Q$ satisfait, par invariance de la mesure de Haar par
+translation à gauche, $RM = \int RQ\,\mathrm{d}Q = \int Q\,\mathrm{d}Q = M$ pour
+tout $R\in\mathrm{SO}_n$ ; chaque colonne de $M$ est donc fixée par toutes les
+rotations, et le seul vecteur ainsi fixé est nul ($n\geq 2$ : une rotation dans
+un plan contenant un vecteur non nul le déplace). Dès lors
 \[
   \int_{\mathrm{SO}_n} \mathrm{tr}(AQ)\,\mathrm{d}Q = \mathrm{tr}\!\Bigl(A\!\int Q\,\mathrm{d}Q\Bigr) = 0.
 \]

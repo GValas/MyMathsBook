@@ -24,7 +24,7 @@
 \end{tcolorbox}
 
 \begin{significationintuitive}
-Une suite bornée vit dans un espace fini : elle revient infiniment souvent au
+Une suite bornée vit dans un domaine borné : elle revient infiniment souvent au
 voisinage d'au moins un point — sa \emph{valeur d'adhérence}\index{valeur d'adhérence}.
 On peut toujours en extraire un fil convergent. Ce résultat fonde la
 \textbf{compacité séquentielle}\index{compacité séquentielle} des intervalles
@@ -68,8 +68,10 @@ se resserrent vers un point $\ell$, limite de la sous-suite construite.
   $\varphi(k+1) > \varphi(k)$ tel que $u_{\varphi(k+1)} \in I_{k+1}$.
 
   \medskip
-  \textit{Convergence.} Les suites $(a_k)$ et $(b_k)$ sont adjacentes,
-  $b_k - a_k = 2M/2^k \to 0$, donc elles convergent vers le même $\ell$.
+  \textit{Convergence.} Les suites $(a_k)$ et $(b_k)$ sont adjacentes :
+  $(a_k)$ croît et $(b_k)$ décroît (car $I_{k+1} \subset I_k$), tandis que
+  $b_k - a_k = 2M/2^k \to 0$ ; elles convergent donc vers une même limite
+  $\ell$.
   Par encadrement :
   \[
     a_k \;\leq\; u_{\varphi(k)} \;\leq\; b_k

@@ -15,11 +15,11 @@
 
 \begin{tcolorbox}[thmbox]
   \textbf{Définition.}\enspace\index{polynômes de Legendre}
-  Muni de l'espace $\mathbb{R}[X]$ du produit scalaire
+  On munit l'espace $\mathbb{R}[X]$ du produit scalaire
   \[
-    \psL{f}{g} \;=\; \int_{-1}^{1} f(x)\,g(x)\,\mathrm{d}x,
+    \psL{f}{g} \;=\; \int_{-1}^{1} f(x)\,g(x)\,\mathrm{d}x.
   \]
-  on appelle \emph{$n$-ième polynôme de Legendre} le polynôme $P_n$ obtenu en
+  On appelle \emph{$n$-ième polynôme de Legendre} le polynôme $P_n$ obtenu en
   orthogonalisant (procédé de Gram--Schmidt) la base canonique
   $(1,X,X^2,\ldots)$, normalisé par la condition $P_n(1)=1$.
   De façon équivalente, $P_n$ est donné par la
@@ -133,7 +133,8 @@ l'orthogonalité de $P_n$ à tout polynôme de degré $<n$.
   que les termes $k\in\{n-1,n,n+1\}$~:
   $x P_n=a_{n+1}P_{n+1}+a_n P_n+a_{n-1}P_{n-1}$. La comparaison des
   coefficients dominants donne $a_{n+1}=\frac{n+1}{2n+1}$ ; la parité impose
-  $a_n=0$ ; et $a_{n-1}=\frac{n}{2n+1}$ s'obtient via les normes. D'où
+  $a_n=0$ (l'intégrande $x\,{P_n}^2$ de $\psL{xP_n}{P_n}$ est impaire) ;
+  et $a_{n-1}=\frac{n}{2n+1}$ s'obtient via les normes. D'où
   \[
     (n+1)P_{n+1}=(2n+1)xP_n-nP_{n-1}.
   \]

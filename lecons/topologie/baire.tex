@@ -72,8 +72,10 @@ appartenant à toutes les boules, et donc à toutes les intersections.
   \medskip
   \textit{Construction.} Supposons $B_n$ construite. Comme $U_{n+1}$ est dense,
   $U_{n+1} \cap \mathring{B}_n$ est un ouvert non vide. On y choisit
-  $x_{n+1}$ et $r_{n+1} \leq \min(1/(n+1),\, r_n - d(x_n, x_{n+1}))$
-  de sorte que $B_{n+1} \subset U_{n+1} \cap \mathring{B}_n$.
+  $x_{n+1}$ ; cet ouvert étant un voisinage de $x_{n+1}$, il existe un rayon
+  $r_{n+1} > 0$, que l'on peut imposer $\leq 1/(n+1)$, tel que la boule
+  fermée $B_{n+1} = \overline{B}(x_{n+1}, r_{n+1})$ vérifie
+  $B_{n+1} \subset U_{n+1} \cap \mathring{B}_n$.
 
   \medskip
   \textit{Suite de Cauchy.} Pour $p, q \geq n$, les centres $x_p$ et $x_q$

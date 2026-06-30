@@ -426,6 +426,48 @@
   description={Fonction $\zeta(s)=\sum_{n\geq 1}n^{-s}$, convergente pour $s>1$, de classe $\mathcal{C}^\infty$~; admet le produit eulérien $\prod_p (1-p^{-s})^{-1}$ et les valeurs $\zeta(2)=\frac{\pi^2}{6}$, $\zeta(4)=\frac{\pi^4}{90}$}
 }
 
+% --- Séries divergentes ---
+
+\newglossaryentry{serie-divergente}{
+  name={série divergente},
+  description={Série $\sum a_n$ dont la suite des sommes partielles $S_n=\sum_{k\leq n}a_k$ n'a pas de limite finie~; divergence \emph{grossière} si $a_n\not\to 0$}
+}
+
+\newglossaryentry{sommation-cesaro}{
+  name={sommation de Cesàro},
+  description={Procédé attribuant à $\sum a_n$ la limite $\sigma$ des moyennes $\sigma_n=\frac{S_0+\cdots+S_n}{n+1}$~; régulier (prolonge la somme usuelle) et donne $1-1+1-\cdots=\frac12$}
+}
+
+\newglossaryentry{sommation-abel}{
+  name={sommation d'Abel},
+  description={Procédé attribuant à $\sum a_n$ la limite $\lim_{x\to1^-}\sum a_n x^n$~; régulier, strictement plus puissant que Cesàro, donne $1-2+3-\cdots=\frac14$}
+}
+
+\newglossaryentry{serie-asymptotique}{
+  name={série asymptotique},
+  description={Série $\sum a_n x^{-n}$ telle que $f(x)-\sum_{n\leq N}a_n x^{-n}=\mathcal{O}(x^{-N-1})$ pour tout $N$ (Poincaré)~; peut diverger pour tout $x$ tout en approximant $f$ avec précision par troncature optimale}
+}
+
+\newglossaryentry{developpement-asymptotique}{
+  name={développement asymptotique},
+  description={Expression d'une fonction $f(x)$ en série de puissances négatives $\sum a_n x^{-n}$, valide au voisinage de $+\infty$, sans exiger la convergence de la série~; généralise et s'oppose au développement de Taylor usuel qui fixe $x$ et fait $N\to\infty$, alors qu'ici on fixe $N$ et fait $x\to+\infty$}
+}
+
+\newglossaryentry{prolongement-analytique}{
+  name={prolongement analytique},
+  description={Extension unique d'une fonction holomorphe définie sur une région à un domaine plus large, en préservant l'analycité~; pour $\zeta(s)=\sum_{n\geq 1}n^{-s}$ initialement défini pour $\operatorname{Re}(s)>1$, le prolongement analytique la prolonge à $\mathbb{C}\setminus\{1\}$ et permet de définir $\zeta(-1)=-\frac{1}{12}$}
+}
+
+\newglossaryentry{regularisation-zeta}{
+  name={régularisation zêta},
+  description={Procédé attribuant à $\sum n^{a}$ la valeur $\zeta(-a)$ via le prolongement analytique de $\zeta$~; donne $1+2+3+\cdots\to\zeta(-1)=-\frac{1}{12}$, valeur mesurée par l'effet Casimir}
+}
+
+\newglossaryentry{effet-casimir}{
+  name={effet Casimir},
+  description={Force attractive entre deux plaques conductrices dans le vide, due aux fluctuations du champ électromagnétique~; l'énergie régularisée du vide fait intervenir $\zeta(-1)=-\frac{1}{12}$, avec $F/A=-\frac{\pi^2\hbar c}{240\,a^4}$}
+}
+
 % --- Combinatoire ---
 
 \newglossaryentry{nombre-bell}{

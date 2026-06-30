@@ -31,7 +31,8 @@ Il existe $c \in\, ]a,b[$ tel que
 \[
   \bigl[g(b)-g(a)\bigr]\,f'(c) = \bigl[f(b)-f(a)\bigr]\,g'(c).
 \]
-En particulier, si $g'$ ne s'annule pas : $\dfrac{f(b)-f(a)}{g(b)-g(a)} = \dfrac{f'(c)}{g'(c)}$.
+En particulier, si $g'$ ne s'annule pas sur $]a,b[$, alors $g(b)\neq g(a)$ (par Rolle) et
+$\dfrac{f(b)-f(a)}{g(b)-g(a)} = \dfrac{f'(c)}{g'(c)}$.
 
 \decsep{}
 
@@ -94,6 +95,16 @@ puis on applique Rolle.
 
 \begin{mdframed}[style=proofbar]
   Pour tous $x,y \in [a,b]$, le TAF donne $f(y)-f(x) = f'(c)(y-x) = 0$. \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Preuve du corollaire 2 (monotonie)}
+
+\begin{mdframed}[style=proofbar]
+  Soient $x,y \in [a,b]$ avec $x<y$. Le TAF appliqué sur $[x,y]$ fournit
+  $c \in\, ]x,y[$ tel que $f(y)-f(x) = f'(c)(y-x)$. Comme $y-x>0$, si $f'\geq 0$
+  ce produit est positif ou nul, donc $f(y)\geq f(x)$ : $f$ est croissante ;
+  si $f'>0$, il est strictement positif, donc $f(y)>f(x)$ : $f$ est strictement
+  croissante. \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Preuve de l'inégalité des accroissements finis}

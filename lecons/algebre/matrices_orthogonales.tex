@@ -38,6 +38,17 @@
   \Rightarrow \det(Q)=\pm 1$. \hfill$\blacksquare$
 \end{mdframed}
 
+\begin{significationintuitive}
+  La relation $Q^TQ=I_n$ est purement algébrique, mais sa lecture est géométrique :
+  ses colonnes sont les images $Qe_1,\ldots,Qe_n$ de la base canonique, et la
+  condition exprime exactement que cette famille reste orthonormale. Autrement dit,
+  une matrice orthogonale est la matrice d'une application linéaire qui transforme un
+  repère orthonormé en un autre repère orthonormé : elle conserve les longueurs et
+  les angles. Les deux signes possibles du déterminant distinguent les transformations
+  qui préservent l'orientation ($\det=+1$, rotations) de celles qui la renversent
+  ($\det=-1$).
+\end{significationintuitive}
+
 \decsep{}
 
 %=============================================================
@@ -128,6 +139,20 @@
   \textit{Tout $Q\in\mathrm{O}(3)\setminus\mathrm{SO}(3)$ est le produit d'une
   rotation et d'une réflexion par rapport à un plan.}
 \end{tcolorbox}
+
+\begin{ideepreuve}
+  Le point clé est l'existence de l'axe, c'est-à-dire d'un vecteur fixe.
+  Le polynôme caractéristique de $Q\in\mathrm{SO}(3)$ est de degré $3$, donc impair :
+  il possède au moins une racine réelle, qui est une valeur propre réelle d'une
+  matrice orthogonale, donc égale à $\pm 1$. Comme le produit des trois valeurs
+  propres vaut $\det Q=1$ et que les éventuelles valeurs propres non réelles forment
+  une paire conjuguée $e^{i\theta},e^{-i\theta}$ de produit $1$, la valeur propre
+  réelle vaut nécessairement $+1$. Il existe donc un vecteur unitaire $u$ avec $Qu=u$,
+  qui dirige l'axe $\Delta$. Le plan $\Delta^\perp$ est stable par $Q$ (car $Q$
+  préserve l'orthogonalité), et $Q$ y induit un élément de $\mathrm{SO}(2)$, c'est-à-dire
+  une rotation $R_\theta$. En complétant $u$ par une base orthonormale de $\Delta^\perp$
+  on obtient la forme réduite annoncée.
+\end{ideepreuve}
 
 \decsep{}
 

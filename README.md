@@ -16,7 +16,7 @@ MyMathsBook/
 ├── frontmatter/
 │   ├── pagedeGarde.tex       ← Page de garde
 │   └── preface.tex           ← Avant-propos
-├── lecons/                   ← 42 leçons réparties en 6 parties
+├── lecons/                   ← 58 leçons réparties en 6 parties
 │   ├── analyse/              ← Analyse réelle (suites, continuité, intégration…)
 │   ├── algebre/              ← Structures algébriques & algèbre linéaire
 │   ├── ensembles/            ← Construction des nombres (ℕ, ℤ, ℚ, ℝ, ℂ, ℍ)
@@ -29,7 +29,7 @@ MyMathsBook/
 ```
 
 Le livre est organisé en six parties :
-1. **Analyse réelle** — Suites, continuité, dérivabilité, intégration, fonctions élémentaires, valeurs remarquables du cosinus, fonctions spéciales (Gamma, zêta de Riemann, Bernoulli), polynômes orthogonaux (Tchebychev, Legendre, Jacobi, Hermite, Laguerre), interpolation et approximation polynomiale (Lagrange, Newton, Bernstein), géométrie en grande dimension.
+1. **Analyse réelle** — Suites, continuité, dérivabilité, intégration, séries numériques (séries divergentes, sommations de Cesàro et d'Abel, séries asymptotiques de Poincaré, régularisation zêta et effet Casimir), fonctions élémentaires, valeurs remarquables du cosinus, fonctions spéciales (Gamma, zêta de Riemann, Bernoulli), polynômes orthogonaux (Tchebychev, Legendre, Jacobi, Hermite, Laguerre), interpolation et approximation polynomiale (Lagrange, Newton, Bernstein), géométrie en grande dimension.
 2. **Structures algébriques** — Relations et ensembles quotients, construction des nombres (ℕ, ℤ, ℚ, ℝ, ℂ, ℍ), groupes, anneaux et corps, corps des fractions, nombres complexes.
 3. **Arithmétique** — Nombres premiers, irrationalité, polynômes cyclotomiques.
 4. **Combinatoire** — Partitions d'ensembles.

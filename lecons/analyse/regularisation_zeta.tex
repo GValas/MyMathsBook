@@ -1,0 +1,264 @@
+%==============================================================
+%  lecons/analyse/regularisation_zeta.tex — 1+2+3+… = -1/12 et effet Casimir
+%==============================================================
+
+\lecontitle{La somme $1+2+3+\cdots=-\tfrac{1}{12}$}{Analyse réelle — Régularisation zêta et effet Casimir}
+
+%=== NOTATION LOCALE =========================================
+% (aucune : \zeta, \hbar sont fournis par amsmath/amssymb)
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Le paradoxe.}\enspace\index{régularisation zêta}
+  La série $\sum_{n\geq 1} n = 1+2+3+\cdots$ \emph{diverge grossièrement}
+  ($n\not\to 0$, sommes partielles $S_N=\tfrac{N(N+1)}{2}\to+\infty$). Pourtant
+  l'égalité
+  \[
+    \boxed{\;1+2+3+4+\cdots \;\text{``}=\text{''}\; -\tfrac{1}{12}\;}
+  \]
+  apparaît en théorie des nombres (Ramanujan) et en physique (effet Casimir).
+  Elle n'est \emph{pas} une somme au sens usuel : c'est la \emph{valeur
+  régularisée} attachée à la série.
+
+  \medskip
+  \textbf{Définition (régularisation zêta).}\enspace\index{prolongement analytique}
+  À la série $\sum_{n\geq 1} n^{a}$ on associe la fonction $s\mapsto\zeta(s)$,
+  définie pour $\operatorname{Re}(s)>1$ par $\zeta(s)=\sum_{n\geq 1}n^{-s}$, puis
+  \emph{prolongée analytiquement} à $\mathbb{C}\setminus\{1\}$. La \emph{valeur
+  régularisée} de $\sum n^{a}$ est, par définition, $\zeta(-a)$. Ainsi
+  $1+2+3+\cdots$ correspond à $a=1$, c'est-à-dire $\zeta(-1)$.
+
+  \medskip
+  \textbf{Théorème (valeurs régularisées).}
+  \begin{itemize}
+    \item \textit{Équation fonctionnelle.} Pour tout $s\in\mathbb{C}\setminus\{1\}$,
+    \[
+      \zeta(s)=2^{s}\pi^{s-1}\sin\!\Bigl(\tfrac{\pi s}{2}\Bigr)\Gamma(1-s)\,\zeta(1-s).
+    \]
+    \item \textit{Valeurs aux entiers négatifs.}
+    \[
+      \zeta(0)=-\tfrac12,\qquad
+      \zeta(-1)=-\tfrac{1}{12},\qquad
+      \zeta(-2k)=0\ (k\geq 1),\qquad
+      \zeta(1-2k)=-\tfrac{B_{2k}}{2k},
+    \]
+    où $B_{2k}$ est le $2k$-ième nombre de Bernoulli.
+    \item \textit{Cohérence.} La même valeur $-\tfrac1{12}$ s'obtient par d'autres
+    procédés (sommation de Ramanujan, régularisation d'Abel via la fonction êta),
+    ce qui en fait la valeur « canonique » associée à $1+2+3+\cdots$.
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+La série $1+2+3+\cdots$ vit dans une famille à un paramètre, $s\mapsto\sum
+n^{-s}$, qui n'a de sens immédiat que pour $s>1$. Le prolongement analytique est
+l'unique façon cohérente d'étendre cette fonction ; il « se souvient » de toute
+la famille et attribue à $s=-1$ la valeur $-\tfrac1{12}$. Le nombre $-\tfrac1{12}$
+n'est donc pas le résultat d'une addition, mais l'empreinte que laisse la série
+divergente sur la fonction zêta — empreinte que la nature, via l'effet Casimir,
+rend mesurable.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+On admet le prolongement analytique de $\zeta$ et son équation fonctionnelle
+(établis par ailleurs). Le calcul de $\zeta(-1)$ en découle par évaluation
+directe à l'aide de $\zeta(2)=\pi^2/6$. On confirme ensuite la valeur par un
+chemin élémentaire : la fonction êta de Dirichlet $\eta(s)=(1-2^{1-s})\zeta(s)$,
+combinée à la régularisation d'Abel de $1-2+3-4+\cdots=\tfrac14$, redonne
+$\zeta(-1)=-\tfrac1{12}$.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Calcul de $\zeta(-1)$ par l'équation fonctionnelle.}
+  On admet l'équation fonctionnelle. En $s=-1$,
+  \[
+    \zeta(-1)=2^{-1}\,\pi^{-2}\,\sin\!\Bigl(-\tfrac{\pi}{2}\Bigr)\,
+      \Gamma(2)\,\zeta(2).
+  \]
+  Or $\sin(-\pi/2)=-1$, $\Gamma(2)=1!=1$ et $\zeta(2)=\pi^2/6$, donc
+  \[
+    \zeta(-1)=\frac{1}{2}\cdot\frac{1}{\pi^{2}}\cdot(-1)\cdot 1\cdot
+      \frac{\pi^{2}}{6}
+    =-\frac{1}{12}.
+  \]
+
+  \medskip
+  \textit{Étape 2 — Confirmation par la fonction êta.}
+  Pour $\operatorname{Re}(s)>1$, en séparant termes pairs et impairs,
+  \[
+    \eta(s)=\sum_{n\geq 1}\frac{(-1)^{n-1}}{n^{s}}
+    =\Bigl(1-2^{1-s}\Bigr)\,\zeta(s),
+  \]
+  identité qui se prolonge analytiquement à $\mathbb{C}$. En $s=-1$,
+  $1-2^{1-s}=1-2^{2}=-3$, d'où
+  \[
+    \eta(-1)=(-3)\,\zeta(-1),\qquad\text{soit}\qquad
+    \zeta(-1)=-\frac{\eta(-1)}{3}.
+  \]
+
+  \medskip
+  \textit{Étape 3 — Régularisation d'Abel de $\eta(-1)=1-2+3-4+\cdots$.}
+  Considérons, pour $x\in[0,1[$, la série entière
+  \[
+    \sum_{n\geq 1}(-1)^{n-1}n\,x^{n-1}
+    =\frac{\mathrm{d}}{\mathrm{d}x}\sum_{n\geq 1}(-1)^{n-1}x^{n}
+    =\frac{\mathrm{d}}{\mathrm{d}x}\!\left(\frac{x}{1+x}\right)
+    =\frac{1}{(1+x)^{2}}.
+  \]
+  Sa limite radiale en $x\to 1^{-}$ vaut $\tfrac14$ : la valeur régularisée
+  (au sens d'Abel) de $1-2+3-4+\cdots$ est donc $\tfrac14$, c'est-à-dire
+  $\eta(-1)=\tfrac14$.
+
+  \medskip
+  \textit{Étape 4 — Conclusion.}
+  En reportant dans l'étape~2,
+  \[
+    \zeta(-1)=-\frac{\eta(-1)}{3}=-\frac{1/4}{3}=-\frac{1}{12}.
+  \]
+  Les deux chemins concordent : la valeur régularisée de $1+2+3+\cdots$ est
+  $-\tfrac1{12}$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\begin{significationintuitive}
+L'étape~1 est rigoureuse (modulo l'équation fonctionnelle admise) ; les
+étapes~2--4 montrent qu'un procédé tout autre — Abel — tombe sur la même valeur.
+C'est cette \emph{robustesse} qui distingue $-\tfrac1{12}$ d'un simple artefact :
+plusieurs régularisations indépendantes s'accordent.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. L'effet Casimir.}\enspace\index{effet Casimir}%
+  Deux plaques conductrices parallèles, distantes de $a$ dans le vide, sont
+  \emph{attirées} l'une vers l'autre par les fluctuations quantiques du champ
+  électromagnétique (Casimir, 1948). Chaque mode du champ porte une énergie de
+  point zéro $\tfrac12\hbar\omega$ ; la somme de ces énergies diverge, mais sa
+  \emph{régularisation} est finie. Dans le modèle unidimensionnel, les modes ont
+  pour pulsations $\omega_n=\tfrac{\pi c}{a}n$, et l'énergie du vide entre les
+  plaques s'écrit formellement
+  \[
+    E(a)=\frac{1}{2}\sum_{n\geq 1}\hbar\omega_n
+        =\frac{\pi\hbar c}{2a}\sum_{n\geq 1} n
+        \;\xrightarrow{\text{régularisation}}\;
+        \frac{\pi\hbar c}{2a}\,\zeta(-1)=-\frac{\pi\hbar c}{24\,a}.
+  \]
+  La force $-\,\mathrm{d}E/\mathrm{d}a<0$ est attractive. C'est ici que
+  $\zeta(-1)=-\tfrac1{12}$ devient physiquement mesurable.
+
+  \smallskip\noindent
+  \textbf{2. Le résultat tridimensionnel.}\enspace%
+  Le calcul complet pour le champ électromagnétique entre deux plaques donne une
+  énergie et une force par unité de surface
+  \[
+    \frac{E}{A}=-\frac{\pi^{2}\hbar c}{720\,a^{3}},\qquad
+    \frac{F}{A}=-\frac{\pi^{2}\hbar c}{240\,a^{4}},
+  \]
+  confirmées expérimentalement (Lamoreaux, 1997, à quelques \% près).
+
+  \smallskip\noindent
+  \textbf{3. Sommation de Ramanujan.}\enspace\index{sommation de Ramanujan}%
+  Dans sa lettre à Hardy (1913), Ramanujan attribue lui aussi $-\tfrac1{12}$ à
+  $1+2+3+\cdots$, par un procédé fondé sur la formule d'Euler--Maclaurin : la
+  « somme de Ramanujan » d'une série est le terme constant de son développement,
+  et coïncide ici avec $\zeta(-1)$.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Ce n'est pas une somme.}\enspace%
+  Écrire $1+2+3+\cdots=-\tfrac1{12}$ avec un signe d'égalité ordinaire est
+  abusif : la série diverge, $S_N\to+\infty$. Le membre de droite est une valeur
+  \emph{régularisée}, pas la limite des sommes partielles. Un nombre positif de
+  termes positifs ne peut donner un négatif.
+
+  \smallskip\noindent
+  \textbf{Manipulations illégales.}\enspace%
+  La « preuve » populaire qui décale et soustrait des séries
+  ($1-1+1-\cdots=\tfrac12$, puis $1-2+3-\cdots=\tfrac14$, puis soustraction)
+  enchaîne des opérations interdites sur des séries divergentes : réarrangement,
+  addition terme à terme. Elle \emph{suggère} le bon résultat mais ne le
+  \emph{démontre} pas ; seule la régularisation (zêta, Abel, Ramanujan) lui donne
+  un sens.
+
+  \smallskip\noindent
+  \textbf{Dépendance au procédé.}\enspace%
+  Toutes les séries divergentes ne reçoivent pas une valeur, et la valeur peut
+  dépendre du procédé pour des séries plus sauvages. Si $1+2+3+\cdots$ donne
+  $-\tfrac1{12}$ par \emph{plusieurs} méthodes, c'est une propriété remarquable,
+  pas une règle générale.
+
+  \smallskip\noindent
+  \textbf{La constante de coupure disparaît.}\enspace%
+  En physique, l'énergie brute $\sum\tfrac12\hbar\omega_n$ est infinie ; seule la
+  \emph{différence} avec le vide sans plaques est observable. La régularisation
+  retire proprement la partie divergente (indépendante de $a$), et c'est le reste
+  fini, en $\zeta(-1)$, qui porte la physique.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item À partir de l'équation fonctionnelle, calculer $\zeta(-3)=\tfrac{1}{120}$
+          (\textit{indication :} $\zeta(4)=\pi^4/90$). Retrouver ensuite
+          $\zeta(0)=-\tfrac12$ : l'équation fonctionnelle y est \emph{indéterminée}
+          (forme $0\cdot\infty$, car $\sin(\tfrac{\pi s}{2})\to 0$ tandis que
+          $\zeta(1-s)\to\infty$ par le pôle en $1$), si bien qu'il faut lever
+          l'indétermination par passage à la limite $s\to 0$ ; on pourra aussi,
+          plus simplement, utiliser $\eta(0)=(1-2^{1-s})\zeta(s)\big|_{s=0}=-\zeta(0)$
+          jointe à la valeur d'Abel $\eta(0)=1-1+1-\cdots=\tfrac12$.
+
+    \item Démontrer $\eta(s)=(1-2^{1-s})\zeta(s)$ pour $\operatorname{Re}(s)>1$ en
+          regroupant les termes pairs, et vérifier $\eta(-1)=-3\,\zeta(-1)$.
+
+    \item Établir $\sum_{n\geq1}(-1)^{n-1}n\,x^{n-1}=(1+x)^{-2}$ pour $|x|<1$ et en
+          déduire la valeur d'Abel $1-2+3-4+\cdots=\tfrac14$.
+
+    \item Montrer que la « preuve » par décalage de séries viole la stabilité par
+          réarrangement, en exhibant un réarrangement de $1-1+1-\cdots$ de moyenne
+          de Cesàro différente de $\tfrac12$.
+
+    \item (Modèle de Casimir 1D) Avec $\omega_n=\tfrac{\pi c}{a}n$, retrouver
+          $E(a)=-\tfrac{\pi\hbar c}{24\,a}$ par régularisation zêta, puis calculer
+          la force $F=-\,\mathrm{d}E/\mathrm{d}a$ et vérifier qu'elle est
+          attractive.
+
+    \item (Coupure exponentielle) Pour $\varepsilon>0$, calculer
+          $\sum_{n\geq1} n\,e^{-\varepsilon n}$ et montrer que, lorsque
+          $\varepsilon\to 0^{+}$,
+          \[
+            \sum_{n\geq1} n\,e^{-\varepsilon n}=\frac{1}{\varepsilon^{2}}
+              -\frac{1}{12}+\mathcal{O}(\varepsilon^{2}).
+          \]
+          Interpréter $-\tfrac1{12}$ comme le terme \emph{fini} subsistant après
+          retrait de la divergence $1/\varepsilon^2$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{S.\ Ramanujan (lettre à G.\,H.\ Hardy, 1913) ; H.\,B.\,G.\ Casimir (1948)}

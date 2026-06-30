@@ -112,7 +112,8 @@ Cauchy converge. Il existe deux méthodes standards.
   Si $(a_n)\sim(a_n')$ et $(b_n)\sim(b_n')$, alors
   $(a_n+b_n)-(a_n'+b_n') = (a_n-a_n')+(b_n-b_n') \to 0$ ($+$ bien fondé).
   Pour $\times$ : $(a_nb_n - a_n'b_n') = a_n(b_n-b_n') + b_n'(a_n-a_n') \to 0$
-  car $(a_n)$ est bornée et $(b_n-b_n'),(a_n-a_n')\to 0$ ($\times$ bien fondé).
+  car $(a_n)$ et $(b_n')$ sont bornées (étant de Cauchy) tandis que
+  $(b_n-b_n'),(a_n-a_n')\to 0$ ($\times$ bien fondé).
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -129,6 +130,9 @@ Cauchy converge. Il existe deux méthodes standards.
   Soit $[(a_n)] \neq [(0)]$, i.e.\ $(a_n) \not\to 0$.
   Alors il existe $\varepsilon > 0$ et $N \in \mathbb{N}$ tels que
   $|a_n| > \varepsilon$ pour tout $n \geq N$.
+  (En effet, $(a_n)\not\to 0$ fournit un $\varepsilon>0$ et une infinité d'indices
+  $m$ tels que $|a_m| > 2\varepsilon$ ; comme $(a_n)$ est de Cauchy, $|a_n-a_m|<\varepsilon$
+  pour $n,m\geq N$, d'où $|a_n| \geq |a_m| - |a_n-a_m| > \varepsilon$ dès $n\geq N$.)
   On pose
   \[
     b_n =
@@ -184,8 +188,10 @@ Cauchy converge. Il existe deux méthodes standards.
   (par construction de $c_k$). L'inégalité triangulaire donne $|c_k - c_\ell| < \varepsilon$
   pour $k, \ell$ assez grands.
 
-  \textit{Convergence.} Posons $\ell = [(c_k)] \in \mathbb{R}$.
-  Alors $|\alpha^{(k)} - \ell| \leq |\alpha^{(k)} - \iota(c_k)| + |\iota(c_k) - \ell| \to 0$.
+  \textit{Convergence.} Posons $\lambda = [(c_k)] \in \mathbb{R}$.
+  Alors $|\alpha^{(k)} - \lambda| \leq |\alpha^{(k)} - \iota(c_k)| + |\iota(c_k) - \lambda| \to 0$,
+  car $|\alpha^{(k)} - \iota(c_k)| \leq 1/k \to 0$ et $|\iota(c_k) - \lambda|\to 0$
+  puisque $\lambda$ est précisément la classe de la suite de Cauchy $(c_k)$.
   \hfill$\blacksquare$
 \end{mdframed}
 

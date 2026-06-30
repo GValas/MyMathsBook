@@ -100,8 +100,10 @@ quadrillent $\mathbb{R}$ : c'est la densité.
   \medskip
   \textit{Exclusivité et unicité.}\enspace
   Si $a > 0$, l'intervalle $]0,a[$ ne rencontre pas $G$, donc $G$ n'est pas dense :
-  les deux cas s'excluent. Enfin, si $a\mathbb{Z} = b\mathbb{Z}$ avec $a,b \geq 0$,
-  alors $a$ et $b$ sont le plus petit élément $>0$ commun (ou $0$), d'où $a = b$ :
+  les deux cas s'excluent. Enfin, si $a\mathbb{Z} = b\mathbb{Z}$ avec $a,b \geq 0$ :
+  si $a = 0$, alors $b\mathbb{Z} = \{0\}$, donc $b = 0$ ; si $a > 0$, alors $a$ est
+  le plus petit élément strictement positif de $a\mathbb{Z} = b\mathbb{Z}$, et $b$
+  l'est aussi, d'où $a = b$ :
   le générateur positif est unique. \hfill$\blacksquare$
 \end{mdframed}
 
@@ -144,8 +146,10 @@ quadrillent $\mathbb{R}$ : c'est la densité.
   contradiction. Le cas monogène est donc exclu : $G$ est dense.
 
   \smallskip\noindent
-  Enfin $\{n\alpha\} = n\alpha - \lfloor n\alpha\rfloor$ parcourt $G \cap [0,1[$ ;
-  la densité de $G$ dans $\mathbb{R}$ équivaut à celle de $(\{n\alpha\})$ dans $[0,1]$.
+  Enfin $\{n\alpha\} = n\alpha - \lfloor n\alpha\rfloor$ appartient à $G \cap [0,1[$
+  (car $n\alpha \in G$ et $\lfloor n\alpha\rfloor \in \mathbb{Z} \subseteq G$), et
+  lorsque $n$ décrit $\mathbb{Z}$ il parcourt même tout $G \cap [0,1[$ ;
+  la densité de $G$ dans $\mathbb{R}$ équivaut donc à celle de $(\{n\alpha\})$ dans $[0,1]$.
   \hfill$\blacksquare$
 \end{mdframed}
 

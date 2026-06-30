@@ -73,6 +73,15 @@
   par un seul élément.
 \end{tcolorbox}
 
+\begin{significationintuitive}
+  Un idéal est à un anneau ce qu'un sous-groupe distingué est à un groupe : c'est
+  exactement le type de partie par laquelle on peut quotienter pour que la
+  \emph{multiplication} passe au quotient. La condition d'absorption ($ax, xa \in I$
+  pour tout $a \in A$, $x \in I$) garantit que la classe d'un produit ne dépend que
+  des classes des facteurs ; c'est pourquoi ce sont les idéaux — et non les simples
+  sous-anneaux — qui jouent le rôle de noyaux des morphismes d'anneaux.
+\end{significationintuitive}
+
 \begin{tcolorbox}[thmbox]
   \textbf{Anneau quotient.}\enspace%
   \index{anneau quotient}
@@ -143,6 +152,19 @@
           est factoriel sans être principal).
   \end{itemize}
 \end{tcolorbox}
+
+\begin{ideepreuve}
+  Les inclusions de la chaîne s'obtiennent ainsi.
+  \emph{Euclidien $\Rightarrow$ principal.} Soit $I \neq \{0\}$ un idéal et
+  $a \in I \setminus \{0\}$ de stathme $\varphi(a)$ minimal. Pour $b \in I$, la division
+  euclidienne donne $b = qa + r$ avec $r = 0$ ou $\varphi(r) < \varphi(a)$ ; mais
+  $r = b - qa \in I$, donc la minimalité de $\varphi(a)$ impose $r = 0$, d'où $b \in (a)$
+  et $I = (a)$.
+  \emph{Principal $\Rightarrow$ factoriel.} Dans un anneau principal, toute suite
+  croissante d'idéaux stationne (il est noethérien), ce qui garantit l'existence d'une
+  décomposition en irréductibles ; et tout élément irréductible y engendre un idéal
+  maximal, donc est premier, ce qui en assure l'unicité.
+\end{ideepreuve}
 
 \begin{mdframed}[style=proofbar]
   \textit{Maximal $\Rightarrow$ premier.}

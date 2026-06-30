@@ -82,7 +82,9 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
   \begin{itemize}
     \item Pour $j > N$~: $|c_{k,j}-1/j!| \leq 2/j!$, donc
           $\sum_{j=N+1}^{k}|c_{k,j}-1/j!|M^j \leq 2\sum_{j>N}M^j/j! < \varepsilon/2$.
-    \item Pour $j \leq N$~: en utilisant $1-\prod_l(1-l/k)\leq\sum_l l/k$,
+    \item Pour $j \leq N$~: en utilisant l'inégalité de Weierstrass
+          $\prod_l(1-a_l)\geq 1-\sum_l a_l$ (valable pour $a_l\in[0,1]$), soit ici
+          $1-\prod_l(1-l/k)\leq\sum_l l/k$,
           \[
             \left|c_{k,j}-\frac{1}{j!}\right|
             \leq \frac{1}{j!}\sum_{l=0}^{j-1}\frac{l}{k}
@@ -175,10 +177,17 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
   \]
   On compare alors $U_k^k$ et $V_k^k$ par un argument télescopique. Pour deux
   matrices, $\displaystyle U^k - V^k = \sum_{i=0}^{k-1} U^i (U-V) V^{k-1-i}$, et comme
-  $\|U_k\|, \|V_k\| \leq e^{(\|A\|+\|B\|)/k}$, chacun des $k$ termes se majore~:
+  $\|U_k\|, \|V_k\| \leq e^{(\|A\|+\|B\|)/k}$, chacun des $k$ termes contient un produit
+  de $k-1$ facteurs et se majore par
+  \[
+    \|U_k\|^i\,\|V_k\|^{k-1-i}\,\|U_k-V_k\|
+    \;\leq\; e^{(\|A\|+\|B\|)(k-1)/k}\,\|U_k-V_k\|
+    \;\leq\; e^{\|A\|+\|B\|}\,\|U_k-V_k\|,
+  \]
+  d'où~:
   \[
     \bigl\|U_k^{\,k} - V_k^{\,k}\bigr\|
-    \;\leq\; k\,e^{(\|A\|+\|B\|)/k}\,\|U_k - V_k\|
+    \;\leq\; k\,e^{\|A\|+\|B\|}\,\|U_k - V_k\|
     \;=\; k \cdot O\!\left(\frac{1}{k^2}\right)
     \;=\; O\!\left(\frac{1}{k}\right).
   \]

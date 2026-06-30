@@ -74,7 +74,10 @@ calculé via les formules closes.
 
   \medskip
   \textit{Étape 2 — Récurrence.}
-  On intègre par parties : $u = \sin^{n-1}t$, $v' = \sin t$ :
+  Pour $n\geq 2$, on intègre par parties avec $u = \sin^{n-1}t$ et
+  $v' = \sin t$, donc $v = -\cos t$. Le crochet
+  $\bigl[-\sin^{n-1}t\,\cos t\bigr]_0^{\pi/2}$ est nul ($\cos$ s'annule en
+  $\pi/2$, $\sin^{n-1}$ en $0$), d'où, en écrivant $\cos^2 t = 1-\sin^2 t$ :
   \[
     \Wn = (n-1)\intz\cos^2 t\,\sin^{n-2}t\,\mathrm{d}t
          = (n-1)(W_{n-2}-\Wn),
@@ -100,6 +103,19 @@ calculé via les formules closes.
   $W_{2p}\sim\sqrt{\pi/(4p)}$. Par symétrie des indices :
   \[
     \Wn\;\sim\;\sqrt{\frac{\pi}{2n}}.
+  \]
+
+  \medskip
+  \textit{Étape 5 — Produit de Wallis.}
+  Le rapport des formules closes se réécrit comme un produit télescopique :
+  \[
+    \frac{W_{2p}}{W_{2p+1}}
+    = \frac{\pi}{2}\prod_{k=1}^{p}\frac{(2k-1)(2k+1)}{(2k)^2}.
+  \]
+  L'encadrement de l'étape~4 entraîne $W_{2p}/W_{2p+1}\to 1$ ; en passant à
+  l'inverse, le produit converge et l'on obtient
+  \[
+    \prod_{k=1}^{+\infty}\frac{{(2k)}^2}{(2k-1)(2k+1)}=\frac{\pi}{2}.
   \]
   \hfill$\blacksquare$
 \end{mdframed}

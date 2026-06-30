@@ -53,8 +53,12 @@ contenant $\mathbb{N}$ dans lequel l'addition est inversible — i.e.\ un
   alors $m+n'=m'+n$ et $p+q'=p'+q$. En additionnant :
   $(m+p)+(n'+q') = (m'+p')+(n+q)$, donc $[m+p,n+q] = [m'+p',n'+q']$. $\checkmark$
 
-  \textit{Bien-fondé de $\times$.} Analogue, en utilisant $m+n'=m'+n$ et les propriétés
-  de $\mathbb{N}$.
+  \textit{Bien-fondé de $\times$.} Plus délicat. On fixe d'abord $[p,q]$ et l'on
+  remplace $(m,n)$ par $(m',n')$ équivalent : en multipliant l'identité
+  $m+n'=m'+n$ par $p$ puis par $q$, on obtient
+  $(mp+nq)+(m'q+n'p) = (m'p+n'q)+(mq+np)$, c'est-à-dire
+  $[mp+nq,\,mq+np]=[m'p+n'q,\,m'q+n'p]$.
+  On conclut de même en faisant varier le second facteur.
 
   \textit{Groupe abélien.} Associativité et commutativité héritées de $\mathbb{N}$.
   Neutre $[0,0]$, opposé $[n,m]$ : $[m,n]+[n,m]=[m+n,n+m]=[0,0]$ (car $m+n=n+m$).
@@ -146,8 +150,9 @@ Il faut distinguer deux énoncés de nature différente.
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\mathbb{Z}$ n'est pas un corps.}\enspace%
-  $2 = [2,0]$ n'est pas inversible dans $\mathbb{Z}$ : $[2,0]\cdot[p,q]=[1,0]$
-  impliquerait $2p+q = 1+2q$, i.e.\ $2(p-q)=1$ dans $\mathbb{N}$, impossible.
+  $2 = [2,0]$ n'est pas inversible dans $\mathbb{Z}$ : $[2,0]\cdot[p,q]=[2p,2q]$,
+  et $[2p,2q]=[1,0]$ imposerait $2p = 1+2q$, i.e.\ $2(p-q)=1$, impossible
+  (membre de gauche pair, membre de droite impair).
 
   \smallskip\noindent
   \textbf{Divisibilité dans $\mathbb{Z}$ vs $\mathbb{N}$.}\enspace%

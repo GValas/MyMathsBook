@@ -55,7 +55,7 @@
       + n(n+\alpha+\beta+1)\,y = 0.
     \]
     \item \textit{Récurrence à trois termes}~: il existe des suites de
-          réels $(a_n),(b_n),(c_n)$ telles que
+          réels $(a_n),(b_n),(c_n),(d_n)$ telles que
     \[
       a_n\,P_{n+1}^{(\alpha,\beta)}(x)
       = (b_n+x)\,c_n\,P_n^{(\alpha,\beta)}(x)
@@ -249,7 +249,7 @@ abstraite de l'orthogonalité, valable pour toute famille à poids positif.
 \begin{mdframed}[style=cexbar]
   \textbf{Condition $\alpha,\beta>-1$.}\enspace
   Le poids $\wab(x)={(1-x)}^\alpha{(1+x)}^\beta$ n'est intégrable sur
-  $]-1,1[$ que si $\alpha>-1$ \emph{et} $\beta>-1$ : pour $\alpha\leq -1$,
+  $]-1,1[$ que si $\alpha>-1$ \emph{et} $\beta>-1$~: pour $\alpha\leq -1$,
   $\int_{-1}^1{(1-x)}^\alpha\,\mathrm{d}x$ diverge au voisinage de $1$, et le
   produit scalaire perd tout sens. La famille de Jacobi n'est définie qu'à
   l'intérieur de ce domaine.
@@ -258,7 +258,7 @@ abstraite de l'orthogonalité, valable pour toute famille à poids positif.
   \textbf{Hermite et Laguerre ne sont pas des Jacobi.}\enspace
   Les polynômes d'Hermite (poids $e^{-x^2}$ sur $\mathbb{R}$) et de Laguerre
   (poids $e^{-x}$ sur $[0,+\infty[$) sont orthogonaux sur un intervalle
-  \emph{non borné} : ils n'entrent pas dans le cadre Jacobi, qui vit sur le
+  \emph{non borné}~: ils n'entrent pas dans le cadre Jacobi, qui vit sur le
   segment $[-1,1]$. On les obtient seulement comme \emph{cas limites}
   (par exemple Hermite via $C_n^{\lambda}$ quand $\lambda\to+\infty$ après
   changement d'échelle), jamais par spécialisation directe de $(\alpha,\beta)$.
@@ -266,10 +266,10 @@ abstraite de l'orthogonalité, valable pour toute famille à poids positif.
   \smallskip\noindent
   \textbf{Normalisations divergentes.}\enspace
   La convention $\Jac(1)=\binom{n+\alpha}{n}$ ne coïncide pas avec celles de
-  $T_n$, $U_n$ ou $C_n^{\lambda}$ : passer d'une famille à l'autre demande un
+  $T_n$, $U_n$ ou $C_n^{\lambda}$~: passer d'une famille à l'autre demande un
   facteur multiplicatif. On a par exemple $P_n=P_n^{(0,0)}$ mais
-  $T_n=\frac{n!}{(1/2)_n}\,2^{-n}\cdots$ : ne jamais identifier deux familles
-  sans expliciter le facteur d'échelle.
+  $T_n=\dfrac{n!}{(1/2)_n}\,P_n^{(-1/2,-1/2)}$~: ne jamais identifier deux
+  familles sans expliciter le facteur d'échelle.
 \end{mdframed}
 
 \vspace{6pt}

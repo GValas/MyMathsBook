@@ -32,6 +32,17 @@
   de $\sigma$.}
 \end{tcolorbox}
 
+\begin{significationintuitive}
+  Les trois axiomes traduisent une idée géométrique : le déterminant mesure le
+  \emph{volume orienté} du parallélépipède construit sur les colonnes. La
+  multilinéarité exprime que ce volume est proportionnel à chaque arête ; le
+  caractère alterné dit qu'un volume s'annule lorsque deux arêtes sont confondues
+  (le parallélépipède est aplati) et qu'échanger deux arêtes renverse l'orientation ;
+  la normalisation fixe l'unité de volume en attribuant le volume $1$ au cube unité
+  $I_n$. C'est précisément la conjonction de ces trois contraintes qui force
+  l'unicité, et donc la formule de Leibniz.
+\end{significationintuitive}
+
 \rubriq{Remarques}
 La formule de Leibniz est surtout utile pour les preuves théoriques ; en pratique on
 calcule par développement (Laplace) ou par réduction de Gauss.
@@ -213,9 +224,11 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
   \smallskip\noindent
   \textbf{3. Matrice compagnon.}\enspace%
   Si $P(X) = X^n + a_{n-1}X^{n-1} + \cdots + a_0$, la matrice compagnon
-  associée a pour polynôme caractéristique ${(-1)}^n P(X)$.
-  Le déterminant de $XI - C_P$ se calcule par développement de Laplace
-  sur la dernière colonne.
+  associée $C_P$ a pour polynôme caractéristique $\chi_{C_P}(X) = \det(XI_n - C_P) = P(X)$
+  (avec la convention $\chi_A = \det(XI_n - A)$).
+  Ce déterminant se calcule par développement de Laplace
+  sur la première ligne (ou la dernière colonne) et fournit la relation
+  de récurrence menant à $P(X)$.
 \end{mdframed}
 
 \vspace{6pt}
@@ -265,8 +278,9 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
           l'égalité $\det(A+B) = \det(A) + \det(B)$ n'est en général pas vraie.
           Établir en revanche que, pour $A$ de rang $\leq 1$,
           $\det(A+I_n) = 1 + \mathrm{tr}(A)$ ;
-          en déduire que $\det(A+I_n) = \det(A) + \det(I_n)$ si et seulement si
-          $A$ est de rang $\leq 1$ et nilpotente (c'est-à-dire $\mathrm{tr}(A) = 0$).
+          en déduire que, parmi les matrices de rang $\leq 1$, l'égalité
+          $\det(A+I_n) = \det(A) + \det(I_n)$ a lieu si et seulement si
+          $A$ est nilpotente (c'est-à-dire $\mathrm{tr}(A) = 0$).
 
     \item (Critère de Sylvester) Montrer qu'une matrice symétrique réelle
           est définie positive si et seulement si tous ses sous-déterminants

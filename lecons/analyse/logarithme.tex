@@ -34,6 +34,16 @@
   \end{itemize}
 \end{tcolorbox}
 
+\begin{significationintuitive}
+Parmi les primitives des fonctions puissances, la formule
+$\int t^{\alpha}\,\mathrm{d}t = \tfrac{t^{\alpha+1}}{\alpha+1}$ couvre tous les
+exposants sauf $\alpha = -1$. La fonction $t\mapsto 1/t$, continue sur
+$(0,+\infty)$, y admet pourtant des primitives : on choisit celle qui s'annule
+en $1$. C'est cette primitive « manquante » que l'on baptise logarithme
+népérien ; toutes ses propriétés se lisent alors directement sur l'intégrale
+qui la définit.
+\end{significationintuitive}
+
 \rubriq{Le nombre $e$}
 On définit le nombre de Néper\index{nombre $e$} comme l'unique réel $e > 0$
 vérifiant $\ln(e) = 1$. Son existence et son unicité découlent de la
@@ -145,7 +155,8 @@ obtenues par comparaison à des sommes de Riemann.
 
   \smallskip\noindent
   \textbf{4. Inégalité arithmético-géométrique.}
-  De $\ln(x)\leq x-1$, en remplaçant $x$ par $a_i/\mu$ et en sommant
+  De $\ln(x)\leq x-1$, en notant $\mu = \dfrac{a_1+\cdots+a_n}{n}$ la moyenne
+  arithmétique, puis en remplaçant $x$ par $a_i/\mu$ et en sommant
   sur $i = 1,\dots,n$, on retrouve
   $\dfrac{a_1+\cdots+a_n}{n}\geq {(a_1\cdots a_n)}^{1/n}$.
 \end{mdframed}

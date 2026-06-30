@@ -62,7 +62,7 @@ intégral, deux théories développées indépendamment (Newton, Leibniz).
   $|t-x| \leq |h| < \delta \Rightarrow |f(t)-f(x)| < \varepsilon$. Alors
   \[
     \left|\frac{F(x+h)-F(x)}{h} - f(x)\right|
-    \leq \frac{1}{|h|}\int_x^{x+h}|f(t)-f(x)|\,\mathrm{d}t \leq \varepsilon.
+    \leq \frac{1}{|h|}\left|\int_x^{x+h}|f(t)-f(x)|\,\mathrm{d}t\right| \leq \varepsilon.
   \]
   Donc $F'(x) = f(x)$. L'unicité vient du fait que deux primitives diffèrent
   d'une constante, et $F(a) = 0$ fixe celle-ci.
@@ -161,8 +161,11 @@ intégral, deux théories développées indépendamment (Newton, Leibniz).
   \smallskip\noindent
   \textbf{Toute fonction dérivable n'est pas une primitive de sa dérivée
   au sens de Riemann.}\enspace%
-  Si $f'$ n'est pas intégrable au sens de Riemann, la formule de Newton--Leibniz
-  ne s'applique pas directement (elle est valide pour l'intégrale de Lebesgue).
+  Il existe des fonctions $g$ dérivables sur $[a,b]$ dont la dérivée $g'$ n'est pas
+  intégrable au sens de Riemann (par exemple $g(x)=x^2\sin(1/x^2)$ prolongée par $g(0)=0$,
+  dont la dérivée est non bornée au voisinage de $0$). La formule de Newton--Leibniz
+  ne s'applique alors pas directement : le cadre adapté est l'intégrale de
+  Henstock--Kurzweil, qui intègre toute dérivée et rétablit la formule.
 
   \smallskip\noindent
   \textbf{$\int_a^b f = 0$ n'implique pas $f = 0$.}\enspace%

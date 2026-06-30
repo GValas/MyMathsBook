@@ -130,9 +130,12 @@ la formule de Rodrigues.
 
   \medskip
   \textit{Étape 2 — Norme.} On prend $Q=L_n$, de terme dominant
-  $\frac{{(-1)}^n}{n!}x^n$, donc $L_n^{(n)}=\frac{{(-1)}^n}{n!}\cdot n!\cdot
-  \frac{1}{n!}={(-1)}^n/n!\cdot n!$ ; plus simplement $L_n^{(n)}={(-1)}^n$
-  (constante). La même intégration par parties donne
+  $\frac{{(-1)}^n}{n!}x^n$. En dérivant $n$ fois ce terme dominant (les termes
+  de degré $<n$ disparaissant), on obtient la constante
+  \[
+    L_n^{(n)}=\frac{{(-1)}^n}{n!}\cdot n!={(-1)}^n.
+  \]
+  La même intégration par parties qu'à l'étape~1 donne
   \[
     {\|L_n\|}^2 = \frac{1}{n!}\int_{0}^{+\infty}\varphi_n^{(n)}\,L_n\,\mathrm{d}x
     = \frac{{(-1)}^n}{n!}\,L_n^{(n)}\int_{0}^{+\infty}\varphi_n(x)\,\mathrm{d}x.
@@ -172,7 +175,7 @@ la formule de Rodrigues.
 
   \smallskip
   \emph{Racines.} $L_n$ est orthogonal à tout polynôme de degré $<n$, en
-  particulier à $1$, donc $\int_0^{+\infty} L_n\,e^{-x}\,\mathrm{d}x=0$ :
+  particulier à $1$, donc $\int_0^{+\infty} L_n\,e^{-x}\,\mathrm{d}x=0$~:
   $L_n$ change de signe dans $]0,+\infty[$. Soient $x_1,\ldots,x_r$ les points
   où $L_n$ change de signe ($r\geq 1$). Si $r<n$, le polynôme
   $R=\prod_{i=1}^r(X-x_i)$ vérifie $\deg R<n$, donc $\psLag{L_n}{R}=0$ ; mais
@@ -211,7 +214,7 @@ la formule de Rodrigues.
     \int_{0}^{+\infty} f(x)\,e^{-x}\,\mathrm{d}x
     \;=\; \sum_{i=1}^{n}\lambda_i\,f(x_i)
   \]
-  est \emph{exacte} pour tout polynôme $f$ de degré $\leq 2n-1$ : c'est la
+  est \emph{exacte} pour tout polynôme $f$ de degré $\leq 2n-1$~: c'est la
   méthode de choix pour intégrer numériquement sur $[0,+\infty[$ avec un poids
   exponentiel.
 

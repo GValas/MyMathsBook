@@ -102,8 +102,8 @@ coefficients triangulaire : le coefficient dominant aux $k+1$ premiers
 nœuds est imposé. On identifie ce coefficient à $f[x_0,\ldots,x_k]$ en
 exploitant la structure incrémentale $P_k = P_{k-1} + c_k\,\nbase{k}$. La
 symétrie vient de l'unicité de l'interpolateur. Enfin le reste
-$f^{(n)}(\xi)/n!$ s'obtient en confrontant le coefficient dominant à la
-formule d'erreur de Lagrange, via le théorème de Rolle itéré.
+$f^{(n)}(\xi)/n!$ s'obtient en appliquant le théorème de Rolle itéré à
+$f-P_n$, ce qui redonne au passage la formule d'erreur de Lagrange.
 \end{ideepreuve}
 
 \vspace{10pt}
@@ -155,28 +155,28 @@ formule d'erreur de Lagrange, via le théorème de Rolle itéré.
 
   \medskip
   \textit{Étape 4 — Formule du reste $f[x_0,\ldots,x_n]=f^{(n)}(\xi)/n!$.}
-  Supposons $f$ de classe $\mathcal{C}^{n}$ sur $I$. Posons
-  $g=f-P_{n-1}$, où $P_{n-1}$ interpole $f$ aux $n$ nœuds
-  $x_0,\ldots,x_{n-1}$ ; alors $g$ s'annule en ces $n$ points distincts.
+  Supposons $f$ de classe $\mathcal{C}^{n}$ sur $I$ et notons $P_n$
+  l'interpolateur de $f$ aux $n+1$ nœuds $x_0,\ldots,x_n$. Posons
+  $g=f-P_n$ : la fonction $g$ s'annule en ces $n+1$ points distincts.
   Par le théorème de Rolle appliqué entre zéros consécutifs, $g'$ admet
-  $n-1$ zéros, puis $g''$ en a $n-2$, \ldots, et $g^{(n-1)}$ admet au moins
-  un zéro $\xi\in I$. La formule de Newton donne
-  $P_n = P_{n-1} + f[x_0,\ldots,x_n]\,\nbase{n}$, et $P_n(x_n)=f(x_n)$
-  équivaut à $f(x_n)-P_{n-1}(x_n)=f[x_0,\ldots,x_n]\,\nbase{n}(x_n)$.
-  Plutôt que de fixer $x_n$, exploitons directement le lien avec l'erreur
-  de Lagrange : pour $x\notin\{x_0,\ldots,x_{n-1}\}$, l'interpolation aux
-  $n$ nœuds donne (cf.\ leçon \emph{Lagrange})
+  au moins $n$ zéros, puis $g''$ au moins $n-1$, \ldots, et $g^{(n)}$
+  admet au moins un zéro $\xi\in I$. Or $P_n$ est de degré $n$ et de
+  coefficient dominant $f[x_0,\ldots,x_n]$ (étape~2), donc sa dérivée
+  $n$-ième est la \emph{constante} $P_n^{(n)}=n!\,f[x_0,\ldots,x_n]$ ;
+  ainsi $g^{(n)}=f^{(n)}-n!\,f[x_0,\ldots,x_n]$. En évaluant en $\xi$ :
+  \[
+    0 = g^{(n)}(\xi) = f^{(n)}(\xi)-n!\,f[x_0,\ldots,x_n],
+    \qquad\text{d'où}\qquad
+    f[x_0,\ldots,x_n] = \frac{f^{(n)}(\xi)}{n!}.
+  \]
+  On retrouve au passage la \emph{formule d'erreur de Lagrange} : en
+  appliquant ce résultat aux $n+1$ nœuds $x_0,\ldots,x_{n-1},x$, la mise à
+  jour incrémentale de Newton donne pour $x\notin\{x_0,\ldots,x_{n-1}\}$
   \[
     f(x)-P_{n-1}(x)
     = f[x_0,\ldots,x_{n-1},x]\prod_{j=0}^{n-1}(x-x_j)
     = \frac{f^{(n)}(\eta_x)}{n!}\prod_{j=0}^{n-1}(x-x_j),
-  \]
-  la première égalité étant la mise à jour incrémentale de Newton (le
-  nœud $x$ ajouté), la seconde la formule d'erreur de Lagrange avec
-  $\eta_x\in I$. En simplifiant par $\prod_{j<n}(x-x_j)\neq 0$ puis en
-  posant $x=x_n$, $\xi=\eta_{x_n}$ :
-  \[
-    f[x_0,\ldots,x_n] = \frac{f^{(n)}(\xi)}{n!}.
+    \qquad \eta_x\in I.
   \]
   \hfill$\blacksquare$
 \end{mdframed}

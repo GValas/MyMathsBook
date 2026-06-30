@@ -77,6 +77,14 @@ alors $p \mid a_i$ pour au moins un $i$.
 
 \rubriq{Preuve — Unicité}
 
+\begin{ideepreuve}
+  C'est l'unicité, non l'existence, qui fait la profondeur du théorème : elle repose
+  tout entière sur le lemme d'Euclide. L'idée est d'éplucher les deux décompositions
+  un facteur à la fois : le lemme d'Euclide garantit qu'un premier $p_1$ du premier
+  membre doit apparaître à l'identique dans le second, on le simplifie, et l'on
+  recommence sur un entier plus petit.
+\end{ideepreuve}
+
 \begin{mdframed}[style=proofbar]
   Supposons $n = p_1^{\alpha_1}\cdots p_k^{\alpha_k} = q_1^{\beta_1}\cdots q_l^{\beta_l}$
   avec $p_i, q_j$ premiers. On montre par récurrence sur $\Omega(n) = \sum \alpha_i$
@@ -124,8 +132,10 @@ alors $p \mid a_i$ pour au moins un $i$.
 
 \begin{mdframed}[style=proofbar]
   Supposons par l'absurde qu'il n'existe qu'un nombre fini de premiers $p_1,\ldots,p_k$.
-  Posons $N = p_1 p_2 \cdots p_k + 1$. Par le théorème, $N$ admet un facteur premier
-  $q$, qui divise donc $N$ et $p_1\cdots p_k$. Il divise leur différence $1$ :
+  Posons $N = p_1 p_2 \cdots p_k + 1$. Comme $N \geq 2$, le théorème lui fournit un
+  facteur premier $q$. Puisque $p_1,\ldots,p_k$ sont \emph{tous} les premiers, $q$
+  figure dans cette liste, d'où $q \mid p_1\cdots p_k$. Mais $q \mid N$ ; donc $q$
+  divise la différence $N - p_1\cdots p_k = 1$, ce qui force $q \leq 1$ :
   contradiction.
   $\blacksquare$
 \end{mdframed}

@@ -1,0 +1,242 @@
+%==============================================================
+%  lecons/analyse/series_divergentes.tex — Séries divergentes et sommation
+%==============================================================
+
+\lecontitle{Séries divergentes}{Analyse réelle — Procédés de sommation de Cesàro et d'Abel}
+
+%=== NOTATION LOCALE =========================================
+% (aucune : \sum, \lim sont fournis par amsmath)
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition (série divergente).}\enspace\index{série divergente}
+  Soit $(a_n)_{n\geq 0}$ une suite réelle ou complexe. On lui associe la suite
+  des \emph{sommes partielles}
+  \[
+    S_n \;=\; \sum_{k=0}^{n} a_k .
+  \]
+  La \emph{série} $\sum a_n$ \emph{converge} si $(S_n)$ admet une limite finie ;
+  sinon elle \emph{diverge}. Une série dont le terme général ne tend pas vers $0$
+  diverge \emph{grossièrement}.
+
+  \medskip
+  \textbf{Définition (sommation de Cesàro).}\enspace\index{sommation de Cesàro}
+  On dit que $\sum a_n$ est \emph{sommable au sens de Cesàro}, de somme
+  $\sigma\in\mathbb{C}$, si la suite des \emph{moyennes de Cesàro}
+  \[
+    \sigma_n \;=\; \frac{S_0+S_1+\cdots+S_n}{n+1}
+  \]
+  converge vers $\sigma$. On note alors $\displaystyle\sum a_n = \sigma\ (C,1)$.
+
+  \medskip
+  \textbf{Définition (sommation d'Abel).}\enspace\index{sommation d'Abel}
+  On dit que $\sum a_n$ est \emph{sommable au sens d'Abel}, de somme
+  $A\in\mathbb{C}$, si la série entière $\sum a_n x^n$ converge pour
+  $x\in[0,1[$ et si
+  \[
+    A \;=\; \lim_{x\to 1^{-}} \sum_{n=0}^{+\infty} a_n x^n .
+  \]
+
+  \medskip
+  \textbf{Théorème (régularité et hiérarchie).}
+  \begin{itemize}
+    \item \textit{Condition nécessaire.} Si $\sum a_n$ converge, alors
+    $a_n\to 0$. La réciproque est fausse (série harmonique).
+    \item \textit{Régularité de Cesàro.} Si $\sum a_n$ converge, de somme $S$,
+    alors elle est Cesàro-sommable de même somme $\sigma=S$.
+    \item \textit{Régularité d'Abel.} Si $\sum a_n$ converge, de somme $S$,
+    alors elle est Abel-sommable de même somme $A=S$ (théorème d'Abel radial).
+    \item \textit{Hiérarchie (Frobenius).}\index{théorème de Frobenius} Toute
+    série Cesàro-sommable est Abel-sommable, de même somme. La réciproque est
+    fausse : la sommation d'Abel est \emph{strictement} plus puissante.
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Une série peut diverger sans pour autant être « sans valeur » : ses sommes
+partielles oscillent, mais leur \emph{moyenne} peut se stabiliser. C'est l'idée
+de Cesàro — lisser les oscillations en moyennant. Le procédé d'Abel pondère au
+contraire les termes lointains par $x^n\to 0$ et observe la limite radiale. Le
+mot clé est la \emph{régularité} : un bon procédé de sommation doit prolonger la
+somme usuelle sans la contredire, tout en donnant un sens à des séries qui en
+étaient dépourvues.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+La régularité de Cesàro est le « lemme de Cesàro » : la moyenne d'une suite
+convergente converge vers la même limite, par découpage en un bloc fini
+négligeable et une queue contrôlée. La régularité d'Abel repose sur une
+sommation par parties (transformation d'Abel) reliant $\sum a_n x^n$ aux restes
+$S-S_n$. L'inclusion Cesàro~$\Rightarrow$~Abel s'obtient en exprimant la série
+entière à l'aide des moyennes $\sigma_n$.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Condition nécessaire.}
+  Si $S_n\to S$, alors $a_n=S_n-S_{n-1}\to S-S=0$. La série harmonique
+  $\sum 1/n$ montre que la réciproque est fausse : $1/n\to 0$ mais
+  $S_{2n}-S_n\geq n\cdot\tfrac{1}{2n}=\tfrac12$, donc $(S_n)$ n'est pas de
+  Cauchy.
+
+  \medskip
+  \textit{Étape 2 — Régularité de Cesàro.}
+  Supposons $S_n\to S$. Quitte à remplacer $a_0$ par $a_0-S$, on se ramène à
+  $S=0$. Soit $\varepsilon>0$ ; il existe $N$ tel que $|S_n|\leq\varepsilon$
+  pour $n\geq N$. Pour $n>N$,
+  \[
+    |\sigma_n|
+    \;\leq\; \frac{1}{n+1}\sum_{k=0}^{N}|S_k|
+      \;+\; \frac{1}{n+1}\sum_{k=N+1}^{n}|S_k|
+    \;\leq\; \frac{C_N}{n+1} \;+\; \varepsilon ,
+  \]
+  où $C_N=\sum_{k=0}^{N}|S_k|$ est fixe. En faisant $n\to+\infty$ on obtient
+  $\limsup|\sigma_n|\leq\varepsilon$, ceci pour tout $\varepsilon>0$, donc
+  $\sigma_n\to 0=S$.
+
+  \medskip
+  \textit{Étape 3 — Régularité d'Abel.}
+  Supposons $S_n\to S$. La suite $(S_n)$ est bornée, donc $\sum a_n x^n$ a un
+  rayon de convergence $\geq 1$. Pour $x\in[0,1[$, la transformation d'Abel
+  $a_n=S_n-S_{n-1}$ (avec $S_{-1}=0$) donne
+  \[
+    \sum_{n=0}^{+\infty} a_n x^n
+    \;=\; (1-x)\sum_{n=0}^{+\infty} S_n x^n .
+  \]
+  Comme $(1-x)\sum_{n\geq 0} x^n = 1$, on écrit
+  \[
+    \sum_{n=0}^{+\infty} a_n x^n - S
+    \;=\; (1-x)\sum_{n=0}^{+\infty} (S_n-S)\,x^n .
+  \]
+  Soit $\varepsilon>0$ et $N$ tel que $|S_n-S|\leq\varepsilon$ pour $n\geq N$.
+  En séparant les deux blocs,
+  \[
+    \Bigl|\sum a_n x^n - S\Bigr|
+    \;\leq\; (1-x)\sum_{n=0}^{N}|S_n-S|
+      \;+\; \varepsilon\,(1-x)\sum_{n>N} x^n
+    \;\leq\; (1-x)\,C_N' + \varepsilon ,
+  \]
+  avec $C_N'=\sum_{n=0}^{N}|S_n-S|$. En faisant $x\to 1^{-}$, le premier terme
+  tend vers $0$, d'où $\limsup_{x\to 1^-}|\sum a_n x^n-S|\leq\varepsilon$. Donc
+  la limite radiale vaut $S$.
+
+  \medskip
+  \textit{Étape 4 — Cesàro $\Rightarrow$ Abel.}
+  Supposons $\sigma_n\to\sigma$. On a $\sum_{n\geq 0}S_n x^n
+  =\tfrac{1}{1-x}\sum_{n\geq 0}a_n x^n$ (étape~3) et, de même, en appliquant la
+  transformation d'Abel à la suite $(S_n)$ dont $(n+1)\sigma_n=S_0+\cdots+S_n$
+  est la suite des sommes partielles,
+  $\sum_{n\geq 0}S_n x^n=(1-x)\sum_{n\geq 0}(n+1)\sigma_n x^n$. En combinant,
+  \[
+    \sum_{n=0}^{+\infty} a_n x^n
+    \;=\; (1-x)^{2}\sum_{n=0}^{+\infty} (n+1)\,\sigma_n\, x^n .
+  \]
+  Puisque $(1-x)^2\sum_{n\geq 0}(n+1)x^n=1$, le même argument de découpage qu'à
+  l'étape~3 (appliqué à la suite convergente $(\sigma_n)$, avec le poids
+  $(1-x)^2(n+1)x^n$ de somme $1$) donne
+  $\lim_{x\to1^-}\sum a_n x^n=\sigma$. Ainsi la série est Abel-sommable de
+  somme $\sigma$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Série de Grandi.}\enspace\index{série de Grandi}%
+  Pour $a_n=(-1)^n$, les sommes partielles valent $S_n=1,0,1,0,\dots$ La série
+  diverge, mais les moyennes de Cesàro $\sigma_n\to\tfrac12$ et la série
+  d'Abel $\sum(-1)^n x^n=\tfrac{1}{1+x}\to\tfrac12$. Donc
+  \[
+    1-1+1-1+\cdots \;=\; \tfrac12 \quad (C,1)\ \text{et}\ (A).
+  \]
+
+  \smallskip\noindent
+  \textbf{2. Une série Abel-sommable mais non Cesàro-sommable.}\enspace%
+  Pour $a_n=(-1)^n(n+1)$, on a $\sum a_n x^n=\tfrac{1}{(1+x)^2}\to\tfrac14$,
+  donc $1-2+3-4+\cdots=\tfrac14\ (A)$. En revanche les moyennes $\sigma_n$
+  divergent : la série n'est pas Cesàro-sommable. Ceci illustre la stricte
+  hiérarchie Cesàro $\subsetneq$ Abel.
+
+  \smallskip\noindent
+  \textbf{3. Théorème de Frobenius en action.}\enspace%
+  Toute série convergente est à la fois Cesàro- et Abel-sommable, de même
+  somme : les procédés \emph{prolongent} la sommation usuelle. Par exemple
+  $\sum(-1)^n/(n+1)=\ln 2$ converge, donc vaut $\ln 2$ aussi au sens d'Abel,
+  ce qui redonne $\ln 2=\lim_{x\to1^-}\ln(1+x)$.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Divergence grossière non sommable.}\enspace%
+  La série $1+2+3+\cdots$ ($a_n=n$) n'est ni Cesàro- ni Abel-sommable :
+  $\sum n\,x^n=\tfrac{x}{(1-x)^2}\to+\infty$. L'écriture « $=-1/12$ » relève du
+  prolongement de la fonction zêta, \emph{pas} d'un procédé de sommation
+  régulier.\index{prolongement analytique}
+
+  \smallskip\noindent
+  \textbf{Linéarité, pas réarrangement.}\enspace%
+  Les sommes $(C,1)$ et $(A)$ sont linéaires et stables par décalage, mais
+  \emph{pas} invariantes par permutation des termes. Réarranger
+  $1-1+1-1+\cdots$ peut changer la moyenne de Cesàro.
+
+  \smallskip\noindent
+  \textbf{La réciproque d'Abel est fausse (Tauber).}\enspace%
+  Abel-sommable n'implique pas convergente : $\sum(-1)^n$ en est l'exemple. Il
+  faut une hypothèse \emph{taubérienne} (par exemple $a_n=o(1/n)$, théorème de
+  Tauber) pour récupérer la convergence à partir de la sommabilité d'Abel.%
+  \index{théorème taubérien}
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que la série harmonique $\sum 1/n$ diverge, mais que
+          $\sum (-1)^{n-1}/n$ converge. La première est-elle Cesàro-sommable ?
+
+    \item (Lemme de Cesàro) Démontrer en détail que si $u_n\to\ell$, alors
+          $\tfrac{1}{n+1}\sum_{k=0}^{n}u_k\to\ell$. En déduire la régularité de
+          la sommation de Cesàro.
+
+    \item Calculer les moyennes de Cesàro de la série de Grandi et retrouver
+          $\sigma_n\to\tfrac12$. \textit{Indication :} distinguer $n$ pair et
+          impair.
+
+    \item Établir l'identité $\sum_{n\geq0}a_n x^n=(1-x)\sum_{n\geq0}S_n x^n$
+          pour $x\in[0,1[$ (transformation d'Abel) et en déduire le théorème
+          d'Abel radial.
+
+    \item Vérifier que $\sum(-1)^n(n+1)x^n=(1+x)^{-2}$, puis que cette série
+          n'est pas Cesàro-sommable bien qu'Abel-sommable de somme $\tfrac14$.
+
+    \item (Ouverture — théorème taubérien de Tauber) Soit $\sum a_n$
+          Abel-sommable de somme $A$, avec $n a_n\to 0$. Montrer que $\sum a_n$
+          converge et que sa somme vaut $A$. \textit{Indication :} encadrer
+          $S_n-\sum a_k x^k$ pour $x=1-\tfrac1n$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{E.\ Cesàro (1890) ; N.\,H.\ Abel (1826) ; A.\ Tauber (1897)}

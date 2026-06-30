@@ -187,8 +187,10 @@
         = \sum_{k=0}^{n}\frac{1}{k!}\sum_{j=0}^{k}{(-1)}^{k-j}\binom{k}{j}j^n
         = \sum_{k=0}^{n}\sum_{j=0}^{k}\frac{{(-1)}^{k-j}}{j!\,(k-j)!}\,j^n.
   \]
-  On peut prolonger la sommation sur $k$ jusqu'à $+\infty$ : pour $j>k$ on a
-  $\binom{k}{j}=0$, et seuls les indices $0\leq j\leq k$ contribuent.
+  On peut prolonger la sommation sur $k$ jusqu'à $+\infty$ sans rien changer :
+  pour $k>n$, il n'existe aucune partition de $[n]$ en $k$ blocs, donc
+  $S(n,k)=0$ et les termes ajoutés sont nuls. Dans la double somme ainsi
+  obtenue, seuls les indices $0\leq j\leq k$ contribuent.
   Intervertissons alors les deux sommations (la série double est absolument
   convergente, $j^n/(j!\,(k-j)!)\geq 0$), en sommant d'abord sur $k\geq j$ :
   \[
@@ -307,9 +309,10 @@
           $X\sim\mathrm{Poisson}(1)$ en calculant directement
           $\sum_{k\geq 0} k^3\,e^{-1}/k!$.
 
-    \item Montrer que $B_n$ est impair si et seulement si $n\equiv 0,1$ ou
-          $2\pmod{3}$ (\textit{i.e.} $B_n$ est pair si et seulement si
-          $n\equiv 2\pmod{3}$, pour $n\geq 1$).
+    \item Montrer que $B_n$ est impair si et seulement si $n\equiv 0$ ou
+          $1\pmod{3}$ (\textit{i.e.} $B_n$ est pair si et seulement si
+          $n\equiv 2\pmod{3}$). La suite $(B_n \bmod 2)$ est en effet
+          périodique de période $3$ : $1,1,0,1,1,0,\ldots$
 
     \item (\textit{Défi}) En utilisant la série génératrice $e^{e^x-1}$,
           retrouver la formule de Dobi\'nski en développant $e^{e^x}$ comme

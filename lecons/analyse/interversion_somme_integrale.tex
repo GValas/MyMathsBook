@@ -255,11 +255,12 @@ quelconque, la positivité (Théorème~2) ou la sommabilité absolue
   \textbf{$\sum\int |f_n| < +\infty$ est strictement plus forte que la
   convergence simple.}\enspace%
   La série $\sum_{n\geq 1}\dfrac{{(-1)}^n}{n}\mathbf{1}_{[n,n+1]}$
-  converge simplement sur $[1,+\infty[$ vers une fonction dont la somme est
-  intégrable (sur chaque palier $[n,n+1]$ elle vaut $(-1)^n/n$, et la série
-  $\sum (-1)^n/n$ converge), mais $\sum\int |f_n| = \sum 1/n = +\infty$~;
-  l'interversion via le Théorème~3 ne s'applique pas (bien que, par
-  d'autres arguments, le résultat puisse rester valable).
+  converge simplement sur $[1,+\infty[$ vers une fonction $f$ dont l'intégrale
+  converge \emph{au sens impropre} sans que $f$ soit intégrable (sur chaque
+  palier $[n,n+1]$, $f$ vaut $(-1)^n/n$, et la série $\sum (-1)^n/n$ converge,
+  alors que $\sum_n\int |f_n| = \sum 1/n = +\infty$). L'hypothèse~(2) du
+  Théorème~3 n'est donc pas vérifiée, et celui-ci ne s'applique pas (bien que,
+  par d'autres arguments, le résultat puisse ici rester valable).
 
   \smallskip\noindent
   \textbf{Convergence simple $\neq$ convergence uniforme.}\enspace%
@@ -291,9 +292,12 @@ quelconque, la positivité (Théorème~2) ou la sommabilité absolue
           intégrer terme à terme~; calculer $\int_0^1 t^n(-\ln t)^n\,\mathrm{d}t$
           par le changement $t = e^{-u}$.
 
-    \item Soit $f$ continue sur $[0,1]$. Montrer que
-          $\displaystyle\sum_{n=1}^{+\infty}\int_0^1 t^n f(t)\,\mathrm{d}t$
-          converge et calculer sa somme en fonction de $f$.
+    \item Soit $f$ de classe $\mathcal{C}^1$ sur $[0,1]$ telle que $f(1)=0$.
+          Montrer que $\displaystyle\sum_{n=1}^{+\infty}\int_0^1 t^n f(t)\,\mathrm{d}t$
+          converge et vaut $\displaystyle\int_0^1 \frac{t\,f(t)}{1-t}\,\mathrm{d}t$.
+          (\textit{Indication}~: l'hypothèse $f(1)=0$ donne
+          $\int_0^1 t^n |f(t)|\,\mathrm{d}t = O(1/n^2)$, d'où la sommabilité
+          absolue requise par le Théorème~3.)
 
     \item (\textit{Échec contrôlé}) Soit $f_n(t) = n\,t^n(1-t)$ sur $[0,1]$.
           Montrer que $f_n \to 0$ simplement mais non uniformément~;

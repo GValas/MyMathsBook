@@ -79,7 +79,11 @@ dimension $3$, il découvrit que la dimension $4$ est nécessaire, en renonçant
     =
     \begin{pmatrix} a+bi & c+di \\ -\overline{c+di} & \overline{a+bi} \end{pmatrix}.
   \]
-  (Matrices unitaires de $\mathrm{SU}(2)$ pour les quaternions de norme $1$.)
+  Pour établir que l'application est un morphisme d'algèbres, il suffit de
+  vérifier que les images de $1,i,j,k$ satisfont les relations de Hamilton, ce
+  qui se ramène à un calcul sur quatre matrices. Le déterminant de l'image vaut
+  $|q|^2$ : les quaternions de norme $1$ correspondent donc aux matrices
+  unitaires de $\mathrm{SU}(2)$.
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -101,6 +105,16 @@ dimension $3$, il découvrit que la dimension $4$ est nécessaire, en renonçant
   \]
   où $\mathbf{v}$ est identifié au quaternion pur $v_1 i + v_2 j + v_3 k$.
 \end{tcolorbox}
+
+\begin{significationintuitive}
+  Appliquée à un quaternion pur, la conjugaison $\mathbf{v}\mapsto q\mathbf{v}\bar{q}$
+  redonne un quaternion pur et préserve la norme : c'est donc bien une isométrie
+  de $\mathbb{R}^3$, et l'on vérifie qu'elle fixe l'axe $\mathbf{n}$. L'apparition
+  de l'angle moitié $\theta/2$ vient de ce que $q$ agit \emph{deux fois}, une fois
+  à gauche par $q$ et une fois à droite par $\bar{q}$. C'est aussi pourquoi $q$ et
+  $-q$ produisent la même rotation, puisque $(-q)\mathbf{v}\,\overline{(-q)} = q\mathbf{v}\bar{q}$ :
+  on retrouve ainsi le noyau $\{\pm 1\}$ du recouvrement ci-dessous.
+\end{significationintuitive}
 
 \rubriq{Double recouvrement de $\mathrm{SO}(3)$}
 L'application $q \mapsto (v \mapsto qv\bar{q})$ est un homomorphisme de groupes

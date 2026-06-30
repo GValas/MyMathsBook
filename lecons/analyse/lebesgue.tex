@@ -218,8 +218,12 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
   Soit $f:[a,b]\to\mathbb{R}$ continue. Pour une subdivision régulière
   $\sigma_n$ de pas $1/n$, les sommes de Darboux
   $s(f,\sigma_n) \to \int_{[a,b]} f\,\mathrm{d}\lambda$ par convergence
-  monotone appliquée aux fonctions étagées
-  $\varphi_n = \sum_i m_i^{(n)} \mathbf{1}_{[x_{i-1},x_i[}$. De même
+  dominée appliquée aux fonctions étagées
+  $\varphi_n = \sum_i m_i^{(n)} \mathbf{1}_{[x_{i-1},x_i[}$ : elles convergent
+  simplement vers $f$ (continuité de $f$) tout en restant majorées par la
+  constante $\sup_{[a,b]}|f|$, intégrable sur $[a,b]$. (On évite ici la
+  convergence monotone, car les $\sigma_n$ ne sont pas emboîtées et la suite
+  $(\varphi_n)$ n'est pas croissante.) De même
   $S(f,\sigma_n) \to \int_{[a,b]} f\,\mathrm{d}\lambda$. Comme $f$ est
   Riemann-intégrable, $s, S \to \int_a^b f$ (Riemann). Les deux limites
   coïncident.\hfill$\blacksquare$
@@ -261,7 +265,7 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
 
   \smallskip\noindent
   \textbf{5. Fubini.}\enspace%
-  $\displaystyle\int_0^1\!\!\int_0^1 \frac{x^2 - y^2}{{(x^2+y^2)}^2}\,\mathrm{d}x\,\mathrm{d}y
+  $\displaystyle\int_0^1\!\!\int_0^1 \frac{x^2 - y^2}{{(x^2+y^2)}^2}\,\mathrm{d}y\,\mathrm{d}x
   = \frac{\pi}{4}$ alors que l'intégrale dans l'autre ordre vaut $-\pi/4$ :
   l'hypothèse $\iint |f| < +\infty$ est violée, Fubini ne s'applique pas.
 \end{mdframed}

@@ -37,7 +37,12 @@
   La série est absolument convergente ; comme $\mathcal{M}_n(\mathbb{K})$ est
   un espace de Banach (espace vectoriel normé de dimension finie, donc complet),
   toute série absolument convergente y est convergente, et donc cette série
-  converge. $\blacksquare$
+  converge.
+
+  Enfin, sur toute boule $\{A : \|A\|\leq R\}$, chaque terme est majoré par
+  $\|A^k/k!\|\leq R^k/k!$ indépendamment de $A$, le majorant $\sum R^k/k! = e^R$
+  étant fini : par le critère de Weierstrass, la convergence est normale, donc
+  uniforme, sur tout borné. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Premières valeurs}
@@ -126,8 +131,10 @@ Si $A^m = 0$, la série est finie :
 
 \rubriq{Décomposition de Dunford}
 \index{décomposition de Dunford}
-Toute matrice $A$ s'écrit $A = D + N$ avec $D$ diagonalisable, $N$ nilpotente
-et $DN = ND$. Comme $D$ et $N$ commutent :
+Toute matrice $A$ à polynôme caractéristique scindé (en particulier toute
+matrice à coefficients dans $\mathbb{C}$) s'écrit de manière unique
+$A = D + N$ avec $D$ diagonalisable, $N$ nilpotente et $DN = ND$. Comme $D$ et
+$N$ commutent :
 \[
   e^A = e^D \cdot e^N,
 \]
@@ -143,10 +150,14 @@ où $e^D$ se calcule via la diagonalisation et $e^N$ par la série finie.
 
   \medskip
   \textbf{Exemple — rotation.}\enspace%
-  $A = \theta\begin{pmatrix}0&-1\\1&0\end{pmatrix}$.
-  Valeurs propres complexes $\pm i\theta$. En développant directement :
+  $A = \theta J$ avec $J = \begin{pmatrix}0&-1\\1&0\end{pmatrix}$.
+  Valeurs propres complexes $\pm i\theta$. Comme $J^2 = -I$, on a
+  $A^{2k} = (-1)^k\theta^{2k}I$ et $A^{2k+1} = (-1)^k\theta^{2k+1}J$ ; en
+  regroupant les termes pairs et impairs de la série, on reconnaît les
+  développements de $\cos\theta$ et $\sin\theta$ :
   \[
-    e^A = \begin{pmatrix}\cos\theta & -\sin\theta\\\sin\theta & \cos\theta\end{pmatrix}.
+    e^A = \cos\theta\,I + \sin\theta\,J
+        = \begin{pmatrix}\cos\theta & -\sin\theta\\\sin\theta & \cos\theta\end{pmatrix}.
   \]
 \end{mdframed}
 

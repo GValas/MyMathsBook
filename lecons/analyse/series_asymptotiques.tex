@@ -1,0 +1,255 @@
+%==============================================================
+%  lecons/analyse/series_asymptotiques.tex — Séries asymptotiques
+%==============================================================
+
+\lecontitle{Séries asymptotiques}{Analyse réelle — Développements de Poincaré et troncature optimale}
+
+%=== NOTATION LOCALE =========================================
+% (aucune : \sim, \mathcal{O}, o sont fournis par amsmath/amssymb)
+
+%=============================================================
+%  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
+%=============================================================
+\secnum{navyblue}{1}{Définition et résultats fondamentaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition (développement asymptotique de Poincaré).}%
+  \enspace\index{série asymptotique}\index{développement asymptotique}
+  Soit $f$ définie au voisinage de $+\infty$ et $(a_n)_{n\geq 0}$ une suite de
+  scalaires. On dit que la série $\sum a_n x^{-n}$ est un \emph{développement
+  asymptotique} de $f$ en $+\infty$, et l'on écrit
+  \[
+    f(x) \;\sim\; \sum_{n=0}^{+\infty} \frac{a_n}{x^{n}}
+    \qquad (x\to +\infty),
+  \]
+  si pour tout entier $N\geq 0$ le reste vérifie
+  \[
+    f(x) - \sum_{n=0}^{N} \frac{a_n}{x^{n}}
+    \;=\; \mathcal{O}\!\left(\frac{1}{x^{N+1}}\right)
+    \qquad (x\to +\infty),
+  \]
+  ce qui équivaut à $f(x)-\sum_{n=0}^{N}a_n x^{-n}=o(x^{-N})$.
+
+  \medskip
+  \textbf{Point capital.} La définition ne suppose \emph{aucune} convergence de
+  la série $\sum a_n x^{-n}$ : elle fixe $N$ et fait tendre $x\to+\infty$, à
+  l'inverse d'une série convergente qui fixe $x$ et fait $N\to+\infty$. Une série
+  asymptotique peut diverger pour \emph{tout} $x$.
+
+  \medskip
+  \textbf{Théorème (propriétés fondamentales).}
+  \begin{itemize}
+    \item \textit{Unicité des coefficients.} Si $f$ admet un développement
+    asymptotique, ses coefficients sont uniques, donnés par
+    \[
+      a_0=\lim_{x\to+\infty} f(x),\qquad
+      a_n=\lim_{x\to+\infty} x^{n}\Bigl(f(x)-\sum_{k=0}^{n-1}a_k x^{-k}\Bigr).
+    \]
+    \item \textit{Non-unicité de la fonction.} Deux fonctions distinctes peuvent
+    partager le même développement : $f$ et $f+e^{-x}$ ont le même, car
+    $e^{-x}=o(x^{-N})$ pour tout $N$ (termes « au-delà de tout ordre »).
+    \item \textit{Linéarité et produit.} L'ensemble des fonctions admettant un
+    développement asymptotique est stable par combinaison linéaire et par
+    produit, avec développement obtenu par les opérations formelles
+    correspondantes.
+    \item \textit{Intégration.} On peut intégrer terme à terme un développement
+    asymptotique ; on ne peut pas le \emph{dériver} sans hypothèse
+    supplémentaire.
+    \item \textit{Troncature optimale.} Pour une série asymptotique divergente,
+    l'erreur de la somme partielle $S_N(x)$ est de l'ordre du premier terme
+    négligé ; elle décroît puis croît avec $N$. Tronquer au plus petit terme
+    minimise l'erreur (\emph{superasymptotique}).
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{significationintuitive}
+Convergence et asymptotique échangent l'ordre de deux limites. Une série
+convergente promet : « fixe la précision voulue, je l'atteins en prenant assez
+de termes ». Une série asymptotique promet l'inverse : « fixe le nombre de
+termes, l'erreur devient minuscule quand $x$ grandit ». C'est pourquoi quelques
+termes d'une série \emph{divergente} suffisent souvent à calculer une fonction
+avec une précision spectaculaire — à condition de s'arrêter au bon moment, près
+du plus petit terme.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — DÉMONSTRATION
+%=============================================================
+\secnum{navyblue}{2}{Démonstration}
+
+\begin{ideepreuve}
+On construit l'exemple canonique d'Euler $F(x)=\int_0^{+\infty}e^{-xt}(1+t)^{-1}\,
+\mathrm{d}t$. Le développement géométrique de $1/(1+t)$ avec reste intégral, suivi
+de $\int_0^\infty e^{-xt}t^k\,\mathrm{d}t=k!/x^{k+1}$, fournit la série
+$\sum(-1)^k k!\,x^{-k-1}$ et un reste majoré par le terme suivant. La série
+diverge pour tout $x$, mais le contrôle du reste donne l'asymptotique et la
+troncature optimale.
+\end{ideepreuve}
+
+\vspace{10pt}
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Étape 1 — Unicité des coefficients.}
+  Supposons $f(x)\sim\sum a_n x^{-n}$. En faisant $x\to+\infty$ dans
+  $f(x)-\sum_{k<n}a_k x^{-k}=a_n x^{-n}+o(x^{-n})$, on obtient
+  $x^{n}\bigl(f(x)-\sum_{k<n}a_k x^{-k}\bigr)\to a_n$. Les $a_n$ se calculent
+  donc de proche en proche à partir de $f$ seule : ils sont uniques.
+
+  \medskip
+  \textit{Étape 2 — Construction de l'exemple d'Euler.}
+  Pour $x>0$ posons
+  \[
+    F(x)=\int_{0}^{+\infty}\frac{e^{-xt}}{1+t}\,\mathrm{d}t .
+  \]
+  L'intégrale converge (domination par $e^{-xt}$). De l'identité, pour tout
+  $N\geq 0$,
+  \[
+    \frac{1}{1+t}=\sum_{k=0}^{N-1}(-1)^k t^{k}
+      +\frac{(-1)^{N}t^{N}}{1+t},
+  \]
+  et de $\displaystyle\int_0^{+\infty}e^{-xt}t^{k}\,\mathrm{d}t=\frac{k!}{x^{k+1}}$,
+  on tire
+  \[
+    F(x)=\sum_{k=0}^{N-1}\frac{(-1)^{k}\,k!}{x^{k+1}}
+      \;+\; R_N(x),
+    \qquad
+    R_N(x)=(-1)^{N}\!\int_{0}^{+\infty}\frac{e^{-xt}t^{N}}{1+t}\,\mathrm{d}t .
+  \]
+
+  \medskip
+  \textit{Étape 3 — Majoration du reste et caractère asymptotique.}
+  Comme $0\leq \dfrac{1}{1+t}\leq 1$ sur $[0,+\infty[$,
+  \[
+    |R_N(x)|\;\leq\;\int_{0}^{+\infty}e^{-xt}t^{N}\,\mathrm{d}t
+    \;=\;\frac{N!}{x^{N+1}} .
+  \]
+  Le reste est donc majoré, en valeur absolue, par le \emph{premier terme
+  négligé}. En particulier $R_N(x)=\mathcal{O}(x^{-N-1})$, ce qui établit
+  \[
+    F(x)\;\sim\;\sum_{k=0}^{+\infty}\frac{(-1)^{k}\,k!}{x^{k+1}}
+    \qquad (x\to+\infty).
+  \]
+
+  \medskip
+  \textit{Étape 4 — Divergence de la série.}
+  Pour $x>0$ fixé, le terme général $u_k=k!/x^{k+1}$ vérifie
+  $u_{k+1}/u_k=(k+1)/x\to+\infty$ : il ne tend pas vers $0$, donc la série
+  $\sum(-1)^k k!\,x^{-k-1}$ \emph{diverge grossièrement} pour tout $x$.
+  Convergence et asymptotique sont bien deux notions indépendantes.
+
+  \medskip
+  \textit{Étape 5 — Troncature optimale.}
+  L'erreur commise en s'arrêtant après $N$ termes est de l'ordre de
+  $u_N=N!/x^{N+1}$. Le rapport $u_{N+1}/u_N=(N+1)/x$ est $<1$ tant que $N<x-1$ et
+  $>1$ ensuite : les termes décroissent puis croissent, le plus petit étant
+  atteint vers $N\approx x$. Par la formule de Stirling,
+  $N!/x^{N+1}\approx \sqrt{2\pi x}\,e^{-x}/x$ pour $N\approx x$, d'où une erreur
+  optimale de l'ordre de $e^{-x}$ : minuscule, bien que la série diverge.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — EXEMPLES, CONTRE-EXEMPLES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{3}{Exemples, contre-exemples et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Série d'Euler.}\enspace\index{série d'Euler}%
+  L'exemple fondateur, dû à Euler (1760), est
+  \[
+    F(x)=\int_{0}^{+\infty}\frac{e^{-xt}}{1+t}\,\mathrm{d}t
+    \;\sim\;\frac{1}{x}-\frac{1}{x^{2}}+\frac{2!}{x^{3}}-\frac{3!}{x^{4}}+\cdots
+  \]
+  La série diverge partout, mais trois ou quatre termes calculent $F(x)$ avec une
+  excellente précision dès que $x$ est grand.
+
+  \smallskip\noindent
+  \textbf{2. Série de Stirling.}\enspace\index{formule de Stirling}%
+  Le développement de la fonction Gamma,
+  \[
+    \ln\Gamma(x)\;\sim\;\Bigl(x-\tfrac12\Bigr)\ln x-x+\tfrac12\ln(2\pi)
+      +\sum_{n\geq 1}\frac{B_{2n}}{2n(2n-1)\,x^{2n-1}},
+  \]
+  a sa partie en série \emph{divergente} (les nombres de Bernoulli $B_{2n}$
+  croissent très vite), mais asymptotique : c'est elle qui rend la formule de
+  Stirling si précise pour quelques termes.
+
+  \smallskip\noindent
+  \textbf{3. Fonction d'erreur complémentaire.}\enspace%
+  Pour $x\to+\infty$,
+  \[
+    \int_{x}^{+\infty}e^{-t^{2}}\,\mathrm{d}t
+    \;\sim\;\frac{e^{-x^{2}}}{2x}\Bigl(1-\frac{1}{2x^{2}}+\frac{3}{4x^{4}}
+      -\cdots\Bigr),
+  \]
+  obtenue par intégrations par parties successives ; là encore la série entre
+  parenthèses diverge mais approxime remarquablement la queue gaussienne.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Contre-exemples et pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Asymptotique $\neq$ convergente.}\enspace%
+  On ne peut pas atteindre une précision arbitraire à $x$ fixé en ajoutant des
+  termes : passé le plus petit terme, l'erreur \emph{réaugmente}. Sommer
+  « tous » les termes n'a aucun sens.
+
+  \smallskip\noindent
+  \textbf{La fonction n'est pas déterminée.}\enspace%
+  $F(x)$ et $F(x)+e^{-x}$ ont le même développement asymptotique : un
+  développement asymptotique ne caractérise pas la fonction (termes
+  exponentiellement petits invisibles à tous les ordres).
+
+  \smallskip\noindent
+  \textbf{Pas de dérivation terme à terme.}\enspace%
+  De $f(x)\sim\sum a_n x^{-n}$ on ne peut pas déduire en général
+  $f'(x)\sim -\sum n\,a_n x^{-n-1}$ : ajouter $e^{-x}\sin(e^{x})$, de
+  développement asymptotique nul mais dont la dérivée
+  $\cos(e^{x})-e^{-x}\sin(e^{x})$ ne tend pas vers $0$, détruit la relation. La
+  dérivation exige une hypothèse de régularité supplémentaire.
+
+  \smallskip\noindent
+  \textbf{Troncature naïve.}\enspace%
+  Prendre $N$ « le plus grand possible » est contre-productif : il faut s'arrêter
+  près de $N\approx x$ (plus petit terme), pas au-delà.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Démontrer l'unicité des coefficients d'un développement asymptotique et
+          calculer $a_0,a_1,a_2$ pour $f(x)=\dfrac{x}{x-1}$ en $+\infty$.
+
+    \item Établir en détail, pour $F(x)=\int_0^{+\infty}\dfrac{e^{-xt}}{1+t}\,
+          \mathrm{d}t$, l'égalité
+          $F(x)=\sum_{k=0}^{N-1}\dfrac{(-1)^k k!}{x^{k+1}}+R_N(x)$ avec
+          $|R_N(x)|\leq N!/x^{N+1}$.
+
+    \item En déduire que la série d'Euler diverge pour tout $x>0$, tout en étant
+          asymptotique à $F$.
+
+    \item (Troncature optimale) Montrer que $u_N=N!/x^{N+1}$ est minimal pour
+          $N\approx x$ et que la valeur minimale est de l'ordre de $e^{-x}$.
+          \textit{Indication :} formule de Stirling.
+
+    \item Obtenir le développement asymptotique de $\displaystyle\int_x^{+\infty}
+          e^{-t^2}\,\mathrm{d}t$ par intégrations par parties successives et
+          majorer le reste.
+
+    \item (Non-unicité) Vérifier que $x\mapsto e^{-x}$ admet le développement
+          asymptotique nul en $+\infty$, et en déduire que deux fonctions de
+          même développement diffèrent d'un terme $o(x^{-N})$ pour tout $N$.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{L.\ Euler (1760) ; H.\ Poincaré, \textit{Sur les intégrales irrégulières} (1886)}

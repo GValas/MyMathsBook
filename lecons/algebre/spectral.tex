@@ -94,7 +94,8 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   \textit{Initialisation} : $n=1$, tout endomorphisme est diagonalisable.
 
   \textit{Hérédité} : soit $\lambda$ une valeur propre réelle de $f$ (Lemme 3),
-  $V = \ker(f-\lambda\,\mathrm{Id})$ son sous-espace propre. On vérifie que
+  $V = \ker(f-\lambda\,\mathrm{Id})$ son sous-espace propre, de dimension
+  $\dim V \geq 1$ puisque $\lambda$ est valeur propre. On vérifie que
   $V^\perp$ est stable par $f$ : pour $y\in V^\perp$ et $v\in V$,
   \[
     \langle f(y),v\rangle = \langle y,f(v)\rangle = \lambda\langle y,v\rangle = 0.
@@ -106,7 +107,8 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   $f|_{V^\perp}$ est autoadjointe sur $V^\perp$, de dimension
   $n - \dim V < n$. Par hypothèse de récurrence, $V^\perp$ admet une base
   orthonormale de vecteurs propres. En la combinant avec une base orthonormale
-  de $V$, on obtient une base orthonormale de $E$ diagonalisant $f$.
+  de $V$ (formée de vecteurs propres pour $\lambda$), et comme $E = V\oplus V^\perp$
+  avec $V\perp V^\perp$, on obtient une base orthonormale de $E$ diagonalisant $f$.
   \hfill$\blacksquare$
 \end{mdframed}
 

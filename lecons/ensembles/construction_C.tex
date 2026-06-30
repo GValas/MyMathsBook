@@ -29,6 +29,16 @@ tout polynôme non constant a au moins une racine.
   est un homomorphisme de corps.
 \end{tcolorbox}
 
+\begin{significationintuitive}
+  Le quotient $\mathbb{R}[X]/(X^2+1)$ consiste à manipuler les polynômes réels
+  \emph{modulo} la relation $X^2+1 = 0$, c'est-à-dire en convenant que $X^2 = -1$.
+  Tout reste de division par $X^2+1$ est de degré $\leq 1$, donc de la forme
+  $a + bX$ : on retrouve ainsi le plan $\mathbb{R}^2$, et la classe de $X$ joue le
+  rôle de $i$. La table de multiplication $(a,b)\times(c,d) = (ac-bd,\,ad+bc)$
+  n'est rien d'autre que le produit $(a+bX)(c+dX) = ac + (ad+bc)X + bd\,X^2$ où
+  l'on remplace $X^2$ par $-1$.
+\end{significationintuitive}
+
 \decsep{}
 
 %=============================================================
@@ -37,12 +47,17 @@ tout polynôme non constant a au moins une racine.
 \secnum{navyblue}{2}{$\mathbb{C}$ est un corps}
 
 \begin{mdframed}[style=proofbar]
-  \textit{Corps.} Les axiomes de groupe abélien pour $+$ sont immédiats.
-  Pour l'inverse multiplicatif de $(a,b) \neq (0,0)$ :
+  \textit{Corps.} Les axiomes de groupe abélien pour $+$ sont immédiats. La
+  multiplication est commutative, associative et distributive sur $+$ : cela se
+  vérifie par calcul direct à partir des propriétés correspondantes de $\mathbb{R}$,
+  l'élément neutre étant $(1,0)$. Pour l'inverse multiplicatif de
+  $(a,b) \neq (0,0)$ :
   \[
     {(a,b)}^{-1} = \left(\frac{a}{a^2+b^2},\; \frac{-b}{a^2+b^2}\right).
   \]
-  On vérifie $(a,b)\cdot(a,-b) = (a^2+b^2, 0) \neq (0,0)$ car $a^2+b^2 > 0$.
+  En effet $(a,b)\cdot(a,-b) = (a^2+b^2, 0)$ s'identifie au réel $a^2+b^2 \neq 0$
+  (car $a^2+b^2 > 0$ dès que $(a,b)\neq(0,0)$), d'où la formule ci-dessus en
+  divisant par ce réel.
 
   \textit{Dimension.} $\mathbb{C}$ est un $\mathbb{R}$-espace vectoriel de dimension $2$,
   de base $(1, i)$. Tout $z \in \mathbb{C}$ s'écrit $z = a + ib$ avec $a,b\in\mathbb{R}$.
@@ -91,11 +106,15 @@ tout polynôme non constant a au moins une racine.
 
 \begin{mdframed}[style=proofbar]
   \textit{Esquisse (preuve topologique).}
-  Si $P$ n'a pas de racine, la fonction $z \mapsto P(z)/|P(z)|$
-  définit un élément non trivial de $\pi_1(\mathbb{S}^1) \cong \mathbb{Z}$.
-  Mais $P(z)/|P(z)| \sim z^n/|z|^n$ pour $|z| \to \infty$, ce qui produit
-  un enroulement d'indice $n$ autour de l'origine — contradiction si $P$
-  est sans racine et $n \geq 1$. \hfill$\blacksquare$
+  Supposons que $P$ (de degré $n\geq 1$) n'ait aucune racine. Alors
+  $z \mapsto P(z)/|P(z)|$ est définie et continue sur $\mathbb{C}$ tout entier,
+  à valeurs dans le cercle $\mathbb{S}^1$. Sa restriction au cercle de rayon $R$
+  est donc une boucle, dont l'indice (élément de $\pi_1(\mathbb{S}^1)\cong\mathbb{Z}$)
+  ne dépend pas continûment de $R$ : en faisant $R \to 0$, la boucle se contracte
+  en la constante $P(0)/|P(0)|$, donc cet indice est nul. Mais pour $|z|\to\infty$
+  on a $P(z)/|P(z)| \sim z^n/|z|^n$, qui s'enroule $n$ fois autour de l'origine,
+  d'indice $n$. Comme l'indice est un entier invariant par homotopie, on aurait
+  $0 = n$ : contradiction puisque $n \geq 1$. \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Conséquence : classification des corps}

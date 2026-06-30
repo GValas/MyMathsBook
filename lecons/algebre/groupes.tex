@@ -34,7 +34,7 @@
   \smallskip\noindent
   \textbf{2. Groupes multiplicatifs.}\enspace%
   $(\mathbb{Q}^*,\times)$, $(\mathbb{R}^*,\times)$, $(\mathbb{C}^*,\times)$,
-  $(\mathbb{U},\times)$ (racines de l'unité) sont abéliens.
+  $(\mathbb{U},\times)$ (complexes de module $1$) sont abéliens.
 
   \smallskip\noindent
   \textbf{3. Groupe symétrique $\mathfrak{S}_n$.}\enspace%
@@ -129,7 +129,12 @@
   \textit{Les classes à gauche $aH = \{ah \mid h \in H\}$ forment une partition de $G$}
   (cf.\ relation d'équivalence $a \sim b \Leftrightarrow a^{-1}b \in H$).
   Chaque classe a cardinal $|H|$ (la bijection $h \mapsto ah$ est de $H$ vers $aH$).
-  Donc $|G| = |H| \cdot |\{$classes$\}| = |H| \cdot [G:H]$. \hfill$\blacksquare$
+  Donc $|G| = |H| \cdot |\{$classes$\}| = |H| \cdot [G:H]$.
+
+  \textit{Corollaire.} Appliqué au sous-groupe $\langle a\rangle$, dont le cardinal
+  vaut précisément l'ordre de $a$, le théorème montre que cet ordre divise $|G|$ ;
+  écrivant $|G| = \mathrm{ord}(a)\cdot m$, on obtient $a^{|G|} = (a^{\mathrm{ord}(a)})^m = e$.
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \begin{tcolorbox}[thmbox]

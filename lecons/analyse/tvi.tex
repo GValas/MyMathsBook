@@ -66,8 +66,10 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
   $b_k - a_k = (b-a)/2^k \to 0$.
 
   \medskip
-  \textit{Convergence.} Puisque $b_k - a_k = (b-a)/2^k \to 0$, les suites
-  $(a_k)$ croissante majorée et $(b_k)$ décroissante minorée ont la même limite $c$.
+  \textit{Convergence.} Les suites $(a_k)$ (croissante, majorée par $b$) et
+  $(b_k)$ (décroissante, minorée par $a$) convergent par le théorème de la limite
+  monotone ; comme $b_k - a_k = (b-a)/2^k \to 0$, elles ont la même limite
+  $c \in [a,b]$. C'est le principe des segments emboîtés.
 
   \medskip
   \textit{Conclusion.} Par continuité de $f$ :
@@ -128,6 +130,8 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
   \textbf{La réciproque est fausse.}\enspace%
   Une fonction vérifiant la propriété des valeurs intermédiaires n'est pas
   forcément continue : $f(x) = \sin(1/x)$ pour $x \neq 0$, $f(0) = 0$.
+  Sur tout voisinage de $0$, $f$ prend déjà toute valeur de $[-1,1]$, ce qui lui
+  confère la propriété des valeurs intermédiaires bien qu'elle soit discontinue en $0$.
 \end{mdframed}
 
 \vspace{6pt}

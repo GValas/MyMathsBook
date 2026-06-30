@@ -100,8 +100,11 @@ changement $t=u^2$.
     = {\big[-t^{x}e^{-t}\big]}_\varepsilon^A
       + x\int_\varepsilon^A t^{x-1}e^{-t}\,\mathrm{d}t.
   \]
-  Le terme tout intégré tend vers $0$ quand $\varepsilon\to 0^+$ et
-  $A\to+\infty$ (car $x>0$). En passant à la limite :
+  Le terme tout intégré ${\big[-t^{x}e^{-t}\big]}_\varepsilon^A
+  =\varepsilon^{x}e^{-\varepsilon}-A^{x}e^{-A}$ tend vers $0$ quand
+  $\varepsilon\to 0^+$ et $A\to+\infty$ : en $0$ car $\varepsilon^{x}\to 0$
+  (puisque $x>0$), en $+\infty$ par croissances comparées. En passant à la
+  limite :
   \[
     \Gam(x+1) = x\,\Gam(x).
   \]
@@ -146,6 +149,10 @@ changement $t=u^2$.
   =\tfrac{\sqrt{\pi}}{2}$ (elle-même limite des intégrales de Wallis). On en
   déduit, via l'équation fonctionnelle,
   $\Gam(3/2)=\tfrac12\sqrt{\pi}$, $\Gam(5/2)=\tfrac34\sqrt{\pi}$, etc.
+
+  \smallskip
+  La formule des compléments et l'équivalent de Stirling, de preuve
+  sensiblement plus délicate, sont admis dans cette leçon.
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -184,10 +191,9 @@ changement $t=u^2$.
   \smallskip\noindent
   \textbf{3. Lien avec les intégrales de Wallis.}\enspace\index{intégrales de Wallis}
   Le changement $u=\sin^2 t$ donne
-  $W_n=\intz \sin^n t\,\mathrm{d}t=\tfrac12 B\!\left(\tfrac{n+1}{2},\tfrac12\right)
+  $W_n=\int_0^{\pi/2} \sin^n t\,\mathrm{d}t=\tfrac12 B\!\left(\tfrac{n+1}{2},\tfrac12\right)
    =\dfrac{\sqrt{\pi}}{2}\,\dfrac{\Gam\!\left(\frac{n+1}{2}\right)}
-   {\Gam\!\left(\frac{n}{2}+1\right)}$,
-  où $\displaystyle\intz=\int_0^{\pi/2}$.
+   {\Gam\!\left(\frac{n}{2}+1\right)}$.
 
   \smallskip\noindent
   \textbf{4. Stirling factoriel.}\enspace\index{formule de Stirling}

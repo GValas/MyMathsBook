@@ -229,7 +229,9 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
   \textbf{3. Somme trigonométrique.}\enspace%
   $\displaystyle S_n = \sum_{k=0}^{n} \cos(k\theta) = \mathrm{Re}\!\sum_{k=0}^n e^{ik\theta}
   = \mathrm{Re}\,\frac{1 - e^{i(n+1)\theta}}{1 - e^{i\theta}}$.
-  On factorise pour obtenir la formule fermée :
+  On factorise numérateur et dénominateur par l'angle moitié
+  ($1 - e^{i\alpha} = -2i\sin(\alpha/2)\,e^{i\alpha/2}$) pour obtenir la
+  formule fermée :
   \[
     S_n = \frac{\sin\!\big(\frac{(n+1)\theta}{2}\big)\cos\!\big(\frac{n\theta}{2}\big)}
                {\sin(\theta/2)}, \quad \theta \notin 2\pi\mathbb{Z}.
@@ -247,7 +249,8 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
   \textbf{Argument non additif sur $\mathbb{R}$.}\enspace%
   $\arg(zw) = \arg z + \arg w$ n'est valide que modulo $2\pi$. L'argument
   principal peut présenter un saut de $\pm 2\pi$ : $\arg((-1)\cdot(-1)) =
-  \arg(1) = 0$, mais $\arg(-1) + \arg(-1) = -\pi + (-\pi) = -2\pi \neq 0$.
+  \arg(1) = 0$, mais $\arg(-1) + \arg(-1) = \pi + \pi = 2\pi \neq 0$
+  (avec la détermination principale $\arg(-1) = \pi$).
 
   \smallskip\noindent
   \textbf{$\sqrt{z^2} \neq z$ en général.}\enspace%
@@ -294,8 +297,9 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
             |z_1 - z_3| \cdot |z_2| \;\leq\;
             |z_1 - z_2| \cdot |z_3| + |z_2 - z_3| \cdot |z_1|.
           \]
-          (\textit{Indication :} écrire $z_1 - z_3 = (z_1 - z_2) + (z_2 - z_3)$
-          et factoriser habilement.)
+          (\textit{Indication :} vérifier l'identité algébrique
+          $z_2(z_1 - z_3) = z_3(z_1 - z_2) + z_1(z_2 - z_3)$, puis appliquer
+          l'inégalité triangulaire et passer aux modules.)
   \end{enumerate}
 \end{mdframed}
 

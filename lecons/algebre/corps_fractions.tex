@@ -61,21 +61,33 @@ dans laquelle tout élément non nul de $A$ est inversible — on « force » la
 
   \textit{Symétrie.} $ad=bc \Rightarrow cb=da$. $\checkmark$
 
-  \textit{Transitivité.} Soit $(a,b)\sim(c,d)$ et $(c,d)\sim(e,f)$, avec
-  $f\neq 0$. Supposons donc $ad=bc$ et $cf=de$.
-  On veut $af=be$. On a $adf = bcf = bde$,
-  donc $d(af-be)=0$. Comme $d\neq 0$ et $A$ est \emph{intègre}, $af=be$. $\blacksquare$
+  \textit{Transitivité.} Soit $(a,b)\sim(c,d)$ et $(c,d)\sim(e,f)$
+  (où $b,d,f$ sont tous non nuls par construction).
+  Supposons donc $ad=bc$ et $cf=de$.
+  On veut $af=be$. En multipliant la première égalité par $f$,
+  $adf = bcf = b(cf) = b(de) = bde$,
+  donc $d(af-be)=0$. Comme $d\neq 0$ et $A$ est \emph{intègre}, on peut
+  simplifier par $d$ : $af=be$. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Preuve — $\mathrm{Frac}(A)$ est un corps}
 
 \begin{mdframed}[style=proofbar]
+  \textit{Les lois ont un sens.} Comme $b,d\neq 0$ et que $A$ est intègre,
+  $bd\neq 0$ : les seconds membres $\tfrac{ad+bc}{bd}$ et $\tfrac{ac}{bd}$ sont
+  bien des éléments de $S$ (c'est encore l'intégrité qui assure que le
+  dénominateur reste non nul).
+
+  \smallskip
   \textit{Bien-fondé des lois.} Si $(a,b)\sim(a',b')$ et $(c,d)\sim(c',d')$
   (i.e.\ $ab'=a'b$ et $cd'=c'd$), montrons $\frac{ad+bc}{bd}\sim\frac{a'd'+b'c'}{b'd'}$ :
   \begin{align*}
     (ad+bc)(b'd') &= adb'd' + bcb'd' = (ab')dd' + (cd')bb' \\
                   &= (a'b)dd'+(c'd)bb' = (a'd'+b'c')(bd).
   \end{align*}
+  Pour le produit, de même
+  $(ac)(b'd') = (ab')(cd') = (a'b)(c'd) = (a'c')(bd)$, donc
+  $\frac{ac}{bd}\sim\frac{a'c'}{b'd'}$.
 
   \textit{Anneau commutatif avec $1=\tfrac{1}{1}$ et $0=\tfrac{0}{1}$.}
   Associativité, commutativité et distributivité se ramènent aux propriétés

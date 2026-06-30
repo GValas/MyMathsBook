@@ -131,14 +131,19 @@ décomposition en facteurs premiers.
   \]
   En multipliant par $(s-1)$ : $1\leq (s-1)\zeta(s)\leq s$, donc
   $(s-1)\zeta(s)\to 1$ quand $s\to 1^{+}$, c'est-à-dire
-  $\zeta(s)\sim 1/(s-1)$. Par ailleurs, pour $s\to+\infty$, $\zeta(s)-1=\sum_{n\geq
-  2}n^{-s}\leq \sum_{n\geq 2}2^{-s}\cdot(2/n)^{s}\to 0$ (domination par
-  $2^{1-s}$), d'où $\lim_{s\to+\infty}\zeta(s)=1$.
+  $\zeta(s)\sim 1/(s-1)$. Par ailleurs, pour $s>1$, la décroissance de
+  $t\mapsto t^{-s}$ donne, par comparaison série-intégrale,
+  \[
+    0\;\leq\; \zeta(s)-1=\sum_{n\geq 2}\frac{1}{n^{s}}
+    \;\leq\; \int_{1}^{+\infty}\frac{\mathrm{d}t}{t^{s}}
+    =\frac{1}{s-1}\;\xrightarrow[s\to+\infty]{}\;0,
+  \]
+  d'où $\lim_{s\to+\infty}\zeta(s)=1$.
 
   \medskip
   \textit{Étape 5 — Produit eulérien.}
   Fixons $s>1$. Pour chaque premier $p$, $|p^{-s}|<1$ donne
-  $(1-p^{-s})^{-1}=\sum_{k\geq 0}p^{-ks}$. Pour un réel $N$, le produit fini sur
+  $(1-p^{-s})^{-1}=\sum_{k\geq 0}p^{-ks}$. Pour un entier $N\geq 1$, le produit fini sur
   les premiers $p\leq N$ vaut, en développant et en regroupant,
   \[
     \prod_{p\leq N}\frac{1}{1-p^{-s}}

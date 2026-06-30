@@ -81,6 +81,14 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
   \]
   Et $\exp(0) = 1$ par définition.
 
+  \textit{Non-annulation.}
+  Posons $p(x) = \exp(x)\exp(-x)$. D'après (1) et la dérivation d'une
+  composée, $p'(x) = \exp(x)\exp(-x) - \exp(x)\exp(-x) = 0$ ; donc $p$ est
+  constante, égale à $p(0) = 1$. Ainsi $\exp(x)\exp(-x) = 1$ pour tout $x$ :
+  en particulier $\exp$ ne s'annule jamais, et $\exp(-x) = 1/\exp(x)$
+  (point (3)). Ce point ne repose que sur $\exp' = \exp$, et non sur
+  l'équation fonctionnelle établie ci-dessous.
+
   \textit{(2) Équation fonctionnelle.}
   Fixons $a \in \mathbb{R}$ et posons $\varphi(x) = \exp(a+x) - \exp(a)\exp(x)$.
   Alors $\varphi'(x) = \exp(a+x) - \exp(a)\exp(x) = \varphi(x)$
@@ -91,11 +99,14 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
     = \varphi(x)\exp(-x) - \varphi(x)\exp(-x) = 0.
   \]
   Donc $\psi$ est constante : $\psi \equiv \psi(0) = \varphi(0)\cdot\exp(0) = 0$.
-  Puisque $\exp > 0$, on conclut $\varphi \equiv 0$, i.e.\ $\exp(a+x)=\exp(a)\exp(x)$.
+  Puisque $\exp(-x) \neq 0$ (non-annulation), on conclut $\varphi \equiv 0$,
+  i.e.\ $\exp(a+x)=\exp(a)\exp(x)$.
 
   \textit{(3) Signe.}
-  Pour tout $x$ : $\exp(x)\cdot\exp(-x) = \exp(0) = 1 > 0$,
-  donc $\exp(x) \neq 0$. Comme $\exp(0) = 1 > 0$ et $\exp$ est continue, $\exp > 0$.
+  On a déjà $\exp(x)\cdot\exp(-x) = 1$ (non-annulation), donc $\exp$ ne
+  s'annule jamais et $\exp(-x) = 1/\exp(x)$. Comme $\exp(0) = 1 > 0$ et que
+  $\exp$ est continue, le théorème des valeurs intermédiaires interdit tout
+  changement de signe : $\exp > 0$ sur $\mathbb{R}$.
 
   \textit{(4) Monotonie.}
   $\exp'(x) = \exp(x) > 0$ : $\exp$ est strictement croissante.
@@ -252,8 +263,9 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
   \textbf{L'inégalité $\exp(x)\geq 1+x$ peut être améliorée.}\enspace%
   On a aussi $\exp(x) \geq 1+x+x^2/2$ pour $x \geq 0$, mais
   \emph{pas} pour $x$ arbitraire (les termes d'ordre supérieur alternent
-  de signe pour $x < 0$). Pour $x < 0$, la troncature à l'ordre impair
-  donne une majoration, à l'ordre pair une minoration.
+  de signe pour $x < 0$). Pour $x < 0$, la troncature à l'ordre pair
+  donne une majoration, à l'ordre impair une minoration (le signe du reste
+  $\frac{x^{n+1}}{(n+1)!}\exp(\xi)$ est celui de $x^{n+1}$).
 \end{mdframed}
 
 \vspace{6pt}

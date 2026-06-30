@@ -45,6 +45,15 @@
   \end{itemize}
 \end{tcolorbox}
 
+\begin{significationintuitive}
+  Le sous-anneau engendré par $1$ est l'image du morphisme d'anneaux
+  $\mathbb{Z} \to K,\; n \mapsto n \cdot 1$, dont le noyau est $\mathrm{car}(K)\,\mathbb{Z}$.
+  Ce sous-anneau est donc isomorphe à $\mathbb{Z}$ (si $\mathrm{car}(K) = 0$) ou à
+  $\mathbb{Z}/p\mathbb{Z}$ (si $\mathrm{car}(K) = p$). Le plus petit sous-corps de $K$ est
+  le corps des fractions de ce sous-anneau, d'où $\mathbb{Q}$ ou $\mathbb{F}_p$
+  respectivement.
+\end{significationintuitive}
+
 \decsep{}
 
 %=============================================================
@@ -63,6 +72,15 @@
   \textbf{Multiplicativité du degré.}\enspace%
   Si $K \subseteq L \subseteq M$, alors $[M:K] = [M:L]\cdot[L:K]$.
 \end{tcolorbox}
+
+\begin{ideepreuve}
+  Si $(e_i)_{i \in I}$ est une base de $M$ sur $L$ et $(f_j)_{j \in J}$ une base de
+  $L$ sur $K$, alors la famille des produits $(e_i f_j)_{(i,j) \in I \times J}$ forme
+  une base de $M$ sur $K$ : tout élément de $M$ s'écrit $\sum_i \lambda_i e_i$ avec
+  $\lambda_i \in L$, puis chaque $\lambda_i = \sum_j \mu_{ij} f_j$ avec
+  $\mu_{ij} \in K$. On obtient $[M:K] = |I|\cdot|J| = [M:L]\cdot[L:K]$, l'égalité
+  valant aussi dans le cas infini avec la convention des cardinaux.
+\end{ideepreuve}
 
 \begin{tcolorbox}[thmbox]
   \textbf{Éléments algébriques et transcendants.}\enspace%

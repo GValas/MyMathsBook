@@ -23,6 +23,16 @@
   On pose $1 = S(0)$, $2 = S(1)$, $3 = S(2)$, etc.
 \end{tcolorbox}
 
+\begin{significationintuitive}
+  Les trois axiomes capturent l'image d'une file infinie sans répétition.
+  P1 affirme que $0$ est un véritable point de départ : rien ne pointe vers lui,
+  la file a un début. P2 interdit à deux entiers distincts d'avoir le même
+  successeur : la file ne fusionne ni ne se referme sur elle-même (sans P1 ni P2,
+  $S$ pourrait boucler sur un cycle). P3 (récurrence) interdit enfin tout élément
+  «\,parasite\,» extérieur à la chaîne $0, S(0), S(S(0)), \ldots$ : en partant de
+  $0$ et en itérant $S$, on atteint \emph{tout} $\mathbb{N}$.
+\end{significationintuitive}
+
 \rubriq{Unicité à isomorphisme près}
 Si $(\mathbb{N}, 0, S)$ et $(\mathbb{N}', 0', S')$ satisfont tous deux les axiomes
 de Peano, il existe un unique isomorphisme $\varphi : \mathbb{N} \to \mathbb{N}'$
@@ -55,7 +65,10 @@ ensuite pour montrer que c'est une bijection.
 \begin{mdframed}[style=proofbar]
   On vérifie par récurrence les propriétés algébriques usuelles :
   commutativité, associativité de $+$ et $\times$, distributivité.
-  Par exemple, $n + m = m + n$ se montre par double récurrence sur $n$ et $m$.
+  Par exemple, $n + m = m + n$ se montre par récurrence, après avoir établi
+  les lemmes auxiliaires $0 + n = n$ et $S(m) + n = S(m + n)$ ; ceux-ci ne
+  découlent pas immédiatement de la définition, qui ne récurre que sur le
+  second argument.
 
   \textit{Ordre.} On pose $n \leq m$ si $\exists k \in \mathbb{N},\; m = n + k$.
   C'est un ordre total (P3 garantit la comparabilité) et compatible avec $+$ et $\times$.

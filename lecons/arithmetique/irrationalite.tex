@@ -45,9 +45,10 @@ impossible. La rapidité de convergence est l'ingrédient décisif.
   \[
     \frac{q!}{k!} = \frac{1}{(q+1)(q+2)\cdots k} \leq \frac{1}{(q+1)^{\,k-q}},
   \]
-  d'où, par sommation géométrique,
+  d'où, par sommation de la série géométrique de raison $\frac{1}{q+1} < 1$,
   \[
     N < \sum_{j\geq 1} \frac{1}{(q+1)^{j}}
+      = \frac{1/(q+1)}{1 - 1/(q+1)}
       = \frac{1}{q} \leq 1 .
   \]
 
@@ -111,7 +112,9 @@ ce qui rend l'intégrale calculable exactement.
 
   \smallskip\noindent
   \textit{Étape 2 — calcul exact de l'intégrale.}\enspace
-  Comme $\deg f_n = 2n$, on a $f_n^{(2n+2)} = 0$, donc $F_n + F_n'' = f_n$. Alors
+  Comme $\deg f_n = 2n$, on a $f_n^{(2n+2)} = 0$ ; en dérivant deux fois $F_n$,
+  les dérivées intermédiaires se télescopent, et il ne subsiste que
+  $F_n + F_n'' = f_n$. Alors
   \[
     \frac{\mathrm{d}}{\mathrm{d}x}\bigl(F_n'(x)\sin x - F_n(x)\cos x\bigr)
     = \bigl(F_n''(x) + F_n(x)\bigr)\sin x = f_n(x)\sin x .

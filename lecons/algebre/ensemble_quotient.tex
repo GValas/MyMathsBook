@@ -16,8 +16,8 @@
   \emph{relation d'équivalence} si elle est :
   \begin{enumerate}
     \item \textbf{Réflexive :} $\forall x \in E,\; x\,\mathcal{R}\,x$ ;
-    \item \textbf{Symétrique :} $x\,\mathcal{R}\,y \Rightarrow y\,\mathcal{R}\,x$ ;
-    \item \textbf{Transitive :} $x\,\mathcal{R}\,y \text{ et } y\,\mathcal{R}\,z \Rightarrow x\,\mathcal{R}\,z$.
+    \item \textbf{Symétrique :} $\forall x,y \in E,\; x\,\mathcal{R}\,y \Rightarrow y\,\mathcal{R}\,x$ ;
+    \item \textbf{Transitive :} $\forall x,y,z \in E,\; x\,\mathcal{R}\,y \text{ et } y\,\mathcal{R}\,z \Rightarrow x\,\mathcal{R}\,z$.
   \end{enumerate}
   La \emph{classe d'équivalence}\index{classe d'équivalence} de $x \in E$ est
   \[
@@ -50,7 +50,13 @@
   ainsi $[x]\subseteq[y]$. En échangeant les rôles de $x$ et $y$ dans le même
   raisonnement (on dispose aussi de $x\,\mathcal{R}\,y$), on obtient pour tout
   $t\in[y]$ que $t\in[x]$, soit $[y]\subseteq[x]$. Les deux inclusions donnent
-  $[x]=[y]$. \hfill$\blacksquare$
+  $[x]=[y]$. Ainsi deux classes sont \emph{égales ou disjointes}, donc deux à
+  deux disjointes.
+
+  \textit{Réciproque.} Étant donné une partition $(A_i)_{i\in I}$ de $E$, la
+  relation « $x\,\mathcal{R}\,y$ si $x$ et $y$ appartiennent à un même $A_i$ »
+  est réflexive, symétrique et transitive (chaque $x$ appartient à un unique
+  bloc), et ses classes d'équivalence sont exactement les $A_i$. \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -74,6 +80,13 @@
   \]
   Elle est surjective par définition.
 \end{tcolorbox}
+
+\begin{significationintuitive}
+  Passer au quotient, c'est \emph{identifier} les éléments équivalents : on les
+  « écrase » tous sur un même point. L'ensemble $E/\mathcal{R}$ est la vue de $E$
+  où l'on ne distingue plus deux éléments reliés par $\mathcal{R}$, et la
+  projection $\pi$ est l'application qui « oublie » cette distinction.
+\end{significationintuitive}
 
 \rubriq{Propriété universelle du passage au quotient}
 
@@ -107,8 +120,13 @@
   C'est bien défini : si $[x]=[y]$, alors $x\,\mathcal{R}\,y$, donc $f(x)=f(y)$.
   L'unicité vient de $f = \bar{f}\circ\pi$ : on doit avoir $\bar{f}([x]) = f(x)$.
 
-  \textit{Injectivité.} $\bar{f}([x])=\bar{f}([y]) \Rightarrow f(x)=f(y)
-  \Rightarrow x\,\mathcal{R}\,y \Rightarrow [x]=[y]$. \hfill$\blacksquare$
+  \textit{Injectivité ($\Leftarrow$).} Supposons que $f(x)=f(y)\Rightarrow x\,\mathcal{R}\,y$.
+  Alors $\bar{f}([x])=\bar{f}([y]) \Rightarrow f(x)=f(y)
+  \Rightarrow x\,\mathcal{R}\,y \Rightarrow [x]=[y]$, donc $\bar{f}$ est injective.
+
+  \textit{Injectivité ($\Rightarrow$).} Réciproquement, si $\bar{f}$ est injective
+  et $f(x)=f(y)$, alors $\bar{f}([x])=\bar{f}([y])$ (puisque $\bar{f}([z])=f(z)$),
+  d'où $[x]=[y]$ par injectivité, c'est-à-dire $x\,\mathcal{R}\,y$. \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
