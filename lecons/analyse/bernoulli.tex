@@ -46,7 +46,7 @@
       \Bnum{4}=-\tfrac{1}{30},\quad \Bnum{6}=\tfrac{1}{42}.
     \]
     \item \textit{Formule de Faulhaber.}\index{formule de Faulhaber} Pour tous
-    entiers $p\geq 0$ et $m\geq 1$,
+    entiers $p\geq 0$ et $m\geq 1$ (avec la convention $0^{0}=1$),
     \[
       \sum_{k=0}^{m-1} k^{p}
       \;=\; \frac{1}{p+1}\Bigl(\Bpol{p+1}(m)-\Bnum{p+1}\Bigr).
@@ -128,7 +128,8 @@ génératrice sous $t\mapsto -t$.
 
   \medskip
   \textit{Étape 3 — Sommes de puissances (Faulhaber).}
-  Appliquons l'étape~2 à l'indice $n=p+1$ en $x=k$ : pour $0\leq k\leq m-1$,
+  Appliquons l'étape~2 à l'indice $n=p+1$ en $x=k$ : pour $0\leq k\leq m-1$
+  (avec la convention $0^{0}=1$ pour le terme $k=0$ lorsque $p=0$),
   \[
     \Bpol{p+1}(k+1)-\Bpol{p+1}(k)=(p+1)\,k^{\,p}.
   \]
@@ -281,7 +282,9 @@ génératrice sous $t\mapsto -t$.
           $[1,n]$, retrouver la formule de Stirling
           $\ln(n!)=n\ln n-n+\tfrac{1}{2}\ln(2\pi n)+\tfrac{1}{12n}+o(1/n)$.
           \textit{Indication :} le terme $\Bnum{2}/2=1/12$ fournit la correction
-          en $1/(12n)$.
+          en $1/(12n)$ ; Euler-Maclaurin ne détermine la constante additive
+          qu'à une valeur près, que l'on identifie à $\tfrac{1}{2}\ln(2\pi)$
+          grâce aux intégrales de Wallis (cf.\ leçon correspondante).
   \end{enumerate}
 \end{mdframed}
 

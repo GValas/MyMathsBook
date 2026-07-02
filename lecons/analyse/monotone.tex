@@ -96,7 +96,8 @@ voisinage de $\ell$ pour tout $n \geq N$.
 \rubriq{Équivalence avec la propriété de la borne supérieure}
 
 \begin{mdframed}[style=proofbar]
-  Les deux propriétés suivantes sont équivalentes pour un corps ordonné :
+  Les deux propriétés suivantes sont équivalentes pour un corps ordonné
+  \emph{archimédien} :
   \begin{enumerate}
     \item Toute suite croissante majorée converge (\emph{théorème de la limite
           monotone}).
@@ -108,7 +109,8 @@ voisinage de $\ell$ pour tout $n \geq N$.
   \textit{$(1) \Rightarrow (2)$} : soit $A$ une partie non vide et majorée.
   On construit par dichotomie deux suites adjacentes $(a_n)$ et $(b_n)$ telles
   que, pour tout $n$, $a_n$ n'est pas un majorant de $A$, $b_n$ est un majorant
-  de $A$, et $b_n - a_n \to 0$. La suite $(a_n)$ est croissante et majorée, la
+  de $A$, et $b_n - a_n = (b_0 - a_0)/2^n \to 0$ — c'est ici qu'intervient le
+  caractère archimédien du corps. La suite $(a_n)$ est croissante et majorée, la
   suite $(b_n)$ est décroissante et minorée ; par (1) elles convergent vers une
   même limite $\ell = \lim b_n = \lim a_n$. Comme chaque $b_n$ majore $A$ et
   qu'aucun $a_n$ ne le majore, $\ell$ est le plus petit des majorants de $A$,

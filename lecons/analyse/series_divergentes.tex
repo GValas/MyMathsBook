@@ -135,8 +135,13 @@ entière à l'aide des moyennes $\sigma_n$.
 
   \medskip
   \textit{Étape 4 — Cesàro $\Rightarrow$ Abel.}
-  Supposons $\sigma_n\to\sigma$. On a $\sum_{n\geq 0}S_n x^n
-  =\tfrac{1}{1-x}\sum_{n\geq 0}a_n x^n$ (étape~3) et, de même, en appliquant la
+  Supposons $\sigma_n\to\sigma$. Puisque $(\sigma_n)$ converge, on a
+  $S_n=(n+1)\sigma_n-n\sigma_{n-1}=\mathcal{O}(n)$, puis
+  $a_n=S_n-S_{n-1}=\mathcal{O}(n)$ : les séries entières $\sum a_n x^n$ et
+  $\sum S_n x^n$ ont donc un rayon de convergence $\geq 1$, et la
+  transformation d'Abel de l'étape~3 reste valable sur $[0,1[$, soit
+  $\sum_{n\geq 0}S_n x^n
+  =\tfrac{1}{1-x}\sum_{n\geq 0}a_n x^n$. De même, en appliquant la
   transformation d'Abel à la suite $(S_n)$ dont $(n+1)\sigma_n=S_0+\cdots+S_n$
   est la suite des sommes partielles,
   $\sum_{n\geq 0}S_n x^n=(1-x)\sum_{n\geq 0}(n+1)\sigma_n x^n$. En combinant,

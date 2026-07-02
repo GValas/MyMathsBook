@@ -134,7 +134,7 @@ quadrillent $\mathbb{R}$ : c'est la densité.
   \smallskip\noindent
   \textit{Si $\alpha = p/q \in \mathbb{Q}$} (fraction irréductible, $q \geq 1$),
   alors $m + n\alpha = (mq + np)/q \in \tfrac{1}{q}\mathbb{Z}$. Réciproquement,
-  comme $\gcd(p,q) = 1$, le théorème de Bézout fournit $u,v \in \mathbb{Z}$ avec
+  comme $\pgcd(p,q) = 1$, le théorème de Bézout fournit $u,v \in \mathbb{Z}$ avec
   $up + vq = 1$, d'où $\tfrac1q = u\alpha + v \in G$ et donc
   $\tfrac1q\mathbb{Z} \subseteq G$ ; ainsi $G = \tfrac1q\mathbb{Z}$ est monogène,
   \emph{non} dense.
@@ -146,10 +146,20 @@ quadrillent $\mathbb{R}$ : c'est la densité.
   contradiction. Le cas monogène est donc exclu : $G$ est dense.
 
   \smallskip\noindent
-  Enfin $\{n\alpha\} = n\alpha - \lfloor n\alpha\rfloor$ appartient à $G \cap [0,1[$
-  (car $n\alpha \in G$ et $\lfloor n\alpha\rfloor \in \mathbb{Z} \subseteq G$), et
-  lorsque $n$ décrit $\mathbb{Z}$ il parcourt même tout $G \cap [0,1[$ ;
-  la densité de $G$ dans $\mathbb{R}$ équivaut donc à celle de $(\{n\alpha\})$ dans $[0,1]$.
+  Enfin, chaque $\{n\alpha\} = n\alpha - \lfloor n\alpha\rfloor$ appartient à
+  $G \cap [0,1[$ (car $n\alpha \in G$ et $\lfloor n\alpha\rfloor \in \mathbb{Z}
+  \subseteq G$). Si $\alpha = p/q \in \mathbb{Q}$, cet ensemble
+  $G \cap [0,1[\, = \tfrac1q\mathbb{Z} \cap [0,1[$ est fini : la suite n'est pas
+  dense. Si $\alpha \notin \mathbb{Q}$, soit $\varepsilon \in \,]0,1[$ ; par
+  densité de $G$, il existe $g = m + r\alpha \in G$ avec $0 < g < \varepsilon$,
+  et $r \neq 0$ (sinon $g = m$ serait un entier de $]0,1[$). Si $r > 0$, alors
+  $\{r\alpha\} = g$ et, pour tout $k \in \mathbb{N}$ tel que $kg < 1$, on a
+  $\{kr\alpha\} = kg$ : ces points quadrillent $[0,1]$ avec un pas $g < \varepsilon$.
+  Si $r < 0$, alors $\{(-r)\alpha\} = 1 - g$ et $\{k(-r)\alpha\} = 1 - kg$ tant
+  que $kg < 1$ : même quadrillage, parcouru en sens inverse. Dans les deux cas,
+  tout point de $[0,1]$ est à distance $< \varepsilon$ d'un $\{n\alpha\}$ avec
+  $n \in \mathbb{N}$ : la suite $(\{n\alpha\})_{n\in\mathbb{N}}$ est dense dans
+  $[0,1]$.
   \hfill$\blacksquare$
 \end{mdframed}
 

@@ -18,9 +18,11 @@
     Q^T Q = I_n \qquad (\text{i.e.}\ Q^T = Q^{-1}).
   \]
   L'ensemble de ces matrices forme le \emph{groupe orthogonal}
-  $\mathrm{O}(n) = \{Q \in \mathcal{M}_n(\mathbb{R}) \mid Q^TQ = I_n\}$.
-  Le sous-groupe $\mathrm{SO}(n) = \{Q \in \mathrm{O}(n) \mid \det Q = 1\}$
-  est le \emph{groupe orthogonal spécial}\index{groupe orthogonal spécial} (ou groupe des rotations).
+  $\mathrm{O}(n) = \{Q \in \mathcal{M}_n(\mathbb{R}) \mid Q^TQ = I_n\}$,
+  également noté $\mathrm{O}_n(\mathbb{R})$.
+  Le sous-groupe $\mathrm{SO}(n) = \{Q \in \mathrm{O}(n) \mid \det Q = 1\}$,
+  aussi noté $\mathrm{SO}_n(\mathbb{R})$,
+  est le \emph{groupe spécial orthogonal}\index{groupe spécial orthogonal} (ou groupe des rotations).
 
   \medskip
   \textbf{Propriétés immédiates.}
@@ -145,9 +147,11 @@
   Le polynôme caractéristique de $Q\in\mathrm{SO}(3)$ est de degré $3$, donc impair :
   il possède au moins une racine réelle, qui est une valeur propre réelle d'une
   matrice orthogonale, donc égale à $\pm 1$. Comme le produit des trois valeurs
-  propres vaut $\det Q=1$ et que les éventuelles valeurs propres non réelles forment
-  une paire conjuguée $e^{i\theta},e^{-i\theta}$ de produit $1$, la valeur propre
-  réelle vaut nécessairement $+1$. Il existe donc un vecteur unitaire $u$ avec $Qu=u$,
+  propres vaut $\det Q=1$, la valeur propre $+1$ apparaît nécessairement~: si deux
+  valeurs propres ne sont pas réelles, elles forment une paire conjuguée
+  $e^{i\theta},e^{-i\theta}$ de produit $1$ et la troisième vaut $+1$~; si les trois
+  sont réelles, elles valent $\pm 1$ et le spectre est $(1,1,1)$ ou $(1,-1,-1)$.
+  Dans tous les cas, il existe un vecteur unitaire $u$ avec $Qu=u$,
   qui dirige l'axe $\Delta$. Le plan $\Delta^\perp$ est stable par $Q$ (car $Q$
   préserve l'orthogonalité), et $Q$ y induit un élément de $\mathrm{SO}(2)$, c'est-à-dire
   une rotation $R_\theta$. En complétant $u$ par une base orthonormale de $\Delta^\perp$
@@ -188,13 +192,22 @@
   propres, dans laquelle $Q$ est diagonale, de coefficients diagonaux $\pm 1$ et
   $e^{\pm i\theta_k}$. Les valeurs propres réelles $\pm 1$ donnent directement des
   blocs $(\pm 1)$. Pour chaque paire conjuguée $e^{i\theta_k},e^{-i\theta_k}$ de
-  vecteurs propres $w_k,\overline{w_k}$, on regroupe ces deux valeurs propres : la
-  partie réelle et la partie imaginaire $u_k=\mathrm{Re}(w_k)$, $v_k=\mathrm{Im}(w_k)$
-  engendrent un plan réel stable par $Q$, sur lequel $Q$ agit comme la rotation
-  $R_{\theta_k}$. En normalisant les familles $(u_k,v_k)$ ainsi obtenues, on construit
-  une base orthonormale \emph{réelle} de $\mathbb{R}^n$, c'est-à-dire une matrice
-  $P\in\mathrm{O}(n)$, dans laquelle $P^TQP$ est bloc-diagonale, à blocs $(\pm 1)$ et
-  $R_{\theta_k}$. $\blacksquare$
+  vecteurs propres $w_k,\overline{w_k}$, posons $u_k=\mathrm{Re}(w_k)$ et
+  $v_k=\mathrm{Im}(w_k)$. Associés à des valeurs propres distinctes de la matrice
+  normale $Q$, les vecteurs $w_k$ et $\overline{w_k}$ sont orthogonaux pour le
+  produit hermitien, ce qui s'écrit $\sum_i {(w_k)}_i^2 = 0$, soit
+  $\bigl(\|u_k\|^2-\|v_k\|^2\bigr) + 2i\,\langle u_k,v_k\rangle = 0$ : ainsi
+  $\|u_k\| = \|v_k\|$ et $u_k \perp v_k$. Ces deux vecteurs engendrent un plan réel
+  stable par $Q$ : la relation $Qw_k = e^{i\theta_k}w_k$ donne, en séparant parties
+  réelle et imaginaire, $Qu_k = \cos\theta_k\,u_k - \sin\theta_k\,v_k$ et
+  $Qv_k = \sin\theta_k\,u_k + \cos\theta_k\,v_k$, de sorte que dans la base
+  $(v_k,u_k)$ — l'ordre étant choisi pour fixer l'orientation — $Q$ agit comme la
+  rotation $R_{\theta_k}$. L'orthogonalité entre plans associés à des paires
+  distinctes, et avec les vecteurs propres réels, se déduit de même de
+  l'orthogonalité de la base propre hermitienne. En normalisant les familles
+  $(v_k,u_k)$ ainsi obtenues, on construit une base orthonormale \emph{réelle} de
+  $\mathbb{R}^n$, c'est-à-dire une matrice $P\in\mathrm{O}(n)$, dans laquelle
+  $P^TQP$ est bloc-diagonale, à blocs $(\pm 1)$ et $R_{\theta_k}$. $\blacksquare$
 \end{mdframed}
 
 \rubriq{Angle et trace}
@@ -272,9 +285,12 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
 
     \item Trouver toutes les matrices $Q \in \mathrm{O}(2)$ telles que $Q^3 = I$.
 
-    \item Effectuer la décomposition QR de
+    \item Effectuer la décomposition QR \emph{réduite} de
           $A = \begin{pmatrix}1&1\\1&0\\0&1\end{pmatrix}$
-          par l'algorithme de Gram-Schmidt.
+          par l'algorithme de Gram-Schmidt : ici $A$ est rectangulaire de rang $2$,
+          et l'on cherche $Q \in \mathcal{M}_{3,2}(\mathbb{R})$ à colonnes
+          orthonormales et $R \in \mathcal{M}_2(\mathbb{R})$ triangulaire
+          supérieure à diagonale strictement positive.
 
     \item (Formule de Rodrigues) Soit $u$ un vecteur unitaire de $\mathbb{R}^3$
           et $R_\theta$ la rotation \emph{directe} d'angle $\theta$ autour de l'axe

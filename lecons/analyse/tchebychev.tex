@@ -1,8 +1,8 @@
 ﻿%==============================================================
-%  lecons/analyse/tchebychev.tex — Polynômes de Tchebychev
+%  lecons/analyse/tchebychev.tex — Les polynômes de Tchebychev
 %==============================================================
 
-\lecontitle{Polynômes de Tchebychev}{Analyse — Approximation et polynômes trigonométriques}
+\lecontitle{Les polynômes de Tchebychev}{Analyse réelle — Polynômes orthogonaux et approximation}
 
 %=============================================================
 %  § 1 — DÉFINITION ET PREMIÈRES VALEURS
@@ -10,7 +10,7 @@
 \secnum{navyblue}{1}{Définition et premières valeurs}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Définition.}\enspace\index{polynôme de Tchebychev}
+  \textbf{Définition.}\enspace\index{polynômes de Tchebychev}
   Le \emph{$n$-ième polynôme de Tchebychev de première espèce} est l'unique
   polynôme $T_n \in \mathbb{R}[X]$ vérifiant
   \[
@@ -134,7 +134,7 @@
   \[
     \widetilde{T}_n = \frac{1}{2^{n-1}}\,T_n
   \]
-  est celui qui minimise la norme uniforme sur $[-1,1]$ :
+  réalise le minimum de la norme uniforme sur $[-1,1]$ :
   \[
     \min_{\substack{P \in \mathbb{R}[X] \\ \deg P = n,\; P \text{ unitaire}}}
     \|P\|_{[-1,1]}
@@ -167,7 +167,7 @@
   (les termes dominants s'annulent). Aux $n+1$ points $\xi_j$~:
   \[
     \widetilde{T}_n(\xi_j) = \frac{{(-1)}^j}{2^{n-1}}, \qquad
-    |P(\xi_j)| < \frac{1}{2^{n-1}},
+    |P(\xi_j)| < \frac{1}{2^{n-1}}.
   \]
   L'inégalité $|P(\xi_j)| < \frac{1}{2^{n-1}} = |\widetilde{T}_n(\xi_j)|$
   est stricte aux $n+1$ nœuds, donc $Q(\xi_j)$ a le signe de
@@ -177,6 +177,11 @@
   racines ; comme ces changements de signe sont stricts, $Q \not\equiv 0$.
   Un polynôme non nul de degré $< n$ ne peut avoir $n$ racines :
   contradiction. \hfill$\blacksquare$
+
+  \smallskip
+  \emph{Remarque.} On peut montrer que $\widetilde{T}_n$ est en fait
+  l'\emph{unique} minimiseur ; cela demande un raffinement de l'argument
+  (inégalités larges et comptage des racines avec multiplicité).
 \end{mdframed}
 
 \decsep{}
@@ -236,7 +241,7 @@
 
   \smallskip\noindent
   \textbf{2. Polynômes de Tchebychev de deuxième espèce.}\enspace%
-  \index{polynôme de Tchebychev!de deuxième espèce}
+  \index{polynômes de Tchebychev!de deuxième espèce}
   On définit $U_n$ par $U_n(\cos\theta)\sin\theta = \sin((n+1)\theta)$.
   Ils vérifient la même récurrence $U_{n+1}=2X\,U_n - U_{n-1}$ avec
   $U_0=1$, $U_1=2X$, et $T_n' = n\,U_{n-1}$.

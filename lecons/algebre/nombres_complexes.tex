@@ -2,7 +2,7 @@
 %  lecons/algebre/nombres_complexes.tex — Nombres complexes
 %==============================================================
 
-\lecontitle{Nombres complexes}{Structures algébriques — Arithmétique de \texorpdfstring{$\mathbb{C}$}{C}}
+\lecontitle{Nombres complexes}{Algèbre — Arithmétique de \texorpdfstring{$\mathbb{C}$}{C}}
 
 %=============================================================
 %  § 1 — FORMES ET OPÉRATIONS ÉLÉMENTAIRES
@@ -80,7 +80,7 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
 
 \rubriq{Multiplication en forme polaire}
 
-\begin{mdframed}[style=proofbar]
+\begin{tcolorbox}[thmbox]
   Si $z = r e^{i\theta}$ et $w = s e^{i\varphi}$, alors
   \[
     zw = rs\, e^{i(\theta + \varphi)}.
@@ -92,8 +92,8 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
 
   \textit{Conséquence géométrique :} multiplier par $e^{i\alpha}$ est une
   \textbf{rotation}\index{rotation (multiplication complexe)} de centre $O$ et d'angle $\alpha$ dans le plan complexe.
-  Multiplier par $r > 0$ est une homothétie de rapport $r$. \hfill$\blacksquare$
-\end{mdframed}
+  Multiplier par $r > 0$ est une homothétie de rapport $r$.
+\end{tcolorbox}
 
 \rubriq{Formules de De Moivre et de linéarisation}
 
@@ -160,7 +160,7 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
   $\alpha \in {]-\pi, \pi]}$.
 
   \textit{Somme des racines.} Pour $j \not\equiv 0 \pmod{n}$, la somme est
-  une série géométrique :
+  une somme géométrique :
   $\sum_{k=0}^{n-1} \omega_k^j = \sum_{k=0}^{n-1} (e^{2i\pi j/n})^k
   = \dfrac{1 - e^{2i\pi j}}{1 - e^{2i\pi j/n}} = 0$.
   \hfill$\blacksquare$
@@ -190,7 +190,7 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
 
 \rubriq{Alignement et cocyclicité}
 
-\begin{mdframed}[style=proofbar]
+\begin{tcolorbox}[thmbox]
   Trois points $A$, $B$, $C$ d'affixes $a$, $b$, $c$ sont
   \textbf{alignés}\index{alignement (plan complexe)} si et seulement si
   \[
@@ -199,7 +199,16 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
   Quatre points sont \textbf{cocycliques ou alignés}\index{cocyclicité} si et
   seulement si leur birapport\index{birapport}
   $[z_1, z_2; z_3, z_4] = \dfrac{(z_3-z_1)(z_4-z_2)}{(z_3-z_2)(z_4-z_1)}$
-  est réel. \hfill$\blacksquare$
+  est réel.
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Idée de preuve (cocyclicité).} L'argument du quotient
+  $\dfrac{z_3-z_1}{z_3-z_2}$ mesure l'angle $\widehat{M_1 M_3 M_2}$ ; par le
+  théorème de l'angle inscrit\index{angle inscrit (théorème de l')}, les quatre
+  points sont sur un même cercle (ou une même droite) si et seulement si les
+  angles vus depuis $z_3$ et $z_4$ sont égaux modulo $\pi$, c'est-à-dire si le
+  birapport est réel. \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -261,10 +270,9 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
   \smallskip\noindent
   \textbf{Inégalité triangulaire : égalité.}\enspace%
   $|z + w| = |z| + |w|$ si et seulement si $w = \lambda z$ pour un réel
-  $\lambda \geq 0$ (ou $z = 0$). La seule condition $\arg z \equiv \arg w
-  \pmod{2\pi}$ est incomplète : elle suppose $z, w \neq 0$ et ne couvre pas
-  le cas où l'un d'eux est nul. Ce n'est donc pas simplement « $z$ et $w$
-  positifs ».
+  $\lambda \geq 0$ (ou $z = 0$). Pour $z$ et $w$ non nuls, cela équivaut à
+  $\arg z \equiv \arg w \pmod{2\pi}$~; mais la condition sur les arguments,
+  seule, est incomplète : elle ne couvre pas le cas où l'un des deux est nul.
 \end{mdframed}
 
 \exolabel

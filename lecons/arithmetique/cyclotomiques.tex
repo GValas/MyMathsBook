@@ -6,8 +6,7 @@
 \lecontitle{Les polynômes cyclotomiques}{Arithmétique — Racines de l'unité et irréductibilité}
 
 %=== NOTATION LOCALE =========================================
-\newcommand{\Cyc}{\Phi_n}
-\newcommand{\Un}{\mathbb{U}}
+\providecommand{\Un}{\mathbb{U}}
 
 %=============================================================
 %  § 1 — DÉFINITION ET RÉSULTATS FONDAMENTAUX
@@ -42,7 +41,7 @@
     \item \textit{Intégralité.}\enspace $\Phi_n\in\mathbb{Z}[X]$ et $\Phi_n$
       est unitaire (conséquence de la relation précédente, par récurrence et
       division euclidienne dans $\mathbb{Z}[X]$).
-    \item \textit{Irréductibilité.}\enspace\index{critère d'Eisenstein}
+    \item \textit{Irréductibilité.}\enspace
       $\Phi_n$ est \textbf{irréductible} sur $\mathbb{Q}$, et donc (par le
       lemme de Gauss) sur $\mathbb{Z}$. Ainsi $\Phi_n$ est le \emph{polynôme
       minimal} sur $\mathbb{Q}$ de toute racine primitive $n$-ième de l'unité.
@@ -68,7 +67,8 @@ distincts $(X-\zeta)$, un par racine $n$-ième de l'unité. Les $\Phi_d$,
 $d\mid n$, \emph{regroupent} ces racines selon leur \emph{ordre exact}~:
 $\Phi_d$ rassemble exactement les racines d'ordre~$d$. Les polynômes
 cyclotomiques sont ainsi les briques indécomposables (sur $\mathbb{Q}$) de
-$X^n-1$, et $\Phi_n$ est le « bon » objet algébrique attaché à $\zeta_n$ : son
+$X^n-1$, et $\Phi_n$ est le « bon » objet algébrique attaché à une racine
+primitive $\zeta_n=e^{2i\pi/n}$~: son
 irréductibilité fait de $\mathbb{Q}(\zeta_n)$ une extension de degré
 $\varphi(n)$, fondement de la théorie des \emph{extensions cyclotomiques}.
 \end{significationintuitive}
@@ -135,12 +135,12 @@ premier $p\nmid n$, d'où $f$ contient toutes les racines primitives.
 
   \medskip
   \textit{Étape 3 — Formule de Möbius.}
-  En passant au logarithme formel (ou en travaillant dans le groupe
-  multiplicatif des séries formelles de terme constant~$1$), la relation
-  $X^n-1=\prod_{d\mid n}\Phi_d$ est une identité du type
-  $F(n)=\sum_{d\mid n}G(d)$ avec $G=\log\Phi$, $F=\log(X^\bullet-1)$.
-  La \emph{formule d'inversion de Möbius} donne alors
-  $G(n)=\sum_{d\mid n}\mu(n/d)\,F(d)$, soit, en repassant à l'exponentielle,
+  La relation $X^n-1=\prod_{d\mid n}\Phi_d$ est une identité multiplicative
+  dans le groupe abélien $\mathbb{Q}(X)^\times$ des fractions rationnelles non
+  nulles. Or la \emph{formule d'inversion de Möbius} vaut dans tout groupe
+  abélien noté multiplicativement~: si $F(n)=\prod_{d\mid n}G(d)$ pour tout
+  $n\geq 1$, alors $G(n)=\prod_{d\mid n}F(d)^{\mu(n/d)}$. Appliquée à
+  $F(n)=X^n-1$ et $G(d)=\Phi_d$, elle donne
   \[
     \Phi_n(X)=\prod_{d\mid n}\bigl(X^d-1\bigr)^{\mu(n/d)}.
   \]

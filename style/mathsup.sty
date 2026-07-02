@@ -103,7 +103,7 @@
 \tcbset{
   thmbox/.style={
     enhanced,
-    colback=white,
+    colback=theorembg,
     colframe=thmblue,
     boxrule=1.4pt,
     arc=0pt, outer arc=0pt,
@@ -132,6 +132,10 @@
   style/.style={#1},      % permet \begin{mdframed}[style=proofbar]
   nobreak/.style={unbreakable},  % compat. clé mdframed nobreak=true
 }
+% ATTENTION : l'environnement « mdframed » ci-dessous est un ALIAS maison
+% vers tcolorbox ; le VRAI package mdframed ne doit JAMAIS être chargé
+% (ni par une leçon, ni par un preview), sous peine d'un conflit
+% « Command \mdframed already defined » ou d'un rendu divergent.
 \newenvironment{mdframed}[1][]{\tcolorbox[#1]}{\endtcolorbox}
 
 %=== COMMANDES MATHÉMATIQUES =================================

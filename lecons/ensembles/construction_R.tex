@@ -66,8 +66,9 @@ Cauchy converge. Il existe deux méthodes standards.
     \alpha \cdot \beta = \mathbb{Q}^- \cup \{\, ab \mid a \in \alpha,\ b \in \beta,\ a, b > 0 \,\},
   \]
   soit tous les rationnels $\leq 0$ réunis aux produits de représentants strictement
-  positifs des deux coupures (l'ensemble obtenu est bien fermé vers le bas, donc une
-  coupure). On étend ensuite à $\alpha, \beta$ quelconques par les règles des signes :
+  positifs des deux coupures (on vérifie que l'ensemble obtenu est une coupure~:
+  fermé vers le bas, distinct de $\mathbb{Q}$ car majoré par tout produit de
+  majorants, et sans maximum). On étend ensuite à $\alpha, \beta$ quelconques par les règles des signes :
   $\alpha\cdot 0 = 0$, et pour $\alpha < 0$ ou $\beta < 0$ on pose
   $\alpha\cdot\beta = \pm\bigl(|\alpha|\cdot|\beta|\bigr)$ selon le signe attendu,
   avec $|\gamma| = \max(\gamma, -\gamma)$.
@@ -214,8 +215,8 @@ Cauchy converge. Il existe deux méthodes standards.
   \begin{enumerate}
     \item Toute suite de Cauchy converge.
     \item Tout sous-ensemble non vide majoré admet une borne supérieure.
-    \item Tout intervalle emboîté $[a_n, b_n]$ avec $b_n-a_n\to 0$
-          admet un point commun.
+    \item Toute suite de segments emboîtés $[a_n, b_n] \supseteq [a_{n+1}, b_{n+1}]$
+          avec $b_n-a_n\to 0$ admet un point commun (segments emboîtés).
     \item Toute suite croissante majorée converge (théorème de la limite monotone).
   \end{enumerate}
 \end{tcolorbox}
@@ -237,7 +238,10 @@ Cauchy converge. Il existe deux méthodes standards.
   $5$ si $d \neq 5$, et $6$ sinon. En n'utilisant que les chiffres $5$ et $6$,
   $y$ admet un développement décimal unique (pas de phénomène $0{,}999\ldots=1$),
   et $y \in [0,1]$ mais $y \neq x_n$ pour tout $n$ (ils diffèrent au rang $n$) :
-  contradiction.
+  contradiction. Cet argument n'établit que la non-dénombrabilité ; l'égalité
+  $|\mathbb{R}| = 2^{\aleph_0}$ s'obtient ensuite en comparant $\mathbb{R}$ et
+  $\{0,1\}^{\mathbb{N}}$ via les développements binaires, puis en appliquant le
+  théorème de Cantor--Bernstein.
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -252,7 +256,7 @@ Cauchy converge. Il existe deux méthodes standards.
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Nombres algébriques et transcendants.}\enspace%
-  \index{nombres transcendants}
+  \index{nombre transcendant}
   Les réels algébriques sur $\mathbb{Q}$ forment un sous-corps dénombrable de $\mathbb{R}$.
   Donc «\,la plupart\,» des réels sont transcendants ($e$ par Hermite 1873,
   $\pi$ par Lindemann 1882).
@@ -265,7 +269,8 @@ Cauchy converge. Il existe deux méthodes standards.
   \smallskip\noindent
   \textbf{3. Topologie.}\enspace%
   $\mathbb{R}$ est localement compact, $\sigma$-compact, connexe, et localement
-  connexe. C'est la seule droite topologique (à homéomorphisme près).
+  connexe. C'est, à homéomorphisme près, l'unique variété topologique connexe
+  de dimension $1$, sans bord, non compacte et à base dénombrable.
 \end{mdframed}
 
 \vspace{6pt}

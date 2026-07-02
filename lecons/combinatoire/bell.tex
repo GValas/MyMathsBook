@@ -35,9 +35,10 @@
 
   \smallskip\noindent
   \textbf{$B_3 = 5$.}\enspace Les partitions de $\{1,2,3\}$ sont :
-  $\{123\}$,
-  $\{1\}\{23\}$, $\{2\}\{13\}$, $\{3\}\{12\}$,
-  $\{1\}\{2\}\{3\}$.
+  $\bigl\{\{1,2,3\}\bigr\}$,
+  $\bigl\{\{1\},\{2,3\}\bigr\}$, $\bigl\{\{2\},\{1,3\}\bigr\}$,
+  $\bigl\{\{3\},\{1,2\}\bigr\}$,
+  $\bigl\{\{1\},\{2\},\{3\}\bigr\}$.
 
   \medskip
   \begin{center}
@@ -191,8 +192,15 @@
   pour $k>n$, il n'existe aucune partition de $[n]$ en $k$ blocs, donc
   $S(n,k)=0$ et les termes ajoutés sont nuls. Dans la double somme ainsi
   obtenue, seuls les indices $0\leq j\leq k$ contribuent.
-  Intervertissons alors les deux sommations (la série double est absolument
-  convergente, $j^n/(j!\,(k-j)!)\geq 0$), en sommant d'abord sur $k\geq j$ :
+  Intervertissons alors les deux sommations : la série double converge
+  absolument, car la somme des valeurs absolues se factorise en
+  \[
+    \sum_{j\geq 0}\sum_{k\geq j}\frac{j^n}{j!\,(k-j)!}
+      = \Bigl(\sum_{j\geq 0}\frac{j^n}{j!}\Bigr)
+        \Bigl(\sum_{\ell\geq 0}\frac{1}{\ell!}\Bigr)
+      = e\sum_{j\geq 0}\frac{j^n}{j!} < +\infty,
+  \]
+  ce qui autorise l'interversion. En sommant d'abord sur $k\geq j$ :
   \[
     B_n = \sum_{j=0}^{+\infty}\frac{j^n}{j!}
           \sum_{k\geq j}\frac{{(-1)}^{k-j}}{(k-j)!}.
@@ -271,8 +279,9 @@
 
 \begin{mdframed}[style=cexbar]
   \textbf{$B_n$ croît plus vite que toute exponentielle fixée.}\enspace%
-  On a $B_n \geq S(n,1) = 1$ et $B_n \geq S(n,n) = 1$, mais la croissance
-  réelle est bien plus rapide :
+  On a déjà $B_n \geq S(n,2) = 2^{n-1}-1$ pour $n\geq 1$ (voir
+  l'exercice~2), donc une croissance au moins exponentielle, mais la
+  croissance réelle est bien plus rapide :
   \[
     \ln B_n = n\bigl(\ln n - \ln\ln n - 1\bigr) + o(n)
   \]
@@ -325,5 +334,5 @@
 \end{mdframed}
 
 \leconfooter{%
-  É.\ Dobi\'nski (1877) · E.\ T.\ Bell, \textit{Am.\ Math.\ Monthly} (1934)%
+  G.\ Dobi\'nski (1877) · E.\ T.\ Bell, \textit{Am.\ Math.\ Monthly} (1934)%
 }

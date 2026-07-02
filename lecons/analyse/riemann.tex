@@ -123,8 +123,9 @@ formalisation rigoureuse est due à Riemann (1854).
   Sur tout segment $[a,b]$, sont Riemann-intégrables :
   \begin{itemize}
     \item les fonctions \textbf{continues}~;
-    \item les fonctions \textbf{monotones} (même si elles présentent des
-          discontinuités, du moment qu'elles sont bornées)~;
+    \item les fonctions \textbf{monotones} (même avec une infinité de
+          discontinuités~; sur un segment, elles sont automatiquement
+          bornées, encadrées par $f(a)$ et $f(b)$)~;
     \item les fonctions \textbf{continues par morceaux}~;
     \item plus généralement (\textbf{critère de Lebesgue}\index{critère de Lebesgue}) :
           $f$ bornée est Riemann-intégrable si et seulement si son ensemble
@@ -267,9 +268,11 @@ formalisation rigoureuse est due à Riemann (1854).
   Cette fonction est croissante, \emph{bornée} par $\sum_{n\geq 1}2^{-n} = 1$,
   et présente un saut de hauteur $2^{-n}$ en chaque point $1/n$ : elle possède
   donc une infinité dénombrable de discontinuités tout en restant
-  Riemann-intégrable (toute fonction monotone bornée l'est). On prendra garde
-  qu'une fonction monotone \emph{non bornée}, comme $t\mapsto\lfloor 1/t\rfloor$
-  au voisinage de $0$, n'est en revanche pas Riemann-intégrable.
+  Riemann-intégrable (toute fonction monotone sur un segment l'est). On notera
+  que $t\mapsto\lfloor 1/t\rfloor$, monotone mais non bornée, n'est définie
+  que sur $]0,1]$ et ne se prolonge pas en fonction monotone (à valeurs
+  finies) sur $[0,1]$~: elle n'est donc pas Riemann-intégrable sur $[0,1]$,
+  l'intégrale de Riemann exigeant une fonction bornée sur tout le segment.
 \end{mdframed}
 
 \vspace{6pt}

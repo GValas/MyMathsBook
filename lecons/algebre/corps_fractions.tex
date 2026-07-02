@@ -2,7 +2,7 @@
 %  lecons/algebre/corps_fractions.tex — Corps des fractions
 %==============================================================
 
-\lecontitle{Corps des fractions}{Algèbre — Anneaux intègres et localisation}
+\lecontitle{Corps des fractions}{Algèbre — Anneaux intègres}
 
 %=============================================================
 %  § 1 — PRÉREQUIS : ANNEAU INTÈGRE
@@ -80,14 +80,14 @@ dans laquelle tout élément non nul de $A$ est inversible — on « force » la
 
   \smallskip
   \textit{Bien-fondé des lois.} Si $(a,b)\sim(a',b')$ et $(c,d)\sim(c',d')$
-  (i.e.\ $ab'=a'b$ et $cd'=c'd$), montrons $\frac{ad+bc}{bd}\sim\frac{a'd'+b'c'}{b'd'}$ :
+  (i.e.\ $ab'=a'b$ et $cd'=c'd$), montrons $(ad+bc,\,bd)\sim(a'd'+b'c',\,b'd')$ :
   \begin{align*}
     (ad+bc)(b'd') &= adb'd' + bcb'd' = (ab')dd' + (cd')bb' \\
                   &= (a'b)dd'+(c'd)bb' = (a'd'+b'c')(bd).
   \end{align*}
   Pour le produit, de même
   $(ac)(b'd') = (ab')(cd') = (a'b)(c'd) = (a'c')(bd)$, donc
-  $\frac{ac}{bd}\sim\frac{a'c'}{b'd'}$.
+  $(ac,\,bd)\sim(a'c',\,b'd')$.
 
   \textit{Anneau commutatif avec $1=\tfrac{1}{1}$ et $0=\tfrac{0}{1}$.}
   Associativité, commutativité et distributivité se ramènent aux propriétés
@@ -100,8 +100,8 @@ dans laquelle tout élément non nul de $A$ est inversible — on « force » la
   Ainsi tout élément non nul est inversible : $\mathrm{Frac}(A)$ est un corps.
 
   \textit{Injectivité de $\iota$.}
-  $\iota(a)=\iota(a') \Rightarrow \tfrac{a}{1}\sim\tfrac{a'}{1}
-  \Rightarrow a\cdot 1 = a'\cdot 1 \Rightarrow a=a'$. $\blacksquare$
+  $\iota(a)=\iota(a') \Rightarrow \tfrac{a}{1}=\tfrac{a'}{1}
+  \Rightarrow (a,1)\sim(a',1) \Rightarrow a\cdot 1 = a'\cdot 1 \Rightarrow a=a'$. $\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -212,9 +212,12 @@ dans laquelle tout élément non nul de $A$ est inversible — on « force » la
     \item Déterminer $\mathrm{Frac}(\mathbb{Z}[\sqrt{2}])$.
           Montrer que c'est $\mathbb{Q}(\sqrt{2}) = \{a+b\sqrt{2}\mid a,b\in\mathbb{Q}\}$.
 
-    \item Soit $p$ premier. Montrer que
-          $\mathbb{Z}_{(p)} = \bigl\{\tfrac{a}{b}\in\mathbb{Q}\mid p\nmid b\bigr\}$
-          est un sous-anneau de $\mathbb{Q}$ (l'anneau local en $p$), et que son
+    \item Soit $p$ premier. On note $\mathbb{Z}_{(p)}$ l'ensemble des rationnels
+          qui \emph{peuvent s'écrire} $\tfrac{a}{b}$ avec $p\nmid b$
+          (vérifier que cette condition équivaut à \og $p$ ne divise pas le
+          dénominateur de la forme irréductible \fg{}, donc ne dépend pas du
+          représentant choisi). Montrer que $\mathbb{Z}_{(p)}$ est un sous-anneau
+          de $\mathbb{Q}$ (l'anneau local en $p$), et que son
           unique idéal maximal est $p\mathbb{Z}_{(p)}$.
 
     \item Décomposer en éléments simples dans $\mathbb{R}(X)$ la fraction

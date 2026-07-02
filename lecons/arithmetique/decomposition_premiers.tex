@@ -21,7 +21,7 @@
   \textbf{Lemme de Bézout.}\enspace\index{Bézout (identité de)}
   \textit{Pour tous $a, b \in \mathbb{Z}$, il existe $u, v \in \mathbb{Z}$ tels que}
   $au + bv = \pgcd(a,b)$.
-  \textit{En particulier, $a \wedge b = 1 \Rightarrow \exists\,u,v : au+bv=1$.}
+  \textit{En particulier, $\pgcd(a,b) = 1 \Rightarrow \exists\,u,v : au+bv=1$.}
 
   \medskip
   \textbf{Lemme d'Euclide.}\enspace\index{Euclide (lemme d')}
@@ -87,11 +87,13 @@ alors $p \mid a_i$ pour au moins un $i$.
 
 \begin{mdframed}[style=proofbar]
   Supposons $n = p_1^{\alpha_1}\cdots p_k^{\alpha_k} = q_1^{\beta_1}\cdots q_l^{\beta_l}$
-  avec $p_i, q_j$ premiers. On montre par récurrence sur $\Omega(n) = \sum \alpha_i$
-  (nombre de facteurs premiers comptés avec multiplicité) que les deux décompositions
-  coïncident.
+  avec $p_i, q_j$ premiers. On montre par récurrence sur
+  $N = \alpha_1 + \cdots + \alpha_k$, nombre de facteurs de la \emph{première}
+  décomposition comptés avec multiplicité, que les deux décompositions coïncident.
+  (Une fois l'unicité acquise, ce nombre ne dépend plus de la décomposition choisie :
+  on le note alors $\Omega(n)$.)
 
-  \textit{Base :} $\Omega(n)=1$ signifie que $n = p_1$ est premier. Toute autre
+  \textit{Base :} $N=1$ signifie que $n = p_1$ est premier. Toute autre
   décomposition $n = q_1^{\beta_1}\cdots q_l^{\beta_l}$ a au moins un facteur ;
   si elle comportait au moins deux facteurs premiers (comptés avec multiplicité),
   alors $n$ s'écrirait comme produit de $\ge 2$ premiers, donc admettrait un diviseur
@@ -99,10 +101,12 @@ alors $p \mid a_i$ pour au moins un $i$.
   Ainsi $l=1$, $\beta_1=1$ et $q_1 = n = p_1$ : l'unicité est acquise.
 
   \textit{Hérédité :} $p_1$ divise $q_1^{\beta_1}\cdots q_l^{\beta_l}$, donc par le
-  lemme d'Euclide (appliqué $\beta_1+\cdots+\beta_l$ fois), $p_1 = q_j$ pour un $j$.
+  lemme d'Euclide généralisé, $p_1$ divise l'un des $q_j$ ; comme $q_j$ est premier
+  et $p_1 \geq 2$, on a $p_1 = q_j$.
   Quitte à réordonner, $p_1 = q_1$. On divise par $p_1$ :
   $n/p_1 = p_1^{\alpha_1-1}\cdots p_k^{\alpha_k} = q_1^{\beta_1-1}\cdots q_l^{\beta_l}$.
-  Par hypothèse de récurrence ($\Omega(n/p_1) < \Omega(n)$), les deux factorisations de
+  La première décomposition de $n/p_1$ compte $N-1$ facteurs ; par hypothèse de
+  récurrence, les deux factorisations de
   $n/p_1$ coïncident, donc $k=l$, $p_i=q_i$ et $\alpha_i=\beta_i$ pour tout $i$.
   $\blacksquare$
 \end{mdframed}
@@ -151,7 +155,7 @@ alors $p \mid a_i$ pour au moins un $i$.
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Irrationalité de $\sqrt{2}$.}\enspace%
-  \index{irrationalité de $\sqrt{2}$}
+  \index{irrationalité!de $\sqrt{2}$}
   Si $\sqrt{2} = p/q$ avec $\pgcd(p,q)=1$, alors $p^2 = 2q^2$.
   Dans la décomposition de $p^2$, la puissance de $2$ est paire ;
   dans celle de $2q^2$, elle est impaire. Contradiction.
@@ -196,8 +200,8 @@ alors $p \mid a_i$ pour au moins un $i$.
     \item Montrer que pour tout $n \geq 1$, le produit de $n$ entiers consécutifs
           est divisible par $n!$. (\textit{Indication :} coefficients binomiaux.)
 
-    \item (Théorème de Wilson) Montrer que $p$ est premier si et seulement si
-          $(p-1)! \equiv -1 \pmod{p}$.
+    \item (Théorème de Wilson) Montrer qu'un entier $p \geq 2$ est premier si et
+          seulement si $(p-1)! \equiv -1 \pmod{p}$.
 
     \item Montrer que si $2^n - 1$ est premier, alors $n$ est premier
           (les premiers de cette forme sont dits de Mersenne\index{nombre de Mersenne}).

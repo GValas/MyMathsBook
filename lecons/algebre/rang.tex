@@ -10,7 +10,7 @@
 \secnum{navyblue}{1}{Énoncé}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Théorème du rang (théorème fondamental de l'algèbre linéaire).}\enspace%
+  \textbf{Théorème du rang} (\emph{rank--nullity theorem} en anglais)\textbf{.}\enspace%
   \index{théorème du rang}\index{noyau}\index{image}
   \textit{Soit $f : E \to F$ une application linéaire, avec $E$ de dimension
   finie $n$. Alors $\mathrm{Im}\,f$ est de dimension finie et}
@@ -152,16 +152,22 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}\,f$.
   et $f$ ne peut pas être surjective.
 
   \smallskip\noindent
-  \textbf{En dimension infinie, le théorème est faux.}\enspace%
+  \textbf{En dimension infinie, le corollaire \og{}injectif $\Leftrightarrow$
+  surjectif\fg{} tombe en défaut.}\enspace%
   Soit $f : \ell^2 \to \ell^2$, $(x_1,x_2,\ldots) \mapsto (0,x_1,x_2,\ldots)$
   (shift). $f$ est injective ($\ker f = \{0\}$) mais pas surjective
-  ($(1,0,0,\ldots)\notin\mathrm{Im}\,f$). Ici le rang n'est pas fini : l'égalité
-  du théorème du rang n'a plus de sens en dimension infinie.
+  ($(1,0,0,\ldots)\notin\mathrm{Im}\,f$). Le théorème du rang, lui, ne
+  s'applique tout simplement plus~: le rang n'est pas fini et l'égalité
+  n'a plus de sens en dimension infinie.
 
   \smallskip\noindent
-  \textbf{$\mathrm{rg}(A) = \mathrm{rg}(A^T)$, mais $\ker A \neq \ker A^T$.}\enspace%
-  Le rang-ligne et le rang-colonne coïncident, mais les noyaux de $A$ et $A^T$
-  vivent dans des espaces différents ($\mathbb{K}^n$ et $\mathbb{K}^m$).
+  \textbf{$\mathrm{rg}(A) = \mathrm{rg}(A^T)$, mais $\ker A \neq \ker A^T$ en général.}\enspace%
+  Le rang-ligne et le rang-colonne coïncident. En revanche, si $m \neq n$, les
+  noyaux de $A$ et $A^T$ vivent dans des espaces différents ($\mathbb{K}^n$ et
+  $\mathbb{K}^m$) et n'ont pas la même dimension ($n-r$ contre $m-r$).
+  Même pour une matrice carrée, ils peuvent différer~: pour
+  $A = \begin{pmatrix}0&1\\0&0\end{pmatrix}$, on a
+  $\ker A = \mathrm{Vect}(e_1)$ mais $\ker A^T = \mathrm{Vect}(e_2)$.
 \end{mdframed}
 
 \vspace{6pt}

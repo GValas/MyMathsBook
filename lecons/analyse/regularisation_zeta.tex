@@ -35,10 +35,14 @@
   \medskip
   \textbf{Théorème (valeurs régularisées).}
   \begin{itemize}
-    \item \textit{Équation fonctionnelle.} Pour tout $s\in\mathbb{C}\setminus\{1\}$,
+    \item \textit{Équation fonctionnelle.} On a l'identité entre fonctions
+    méromorphes sur $\mathbb{C}$
     \[
-      \zeta(s)=2^{s}\pi^{s-1}\sin\!\Bigl(\tfrac{\pi s}{2}\Bigr)\Gamma(1-s)\,\zeta(1-s).
+      \zeta(s)=2^{s}\pi^{s-1}\sin\!\Bigl(\tfrac{\pi s}{2}\Bigr)\Gamma(1-s)\,\zeta(1-s),
     \]
+    où, aux points exceptionnels ($s=0$ et $s$ entier $\geq 2$, où le membre de
+    droite présente une forme indéterminée), l'identité s'entend par passage à
+    la limite.
     \item \textit{Valeurs aux entiers négatifs.}
     \[
       \zeta(0)=-\tfrac12,\qquad
@@ -120,8 +124,12 @@ $\zeta(-1)=-\tfrac1{12}$.
     =\frac{1}{(1+x)^{2}}.
   \]
   Sa limite radiale en $x\to 1^{-}$ vaut $\tfrac14$ : la valeur régularisée
-  (au sens d'Abel) de $1-2+3-4+\cdots$ est donc $\tfrac14$, c'est-à-dire
-  $\eta(-1)=\tfrac14$.
+  (au sens d'Abel) de $1-2+3-4+\cdots$ est donc $\tfrac14$. On \emph{admet}
+  ici que cette valeur d'Abel coïncide avec le prolongement analytique
+  $\eta(-1)$ — c'est un théorème de type abélien, la série de Dirichlet de
+  $\eta$ ne convergeant que pour $\operatorname{Re}(s)>0$ — de sorte que
+  $\eta(-1)=\tfrac14$. Les étapes~2--4 constituent ainsi une confirmation
+  cohérente de l'étape~1 plutôt qu'une seconde démonstration autonome.
 
   \medskip
   \textit{Étape 4 — Conclusion.}

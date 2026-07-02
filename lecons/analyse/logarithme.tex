@@ -13,14 +13,14 @@
   \textbf{Définition (par intégrale).}\enspace\index{logarithme népérien}
   On définit le \emph{logarithme népérien} comme la fonction
   \[
-    \ln : (0,+\infty) \longrightarrow \mathbb{R}, \qquad
+    \ln :\,]0,+\infty[\,\longrightarrow \mathbb{R}, \qquad
     x \longmapsto \int_1^x \frac{\mathrm{d}t}{t}.
   \]
 
   \medskip
   \textbf{Théorème (propriétés fondamentales).}
   \begin{itemize}
-    \item $\ln$ est de classe $\mathcal{C}^{\infty}$ sur $(0,+\infty)$ et
+    \item $\ln$ est de classe $\mathcal{C}^{\infty}$ sur $]0,+\infty[$ et
           $\ln'(x) = \dfrac{1}{x}$.
     \item $\ln(1) = 0$\enspace;\enspace{}$\ln$ est strictement croissante et
           concave.
@@ -28,7 +28,7 @@
     \[
       \ln(ab) = \ln(a) + \ln(b).
     \]
-    \item $\ln$ est une bijection de $(0,+\infty)$ sur $\mathbb{R}$.
+    \item $\ln$ est une bijection de $]0,+\infty[$ sur $\mathbb{R}$.
     \item $\displaystyle\lim_{x\to+\infty}\ln(x) = +\infty$,\qquad
           $\displaystyle\lim_{x\to 0^+}\ln(x) = -\infty$.
   \end{itemize}
@@ -38,7 +38,7 @@
 Parmi les primitives des fonctions puissances, la formule
 $\int t^{\alpha}\,\mathrm{d}t = \tfrac{t^{\alpha+1}}{\alpha+1}$ couvre tous les
 exposants sauf $\alpha = -1$. La fonction $t\mapsto 1/t$, continue sur
-$(0,+\infty)$, y admet pourtant des primitives : on choisit celle qui s'annule
+$]0,+\infty[$, y admet pourtant des primitives : on choisit celle qui s'annule
 en $1$. C'est cette primitive « manquante » que l'on baptise logarithme
 népérien ; toutes ses propriétés se lisent alors directement sur l'intégrale
 qui la définit.
@@ -61,8 +61,8 @@ donne $\ln(e^n) = n$, ce qui justifie rétrospectivement la notation.
 \begin{ideepreuve}
 La dérivabilité est donnée par le théorème fondamental du calcul intégral.
 L'équation fonctionnelle résulte d'un argument de dérivation montrant que
-$x\mapsto\ln(ax)-\ln(x)$ est constante. La bijectivité découle des limites
-obtenues par comparaison à des sommes de Riemann.
+$x\mapsto\ln(ax)-\ln(x)$ est constante. La bijectivité découle des limites,
+obtenues via $\ln(2^n)=n\ln 2$ et la croissance de $\ln$.
 \end{ideepreuve}
 
 \vspace{10pt}
@@ -70,7 +70,7 @@ obtenues par comparaison à des sommes de Riemann.
 
 \begin{mdframed}[style=proofbar]
   \textit{Étape 1 — Dérivabilité.}
-  La fonction $t\mapsto 1/t$ est continue sur $(0,+\infty)$. Par le théorème
+  La fonction $t\mapsto 1/t$ est continue sur $]0,+\infty[$. Par le théorème
   fondamental du calcul intégral\index{théorème fondamental de l'analyse},
   $\ln$ est dérivable et $\ln'(x) = 1/x > 0$. En particulier $\ln$ est
   strictement croissante. Comme $x\mapsto 1/x$ est $\mathcal{C}^\infty$ sur
@@ -80,7 +80,7 @@ obtenues par comparaison à des sommes de Riemann.
   \medskip
   \textit{Étape 2 — Équation fonctionnelle.}
   Fixons $a > 0$ et posons $\varphi(x) = \ln(ax) - \ln(a) - \ln(x)$ sur
-  $(0,+\infty)$. Alors
+  $]0,+\infty[$. Alors
   \[
     \varphi'(x) = \frac{a}{ax} - \frac{1}{x} = 0,
   \]
@@ -97,7 +97,7 @@ obtenues par comparaison à des sommes de Riemann.
 
   \medskip
   \textit{Étape 4 — Bijectivité.}
-  $\ln$ est continue sur $(0,+\infty)$, strictement croissante, avec
+  $\ln$ est continue sur $]0,+\infty[$, strictement croissante, avec
   $\ln(x)\to-\infty$ en $0^+$ et $\ln(x)\to+\infty$ en $+\infty$.
   Par le théorème des valeurs intermédiaires\index{théorème des valeurs intermédiaires},
   $\ln$ est surjective sur $\mathbb{R}$. L'injectivité est assurée par la
@@ -155,7 +155,8 @@ obtenues par comparaison à des sommes de Riemann.
 
   \smallskip\noindent
   \textbf{4. Inégalité arithmético-géométrique.}
-  De $\ln(x)\leq x-1$, en notant $\mu = \dfrac{a_1+\cdots+a_n}{n}$ la moyenne
+  Pour $a_1,\dots,a_n > 0$ : de $\ln(x)\leq x-1$, en notant
+  $\mu = \dfrac{a_1+\cdots+a_n}{n}$ la moyenne
   arithmétique, puis en remplaçant $x$ par $a_i/\mu$ et en sommant
   sur $i = 1,\dots,n$, on retrouve
   $\dfrac{a_1+\cdots+a_n}{n}\geq {(a_1\cdots a_n)}^{1/n}$.
@@ -194,9 +195,9 @@ obtenues par comparaison à des sommes de Riemann.
 
     \item Montrer que $H_n = \displaystyle\sum_{k=1}^n \frac{1}{k}$
           vérifie $H_n - \ln(n) \to \gamma$ pour une constante
-          $\gamma \in (0,1)$ (constante d'Euler\index{constante d'Euler}).
+          $\gamma \in\,]0,1[$ (constante d'Euler\index{constante d'Euler}).
 
-    \item Soit $f : (0,+\infty)\to\mathbb{R}$ continue, dérivable en $1$,
+    \item Soit $f :\,]0,+\infty[\,\to\mathbb{R}$ continue, dérivable en $1$,
           vérifiant $f(xy)=f(x)+f(y)$ pour tous $x,y>0$.
           Montrer que $f = f'(1)\cdot\ln$.
 

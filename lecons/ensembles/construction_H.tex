@@ -61,10 +61,10 @@ dimension $3$, il découvrit que la dimension $4$ est nécessaire, en renonçant
   $q \cdot (\bar{q}/|q|^2) = 1$. De même $(\bar{q}/|q|^2) \cdot q = 1$,
   ce qui donne bien un inverse à gauche et à droite.
 
-  \textit{Non-commutativité.} $ij = k \neq -k = ji$. $\blacksquare$
-
   \textit{Associativité.} Vérification directe (fastidieuse mais mécanique) :
   on vérifie les $64$ triplets de base ${\{1,i,j,k\}}^3$.
+
+  \textit{Non-commutativité.} $ij = k \neq -k = ji$.
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -153,8 +153,10 @@ Ainsi $\mathrm{SO}(3) \cong \mathrm{Sp}(1)/\{\pm 1\} \cong \mathrm{SU}(2)/\{\pm 
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\mathbb{H}$ n'est pas commutatif.}\enspace%
-  Ne pas écrire $q^2 = |q|^2$ en général : $q^2 = q\cdot q \neq q\bar{q} = |q|^2$
-  (sauf si $q$ est scalaire).
+  Ne pas développer comme dans un anneau commutatif :
+  $(p+q)^2 = p^2 + pq + qp + q^2$, et en général $pq + qp \neq 2pq$.
+  De même $(pq)^2 \neq p^2q^2$ en général : $(ij)^2 = k^2 = -1$
+  alors que $i^2j^2 = (-1)(-1) = 1$.
 
   \smallskip\noindent
   \textbf{Pas de polynômes bien définis.}\enspace%

@@ -19,7 +19,8 @@
     \item \textit{\textbf{Multilinéaire} par rapport aux colonnes (ou aux lignes) :
           $\det$ est $\mathbb{K}$-linéaire en chaque colonne, les autres étant fixées ;}
     \item \textit{\textbf{Alternée} : $\det(C_1,\ldots,C_n)=0$ dès que deux colonnes
-          sont égales (équivalent : échanger deux colonnes change le signe) ;}
+          sont égales (ce qui entraîne qu'échanger deux colonnes change le signe~;
+          les deux propriétés sont équivalentes si $\mathrm{car}(\mathbb{K}) \neq 2$) ;}
     \item \textit{\textbf{Normalisée} : $\det(I_n) = 1$.}
   \end{enumerate}
   \textit{Elle est donnée par la formule de Leibniz :}
@@ -280,7 +281,8 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
           $\det(A+I_n) = 1 + \mathrm{tr}(A)$ ;
           en déduire que, parmi les matrices de rang $\leq 1$, l'égalité
           $\det(A+I_n) = \det(A) + \det(I_n)$ a lieu si et seulement si
-          $A$ est nilpotente (c'est-à-dire $\mathrm{tr}(A) = 0$).
+          $A$ est nilpotente (ce qui, pour une matrice de rang $\leq 1$,
+          équivaut à $\mathrm{tr}(A) = 0$ puisque $A^2 = \mathrm{tr}(A)\,A$).
 
     \item (Critère de Sylvester) Montrer qu'une matrice symétrique réelle
           est définie positive si et seulement si tous ses sous-déterminants

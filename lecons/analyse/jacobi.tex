@@ -30,7 +30,9 @@
     \Bigl[{(1-x)}^{n+\alpha}{(1+x)}^{n+\beta}\Bigr].
   \]
   C'est un polynôme de degré $n$, normalisé par
-  $\Jac(1)=\dbinom{n+\alpha}{n}$.
+  $\Jac(1)=\dbinom{n+\alpha}{n}$, où
+  $\dbinom{n+\alpha}{n}=\dfrac{\Gamma(n+\alpha+1)}{\Gamma(\alpha+1)\,n!}$
+  désigne le coefficient binomial généralisé ($\alpha$ réel).
 
   \medskip
   \textbf{Théorème (propriétés fondamentales).}\enspace%
@@ -146,9 +148,16 @@ abstraite de l'orthogonalité, valable pour toute famille à poids positif.
   puisque $Q^{(n)}\equiv 0$. Ainsi $\Jac$ est orthogonal (pour le poids
   $\wab$) à tout polynôme de degré $<n$ ; en particulier
   $\langle P_m^{(\alpha,\beta)},P_n^{(\alpha,\beta)}\rangle_{\wab}=0$ si
-  $m\neq n$. En prenant $Q=\Jac$ et en explicitant la dernière intégrale
-  $\int_{-1}^1\rho_n\,\mathrm{d}x$ par la fonction Bêta, on obtient la
-  norme $h_n^{(\alpha,\beta)}$ annoncée.
+  $m\neq n$. Pour la norme, on prend $Q=\Jac$, dont le coefficient dominant
+  vaut
+  \[
+    k_n=\frac{\Gamma(2n+\alpha+\beta+1)}{2^n\,n!\,\Gamma(n+\alpha+\beta+1)},
+    \qquad\text{d'où}\qquad Q^{(n)}=n!\,k_n ;
+  \]
+  en explicitant la dernière intégrale
+  $\int_{-1}^1\rho_n\,\mathrm{d}x
+  =2^{2n+\alpha+\beta+1}\,B(n+\alpha+1,\,n+\beta+1)$ par la fonction Bêta,
+  on obtient la norme $h_n^{(\alpha,\beta)}$ annoncée.
 
   \medskip
   \textit{Étape 2 — Spécialisation aux familles connues.}
@@ -268,8 +277,10 @@ abstraite de l'orthogonalité, valable pour toute famille à poids positif.
   La convention $\Jac(1)=\binom{n+\alpha}{n}$ ne coïncide pas avec celles de
   $T_n$, $U_n$ ou $C_n^{\lambda}$~: passer d'une famille à l'autre demande un
   facteur multiplicatif. On a par exemple $P_n=P_n^{(0,0)}$ mais
-  $T_n=\dfrac{n!}{(1/2)_n}\,P_n^{(-1/2,-1/2)}$~: ne jamais identifier deux
-  familles sans expliciter le facteur d'échelle.
+  $T_n=\dfrac{n!}{(1/2)_n}\,P_n^{(-1/2,-1/2)}$, où
+  $(a)_n=a(a+1)\cdots(a+n-1)=\dfrac{\Gamma(a+n)}{\Gamma(a)}$ désigne le
+  \emph{symbole de Pochhammer}\index{symbole de Pochhammer}~: ne jamais
+  identifier deux familles sans expliciter le facteur d'échelle.
 \end{mdframed}
 
 \vspace{6pt}

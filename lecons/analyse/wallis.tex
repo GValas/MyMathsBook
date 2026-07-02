@@ -138,9 +138,11 @@ calculé via les formules closes.
 
   \smallskip\noindent
   \textbf{2. Lien avec Stirling.}
-  Les formules closes donnent $W_{2p}^2\sim\pi/(4p)$, ce qui implique,
-  après développement de $(2p)!$ en termes de ${(p!)}^2$, la formule de
-  Stirling $n!\sim\sqrt{2\pi n}\,{(n/e)}^n$.
+  Une fois établi par ailleurs (comparaison série-intégrale sur $\ln n!$)
+  que $n!\sim C\sqrt{n}\,{(n/e)}^n$ pour une constante $C>0$, l'équivalent
+  $W_{2p}^2\sim\pi/(4p)$, exprimé via $(2p)!$ et ${(p!)}^2$, identifie la
+  constante $C=\sqrt{2\pi}$~: c'est la formule de Stirling
+  $n!\sim\sqrt{2\pi n}\,{(n/e)}^n$ (voir exercice~3).
 
   \smallskip\noindent
   \textbf{3. Calcul direct.}
@@ -177,8 +179,12 @@ calculé via les formules closes.
           $\displaystyle\sum_{n=0}^{+\infty}{(-1)}^n W_{2n+1}
           =\int_0^{\pi/2}\frac{\sin t}{1+\sin^2 t}\,\mathrm{d}t
           =\frac{1}{2\sqrt{2}}\ln\!\frac{\sqrt{2}+1}{\sqrt{2}-1}\approx 0{,}623$.
-          \textit{Indication :} intervertir somme et intégrale en
-          sommant la série géométrique $\sum {(-1)}^n\sin^{2n+1}t$.
+          \textit{Indication :} sommer la série géométrique
+          $\sum {(-1)}^n\sin^{2n+1}t$, puis justifier l'interversion
+          somme-intégrale (la série n'étant pas absolument sommable) en
+          majorant le reste de la série alternée par son premier terme~:
+          $\bigl|\sum_{k>N}{(-1)}^k\sin^{2k+1}t\bigr|\leq\sin^{2N+3}t$,
+          d'intégrale $W_{2N+3}\to 0$.
 
     \item En utilisant $W_n\sim\sqrt{\pi/(2n)}$, retrouver la formule
           de Stirling (exprimer $W_{2n}$ en termes de $(2n)!$ et ${(n!)}^2$).

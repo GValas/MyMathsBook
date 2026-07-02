@@ -25,7 +25,7 @@
   \textbf{Version matricielle.}
   Toute matrice symétrique réelle $A \in \mathcal{M}_n(\mathbb{R})$
   (i.e.\ $A^T = A$) est orthogonalement diagonalisable : il existe
-  $P \in O_n(\mathbb{R})$ telle que $P^T A P = \mathrm{diag}(\lambda_1,\ldots,\lambda_n)$
+  $P \in \mathrm{O}_n(\mathbb{R})$ telle que $P^T A P = \mathrm{diag}(\lambda_1,\ldots,\lambda_n)$
   avec $\lambda_i \in \mathbb{R}$.
 \end{tcolorbox}
 
@@ -89,11 +89,12 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   valeur propre de $f$.\hfill$\square$
 
   \medskip
-  \textit{Récurrence sur $\dim E = n$.}
+  \textit{Récurrence forte sur $\dim E = n$.}
 
   \textit{Initialisation} : $n=1$, tout endomorphisme est diagonalisable.
 
-  \textit{Hérédité} : soit $\lambda$ une valeur propre réelle de $f$ (Lemme 3),
+  \textit{Hérédité} : on suppose le résultat acquis en toute dimension
+  strictement inférieure à $n$. Soit $\lambda$ une valeur propre réelle de $f$ (Lemme 3),
   $V = \ker(f-\lambda\,\mathrm{Id})$ son sous-espace propre, de dimension
   $\dim V \geq 1$ puisque $\lambda$ est valeur propre. On vérifie que
   $V^\perp$ est stable par $f$ : pour $y\in V^\perp$ et $v\in V$,
@@ -105,7 +106,9 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   y est un endomorphisme bien défini, et elle hérite de l'autoadjonction :
   pour $x,y\in V^\perp$, $\langle f(x),y\rangle = \langle x,f(y)\rangle$. Ainsi
   $f|_{V^\perp}$ est autoadjointe sur $V^\perp$, de dimension
-  $n - \dim V < n$. Par hypothèse de récurrence, $V^\perp$ admet une base
+  $n - \dim V < n$. Si $V^\perp = \{0\}$ (cas $\dim V = n$, i.e.\
+  $f = \lambda\,\mathrm{Id}$), toute base orthonormale de $E$ convient.
+  Sinon, par hypothèse de récurrence forte, $V^\perp$ admet une base
   orthonormale de vecteurs propres. En la combinant avec une base orthonormale
   de $V$ (formée de vecteurs propres pour $\lambda$), et comme $E = V\oplus V^\perp$
   avec $V\perp V^\perp$, on obtient une base orthonormale de $E$ diagonalisant $f$.
@@ -188,11 +191,12 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
 
     \item (Décomposition polaire) Montrer que toute matrice $M\in\mathcal{M}_n(\mathbb{R})$
           inversible s'écrit $M = QS$ avec $Q$ orthogonale et $S$ symétrique
-          définie positive (unicité de $S$, unicité de $Q$ si $M$ inversible).
+          définie positive (unicité de $Q$ et de $S$).
 
     \item Montrer que si $A$ est symétrique réelle, alors $e^A$ est
-          symétrique définie positive, et que la correspondance
-          $A\mapsto e^A$ est une bijection sur l'ensemble des symétriques
+          symétrique définie positive, et que l'application
+          $A\mapsto e^A$ réalise une bijection de l'ensemble des matrices
+          symétriques réelles sur l'ensemble des matrices symétriques
           définies positives.
   \end{enumerate}
 \end{mdframed}

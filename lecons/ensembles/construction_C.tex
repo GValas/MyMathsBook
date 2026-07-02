@@ -106,7 +106,9 @@ tout polynôme non constant a au moins une racine.
 
 \begin{mdframed}[style=proofbar]
   \textit{Esquisse (preuve topologique).}
-  Supposons que $P$ (de degré $n\geq 1$) n'ait aucune racine. Alors
+  Quitte à diviser $P$ par son coefficient dominant (ce qui ne change pas ses
+  racines), on suppose $P$ \emph{unitaire}. Supposons que $P$ (de degré
+  $n\geq 1$) n'ait aucune racine. Alors
   $z \mapsto P(z)/|P(z)|$ est définie et continue sur $\mathbb{C}$ tout entier,
   à valeurs dans le cercle $\mathbb{S}^1$. Sa restriction au cercle de rayon $R$
   est donc une boucle, dont l'indice (élément de $\pi_1(\mathbb{S}^1)\cong\mathbb{Z}$)
@@ -162,8 +164,10 @@ de degré $3$ ou plus.
   \smallskip\noindent
   \textbf{Pas de clôture algébrique canonique.}\enspace%
   La clôture algébrique de $\mathbb{Q}$ (les nombres algébriques $\bar{\mathbb{Q}}$)
-  n'est pas $\mathbb{C}$ entier — c'est un sous-corps strict, mais le groupe
-  d'automorphismes $\mathrm{Aut}(\mathbb{C}/\mathbb{Q})$ est immense et non canonique.
+  n'est pas $\mathbb{C}$ entier — c'est un sous-corps strict. Par ailleurs, la
+  clôture algébrique est unique \emph{à isomorphisme près}, mais cet isomorphisme
+  n'est ni unique ni canonique : le groupe $\mathrm{Aut}(\bar{\mathbb{Q}}/\mathbb{Q})$
+  est immense.
 \end{mdframed}
 
 \vspace{6pt}

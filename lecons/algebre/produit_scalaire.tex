@@ -36,13 +36,13 @@
   \textbf{2. Produit scalaire $L^2$ sur $\mathcal{C}([a,b])$.}\enspace%
   \index{produit scalaire!intégral}
   $\langle f,g\rangle = \displaystyle\int_a^b f(t)\,g(t)\,\mathrm{d}t$.
-  La définition positive résulte du fait qu'une fonction continue positive
+  Le caractère défini positif résulte du fait qu'une fonction continue positive
   d'intégrale nulle est identiquement nulle.
 
   \smallskip\noindent
   \textbf{3. Produit scalaire sur $\mathcal{M}_n(\mathbb{R})$.}\enspace%
   $\langle A,B\rangle = \mathrm{tr}(A^T B)$.
-  La bilinéarité et la symétrie sont immédiates ; la définition positive
+  La bilinéarité et la symétrie sont immédiates ; le caractère défini positif
   vient de $\mathrm{tr}(A^T A) = \sum_{i,j} a_{ij}^2$.
 \end{mdframed}
 
@@ -65,7 +65,7 @@
 
 \begin{mdframed}[style=proofbar]
   Si $y = 0$, les deux membres sont nuls. Supposons $y \neq 0$.
-  Pour tout $\lambda \in \mathbb{R}$, la définition positive donne :
+  Pour tout $\lambda \in \mathbb{R}$, la positivité donne :
   \[
     0 \leq \langle x - \lambda y,\, x - \lambda y\rangle
     = \langle x,x\rangle - 2\lambda\langle x,y\rangle + \lambda^2\langle y,y\rangle.
@@ -82,8 +82,9 @@
   ($y = 0\cdot x$) et les deux membres de l'inégalité sont nuls. Supposons $y \neq 0$.
   L'égalité dans Cauchy-Schwarz équivaut à la nullité du discriminant du trinôme
   ci-dessus, c'est-à-dire à l'existence d'une racine double $\lambda_0$ telle que
-  $\langle x - \lambda_0 y,\, x - \lambda_0 y\rangle = 0$ ; par définie positivité,
-  cela signifie $x = \lambda_0 y$, donc $x$ et $y$ sont colinéaires.
+  $\langle x - \lambda_0 y,\, x - \lambda_0 y\rangle = 0$ ; le produit scalaire
+  étant défini positif, cela signifie $x = \lambda_0 y$, donc $x$ et $y$ sont
+  colinéaires.
   Réciproquement, si $x$ et $y$ sont colinéaires, un calcul immédiat montre que
   l'inégalité est une égalité. On a donc bien équivalence entre l'égalité et la
   colinéarité de $x$ et $y$. $\blacksquare$
@@ -155,10 +156,10 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 
 \begin{tcolorbox}[thmbox]
   \textbf{Définition.}\enspace%
-  \index{orthogonalité}\index{complement orthogonal@complément orthogonal}
+  \index{orthogonalité}\index{orthogonal (d'une partie)}
   On dit que $x$ et $y$ sont \emph{orthogonaux}, noté $x \perp y$, si
   $\langle x,y\rangle = 0$.
-  Le \emph{complément orthogonal} d'une partie $A \subset E$ est
+  L'\emph{orthogonal} d'une partie $A \subset E$ est
   \[
     A^\perp = \bigl\{x \in E \mid \forall\,a \in A,\;\langle x,a\rangle = 0\bigr\}.
   \]
@@ -166,15 +167,17 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 
   \medskip
   \textbf{Théorème.}\enspace%
-  Si $F$ est un sous-espace de l'espace euclidien $E$, alors
+  \index{supplementaire orthogonal@supplémentaire orthogonal}
+  Si $F$ est un sous-espace de l'espace euclidien $E$, alors $F^\perp$
+  est un supplémentaire de $F$, appelé \emph{supplémentaire orthogonal} :
   \[
     E = F \oplus F^\perp, \qquad \dim F^\perp = \dim E - \dim F.
   \]
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
-  Soit $(e_1,\ldots,e_p)$ une base orthonormée de $F$ (obtenue par Gram-Schmidt,
-  voir § 5). Pour $x \in E$, posons $p_F(x) = \sum_{i=1}^p \langle x, e_i\rangle\, e_i$.
+  Soit $(e_1,\ldots,e_p)$ une base orthonormée de $F$ (obtenue par le procédé
+  de Gram-Schmidt, présenté plus loin). Pour $x \in E$, posons $p_F(x) = \sum_{i=1}^p \langle x, e_i\rangle\, e_i$.
   Alors $p_F(x) \in F$ et $x - p_F(x) \in F^\perp$ (vérification : pour tout $j$,
   $\langle x - p_F(x), e_j\rangle = \langle x,e_j\rangle - \langle x,e_j\rangle = 0$).
   Donc $x = p_F(x) + (x-p_F(x)) \in F + F^\perp$.
@@ -273,7 +276,7 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
 
   \smallskip\noindent
   \textbf{$F^\perp$ dépend du produit scalaire.}\enspace%
-  Si on change de produit scalaire sur $E$, le complément orthogonal d'un
+  Si on change de produit scalaire sur $E$, le supplémentaire orthogonal d'un
   sous-espace $F$ change. L'orthogonalité n'est pas une notion purement vectorielle.
 
   \smallskip\noindent
@@ -297,9 +300,10 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
           Appliquer Cauchy-Schwarz pour montrer
           $\left(\int_0^1 f\right)^2 \leq \int_0^1 f^2$.
 
-    \item Orthonormaliser la famille $(1, X, X^2)$ dans $\mathbb{R}[X]_{\leq 2}$
+    \item Orthonormaliser la famille $(1, X, X^2)$ dans $\mathbb{R}_2[X]$
           muni de $\langle P,Q\rangle = \int_{-1}^1 PQ$. Reconnaître les
-          polynômes obtenus (polynômes de Legendre\index{polynômes de Legendre}).
+          polynômes obtenus (polynômes de
+          Legendre\index{polynômes de Legendre}, à normalisation près).
 
     \item Soit $p$ la projection orthogonale sur $F = \mathrm{Vect}(e_1, e_2)$
           dans $\mathbb{R}^4$ muni du produit scalaire canonique, avec

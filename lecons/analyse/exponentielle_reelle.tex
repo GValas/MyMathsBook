@@ -28,11 +28,12 @@
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
-  Pour tout $x \in \mathbb{R}$ et tout $M > 0$, la série
-  $\sum \dfrac{|x|^n}{n!}$ converge : elle est dominée par
-  $\sum \dfrac{M^n}{n!}$ sur $[-M, M]$ (série convergente car
-  $u_{n+1}/u_n = M/(n+1) \to 0$). La convergence est donc normale
-  sur tout segment, et la fonction somme est continue. La dérivabilité
+  Soit $M > 0$. Pour tout $x \in [-M, M]$, la série
+  $\sum \dfrac{|x|^n}{n!}$ est dominée par
+  $\sum \dfrac{M^n}{n!}$, convergente car
+  $u_{n+1}/u_n = M/(n+1) \to 0$. La convergence est donc normale
+  sur tout segment — d'où la convergence absolue en tout point de
+  $\mathbb{R}$ — et la fonction somme est continue. La dérivabilité
   terme à terme (la convergence reste normale après dérivation) donne
   $\exp' = \exp$ (voir § 2). On itère : $\exp \in \mathcal{C}^\infty$.
   \hfill$\blacksquare$
@@ -67,7 +68,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
     \item \textbf{Bijectivité :}
           $\displaystyle\lim_{x\to +\infty}\exp(x)=+\infty$,\quad
           $\displaystyle\lim_{x\to -\infty}\exp(x)=0^+$.\quad
-          $\exp$ est une bijection de $\mathbb{R}$ sur $(0,+\infty)$.
+          $\exp$ est une bijection de $\mathbb{R}$ sur $]0,+\infty[$.
   \end{enumerate}
 \end{tcolorbox}
 
@@ -148,7 +149,8 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
     \[
       \exp(x) = \sum_{k=0}^n \frac{x^k}{k!} + o(x^n) \quad (x\to 0).
     \]
-    \item \textbf{Reste de Taylor :} pour tout $x \in \mathbb{R}$,
+    \item \textbf{Reste de Taylor :} pour tout $x \neq 0$
+          (le cas $x = 0$ étant immédiat),
     \[
       \exp(x) = \sum_{k=0}^n \frac{x^k}{k!} + \frac{x^{n+1}}{(n+1)!}\,\exp(\xi),
       \quad \xi \text{ strictement entre } 0 \text{ et } x.
@@ -164,8 +166,8 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
   \textit{(2).} C'est le développement de Taylor-Young de $\exp$ en $0$
   (les dérivées $\exp^{(k)}(0) = \exp(0) = 1$).
 
-  \textit{(3).} Formule de Taylor avec reste de Lagrange, valable pour tout
-  $x \in \mathbb{R}$ : comme $\exp^{(n+1)} = \exp$ est continue sur $\mathbb{R}$,
+  \textit{(3).} Formule de Taylor avec reste de Lagrange, appliquée entre
+  $0$ et $x \neq 0$ : comme $\exp^{(n+1)} = \exp$ est continue sur $\mathbb{R}$,
   il existe $\xi$ strictement entre $0$ et $x$ tel que le reste vaille
   $\tfrac{\exp(\xi)}{(n+1)!}x^{n+1}$.
   \hfill$\blacksquare$

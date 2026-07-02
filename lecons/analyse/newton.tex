@@ -48,7 +48,7 @@
           d'expression change.
     \item \textit{Coefficient dominant.}\enspace Le coefficient de $x^n$
           dans $P$ vaut $\ddiv{x_0,\ldots,x_n}$ ; en particulier la $k$-ième
-          différence divisée est le coefficient dominant de l'interpolateur
+          différence divisée est le coefficient de $x^k$ de l'interpolateur
           aux $k+1$ premiers nœuds.
     \item \textit{Symétrie.}\enspace La différence divisée
           $\ddiv{x_0,\ldots,x_n}$ est une fonction \emph{symétrique} des
@@ -67,8 +67,10 @@
             \ddiv{x_0,\ldots,x_n} = \dfrac{f^{(n)}(\xi)}{n!}.
           \]
     \item \textit{Interpolation d'Hermite.}\enspace\index{interpolation d'Hermite}
-          Lorsque des nœuds se confondent, les différences divisées se
-          prolongent par continuité : pour $m+1$ nœuds égaux à $a$,
+          Lorsque des nœuds se confondent et que $f$ est de classe
+          $\mathcal{C}^m$ au voisinage du point de confluence, les
+          différences divisées se prolongent par continuité : pour $m+1$
+          nœuds égaux à $a$,
           $f[\underbrace{a,\ldots,a}_{m+1}] = \dfrac{f^{(m)}(a)}{m!}$, ce
           qui permet d'imposer aussi des valeurs de \emph{dérivées} (forme
           de Newton de l'interpolation d'Hermite).
@@ -126,19 +128,25 @@ $f-P_n$, ce qui redonne au passage la formule d'erreur de Lagrange.
   Notons $P_{k}$ l'interpolateur de $f$ aux nœuds $x_0,\ldots,x_k$. La
   forme triangulaire de l'étape~1 montre que $P_k=P_{k-1}+c_k\,\nbase{k}$ :
   ajouter le nœud $x_k$ n'altère pas les coefficients déjà calculés. Donc
-  $c_k$ est le \emph{coefficient dominant} de $P_k$. Montrons par
-  récurrence sur $k$ que $c_k=f[x_0,\ldots,x_k]$. Pour $k=0$,
-  $P_0=f(x_0)=f[x_0]$. Soit $Q$ (resp.\ $R$) l'interpolateur de $f$ aux
-  nœuds $x_0,\ldots,x_{k-1}$ (resp.\ $x_1,\ldots,x_k$). On vérifie que
+  $c_k$ est le coefficient de $x^k$ dans $P_k$. Montrons par récurrence
+  sur $k$ la propriété suivante : \emph{pour toute famille de $k+1$ réels
+  deux à deux distincts, le coefficient de $x^k$ de l'interpolateur de $f$
+  en ces nœuds est la différence divisée de $f$ en ces nœuds}. Pour $k=0$,
+  l'interpolateur au nœud $x_0$ est la constante $f(x_0)=f[x_0]$. Soit
+  $k\geq 1$ et $x_0,\ldots,x_k$ deux à deux distincts ; soit $Q$
+  (resp.\ $R$) l'interpolateur de $f$ aux nœuds $x_0,\ldots,x_{k-1}$
+  (resp.\ $x_1,\ldots,x_k$). On vérifie que
   \[
     P_k(x) = R(x) + \frac{x-x_k}{x_k-x_0}\bigl(R(x)-Q(x)\bigr)
            = \frac{(x-x_0)R(x)-(x-x_k)Q(x)}{x_k-x_0}
   \]
   interpole $f$ aux $k+1$ nœuds (vérification directe en chaque $x_i$).
-  Par unicité c'est bien $P_k$ ; en identifiant les coefficients dominants
-  de degré $k$ et en utilisant l'hypothèse de récurrence sur $Q$ et $R$ :
+  Par unicité c'est bien $P_k$ ; en identifiant les coefficients de $x^k$
+  et en appliquant l'hypothèse de récurrence à $Q$ et à $R$ (deux familles
+  de $k$ nœuds deux à deux distincts) :
   \[
-    c_k = \frac{(\text{dom } R)-(\text{dom } Q)}{x_k-x_0}
+    c_k = \frac{\bigl(\text{coeff.\ de }x^{k-1}\text{ dans }R\bigr)
+                -\bigl(\text{coeff.\ de }x^{k-1}\text{ dans }Q\bigr)}{x_k-x_0}
         = \frac{f[x_1,\ldots,x_k]-f[x_0,\ldots,x_{k-1}]}{x_k-x_0}
         = f[x_0,\ldots,x_k],
   \]
@@ -149,8 +157,8 @@ $f-P_n$, ce qui redonne au passage la formule d'erreur de Lagrange.
   \textit{Étape 3 — Symétrie.}
   Toute permutation des nœuds $x_0,\ldots,x_n$ ne change ni l'ensemble des
   contraintes $P(x_i)=f(x_i)$, ni donc le polynôme interpolateur $P$ (par
-  unicité), ni a fortiori son coefficient dominant. Or ce coefficient
-  dominant vaut $f[x_0,\ldots,x_n]$ d'après l'étape~2 : la différence
+  unicité), ni a fortiori son coefficient de $x^n$. Or ce coefficient
+  vaut $f[x_0,\ldots,x_n]$ d'après l'étape~2 : la différence
   divisée est donc invariante par permutation des nœuds.
 
   \medskip
@@ -160,8 +168,9 @@ $f-P_n$, ce qui redonne au passage la formule d'erreur de Lagrange.
   $g=f-P_n$ : la fonction $g$ s'annule en ces $n+1$ points distincts.
   Par le théorème de Rolle appliqué entre zéros consécutifs, $g'$ admet
   au moins $n$ zéros, puis $g''$ au moins $n-1$, \ldots, et $g^{(n)}$
-  admet au moins un zéro $\xi\in I$. Or $P_n$ est de degré $n$ et de
-  coefficient dominant $f[x_0,\ldots,x_n]$ (étape~2), donc sa dérivée
+  admet au moins un zéro $\xi\in I$. Or $P_n$ est de degré au plus $n$ et
+  le coefficient de $x^n$ dans $P_n$ vaut $f[x_0,\ldots,x_n]$
+  (étape~2), donc sa dérivée
   $n$-ième est la \emph{constante} $P_n^{(n)}=n!\,f[x_0,\ldots,x_n]$ ;
   ainsi $g^{(n)}=f^{(n)}-n!\,f[x_0,\ldots,x_n]$. En évaluant en $\xi$ :
   \[
@@ -192,7 +201,7 @@ $f-P_n$, ce qui redonne au passage la formule d'erreur de Lagrange.
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Table des différences divisées.}\enspace
-  Reprenons $f(0)=1$, $f(1)=2$, $f(2)=9$, $f(3)=28$. On dresse le tableau,
+  Considérons $f(0)=1$, $f(1)=2$, $f(2)=9$, $f(3)=28$. On dresse le tableau,
   chaque colonne se déduisant de la précédente par la formule de récurrence
   $\tfrac{\text{(bas)}-\text{(haut)}}{x_{i+k}-x_i}$ :
   \[
@@ -213,7 +222,7 @@ $f-P_n$, ce qui redonne au passage la formule d'erreur de Lagrange.
   \[
     P(x) = 1 + 1\cdot x + 3\,x(x-1) + 1\cdot x(x-1)(x-2) = x^3+1,
   \]
-  comme attendu. Le coefficient dominant $f[0,1,2,3]=1$ vaut bien
+  Le coefficient dominant $f[0,1,2,3]=1$ vaut bien
   $f^{(3)}(\xi)/3!=6/6$ ici, car $f^{(3)}\equiv 6$.
 
   \smallskip\noindent

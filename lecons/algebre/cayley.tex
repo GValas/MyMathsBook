@@ -12,19 +12,19 @@
 \begin{tcolorbox}[thmbox]
   \textbf{Théorème (Cayley--Hamilton).}\enspace%
   \index{Cayley-Hamilton (théorème de)}\index{polynôme caractéristique}
-  \textit{Soit $E$ un espace vectoriel de dimension finie $n$ et
+  \textit{Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie $n$ et
   $f \in \mathcal{L}(E)$. Notons $\chi_f = \det(X\,\mathrm{Id} - f)$ le
   polynôme caractéristique\index{polynôme caractéristique} de $f$.
   Alors $f$ est annulé par son propre polynôme caractéristique :}
   \[
     \chi_f(f) = 0_{\mathcal{L}(E)}.
   \]
-  En termes matriciels : pour toute matrice $A \in \mathcal{M}_n(\mathbb{R})$,
+  En termes matriciels : pour toute matrice $A \in \mathcal{M}_n(\mathbb{K})$,
   \[
     \chi_A(A) = 0_n, \qquad \text{où } \chi_A = \det(XI_n - A).
   \]
-  \textit{Remarque.} Le résultat est valable sur un corps quelconque
-  $\mathbb{K}$ : la preuve par la comatrice ci-dessous est purement
+  \textit{Remarque.} Aucune hypothèse sur le corps $\mathbb{K}$ n'est
+  nécessaire : la preuve par la comatrice ci-dessous est purement
   algébrique et n'utilise aucune propriété analytique du corps de base.
 \end{tcolorbox}
 
@@ -46,7 +46,7 @@ et de la décomposition de Dunford.
 \secnum{navyblue}{2}{Démonstration}
 
 \begin{ideepreuve}
-L'idée est d'utiliser la comatrice (matrice adjointe) : $\chi_f(X) = \det(X\,\mathrm{Id}-f)$,
+L'idée est d'utiliser la comatrice transposée : $\chi_f(X) = \det(X\,\mathrm{Id}-f)$,
 et $(X\,\mathrm{Id}-f)\cdot{\mathrm{com}(X\,\mathrm{Id}-f)}^T = \chi_f(X)\cdot\mathrm{Id}$.
 En substituant $X = f$ dans cette identité matricielle de façon algébrique
 (en identifiant les coefficients en puissances de $X$), on obtient $\chi_f(f) = 0$.
@@ -57,12 +57,14 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 \rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
-  \textit{Mise en place.} Soit $B(X) = {\mathrm{com}(X\,\mathrm{Id}-A)}^T$
-  la comatrice transposée (ou matrice adjointe) de $X\,\mathrm{Id}-A$.
-  Chaque entrée de $B(X)$ est un mineur d'ordre $n-1$ de $X\,\mathrm{Id}-A$,
-  donc un polynôme en $X$ de degré au plus $n-1$. On écrit :
+  \textit{Mise en place.} Soit $A \in \mathcal{M}_n(\mathbb{K})$ (par
+  exemple la matrice de $f$ dans une base de $E$). Soit
+  $B(X) = {\mathrm{com}(X\,I_n-A)}^T$ la comatrice transposée de
+  $X\,I_n-A$ (appelée \emph{adjugate} dans la littérature anglophone).
+  Chaque entrée de $B(X)$ est, au signe près, un mineur d'ordre $n-1$ de
+  $X\,I_n-A$, donc un polynôme en $X$ de degré au plus $n-1$. On écrit :
   \[
-    B(X) = B_0 + B_1 X + \cdots + B_{n-1} X^{n-1}, \quad B_k \in \mathcal{M}_n(\mathbb{R}).
+    B(X) = B_0 + B_1 X + \cdots + B_{n-1} X^{n-1}, \quad B_k \in \mathcal{M}_n(\mathbb{K}).
   \]
 
   \textit{Identité matricielle polynomiale.} Par définition de la comatrice :
@@ -103,10 +105,14 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
   car chaque $\lambda_i$ est racine de $\chi_A$.
 
   Pour le cas général, on travaille sur $\mathbb{C}$ : les matrices
-  diagonalisables sont denses dans $\mathcal{M}_n(\mathbb{C})$ (une matrice à
-  valeurs propres deux à deux distinctes est diagonalisable, et de telles
-  matrices sont denses car le discriminant de $\chi_A$ ne s'annule pas
-  génériquement). Comme $A\mapsto\chi_A(A)$ est continue (polynomiale en les
+  diagonalisables sont denses dans $\mathcal{M}_n(\mathbb{C})$. En effet,
+  une matrice à valeurs propres deux à deux distinctes est diagonalisable~;
+  or l'application $M \mapsto \mathrm{disc}(\chi_M)$ est polynomiale en les
+  coefficients de $M$ et non identiquement nulle (elle ne s'annule pas en
+  $\mathrm{diag}(1,2,\ldots,n)$), donc son lieu d'annulation est d'intérieur
+  vide et son complémentaire --- exactement l'ensemble des matrices à
+  valeurs propres deux à deux distinctes --- est dense dans
+  $\mathcal{M}_n(\mathbb{C})$. Comme $A\mapsto\chi_A(A)$ est continue (polynomiale en les
   coefficients) et nulle sur cette partie dense, elle est identiquement nulle
   sur $\mathcal{M}_n(\mathbb{C})$.
 
@@ -189,11 +195,12 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
           En déduire une nouvelle preuve que $\chi_A(\lambda)=0$ pour
           toute valeur propre $\lambda$.
 
-    \item (Décomposition de Dunford) On suppose $\chi_A$ scindé,
-          $\chi_A = \prod_i {(X-\lambda_i)}^{n_i}$ (ce qui est automatique
-          sur $\mathbb{C}$). En appliquant le lemme des noyaux à cette
-          factorisation, montrer que $E$ se décompose en somme directe de
-          sous-espaces caractéristiques
+    \item (Décomposition de Dunford) Soit $f \in \mathcal{L}(E)$ tel que
+          $\chi_f$ soit scindé,
+          $\chi_f = \prod_i {(X-\lambda_i)}^{n_i}$ (ce qui est automatique
+          si $\mathbb{K} = \mathbb{C}$). En appliquant le lemme des noyaux
+          à cette factorisation, montrer que $E$ se décompose en somme
+          directe de sous-espaces caractéristiques
           $E = \bigoplus_i \ker{(f-\lambda_i\,\mathrm{Id})}^{n_i}$.
   \end{enumerate}
 \end{mdframed}

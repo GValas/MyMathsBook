@@ -133,8 +133,10 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
           coïncident :
           $\displaystyle\int_a^b f(t)\,\mathrm{d}t = \int_{[a,b]} f\,\mathrm{d}\lambda.$
   \end{itemize}
-  \textbf{Pour les intégrales impropres absolument convergentes au sens de Riemann}, la
-  Lebesgue-intégrabilité équivaut à $\int |f|\,\mathrm{d}\lambda < +\infty$.
+  \textbf{Cas des intégrales impropres.}\enspace Pour $f$ localement
+  Riemann-intégrable sur un intervalle, $f$ est Lebesgue-intégrable si et
+  seulement si l'intégrale impropre de $|f|$ converge, et les deux
+  intégrales coïncident alors.
   Les intégrales semi-convergentes (type $\int_0^{+\infty}\sin(t)/t\,\mathrm{d}t$)
   sont définies par Riemann mais pas par Lebesgue.
 \end{tcolorbox}
@@ -319,8 +321,8 @@ $\int f_n \to \int f$. Riemann ne dispose pas d'un tel théorème.
 
     \item Établir la formule
           $\displaystyle\int_0^{+\infty}\frac{\ln t}{1+t^2}\,\mathrm{d}t = 0$
-          via Fubini sur $\iint \frac{\mathrm{d}t\,\mathrm{d}u}{(1+t^2)(1+t u)}$
-          ou par changement $t \mapsto 1/t$.
+          par changement $t \mapsto 1/t$, ou via Fubini en écrivant
+          $\ln t = \displaystyle\int_0^{+\infty}\Bigl(\frac{1}{1+u}-\frac{1}{t+u}\Bigr)\mathrm{d}u$.
 
     \item Soit $A \subset [0,1]$ borélien avec $\lambda(A) = 1$. Montrer
           que $A$ est dense dans $[0,1]$.

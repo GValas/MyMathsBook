@@ -15,8 +15,9 @@
 \begin{tcolorbox}[thmbox]
   \textbf{Théorème.}\enspace%
   \index{exponentielle de matrice!définition limite}
-  Pour toute matrice $X \in \mathcal{M}_n(\mathbb{K})$, munie d'une norme
-  sous-multiplicative $\|\cdot\|$~:
+  L'espace $\mathcal{M}_n(\mathbb{K})$ étant muni d'une norme subordonnée
+  $\|\cdot\|$ (donc sous-multiplicative, avec $\|I\| = 1$), pour toute
+  matrice $X \in \mathcal{M}_n(\mathbb{K})$~:
   \[
     e^X \;=\; \lim_{k \to +\infty} \left(I + \frac{X}{k}\right)^{\!k}.
   \]
@@ -127,8 +128,11 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
   \hfill$\blacksquare$
 
   \smallskip\noindent
-  (Cette preuve est rigoureuse pour les matrices à condition de justifier
-  que $\exp \circ (k\log(I+X/k)) \to \exp(X)$, ce que fait le §\,2.)
+  (Cette preuve devient rigoureuse à condition de justifier l'identité
+  $\exp(\log(I+Q)) = I+Q$ pour $\|Q\| < 1$ — d'où
+  ${(I+X/k)}^k = \exp\bigl(k\log(I+X/k)\bigr)$ — ainsi que la continuité
+  de $\exp$, deux points que le §\,2 contourne par une comparaison
+  directe de séries.)
 \end{mdframed}
 
 \decsep{}
@@ -230,13 +234,15 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
   \textbf{La convergence est uniforme sur les bornés, pas sur tout
   $\mathcal{M}_n$.}\enspace
   Pour $\|X\| \leq R$ fixé, la vitesse de convergence est en
-  $O(R^2/k)$~; mais pour $X$ quelconque, $k$ doit croître avec $\|X\|$.
+  $O(R^2 e^R/k)$ (exercice 2)~; mais pour $X$ quelconque, $k$ doit
+  croître avec $\|X\|$.
 
   \smallskip\noindent
   \textbf{La formule de Trotter nécessite une preuve supplémentaire.}\enspace
   Contrairement à ${(I+X/k)}^k \to e^X$, la formule
   ${(e^{A/k}e^{B/k})}^k \to e^{A+B}$ n'est pas immédiate quand $AB \neq BA$~;
-  elle repose sur Baker--Campbell--Hausdorff.
+  elle demande une estimation supplémentaire (la comparaison télescopique
+  du §\,4), dont Baker--Campbell--Hausdorff éclaire le terme d'erreur.
 \end{mdframed}
 
 \vspace{6pt}
@@ -267,9 +273,11 @@ elle passe par une comparaison terme à terme avec la série $e^X$.
           $e^{\pi A}y_0 = -y_0 = {(-1,0)}^T$~; comparer la valeur approchée d'Euler
           à $-y_0$.
 
-    \item Montrer que pour $A$ et $B$ qui commutent, la formule de Trotter
-          se réduit immédiatement à ${(I+X/k)}^k \to e^X$ avec $X = A+B$.
-          Expliquer pourquoi la preuve échoue sans commutativité.
+    \item Montrer que si $AB = BA$, alors
+          $e^{A/k}e^{B/k} = e^{(A+B)/k}$, et donc
+          ${(e^{A/k}e^{B/k})}^k = e^{A+B}$ \emph{exactement}.
+          Expliquer pourquoi cette identité échoue sans commutativité,
+          rendant nécessaire l'argument télescopique du §\,4.
   \end{enumerate}
 \end{mdframed}
 

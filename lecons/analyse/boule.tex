@@ -57,23 +57,23 @@ On écrit $B_n(R)$ comme une pile de boules $(n{-}1)$-di\-men\-sion\-nelles :
 \]
 Par le théorème de Fubini\index{Fubini (théorème de)} :
 \[
-  V_n(R) = \int_{-R}^{R} V_{n-1}\!\bigl(\sqrt{R^2-x^2}\bigr)\,dx
-          = \mu_{n-1}\int_{-R}^{R}{(R^2-x^2)}^{(n-1)/2}\,dx.
+  V_n(R) = \int_{-R}^{R} V_{n-1}\!\bigl(\sqrt{R^2-x^2}\bigr)\dd x
+          = \mu_{n-1}\int_{-R}^{R}{(R^2-x^2)}^{(n-1)/2}\dd x.
 \]
 
 \rubriq{Changement de variable et intégrales de Wallis}
-On pose $x = R\cos\theta$, $dx = -R\sin\theta\,d\theta$
+On pose $x = R\cos\theta$, $\dd x = -R\sin\theta\dd\theta$
 (avec $\theta : \pi \to 0$ quand $x : -R \to R$) :
 \[
   {(R^2-x^2)}^{(n-1)/2} = R^{n-1}\sin^{n-1}\theta,
 \]
 d'où
 \[
-  V_n(R) = \mu_{n-1}\,R^{n-1}\int_{\pi}^{0}(-R\sin\theta)\,\sin^{n-1}\theta\,d\theta
-  = \mu_{n-1}\,R^n\int_0^{\pi}\sin^n\theta\,d\theta
+  V_n(R) = \mu_{n-1}\,R^{n-1}\int_{\pi}^{0}(-R\sin\theta)\,\sin^{n-1}\theta\dd\theta
+  = \mu_{n-1}\,R^n\int_0^{\pi}\sin^n\theta\dd\theta
   = 2\mu_{n-1}\,R^n\,W_n,
 \]
-en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d\theta = 2W_n$
+en utilisant $\int_0^{\pi}\sin^n\theta\dd\theta = 2\int_0^{\pi/2}\sin^n\theta\dd\theta = 2W_n$
 (symétrie de $\sin$ autour de $\pi/2$), où $W_n$ désigne les intégrales de Wallis\index{intégrales de Wallis}
 (voir leçon dédiée).
 
@@ -185,7 +185,8 @@ en utilisant $\int_0^{\pi}\sin^n\theta\,d\theta = 2\int_0^{\pi/2}\sin^n\theta\,d
 \rubriq{Interprétation géométrique}
 En grande dimension, presque tout le volume de $[-1,1]^n$ (qui vaut $2^n$) est concentré
 dans les coins, loin du centre. La boule unité $B_n(1)$ ne capte qu'une fraction
-$\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\index{concentration de la mesure}.
+$\mu_n/2^n \to 0$ du cube — un aspect de la \emph{malédiction de la
+dimension}\index{malédiction de la dimension}.
 
 \decsep{}
 
@@ -207,17 +208,19 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
 
   \smallskip\noindent
   \textbf{2. Concentration du volume près de l'équateur.}\enspace%
+  \index{concentration de la mesure}%
   La méthode des tranches donne la fraction du volume de $B_n(1)$ contenue dans
   la bande centrale $\{|x_1| \leq \varepsilon\}$ :
   \[
-    \frac{1}{\mu_n}\int_{-\varepsilon}^{\varepsilon}\mu_{n-1}\,{(1-t^2)}^{(n-1)/2}\,\mathrm{d}t
-    = \frac{\mu_{n-1}}{\mu_n}\int_{-\varepsilon}^{\varepsilon}{(1-t^2)}^{(n-1)/2}\,\mathrm{d}t.
+    \frac{1}{\mu_n}\int_{-\varepsilon}^{\varepsilon}\mu_{n-1}\,{(1-t^2)}^{(n-1)/2}\dd t
+    = \frac{\mu_{n-1}}{\mu_n}\int_{-\varepsilon}^{\varepsilon}{(1-t^2)}^{(n-1)/2}\dd t.
   \]
   Comme $\mu_{n-1}/\mu_n = \Theta(\sqrt{n})$, cette fraction tend vers $1$ pour tout
   $\varepsilon > 0$ fixé, et plus généralement dès que $\varepsilon\sqrt{n}\to+\infty$~;
   à l'échelle critique $\varepsilon = c/\sqrt{n}$, elle tend vers
   $P(|Z| \leq c) < 1$ avec $Z \sim \mathcal{N}(0,1)$ : presque tout le
-  volume se concentre près de l'équateur $\{x_1 = 0\}$.
+  volume se concentre près de l'équateur $\{x_1 = 0\}$ — c'est le phénomène
+  de \emph{concentration de la mesure}.
 
   \smallskip\noindent
   \textbf{3. Probabilité de tomber dans la boule.}\enspace%
@@ -253,12 +256,12 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
     \item Vérifier la formule $\mu_n = \frac{2\pi}{n}\mu_{n-2}$ pour $n = 4, 5, 6$
           en utilisant le tableau des valeurs exactes.
 
-    \item Montrer que le volume de la sphère creuse
+    \item Montrer que le volume de la couronne sphérique
           $\{R_1 \leq \|x\| \leq R_2\}$ vaut $\mu_n(R_2^n - R_1^n)$ et
-          calculer la fraction du volume de $B_n(1)$ contenue dans la couronne
+          calculer la fraction du volume de $B_n(1)$ contenue dans la couronne sphérique
           $\{1-\varepsilon \leq \|x\| \leq 1\}$. Que se passe-t-il quand $n\to\infty$ ?
 
-    \item (Volume et intégrale gaussienne) Calculer $\int_{\mathbb{R}^n} e^{-\|x\|^2}\,dx$
+    \item (Volume et intégrale gaussienne) Calculer $\int_{\mathbb{R}^n} e^{-\|x\|^2}\dd x$
           de deux façons : par produit tensoriel d'intégrales gaussiennes, puis en
           coordonnées sphériques. En déduire la valeur de $\mu_n$, et retrouver ainsi
           que $\mu_{2m} = \pi^m/m!$.
@@ -268,9 +271,13 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
           \iff n \leq 6$. (À ne pas confondre avec le maximum de la suite
           $(\mu_n)$, atteint en $n = 5$.)
 
-    \item Soit $E_n = \mathbb{E}[\|X\|]$ pour $X \sim \mathcal{N}(0,I_n)$.
-          Montrer que $E_n \sim \sqrt{n}$ quand $n\to\infty$.
-          En déduire que pour tout $\varepsilon > 0$, $P\bigl(\|X\| \in [(1-\varepsilon)\sqrt{n}, (1+\varepsilon)\sqrt{n}]\bigr) \to 1$.
+    \item Soit $X \sim \mathcal{N}(0,I_n)$. Calculer $\mathbb{E}[\|X\|^2]$
+          et $\mathrm{Var}(\|X\|^2)$, puis montrer par l'inégalité de
+          Bienaymé--Tchebychev que pour tout $\varepsilon > 0$,
+          $P\bigl(\bigl|\|X\|^2 - n\bigr| \leq \varepsilon n\bigr) \to 1$.
+          En déduire que
+          $P\bigl(\|X\| \in [(1-\varepsilon)\sqrt{n}, (1+\varepsilon)\sqrt{n}]\bigr) \to 1$,
+          puis que $E_n = \mathbb{E}[\|X\|] \sim \sqrt{n}$ quand $n\to\infty$.
   \end{enumerate}
 \end{mdframed}
 
