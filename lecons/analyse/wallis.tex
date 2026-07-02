@@ -163,8 +163,10 @@ calculé via les formules closes.
 
   \smallskip\noindent
   \textbf{Non-multiplicativité.}\enspace%
-  $\Wn\neq W_{n-1}\cdot W_1$ : la relation de récurrence n'est pas un
-  simple produit.
+  $W_{m+n}\neq W_m\cdot W_n$ en général : ainsi $W_2 = \pi/4$ alors que
+  $W_1\cdot W_1 = 1$. La relation de récurrence
+  $\Wn = \frac{n-1}{n}W_{n-2}$ ne fait pas de $n\mapsto\Wn$ un
+  morphisme multiplicatif.
 \end{mdframed}
 
 \vspace{6pt}
@@ -174,6 +176,8 @@ calculé via les formules closes.
   \begin{enumerate}
     \item Calculer $\displaystyle\int_0^\pi\sin^7(t)\,\mathrm{d}t$ et
           $\displaystyle\int_0^{\pi/4}\cos^4(t)\,\mathrm{d}t$.
+          (\textit{Indication}~: pour la seconde, les bornes ne permettent
+          pas de se ramener à un $W_n$~; linéariser $\cos^4 t$.)
 
     \item Montrer que
           $\displaystyle\sum_{n=0}^{+\infty}{(-1)}^n W_{2n+1}

@@ -55,8 +55,7 @@ alors $p \mid a_i$ pour au moins un $i$.
 \begin{tcolorbox}[thmbox]
   \textbf{Théorème (décomposition en facteurs premiers).}\enspace%
   \index{décomposition en facteurs premiers}
-  \textit{Tout entier $n \geq 2$ s'écrit de façon \textbf{unique} (à l'ordre des
-  facteurs près) comme produit de nombres premiers :}
+  \textit{Tout entier $n \geq 2$ s'écrit de façon \textbf{unique} sous la forme}
   \[
     n = p_1^{\alpha_1}\, p_2^{\alpha_2} \cdots p_k^{\alpha_k},
     \qquad p_1 < p_2 < \cdots < p_k \text{ premiers},\quad \alpha_i \geq 1.
@@ -123,8 +122,8 @@ alors $p \mid a_i$ pour au moins un $i$.
   (en complétant par des exposants nuls).
   \begin{enumerate}
     \item $\pgcd(a,b) = \prod p_i^{\min(\alpha_i,\beta_i)}$,
-          $\;\mathrm{ppcm}(a,b) = \prod p_i^{\max(\alpha_i,\beta_i)}$.
-    \item $\pgcd(a,b) \cdot \mathrm{ppcm}(a,b) = ab$.
+          $\;\ppcm(a,b) = \prod p_i^{\max(\alpha_i,\beta_i)}$.
+    \item $\pgcd(a,b) \cdot \ppcm(a,b) = ab$.
     \item $a \mid b \iff \alpha_i \leq \beta_i$ pour tout $i$.
     \item \textbf{Infinité des nombres premiers (Euclide).}\enspace%
     \index{nombres premiers!infinité}
@@ -167,7 +166,7 @@ alors $p \mid a_i$ pour au moins un $i$.
   \smallskip\noindent
   \textbf{3. Valuation $p$-adique.}\enspace%
   \index{valuation $p$-adique}
-  La valuation $v_p(n)$ = exposant de $p$ dans la décomposition de $n$ vérifie
+  La valuation $v_p(n)$, exposant de $p$ dans la décomposition de $n$, vérifie
   $v_p(ab) = v_p(a)+v_p(b)$ et $v_p(a+b) \geq \min(v_p(a),v_p(b))$.
 \end{mdframed}
 
@@ -175,6 +174,12 @@ alors $p \mid a_i$ pour au moins un $i$.
 \rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
+  \textbf{$N = p_1 p_2 \cdots p_k + 1$ n'est pas toujours premier.}\enspace%
+  Dans la preuve d'Euclide, $N$ admet un facteur premier hors de la liste,
+  mais n'est pas lui-même nécessairement premier :
+  $2 \cdot 3 \cdot 5 \cdot 7 \cdot 11 \cdot 13 + 1 = 30031 = 59 \times 509$.
+
+  \smallskip\noindent
   \textbf{L'unicité dépend du lemme d'Euclide, pas de la seule existence.}\enspace%
   Dans $\mathbb{Z}[\sqrt{-5}]$, on a $6 = 2\times 3 = (1+\sqrt{-5})(1-\sqrt{-5})$,
   deux factorisations en « irréductibles » différentes. L'unicité est une propriété

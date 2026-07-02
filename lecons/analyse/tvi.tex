@@ -20,9 +20,15 @@
   $f(b)$, donc contenant $[\min(f(a),f(b)),\,\max(f(a),f(b))]$.
 
   \medskip
+  Combiné au théorème des bornes atteintes\index{bornes atteintes (théorème
+  des)} (une fonction continue sur un segment est bornée et atteint ses
+  bornes), on obtient mieux : l'image d'un segment par une fonction continue
+  est un segment, $f([a,b]) = [\min f,\, \max f]$.
+
+  \medskip
   \textbf{Corollaire (existence de racines).}\enspace%
   Si $f : [a,b] \to \mathbb{R}$ est continue et si $f(a)\cdot f(b) < 0$,
-  alors il existe $c \in\; ]a,b[$ tel que $f(c) = 0$.
+  alors il existe $c \in\, ]a,b[$ tel que $f(c) = 0$.
 \end{tcolorbox}
 
 \begin{significationintuitive}
@@ -102,7 +108,7 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
 \begin{mdframed}[style=exbar]
   \textbf{1. Existence d'une racine de $x^3 - x - 1$.}\enspace%
   $f(1) = -1 < 0$ et $f(2) = 5 > 0$ : le TVI garantit l'existence de
-  $c \in ]1,2[$ tel que $c^3 - c - 1 = 0$.
+  $c \in\, ]1,2[$ tel que $c^3 - c - 1 = 0$.
 
   \smallskip\noindent
   \textbf{2. Point fixe.}\enspace%
@@ -112,7 +118,9 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
   \smallskip\noindent
   \textbf{3. Dichotomie numérique.}\enspace%
   La preuve par dichotomie est à la base des algorithmes de recherche de zéro
-  (méthode de la bissection), convergence en $O((b-a)/2^k)$.
+  (méthode de la bissection) : après $k$ itérations, le milieu $m_k$ de
+  $[a_k, b_k]$ approche une racine $c$ avec une erreur
+  $|c - m_k| \leq (b-a)/2^{k+1}$ (convergence linéaire de raison $1/2$).
 \end{mdframed}
 
 \rubriq{Contre-exemples}
@@ -124,8 +132,10 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
 
   \smallskip\noindent
   \textbf{L'intervalle est indispensable.}\enspace%
-  $f : \{0\} \cup \{1\} \to \mathbb{R}$ définie par $f(0) = 0$, $f(1) = 1$
-  est continue (sur un ensemble discret) mais ne prend pas la valeur $1/2$.
+  $f : [0,1] \cup [2,3] \to \mathbb{R}$ définie par $f = \mathbf{1}_{[2,3]}$
+  est continue sur son domaine (constante au voisinage de chaque point),
+  vérifie $f(0) = 0$ et $f(3) = 1$, mais ne prend aucune valeur de
+  $\,]0,1[$.
 
   \smallskip\noindent
   \textbf{La réciproque est fausse.}\enspace%
@@ -144,8 +154,8 @@ intervalles emboîtés convergent vers un $c$ où, par continuité, $f(c) = 0$.
           admet au moins une racine réelle.
 
     \item Soit $f : [0,1] \to [0,1]$ continue. Montrer que $f$ admet un
-          point fixe. Généraliser au disque fermé de $\mathbb{R}^2$
-          (théorème de Brouwer en dimension 2, admis).
+          point fixe. Énoncer la généralisation au disque fermé de
+          $\mathbb{R}^2$ (théorème de Brouwer en dimension 2, ici admis).
 
     \item On pose $f(x) = x + e^x$. Montrer que $f$ est une bijection
           de $\mathbb{R}$ dans $\mathbb{R}$, et que son inverse $f^{-1}$

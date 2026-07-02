@@ -25,12 +25,21 @@ avec $A = (a, f(a))$ et $B = (b, f(b))$. Le taux d'accroissement moyen
 $\frac{f(b)-f(a)}{b-a}$ est atteint comme valeur instantanée de $f'$ en au moins un point.
 
 \rubriq{Théorème de Cauchy (TAF généralisé)}
-\index{Cauchy (TAF généralisé)}
-Soient $f, g : [a,b] \to \mathbb{R}$ continues sur $[a,b]$, dérivables sur $]a,b[$.
-Il existe $c \in\, ]a,b[$ tel que
-\[
-  \bigl[g(b)-g(a)\bigr]\,f'(c) = \bigl[f(b)-f(a)\bigr]\,g'(c).
-\]
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (Cauchy).}\enspace%
+  \index{Cauchy (TAF généralisé)}
+  \textit{Soient $f, g : [a,b] \to \mathbb{R}$ continues sur $[a,b]$, dérivables sur $]a,b[$.
+  Alors il existe $c \in\, ]a,b[$ tel que}
+  \[
+    \bigl[g(b)-g(a)\bigr]\,f'(c) = \bigl[f(b)-f(a)\bigr]\,g'(c).
+  \]
+\end{tcolorbox}
+
+\noindent
+La preuve tient en une ligne : appliquer Rolle à
+$h(x) = \bigl[g(b)-g(a)\bigr]f(x) - \bigl[f(b)-f(a)\bigr]g(x)$,
+qui vérifie $h(a) = g(b)f(a) - f(b)g(a) = h(b)$.
 En particulier, si $g'$ ne s'annule pas sur $]a,b[$, alors $g(b)\neq g(a)$ (par Rolle) et
 $\dfrac{f(b)-f(a)}{g(b)-g(a)} = \dfrac{f'(c)}{g'(c)}$.
 
@@ -94,7 +103,8 @@ puis on applique Rolle.
 \rubriq{Preuve du corollaire 1}
 
 \begin{mdframed}[style=proofbar]
-  Pour tous $x,y \in [a,b]$, le TAF donne $f(y)-f(x) = f'(c)(y-x) = 0$. \hfill$\blacksquare$
+  Pour $x < y$ dans $[a,b]$, le TAF appliqué sur $[x,y]$ donne
+  $f(y)-f(x) = f'(c)(y-x) = 0$ (le cas $x = y$ étant trivial). \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Preuve du corollaire 2 (monotonie)}
@@ -169,7 +179,12 @@ de plus, comme $c_h \in\, ]a, a+h[$, on a $c_h \to a$ quand $h \to 0$, d'où le 
   deux solutions dans $]0,1[$. Le TAF garantit l'existence, pas l'unicité.
 
   \smallskip\noindent
-  \textbf{Continuité sur le fermé est nécessaire.}\enspace%
+  \textbf{$f'>0$ est suffisant mais non nécessaire à la stricte croissance.}\enspace%
+  $f(x)=x^3$ est strictement croissante sur $\mathbb{R}$, alors que $f'(0)=0$ :
+  la réciproque du corollaire de monotonie (cas strict) est fausse.
+
+  \smallskip\noindent
+  \textbf{La continuité sur l'intervalle fermé est nécessaire.}\enspace%
   $f : [0,1]\to\mathbb{R}$ définie par $f(x)=x$ pour $x\in[0,1[$ et $f(1)=0$.
   Alors $\frac{f(1)-f(0)}{1-0}=0$, mais $f'(x)=1\neq 0$ pour tout $x\in\,]0,1[$.
   La discontinuité en $1$ brise la conclusion du TAF.

@@ -5,7 +5,6 @@
 \lecontitle{Les polynômes de Legendre}{Analyse réelle — Polynômes orthogonaux et approximation}
 
 %=== NOTATION LOCALE =========================================
-\newcommand{\Leg}{P_n}
 \newcommand{\psL}[2]{\langle #1,\,#2\rangle}
 
 %=============================================================
@@ -141,10 +140,13 @@ l'orthogonalité de $P_n$ à tout polynôme de degré $<n$.
 
   \medskip
   \textit{Étape 4 — Équation différentielle et racines.}
-  Posons $v=(1-x^2)P_n'$. De $u_n'=2nx\,u_n^{}/(x^2-1)$ on tire
+  De $u_n'=2nx\,u_n^{}/(x^2-1)$ on tire
   $(x^2-1)u_n'=2nx\,u_n$ ; en dérivant $n+1$ fois par la formule de Leibniz,
-  on obtient $(1-x^2)P_n''-2xP_n'+n(n+1)P_n=0$, c'est-à-dire
-  $v'=-n(n+1)P_n$.
+  on obtient $(1-x^2)P_n''-2xP_n'+n(n+1)P_n=0$. Sous forme
+  \emph{auto-adjointe} (dite de Sturm--Liouville), cette équation s'écrit
+  $\bigl[(1-x^2)P_n'\bigr]'=-n(n+1)P_n$~: $P_n$ est vecteur propre d'un
+  opérateur auto-adjoint, point de vue systématisé dans la leçon sur les
+  polynômes de Jacobi.
 
   \smallskip
   \emph{Racines.} $P_n$ est orthogonal à tout polynôme de degré $<n$, en

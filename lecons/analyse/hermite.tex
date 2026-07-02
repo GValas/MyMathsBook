@@ -1,11 +1,10 @@
 %==============================================================
-%  lecons/analyse/hermite.tex — Les polynômes de Hermite
+%  lecons/analyse/hermite.tex — Les polynômes d'Hermite
 %==============================================================
 
-\lecontitle{Les polynômes de Hermite}{Analyse réelle — Polynômes orthogonaux et approximation}
+\lecontitle{Les polynômes d'Hermite}{Analyse réelle — Polynômes orthogonaux et approximation}
 
 %=== NOTATION LOCALE =========================================
-\newcommand{\Hn}{H_n}
 \newcommand{\He}{\mathrm{He}}
 \newcommand{\Hen}{\mathrm{He}_n}
 \newcommand{\psH}[2]{\langle #1,\,#2\rangle}
@@ -16,13 +15,13 @@
 \secnum{navyblue}{1}{Définition et résultats fondamentaux}
 
 \begin{tcolorbox}[thmbox]
-  \textbf{Définition.}\enspace\index{polynômes de Hermite}
+  \textbf{Définition.}\enspace\index{polynômes d'Hermite}
   Sur l'espace $\mathbb{R}[X]$, muni du produit scalaire à poids
   $w(x)=e^{-x^2}$ sur $\mathbb{R}$,
   \[
     \psH{f}{g} \;=\; \int_{-\infty}^{+\infty} f(x)\,g(x)\,e^{-x^2}\,\mathrm{d}x,
   \]
-  on appelle \emph{$n$-ième polynôme de Hermite} (convention dite des
+  on appelle \emph{$n$-ième polynôme d'Hermite} (convention dite des
   \emph{physiciens}) le polynôme $H_n$ obtenu en orthogonalisant
   (procédé de Gram--Schmidt) la base canonique $(1,X,X^2,\ldots)$,
   normalisé par un coefficient dominant égal à $2^n$. De façon
@@ -61,7 +60,7 @@
       H_{n+1}(x) = 2x\,H_n(x) - 2n\,H_{n-1}(x),
       \quad H_0=1,\ H_1=2X.
     \]
-    \item \textit{Équation différentielle de Hermite}~:
+    \item \textit{Équation différentielle d'Hermite}~:
     \[
       y'' - 2x\,y' + 2n\,y = 0,
     \]
@@ -77,13 +76,18 @@
 \end{tcolorbox}
 
 \begin{significationintuitive}
-Les polynômes de Hermite forment une \emph{base orthogonale} de l'espace
+Les polynômes d'Hermite forment une \emph{base orthogonale} de l'espace
 $L^2(\mathbb{R},e^{-x^2}\,\mathrm{d}x)$ : projeter une fonction sur les
 $H_k$ revient à chercher sa meilleure approximation au sens quadratique
 \emph{pondéré} par la gaussienne, là où Legendre pondère uniformément un
 segment borné. Le poids $e^{-x^2}$ permet de travailler sur $\mathbb{R}$
-tout entier. Les fonctions $\psi_n(x)=H_n(x)\,e^{-x^2/2}$ — les
-\emph{fonctions de Hermite} — sont les états propres de
+tout entier. Sur un tel intervalle non borné, la \emph{totalité} du
+système — la densité des polynômes dans
+$L^2(\mathbb{R},e^{-x^2}\,\mathrm{d}x)$ — est un fait non trivial, admis
+ici : la décroissance rapide du poids gaussien la garantit, mais elle
+échoue pour des poids à décroissance trop lente (poids log-normal,
+exemple de Stieltjes). Les fonctions $\psi_n(x)=H_n(x)\,e^{-x^2/2}$ — les
+\emph{fonctions d'Hermite} — sont les états propres de
 l'\emph{oscillateur harmonique quantique}\index{oscillateur harmonique}
 et les vecteurs propres de la transformée de Fourier ; c'est pourquoi
 les $H_n$ sont omniprésents en physique mathématique et en probabilités
@@ -229,7 +233,7 @@ caractéristique du poids.
   \smallskip\noindent
   \textbf{4. Oscillateur et transformée de Fourier.}\enspace%
   \index{oscillateur harmonique}
-  Les fonctions de Hermite $\psi_n(x)=H_n(x)\,e^{-x^2/2}$ vérifient
+  Les fonctions d'Hermite $\psi_n(x)=H_n(x)\,e^{-x^2/2}$ vérifient
   $-\psi_n''+x^2\psi_n=(2n+1)\psi_n$ (oscillateur harmonique) et sont
   fonctions propres de la transformée de Fourier~:
   $\widehat{\psi_n}={(-i)}^n\psi_n$ (à la normalisation près). Elles

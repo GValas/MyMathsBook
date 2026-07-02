@@ -52,10 +52,10 @@
             f(x) - P(x) \;=\; \frac{f^{(n+1)}(\xi)}{(n+1)!}
             \prod_{j=0}^{n} (x - x_j).
           \]
-    \item \textit{Lien avec Vandermonde.}\enspace\index{matrice de Vandermonde}
+    \item \textit{Lien avec Vandermonde.}\enspace\index{Vandermonde!matrice de}
           Dans la base canonique $(1, X, \ldots, X^n)$, la recherche de $P$
-          équivaut à résoudre un système linéaire de matrice la matrice de
-          Vandermonde $V = {\bigl(x_i^{\,j}\bigr)}_{0 \leq i,j \leq n}$,
+          équivaut à résoudre un système linéaire dont la matrice est la
+          matrice de Vandermonde $V = {\bigl(x_i^{\,j}\bigr)}_{0 \leq i,j \leq n}$,
           inversible car $\det V = \prod_{i<j}(x_j - x_i) \neq 0$.
   \end{itemize}
 \end{tcolorbox}
@@ -189,21 +189,12 @@ itérée à une fonction auxiliaire bien choisie.
   \]
 
   \smallskip\noindent
-  \textbf{3. Forme de Newton et différences divisées.}\enspace%
+  \textbf{3. Forme de Newton.}\enspace%
   \index{différences divisées}
   Pour un calcul \emph{incrémental} (ajout d'un nœud sans tout recommencer),
-  on écrit $P$ dans la base de Newton
-  \[
-    P(x) = \sum_{i=0}^{n} f[x_0,\ldots,x_i]\prod_{j=0}^{i-1}(x-x_j),
-  \]
-  où les \emph{différences divisées} se calculent par récurrence :
-  $f[x_i] = f(x_i)$ et
-  \[
-    f[x_i,\ldots,x_{i+k}]
-    = \frac{f[x_{i+1},\ldots,x_{i+k}] - f[x_i,\ldots,x_{i+k-1}]}
-           {x_{i+k}-x_i}.
-  \]
-  Le coefficient dominant de $P$ vaut $f[x_0,\ldots,x_n]$.
+  on écrit le \emph{même} polynôme $P$ dans la base de Newton, ses
+  coefficients étant les différences divisées de $f$ : cf.\ la leçon
+  suivante, \emph{La forme de Newton et les différences divisées}.
 \end{mdframed}
 
 \vspace{6pt}
@@ -235,7 +226,15 @@ itérée à une fonction auxiliaire bien choisie.
   \textbf{Instabilité numérique.}\enspace
   En haut degré, l'évaluation directe de $\sum y_i \Lbase{i}$ est sensible
   aux erreurs d'arrondi ; on lui préfère la \emph{forme barycentrique} de
-  Lagrange, numériquement stable.
+  Lagrange, numériquement stable : en posant
+  $w_i = 1/\prod_{j\neq i}(x_i-x_j)$,
+  \[
+    P(x) = \frac{\displaystyle\sum_{i=0}^{n} \frac{w_i\,y_i}{x-x_i}}
+                {\displaystyle\sum_{i=0}^{n} \frac{w_i}{x-x_i}}
+    \qquad \bigl(x \notin \{x_0,\ldots,x_n\}\bigr),
+  \]
+  le dénominateur provenant de l'identité $\sum_i \Lbase{i} = 1$
+  (exercice~2).
 \end{mdframed}
 
 \vspace{6pt}
@@ -258,8 +257,8 @@ itérée à une fonction auxiliaire bien choisie.
           Majorer $\max_{[0,\pi]}|f-P|$ à l'aide de la formule d'erreur
           (on a $|f^{(3)}| \leq 1$).
 
-    \item (Différences divisées) Construire la table des différences
-          divisées de $f$ aux nœuds $0,1,2,3$ avec
+    \item (Différences divisées, cf.\ la leçon suivante) Construire la
+          table des différences divisées de $f$ aux nœuds $0,1,2,3$ avec
           $f(0)=1, f(1)=0, f(2)=5, f(3)=22$, puis écrire $P$ sous forme de
           Newton et vérifier que $P(x)=x^3-2x+1$.
 

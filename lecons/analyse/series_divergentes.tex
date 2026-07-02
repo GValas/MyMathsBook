@@ -179,8 +179,12 @@ entière à l'aide des moyennes $\sigma_n$.
   \textbf{2. Une série Abel-sommable mais non Cesàro-sommable.}\enspace%
   Pour $a_n=(-1)^n(n+1)$, on a $\sum a_n x^n=\tfrac{1}{(1+x)^2}\to\tfrac14$,
   donc $1-2+3-4+\cdots=\tfrac14\ (A)$. En revanche les moyennes $\sigma_n$
-  divergent : la série n'est pas Cesàro-sommable. Ceci illustre la stricte
-  hiérarchie Cesàro $\subsetneq$ Abel.
+  divergent (elles oscillent entre $\tfrac12$ et $0$) : la série n'est pas
+  Cesàro-sommable. Elle est toutefois sommable par \emph{itération} du procédé :
+  les moyennes des $\sigma_n$ convergent vers $\tfrac14$, ce qui en fait une
+  somme $(C,2)$, de même valeur que la somme d'Abel. La hiérarchie
+  $(C,1)\subsetneq(C,2)\subsetneq\cdots$ s'échelonne ainsi strictement entre la
+  convergence et la sommation d'Abel.
 
   \smallskip\noindent
   \textbf{3. Théorème de Frobenius en action.}\enspace%
@@ -198,7 +202,8 @@ entière à l'aide des moyennes $\sigma_n$.
   La série $1+2+3+\cdots$ ($a_n=n$) n'est ni Cesàro- ni Abel-sommable :
   $\sum n\,x^n=\tfrac{x}{(1-x)^2}\to+\infty$. L'écriture « $=-1/12$ » relève du
   prolongement de la fonction zêta, \emph{pas} d'un procédé de sommation
-  régulier.\index{prolongement analytique}
+  régulier (cf. la leçon sur la somme $1+2+3+\cdots=-\tfrac1{12}$).%
+  \index{prolongement analytique}
 
   \smallskip\noindent
   \textbf{Linéarité, pas réarrangement.}\enspace%

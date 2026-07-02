@@ -17,7 +17,7 @@
   \textbf{Définition.}\enspace\index{polynômes cyclotomiques}%
   \index{racines de l'unité}
   Une racine $\zeta\in\mathbb{C}$ de $X^n-1$ est appelée \emph{racine
-  $n$-ième de l'unité} ; elle est dite \emph{primitive} si son ordre dans le
+  $n$-ième de l'unité}~; elle est dite \emph{primitive} si son ordre dans le
   groupe $\Un_n=\{z\in\mathbb{C}\mid z^n=1\}$ est exactement~$n$, c'est-à-dire
   si $\zeta=e^{2i\pi k/n}$ avec $\pgcd(k,n)=1$. Le \emph{$n$-ième polynôme
   cyclotomique} est le polynôme unitaire dont les racines sont précisément les
@@ -98,7 +98,7 @@ premier $p\nmid n$, d'où $f$ contient toutes les racines primitives.
 \begin{mdframed}[style=proofbar]
   \textit{Étape 1 — Relation fondamentale.}
   Toute racine $n$-ième de l'unité $\zeta$ engendre un sous-groupe cyclique de
-  $\Un_n$ ; son ordre $d=\mathrm{ord}(\zeta)$ divise $n$ (théorème de
+  $\Un_n$~; son ordre $d=\mathrm{ord}(\zeta)$ divise $n$ (théorème de
   Lagrange), et $\zeta$ est alors racine \emph{primitive} $d$-ième de l'unité.
   Réciproquement, toute racine primitive $d$-ième pour $d\mid n$ vérifie
   $\zeta^n=1$. Comme $X^n-1$ a $n$ racines simples (sa dérivée $nX^{n-1}$ ne
@@ -128,7 +128,7 @@ premier $p\nmid n$, d'où $f$ contient toutes les racines primitives.
 
   \smallskip\noindent
   En effet, l'algorithme de division n'effectue que des soustractions et des
-  multiplications par les coefficients de $A$ et $B$ ; le coefficient dominant
+  multiplications par les coefficients de $A$ et $B$~; le coefficient dominant
   de $B$ valant~$1$, aucune division non entière n'intervient. Appliqué à
   $A=X^n-1$ et $B=g$, ce lemme donne $\Phi_n=(X^n-1)/g\in\mathbb{Z}[X]$, et
   $\Phi_n$ est unitaire car $X^n-1$ et $g$ le sont.
@@ -150,12 +150,12 @@ premier $p\nmid n$, d'où $f$ contient toutes les racines primitives.
   \medskip
   \textit{Étape 4 — Irréductibilité sur $\mathbb{Q}$ (esquisse).}
   Soit $\zeta=e^{2i\pi/n}$ une racine primitive et $f\in\mathbb{Z}[X]$ son
-  polynôme minimal unitaire ; $f$ divise $\Phi_n$ dans $\mathbb{Z}[X]$ (lemme de
+  polynôme minimal unitaire~; $f$ divise $\Phi_n$ dans $\mathbb{Z}[X]$ (lemme de
   Gauss), écrivons $\Phi_n=f\,g$ avec $g\in\mathbb{Z}[X]$ unitaire. Fixons un
   premier $p\nmid n$. On montre que \emph{$\zeta^p$ est encore racine de~$f$}.
 
   Sinon, $\zeta^p$ serait racine de~$g$ (car c'est une racine primitive
-  $n$-ième, donc de $\Phi_n=fg$), donc $\zeta$ serait racine de $g(X^p)$ ; comme
+  $n$-ième, donc de $\Phi_n=fg$), donc $\zeta$ serait racine de $g(X^p)$~; comme
   $f$ est le polynôme minimal de $\zeta$, on aurait $f\mid g(X^p)$ dans
   $\mathbb{Z}[X]$. Réduisons modulo~$p$ dans $\mathbb{F}_p[X]$~: par le
   morphisme de Frobenius, $\overline{g(X^p)}=\overline{g}(X)^p$, donc
@@ -168,9 +168,14 @@ premier $p\nmid n$, d'où $f$ contient toutes les racines primitives.
   $\mathbb{F}_p$, donc sans racine multiple. Contradiction. Ainsi $\zeta^p$ est
   racine de~$f$.
 
-  Par récurrence sur le nombre de facteurs premiers, $\zeta^k$ est racine
-  de~$f$ pour tout $k$ avec $\pgcd(k,n)=1$. Mais ces $\zeta^k$ décrivent
-  \emph{toutes} les racines primitives $n$-ièmes ; $f$ a donc $\varphi(n)$
+  Soit enfin $k$ premier à~$n$, que l'on écrit $k=p_1\cdots p_r$ (facteurs
+  premiers comptés avec multiplicité)~; aucun $p_i$ ne divise~$n$. L'étape
+  précédente vaut en fait pour \emph{toute} racine primitive $n$-ième racine
+  de~$f$ (car $f$, irréductible en tant que polynôme minimal, est aussi son
+  polynôme minimal)~: appliquée successivement à $\zeta$, $\zeta^{p_1}$,
+  $\zeta^{p_1p_2}$, \ldots, elle montre que $\zeta^k$ est racine de~$f$ pour
+  tout $k$ avec $\pgcd(k,n)=1$. Mais ces $\zeta^k$ décrivent
+  \emph{toutes} les racines primitives $n$-ièmes~; $f$ a donc $\varphi(n)$
   racines, d'où $f=\Phi_n$ et $g=1$. Le polynôme $\Phi_n$ est irréductible sur
   $\mathbb{Q}$.
   \hfill$\blacksquare$
@@ -195,9 +200,16 @@ premier $p\nmid n$, d'où $f$ contient toutes les racines primitives.
       \Phi_9=X^6+X^3+1, & \Phi_{10}=X^4-X^3+X^2-X+1, & \Phi_{12}=X^4-X^2+1. &
     \end{array}
   \]
-  On vérifie $\deg\Phi_n=\varphi(n)$ : par exemple $\varphi(12)=4=\deg\Phi_{12}$,
+  On vérifie $\deg\Phi_n=\varphi(n)$~: par exemple $\varphi(12)=4=\deg\Phi_{12}$,
   $\varphi(8)=4$, $\varphi(6)=2$. Le calcul de $\Phi_{12}$ illustre Möbius~:
   $\Phi_{12}=\dfrac{(X^{12}-1)(X^2-1)}{(X^6-1)(X^4-1)}=X^4-X^2+1$.
+
+  \smallskip\noindent
+  Pour une puissance d'un nombre premier, on dispose de la règle
+  $\Phi_{p^k}(X)=\Phi_p\bigl(X^{p^{k-1}}\bigr)$ (une racine $p^k$-ième de
+  l'unité est primitive si et seulement si elle n'est pas racine
+  $p^{k-1}$-ième)~: ainsi $\Phi_8=\Phi_2(X^4)=X^4+1$ et
+  $\Phi_9=\Phi_3(X^3)=X^6+X^3+1$.
 
   \smallskip\noindent
   \textbf{2. Irréductibilité de $\Phi_p$ par Eisenstein.}\enspace%
@@ -215,7 +227,7 @@ premier $p\nmid n$, d'où $f$ contient toutes les racines primitives.
 
   \smallskip\noindent
   \textbf{3. Application aux corps finis (Wedderburn).}\enspace
-  \index{nombre premier}
+  \index{Wedderburn (théorème de)}
   Dans la preuve du \emph{théorème de Wedderburn} (tout corps fini est
   commutatif), l'évaluation $\Phi_n(q)$ apparaît dans l'équation des classes~:
   l'entier $\Phi_n(q)$ divise $q^n-1$ et chaque $\dfrac{q^n-1}{q^d-1}$ pour

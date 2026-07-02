@@ -14,8 +14,8 @@
   \index{groupe}\index{groupe abélien}
   Un \emph{groupe} est un ensemble $G$ muni d'une loi interne $\cdot$ vérifiant :
   \begin{enumerate}
-    \item[\textbf{G1.}] \textbf{Associativité :} $(a\cdot b)\cdot c = a\cdot(b\cdot c)$.
-    \item[\textbf{G2.}] \textbf{Élément neutre :} $\exists e \in G,\; \forall a,\; e\cdot a = a\cdot e = a$.
+    \item[\textbf{G1.}] \textbf{Associativité :} $\forall a,b,c \in G,\; (a\cdot b)\cdot c = a\cdot(b\cdot c)$.
+    \item[\textbf{G2.}] \textbf{Élément neutre :} $\exists e \in G,\; \forall a \in G,\; e\cdot a = a\cdot e = a$.
     \item[\textbf{G3.}] \textbf{Symétrique :} $\forall a \in G,\; \exists a^{-1} \in G,\;
           a\cdot a^{-1} = a^{-1}\cdot a = e$.
   \end{enumerate}
@@ -45,7 +45,7 @@
   \smallskip\noindent
   \textbf{4. Groupe linéaire $\mathrm{GL}_n(\mathbb{K})$.}\enspace%
   \index{groupe linéaire}
-  Les matrices inversibles de $\mathcal{M}_n(\mathbb{K})$, muni du produit matriciel.
+  L'ensemble des matrices inversibles de $\mathcal{M}_n(\mathbb{K})$, muni du produit matriciel.
   Non abélien pour $n \geq 2$.
 
   \smallskip\noindent
@@ -188,6 +188,11 @@
   $\pgcd(k,n)=1$ : il y en a $\varphi(n)$ (indicatrice d'Euler).
 
   \smallskip\noindent
+  \textbf{Tout groupe d'ordre premier est cyclique.}\enspace%
+  Si $|G| = p$ premier, tout $g \neq e$ engendre $G$ (car $|\langle g\rangle|$
+  divise $p$, donc vaut $p$). En particulier $G \cong \mathbb{Z}/p\mathbb{Z}$.
+
+  \smallskip\noindent
   \textbf{Petit théorème de Fermat.}\enspace%
   \index{Fermat (petit théorème de)}
   Pour $p$ premier et $a \not\equiv 0 \pmod{p}$ : $a^{p-1} \equiv 1 \pmod{p}$.
@@ -201,11 +206,6 @@
   \textbf{Un sous-groupe n'est pas toujours distingué.}\enspace%
   Dans $\mathfrak{S}_3$, $H = \{e, (12)\}$ est un sous-groupe mais pas distingué :
   $(123)(12){(123)}^{-1} = (23) \notin H$.
-
-  \smallskip\noindent
-  \textbf{Tout groupe d'ordre premier est cyclique.}\enspace%
-  Si $|G| = p$ premier, tout $g \neq e$ engendre $G$ (car $|\langle g\rangle|$
-  divise $p$, donc vaut $p$). En particulier $G \cong \mathbb{Z}/p\mathbb{Z}$.
 
   \smallskip\noindent
   \textbf{Réciproque de Lagrange fausse.}\enspace%

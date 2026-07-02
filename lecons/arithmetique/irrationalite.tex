@@ -169,7 +169,8 @@ ce qui rend l'intégrale calculable exactement.
 
 \begin{mdframed}[style=cexbar]
   \textbf{Irrationnel n'est pas transcendant.}\enspace%
-  $\sqrt2$ est irrationnel mais \emph{algébrique} (racine de $X^2 - 2$).
+  $\sqrt2$ est irrationnel (cf.\ la leçon sur le théorème fondamental de
+  l'arithmétique) mais \emph{algébrique} (racine de $X^2 - 2$).
   Irrationalité et transcendance sont deux niveaux distincts.
 
   \smallskip\noindent
@@ -180,9 +181,10 @@ ce qui rend l'intégrale calculable exactement.
 
   \smallskip\noindent
   \textbf{Statut ouvert.}\enspace%
-  On ignore encore si $e + \pi$ ou $e\pi$ sont irrationnels (l'un des deux au
-  moins l'est, car $e$ et $\pi$ ne peuvent être tous deux racines de
-  $X^2 - (e+\pi)X + e\pi$ à coefficients rationnels).
+  On ignore encore si $e + \pi$ ou $e\pi$ sont irrationnels. L'un des deux au
+  moins l'est : s'ils étaient tous deux rationnels, $e$ et $\pi$, racines de
+  $X^2 - (e+\pi)X + e\pi \in \mathbb{Q}[X]$, seraient algébriques —
+  contredisant leur transcendance (complément~3).
 \end{mdframed}
 
 \exolabel
@@ -195,7 +197,10 @@ ce qui rend l'intégrale calculable exactement.
           (on pourra raisonner sur $e^{a/b}$ et adapter Niven).
     \item Dans la preuve de Niven, vérifier en détail l'identité
           $f_n(\pi - x) = f_n(x)$ et en déduire $f_n^{(j)}(\pi) = (-1)^j f_n^{(j)}(0)$.
-    \item Montrer que $\cos(1)$ est irrationnel.
+    \item Montrer que $\cos(1)$ est irrationnel. \emph{Indication :} si
+          $\cos 1 = p/q$, multiplier
+          $\cos 1 = \sum_{k=0}^{\infty} \frac{(-1)^k}{(2k)!}$ par $(2q)!$ et
+          encadrer strictement la queue grâce au critère des séries alternées.
     \item Montrer que $\pi^2$ est irrationnel (variante de Niven avec
           $\int_0^1 f_n(x)\sin(\pi x)\,\mathrm{d}x$, où
           $f_n(x)=x^n{(1-x)}^n/n!$ et $\pi^2 = a/b$).

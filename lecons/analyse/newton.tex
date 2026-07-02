@@ -317,10 +317,13 @@ $f-P_n$, ce qui redonne au passage la formule d'erreur de Lagrange.
           de Lagrange ; en déduire à nouveau la symétrie.
 
     \item Soit $f$ de classe $\mathcal{C}^n$. Montrer que
-          $x\mapsto f[x_0,\ldots,x_{n-1},x]$ est continue et que sa limite
-          quand $x\to x_{n-1}$ redonne $f[x_0,\ldots,x_{n-1},x_{n-1}]$ avec
-          une dérivée. \textit{Indication :} utiliser
-          $f[\ldots]=f^{(n)}(\xi)/n!$ et la régularité de $f$.
+          $x\mapsto f[x_0,\ldots,x_{n-1},x]$, définie pour
+          $x\notin\{x_0,\ldots,x_{n-1}\}$, se prolonge continûment en
+          $x=x_{n-1}$, la limite étant la différence divisée d'Hermite
+          $f[x_0,\ldots,x_{n-1},x_{n-1}]$ où le nœud doublé s'interprète
+          via $f'(x_{n-1})$. \textit{Indication :} dans l'expression
+          explicite de la question~5, regrouper les deux termes singuliers
+          en un taux d'accroissement.
   \end{enumerate}
 \end{mdframed}
 

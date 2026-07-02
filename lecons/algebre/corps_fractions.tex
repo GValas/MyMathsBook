@@ -133,7 +133,10 @@ dans laquelle tout élément non nul de $A$ est inversible — on « force » la
 
   \textit{Homomorphisme.} Vérification directe sur la somme et le produit.
 
-  \textit{Unicité.} $\tilde\varphi$ est forcée par $\tilde\varphi(a/b)
+  \textit{Unicité.} Comme $\tfrac{b}{1}\cdot\tfrac{1}{b}=1$ dans
+  $\mathrm{Frac}(A)$, on a nécessairement
+  $\tilde\varphi(1/b)={\tilde\varphi(b/1)}^{-1}={\varphi(b)}^{-1}$ ;
+  $\tilde\varphi$ est donc forcée par $\tilde\varphi(a/b)
   = \tilde\varphi(a/1)\cdot\tilde\varphi(1/b)
   = \varphi(a)\cdot{\varphi(b)}^{-1}$. $\blacksquare$
 \end{mdframed}
@@ -149,7 +152,8 @@ dans laquelle tout élément non nul de $A$ est inversible — on « force » la
   \textbf{1. $\mathrm{Frac}(\mathbb{Z}) = \mathbb{Q}$.}\enspace%
   \index{nombres rationnels!construction}
   La construction ci-dessus avec $A=\mathbb{Z}$ redonne exactement les rationnels,
-  avec $\tfrac{a}{b}$ au sens habituel.
+  avec $\tfrac{a}{b}$ au sens habituel — ce cas particulier est détaillé dans
+  la leçon consacrée à la construction de $\mathbb{Q}$.
 
   \smallskip\noindent
   \textbf{2. Corps des fractions rationnelles $\mathbb{K}(X)$.}\enspace%
@@ -162,7 +166,7 @@ dans laquelle tout élément non nul de $A$ est inversible — on « force » la
   \textbf{3. Entiers de Gauss.}\enspace%
   \index{entiers de Gauss}
   $\mathrm{Frac}(\mathbb{Z}[i]) = \mathbb{Q}(i) = \{a+bi \mid a,b\in\mathbb{Q}\}$,
-  le corps des \emph{Gaussiens rationnels}.
+  le corps des \emph{rationnels de Gauss}.
 
   \smallskip\noindent
   \textbf{4. Corps de fonctions d'une courbe.}\enspace%
@@ -183,7 +187,9 @@ dans laquelle tout élément non nul de $A$ est inversible — on « force » la
 \begin{mdframed}[style=cexbar]
   \textbf{L'intégrité est indispensable pour la transitivité.}\enspace%
   Dans $\mathbb{Z}/6\mathbb{Z}$, où la relation s'écrit
-  $(a,b)\sim(c,d)\iff ad\equiv bc\pmod 6$, on a
+  $(a,b)\sim(c,d)\iff ad=bc$ dans $\mathbb{Z}/6\mathbb{Z}$
+  — soit, en raisonnant sur des représentants entiers,
+  $ad\equiv bc\pmod 6$ —, on a
   $(2,2)\sim(3,3)$ car $2\cdot 3=6\equiv 0$ et $2\cdot 3=6\equiv 0\pmod 6$, et
   $(3,3)\sim(2,4)$ car $3\cdot 4=12\equiv 0$ et $3\cdot 2=6\equiv 0\pmod 6$ ;
   pourtant $(2,2)\not\sim(2,4)$ car $2\cdot 4=8\equiv 2$ tandis que

@@ -113,7 +113,8 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
   $\exp'(x) = \exp(x) > 0$ : $\exp$ est strictement croissante.
 
   \textit{(5) Limites.}
-  Pour $x > 0$ : $\exp(x) \geq 1 + x \to +\infty$. Pour $x \to -\infty$ :
+  Pour $x > 0$, tous les termes de la série sont positifs, donc
+  $\exp(x) \geq 1 + x \to +\infty$. Pour $x \to -\infty$ :
   $\exp(x) = 1/\exp(-x) \to 0$. La bijectivité résulte du TVI.
   \hfill$\blacksquare$
 \end{mdframed}
@@ -230,7 +231,7 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
   \textbf{1. Puissances réelles.}\enspace%
   Pour $a > 0$ et $\alpha \in \mathbb{R}$, on pose $a^\alpha = \exp(\alpha\ln a)$
   (la leçon sur $\ln$ le construit indépendamment par l'intégrale
-  $\int_1^x \mathrm{d}t/t$~; les deux constructions se rejoignent, $\ln$ et
+  $\int_1^x \dd t/t$~; les deux constructions se rejoignent, $\ln$ et
   $\exp$ étant réciproques l'une de l'autre).
   On a ainsi $e^x = \exp(x)$ pour tout $x$, cohérent avec la notation.
 
@@ -290,8 +291,8 @@ Le nombre $e$\index{nombre $e$} est irrationnel (voir exercice 4), et même tran
     \item Montrer que $e \notin \mathbb{Q}$. (\textit{Indication :} supposer
           $e = p/q$, multiplier par $q!$ le développement
           $e = \sum_{k=0}^q 1/k! + \sum_{k>q} 1/k!$,
-          et montrer que la partie fractionnaire est un entier strictement
-          entre $0$ et $1$.)
+          et montrer que $q!\sum_{k>q} 1/k!$ serait à la fois un entier
+          et un réel de $]0,1[$, ce qui est absurde.)
 
     \item (Inégalité de Young revisitée)
           Pour $p, q > 1$ avec $\tfrac{1}{p}+\tfrac{1}{q}=1$ et $a, b > 0$,

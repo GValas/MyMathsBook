@@ -19,7 +19,7 @@
   \[
     \chi_f(f) = 0_{\mathcal{L}(E)}.
   \]
-  En termes matriciels : pour toute matrice $A \in \mathcal{M}_n(\mathbb{K})$,
+  \textit{En termes matriciels : pour toute matrice $A \in \mathcal{M}_n(\mathbb{K})$,}
   \[
     \chi_A(A) = 0_n, \qquad \text{où } \chi_A = \det(XI_n - A).
   \]
@@ -46,12 +46,12 @@ et de la décomposition de Dunford.
 \secnum{navyblue}{2}{Démonstration}
 
 \begin{ideepreuve}
-L'idée est d'utiliser la comatrice transposée : $\chi_f(X) = \det(X\,\mathrm{Id}-f)$,
-et $(X\,\mathrm{Id}-f)\cdot{\mathrm{com}(X\,\mathrm{Id}-f)}^T = \chi_f(X)\cdot\mathrm{Id}$.
-En substituant $X = f$ dans cette identité matricielle de façon algébrique
-(en identifiant les coefficients en puissances de $X$), on obtient $\chi_f(f) = 0$.
-La subtilité est que la substitution $X \leftarrow f$ doit se faire
-\emph{avant} d'évaluer, et non après.
+L'idée est d'utiliser la comatrice transposée. En notant $A$ la matrice
+de $f$ dans une base, on a $\chi_A(X) = \det(X\,I_n-A)$ et l'identité
+$(X\,I_n-A)\cdot{\mathrm{com}(X\,I_n-A)}^T = \chi_A(X)\cdot I_n$.
+La subtilité : on ne peut pas substituer $X = A$ directement dans le
+déterminant~; on identifie d'abord les coefficients de cette identité
+polynomiale matricielle, puis on substitue, ce qui donne $\chi_A(A) = 0$.
 \end{ideepreuve}
 
 \rubriq{Preuve}
@@ -84,7 +84,7 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
   On multiplie à gauche chaque équation par $A^k$ :
   \begin{alignat*}{2}
     A^0 &: \quad -A B_0 = c_0 I_n, \\
-    A^k\cdot(\cdot) &: \quad A^k B_{k-1} - A^{k+1} B_k = c_k A^k, \\
+    A^k &: \quad A^k B_{k-1} - A^{k+1} B_k = c_k A^k \quad (1\leq k \leq n-1), \\
     A^n &: \quad A^n B_{n-1} = A^n.
   \end{alignat*}
   En sommant toutes ces égalités, le membre de gauche se télescope : le terme
@@ -164,7 +164,10 @@ La subtilité est que la substitution $X \leftarrow f$ doit se faire
 \begin{mdframed}[style=cexbar]
   \textbf{Substitution naïve interdite.}\enspace%
   $\chi_A(X) = \det(XI-A)$ : substituer $X=A$ dans le déterminant
-  donne $\det(AI-A)=\det(0)=0$, ce qui est trivial et ne prouve rien.
+  donne $\det(AI-A)=\det(0)=0$, ce qui est trivial et ne prouve rien :
+  l'égalité obtenue est \emph{scalaire} ($0=0$ dans $\mathbb{K}$), alors
+  que le théorème affirme une égalité \emph{matricielle}
+  ($\chi_A(A)=0_n$ dans $\mathcal{M}_n(\mathbb{K})$).
   La preuve correcte passe par l'identification des coefficients.
 
   \smallskip\noindent

@@ -40,16 +40,18 @@ d'existence en analyse.
 \secnum{navyblue}{2}{Démonstration}
 
 \begin{ideepreuve}
-On coupe $[-M,M]$ en deux ; la moitié contenant une infinité de termes est
-gardée, et on y sélectionne un terme. En répétant, les intervalles emboîtés
+On coupe $[-M,M]$ en deux ; on garde une moitié dans laquelle $u_n$ tombe
+pour une infinité d'indices $n$ (et non seulement de valeurs : une suite
+constante n'a qu'une valeur, mais tous ses indices comptent), et on y
+sélectionne un terme. En répétant, les intervalles emboîtés
 se resserrent vers un point $\ell$, limite de la sous-suite construite.
 \end{ideepreuve}
 
 \rubriq{Preuve}
 
 \begin{mdframed}[style=proofbar]
-  \textit{Initialisation.} Posons $I_0 = [-M,M]$ : tous les termes de
-  $(u_n)$ appartiennent à $I_0$, qui en contient donc une infinité. On pose
+  \textit{Initialisation.} Posons $I_0 = [-M,M]$ : on a $u_n \in I_0$ pour
+  tout $n$, donc en particulier pour une infinité d'indices $n$. On pose
   $\varphi(0) = 0$, de sorte que $u_{\varphi(0)} \in I_0$ ; c'est le rang de
   base de l'extractrice.
 
@@ -57,14 +59,15 @@ se resserrent vers un point $\ell$, limite de la sous-suite construite.
   \textit{Induction.} Supposons construits, pour tout $j$ tel que
   $0 \leq j \leq k$ :
   \begin{itemize}
-    \item un intervalle fermé $I_j$ de longueur $2M/2^j$ contenant une
-          infinité de termes de $(u_n)$, avec $I_j \subset I_{j-1}$ dès que
-          $j \geq 1$ ;
+    \item un intervalle fermé $I_j$ de longueur $2M/2^j$ tel que
+          $u_n \in I_j$ pour une infinité d'indices $n$, avec
+          $I_j \subset I_{j-1}$ dès que $j \geq 1$ ;
     \item un indice $\varphi(j)$ tel que $u_{\varphi(j)} \in I_j$, avec
           $\varphi(j) > \varphi(j-1)$ dès que $j \geq 1$.
   \end{itemize}
-  On divise $I_k = [a_k, b_k]$ en ses deux moitiés et on choisit $I_{k+1}$
-  parmi celles qui contiennent une infinité de termes. On extrait
+  On divise $I_k = [a_k, b_k]$ en ses deux moitiés : l'une au moins,
+  choisie pour $I_{k+1}$, vérifie encore $u_n \in I_{k+1}$ pour une
+  infinité d'indices $n$. Cette infinité d'indices permet d'extraire
   $\varphi(k+1) > \varphi(k)$ tel que $u_{\varphi(k+1)} \in I_{k+1}$.
 
   \medskip
@@ -81,19 +84,17 @@ se resserrent vers un point $\ell$, limite de la sous-suite construite.
   \hfill$\blacksquare$
 \end{mdframed}
 
-\rubriq{Reformulation : l'ensemble des valeurs d'adhérence}
+\rubriq{Remarque : l'ensemble des valeurs d'adhérence}
 
-\begin{mdframed}[style=proofbar]
-  L'ensemble $E$ des valeurs d'adhérence d'une suite bornée est non vide
-  (par Bolzano--Weierstrass), fermé (limite de valeurs d'adhérence) et borné.
-  On définit :
-  \[
-    \limsup_{n\to\infty} u_n = \max E, \qquad
-    \liminf_{n\to\infty} u_n = \min E.
-  \]
-  La suite converge si et seulement si $\limsup u_n = \liminf u_n$.
-  \hfill$\blacksquare$
-\end{mdframed}
+L'ensemble $E$ des valeurs d'adhérence d'une suite bornée est non vide
+(par Bolzano--Weierstrass), borné, et fermé — cette fermeture demande un
+argument d'extraction diagonale, qui fait l'objet de l'exercice 2. On
+définit alors :
+\[
+  \limsup_{n\to\infty} u_n = \max E, \qquad
+  \liminf_{n\to\infty} u_n = \min E,
+\]
+et la suite converge si et seulement si $\limsup u_n = \liminf u_n$.
 
 \decsep{}
 
@@ -107,7 +108,9 @@ se resserrent vers un point $\ell$, limite de la sous-suite construite.
 \begin{mdframed}[style=exbar]
   \textbf{1.}\enspace%
   $u_n = \sin(n)$ est bornée par $1$ ; tout point de $[-1,1]$ en est une
-  valeur d'adhérence.
+  valeur d'adhérence. Ce fait, admis ici, repose sur la densité de
+  $\mathbb{Z} + 2\pi\mathbb{Z}$ dans $\mathbb{R}$ (cf.\ la leçon sur les
+  sous-groupes additifs de $\mathbb{R}$).
 
   \smallskip\noindent
   \textbf{2.}\enspace%
@@ -118,7 +121,9 @@ se resserrent vers un point $\ell$, limite de la sous-suite construite.
   \textbf{3.}\enspace%
   $v_n = \{n\sqrt{2}\}$ (partie fractionnaire de $n\sqrt{2}$) est bornée
   dans $[0,1[$ et dense dans $[0,1]$ :
-  chaque point de $[0,1]$ est limite d'une sous-suite.
+  chaque point de $[0,1]$ est limite d'une sous-suite. Cette densité,
+  admise ici, découle de l'irrationalité de $\sqrt{2}$ (cf.\ la même
+  leçon sur les sous-groupes additifs).
 \end{mdframed}
 
 \rubriq{Contre-exemples}

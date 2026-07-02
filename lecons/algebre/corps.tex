@@ -29,7 +29,8 @@
 
 \begin{mdframed}[style=proofbar]
   \textit{La caractéristique est $0$ ou première.}
-  Soit $p = \mathrm{car}(K) > 0$.
+  Soit $p = \mathrm{car}(K) > 0$. D'abord $p \geq 2$, car $p = 1$ signifierait
+  $1 = 0$, exclu par la définition d'un corps.
   Si $p = ab$ avec $1 < a, b < p$, alors $(a \cdot 1)(b \cdot 1) = p \cdot 1 = 0$
   dans $K$. Comme $K$ est intègre (c'est un corps), $a \cdot 1 = 0$ ou $b \cdot 1 = 0$,
   contredisant la minimalité de $p$. \hfill$\blacksquare$
@@ -148,6 +149,9 @@
   On conclut par le lemme suivant : \emph{un groupe abélien fini $G$ dans lequel,
   pour tout $d \geq 1$, l'équation $x^d = 1$ admet au plus $d$ solutions, est
   cyclique.} Ici $G = K^*$ vérifie cette hypothèse, donc $K^*$ est cyclique.
+
+  \textit{Existence et unicité (point 2).}
+  Elles reposent sur la théorie des corps de décomposition et sont admises ici.
   \hfill$\blacksquare$
 \end{mdframed}
 
@@ -214,9 +218,14 @@
     \item Montrer que tout polynôme irréductible de degré $n$ sur $\mathbb{F}_p$
           divise $X^{p^n} - X$.
 
-    \item (Théorème de Wedderburn) Tout corps gauche (anneau à division) fini
-          est commutatif. Admettre ce résultat et en déduire qu'un corps gauche
-          non commutatif est nécessairement infini.
+    \item (Corps gauche des quaternions) Soit
+          $\mathbb{H} = \{a + bi + cj + dk \mid a,b,c,d \in \mathbb{R}\}$
+          avec $i^2 = j^2 = k^2 = ijk = -1$. Vérifier que $ij = k = -ji$, puis
+          que tout $q \neq 0$ est inversible, d'inverse $\bar q/N(q)$ où
+          $\bar q = a - bi - cj - dk$ et $N(q) = q\bar q = a^2+b^2+c^2+d^2$.
+          Ainsi $\mathbb{H}$ est un corps gauche non commutatif — nécessairement
+          infini, d'après le théorème de Wedderburn (\emph{tout corps gauche
+          fini est commutatif}, admis).
   \end{enumerate}
 \end{mdframed}
 

@@ -166,16 +166,33 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
   C'est toujours un sous-espace vectoriel de $E$.
 
   \medskip
+  \textbf{Théorème (Pythagore).}\enspace%
+  \index{theoreme de Pythagore@théorème de Pythagore}
+  $x \perp y$ si et seulement si $\|x+y\|^2 = \|x\|^2 + \|y\|^2$.
+  Plus généralement, si $x_1, \ldots, x_p$ sont deux à deux orthogonaux :
+  \[
+    \|x_1 + \cdots + x_p\|^2 = \|x_1\|^2 + \cdots + \|x_p\|^2.
+  \]
+
+  \medskip
   \textbf{Théorème.}\enspace%
   \index{supplementaire orthogonal@supplémentaire orthogonal}
   Si $F$ est un sous-espace de l'espace euclidien $E$, alors $F^\perp$
   est un supplémentaire de $F$, appelé \emph{supplémentaire orthogonal} :
   \[
-    E = F \oplus F^\perp, \qquad \dim F^\perp = \dim E - \dim F.
+    E = F \oplus F^\perp, \qquad \dim F^\perp = \dim E - \dim F,
+    \qquad (F^\perp)^\perp = F.
   \]
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
+  \textit{Pythagore.} On développe :
+  $\|x+y\|^2 = \|x\|^2 + 2\langle x,y\rangle + \|y\|^2$, d'où l'équivalence.
+  Le cas général s'obtient de même : les doubles produits
+  $2\langle x_i,x_j\rangle$, $i < j$, sont tous nuls.
+
+  \smallskip
+  \textit{Supplémentaire orthogonal.}
   Soit $(e_1,\ldots,e_p)$ une base orthonormée de $F$ (obtenue par le procédé
   de Gram-Schmidt, présenté plus loin). Pour $x \in E$, posons $p_F(x) = \sum_{i=1}^p \langle x, e_i\rangle\, e_i$.
   Alors $p_F(x) \in F$ et $x - p_F(x) \in F^\perp$ (vérification : pour tout $j$,
@@ -184,7 +201,10 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
   Si $y \in F \cap F^\perp$, alors $\langle y,y\rangle = 0$ d'où $y = 0$.
   La somme est donc directe. Enfin, comme $E = F \oplus F^\perp$, la formule de
   Grassmann pour une somme directe donne $\dim E = \dim F + \dim F^\perp$, soit
-  $\dim F^\perp = \dim E - \dim F$. $\blacksquare$
+  $\dim F^\perp = \dim E - \dim F$.
+  Enfin, l'inclusion $F \subset (F^\perp)^\perp$ est immédiate, et
+  $\dim (F^\perp)^\perp = \dim E - \dim F^\perp = \dim F$ donne l'égalité.
+  $\blacksquare$
 \end{mdframed}
 
 \rubriq{Projection orthogonale}
@@ -199,11 +219,15 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
   \[
     \|x - p_F(x)\| = \min_{y \in F} \|x - y\|.
   \]
+  Ce minimum est appelé \emph{distance de $x$ à $F$}%
+  \index{distance à un sous-espace} et noté
+  $\mathrm{dist}(x,F) = \|x - p_F(x)\|$.
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
   Pour $y \in F$ : $\|x-y\|^2 = \|x - p_F(x) + p_F(x) - y\|^2$.
-  Or $x - p_F(x) \in F^\perp$ et $p_F(x) - y \in F$, donc ils sont orthogonaux :
+  Or $x - p_F(x) \in F^\perp$ et $p_F(x) - y \in F$ sont orthogonaux, donc,
+  par le théorème de Pythagore :
   \[
     \|x-y\|^2 = \|x-p_F(x)\|^2 + \|p_F(x)-y\|^2 \geq \|x-p_F(x)\|^2,
   \]
@@ -286,8 +310,11 @@ sur $\mathbb{R}^2$ ne vérifie pas cette identité : elle n'est pas euclidienne.
   \emph{à condition que $F$ soit fermé} ; sans cette hypothèse le résultat tombe en
   défaut. Par exemple, si $F$ est un sous-espace \emph{dense} mais distinct de $E$,
   alors $F^\perp = \{0\}$ et pourtant $F \neq E$, de sorte que $F \oplus F^\perp = F
-  \neq E$. Dans un préhilbertien non complet, le résultat échoue de surcroît même
-  pour certains sous-espaces fermés.
+  \neq E$. L'égalité $(F^\perp)^\perp = F$ tombe aussi en défaut : on n'a en
+  général que $F \subset (F^\perp)^\perp$ (dans un Hilbert,
+  $(F^\perp)^\perp = \overline{F}$, l'adhérence de $F$). Dans un préhilbertien
+  non complet, le résultat échoue de surcroît même pour certains sous-espaces
+  fermés.
 \end{mdframed}
 
 \vspace{6pt}

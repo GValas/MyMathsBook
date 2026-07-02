@@ -23,6 +23,7 @@ $\mathbb{Q} = \mathrm{Frac}(\mathbb{Z})$.
   \[
     (a,b) \sim (c,d) \;\iff\; ad = bc.
   \]
+  On note $\tfrac{a}{b}$ (ou $[a,b]$) la classe de $(a,b)$.
   $\mathbb{Q} = S/{\sim}$, muni des lois $\tfrac{a}{b}+\tfrac{c}{d}=\tfrac{ad+bc}{bd}$
   et $\tfrac{a}{b}\cdot\tfrac{c}{d}=\tfrac{ac}{bd}$, est un corps.
 \end{tcolorbox}
@@ -65,7 +66,7 @@ $\mathbb{Q} = \mathrm{Frac}(\mathbb{Z})$.
 \begin{mdframed}[style=proofbar]
   \textit{Densité.} Si $p < q$ dans $\mathbb{Q}$, alors $p < \tfrac{p+q}{2} < q$. $\checkmark$
 
-  \textit{Dénombrabilité.} On liste les fractions irréductibles $a/b$ avec $b>0$
+  \textit{Dénombrabilité.} On liste les fractions $a/b$, $(a,b) \in \mathbb{Z} \times \mathbb{N}^*$,
   en parcourant les diagonales du tableau $\mathbb{Z} \times \mathbb{N}^*$.
   L'image de cette liste est $\mathbb{Q}$, donc $|\mathbb{Q}| \leq |\mathbb{N}|$.
   Comme $\mathbb{N} \hookrightarrow \mathbb{Q}$, on a $|\mathbb{Q}| = \aleph_0$.
@@ -100,8 +101,18 @@ $p/q$ avec $\pgcd(p,q) = 1$ et $q > 0$ (\emph{fraction irréductible}).
 
 \rubriq{Conséquence : $\mathbb{Q}$ n'est pas complet}
 La suite de Héron $(x_n)$ définie par $x_0 = 1$ et $x_{n+1} = \tfrac{x_n}{2} + \tfrac{1}{x_n}$
-est, on l'admet, de Cauchy dans $\mathbb{Q}$ : elle converge en effet vers $\sqrt{2}$,
-qui n'appartient pas à $\mathbb{Q}$. Cette incomplétude motive la construction de $\mathbb{R}$.
+est de Cauchy dans $\mathbb{Q}$ mais n'y converge pas — et tout ceci se vérifie
+sans jamais quitter $\mathbb{Q}$. Un calcul direct donne
+$x_{n+1}^2 - 2 = (x_n^2-2)^2/(4x_n^2)$, d'où $x_n^2 \geq 2$ puis $x_n \geq 1$
+pour tout $n \geq 1$ ; il vient $0 \leq x_{n+1}^2 - 2 \leq \tfrac{1}{4}(x_n^2-2)^2$,
+donc $x_n^2 \to 2$. La suite est décroissante à partir du rang $1$
+(car $x_{n+1} - x_n = \tfrac{2-x_n^2}{2x_n} \leq 0$) et, pour $m \geq n \geq 1$,
+\[
+  0 \;\leq\; x_n - x_m \;=\; \frac{x_n^2 - x_m^2}{x_n + x_m} \;\leq\; \frac{x_n^2 - 2}{2},
+\]
+donc $(x_n)$ est de Cauchy. Si elle convergeait vers $\ell \in \mathbb{Q}$, on aurait
+$\ell^2 = 2$, ce que le théorème précédent exclut. Cette incomplétude motive la
+construction de $\mathbb{R}$.
 
 \decsep{}
 

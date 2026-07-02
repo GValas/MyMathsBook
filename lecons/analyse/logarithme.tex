@@ -2,7 +2,7 @@
 %  lecons/analyse/logarithme.tex — Construction du logarithme népérien
 %==============================================================
 
-\lecontitle{Construction du logarithme népérien}{Analyse réelle — Fonctions et intégration}
+\lecontitle{Construction du logarithme népérien}{Analyse réelle — Fonctions élémentaires}
 
 %=============================================================
 %  § 1 — DÉFINITION ET PROPRIÉTÉS FONDAMENTALES
@@ -14,7 +14,7 @@
   On définit le \emph{logarithme népérien} comme la fonction
   \[
     \ln :\,]0,+\infty[\,\longrightarrow \mathbb{R}, \qquad
-    x \longmapsto \int_1^x \frac{\mathrm{d}t}{t}.
+    x \longmapsto \int_1^x \frac{\dd t}{t}.
   \]
 
   \medskip
@@ -36,7 +36,7 @@
 
 \begin{significationintuitive}
 Parmi les primitives des fonctions puissances, la formule
-$\int t^{\alpha}\,\mathrm{d}t = \tfrac{t^{\alpha+1}}{\alpha+1}$ couvre tous les
+$\int t^{\alpha}\dd t = \tfrac{t^{\alpha+1}}{\alpha+1}$ couvre tous les
 exposants sauf $\alpha = -1$. La fonction $t\mapsto 1/t$, continue sur
 $]0,+\infty[$, y admet pourtant des primitives : on choisit celle qui s'annule
 en $1$. C'est cette primitive « manquante » que l'on baptise logarithme
@@ -91,7 +91,7 @@ obtenues via $\ln(2^n)=n\ln 2$ et la croissance de $\ln$.
   \medskip
   \textit{Étape 3 — Limites.}
   De l'équation fonctionnelle : $\ln(2^n) = n\ln(2)$. Comme $\ln(2) > 0$
-  (car $\int_1^2 \mathrm{d}t/t > 0$), on a $\ln(2^n)\to+\infty$. Puisque $\ln$ est
+  (car $\int_1^2 \dd t/t > 0$), on a $\ln(2^n)\to+\infty$. Puisque $\ln$ est
   croissante, $\lim_{x\to+\infty}\ln(x)=+\infty$.
   Puis $\ln(x) = -\ln(1/x)\to-\infty$ quand $x\to 0^+$.
 
@@ -106,7 +106,8 @@ obtenues via $\ln(2^n)=n\ln 2$ et la croissance de $\ln$.
 
 \rubriq{Propriétés algébriques déduites}
 
-\begin{mdframed}[style=proofbar]
+\begin{tcolorbox}[thmbox]
+  \textbf{Corollaire.}\enspace%
   Pour tous $a, b > 0$, $n \in \mathbb{Z}$, $r \in \mathbb{Q}$ :
   \[
     \ln\!\left(\frac{a}{b}\right) = \ln(a)-\ln(b), \qquad
@@ -118,8 +119,19 @@ obtenues via $\ln(2^n)=n\ln 2$ et la croissance de $\ln$.
     \forall\, x > 0,\quad \ln(x) \leq x - 1,
   \]
   avec égalité si et seulement si $x = 1$.
-  \hfill$\blacksquare$
-\end{mdframed}
+\end{tcolorbox}
+
+\rubriq{Logarithmes de base quelconque}
+Pour $a > 0$, $a \neq 1$, on définit le \emph{logarithme de base
+$a$}\index{logarithme de base $a$} par
+\[
+  \log_a x = \frac{\ln x}{\ln a} \qquad (x > 0).
+\]
+Il vérifie la même équation fonctionnelle que $\ln$, dont il ne diffère que
+par la normalisation $\log_a(a) = 1$ ; en particulier $\ln = \log_e$.
+Les cas usuels sont le logarithme décimal $\log_{10}$ (ordres de grandeur,
+pH, décibels) et le logarithme binaire $\log_2$ (informatique, théorie de
+l'information).
 
 \decsep{}
 
@@ -150,7 +162,7 @@ obtenues via $\ln(2^n)=n\ln 2$ et la croissance de $\ln$.
   \textbf{3. Calcul d'intégrale.}
   Par intégration par parties :
   \[
-    \int_1^e \ln(t)\,\mathrm{d}t = \bigl[t\ln(t)-t\bigr]_1^e = 1.
+    \int_1^e \ln(t)\dd t = \bigl[t\ln(t)-t\bigr]_1^e = 1.
   \]
 
   \smallskip\noindent
@@ -167,7 +179,7 @@ obtenues via $\ln(2^n)=n\ln 2$ et la croissance de $\ln$.
 
 \begin{mdframed}[style=cexbar]
   \textbf{$\ln$ n'est pas défini en $0$.}\enspace%
-  $\ln(0)$ n'existe pas : l'intégrale $\int_0^1 \mathrm{d}t/t$ diverge (le pôle en
+  $\ln(0)$ n'existe pas : l'intégrale $\int_0^1 \dd t/t$ diverge (le pôle en
   $0$ est non intégrable).
 
   \smallskip\noindent
@@ -190,7 +202,7 @@ obtenues via $\ln(2^n)=n\ln 2$ et la croissance de $\ln$.
     \item Montrer, à partir de la définition intégrale, que
           $\dfrac{1}{2} < \ln(2) < 1$.
 
-    \item Établir $\ln(1+x) = \displaystyle\int_0^x\!\frac{\mathrm{d}t}{1+t}$
+    \item Établir $\ln(1+x) = \displaystyle\int_0^x\!\frac{\dd t}{1+t}$
           et en déduire le développement limité à tout ordre en $0$.
 
     \item Montrer que $H_n = \displaystyle\sum_{k=1}^n \frac{1}{k}$

@@ -35,9 +35,10 @@ Le théorème affirme que nullité + rang = dimension de l'espace de départ.
 %=============================================================
 \secnum{navyblue}{2}{Démonstration}
 
-\rubriq{Idée}
+\begin{ideepreuve}
 On complète une base du noyau en une base de $E$, et on montre que les images
 des vecteurs ajoutés forment une base de $\mathrm{Im}\,f$.
+\end{ideepreuve}
 
 \begin{mdframed}[style=proofbar]
   Soit $(e_1,\ldots,e_p)$ une base de $\ker f$ (avec $p = \dim\ker f$).
@@ -60,7 +61,7 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}\,f$.
   \textit{Famille libre.}
   Supposons $\sum_{j=p+1}^n \mu_j f(e_j) = 0$.
   Alors $\sum_{j=p+1}^n \mu_j e_j \in \ker f$ ; comme $(e_1,\ldots,e_p)$ est une
-  base de $\ker f$, il existe \emph{certains} scalaires $\lambda_1,\ldots,\lambda_p$
+  base de $\ker f$, il existe des scalaires $\lambda_1,\ldots,\lambda_p$
   tels que
   \[
     \sum_{j=p+1}^n \mu_j e_j = \sum_{i=1}^p \lambda_i e_i
@@ -71,9 +72,16 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}\,f$.
   $\mu_j = 0$ pour tout $j$.
 
   \smallskip
+  \textit{Cas dégénérés.}
+  L'argument vaut encore pour $p = 0$ ($f$ injective~: la base de $\ker f$ est
+  la famille vide) et pour $p = n$ ($f = 0$~: la famille des images est vide et
+  $\mathrm{Im}\,f = \{0\}$), avec les conventions usuelles sur la famille vide,
+  libre et engendrant $\{0\}$.
+
+  \smallskip
   Ainsi $\mathrm{Im}\,f$ est engendré par $n-p$ vecteurs libres, donc
   $\dim(\mathrm{Im}\,f) = n - p$, et $p + (n-p) = n$.
-  $\blacksquare$
+  \hfill$\blacksquare$
 \end{mdframed}
 
 \decsep{}
@@ -154,11 +162,12 @@ des vecteurs ajoutés forment une base de $\mathrm{Im}\,f$.
   \smallskip\noindent
   \textbf{En dimension infinie, le corollaire \og{}injectif $\Leftrightarrow$
   surjectif\fg{} tombe en défaut.}\enspace%
-  Soit $f : \ell^2 \to \ell^2$, $(x_1,x_2,\ldots) \mapsto (0,x_1,x_2,\ldots)$
-  (shift). $f$ est injective ($\ker f = \{0\}$) mais pas surjective
-  ($(1,0,0,\ldots)\notin\mathrm{Im}\,f$). Le théorème du rang, lui, ne
-  s'applique tout simplement plus~: le rang n'est pas fini et l'égalité
-  n'a plus de sens en dimension infinie.
+  Sur $E = \mathbb{K}[X]$, l'application $P \mapsto XP$ est injective mais pas
+  surjective (son image est l'ensemble des polynômes sans terme constant),
+  tandis que la dérivation $P \mapsto P'$ est surjective mais pas injective
+  (son noyau est la droite des polynômes constants). Le théorème du rang, lui,
+  ne s'applique tout simplement plus~: $\dim E$ n'est pas finie et l'égalité
+  n'a plus de sens.
 
   \smallskip\noindent
   \textbf{$\mathrm{rg}(A) = \mathrm{rg}(A^T)$, mais $\ker A \neq \ker A^T$ en général.}\enspace%

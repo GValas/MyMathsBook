@@ -39,7 +39,8 @@ Pour le module :
   |zw| = |z|\,|w|, \quad
   \left|\frac{z}{w}\right| = \frac{|z|}{|w|} \;(w \neq 0), \quad
   |\bar{z}| = |z|, \quad
-  |z + w| \leq |z| + |w|.
+  |z + w| \leq |z| + |w|, \quad
+  \bigl|\,|z| - |w|\,\bigr| \leq |z - w|.
 \]
 
 \rubriq{Inverse et division}
@@ -59,7 +60,7 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
 
 \begin{tcolorbox}[thmbox]
   \textbf{Forme trigonométrique.}\enspace%
-  \index{nombres complexes!forme trigonométrique}\index{argument}
+  \index{nombres complexes!forme trigonométrique}
   Tout $z \neq 0$ s'écrit
   \[
     z = |z|(\cos\theta + i\sin\theta), \quad \theta \in \mathbb{R}.
@@ -137,8 +138,9 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
     z_k = \rho^{1/n}\, \exp\!\left(i\,\frac{\varphi + 2k\pi}{n}\right),
     \quad k = 0, 1, \ldots, n-1.
   \]
-  Ces solutions sont les sommets d'un polygone régulier à $n$ côtés inscrit
-  dans le cercle de rayon $\rho^{1/n}$, équidistants d'angle $2\pi/n$.
+  Pour $n \geq 3$, ces solutions sont les sommets d'un polygone régulier à
+  $n$ côtés inscrit dans le cercle de centre $O$ et de rayon $\rho^{1/n}$,
+  deux sommets consécutifs étant séparés d'un angle $2\pi/n$.
 
   \medskip
   \textbf{Racines de l'unité.}\enspace%
@@ -148,7 +150,8 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
     \omega_k = e^{2ik\pi/n}, \quad k = 0, \ldots, n-1.
   \]
   Ces racines vérifient $\displaystyle\sum_{k=0}^{n-1} \omega_k^j = 0$
-  pour $j \not\equiv 0 \pmod{n}$.
+  pour $j \not\equiv 0 \pmod{n}$, et $\displaystyle\sum_{k=0}^{n-1} \omega_k^j = n$
+  pour $j \equiv 0 \pmod{n}$ (relation d'orthogonalité).
 \end{tcolorbox}
 
 \begin{mdframed}[style=proofbar]
@@ -255,7 +258,7 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
 \rubriq{Pièges}
 
 \begin{mdframed}[style=cexbar]
-  \textbf{Argument non additif sur $\mathbb{R}$.}\enspace%
+  \textbf{L'argument principal n'est pas additif.}\enspace%
   $\arg(zw) = \arg z + \arg w$ n'est valide que modulo $2\pi$. L'argument
   principal peut présenter un saut de $\pm 2\pi$ : $\arg((-1)\cdot(-1)) =
   \arg(1) = 0$, mais $\arg(-1) + \arg(-1) = \pi + \pi = 2\pi \neq 0$
@@ -294,7 +297,7 @@ $\dfrac{z}{w} = \dfrac{z\bar{w}}{|w|^2}$.
     \item Résoudre dans $\mathbb{C}$ l'équation $z^4 + 2z^2 + 4 = 0$.
           (\textit{Indication :} discriminant de l'équation en $z^2$.)
 
-    \item Soit $P(z) = z^n + a_{n-1}z^{n-1} + \cdots + a_0 \in \mathbb{R}[X]$.
+    \item Soit $P = X^n + a_{n-1}X^{n-1} + \cdots + a_0 \in \mathbb{R}[X]$.
           Montrer que si $z_0$ est racine de $P$, alors $\bar{z}_0$ l'est aussi,
           et que les racines non réelles viennent par paires conjuguées.
           En déduire que tout polynôme réel de degré impair admet au moins une

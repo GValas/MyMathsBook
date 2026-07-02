@@ -51,6 +51,32 @@
   ($\det=-1$).
 \end{significationintuitive}
 
+\rubriq{Premiers exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Matrices de permutation.}\enspace%
+  \index{matrice de permutation}
+  Pour toute permutation $\sigma$ de $\{1,\ldots,n\}$, la matrice $P_\sigma$
+  définie par $P_\sigma e_i = e_{\sigma(i)}$ est orthogonale : ses colonnes sont
+  des vecteurs distincts de la base canonique, donc orthonormales. En
+  particulier $I_n \in \mathrm{O}(n)$. (Ce fait est exploité dans la leçon sur
+  les hyperplans de $\mathcal{M}_n(\mathbb{R})$.)
+
+  \smallskip\noindent
+  \textbf{2. Rotations planes.}\enspace%
+  $R_\theta = \begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$
+  appartient à $\mathrm{SO}(2)$ : colonnes unitaires, de produit scalaire nul,
+  et $\det R_\theta = \cos^2\theta + \sin^2\theta = 1$ (cf.\ le §~3).
+
+  \smallskip\noindent
+  \textbf{3. Réflexions de Householder.}\enspace%
+  \index{Householder (réflexion de)}
+  Pour $u \in \mathbb{R}^n$ unitaire, $H_u = I_n - 2uu^T$ est symétrique et
+  orthogonale : $H_u^TH_u = H_u^2 = I_n - 4uu^T + 4u(u^Tu)u^T = I_n$.
+  C'est la réflexion par rapport à l'hyperplan $u^\perp$ (elle fixe $u^\perp$
+  et envoie $u$ sur $-u$), de déterminant $-1$.
+\end{mdframed}
+
 \decsep{}
 
 %=============================================================
@@ -261,7 +287,7 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
 
   \smallskip\noindent
   \textbf{$\mathrm{O}(n)$ n'est pas connexe.}\enspace%
-  $\mathrm{O}(n)$ a deux composantes connexes : $\mathrm{SO}(n)$ (det $=1$)
+  $\mathrm{O}(n)$ a deux composantes connexes : $\mathrm{SO}(n)$ ($\det Q = 1$)
   et $\{Q : \det Q=-1\}$. On ne peut pas déformer continûment une rotation
   en une réflexion dans $\mathrm{O}(n)$.
 
@@ -281,7 +307,10 @@ En dimension 3 : $\mathrm{tr}(Q) = 1 + 2\cos\theta$.
           (\textit{Indication :} calculer ${(e^A)}^T e^A$.)
 
     \item Soit $Q \in \mathrm{O}(n)$ avec $\det Q = -1$. Montrer que $-1$ est
-          valeur propre de $Q$ lorsque $n$ est impair.
+          valeur propre de $Q$. (\textit{Indication :} les valeurs propres non
+          réelles vont par paires conjuguées de produit $1$ ; que vaut alors le
+          produit des valeurs propres réelles ?) Montrer de même que si
+          $\det Q = 1$ et $n$ est impair, alors $1$ est valeur propre de $Q$.
 
     \item Trouver toutes les matrices $Q \in \mathrm{O}(2)$ telles que $Q^3 = I$.
 

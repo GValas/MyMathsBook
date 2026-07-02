@@ -1,7 +1,8 @@
 %==============================================================
 %  main.tex — Point d'entrée du livre
 %  Compiler avec : pdflatex > makeindex > makeglossaries > bibtex > pdflatex x2
-%  Ou utiliser la recette VS Code définie dans .vscode/settings.json
+%  Compiler avec latexmk (recette dans .latexmkrc) :
+%    latexmk -pdf -interaction=nonstopmode -outdir=build -f main.tex
 %==============================================================
 \documentclass[a4paper,11pt]{book}
 

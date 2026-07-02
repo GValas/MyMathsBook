@@ -11,7 +11,7 @@
 
 \begin{tcolorbox}[thmbox]
   \textbf{Définition.}\enspace\index{nombre de Bell}\index{partition d'un ensemble}
-  Une \emph{partition}\index{partition} de l'ensemble $[n] = \{1,2,\ldots,n\}$
+  Une \emph{partition} de l'ensemble $[n] = \{1,2,\ldots,n\}$
   est une famille de parties non vides, deux à deux disjointes, dont la réunion
   est $[n]$.
 
@@ -93,7 +93,11 @@
     \item $a_{n,k} = a_{n,k-1} + a_{n-1,k-1}$ (chaque terme est la somme du
           terme précédent sur la même ligne et du terme au-dessus à gauche).
   \end{itemize}
-  Le dernier terme de chaque ligne est $B_{n+1}$.
+  Le dernier terme de chaque ligne est $B_{n+1}$ : cette propriété est une
+  conséquence directe de la récurrence de Bell ci-dessus — on vérifie par
+  récurrence sur $k$ (via la formule de Pascal) que
+  $a_{n,k} = \sum_{i=0}^{k}\binom{k}{i}B_{n-k+i}$, et le cas $k=n$ redonne
+  exactement $B_{n+1} = \sum_{i=0}^{n}\binom{n}{i}B_i$.
 
   \medskip
   \begin{center}
@@ -153,6 +157,11 @@
   \[
     S(n,k) = \frac{1}{k!}\sum_{j=0}^{k}{(-1)}^{k-j}\binom{k}{j}j^n.
   \]
+
+  \medskip
+  La somme $\sum_{j=0}^{k}{(-1)}^{k-j}\binom{k}{j}j^n$ compte, par
+  inclusion-exclusion, les surjections de $[n]$ sur $[k]$ : elle est donc
+  nulle dès que $k > n$, et la formule reste valable pour tout $k \geq 0$.
 \end{tcolorbox}
 
 \decsep{}
@@ -164,7 +173,7 @@
 
 \begin{tcolorbox}[thmbox]
   \textbf{Formule de Dobi\'nski.}\enspace%
-  \index{Dobi\'nski (formule de)}
+  \index{formule de Dobinski@formule de Dobi\'nski}
   \[
     B_n = \frac{1}{e}\sum_{k=0}^{+\infty}\frac{k^n}{k!}.
   \]
@@ -189,8 +198,9 @@
         = \sum_{k=0}^{n}\sum_{j=0}^{k}\frac{{(-1)}^{k-j}}{j!\,(k-j)!}\,j^n.
   \]
   On peut prolonger la sommation sur $k$ jusqu'à $+\infty$ sans rien changer :
-  pour $k>n$, il n'existe aucune partition de $[n]$ en $k$ blocs, donc
-  $S(n,k)=0$ et les termes ajoutés sont nuls. Dans la double somme ainsi
+  la formule d'inclusion-exclusion reste valable pour $k>n$, où elle donne
+  $S(n,k)=0$ (elle compte les surjections de $[n]$ sur $[k]$, cf.\ la remarque
+  du paragraphe~3), donc les termes ajoutés sont nuls. Dans la double somme ainsi
   obtenue, seuls les indices $0\leq j\leq k$ contribuent.
   Intervertissons alors les deux sommations : la série double converge
   absolument, car la somme des valeurs absolues se factorise en
@@ -312,7 +322,7 @@
 \begin{mdframed}[style=exobar]
   \begin{enumerate}
     \item En utilisant la récurrence $B_{n+1} = \sum_{k=0}^{n}\binom{n}{k}B_k$,
-          calculer $B_6 = 203$ à partir des valeurs précédentes.
+          vérifier que $B_6 = 203$ à partir des valeurs précédentes.
 
     \item Montrer que $S(n,2) = 2^{n-1}-1$ pour $n\geq 1$.
           (\textit{Indication :} une partition en 2 blocs correspond au choix du
@@ -326,6 +336,11 @@
           $1\pmod{3}$ (\textit{i.e.} $B_n$ est pair si et seulement si
           $n\equiv 2\pmod{3}$). La suite $(B_n \bmod 2)$ est en effet
           périodique de période $3$ : $1,1,0,1,1,0,\ldots$
+          (\textit{Indication :} établir d'abord
+          $B_{n+2} \equiv B_{n+1} + B_n \pmod{2}$ en considérant l'involution
+          qui échange les éléments $n+1$ et $n+2$ dans une partition de
+          $[n+2]$ : ses points fixes sont les partitions où $n+1$ et $n+2$
+          sont dans le même bloc, ou tous deux des singletons.)
 
     \item (\textit{Défi}) En utilisant la série génératrice $e^{e^x-1}$,
           retrouver la formule de Dobi\'nski en développant $e^{e^x}$ comme

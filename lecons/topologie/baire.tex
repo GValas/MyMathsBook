@@ -130,16 +130,22 @@ appartenant à toutes les boules, et donc à toutes les intersections.
   \textbf{2. Fonctions continues nulle part dérivables.}
   Dans $(\mathcal{C}([0,1]), \|\cdot\|_\infty)$, complet, l'ensemble
   \[
-    D_n = \Bigl\{f : \exists\, x_0\in[0,1],\;
+    D_n = \Bigl\{f \in \mathcal{C}([0,1]) : \exists\, x_0\in[0,1],\;
     \sup_{\substack{h\neq 0\\ x_0+h\in[0,1]}}
     \frac{\bigl|f(x_0+h)-f(x_0)\bigr|}{|h|} \leq n\Bigr\}
   \]
-  est un fermé d'intérieur vide. Par Baire, $\bigcup_{n\geq 1} D_n \neq \mathcal{C}([0,1])$ :
+  est fermé (si $f_k \to f$ uniformément avec des points témoins $x_0^{(k)}$,
+  on extrait une sous-suite convergente dans le compact $[0,1]$ et on passe à
+  la limite) et d'intérieur vide (toute $f$ s'approche uniformément par des
+  fonctions affines par morceaux dont chaque pente excède $n$ en valeur
+  absolue, lesquelles échappent à $D_n$).
+  Par Baire, $\bigcup_{n\geq 1} D_n \neq \mathcal{C}([0,1])$ :
   il existe des fonctions continues nulle part dérivables.
 
   \smallskip\noindent
   \textbf{3. Principe de Banach-Steinhaus.}\index{Banach-Steinhaus (théorème de)}
-  Soient $E$ de Banach, $F$ un espace normé et $(T_n)$ des opérateurs linéaires continus $E\to F$
+  Soient $E$ un espace de Banach, $F$ un espace normé et $(T_n)$ une suite
+  d'opérateurs linéaires continus de $E$ dans $F$
   tels que $\sup_n \|T_n x\| < +\infty$ pour tout $x$. Baire, appliqué aux
   fermés $F_k = \{x : \sup_n \|T_n x\| \leq k\}$, donne l'existence d'une
   boule sur laquelle ils sont uniformément bornés, d'où $\sup_n \|T_n\| < +\infty$.
@@ -175,9 +181,10 @@ appartenant à toutes les boules, et donc à toutes les intersections.
           Montrer que l'ensemble des points de continuité de $f$ est un
           $G_\delta$ dense.
 
-    \item Montrer que tout espace de Banach de dimension infinie ne peut avoir
-          de base algébrique dénombrable (appliquer Baire aux sous-espaces
-          vectoriels fermés engendrés par les $n$ premiers vecteurs).
+    \item Montrer qu'un espace de Banach de dimension infinie n'admet pas de
+          base algébrique dénombrable (appliquer Baire aux sous-espaces
+          engendrés par les $n$ premiers vecteurs, de dimension finie donc
+          fermés).
 
     \item Soit $(f_n)$ une suite de fonctions continues $[0,1]\to\mathbb{R}$
           convergeant simplement vers $f$. Montrer que $f$ est continue sur

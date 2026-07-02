@@ -83,8 +83,9 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
 
   \medskip
   \textit{Lemme 3 — $f$ admet une valeur propre réelle.}
-  Le polynôme caractéristique $\chi_f \in \mathbb{R}[X]$ est de degré $n$.
-  Par le Lemme 1, toutes ses racines complexes sont réelles, donc $\chi_f$
+  Le polynôme caractéristique $\chi_f \in \mathbb{R}[X]$ est de degré
+  $n \geq 1$. Par le théorème de d'Alembert-Gauss, $\chi_f$ est scindé sur
+  $\mathbb{C}$ ; ses racines complexes étant toutes réelles (Lemme 1), il
   est scindé sur $\mathbb{R}$ et admet au moins une racine réelle $\lambda$,
   valeur propre de $f$.\hfill$\square$
 
@@ -141,8 +142,10 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   \smallskip\noindent
   \textbf{3. Opérateurs différentiels.}
   L'opérateur $-d^2/dx^2$ sur $L^2([0,\pi])$ avec conditions de Dirichlet
-  est autoadjoint ; ses vecteurs propres sont les fonctions $\sin(nx)$,
-  base de Fourier en sinus.
+  est autoadjoint (opérateur non borné : son autoadjonction demande de
+  préciser le domaine, cf.\ la mise en garde « Dimension infinie »
+  ci-dessous) ; ses vecteurs propres sont les fonctions $x\mapsto\sin(nx)$,
+  $n\geq 1$, base de Fourier en sinus.
 \end{mdframed}
 
 \rubriq{Contre-exemples}
@@ -154,7 +157,7 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
   n'est pas diagonalisable.
 
   \smallskip\noindent
-  \textbf{La condition $A^*=A$ ne se relâche pas en \og normale \fg.}\enspace%
+  \textbf{La condition $A^*=A$ ne se relâche pas en « normale ».}\enspace%
   (Ceci n'est pas un contre-exemple au théorème, mais une mise en garde sur
   ses hypothèses sur $\mathbb{C}$.) Le théorème spectral s'étend aux matrices
   hermitiennes ($A^* = A$), dont les valeurs propres sont réelles. Si l'on se
@@ -187,7 +190,9 @@ par le lemme clé), on se restreint au supplémentaire orthogonal, et on itère.
           propres sont strictement positives. Réciproque ?
 
     \item Soit $f$ autoadjoint sur un espace euclidien. Montrer que
-          $\|f\| = \max\{|\lambda|,\;\lambda\text{ v.p. de }f\}$.
+          $\|f\| = \max\{|\lambda|,\;\lambda\text{ v.p. de }f\}$, où
+          $\|f\| = \sup_{\|x\|=1}\|f(x)\|$ désigne la norme d'opérateur
+          subordonnée à la norme euclidienne.
 
     \item (Décomposition polaire) Montrer que toute matrice $M\in\mathcal{M}_n(\mathbb{R})$
           inversible s'écrit $M = QS$ avec $Q$ orthogonale et $S$ symétrique

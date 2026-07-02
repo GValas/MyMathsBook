@@ -20,7 +20,7 @@ MyMathsBook/
 │   ├── analyse/              ← Analyse réelle (suites, continuité, intégration…)
 │   ├── algebre/              ← Structures algébriques & algèbre linéaire
 │   ├── ensembles/            ← Construction des nombres (ℕ, ℤ, ℚ, ℝ, ℂ, ℍ)
-│   ├── arithmetique/         ← Nombres premiers, irrationalité
+│   ├── arithmetique/         ← Nombres premiers, irrationalité, cyclotomiques
 │   ├── combinatoire/         ← Partitions d'ensembles (Bell)
 │   └── topologie/            ← Espaces métriques complets (Baire)
 └── backmatter/

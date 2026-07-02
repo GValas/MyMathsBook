@@ -226,7 +226,9 @@ décomposition en facteurs premiers.
   Cette égalité, vraie pour le \emph{prolongement analytique}\index{prolongement
   analytique} de $\zeta$, ne signifie pas $1+2+3+\cdots=-\tfrac{1}{12}$ : la
   série diverge grossièrement. La valeur $-1/12$ provient de l'équation
-  fonctionnelle, pas d'une sommation de la série.
+  fonctionnelle, pas d'une sommation de la série (cf.\ la leçon sur la somme
+  $1+2+3+\cdots=-\tfrac{1}{12}$, consacrée à la régularisation zêta et à
+  l'effet Casimir).
 
   \smallskip\noindent
   \textbf{Convergence simple $\neq$ normale.}\enspace%
@@ -239,9 +241,15 @@ décomposition en facteurs premiers.
 
 \begin{mdframed}[style=exobar]
   \begin{enumerate}
-    \item Démontrer rigoureusement que $\zeta(s)\sim 1/(s-1)$ en $1^{+}$ à partir
-          de l'encadrement $\tfrac{1}{s-1}\leq\zeta(s)\leq 1+\tfrac{1}{s-1}$, puis
-          en déduire $\lim_{s\to 1^{+}}(s-1)\zeta(s)=1$.
+    \item Montrer que $\zeta(s)=\dfrac{1}{s-1}+\gamma+o(1)$ quand $s\to 1^{+}$,
+          où $\gamma=\lim_{N\to+\infty}\bigl(\sum_{n=1}^{N}\tfrac{1}{n}-\ln N\bigr)$
+          est la constante d'Euler\index{constante d'Euler}.
+          \textit{Indication :} écrire
+          $\zeta(s)-\tfrac{1}{s-1}=\sum_{n\geq 1}\int_{n}^{n+1}
+          \bigl(n^{-s}-t^{-s}\bigr)\,\mathrm{d}t$, majorer chaque terme par
+          $s\,n^{-s-1}$ (accroissements finis) pour justifier le passage à la
+          limite terme à terme sur $\,]1,2]$, puis reconnaître
+          $\sum_{n\geq 1}\bigl(\tfrac{1}{n}-\ln\tfrac{n+1}{n}\bigr)=\gamma$.
 
     \item Établir $\eta(s)=(1-2^{1-s})\zeta(s)$ pour $s>1$ en regroupant les termes
           pairs. En déduire $\eta(2)=\pi^{2}/12$ à partir de $\zeta(2)=\pi^{2}/6$.

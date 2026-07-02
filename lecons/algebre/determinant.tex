@@ -16,7 +16,7 @@
   $\det : \mathcal{M}_n(\mathbb{K}) \to \mathbb{K}$
   qui soit :}
   \begin{enumerate}
-    \item \textit{\textbf{Multilinéaire} par rapport aux colonnes (ou aux lignes) :
+    \item \textit{\textbf{Multilinéaire} par rapport aux colonnes :
           $\det$ est $\mathbb{K}$-linéaire en chaque colonne, les autres étant fixées ;}
     \item \textit{\textbf{Alternée} : $\det(C_1,\ldots,C_n)=0$ dès que deux colonnes
           sont égales (ce qui entraîne qu'échanger deux colonnes change le signe~;
@@ -45,6 +45,9 @@
 \end{significationintuitive}
 
 \rubriq{Remarques}
+Les axiomes portent uniquement sur les colonnes : la propriété
+$\det(A^T)=\det(A)$ démontrée au §2 entraîne que $\det$ est aussi
+multilinéaire alternée par rapport aux lignes.
 La formule de Leibniz est surtout utile pour les preuves théoriques ; en pratique on
 calcule par développement (Laplace) ou par réduction de Gauss.
 Pour $n=2$ et $n=3$ on obtient les formules classiques :
@@ -82,6 +85,10 @@ La seconde se retient par la \emph{règle de Sarrus}\index{règle de Sarrus}
       \item Ajouter un multiple d'une ligne à une autre : $\det$ inchangé.
     \end{itemize}
     \item \textbf{Matrices triangulaires :} $\det(A) = \prod_{i=1}^n a_{ii}$.
+    \item \textbf{Triangulaire par blocs :} pour $M \in \mathcal{M}_p(\mathbb{K})$,
+          $N \in \mathcal{M}_q(\mathbb{K})$ et $C \in \mathcal{M}_{p,q}(\mathbb{K})$,
+          $\det\begin{pmatrix} M & C \\ 0 & N \end{pmatrix} = \det(M)\,\det(N)$.
+    \index{déterminant!par blocs}
     \item \textbf{Scalaire :} $\det(\lambda A) = \lambda^n \det(A)$.
   \end{enumerate}
 \end{tcolorbox}
@@ -93,9 +100,25 @@ La seconde se retient par la \emph{règle de Sarrus}\index{règle de Sarrus}
   multilinéaire alternée en les colonnes de $B$ (par multilinéarité de $\det$
   en composition avec la linéarité de $C_j(B)\mapsto AC_j(B)$).
   De plus $\varphi(I_n) = \det(A)$.
-  Par unicité à constante multiplicative près des formes multilinéaires alternées,
-  $\varphi(B) = \varphi(I_n)\,\det(B) = \det(A)\det(B)$. \hfill$\blacksquare$
+  Or toute forme $n$-linéaire alternée $\psi$ vérifie $\psi = \psi(I_n)\,\det$ :
+  le calcul d'unicité du §1 (développement de chaque colonne sur la base
+  canonique, puis élimination des termes à indices répétés par le caractère
+  alterné) donne $\psi(B) = \psi(I_n)\,\det(B)$ ; autrement dit, l'espace des
+  formes $n$-linéaires alternées est de dimension $1$, engendré par $\det$.
+  Ainsi $\varphi(B) = \varphi(I_n)\,\det(B) = \det(A)\det(B)$. \hfill$\blacksquare$
 \end{mdframed}
+
+\rubriq{Déterminant d'un endomorphisme}
+\index{déterminant!d'un endomorphisme}
+Soit $f$ un endomorphisme d'un $\mathbb{K}$-espace vectoriel $E$ de dimension
+finie. Si $A$ et $A' = P^{-1}AP$ sont les matrices de $f$ dans deux bases de
+$E$ ($P$ étant la matrice de passage), la multiplicativité donne
+\[
+  \det(P^{-1}AP) = {\det(P)}^{-1}\det(A)\det(P) = \det(A).
+\]
+Le scalaire $\det(f) := \det(A)$ ne dépend donc pas de la base choisie.
+Il vérifie $\det(g \circ f) = \det(g)\,\det(f)$, et $f$ est bijectif si et
+seulement si $\det(f) \neq 0$.
 
 \decsep{}
 
@@ -178,7 +201,9 @@ sur les lignes, en tenant compte des signes :
   \index{rang!et déterminant}
   \textit{Soit $A \in \mathcal{M}_{m,n}(\mathbb{K})$. Le rang de $A$ est
   le plus grand entier $r$ tel qu'il existe un sous-déterminant
-  d'ordre $r$ extrait de $A$ qui soit non nul.}
+  d'ordre $r$ extrait de $A$ qui soit non nul
+  (avec la convention qu'un déterminant d'ordre $0$ vaut $1$,
+  de sorte que $\mathrm{rg}(0) = 0$).}
 \end{tcolorbox}
 
 \rubriq{Règle de Cramer}
@@ -202,7 +227,7 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
 
 \begin{mdframed}[style=exbar]
   \textbf{1. Déterminant de Vandermonde.}\enspace%
-  \index{déterminant de Vandermonde}
+  \index{Vandermonde!déterminant de}
   Pour $x_1,\ldots,x_n \in \mathbb{K}$ :
   \[
     V(x_1,\ldots,x_n) =
@@ -220,7 +245,8 @@ Surtout utile pour $n\leq 3$ ; pour $n$ grand, la réduction de Gauss est plus e
   \textbf{2. Interprétation géométrique.}\enspace%
   $|\det(v_1,\ldots,v_n)|$ est le volume du parallélépipède engendré par
   les vecteurs colonnes $v_1,\ldots,v_n \in \mathbb{R}^n$.
-  En particulier, $|\det(u,v)| = \|u\|\,\|v\|\,|\sin\theta|$ pour $n=2$.
+  En particulier, $|\det(u,v)| = \|u\|\,\|v\|\,|\sin\theta|$ pour $n=2$,
+  où $\theta$ désigne l'angle entre $u$ et $v$.
 
   \smallskip\noindent
   \textbf{3. Matrice compagnon.}\enspace%

@@ -34,14 +34,14 @@
     \sum_{k=0}^{N}\left\|\frac{A^k}{k!}\right\| \leq \sum_{k=0}^{N}\frac{\|A\|^k}{k!}
     \xrightarrow[N\to\infty]{} e^{\|A\|} < +\infty.
   \]
-  La série est absolument convergente ; comme $\mathcal{M}_n(\mathbb{K})$ est
+  La série est absolument convergente~; comme $\mathcal{M}_n(\mathbb{K})$ est
   un espace de Banach (espace vectoriel normé de dimension finie, donc complet),
   toute série absolument convergente y est convergente, et donc cette série
   converge.
 
   Enfin, sur toute boule $\{A : \|A\|\leq R\}$, chaque terme est majoré par
   $\|A^k/k!\|\leq R^k/k!$ indépendamment de $A$, le majorant $\sum R^k/k! = e^R$
-  étant fini : par le critère de Weierstrass, la convergence est normale, donc
+  étant fini~: par le critère de Weierstrass, la convergence est normale, donc
   uniforme, sur tout borné. $\blacksquare$
 \end{mdframed}
 
@@ -77,10 +77,10 @@
 \rubriq{Preuve de 1 — formule du produit}
 
 \begin{mdframed}[style=proofbar]
-  Si $AB=BA$, le binôme de Newton s'applique : ${(A+B)}^k = \sum_{j=0}^k \binom{k}{j}A^j B^{k-j}$.
+  Si $AB=BA$, le binôme de Newton s'applique~: ${(A+B)}^k = \sum_{j=0}^k \binom{k}{j}A^j B^{k-j}$.
   Les séries définissant $e^A$ et $e^B$ étant absolument convergentes, leur
-  produit de Cauchy converge vers le produit $e^A e^B$ ; on reconnaît alors
-  précisément le développement de $e^{A+B}$ :
+  produit de Cauchy converge vers le produit $e^A e^B$~; on reconnaît alors
+  précisément le développement de $e^{A+B}$~:
   \[
     e^{A+B} = \sum_{k=0}^\infty \frac{{(A+B)}^k}{k!}
     = \sum_{k=0}^\infty \sum_{j=0}^k \frac{A^j B^{k-j}}{j!(k-j)!}
@@ -98,15 +98,18 @@
   $\det(e^A) = \prod e^{\lambda_i} = e^{\sum\lambda_i} = e^{\mathrm{tr}(A)}$.
 
   \textit{Cas général.} La fonction $t\mapsto f(t) = \det(e^{tA})$ vérifie
-  $f(0)=1$. Posons $M(t) = e^{tA}$ : on a $M'(t) = A\,e^{tA}$ et $M(t)$ est
+  $f(0)=1$. Posons $M(t) = e^{tA}$~: on a $M'(t) = A\,e^{tA}$ et $M(t)$ est
   inversible avec $M(t)^{-1} = e^{-tA}$. La formule de Jacobi infinitésimale
   donne, pour $M$ inversible,
   \[
-    \frac{d}{dt}\det M(t) = \det M(t)\cdot\mathrm{tr}\bigl(M(t)^{-1}M'(t)\bigr).
+    \frac{d}{dt}\det M(t) = \det M(t)\cdot\mathrm{tr}\bigl(M(t)^{-1}M'(t)\bigr)
   \]
+  (formule admise ici~; cf.\ la leçon consacrée à la formule
+  $\det(e^A) = e^{\mathrm{tr}(A)}$, qui en propose une preuve en exercice et
+  donne un argument autonome par équation fonctionnelle).
   Ici $M(t)^{-1}M'(t) = e^{-tA}A\,e^{tA} = A$, d'où
   $f'(t) = \det(e^{tA})\,\mathrm{tr}(A) = \mathrm{tr}(A)\,f(t)$.
-  Donc $f(t) = e^{t\,\mathrm{tr}(A)}$, et en $t=1$ : $\det(e^A) = e^{\mathrm{tr}(A)}$.
+  Donc $f(t) = e^{t\,\mathrm{tr}(A)}$, et en $t=1$~: $\det(e^A) = e^{\mathrm{tr}(A)}$.
   $\blacksquare$
 \end{mdframed}
 
@@ -124,7 +127,7 @@ Si $A = P\,\mathrm{diag}(\lambda_1,\ldots,\lambda_n)\,P^{-1}$, alors
 \]
 
 \rubriq{Matrice nilpotente}
-Si $A^m = 0$, la série est finie :
+Si $A^m = 0$, la série est finie~:
 \[
   e^A = I + A + \frac{A^2}{2!} + \cdots + \frac{A^{m-1}}{(m-1)!}.
 \]
@@ -134,7 +137,7 @@ Si $A^m = 0$, la série est finie :
 Toute matrice $A$ à polynôme caractéristique scindé (en particulier toute
 matrice à coefficients dans $\mathbb{C}$) s'écrit de manière unique
 $A = D + N$ avec $D$ diagonalisable, $N$ nilpotente et $DN = ND$. Comme $D$ et
-$N$ commutent :
+$N$ commutent~:
 \[
   e^A = e^D \cdot e^N,
 \]
@@ -152,9 +155,9 @@ où $e^D$ se calcule via la diagonalisation et $e^N$ par la série finie.
   \textbf{Exemple — rotation.}\enspace%
   $A = \theta J$ avec $J = \begin{pmatrix}0&-1\\1&0\end{pmatrix}$.
   Valeurs propres complexes $\pm i\theta$. Comme $J^2 = -I$, on a
-  $A^{2k} = (-1)^k\theta^{2k}I$ et $A^{2k+1} = (-1)^k\theta^{2k+1}J$ ; en
+  $A^{2k} = (-1)^k\theta^{2k}I$ et $A^{2k+1} = (-1)^k\theta^{2k+1}J$~; en
   regroupant les termes pairs et impairs de la série, on reconnaît les
-  développements de $\cos\theta$ et $\sin\theta$ :
+  développements de $\cos\theta$ et $\sin\theta$~:
   \[
     e^A = \cos\theta\,I + \sin\theta\,J
         = \begin{pmatrix}\cos\theta & -\sin\theta\\\sin\theta & \cos\theta\end{pmatrix}.
@@ -192,7 +195,7 @@ où $e^D$ se calcule via la diagonalisation et $e^N$ par la série finie.
 
   \textit{Unicité.} Si $Y$ est une autre solution, posons $Z = e^{-tA}Y$.
   Alors $Z' = -Ae^{-tA}Y + e^{-tA}Y' = e^{-tA}(-AY+AY) = 0$, donc $Z$ est
-  constante : $Z(t)=Z(0)=X_0$, soit $Y(t)=e^{tA}X_0$. \hfill$\blacksquare$
+  constante~: $Z(t)=Z(0)=X_0$, soit $Y(t)=e^{tA}X_0$. \hfill$\blacksquare$
 \end{mdframed}
 
 \rubriq{Interprétation spectrale}
@@ -220,9 +223,13 @@ pas la conclusion.)
 \begin{mdframed}[style=cexbar]
   \textbf{$e^{A+B} \neq e^A e^B$ sans commutativité.}\enspace%
   Pour $A=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ et $B=\begin{pmatrix}0&0\\1&0\end{pmatrix}$,
-  $AB\neq BA$ et $e^{A+B}\neq e^Ae^B$.
+  $AB\neq BA$ et le calcul est immédiat~: $A^2=B^2=0$ donne
+  $e^Ae^B = (I+A)(I+B) = \begin{pmatrix}2&1\\1&1\end{pmatrix}$, tandis que
+  ${(A+B)}^2 = I$ donne
+  $e^{A+B} = \cosh(1)\,I + \sinh(1)\,(A+B)
+  = \begin{pmatrix}\cosh 1&\sinh 1\\\sinh 1&\cosh 1\end{pmatrix} \neq e^Ae^B$.
   C'est la formule de Baker--Campbell--Hausdorff\index{Baker--Campbell--Hausdorff}
-  qui corrige cela : $e^Ae^B = e^{A+B+\frac{1}{2}[A,B]+\cdots}$.
+  qui corrige cela~: $e^Ae^B = e^{A+B+\frac{1}{2}[A,B]+\cdots}$.
 
   \smallskip\noindent
   \textbf{$e^A = I$ n'implique pas $A = 0$.}\enspace%

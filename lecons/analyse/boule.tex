@@ -2,7 +2,7 @@
 %  lecons/analyse/boule.tex — Volume de la boule en dimension n
 %==============================================================
 
-\lecontitle{Volume de la boule en dimension \texorpdfstring{$n$}{n}}{Analyse — Wallis, Fubini et géométrie en grande dimension}
+\lecontitle{Volume de la boule en dimension \texorpdfstring{$n$}{n}}{Analyse réelle — Wallis, Fubini et géométrie en grande dimension}
 
 %=============================================================
 %  § 1 — DÉFINITION ET PREMIERS EXEMPLES
@@ -55,7 +55,8 @@ On écrit $B_n(R)$ comme une pile de boules $(n{-}1)$-di\-men\-sion\-nelles :
   B_n(R) = \bigl\{(u, x_n)\in\mathbb{R}^{n-1}\times\mathbb{R} \;\big|\;
   u \in B_{n-1}\!\bigl(\sqrt{R^2-x_n^2}\bigr),\; -R \leq x_n \leq R\bigr\}.
 \]
-Par le théorème de Fubini\index{Fubini (théorème de)} :
+Par le théorème de Fubini\index{Fubini (théorème de)}%
+\index{Fubini (théorème de)|seealso{Fubini--Tonelli (théorème de)}} :
 \[
   V_n(R) = \int_{-R}^{R} V_{n-1}\!\bigl(\sqrt{R^2-x^2}\bigr)\dd x
           = \mu_{n-1}\int_{-R}^{R}{(R^2-x^2)}^{(n-1)/2}\dd x.
@@ -135,17 +136,17 @@ en utilisant $\int_0^{\pi}\sin^n\theta\dd\theta = 2\int_0^{\pi/2}\sin^n\theta\dd
 \begin{mdframed}[style=exbar]
 \[
 \renewcommand{\arraystretch}{1.4}
-\begin{array}{c|c|c|c}
-  n & \mu_n \text{ (exact)} & \mu_n \text{ (approx.)} & \text{formule} \\
+\begin{array}{c|c|c}
+  n & \mu_n \text{ (exact)} & \mu_n \text{ (approx.)} \\
   \hline
-  1 & 2                          & 2{,}00 & \mu_1 = 2 \\
-  2 & \pi                        & 3{,}14 & \mu_2 = \pi \\
-  3 & \tfrac{4\pi}{3}            & 4{,}19 & \mu_3 = \tfrac{4\pi}{3} \\
-  4 & \tfrac{\pi^2}{2}           & 4{,}93 & \mu_4 = \tfrac{\pi^2}{2} \\
-  5 & \tfrac{8\pi^2}{15}         & 5{,}26 & \text{max} \\
-  6 & \tfrac{\pi^3}{6}           & 5{,}17 & \mu_6 = \tfrac{\pi^3}{6} \\
-  7 & \tfrac{16\pi^3}{105}       & 4{,}72 & \\
-  8 & \tfrac{\pi^4}{24}          & 4{,}06 & \mu_8 = \tfrac{\pi^4}{24}
+  1 & 2                          & 2{,}00 \\
+  2 & \pi                        & 3{,}14 \\
+  3 & \tfrac{4\pi}{3}            & 4{,}19 \\
+  4 & \tfrac{\pi^2}{2}           & 4{,}93 \\
+  5 & \tfrac{8\pi^2}{15}         & 5{,}26 \;\leftarrow\text{ maximum} \\
+  6 & \tfrac{\pi^3}{6}           & 5{,}17 \\
+  7 & \tfrac{16\pi^3}{105}       & 4{,}72 \\
+  8 & \tfrac{\pi^4}{24}          & 4{,}06
 \end{array}
 \]
 \end{mdframed}
@@ -168,7 +169,8 @@ en utilisant $\int_0^{\pi}\sin^n\theta\dd\theta = 2\int_0^{\pi/2}\sin^n\theta\dd
   En particulier ce terme est négatif dès $n > 2\pi \approx 6{,}28$, i.e.\ pour $n \geq 7$
   (conformément au tableau : le maximum est atteint en $n = 5$).
 
-  La suite $(\ln\mu_{2k})_k$ est une série télescopique :
+  En sommant les accroissements $\ln\mu_{2k} - \ln\mu_{2k-2} = \ln\frac{\pi}{k}$
+  (somme télescopique) :
   \[
     \ln\mu_{2m} = \ln\mu_0 + \sum_{k=1}^{m}\ln\frac{\pi}{k} = m\ln\pi - \ln(m!)
     \;\sim\; m\ln\pi - m\ln m + m \to -\infty.
@@ -181,6 +183,11 @@ en utilisant $\int_0^{\pi}\sin^n\theta\dd\theta = 2\int_0^{\pi/2}\sin^n\theta\dd
   $\mu_n \sim \frac{1}{\sqrt{\pi n}}(2\pi e/n)^{n/2}$, le cas impair conduisant au même équivalent.
   \hfill$\blacksquare$
 \end{mdframed}
+
+\emph{Remarque.} Les deux cas se résument en la formule unifiée
+$\mu_n = \dfrac{\pi^{n/2}}{\Gamma\bigl(\frac{n}{2}+1\bigr)}$, valable pour tout $n$
+(cf.\ la leçon sur la fonction Gamma, et l'exercice 3 ci-dessous) : l'équivalent
+du théorème s'en déduit directement par la formule de Stirling pour $\Gamma$.
 
 \rubriq{Interprétation géométrique}
 En grande dimension, presque tout le volume de $[-1,1]^n$ (qui vaut $2^n$) est concentré
@@ -215,7 +222,10 @@ dimension}\index{malédiction de la dimension}.
     \frac{1}{\mu_n}\int_{-\varepsilon}^{\varepsilon}\mu_{n-1}\,{(1-t^2)}^{(n-1)/2}\dd t
     = \frac{\mu_{n-1}}{\mu_n}\int_{-\varepsilon}^{\varepsilon}{(1-t^2)}^{(n-1)/2}\dd t.
   \]
-  Comme $\mu_{n-1}/\mu_n = \Theta(\sqrt{n})$, cette fraction tend vers $1$ pour tout
+  Or la récurrence $\mu_n = 2\mu_{n-1}W_n$ et l'équivalent de Wallis
+  $W_n \sim \sqrt{\pi/(2n)}$ donnent
+  $\mu_{n-1}/\mu_n = \dfrac{1}{2W_n} \sim \sqrt{\dfrac{n}{2\pi}}$ :
+  cette fraction tend vers $1$ pour tout
   $\varepsilon > 0$ fixé, et plus généralement dès que $\varepsilon\sqrt{n}\to+\infty$~;
   à l'échelle critique $\varepsilon = c/\sqrt{n}$, elle tend vers
   $P(|Z| \leq c) < 1$ avec $Z \sim \mathcal{N}(0,1)$ : presque tout le
@@ -223,7 +233,8 @@ dimension}\index{malédiction de la dimension}.
   de \emph{concentration de la mesure}.
 
   \smallskip\noindent
-  \textbf{3. Probabilité de tomber dans la boule.}\enspace%
+  \textbf{3. Probabilité de tomber dans la boule} \emph{(hors programme : vecteurs
+  gaussiens et loi du $\chi^2$)}\textbf{.}\enspace%
   Un vecteur gaussien $X \sim \mathcal{N}(0,I_n)$ satisfait $\|X\|^2 \sim \chi^2(n)$,
   de moyenne $n$ et écart-type $\sqrt{2n}$. La norme typique est $\sqrt{n}$,
   bien au-delà de $1$ : $P(X \in B_n(1)) \to 0$ très vite.

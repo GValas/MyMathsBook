@@ -2,7 +2,7 @@
 %  lecons/analyse/bernoulli.tex — Les polynômes de Bernoulli
 %==============================================================
 
-\lecontitle{Les polynômes de Bernoulli}{Analyse réelle — Sommes de puissances et formule d'Euler-Maclaurin}
+\lecontitle{Les polynômes de Bernoulli}{Analyse réelle — Sommes de puissances et formule d'Euler--Maclaurin}
 
 %=== NOTATION LOCALE =========================================
 \newcommand{\Bpol}[1]{B_{#1}}      % polynôme de Bernoulli B_n(x)
@@ -51,7 +51,7 @@
       \sum_{k=0}^{m-1} k^{p}
       \;=\; \frac{1}{p+1}\Bigl(\Bpol{p+1}(m)-\Bnum{p+1}\Bigr).
     \]
-    \item \textit{Formule d'Euler-Maclaurin.}\index{formule d'Euler-Maclaurin}
+    \item \textit{Formule d'Euler--Maclaurin.}\index{formule d'Euler--Maclaurin}
     Pour $f\in\mathcal{C}^{2N}\bigl([a,b]\bigr)$ avec $a,b\in\mathbb{Z}$,
     \[
       \sum_{k=a}^{b} f(k)
@@ -76,7 +76,7 @@ au \emph{continu} : la relation de différence $\Bpol{n}(x+1)-\Bpol{n}(x)=n\,x^{
 fait d'eux des « primitives discrètes » des monômes, exactement comme
 l'intégration produit des primitives continues. C'est pourquoi ils gouvernent
 à la fois les sommes de puissances $\sum k^{p}$ (Faulhaber) et la correction
-entre une somme et l'intégrale qui l'approche (Euler-Maclaurin). Les nombres
+entre une somme et l'intégrale qui l'approche (Euler--Maclaurin). Les nombres
 $\Bnum{2k}$ encodent enfin les valeurs $\zeta(2k)$ : le pont d'Euler entre
 combinatoire des entiers et analyse des séries.
 \end{significationintuitive}
@@ -158,7 +158,7 @@ génératrice sous $t\mapsto -t$.
   $2\Bnum{n}=0$, d'où $\Bnum{2k+1}=0$ pour $k\geq 1$.
 
   \medskip
-  \textit{Étape 5 — Euler-Maclaurin (idée).}
+  \textit{Étape 5 — Euler--Maclaurin (idée).}
   Sur $[k,k+1]$, deux intégrations par parties successives faisant intervenir
   $\Bpol{1},\Bpol{2}$ relient $f(k)$, $\int_{k}^{k+1}f$ et les dérivées
   $f^{(2j-1)}$ aux extrémités ; les termes de bord se télescopent grâce à
@@ -166,7 +166,7 @@ génératrice sous $t\mapsto -t$.
   annoncée, le reste $R_{N}$ s'écrivant
   $-\frac{1}{(2N)!}\int_{a}^{b}\widetilde{B}_{2N}(t)\,f^{(2N)}(t)\,\mathrm{d}t$
   ($\widetilde{B}_{2N}$ : prolongement $1$-périodique de $\Bpol{2N}$).
-  La formule fermée pour $\zeta(2k)$, elle, ne relève pas d'Euler-Maclaurin
+  La formule fermée pour $\zeta(2k)$, elle, ne relève pas d'Euler--Maclaurin
   (dont le développement n'est qu'asymptotique)~: elle s'obtient par la série
   de Fourier de $\widetilde{B}_{2k}$ ou par le développement de $z\cot z$
   (cf.\ exercice~4).
@@ -239,7 +239,7 @@ génératrice sous $t\mapsto -t$.
   une erreur grossière.
 
   \smallskip\noindent
-  \textbf{Euler-Maclaurin est asymptotique.}\enspace%
+  \textbf{Euler--Maclaurin est asymptotique.}\enspace%
   Comme $|\Bnum{2j}|\to+\infty$, la « série » $\sum_{j}\Bnum{2j}f^{(2j-1)}/(2j)!$
   diverge en général : la formule n'est \emph{pas} une égalité de séries
   convergentes, mais un développement asymptotique à reste contrôlé. Pousser
@@ -278,11 +278,11 @@ génératrice sous $t\mapsto -t$.
           $\dfrac{t\,e^{xt}}{e^{t}-1}=\dfrac{t}{e^{t}-1}\,e^{xt}$ comme produit de
           Cauchy de deux séries génératrices.
 
-    \item (Euler-Maclaurin) En appliquant la formule à $f(t)=\ln t$ sur
+    \item (Euler--Maclaurin) En appliquant la formule à $f(t)=\ln t$ sur
           $[1,n]$, retrouver la formule de Stirling
           $\ln(n!)=n\ln n-n+\tfrac{1}{2}\ln(2\pi n)+\tfrac{1}{12n}+o(1/n)$.
           \textit{Indication :} le terme $\Bnum{2}/2=1/12$ fournit la correction
-          en $1/(12n)$ ; Euler-Maclaurin ne détermine la constante additive
+          en $1/(12n)$ ; Euler--Maclaurin ne détermine la constante additive
           qu'à une valeur près, que l'on identifie à $\tfrac{1}{2}\ln(2\pi)$
           grâce aux intégrales de Wallis (cf.\ leçon correspondante).
   \end{enumerate}

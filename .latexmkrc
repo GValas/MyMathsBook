@@ -8,7 +8,6 @@
 #   $makeindex          : commande pour générer l'index (fichier .idx → .ind)
 #   add_cus_dep         : déclare des dépendances personnalisées pour le glossaire :
 #                           .glo → .gls  (entrées de glossaire principal)
-#                           .acn → .acr  (entrées d'acronymes)
 #   run_makeglossaries  : sous-routine appelée par latexmk pour lancer makeglossaries
 #                         en ciblant le bon répertoire de sortie (build/)
 
@@ -38,7 +37,6 @@ $makeindex = 'makeindex %O -o %D %S';
 $success_cmd = 'perl -MFile::Copy -e "copy(q{build/main.pdf}, q{main.pdf})"';
 
 add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
-add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
 
 sub run_makeglossaries {
     use File::Basename;
