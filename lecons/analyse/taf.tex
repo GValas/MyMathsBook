@@ -117,8 +117,9 @@ puis on applique Rolle.
 
 \rubriq{Application : règle de l'Hôpital (cas $0/0$)}
 \index{l'Hôpital (règle de)}
-Supposons $f,g$ continues en $a$ avec $f(a)=g(a)=0$, $g' \neq 0$ au voisinage de $a$,
-et $\lim_{x\to a} f'(x)/g'(x) = \ell$. Alors par le TAF de Cauchy appliqué sur $[a, a+h]$,
+Supposons $f,g$ continues sur $[a,a+\delta[$ et dérivables sur $]a,a+\delta[$,
+avec $f(a)=g(a)=0$, $g'$ ne s'annulant pas sur $]a,a+\delta[$,
+et $\lim_{x\to a^+} f'(x)/g'(x) = \ell$. Alors par le TAF de Cauchy appliqué sur $[a, a+h]$,
 il existe $c_h \in\, ]a, a+h[$ tel que
 \[
   \frac{f(a+h)}{g(a+h)} = \frac{f(a+h)-f(a)}{g(a+h)-g(a)} = \frac{f'(c_h)}{g'(c_h)} \xrightarrow[h\to 0]{} \ell.

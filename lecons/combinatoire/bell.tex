@@ -283,8 +283,12 @@
   \textbf{Confondre $S(n,k)$ avec $\begin{bmatrix}n\\k\end{bmatrix}$.}\enspace%
   Les \emph{nombres de Stirling de première espèce}
   $\begin{bmatrix}n\\k\end{bmatrix}$ comptent les permutations de $[n]$ à
-  $k$ cycles, et non les partitions. Ils vérifient une récurrence similaire
-  mais avec un signe différent.
+  $k$ cycles, et non les partitions. Ils vérifient une récurrence analogue,
+  mais avec le coefficient $n-1$ au lieu de $k$~:
+  $\begin{bmatrix}n\\k\end{bmatrix}
+   = (n-1)\begin{bmatrix}n-1\\k\end{bmatrix}
+   + \begin{bmatrix}n-1\\k-1\end{bmatrix}$
+  (la version \emph{signée} $s(n,k)$ introduit de plus un signe).
 
   \smallskip\noindent
   \textbf{Convention $B_0 = 1$.}\enspace%

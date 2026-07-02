@@ -244,8 +244,12 @@
   \smallskip\noindent
   \textbf{3. Développement en série de Tchebychev.}\enspace
   Toute fonction continue $f:[-1,1]\to\mathbb{R}$ admet un développement
-  $f = \sum_{n\geq 0} c_n T_n$ convergent, analogue de la série de Fourier,
-  avec $c_n = \frac{2}{\pi}\int_{-1}^1 f(x)T_n(x)\frac{\mathrm{d}x}{\sqrt{1-x^2}}$.
+  $f = \sum_{n\geq 0} c_n T_n$, analogue de la série de Fourier, convergent
+  en moyenne quadratique pour le poids ${(1-x^2)}^{-1/2}$ (et uniformément
+  si $f$ est de classe $\mathcal{C}^1$), avec
+  $c_0 = \frac{1}{\pi}\int_{-1}^1 f(x)\frac{\mathrm{d}x}{\sqrt{1-x^2}}$
+  et, pour $n\geq 1$,
+  $c_n = \frac{2}{\pi}\int_{-1}^1 f(x)T_n(x)\frac{\mathrm{d}x}{\sqrt{1-x^2}}$.
 \end{mdframed}
 
 \vspace{6pt}

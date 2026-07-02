@@ -204,25 +204,27 @@ scalaire $e^{x+y} = e^x e^y$ transforme l'addition des réels en multiplication.
   (matrice fondamentale). Elle vérifie $\Phi' = A(t)\Phi$.
 
   En dérivant $W(t) = \det\Phi(t)$ et en utilisant la multilinéarité du
-  déterminant par rapport aux colonnes~:
+  déterminant par rapport aux \emph{lignes}~: en notant $L_1,\ldots,L_n$
+  les lignes de $\Phi(t)$,
   \[
-    W'(t) = \sum_{j=1}^n \det(x_1,\ldots,x_j',\ldots,x_n)
-           = \sum_{j=1}^n \det(x_1,\ldots,A(t)x_j,\ldots,x_n),
+    W'(t) = \sum_{i=1}^n
+      \det\begin{pmatrix}L_1\\ \vdots\\ L_i'\\ \vdots\\ L_n\end{pmatrix},
   \]
-  où, dans le $j$-ème terme, seule la $j$-ème colonne est dérivée.
-  Décomposons $A(t)x_j$ sur la base canonique~: en notant
-  $A(t)=(a_{k\ell}(t))$, on a $A(t)x_j = \sum_{k=1}^n a_{kj}(t)\,x_k$, d'où
+  où, dans le $i$-ème terme, seule la $i$-ème ligne est dérivée.
+  Or la relation $\Phi' = A(t)\Phi$ se lit ligne par ligne~: en notant
+  $A(t)=(a_{k\ell}(t))$, on a $L_i' = \sum_{k=1}^n a_{ik}(t)\,L_k$
+  (les coefficients sont ici bien ceux de $A$), d'où
   \[
-    \det(x_1,\ldots,A(t)x_j,\ldots,x_n)
-      = \sum_{k=1}^n a_{kj}(t)\,
-        \det(x_1,\ldots,\underbrace{x_k}_{\text{place }j},\ldots,x_n).
+    \det\begin{pmatrix}L_1\\ \vdots\\ L_i'\\ \vdots\\ L_n\end{pmatrix}
+      = \sum_{k=1}^n a_{ik}(t)\,
+        \det\begin{pmatrix}L_1\\ \vdots\\ L_k \;\text{(place $i$)}\\ \vdots\\ L_n\end{pmatrix}.
   \]
-  Pour $k \neq j$, le déterminant possède deux colonnes égales
-  (la colonne $x_k$ figure déjà en position $k$ et est répétée en position $j$)~:
-  il est donc nul. Seul le terme $k=j$ survit, et il vaut
-  $a_{jj}(t)\,\det(x_1,\ldots,x_n) = a_{jj}(t)\,W(t)$. En sommant sur $j$~:
+  Pour $k \neq i$, le déterminant possède deux lignes égales
+  (la ligne $L_k$ figure déjà en position $k$ et est répétée en position $i$)~:
+  il est donc nul. Seul le terme $k=i$ survit, et il vaut
+  $a_{ii}(t)\,\det\Phi(t) = a_{ii}(t)\,W(t)$. En sommant sur $i$~:
   \[
-    W'(t) = \sum_{j=1}^n a_{jj}(t)\,W(t) = \mathrm{tr}(A(t))\,W(t).
+    W'(t) = \sum_{i=1}^n a_{ii}(t)\,W(t) = \mathrm{tr}(A(t))\,W(t).
   \]
   Cette équation différentielle linéaire scalaire s'intègre en
   $W(t) = W(0)\exp\!\bigl(\int_0^t\mathrm{tr}(A(s))\,ds\bigr)$.
