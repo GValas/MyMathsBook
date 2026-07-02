@@ -214,7 +214,9 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
     = \frac{\mu_{n-1}}{\mu_n}\int_{-\varepsilon}^{\varepsilon}{(1-t^2)}^{(n-1)/2}\,\mathrm{d}t.
   \]
   Comme $\mu_{n-1}/\mu_n = \Theta(\sqrt{n})$, cette fraction tend vers $1$ pour tout
-  $\varepsilon > 0$ fixé (déjà pour $\varepsilon \sim 1/\sqrt{n}$) : presque tout le
+  $\varepsilon > 0$ fixé, et plus généralement dès que $\varepsilon\sqrt{n}\to+\infty$~;
+  à l'échelle critique $\varepsilon = c/\sqrt{n}$, elle tend vers
+  $P(|Z| \leq c) < 1$ avec $Z \sim \mathcal{N}(0,1)$ : presque tout le
   volume se concentre près de l'équateur $\{x_1 = 0\}$.
 
   \smallskip\noindent
@@ -229,7 +231,7 @@ $\mu_n/2^n \to 0$ du cube — phénomène de \emph{concentration de la mesure}\i
 \begin{mdframed}[style=cexbar]
   \textbf{Le maximum de $\mu_n$ n'est pas en $n=3$.}\enspace%
   $\mu_5 \approx 5{,}26 > \mu_3 \approx 4{,}19 > \mu_2 = \pi$.
-  La suite $(\mu_n)$ est d'abord croissante, puis décroissante à partir de $n=6$.
+  La suite $(\mu_n)$ croît jusqu'à $n=5$, puis décroît.
 
   \smallskip\noindent
   \textbf{$\mu_n \to 0$ ne contredit pas le fait que $\mu_3 > \mu_2$.}\enspace%

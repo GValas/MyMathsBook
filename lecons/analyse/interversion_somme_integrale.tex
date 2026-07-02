@@ -42,7 +42,8 @@
   \textbf{Théorème 2 (sommation des séries à termes positifs).}\enspace%
   \index{Beppo Levi (théorème de)}
   Soit $(f_n)$ une suite de fonctions \emph{positives} et continues par
-  morceaux sur un intervalle $I$. Alors, dans $[0,+\infty]$~:
+  morceaux sur un intervalle $I$, telle que $\sum f_n$ converge simplement
+  vers une fonction continue par morceaux sur $I$. Alors, dans $[0,+\infty]$~:
   \[
     \int_I \sum_{n=0}^{+\infty} f_n(t)\,\mathrm{d}t
     \;=\; \sum_{n=0}^{+\infty} \int_I f_n(t)\,\mathrm{d}t.
@@ -227,9 +228,14 @@ quelconque, la positivité (Théorème~2) ou la sommabilité absolue
   $\displaystyle\int_0^{+\infty} \frac{t^{s-1}}{1+t}\,\mathrm{d}t
   = \frac{\pi}{\sin(\pi s)}$ pour $0<s<1$. Le développement
   $\dfrac{1}{1+t} = \sum {(-1)}^n t^n$ ne vaut que sur $[0,1[$~; on découpe
-  donc l'intégrale en $\int_0^1 + \int_1^{+\infty}$, on intègre terme à
-  terme sur $[0,1]$ (Théorème~3), puis le changement $t \mapsto 1/t$
-  ramène la partie $[1,+\infty[$ à une intégrale sur $[0,1]$ traitée de même.
+  donc l'intégrale en $\int_0^1 + \int_1^{+\infty}$. Sur $[0,1]$, le
+  Théorème~3 est inapplicable
+  ($\sum_n \int_0^1 t^{\,n+s-1}\,\mathrm{d}t = \sum_n \frac{1}{n+s} = +\infty$)~:
+  on intègre terme à terme grâce au critère spécial des séries alternées,
+  le reste vérifiant
+  $\bigl|\sum_{k>N} {(-1)}^k t^{\,k+s-1}\bigr| \leq t^{\,N+s}$, d'intégrale
+  $\frac{1}{N+s+1} \to 0$. Le changement $t \mapsto 1/t$
+  ramène enfin la partie $[1,+\infty[$ à une intégrale sur $[0,1]$ traitée de même.
 \end{mdframed}
 
 \vspace{6pt}
