@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-MyMathsBook is a LaTeX book (`book` class, a4paper 11pt) collecting ~58 mathematics lessons for French
+MyMathsBook is a LaTeX book (`book` class, a4paper 11pt) collecting ~59 mathematics lessons for French
 *classes préparatoires* (Maths Sup/Spé). Content and prose are in French.
 
 ## Build

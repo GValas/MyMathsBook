@@ -1,0 +1,318 @@
+%==============================================================
+%  lecons/algebre/diagonalisation.tex — Critères de diagonalisation
+%==============================================================
+
+\lecontitle{Critères de diagonalisation}{Algèbre linéaire — Polynômes d'endomorphismes}
+
+%=============================================================
+%  § 1 — DÉFINITIONS ET MULTIPLICITÉS
+%=============================================================
+\secnum{navyblue}{1}{Définitions et multiplicités}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Définition.}\enspace%
+  \index{diagonalisation}\index{sous-espace propre}
+  Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie $n$ et
+  $f \in \mathcal{L}(E)$. On dit que $f$ est \emph{diagonalisable} s'il
+  existe une base de $E$ formée de vecteurs propres de $f$ — autrement dit,
+  si la matrice de $f$ dans une base convenable est diagonale.
+  Pour $\lambda \in \mathrm{Sp}(f)$, le \emph{sous-espace propre} associé est
+  \[
+    E_\lambda = \ker(f - \lambda\,\mathrm{Id}).
+  \]
+
+  \medskip
+  \textbf{Définition (multiplicités).}\enspace%
+  \index{multiplicité algébrique}\index{multiplicité géométrique}
+  Si $\lambda$ est valeur propre de $f$, sa \emph{multiplicité algébrique}
+  $m_\lambda$ est son ordre de multiplicité comme racine du polynôme
+  caractéristique $\chi_f$~; sa \emph{multiplicité géométrique} est
+  $\dim E_\lambda$.
+
+  \medskip
+  \textbf{Théorème (encadrement des multiplicités).}\enspace%
+  \textit{Pour toute valeur propre $\lambda$ de $f$ :}
+  \[
+    1 \;\leq\; \dim E_\lambda \;\leq\; m_\lambda.
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  La minoration vient de la définition ($\lambda$ valeur propre signifie
+  $E_\lambda \neq \{0\}$). Pour la majoration, posons $d = \dim E_\lambda$
+  et complétons une base $(e_1,\ldots,e_d)$ de $E_\lambda$ en une base de
+  $E$. Dans cette base, la matrice de $f$ est triangulaire par blocs~:
+  \[
+    \begin{pmatrix} \lambda I_d & B \\ 0 & C \end{pmatrix},
+    \qquad\text{d'où}\qquad
+    \chi_f = {(X-\lambda)}^{d}\,\chi_C.
+  \]
+  Ainsi ${(X-\lambda)}^{d}$ divise $\chi_f$, soit $d \leq m_\lambda$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\begin{significationintuitive}
+Diagonaliser, c'est trouver des axes le long desquels $f$ agit par simple
+dilatation. Deux obstructions peuvent s'y opposer~: le polynôme
+caractéristique peut refuser de se scinder sur $\mathbb{K}$ (il manque des
+valeurs propres), ou bien un sous-espace propre peut être « trop petit »
+($\dim E_\lambda < m_\lambda$~: il manque des directions propres). Les
+critères de ce chapitre quantifient exactement ces deux obstructions.
+\end{significationintuitive}
+
+\decsep{}
+
+%=============================================================
+%  § 2 — LE THÉORÈME DES CRITÈRES
+%=============================================================
+\secnum{navyblue}{2}{Le théorème des critères}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Théorème (critères de diagonalisation).}\enspace%
+  \index{diagonalisation!critères}\index{polynôme annulateur}
+  \textit{Soit $f \in \mathcal{L}(E)$, $\dim E = n$. Les assertions
+  suivantes sont équivalentes~:}
+  \begin{enumerate}
+    \item $f$ est diagonalisable~;
+    \item $E = \displaystyle\bigoplus_{\lambda \in \mathrm{Sp}(f)} E_\lambda$~;
+    \item $\displaystyle\sum_{\lambda \in \mathrm{Sp}(f)} \dim E_\lambda = n$~;
+    \item $\chi_f$ est scindé sur $\mathbb{K}$ et, pour toute valeur propre
+          $\lambda$, $\dim E_\lambda = m_\lambda$~;
+    \item il existe un polynôme $P \in \mathbb{K}[X]$ \emph{scindé à racines
+          simples} tel que $P(f) = 0$~;
+    \item le polynôme minimal $\mu_f$ est scindé à racines simples.
+  \end{enumerate}
+
+  \medskip
+  \textbf{Corollaire (condition suffisante).}\enspace%
+  \textit{Si $\chi_f$ est scindé à racines simples — en particulier si $f$
+  admet $n$ valeurs propres deux à deux distinctes — alors $f$ est
+  diagonalisable.}
+\end{tcolorbox}
+
+\rubriq{L'outil clé : le lemme des noyaux}
+
+\begin{tcolorbox}[thmbox]
+  \textbf{Lemme des noyaux.}\enspace%
+  \index{lemme des noyaux}
+  \textit{Soient $P_1, \ldots, P_r \in \mathbb{K}[X]$ deux à deux premiers
+  entre eux et $P = P_1 \cdots P_r$. Alors}
+  \[
+    \ker P(f) \;=\; \bigoplus_{i=1}^{r} \ker P_i(f).
+  \]
+\end{tcolorbox}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Cas $r = 2$ (le cas général s'en déduit par récurrence).}
+  Soient $P_1, P_2$ premiers entre eux~: par Bézout, il existe
+  $U, V \in \mathbb{K}[X]$ tels que $U P_1 + V P_2 = 1$, d'où en évaluant
+  en $f$~:
+  \[
+    U(f)\circ P_1(f) + V(f)\circ P_2(f) = \mathrm{Id}.
+  \]
+
+  \textit{Somme.} Pour $x \in \ker P(f)$, posons
+  $x_2 = U(f)P_1(f)(x)$ et $x_1 = V(f)P_2(f)(x)$, de sorte que
+  $x = x_1 + x_2$. Alors $P_1(f)(x_1) = V(f)\,P(f)(x) = 0$ (les polynômes
+  en $f$ commutent), donc $x_1 \in \ker P_1(f)$, et de même
+  $x_2 \in \ker P_2(f)$.
+
+  \textit{Directitude.} Si $x \in \ker P_1(f) \cap \ker P_2(f)$, la relation
+  de Bézout donne $x = U(f)P_1(f)(x) + V(f)P_2(f)(x) = 0$.
+
+  \textit{Inclusion réciproque.} Si $x_i \in \ker P_i(f)$, alors
+  $P(f)(x_i) = 0$ car $P_i$ divise $P$~; donc
+  $\ker P_1(f) \oplus \ker P_2(f) \subseteq \ker P(f)$.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\decsep{}
+
+%=============================================================
+%  § 3 — DÉMONSTRATION DU THÉORÈME
+%=============================================================
+\secnum{navyblue}{3}{Démonstration du théorème}
+
+\begin{ideepreuve}
+Le pivot est l'équivalence $(1) \Leftrightarrow (5)$~: être annulé par un
+polynôme scindé à racines simples. Dans un sens, si $f$ est diagonalisable,
+le polynôme $\prod_{\lambda \in \mathrm{Sp}(f)}(X - \lambda)$ tue $f$ sur
+chaque vecteur d'une base propre. Dans l'autre, le lemme des noyaux éclate
+$E = \ker P(f)$ en somme directe des $\ker(f - \lambda_i\,\mathrm{Id})$ :
+une base propre s'obtient en recollant des bases de chaque morceau.
+\end{ideepreuve}
+
+\rubriq{Preuve}
+
+\begin{mdframed}[style=proofbar]
+  \textit{Somme directe des sous-espaces propres.} Montrons d'abord que la
+  somme $\sum_{\lambda} E_\lambda$ est toujours directe. Soient
+  $\lambda_1, \ldots, \lambda_r$ les valeurs propres distinctes de $f$~:
+  les polynômes $X - \lambda_i$ sont deux à deux premiers entre eux, et le
+  lemme des noyaux appliqué à $Q = \prod_i (X - \lambda_i)$ donne
+  $\ker Q(f) = \bigoplus_i E_{\lambda_i}$~; en particulier la somme est
+  directe.
+
+  \smallskip
+  \textit{$(1) \Rightarrow (5)$.} Soit $(e_1,\ldots,e_n)$ une base propre et
+  $Q = \prod_{\lambda \in \mathrm{Sp}(f)} (X-\lambda)$, scindé à racines
+  simples. Pour chaque $e_j$, de valeur propre $\lambda_j$, le facteur
+  $(f - \lambda_j\,\mathrm{Id})$ annule $e_j$ et les facteurs commutent,
+  donc $Q(f)(e_j) = 0$. Ainsi $Q(f)$ s'annule sur une base~: $Q(f) = 0$.
+
+  \smallskip
+  \textit{$(5) \Rightarrow (2)$.} Soit $P = \prod_{i=1}^{r}(X - \alpha_i)$ à
+  racines simples avec $P(f) = 0$. Le lemme des noyaux donne
+  \[
+    E = \ker P(f) = \bigoplus_{i=1}^{r} \ker(f - \alpha_i\,\mathrm{Id}),
+  \]
+  et il suffit d'écarter les $\alpha_i$ qui ne sont pas valeurs propres
+  (leur noyau est nul) pour obtenir $E = \bigoplus_{\lambda\in\mathrm{Sp}(f)} E_\lambda$.
+
+  \smallskip
+  \textit{$(2) \Leftrightarrow (3)$.} La somme des $E_\lambda$ étant toujours
+  directe, elle vaut $E$ si et seulement si les dimensions s'ajoutent à $n$.
+
+  \smallskip
+  \textit{$(2) \Rightarrow (1)$.} La réunion de bases des $E_\lambda$ est une
+  base de $E$ formée de vecteurs propres.
+
+  \smallskip
+  \textit{$(3) \Leftrightarrow (4)$.} Notons $s = \sum_\lambda \dim E_\lambda$.
+  Par l'encadrement du § 1, $s \leq \sum_\lambda m_\lambda \leq \deg \chi_f = n$,
+  la deuxième inégalité étant une égalité exactement lorsque $\chi_f$ est
+  scindé. Ainsi $s = n$ équivaut à~: $\chi_f$ scindé \emph{et}
+  $\dim E_\lambda = m_\lambda$ pour tout $\lambda$.
+
+  \smallskip
+  \textit{$(5) \Leftrightarrow (6)$.} Si $\mu_f$ est scindé à racines simples,
+  (5) est vérifié avec $P = \mu_f$. Réciproquement, si $P(f) = 0$ avec $P$
+  scindé à racines simples, alors $\mu_f$ divise $P$~; un diviseur d'un
+  polynôme scindé à racines simples l'est aussi.
+  \hfill$\blacksquare$
+\end{mdframed}
+
+\rubriq{Preuve du corollaire}
+Si $\chi_f$ est scindé à racines simples, chaque valeur propre vérifie
+$1 \leq \dim E_\lambda \leq m_\lambda = 1$~: le critère (4) s'applique.
+
+\decsep{}
+
+%=============================================================
+%  § 4 — EXEMPLES, CONTRE-EXEMPLES, PIÈGES ET EXERCICES
+%=============================================================
+\secnum{exgreen}{4}{Exemples, contre-exemples, pièges et exercices}
+
+\rubriq{Exemples}
+
+\begin{mdframed}[style=exbar]
+  \textbf{1. Valeurs propres distinctes.}\enspace%
+  $A = \begin{pmatrix}1&1\\0&2\end{pmatrix}$~: $\chi_A = (X-1)(X-2)$ est
+  scindé à racines simples, donc $A$ est diagonalisable (corollaire), sans
+  qu'aucun calcul de vecteur propre ne soit nécessaire.
+
+  \smallskip\noindent
+  \textbf{2. Projecteurs.}\enspace%
+  \index{projecteur}
+  Si $p^2 = p$, le polynôme $X^2 - X = X(X-1)$, scindé à racines simples,
+  annule $p$~: tout projecteur est diagonalisable, et le critère (5) redonne
+  la décomposition $E = \ker p \oplus \ker(p - \mathrm{Id}) = \ker p \oplus \mathrm{Im}\,p$.
+
+  \smallskip\noindent
+  \textbf{3. Symétries.}\enspace%
+  Si $s^2 = \mathrm{Id}$ et $\mathrm{car}(\mathbb{K}) \neq 2$, le polynôme
+  $X^2 - 1 = (X-1)(X+1)$ est à racines simples~: toute symétrie est
+  diagonalisable, avec $E = \ker(s-\mathrm{Id}) \oplus \ker(s+\mathrm{Id})$.
+
+  \smallskip\noindent
+  \textbf{4. Matrices symétriques réelles.}\enspace%
+  Toute matrice symétrique réelle est diagonalisable (et même en base
+  orthonormale)~: c'est le théorème spectral, cf.\ la leçon dédiée.
+\end{mdframed}
+
+\rubriq{Contre-exemples}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{$\chi_f$ scindé ne suffit pas.}\enspace%
+  $N = \begin{pmatrix}0&1\\0&0\end{pmatrix}$~: $\chi_N = X^2$ est scindé,
+  mais $\dim E_0 = 1 < 2 = m_0$. Le polynôme minimal $\mu_N = X^2$ a une
+  racine double~: $N$ n'est pas diagonalisable. Plus généralement, une
+  matrice nilpotente non nulle n'est jamais diagonalisable (elle serait
+  semblable à la matrice nulle).
+
+  \smallskip\noindent
+  \textbf{La diagonalisabilité dépend du corps.}\enspace%
+  La rotation $R_\theta = \begin{pmatrix}\cos\theta&-\sin\theta\\
+  \sin\theta&\cos\theta\end{pmatrix}$, pour $\theta \notin \pi\mathbb{Z}$,
+  n'a aucune valeur propre réelle ($\chi = X^2 - 2\cos\theta\,X + 1$ de
+  discriminant $-4\sin^2\theta < 0$)~: elle n'est pas diagonalisable sur
+  $\mathbb{R}$, mais l'est sur $\mathbb{C}$ (valeurs propres
+  $e^{\pm i\theta}$, distinctes).
+
+  \smallskip\noindent
+  \textbf{Racines simples de $\chi_f$ : suffisant, non nécessaire.}\enspace%
+  L'identité de $\mathbb{R}^2$ est diagonale, alors que
+  $\chi = {(X-1)}^2$ a une racine double. C'est le polynôme \emph{minimal}
+  ($\mu = X - 1$), et non le caractéristique, qui détecte exactement la
+  diagonalisabilité.
+\end{mdframed}
+
+\vspace{6pt}
+\rubriq{Pièges}
+
+\begin{mdframed}[style=cexbar]
+  \textbf{Ne pas confondre les deux multiplicités.}\enspace%
+  On a toujours $\dim E_\lambda \leq m_\lambda$, et la diagonalisabilité
+  équivaut (si $\chi_f$ est scindé) à l'égalité pour \emph{toutes} les
+  valeurs propres~: une seule inégalité stricte suffit à l'empêcher.
+
+  \smallskip\noindent
+  \textbf{Un polynôme annulateur scindé ne suffit pas.}\enspace%
+  Il faut des racines \emph{simples}~: $X^2$ annule
+  $N = \begin{pmatrix}0&1\\0&0\end{pmatrix}$ et est scindé. Un polynôme
+  annulateur scindé (à racines multiples autorisées) caractérise seulement
+  la trigonalisabilité.
+
+  \smallskip\noindent
+  \textbf{Le polynôme annulateur n'a pas besoin d'être $\chi_f$ ou $\mu_f$.}\enspace%
+  Pour appliquer le critère (5), \emph{n'importe quel} polynôme annulateur
+  scindé à racines simples convient — c'est ce qui rend le critère si
+  efficace pour les relations du type $A^2 = A$, $A^2 = I_n$, $A^3 = A$.
+\end{mdframed}
+
+\vspace{6pt}
+\exolabel
+
+\begin{mdframed}[style=exobar]
+  \begin{enumerate}
+    \item Montrer que toute matrice $A \in \mathcal{M}_n(\mathbb{R})$
+          vérifiant $A^3 = A$ est diagonalisable, et décrire ses valeurs
+          propres possibles.
+
+    \item Étudier, selon le paramètre $a \in \mathbb{R}$, la
+          diagonalisabilité de $\begin{pmatrix}1&a\\0&1\end{pmatrix}$.
+
+    \item Montrer que toute matrice $A \in \mathcal{M}_n(\mathbb{C})$
+          vérifiant $A^k = I_n$ pour un $k \geq 1$ est diagonalisable.
+          Le résultat subsiste-t-il sur $\mathbb{R}$~? Sur un corps de
+          caractéristique $p$ divisant $k$~?
+
+    \item Soit $f$ diagonalisable et $F$ un sous-espace stable par $f$.
+          Montrer que la restriction $f|_F$ est diagonalisable.
+          (\textit{Indication~:} un polynôme annulateur de $f$ annule
+          aussi $f|_F$.)
+
+    \item \index{codiagonalisation}Soient $f, g$ diagonalisables tels que
+          $f \circ g = g \circ f$. Montrer qu'ils sont
+          \emph{codiagonalisables}~: il existe une base commune de vecteurs
+          propres. (\textit{Indication~:} chaque sous-espace propre de $f$
+          est stable par $g$~; utiliser l'exercice 4.)
+
+    \item Soit $J \in \mathcal{M}_n(\mathbb{C})$ la matrice de la
+          permutation circulaire ($Je_i = e_{i+1}$, indices modulo $n$).
+          Montrer que $J$ est diagonalisable et que ses valeurs propres
+          sont les racines $n$-ièmes de l'unité.
+  \end{enumerate}
+\end{mdframed}
+
+\leconfooter{K.\ Weierstrass (1868, diviseurs élémentaires) — G.\ Frobenius (1878, polynôme minimal)}

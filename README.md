@@ -16,7 +16,7 @@ MyMathsBook/
 ├── frontmatter/
 │   ├── pagedeGarde.tex       ← Page de garde
 │   └── preface.tex           ← Avant-propos
-├── lecons/                   ← 58 leçons réparties en 6 parties
+├── lecons/                   ← 59 leçons réparties en 6 parties
 │   ├── analyse/              ← Analyse réelle (suites, continuité, intégration…)
 │   ├── algebre/              ← Structures algébriques & algèbre linéaire
 │   ├── ensembles/            ← Construction des nombres (ℕ, ℤ, ℚ, ℝ, ℂ, ℍ)
