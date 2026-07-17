@@ -3,3 +3,5 @@ build/
 !.claude/agents/
 .vscode/
 *Zone.Identifier
+# Vidéos locales (237 Mo — dépasse la limite GitHub de 100 Mo)
+docs/*.mp4
